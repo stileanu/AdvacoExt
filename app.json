@@ -1,0 +1,38 @@
+{
+  "id": "415f2a15-4737-4a86-a9b2-76ef24a8dd23",
+  "name": "AdvacoTables",
+  "publisher": "Intelice Solutions, Inc.",
+  "version": "1.0.0.0",
+  "brief": "",
+  "description": "Customized Tables for Data Conversion",
+  "privacyStatement": "",
+  "EULA": "",
+  "help": "",
+  "url": "",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "63ca2fa4-4f03-4f2b-a480-172fef340d3f",
+      "publisher": "Microsoft",
+      "name": "System Application",
+      "version": "16.0.0.0"
+    },
+    {
+      "id": "437dbf0e-84ff-417a-965d-ed2bb9650972",
+      "publisher": "Microsoft",
+      "name": "Base Application",
+      "version": "16.0.0.0"
+    }
+  ],
+  "screenshots": [],
+  "platform": "16.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 50200
+    }
+  ],
+  "contextSensitiveHelpUrl": "https://AdvacoTables.com/help/",
+  "showMyCode": true,
+  "runtime": "5.0"
+}
