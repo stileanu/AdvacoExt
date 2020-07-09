@@ -11,8 +11,9 @@
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
-            //"tenant": "businesscentral.dynamics.com/advaco.com/AdvacoSandbox"
-            "tenant": "crmbc115779.onmicrosoft.com"
+            "tenant": "advaco.com",
+            "sandboxName": "AdvacoSandbox"
+            //"tenant": "crmbc115779.onmicrosoft.com"
             
         }
     ]
