@@ -13,3 +13,20 @@ enum 50029 VendorType
     value(8; D2) { }
     value(9; D3) { }
 }
+
+enum 50030 OrderPlacedBy
+{
+    value(0; " ") { }
+    value(1; Phone) { }
+    value(2; Fax) { }
+    value(3; Person) { }
+    value(4; Email) { }
+    value(5; Other) { }
+}
+enum 50031 CreditMemoAction
+{
+    value(0; " ") { }
+    value(1; "Repair and Return") { }
+    value(2; "Replace at No Charge") { }
+    value(3; "Issue Full Credit") { }
+}
