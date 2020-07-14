@@ -12,7 +12,7 @@
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
             "tenant": "advaco.com",
-            "sandboxName": "AdvacoSandbox"
+            "sandboxName": "AdvacoSandboxDev"
             //"tenant": "crmbc115779.onmicrosoft.com"
             
         }
