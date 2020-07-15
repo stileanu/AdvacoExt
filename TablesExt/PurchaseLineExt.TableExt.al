@@ -243,6 +243,7 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
         field(50002; Inspector; Code[20])
         {
             Caption = 'Inspector';
+            TableRelation = Resource."No." WHERE("Gen. Prod. Posting Group" = FILTER(''), Type = CONST(Person));
         }
         field(50003; "Inspection Date"; Date)
         {

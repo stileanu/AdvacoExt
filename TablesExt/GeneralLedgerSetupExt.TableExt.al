@@ -10,10 +10,12 @@ tableextension 50122 GeneralLedgerSetupExt extends "General Ledger Setup"
         field(50000; "Credit Card Payment Code"; Code[10])
         {
             Caption = 'Credit Card Payment Code';
+            TableRelation = "Payment Terms";
         }
         field(50001; "Credit Card Fee Account"; Code[20])
         {
             Caption = 'Credit Card Fee Account';
+            TableRelation = "G/L Account";
         }
         field(50002; "Credit Card Fee %"; Decimal)
         {

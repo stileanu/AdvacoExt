@@ -181,6 +181,7 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
         field(50008; "Bill of Lading"; Integer)
         {
             Caption = 'Bill of Lading';
+            TableRelation = BillOfLading."Bill of Lading";
         }
         field(50009; "Approval Code"; Code[20])
         {
@@ -191,9 +192,10 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
             Caption = 'Phone No.';
             AutoFormatExpression = "Phone No.";
         }
-        field(50011; "Work Order No."; Code[7])
+        field(50011; "Work Order No."; Code[20])
         {
             Caption = 'Work Order No.';
+            TableRelation = WorkOrderDetail."Work Order No." WHERE("Ship on Sales Order" = FILTER(true), Complete = FILTER(false), Quote = FILTER(' ' | Accepted));
         }
         field(50012; "Customer Order No."; Code[30])
         {
@@ -300,8 +302,8 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
                                     WOD."Ship To Address 1" := "Ship-to Address";
                                     WOD."Ship To Address 2" := "Ship-to Address 2";
                                     WOD."Ship To City" := "Ship-to City";
-                                    WOD."Ship To State" := "Ship-to State";
-                                    WOD."Ship To Zip Code" := "Ship-to ZIP Code";
+                                    WOD."Ship To State" := "Ship-to County";
+                                    WOD."Ship To Zip Code" := "Ship-to Post Code";
                                     WOD.Attention := "Ship-to Contact";
                                     WOD."Phone No." := "Phone No.";
                                     WOD.MODIFY;

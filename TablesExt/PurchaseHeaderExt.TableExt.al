@@ -113,6 +113,7 @@ tableextension 50120 PurchaseheaderExt extends "Purchase Header"
         field(50002; "Shipping Agent"; Code[20])
         {
             Caption = 'Shipping Agent';
+            TableRelation = "Shipping Agent".Code;
         }
         field(50003; Notes; Code[75])
         {
