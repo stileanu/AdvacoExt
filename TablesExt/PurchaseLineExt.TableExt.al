@@ -54,16 +54,16 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
                     IF Type = Type::Item THEN BEGIN
                         ItemRec.GET("No.");
                         IF GetItemVendor("No.", "Buy-from Vendor No.") THEN BEGIN
-                            IF ItemVendor."Lead Time Calculation" <> '' THEN
+                            IF Format(ItemVendor."Lead Time Calculation") <> '' THEN
                                 "Expected Receipt Date" := CALCDATE(ItemVendor."Lead Time Calculation", PurchHeader."Expected Receipt Date")
                             ELSE
-                                IF ItemRec."Lead Time Calculation" <> '' THEN
+                                IF Format(ItemRec."Lead Time Calculation") <> '' THEN
                                     "Expected Receipt Date" := CALCDATE(ItemRec."Lead Time Calculation", PurchHeader."Expected Receipt Date")
                                 ELSE
                                     "Expected Receipt Date" := PurchHeader."Expected Receipt Date";
                         END ELSE
                             IF ItemRec.GET("No.") THEN BEGIN
-                                IF ItemRec."Lead Time Calculation" <> '' THEN
+                                IF Format(ItemRec."Lead Time Calculation") <> '' THEN
                                     "Expected Receipt Date" := CALCDATE(ItemRec."Lead Time Calculation", PurchHeader."Expected Receipt Date")
                                 ELSE
                                     "Expected Receipt Date" := PurchHeader."Expected Receipt Date";
@@ -125,6 +125,146 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
                 // 07/20/19 end
             end;
         }
+        modify(Quantity)
+        {
+            trigger OnAfterValidate()
+            begin
+                //insert by htcs, rca
+                "Qty. to Invoice" := 0;
+                "Qty. to Receive" := 0;
+                "Qty. to Invoice (Base)" := 0;
+                "Qty. to Receive (Base)" := 0;
+                //<< end rca insert
+            end;
+        }
+        modify("Tax Liable")
+        {
+            trigger OnBeforeValidate()
+            begin
+                //>> HEF INSERT
+                IF "Tax Liable" THEN BEGIN
+                    "Tax Area Code" := 'MD';
+                    "Tax Group Code" := 'DEFAULT';
+                END ELSE BEGIN
+                    "Tax Area Code" := '';
+                    "Tax Group Code" := '';
+                END;
+                //<< HEF END INSERT
+            end;
+        }
+        field(50000; "Order No."; Code[20])
+        {
+            Caption = 'Order No.';
+
+            trigger OnValidate()
+            begin
+
+                Ok := FALSE;
+                xOrderNo := '';
+                IF xRec."Order No." <> '' THEN BEGIN
+                    IF xRec."Order No." <> Rec."Order No." THEN BEGIN
+                        xOrderNo := xRec."Order No.";
+                        IF NOT CONFIRM('Are you sure you want to remove the link between this Purchase Order and %1', FALSE, xOrderNo) THEN BEGIN
+                            ;
+                            "Order No." := xRec."Order No.";
+                            Ok := TRUE;
+                            MODIFY;
+                        END ELSE BEGIN
+                            //Clears Sales Order Purchase Order Number for Item
+                            xOrderNo := COPYSTR(xRec."Order No.", 1, 7);
+                            IF SO.GET("Document Type" = "Document Type"::Order, xOrderNo) THEN BEGIN
+                                SalesLine.SETRANGE("Document Type", SO."Document Type");
+                                SalesLine.SETRANGE("Document No.", SO."No.");
+                                SalesLine.SETRANGE("No.", "No.");
+                                IF SalesLine.FIND('-') THEN BEGIN
+                                    SalesLine."Purchase Order No." := '';
+                                    SalesLine.MODIFY;
+                                    Ok := TRUE;
+                                END;
+                                COMMIT;
+                                SalesLine.RESET;
+                            END;
+                            //Clears Work Order Purchase Order Number for Item
+                            IF WOD.GET(xOrderNo) THEN BEGIN
+                                Parts.SETRANGE(Parts."Work Order No.", WOD."Work Order No.");
+                                Parts.SETRANGE(Parts."Part No.", "No.");
+                                IF Parts.FIND('-') THEN BEGIN
+                                    Parts."Purchase Order No." := '';
+                                    Parts.MODIFY;
+                                    Ok := TRUE;
+                                END;
+                                COMMIT;
+                                Parts.RESET;
+                            END;
+                        END;
+                    END;
+                END;
+                OrderNo := COPYSTR("Order No.", 1, 7);
+                NumberLength := STRLEN(OrderNo);
+                IF NumberLength = 7 THEN BEGIN
+                    IF SO.GET("Document Type" = "Document Type"::Order, OrderNo) THEN BEGIN
+                        SalesLine.SETRANGE("Document Type", SO."Document Type");
+                        SalesLine.SETRANGE("Document No.", SO."No.");
+                        SalesLine.SETRANGE("No.", "No.");
+                        IF SalesLine.FIND('-') THEN BEGIN
+                            SalesLine."Purchase Order No." := "Document No.";
+                            SalesLine.MODIFY;
+                        END;
+                        COMMIT;
+                        Ok := TRUE;
+                    END;
+                    IF WOD.GET(OrderNo) THEN BEGIN
+                        Parts.SETRANGE(Parts."Work Order No.", WOD."Work Order No.");
+                        Parts.SETRANGE(Parts."Part No.", "No.");
+                        IF Parts.FIND('-') THEN BEGIN
+                            Parts."Purchase Order No." := "Document No.";
+                            Parts.MODIFY;
+                        END;
+                        COMMIT;
+                        Ok := TRUE;
+                        Parts.RESET;
+                    END;
+                END ELSE BEGIN
+                    Ok := TRUE;
+                END;
+
+                IF Ok = FALSE THEN BEGIN
+                    "Order No." := '';
+                    MODIFY;
+                    MESSAGE('The number you entered does not match a Work Order Detail or Sales Order');
+                END;
+
+            end;
+        }
+        field(50001; "Labels to Print"; Integer)
+        {
+            Caption = 'Labels to Print';
+        }
+        field(50002; Inspector; Code[20])
+        {
+            Caption = 'Inspector';
+        }
+        field(50003; "Inspection Date"; Date)
+        {
+            Caption = 'Inspection Date';
+        }
+        field(50004; "Receiving Inspection"; Boolean)
+        {
+            Caption = 'Receiving Inspection';
+        }
+        field(50005; Code; Code[5])
+        {
+            Caption = 'Code';
+        }
+        field(50006; "Qty. Released"; Decimal)
+        {
+            Caption = 'Qty. Released';
+        }
+        field(50007; "Orig. Expected Receipt Date"; Date)
+        {
+            Caption = 'Orig. Expected Receipt Date';
+            Description = 'ADV 4/26/16';
+        }
     }
 
     trigger OnAfterModify()
@@ -158,6 +298,14 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
         ItemRec: Record Item;
         Item: Record Item;
         PurchaseHeader: Record "Purchase Header";
+        OK: Boolean;
+        xOrderNo: Code[20];
+        SO: Record "Sales Header";
+        SalesLine: Record "Sales Line";
+        Parts: Record Parts;
+        WOD: Record WorkOrderDetail;
+        OrderNo: Code[20];
+        NumberLength: Integer;
 
     procedure GetItemVendor(No: Code[20]; BuyFromVendorNo: Code[20]): Boolean
     begin
