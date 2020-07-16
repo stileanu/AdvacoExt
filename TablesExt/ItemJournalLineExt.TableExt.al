@@ -39,8 +39,7 @@ TableExtension 50107 ItemJournalLineExt Extends "Item Journal Line"
             trigger OnAfterValidate()
 
             begin
-                //--!MF
-                /*
+                // Not sure this should be included!!!
                 //>>  Multi-Location - start
                 IF Location.GET("Location Code") THEN
                     IF Location."Department Code" <> '' THEN
@@ -50,7 +49,7 @@ TableExtension 50107 ItemJournalLineExt Extends "Item Journal Line"
                 IF LocationItem.GET("Location Code", "Item No.", "Variant Code") THEN
                     "Inventory Posting Group" := LocationItem."Inventory Posting Group";
                 //<<  Multi-Location - end
-                */
+
             end;
         }
         modify("Shortcut Dimension 1 Code")

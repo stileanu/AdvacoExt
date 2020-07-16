@@ -5,12 +5,9 @@ table 50002 Status
     {
         field(10; "Order No."; Code[7])
         {
-            //--!TR
-            /*
             TableRelation = IF (Type = CONST(FieldService)) FieldService."Field Service No."
             ELSE
             IF (Type = CONST(WorkOrder)) WorkOrderDetail."Work Order No.";
-            */
         }
         field(12; Type; Enum DocType)
         {

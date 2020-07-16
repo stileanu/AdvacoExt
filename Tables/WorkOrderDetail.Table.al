@@ -1,6 +1,52 @@
 table 50001 WorkOrderDetail
 {
     DataClassification = ToBeClassified;
+    /*
+        11/9/00 RJK TempStateCode can be removed but retained for possible later use.
+
+        2/13/01, RCA - Added keys for reporting: "Customer ID,Boxed,Shipment Approved"
+
+        2/20/01 HEF - removed Shipping Charge Check to allow for shipping several orders at once.
+
+        2011/04/13 ADV
+        Allow Warranty fields modifications for closed orders for Sales Manager (Kaye)
+
+        2012/04/13 ADV
+        No mods, just recompile.
+
+        2013/05/07 ADV
+        Modified "Tax liable" validation code to allow manual set.
+
+        2015/07/26 ADV
+        Added new key <Work Order Master No.,Ship Date,Customer ID,Model No.> for Warranty Analysis form
+
+        2015/08/01 ADV
+        Add code to OnInsert to do not allow record insertion with empty Work Order No.
+
+        2016_02_27 ADV
+        Added new field - <32 Initial Order Type> to store the original Order Type if the type changed after REC is completed.
+        Added new key based on new field.
+        Added code to synchonize it with Order Type before REC is completed.
+        Added new function <GetCurrentStatus> to return last completed step.
+
+        2016_04_02 ADV
+        Reverse differntial factor for Parts Markup and Quoted Price calculation
+
+        2018_02_26
+        Clean Parts when changing Model No. Adding new Parts list.
+
+        2018_03_12
+        Added boolean Overwrite Cr. Limit to overwrite credit check for vendor without increasing Credit Limit.
+
+        2018_04_16
+        Added field (option) 177 Container Type (Crate,Box,Skid,Case).
+
+        2018_05_02
+        Synchronized option string with forms ( ,Crate,Box,Skid,Case,Drum,Skid Box,Loose)
+
+        // To find commented code, use pattern <//--!>
+
+    */
 
     fields
     {
@@ -23,167 +69,166 @@ table 50001 WorkOrderDetail
         field(12; "Sales Order No."; Code[20])
         {
             DataClassification = ToBeClassified;
-            // To find commented code, use pattern <//--!>
-            /*
-                    trigger OnValidate()
-                    begin
 
-                        Duplicate := FALSE;
-                        PMWorkOrder := FALSE;
-                        SalesOrder := '';
-                        WorkOrder := '';
+            trigger OnValidate()
+            begin
 
-                        //Search Sales Orders to seel if this Work Order is already assigned to anther Sales Order
-                        SalesHeaderDupCheck.SETRANGE(SalesHeaderDupCheck."Document Type", SalesHeaderDupCheck."Document Type"::Order);
-                        IF SalesHeaderDupCheck.FIND('-') THEN BEGIN
-                            REPEAT
-                                IF SalesHeaderDupCheck."Work Order No." = "Work Order No." THEN BEGIN
-                                    IF xRec."Sales Order No." <> SalesHeaderDupCheck."No." THEN BEGIN
-                                        Duplicate := TRUE;
-                                        SalesOrder := SalesHeaderDupCheck."No.";
-                                    END;
-                                END;
-                            UNTIL SalesHeaderDupCheck.NEXT = 0;
-                        END;
+                Duplicate := FALSE;
+                PMWorkOrder := FALSE;
+                SalesOrder := '';
+                WorkOrder := '';
 
-                        //Search to verify Work Order aren't duplicated
-                        IF "Sales Order No." <> '' THEN BEGIN
-                            IF WODDupCheck.FIND('-') THEN BEGIN
-                                REPEAT
-                                    //Search Work Orders to see if the Sales Order is already linked to another Work Order
-                                    IF WODDupCheck."Sales Order No." = "Sales Order No." THEN BEGIN
-                                        Duplicate := TRUE;
-                                        WorkOrder := WODDupCheck."Work Order No.";
-                                    END;
-
-                                    //Search to verify the Work Order isn't already assigned to another Work Order as a Pump Module
-                                    IF WODDupCheck."Sales Order No." <> '' THEN BEGIN
-                                        IF "Work Order No." = WODDupCheck."Pump Module No." THEN BEGIN
-                                            Duplicate := TRUE;
-                                            PMWorkOrder := TRUE;
-                                            WorkOrder := WODDupCheck."Work Order No.";
-                                        END;
-                                    END;
-                                UNTIL WODDupCheck.NEXT = 0;
+                //Search Sales Orders to seel if this Work Order is already assigned to anther Sales Order
+                SalesHeaderDupCheck.SETRANGE(SalesHeaderDupCheck."Document Type", SalesHeaderDupCheck."Document Type"::Order);
+                IF SalesHeaderDupCheck.FIND('-') THEN BEGIN
+                    REPEAT
+                        IF SalesHeaderDupCheck."Work Order No." = "Work Order No." THEN BEGIN
+                            IF xRec."Sales Order No." <> SalesHeaderDupCheck."No." THEN BEGIN
+                                Duplicate := TRUE;
+                                SalesOrder := SalesHeaderDupCheck."No.";
                             END;
                         END;
+                    UNTIL SalesHeaderDupCheck.NEXT = 0;
+                END;
 
-                        //Error Messages if Duplicates Exist
-                        IF Duplicate THEN BEGIN
-                            IF WorkOrder <> '' THEN BEGIN
-                                IF WorkOrder <> "Work Order No." THEN BEGIN
-                                    "Sales Order No." := xRec."Sales Order No.";
-                                    MODIFY;
-                                    MESSAGE('This Sales Order is already Linked to Work Order %1', WorkOrder);
-                                END ELSE BEGIN
-                                    IF PMWorkOrder THEN BEGIN
-                                        "Sales Order No." := xRec."Sales Order No.";
-                                        MODIFY;
-                                        MESSAGE('This Work Order is already Linked to Work Order %1 as a Pump Module', WorkOrder);
-                                    END;
-                                END;
+                //Search to verify Work Order aren't duplicated
+                IF "Sales Order No." <> '' THEN BEGIN
+                    IF WODDupCheck.FIND('-') THEN BEGIN
+                        REPEAT
+                            //Search Work Orders to see if the Sales Order is already linked to another Work Order
+                            IF WODDupCheck."Sales Order No." = "Sales Order No." THEN BEGIN
+                                Duplicate := TRUE;
+                                WorkOrder := WODDupCheck."Work Order No.";
                             END;
 
-                            IF SalesOrder <> '' THEN BEGIN
+                            //Search to verify the Work Order isn't already assigned to another Work Order as a Pump Module
+                            IF WODDupCheck."Sales Order No." <> '' THEN BEGIN
+                                IF "Work Order No." = WODDupCheck."Pump Module No." THEN BEGIN
+                                    Duplicate := TRUE;
+                                    PMWorkOrder := TRUE;
+                                    WorkOrder := WODDupCheck."Work Order No.";
+                                END;
+                            END;
+                        UNTIL WODDupCheck.NEXT = 0;
+                    END;
+                END;
+
+                //Error Messages if Duplicates Exist
+                IF Duplicate THEN BEGIN
+                    IF WorkOrder <> '' THEN BEGIN
+                        IF WorkOrder <> "Work Order No." THEN BEGIN
+                            "Sales Order No." := xRec."Sales Order No.";
+                            MODIFY;
+                            MESSAGE('This Sales Order is already Linked to Work Order %1', WorkOrder);
+                        END ELSE BEGIN
+                            IF PMWorkOrder THEN BEGIN
                                 "Sales Order No." := xRec."Sales Order No.";
                                 MODIFY;
-                                MESSAGE('This Work Order is already Linked to Sales Order %1', SalesOrder);
+                                MESSAGE('This Work Order is already Linked to Work Order %1 as a Pump Module', WorkOrder);
                             END;
+                        END;
+                    END;
 
-                        END ELSE BEGIN
-                            IF "Sales Order No." <> '' THEN BEGIN
-                                IF (xRec."Sales Order No." <> '') THEN BEGIN
-                                    xSO := xRec."Sales Order No.";
-                                    IF NOT CONFIRM('Are you sure you want to remove the link between this Work Order and Sales Order %1', FALSE, xSO) THEN BEGIN
-                                        ;
-                                        "Sales Order No." := xRec."Sales Order No.";
-                                        MODIFY;
-                                    END ELSE BEGIN
-                                        IF SalesHeader.GET(SalesHeader."Document Type"::Order, xRec."Sales Order No.") THEN BEGIN
-                                            "Ship To Name" := '';
-                                            "Ship To Address 1" := '';
-                                            "Ship To Address 2" := '';
-                                            "Ship To City" := '';
-                                            "Ship To State" := '';
-                                            "Ship To Zip Code" := '';
-                                            Attention := '';
-                                            "Phone No." := '';
-                                            MODIFY;
-                                            SalesHeader."Work Order No." := '';
-                                            SalesHeader.MODIFY;
-                                            SalesLine.SETRANGE("Document Type", SalesHeader."Document Type");
-                                            SalesLine.SETRANGE("Document No.", SalesHeader."No.");
-                                            IF SalesLine.FIND('-') THEN BEGIN
-                                                IF SalesLine.Type.AsInteger() = 1 THEN BEGIN
-                                                    SalesLine."Serial No." := '';
-                                                    SalesLine.MODIFY;
-                                                END;
-                                            END;
-                                            COMMIT;
-                                        END;
-                                    END;
-                                END;
-                                IF SalesHeader.GET(SalesHeader."Document Type"::Order, "Sales Order No.") THEN BEGIN
+                    IF SalesOrder <> '' THEN BEGIN
+                        "Sales Order No." := xRec."Sales Order No.";
+                        MODIFY;
+                        MESSAGE('This Work Order is already Linked to Sales Order %1', SalesOrder);
+                    END;
+
+                END ELSE BEGIN
+                    IF "Sales Order No." <> '' THEN BEGIN
+                        IF (xRec."Sales Order No." <> '') THEN BEGIN
+                            xSO := xRec."Sales Order No.";
+                            IF NOT CONFIRM('Are you sure you want to remove the link between this Work Order and Sales Order %1', FALSE, xSO) THEN BEGIN
+                                ;
+                                "Sales Order No." := xRec."Sales Order No.";
+                                MODIFY;
+                            END ELSE BEGIN
+                                IF SalesHeader.GET(SalesHeader."Document Type"::Order, xRec."Sales Order No.") THEN BEGIN
+                                    "Ship To Name" := '';
+                                    "Ship To Address 1" := '';
+                                    "Ship To Address 2" := '';
+                                    "Ship To City" := '';
+                                    "Ship To State" := '';
+                                    "Ship To Zip Code" := '';
+                                    Attention := '';
+                                    "Phone No." := '';
+                                    MODIFY;
+                                    SalesHeader."Work Order No." := '';
+                                    SalesHeader.MODIFY;
                                     SalesLine.SETRANGE("Document Type", SalesHeader."Document Type");
                                     SalesLine.SETRANGE("Document No.", SalesHeader."No.");
                                     IF SalesLine.FIND('-') THEN BEGIN
                                         IF SalesLine.Type.AsInteger() = 1 THEN BEGIN
-                                            "Ship To Name" := SalesHeader."Ship-to Name";
-                                            "Ship To Address 1" := SalesHeader."Ship-to Address";
-                                            "Ship To Address 2" := SalesHeader."Ship-to Address 2";
-                                            "Ship To City" := SalesHeader."Ship-to City";
-                                            "Ship To State" := SalesHeader."Ship-to State";
-                                            "Ship To Zip Code" := SalesHeader."Ship-to ZIP Code";
-                                            Attention := SalesHeader."Ship-to Contact";
-                                            "Phone No." := SalesHeader."Phone No.";
-                                            MODIFY;
-                                            SalesLine."Serial No." := "Serial No.";
-                                            SalesLine."Commission Calculated" := TRUE;
+                                            SalesLine."Serial No." := '';
                                             SalesLine.MODIFY;
-                                            SalesHeader."Work Order No." := "Work Order No.";
-                                            SalesHeader.MODIFY;
-                                            COMMIT;
-                                        END ELSE BEGIN
-                                            ERROR('Work Order No. can only be linked to Sales Orders that have One Account G/L Line');
                                         END;
-                                    END ELSE BEGIN
-                                        ERROR('Work Order No. can only be linked to Sales Orders that have One Account G/L Line');
                                     END;
+                                    COMMIT;
                                 END;
                             END;
-                            IF ("Sales Order No." = '') AND (xRec."Sales Order No." <> '') THEN BEGIN
-                                IF NOT CONFIRM('Are you sure you want to remove the link between the Work Order and Sales Order', FALSE) THEN BEGIN
-                                    ;
-                                    "Sales Order No." := xRec."Sales Order No.";
+                        END;
+                        IF SalesHeader.GET(SalesHeader."Document Type"::Order, "Sales Order No.") THEN BEGIN
+                            SalesLine.SETRANGE("Document Type", SalesHeader."Document Type");
+                            SalesLine.SETRANGE("Document No.", SalesHeader."No.");
+                            IF SalesLine.FIND('-') THEN BEGIN
+                                IF SalesLine.Type.AsInteger() = 1 THEN BEGIN
+                                    "Ship To Name" := SalesHeader."Ship-to Name";
+                                    "Ship To Address 1" := SalesHeader."Ship-to Address";
+                                    "Ship To Address 2" := SalesHeader."Ship-to Address 2";
+                                    "Ship To City" := SalesHeader."Ship-to City";
+                                    "Ship To State" := SalesHeader."Ship-to County";
+                                    "Ship To Zip Code" := SalesHeader."Ship-to Post Code";
+                                    Attention := SalesHeader."Ship-to Contact";
+                                    "Phone No." := SalesHeader."Phone No.";
                                     MODIFY;
+                                    SalesLine."Serial No." := "Serial No.";
+                                    SalesLine."Commission Calculated" := TRUE;
+                                    SalesLine.MODIFY;
+                                    SalesHeader."Work Order No." := "Work Order No.";
+                                    SalesHeader.MODIFY;
+                                    COMMIT;
                                 END ELSE BEGIN
-                                    IF SalesHeader.GET(SalesHeader."Document Type"::Order, xRec."Sales Order No.") THEN BEGIN
-                                        "Ship To Name" := '';
-                                        "Ship To Address 1" := '';
-                                        "Ship To Address 2" := '';
-                                        "Ship To City" := '';
-                                        "Ship To State" := '';
-                                        "Ship To Zip Code" := '';
-                                        Attention := '';
-                                        "Phone No." := '';
-                                        MODIFY;
-                                        SalesHeader."Work Order No." := '';
-                                        SalesHeader.MODIFY;
-                                        SalesLine.SETRANGE("Document Type", SalesHeader."Document Type");
-                                        SalesLine.SETRANGE("Document No.", SalesHeader."No.");
-                                        IF SalesLine.FIND('-') THEN BEGIN
-                                            IF SalesLine.Type.AsInteger() = 1 THEN BEGIN
-                                                SalesLine."Serial No." := '';
-                                                SalesLine.MODIFY;
-                                            END;
-                                        END;
+                                    ERROR('Work Order No. can only be linked to Sales Orders that have One Account G/L Line');
+                                END;
+                            END ELSE BEGIN
+                                ERROR('Work Order No. can only be linked to Sales Orders that have One Account G/L Line');
+                            END;
+                        END;
+                    END;
+                    IF ("Sales Order No." = '') AND (xRec."Sales Order No." <> '') THEN BEGIN
+                        IF NOT CONFIRM('Are you sure you want to remove the link between the Work Order and Sales Order', FALSE) THEN BEGIN
+                            ;
+                            "Sales Order No." := xRec."Sales Order No.";
+                            MODIFY;
+                        END ELSE BEGIN
+                            IF SalesHeader.GET(SalesHeader."Document Type"::Order, xRec."Sales Order No.") THEN BEGIN
+                                "Ship To Name" := '';
+                                "Ship To Address 1" := '';
+                                "Ship To Address 2" := '';
+                                "Ship To City" := '';
+                                "Ship To State" := '';
+                                "Ship To Zip Code" := '';
+                                Attention := '';
+                                "Phone No." := '';
+                                MODIFY;
+                                SalesHeader."Work Order No." := '';
+                                SalesHeader.MODIFY;
+                                SalesLine.SETRANGE("Document Type", SalesHeader."Document Type");
+                                SalesLine.SETRANGE("Document No.", SalesHeader."No.");
+                                IF SalesLine.FIND('-') THEN BEGIN
+                                    IF SalesLine.Type.AsInteger() = 1 THEN BEGIN
+                                        SalesLine."Serial No." := '';
+                                        SalesLine.MODIFY;
                                     END;
                                 END;
                             END;
                         END;
+                    END;
+                END;
 
-                    end;
-                    */
+            end;
+
         }
         field(13; "Ship on Sales Order"; Boolean)
         {
@@ -202,8 +247,7 @@ table 50001 WorkOrderDetail
 
                 IF item.GET("Model No.") THEN BEGIN
                     Description := item.Description;
-                    // To find commented code, use pattern <//--!>
-                    //"Model Type" := item."Model Type";
+                    "Model Type" := item."Model Type";
                     "Ship Weight" := item."Gross Weight";
                 END;
 
@@ -702,8 +746,7 @@ table 50001 WorkOrderDetail
 
             trigger OnValidate()
             begin
-                // To find commented code, use pattern <//--!>
-                /*
+
                 IF "Shipping Charge" = "Shipping Charge"::Collect THEN BEGIN
                     IF Agent.GET(Carrier) THEN BEGIN
                         IF Agent."Account No. Required" THEN BEGIN
@@ -733,7 +776,6 @@ table 50001 WorkOrderDetail
                     "Third Party State" := '';
                     "Third Party Zip" := '';
                 END;
-                */
             end;
         }
         field(280; "Date Required"; Date)
@@ -1216,8 +1258,6 @@ table 50001 WorkOrderDetail
                 PMOrder := '';
 
                 //Search all Sales Order for Advaco Order already assigned to a Sales Order
-                // To find commented code, use pattern <//--!>
-                /*
                 IF "Pump Module No." <> '' THEN BEGIN
                     SalesHeaderDupCheck.SETRANGE(SalesHeaderDupCheck."Document Type", SalesHeaderDupCheck."Document Type"::Order);
                     IF SalesHeaderDupCheck.FIND('-') THEN BEGIN
@@ -1329,7 +1369,6 @@ table 50001 WorkOrderDetail
                         END;
                     END;
                 END;
-                */
             end;
 
         }
@@ -1507,9 +1546,8 @@ table 50001 WorkOrderDetail
                         "Vendor Address" := PurchaseHeader."Buy-from Address";
                         "Vendor Address2" := PurchaseHeader."Buy-from Address 2";
                         "Vendor City" := PurchaseHeader."Buy-from City";
-                        // To find commented code, use pattern <//--!>
-                        //"Vendor State" := PurchaseHeader."Buy-from State";
-                        //"Vendor Zip" := PurchaseHeader."Buy-from ZIP Code";
+                        "Vendor State" := PurchaseHeader."Buy-from County";
+                        "Vendor Zip" := PurchaseHeader."Buy-from Post Code";
                         "Vendor Contact" := PurchaseHeader."Buy-from Contact";
                         IF Vendor.GET(PurchaseHeader."Buy-from Vendor No.") THEN BEGIN
                             "Vendor Phone No." := Vendor."Phone No.";
@@ -1660,8 +1698,7 @@ table 50001 WorkOrderDetail
         PartsMarkup := 1.86;
         IF item.GET("Model No.") THEN BEGIN
             item.SETRANGE(item."Location Filter", 'MAIN');
-            //--!
-            //item.CALCFIELDS(item."Quantity on Hand");
+            item.CALCFIELDS(item.Inventory);
             Parts.SETRANGE(Parts."Work Order No.", "Work Order No.");
             IF Parts.FIND('-') THEN BEGIN
                 Ok := TRUE
@@ -1681,9 +1718,8 @@ table 50001 WorkOrderDetail
                                 Ok := TRUE;
                             END ELSE BEGIN
                                 Item2.SETRANGE(Item2."Location Filter", 'MAIN');
-                                //--!
-                                //Item2.CALCFIELDS(Item2."Quantity on Hand", Item2."Reserved Qty. on Inventory", Item2."Qty. on Purch. Order");
-                                //"Qty Available" := (Item2."Quantity on Hand" - Item2."Reserved Qty. on Inventory");
+                                Item2.CALCFIELDS(Item2.Inventory, Item2."Reserved Qty. on Inventory", Item2."Qty. on Purch. Order");
+                                "Qty Available" := (Item2.Inventory - Item2."Reserved Qty. on Inventory");
                                 PartsList."Part Type" := PartsList."Part Type"::Item;
                                 PartsList."Part Cost" := Item2."Last Direct Cost";
                                 IF "Order Type" = "Order Type"::Rebuild THEN BEGIN
@@ -1963,8 +1999,7 @@ table 50001 WorkOrderDetail
         ExistingParts: Record Parts;
         PTTest: Code[10];
         RecordCount: Integer;
-        //--!
-        //WODH: Record DeletedWorkOrders;
+        WODH: Record DeletedWorkOrders;
         OrderReason: Text[100];
         "Qty Available": Decimal;
         FillOrderQty: Decimal;
@@ -1993,8 +2028,7 @@ table 50001 WorkOrderDetail
         SerialNo: Code[20];
         QuotedQty: Code[10];
         SerialNoFound: Code[10];
-        //--!
-        //Mechanics: Record QuoteMechanicsParts;
+        Mechanics: Record QuoteMechanicsParts;
         DateIn: Date;
         DateOut: Date;
         Person: Code[10];
@@ -2034,15 +2068,13 @@ table 50001 WorkOrderDetail
 
         WorkOrderDetail.GET("Work Order No.");
 
-        //--!
-        /*
-                WODH.RESET;
-                WODH.INIT;
-                WODH.TRANSFERFIELDS(WorkOrderDetail);
-                WODH."Deletion Date" := WORKDATE;
-                // WODH."Reason Deleted" := ;     //Harlen will insert code for Deletion Reason
-                WODH.INSERT;
-                */
+        WODH.RESET;
+        WODH.INIT;
+        WODH.TRANSFERFIELDS(WorkOrderDetail);
+        WODH."Deletion Date" := WORKDATE;
+        // WODH."Reason Deleted" := ;     //Harlen will insert code for Deletion Reason
+        WODH.INSERT;
+
         WorkOrderDetail."Work Order No." := ''
     end;
 

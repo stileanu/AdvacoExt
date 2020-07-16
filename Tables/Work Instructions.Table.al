@@ -40,8 +40,7 @@ table 50004 WorkInstructions
         }
         field(45; Model; Code[20])
         {
-            //--!TR
-            //TableRelation = Item."No." WHERE(Class = CONST(MODEL));
+            TableRelation = Item."No." WHERE(Class = CONST(MODEL));
         }
         field(46; "Customer Part No."; Code[20])
         {
@@ -74,9 +73,8 @@ table 50004 WorkInstructions
             begin
                 // 04/01/13 Start
                 UserSetup.GET(USERID);
-                //--!TE
-                //IF NOT UserSetup."Allow WI Blocking" THEN
-                //    ERROR(ADV001);
+                IF NOT UserSetup."Allow WI Blocking" THEN
+                    ERROR(ADV001);
                 // 04/01/13 End
             end;
         }
@@ -101,9 +99,8 @@ table 50004 WorkInstructions
     begin
         // 04/01/13 Start
         UserSetup.GET(USERID);
-        //--!TE
-        //IF NOT UserSetup."Allow WI Deletion" THEN
-        //    ERROR(ADV002);
+        IF NOT UserSetup."Allow WI Deletion" THEN
+            ERROR(ADV002);
 
         IF CONFIRM(ADV001, FALSE) THEN
             DELETE;

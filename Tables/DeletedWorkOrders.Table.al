@@ -1,4 +1,4 @@
-table 50007 DeletedWorkOrder
+table 50007 DeletedWorkOrders
 {
     // 11/9/00 RJK TempSateCode can be removed but retained for possible later use.
     // To find commented code, use pattern <//--!>
@@ -26,8 +26,7 @@ table 50007 DeletedWorkOrder
         }
         field(20; "Model No."; Code[20])
         {
-            //--!TR/MF
-            //TableRelation = Item."No." WHERE(Class = CONST(MODEL));
+            TableRelation = Item."No." WHERE(Class = CONST(MODEL));
         }
         field(25; "Model Verified"; Boolean)
         {

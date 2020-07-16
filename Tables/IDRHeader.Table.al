@@ -53,8 +53,7 @@ table 50017 IDRHeader
         }
         field(220; "Model No."; Text[30])
         {
-            //--!MF
-            //TableRelation = Item."No." WHERE (Class=CONST(MODEL));
+            TableRelation = Item."No." WHERE(Class = CONST(MODEL));
         }
         field(230; "Process Code"; Code[10])
         {
@@ -138,9 +137,8 @@ table 50017 IDRHeader
     begin
         IF "No." = '' THEN BEGIN
             InvtSetup.GET;
-            //--!TE
-            //InvtSetup.TESTFIELD("IDR Nos.");
-            //NoSeriesMgt.InitSeries(InvtSetup."IDR Nos.",xRec."No. Series",0D,"No.","No. Series");
+            InvtSetup.TESTFIELD("IDR Nos.");
+            NoSeriesMgt.InitSeries(InvtSetup."IDR Nos.", xRec."No. Series", 0D, "No.", "No. Series");
             "Document Date" := TODAY;
         END;
     end;

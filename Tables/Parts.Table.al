@@ -112,10 +112,9 @@ table 50003 Parts
 
             trigger OnValidate();
             begin
-                //--!
-                //IF "BOM Quantity" <> xRec."BOM Quantity" THEN BEGIN
-                //    ItemAvailability.RUN(Rec);
-                //END;
+                IF "BOM Quantity" <> xRec."BOM Quantity" THEN BEGIN
+                    ItemAvailability.RUN(Rec);
+                END;
 
                 "Quantity Backorder" := "BOM Quantity" - "Committed Quantity";
                 MODIFY;
@@ -173,14 +172,11 @@ table 50003 Parts
                 END;
 
                 // Auto Sets Reason to Extra Part, so the Prices are updated
-                //--!
-                /*
                 IF FS.GET("Work Order No.") THEN BEGIN
                     Reason := Reason::"EXTRA PART";
                     MODIFY;
                     VALIDATE(Reason);
                 END;
-                */
 
                 // CHECK TO SEE IF IT IS A PUMP MODULE AND MAKE ITS REASON EXTRA PART IF IT ISN'T RELEASED FROM QUOTE YET.
                 // THIS MAKES SURE THE PRICES ARE UPDATED
@@ -242,14 +238,12 @@ table 50003 Parts
                     END;
 
                     //Field Service Returned Parts that where shipped
-                    //--!
-                    /*IF FS.GET("Work Order No.") THEN BEGIN
+                    IF FS.GET("Work Order No.") THEN BEGIN
                         IF "Qty. Shipped" > "Pulled Quantity" THEN BEGIN
                             "Qty. Returned" := "Qty. Shipped" - "Pulled Quantity";
                             MODIFY;
                         END;
                     END;
-                    */
 
                     //Return Items to Main Inventory
                     IF Item2.GET("Part No.") THEN
@@ -471,8 +465,7 @@ table 50003 Parts
 
         Item: Record Item;
         Ok: Boolean;
-        //--!
-        //ItemAvailability: Codeunit "Check Availablility";
+        ItemAvailability: Codeunit "Check Availablility";
         CurrentRecord: Record Parts;
         WOS: Record Status;
         ExistingParts: Record Parts;
@@ -496,8 +489,7 @@ table 50003 Parts
         ReturnInventory2Qty: Decimal;
         ReturnInventory3Qty: Decimal;
         PartCode: Code[10];
-        //--!
-        //FS: Record FieldService;
+        FS: Record FieldService;
         QtytoShip: Decimal;
         WOD: Record WorkOrderDetail;
         QuoteStatus: Record Status;
@@ -762,10 +754,9 @@ table 50003 Parts
     begin
         BEGIN
             OriginalRecord := Rec;
-            //--!
-            //Window.OPEN('Enter the new part number #1#########', NewPart);
-            //Window.INPUT();
-            //Window.CLOSE;
+            Window.OPEN('Enter the new part number #1#########', NewPart);
+            Window.INPUT();
+            Window.CLOSE;
             IF NewPart <> '' THEN BEGIN
                 Item.RESET;
                 IF Item.GET(NewPart) THEN BEGIN

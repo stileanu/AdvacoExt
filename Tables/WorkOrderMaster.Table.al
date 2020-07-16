@@ -175,9 +175,8 @@ table 50000 WorkOrderMaster
                                 Attention := ShipTo.Contact;
                                 "E-Mail" := ShipTo."E-Mail";
                                 "Fax No." := ShipTo."Fax No.";
-                                //--!
-                                //"Inside Sales" := ShipTo."Inside Sales";
-                                //Rep := ShipTo.Rep;
+                                "Inside Sales" := ShipTo."Inside Sales";
+                                Rep := ShipTo.Rep;
                                 MODIFY;
                                 COMMIT;
 
@@ -215,9 +214,8 @@ table 50000 WorkOrderMaster
                             Attention := ShipTo.Contact;
                             "E-Mail" := ShipTo."E-Mail";
                             "Fax No." := ShipTo."Fax No.";
-                            //--!
-                            //"Inside Sales" := ShipTo."Inside Sales";
-                            //Rep := ShipTo.Rep;
+                            "Inside Sales" := ShipTo."Inside Sales";
+                            Rep := ShipTo.Rep;
                             MODIFY;
 
                             WorkOrderDetail2.RESET;
@@ -524,24 +522,19 @@ table 50000 WorkOrderMaster
         NoSeriesMgt: Codeunit NoSeriesManagement;
         WOD: Record WorkOrderDetail;
         WorkOrderDetail2: Record WorkOrderDetail;
-        //--!
-        //WODH: Record DeletedWorkOrder;
+        WODH: Record DeletedWorkOrders;
         WOS: Record Status;
         OK: Boolean;
         Agent: Record "Shipping Agent";
 
     trigger OnInsert()
     begin
-        //--!
-        /*
         if "Work Order Master No." = '' then begin
             InvtSetup.GET;
             InvtSetup.TESTFIELD("Work Order Nos.");
             NoSeriesMgt.InitSeries(InvtSetup."Work Order Nos.", xRec."No. Series", 0D, "Work Order Master No.", "No. Series");
             "Date Ordered" := TODAY;
         end;
-        */
-
     end;
 
     trigger OnModify()
@@ -550,8 +543,6 @@ table 50000 WorkOrderMaster
 
     trigger OnDelete()
     begin
-        //--!
-        /*
         IF NOT CONFIRM('Are you sure you want to DELETE %1?', FALSE, "Work Order Master No.") THEN
             ERROR('Work Order %1 not deleted', "Work Order Master No.");
 
@@ -586,8 +577,6 @@ table 50000 WorkOrderMaster
                 UNTIL WOD.NEXT = 0;
             END;
         END;
-        */
-
     end;
 
     trigger OnRename()

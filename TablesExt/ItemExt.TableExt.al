@@ -38,17 +38,28 @@ tableextension 50104 ItemExt Extends Item
         {
             Caption = 'Qty. Rec. Blanket Purch. Order';
             FieldClass = FlowField;
-            CalcFormula = Sum ("Purchase Line".Quantity WHERE("Document Type" = CONST("Blanket Order"), Type = CONST(Item), "No." = FIELD("No."), "Shortcut Dimension 1 Code" = FIELD("Global Dimension 1 Filter"),
-                            "Shortcut Dimension 2 Code" = FIELD("Global Dimension 2 Filter"), "Location Code" = FIELD("Location Filter"), "Drop Shipment" = FIELD("Drop Shipment Filter"), "Variant Code" = FIELD("Variant Filter"),
+            CalcFormula = Sum ("Purchase Line"."Qty. Received (Base)" WHERE("Document Type" = CONST("Blanket Order"), Type = CONST(Item), "No." = FIELD("No."),
+                            "Shortcut Dimension 1 Code" = FIELD("Global Dimension 1 Filter"), "Shortcut Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
+                            "Location Code" = FIELD("Location Filter"), "Drop Shipment" = FIELD("Drop Shipment Filter"), "Variant Code" = FIELD("Variant Filter"),
                             "Bin Code" = FIELD("Bin Filter"), "Expected Receipt Date" = FIELD("Date Filter")));
         }
-        field(50004; "Qty. on Blanket Purch. Oder"; Decimal)
+        field(50004; "Qty. on Blanket Purch. Order"; Decimal)
         {
-            Caption = 'Qty. on Blanket Purch. Oder';
+            Caption = 'Qty. on Blanket Purch. Order';
+            FieldClass = FlowField;
+            CalcFormula = Sum ("Purchase Line".Quantity WHERE("Document Type" = CONST("Blanket Order"), Type = CONST(Item), "No." = FIELD("No."),
+                            "Shortcut Dimension 1 Code" = FIELD("Global Dimension 1 Filter"), "Shortcut Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
+                            "Location Code" = FIELD("Location Filter"), "Drop Shipment" = FIELD("Drop Shipment Filter"), "Variant Code" = FIELD("Variant Filter"),
+                            "Bin Code" = FIELD("Bin Filter"), "Expected Receipt Date" = FIELD("Date Filter")));
         }
         field(50005; "Qty. On Blanket Released"; Decimal)
         {
             Caption = 'Qty. On Blanket Released';
+            FieldClass = FlowField;
+            CalcFormula = Sum ("Purchase Line"."Qty. Released" WHERE("Document Type" = CONST("Blanket Order"), Type = CONST(Item), "No." = FIELD("No."),
+                            "Shortcut Dimension 1 Code" = FIELD("Global Dimension 1 Filter"), "Shortcut Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
+                            "Location Code" = FIELD("Location Filter"), "Drop Shipment" = FIELD("Drop Shipment Filter"), "Variant Code" = FIELD("Variant Filter"),
+                            "Bin Code" = FIELD("Bin Filter"), "Expected Receipt Date" = FIELD("Date Filter")));
         }
         field(50006; "User ID"; Code[20])
         {
@@ -121,21 +132,24 @@ tableextension 50104 ItemExt Extends Item
 
             //END INSERT HEF    
         end;
+        */
         modify("Inventory Posting Group")
-        trigger OnAfterValidate()
-        ICE-MPC location Item table is not in the base version
-        begin
+        {
+            trigger OnAfterValidate()
+            //ICE-MPC location Item table is not in the base version
+            begin
 
-            // 02/13/18 Start
-            LocationItem.RESET;
-            LocationItem.SETRANGE("Item No.","No.");
-            IF LocationItem.FINDFIRST THEN
-            REPEAT
-                LocationItem."Inventory Posting Group" := "Inventory Posting Group";
-                LocationItem.MODIFY;
-            UNTIL LocationItem.NEXT = 0;
-            // 02/13/18 End   
-        end;*/
+                // 02/13/18 Start
+                LocationItem.RESET;
+                LocationItem.SETRANGE("Item No.", "No.");
+                IF LocationItem.FINDFIRST THEN
+                    REPEAT
+                        LocationItem."Inventory Posting Group" := "Inventory Posting Group";
+                        LocationItem.MODIFY;
+                    UNTIL LocationItem.NEXT = 0;
+                // 02/13/18 End   
+            end;
+        }
 
         modify("Price/Profit Calculation")
         {
@@ -144,8 +158,6 @@ tableextension 50104 ItemExt Extends Item
             begin
 
                 //>> HEF INSERT
-                //--!VB
-                /*
                 CASE "Price/Profit Calculation" OF
                     "Price/Profit Calculation"::"Profit=Price-Cost":
                         IF "Unit Price" <> 0 THEN
@@ -162,7 +174,6 @@ tableextension 50104 ItemExt Extends Item
                                 ("Last Direct Cost" / (1 - "Profit %" / 100)) *
                                 (1 + VATPostingSetup."VAT %" / 100), 0.00001);
                 END;
-                */
                 //<< HEF END INSERT    
             end;
         }
@@ -184,26 +195,20 @@ tableextension 50104 ItemExt Extends Item
         {
             trigger OnAfterValidate()
             begin
-                //--!MC
-                /*
                 //>> Item Cross Reference - start
                 IF ("Vendor Item No." <> '') AND ("Vendor No." <> '') THEN
                     DistIntegration.ICRCreatePrimaryVendorEntry(Rec);
                 //<< Item Cross Reference - end
-                */
             end;
         }
         modify("Vendor Item No.")
         {
             trigger OnAfterValidate()
             begin
-                //--!MC
-                /*
                 //>> Item Cross Reference - start
                 IF ("Vendor Item No." <> '') AND ("Vendor No." <> '') THEN
                     DistIntegration.ICRCreatePrimaryVendorEntry(Rec);
                 //<< Item Cross Reference - end
-                */
             end;
         }
         modify(Blocked)
@@ -241,8 +246,6 @@ tableextension 50104 ItemExt Extends Item
             trigger OnAfterValidate()
             begin
                 // 02/13/18 Start
-                //--!VB
-                /*
                 LocationItem.RESET;
                 LocationItem.SETRANGE("Item No.", "No.");
                 IF LocationItem.FINDFIRST THEN
@@ -250,7 +253,6 @@ tableextension 50104 ItemExt Extends Item
                         LocationItem."General Product Posting Group" := "Gen. Prod. Posting Group";
                         LocationItem.MODIFY;
                     UNTIL LocationItem.NEXT = 0;
-                */
                 // 02/13/18 End  
             end;
         }
@@ -266,17 +268,14 @@ tableextension 50104 ItemExt Extends Item
         END;
         //<< HEF END 
         //>> Contracts Start
-        //--!VB
-        //DistIntegration.ContractUpdateItemContractLine(Rec);
+        DistIntegration.ContractUpdateItemContractLine(Rec);
         //<< Contracts End
     end;
 
     trigger OnDelete()
 
     begin
-        //--!FM
         //INSERT HEF
-        /*
         IF Class = 'MODEL' THEN BEGIN
             WOD.SETCURRENTKEY("Model No.");
             WOD.SETRANGE(WOD."Model No.", xRec."No.");
@@ -306,7 +305,6 @@ tableextension 50104 ItemExt Extends Item
         //>> Item Cross Reference - Start
         DistIntegration.ICRDeleteItem("No.");
         //<< Item Cross Reference - End
-        */
     end;
 
 
@@ -314,8 +312,6 @@ tableextension 50104 ItemExt Extends Item
     begin
 
         //INSERT HEF
-        //--!FM
-        /*
         IF Class = 'MODEL' THEN BEGIN
             WOD.SETCURRENTKEY("Model No.");
             WOD.SETRANGE(WOD."Model No.", xRec."No.");
@@ -329,7 +325,6 @@ tableextension 50104 ItemExt Extends Item
             "Last Date Modified" := TODAY;
             "User ID" := USERID;
         END;
-        */
         // END INSERT HEF 
     end;
 
@@ -338,9 +333,8 @@ tableextension 50104 ItemExt Extends Item
         Parts: Record Parts;
         WOD: Record WorkOrderDetail;
         ItemSubstitution: Record "Item Substitution";
-        //--!VB
-        // NonStocks:Codeunit "Non Stocks";
-        //LocationItem:Record "Location Item";
+        NonStocks: Codeunit "Non Stocks";
+        LocationItem: Record "Location Item";
         PartsUsed: Boolean;
         WO: Code[250];
         OK: Boolean;

@@ -53,6 +53,7 @@ tableextension 50114 CustomerExt extends Customer
         field(50000; Rep; Code[10])
         {
             Caption = 'Rep';
+            TableRelation = "Outside Sales Reps"."Rep Code";
         }
         field(50001; "Shipping Account"; Code[20])
         {
