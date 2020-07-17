@@ -26,7 +26,7 @@ table 50007 DeletedWorkOrders
         }
         field(20; "Model No."; Code[20])
         {
-            TableRelation = Item."No." WHERE(Class = CONST(MODEL));
+            TableRelation = Item."No." WHERE(Class = CONST('MODEL'));
         }
         field(25; "Model Verified"; Boolean)
         {

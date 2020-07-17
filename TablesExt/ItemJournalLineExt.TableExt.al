@@ -41,6 +41,8 @@ TableExtension 50107 ItemJournalLineExt Extends "Item Journal Line"
             begin
                 // Not sure this should be included!!!
                 //>>  Multi-Location - start
+                //--!OT
+                /*
                 IF Location.GET("Location Code") THEN
                     IF Location."Department Code" <> '' THEN
                         "Department Code" := Location."Department Code";
@@ -49,7 +51,7 @@ TableExtension 50107 ItemJournalLineExt Extends "Item Journal Line"
                 IF LocationItem.GET("Location Code", "Item No.", "Variant Code") THEN
                     "Inventory Posting Group" := LocationItem."Inventory Posting Group";
                 //<<  Multi-Location - end
-
+                */
             end;
         }
         modify("Shortcut Dimension 1 Code")

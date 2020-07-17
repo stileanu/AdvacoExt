@@ -53,7 +53,7 @@ table 50017 IDRHeader
         }
         field(220; "Model No."; Text[30])
         {
-            TableRelation = Item."No." WHERE(Class = CONST(MODEL));
+            TableRelation = Item."No." WHERE(Class = CONST('MODEL'));
         }
         field(230; "Process Code"; Code[10])
         {

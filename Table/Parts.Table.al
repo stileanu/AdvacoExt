@@ -1,8 +1,13 @@
 table 50003 Parts
 {
+
     // 2016_04_05 ADV
     //   Reverse differntial factor for Parts Markup and Quoted Price calculation
     // To find commented code, use pattern <//--!>
+
+    //--!MK
+    // Missing key -- WOS.SETCURRENTKEY("Order No.", Step);
+    // Coomented code, as we do not have access to main table fields.
 
     fields
     {
@@ -63,7 +68,7 @@ table 50003 Parts
             trigger OnValidate();
             begin
                 WOS.RESET;
-                WOS.SETCURRENTKEY("Order No.", Step);
+                //WOS.SETCURRENTKEY("Order No.", Step);
                 WOS.SETRANGE(WOS."Order No.", "Work Order No.");
                 WOS.FIND('+');
                 IF WOS.Step.AsInteger() > WOS.Step::QOT.AsInteger() THEN BEGIN   // Reasons Not Entered Until Parts In Process
@@ -150,7 +155,8 @@ table 50003 Parts
                     IF "Quoted Quantity" <> xRec."Quoted Quantity" THEN BEGIN
                         IF Resource.GET("Part No.") THEN BEGIN
                             WOS.RESET;
-                            WOS.SETCURRENTKEY("Order No.", Step);
+                            //--!MK
+                            //WOS.SETCURRENTKEY("Order No.", Step);
                             WOS.SETRANGE(WOS."Order No.", "Work Order No.");
                             WOS.FIND('+');
                             IF WOS.Step.AsInteger() > WOS.Step::QOT.AsInteger() THEN BEGIN
@@ -182,7 +188,8 @@ table 50003 Parts
                 // THIS MAKES SURE THE PRICES ARE UPDATED
                 IF WOD.GET("Work Order No.") THEN BEGIN
                     IF WOD."Pump Module Processed" THEN BEGIN
-                        QuoteStatus.SETCURRENTKEY("Order No.", Step);
+                        //--!MK
+                        //QuoteStatus.SETCURRENTKEY("Order No.", Step);
                         QuoteStatus.SETRANGE(QuoteStatus."Order No.", "Work Order No.");
                         QuoteStatus.SETRANGE(QuoteStatus.Step, QuoteStatus.Step::QOT);
                         QuoteStatus.SETRANGE(QuoteStatus.Status, QuoteStatus.Status::Waiting);
@@ -286,7 +293,8 @@ table 50003 Parts
 
                 IF "After Quote Quantity" <> 0 THEN BEGIN
                     WOS.RESET;
-                    WOS.SETCURRENTKEY("Order No.", Step);
+                    //--!MK
+                    //WOS.SETCURRENTKEY("Order No.", Step);
                     WOS.SETRANGE(WOS."Order No.", "Work Order No.");
                     WOS.SETRANGE(WOS.Step, WOS.Step::QOT);
                     WOS.FIND('-');
@@ -306,7 +314,8 @@ table 50003 Parts
                 END;
 
                 WOS.RESET;
-                WOS.SETCURRENTKEY("Order No.", Step);
+                //--!MK
+                //WOS.SETCURRENTKEY("Order No.", Step);
                 WOS.SETRANGE(WOS."Order No.", "Work Order No.");
                 WOS.FIND('+');
                 IF WOS.Step.AsInteger() > WOS.Step::QOT.AsInteger() THEN BEGIN   // Reasons Not Entered Until Parts In Process

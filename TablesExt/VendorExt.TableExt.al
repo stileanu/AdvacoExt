@@ -24,7 +24,7 @@ TableExtension 50103 VendorExt Extends Vendor
         {
             Caption = 'Receiving Inspecition';
         }
-        field(50005; "User Id"; Code[20])
+        field(50005; "User Id"; Code[50])
         {
             Caption = 'User Id';
         }
@@ -52,7 +52,7 @@ TableExtension 50103 VendorExt Extends Vendor
         {
             Caption = 'Path to PDF';
         }
-        field(50011; "Invoicing Email"; Text[80])
+        field(50011; "Invoicing Email"; Text[100])
         {
             Caption = 'Invoicing Email';
             trigger OnValidate()

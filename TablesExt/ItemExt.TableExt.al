@@ -93,6 +93,39 @@ tableextension 50104 ItemExt Extends Item
             //ADV-FIA Document per Chip
             Caption = 'RIA Reference';
         }
+        field(50070; Class; Code[10])
+        {
+            //ADV-FIA Document per Chip
+            Caption = 'Class';
+
+            trigger OnValidate()
+            begin
+                //INSERT HEF
+                IF (Class <> 'ITEM') AND (Class <> 'PUMP') AND (Class <> 'MODEL') THEN
+                    ERROR('The only valid Class entries are ''PUMP'', ''MODEL'', or ''ITEM''.');
+                IF Class = 'PUMP' THEN
+                    "Costing Method" := "Costing Method"::Specific
+                ELSE
+                    "Costing Method" := "Costing Method"::FIFO;
+
+
+                IF (Class = 'ITEM') THEN BEGIN
+                    ItemNo := COPYSTR("No.", 1, 2);
+                    IF ItemNo = 'AD' THEN BEGIN
+                        "Price/Profit Calculation" := 1;   //'Price=Cost+Profit'
+                        "Profit %" := 28.57143;
+                    END ELSE BEGIN
+                        "Price/Profit Calculation" := 1;  //'Price=Cost+Profit'
+                        "Profit %" := 46.23657;
+                    END;
+                    VALIDATE("Profit %");
+                END;
+
+                //END INSERT HEF    
+
+            end;
+        }
+
         field(59900; "Old ReOrder Point"; Decimal)
         {
             Caption = 'Old ReOrder Point';
@@ -102,44 +135,14 @@ tableextension 50104 ItemExt Extends Item
             Caption = 'Old Reorder Qty.';
         }
 
-        /*modify(Class)
-        ICE-MPC Class field is no longer in the base table.
-        trigger OnAfterValidate()
-
-        begin
-
-            //INSERT HEF
-
-            IF (Class <> 'ITEM') AND (Class <> 'PUMP') AND (Class <> 'MODEL') THEN
-            ERROR('The only valid Class entries are ''PUMP'', ''MODEL'', or ''ITEM''.');
-            IF Class = 'PUMP' THEN
-            "Costing Method" := "Costing Method" :: Specific
-            ELSE
-            "Costing Method" := "Costing Method" :: FIFO;
-
-
-            IF (Class = 'ITEM') THEN BEGIN
-            ItemNo :=  COPYSTR("No.",1,2);
-            IF ItemNo = 'AD' THEN BEGIN
-                "Price/Profit Calculation" := 1;   //'Price=Cost+Profit'
-                "Profit %" := 28.57143;
-            END ELSE BEGIN
-                "Price/Profit Calculation" := 1;  //'Price=Cost+Profit'
-                "Profit %" := 46.23657;
-            END;
-            VALIDATE("Profit %");
-            END;
-
-            //END INSERT HEF    
-        end;
-        */
         modify("Inventory Posting Group")
         {
             trigger OnAfterValidate()
             //ICE-MPC location Item table is not in the base version
             begin
-
+                //--!OT
                 // 02/13/18 Start
+                /*
                 LocationItem.RESET;
                 LocationItem.SETRANGE("Item No.", "No.");
                 IF LocationItem.FINDFIRST THEN
@@ -147,16 +150,19 @@ tableextension 50104 ItemExt Extends Item
                         LocationItem."Inventory Posting Group" := "Inventory Posting Group";
                         LocationItem.MODIFY;
                     UNTIL LocationItem.NEXT = 0;
-                // 02/13/18 End   
+                // 02/13/18 End
+                */
             end;
         }
 
         modify("Price/Profit Calculation")
         {
             trigger OnAfterValidate()
+            var
+                VATPostingSetup: Record "VAT Posting Setup";
 
             begin
-
+                if VATPostingSetup.GET then;
                 //>> HEF INSERT
                 CASE "Price/Profit Calculation" OF
                     "Price/Profit Calculation"::"Profit=Price-Cost":
@@ -195,9 +201,10 @@ tableextension 50104 ItemExt Extends Item
         {
             trigger OnAfterValidate()
             begin
+                //--!OT
                 //>> Item Cross Reference - start
-                IF ("Vendor Item No." <> '') AND ("Vendor No." <> '') THEN
-                    DistIntegration.ICRCreatePrimaryVendorEntry(Rec);
+                //IF ("Vendor Item No." <> '') AND ("Vendor No." <> '') THEN
+                //    DistIntegration.ICRCreatePrimaryVendorEntry(Rec);
                 //<< Item Cross Reference - end
             end;
         }
@@ -205,9 +212,10 @@ tableextension 50104 ItemExt Extends Item
         {
             trigger OnAfterValidate()
             begin
+                //--!OT
                 //>> Item Cross Reference - start
-                IF ("Vendor Item No." <> '') AND ("Vendor No." <> '') THEN
-                    DistIntegration.ICRCreatePrimaryVendorEntry(Rec);
+                //IF ("Vendor Item No." <> '') AND ("Vendor No." <> '') THEN
+                //    DistIntegration.ICRCreatePrimaryVendorEntry(Rec);
                 //<< Item Cross Reference - end
             end;
         }
@@ -245,7 +253,9 @@ tableextension 50104 ItemExt Extends Item
         {
             trigger OnAfterValidate()
             begin
+                //--!OT
                 // 02/13/18 Start
+                /*
                 LocationItem.RESET;
                 LocationItem.SETRANGE("Item No.", "No.");
                 IF LocationItem.FINDFIRST THEN
@@ -253,7 +263,8 @@ tableextension 50104 ItemExt Extends Item
                         LocationItem."General Product Posting Group" := "Gen. Prod. Posting Group";
                         LocationItem.MODIFY;
                     UNTIL LocationItem.NEXT = 0;
-                // 02/13/18 End  
+                // 02/13/18 End
+                */
             end;
         }
     }
@@ -268,7 +279,8 @@ tableextension 50104 ItemExt Extends Item
         END;
         //<< HEF END 
         //>> Contracts Start
-        DistIntegration.ContractUpdateItemContractLine(Rec);
+        //-!OC
+        //DistIntegration.ContractUpdateItemContractLine(Rec);
         //<< Contracts End
     end;
 
@@ -283,7 +295,8 @@ tableextension 50104 ItemExt Extends Item
                 ERROR('Model %1 has been assigned to atleast one Work Order and can''t be Renamed or Deleted', xRec."No.");
 
             // Dist-Log Start
-            DistIntegration.LocationItemDelete(Rec);
+            //--!OC
+            //DistIntegration.LocationItemDelete(Rec);
 
             //ItemSubstitution.SETRANGE(ItemSubstitution."Item No.","No."); ICE-MPC replace with below
             ItemSubstitution.SETRANGE(ItemSubstitution."Sub. Item No.", "No.");
@@ -296,14 +309,17 @@ tableextension 50104 ItemExt Extends Item
             ItemSubstitution.SETRANGE(ItemSubstitution."Substitute Variant Code", "Variant Filter");
             IF ItemSubstitution.FIND('-') THEN
                 ItemSubstitution.DELETEALL;
-            NonStocks.NonStockItemDel(Rec);
+
+            //--!OT
+            //NonStocks.NonStockItemDel(Rec);
             //ItemSubstitution.NonStockItemDel(Rec);
             // Dist-Log End
         END;
         //END INSERT HEF 
 
         //>> Item Cross Reference - Start
-        DistIntegration.ICRDeleteItem("No.");
+        //--!OC
+        //DistIntegration.ICRDeleteItem("No.");
         //<< Item Cross Reference - End
     end;
 
@@ -333,10 +349,13 @@ tableextension 50104 ItemExt Extends Item
         Parts: Record Parts;
         WOD: Record WorkOrderDetail;
         ItemSubstitution: Record "Item Substitution";
-        NonStocks: Codeunit "Non Stocks";
-        LocationItem: Record "Location Item";
+        //--!OT
+        //NonStocks: Codeunit "Non Stocks";
+        //--!OT
+        //LocationItem: Record "Location Item";
         PartsUsed: Boolean;
         WO: Code[250];
         OK: Boolean;
+        ItemNo: Code[2];
 
 }

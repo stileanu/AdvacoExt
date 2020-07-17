@@ -152,26 +152,25 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
                 //<< HEF END INSERT
             end;
         }
-        field(50000; "Order No."; Code[20])
+        field(50000; "Work Order No."; Code[20])
         {
-            Caption = 'Order No.';
+            Caption = 'Work Order No.';
 
             trigger OnValidate()
             begin
 
                 Ok := FALSE;
                 xOrderNo := '';
-                IF xRec."Order No." <> '' THEN BEGIN
-                    IF xRec."Order No." <> Rec."Order No." THEN BEGIN
-                        xOrderNo := xRec."Order No.";
+                IF xRec."Work Order No." <> '' THEN BEGIN
+                    IF xRec."Work Order No." <> Rec."Work Order No." THEN BEGIN
+                        xOrderNo := xRec."Work Order No.";
                         IF NOT CONFIRM('Are you sure you want to remove the link between this Purchase Order and %1', FALSE, xOrderNo) THEN BEGIN
-                            ;
-                            "Order No." := xRec."Order No.";
+                            "Work Order No." := xRec."Work Order No.";
                             Ok := TRUE;
                             MODIFY;
                         END ELSE BEGIN
                             //Clears Sales Order Purchase Order Number for Item
-                            xOrderNo := COPYSTR(xRec."Order No.", 1, 7);
+                            xOrderNo := COPYSTR(xRec."Work Order No.", 1, 7);
                             IF SO.GET("Document Type" = "Document Type"::Order, xOrderNo) THEN BEGIN
                                 SalesLine.SETRANGE("Document Type", SO."Document Type");
                                 SalesLine.SETRANGE("Document No.", SO."No.");
@@ -199,7 +198,7 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
                         END;
                     END;
                 END;
-                OrderNo := COPYSTR("Order No.", 1, 7);
+                OrderNo := COPYSTR("Work Order No.", 1, 7);
                 NumberLength := STRLEN(OrderNo);
                 IF NumberLength = 7 THEN BEGIN
                     IF SO.GET("Document Type" = "Document Type"::Order, OrderNo) THEN BEGIN
@@ -229,7 +228,7 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
                 END;
 
                 IF Ok = FALSE THEN BEGIN
-                    "Order No." := '';
+                    "Work Order No." := '';
                     MODIFY;
                     MESSAGE('The number you entered does not match a Work Order Detail or Sales Order');
                 END;

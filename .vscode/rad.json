@@ -1,1 +1,1 @@
-﻿{"Added":[],"Modified":[],"Removed":[]}
+﻿{"Added":[{"Id":50023,"Kind":16,"Name":"VendorCardExtPage","PackagePath":"/src/PageExt/VendorExt.PageExt.al"}],"Modified":[{"Id":50017,"Kind":10,"Name":"IDRHeader","PackagePath":"/src/Tables/IDRHeader.Table.al"},{"Id":50007,"Kind":10,"Name":"DeletedWorkOrders","PackagePath":"/src/Tables/DeletedWorkOrders.Table.al"}],"Removed":[{"Id":50018,"Kind":16,"Name":"CustomerExt","PackagePath":"/src/PageExt/CustomerExt.PageExt.al"}]}
