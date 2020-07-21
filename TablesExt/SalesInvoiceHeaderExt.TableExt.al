@@ -58,7 +58,7 @@ Tableextension 50113 SalesInvoiceHeaderExt extends "Sales Invoice Header"
             Caption = 'Phone No.';
             AutoFormatExpression = "Phone No.";
         }
-        field(50011; "Work Order No."; Code[7])
+        field(50011; "Work Order No."; Code[20])
         {
             Caption = 'Work Order No.';
         }

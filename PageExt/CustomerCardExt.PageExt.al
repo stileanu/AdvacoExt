@@ -3,6 +3,14 @@ pageextension 50018 CustomerCardExt extends "Customer Card"
     layout
     {
         // Add changes to page layout here
+        addafter("Phone No.")
+        {
+            field("Advaco Phone No."; "Advaco Phone No.")
+            {
+                Caption = 'Advaco Phone No.';
+                ApplicationArea = All;
+            }
+        }
         addafter("Shipment Method")
         {
             field(Rep; Rep)

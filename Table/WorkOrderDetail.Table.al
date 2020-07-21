@@ -71,6 +71,9 @@ table 50001 WorkOrderDetail
             DataClassification = ToBeClassified;
 
             trigger OnValidate()
+            var
+                PurchLine: Record "Purchase Line";
+
             begin
 
                 Duplicate := FALSE;
@@ -159,68 +162,73 @@ table 50001 WorkOrderDetail
                                     SalesLine.SETRANGE("Document Type", SalesHeader."Document Type");
                                     SalesLine.SETRANGE("Document No.", SalesHeader."No.");
                                     IF SalesLine.FIND('-') THEN BEGIN
-                                        IF SalesLine.Type.AsInteger() = 1 THEN BEGIN
-                                            SalesLine."Serial No." := '';
-                                            SalesLine.MODIFY;
-                                        END;
+                                        ///--! Clean Serial No.
+                                        //IF SalesLine.Type.AsInteger() = 1 THEN BEGIN
+                                        //    SalesLine."Serial No." := '';
+                                        //    SalesLine.MODIFY;
+                                        ClearSerialNo_(Database::"Sales Line", SalesLine."Line No.", SalesLine."No.");
                                     END;
-                                    COMMIT;
                                 END;
+                                COMMIT;
                             END;
                         END;
-                        IF SalesHeader.GET(SalesHeader."Document Type"::Order, "Sales Order No.") THEN BEGIN
+                    END;
+                    IF SalesHeader.GET(SalesHeader."Document Type"::Order, "Sales Order No.") THEN BEGIN
+                        SalesLine.SETRANGE("Document Type", SalesHeader."Document Type");
+                        SalesLine.SETRANGE("Document No.", SalesHeader."No.");
+                        IF SalesLine.FIND('-') THEN BEGIN
+                            IF SalesLine.Type.AsInteger() = 1 THEN BEGIN
+                                "Ship To Name" := SalesHeader."Ship-to Name";
+                                "Ship To Address 1" := SalesHeader."Ship-to Address";
+                                "Ship To Address 2" := SalesHeader."Ship-to Address 2";
+                                "Ship To City" := SalesHeader."Ship-to City";
+                                "Ship To State" := SalesHeader."Ship-to County";
+                                "Ship To Zip Code" := SalesHeader."Ship-to Post Code";
+                                Attention := SalesHeader."Ship-to Contact";
+                                "Phone No." := SalesHeader."Phone No.";
+                                MODIFY;
+                                ///--! Set Serial No.
+                                SalesLine."Serial No." := "Serial No.";
+                                SetSerialNo_(Database::"Sales Line", SalesLine, PurchLine, "Serial No.");
+                                SalesLine."Commission Calculated" := TRUE;
+                                SalesLine.MODIFY;
+                                SalesHeader."Work Order No." := "Work Order No.";
+                                SalesHeader.MODIFY;
+                                COMMIT;
+                            END ELSE BEGIN
+                                ERROR('Work Order No. can only be linked to Sales Orders that have One Account G/L Line');
+                            END;
+                        END ELSE BEGIN
+                            ERROR('Work Order No. can only be linked to Sales Orders that have One Account G/L Line');
+                        END;
+                    END;
+                END;
+                IF ("Sales Order No." = '') AND (xRec."Sales Order No." <> '') THEN BEGIN
+                    IF NOT CONFIRM('Are you sure you want to remove the link between the Work Order and Sales Order', FALSE) THEN BEGIN
+                        "Sales Order No." := xRec."Sales Order No.";
+                        MODIFY;
+                    END ELSE BEGIN
+                        IF SalesHeader.GET(SalesHeader."Document Type"::Order, xRec."Sales Order No.") THEN BEGIN
+                            "Ship To Name" := '';
+                            "Ship To Address 1" := '';
+                            "Ship To Address 2" := '';
+                            "Ship To City" := '';
+                            "Ship To State" := '';
+                            "Ship To Zip Code" := '';
+                            Attention := '';
+                            "Phone No." := '';
+                            MODIFY;
+                            SalesHeader."Work Order No." := '';
+                            SalesHeader.MODIFY;
                             SalesLine.SETRANGE("Document Type", SalesHeader."Document Type");
                             SalesLine.SETRANGE("Document No.", SalesHeader."No.");
                             IF SalesLine.FIND('-') THEN BEGIN
                                 IF SalesLine.Type.AsInteger() = 1 THEN BEGIN
-                                    "Ship To Name" := SalesHeader."Ship-to Name";
-                                    "Ship To Address 1" := SalesHeader."Ship-to Address";
-                                    "Ship To Address 2" := SalesHeader."Ship-to Address 2";
-                                    "Ship To City" := SalesHeader."Ship-to City";
-                                    "Ship To State" := SalesHeader."Ship-to County";
-                                    "Ship To Zip Code" := SalesHeader."Ship-to Post Code";
-                                    Attention := SalesHeader."Ship-to Contact";
-                                    "Phone No." := SalesHeader."Phone No.";
-                                    MODIFY;
-                                    SalesLine."Serial No." := "Serial No.";
-                                    SalesLine."Commission Calculated" := TRUE;
-                                    SalesLine.MODIFY;
-                                    SalesHeader."Work Order No." := "Work Order No.";
-                                    SalesHeader.MODIFY;
-                                    COMMIT;
-                                END ELSE BEGIN
-                                    ERROR('Work Order No. can only be linked to Sales Orders that have One Account G/L Line');
-                                END;
-                            END ELSE BEGIN
-                                ERROR('Work Order No. can only be linked to Sales Orders that have One Account G/L Line');
-                            END;
-                        END;
-                    END;
-                    IF ("Sales Order No." = '') AND (xRec."Sales Order No." <> '') THEN BEGIN
-                        IF NOT CONFIRM('Are you sure you want to remove the link between the Work Order and Sales Order', FALSE) THEN BEGIN
-                            ;
-                            "Sales Order No." := xRec."Sales Order No.";
-                            MODIFY;
-                        END ELSE BEGIN
-                            IF SalesHeader.GET(SalesHeader."Document Type"::Order, xRec."Sales Order No.") THEN BEGIN
-                                "Ship To Name" := '';
-                                "Ship To Address 1" := '';
-                                "Ship To Address 2" := '';
-                                "Ship To City" := '';
-                                "Ship To State" := '';
-                                "Ship To Zip Code" := '';
-                                Attention := '';
-                                "Phone No." := '';
-                                MODIFY;
-                                SalesHeader."Work Order No." := '';
-                                SalesHeader.MODIFY;
-                                SalesLine.SETRANGE("Document Type", SalesHeader."Document Type");
-                                SalesLine.SETRANGE("Document No.", SalesHeader."No.");
-                                IF SalesLine.FIND('-') THEN BEGIN
-                                    IF SalesLine.Type.AsInteger() = 1 THEN BEGIN
-                                        SalesLine."Serial No." := '';
-                                        SalesLine.MODIFY;
-                                    END;
+                                    ///--! Clean Serial No.
+                                    //IF SalesLine.Type.AsInteger() = 1 THEN BEGIN
+                                    //    SalesLine."Serial No." := '';
+                                    //    SalesLine.MODIFY;                                    
+                                    ClearSerialNo_(Database::"Sales Line", SalesLine."Line No.", SalesLine."No.");
                                 END;
                             END;
                         END;
@@ -1100,6 +1108,7 @@ table 50001 WorkOrderDetail
         field(865; "Phone No."; Text[30])
         {
             DataClassification = ToBeClassified;
+            ExtendedDatatype = PhoneNo;
         }
         field(870; Expedite; Boolean)
         {
@@ -1977,6 +1986,76 @@ table 50001 WorkOrderDetail
                     ItemJournalClear.DELETE;
                 UNTIL ItemJournalClear.NEXT = 0;
         END;
+    end;
+
+    procedure ClearSerialNo_(DocType: Integer; SourceRefNo: Integer; ItemNo: Code[20]): Boolean
+    var
+        ReservEntry: Record "Reservation Entry";
+
+    begin
+        ReservEntry.Reset();
+        ReservEntry.SetRange("Source Type", DocType);
+        ReservEntry.SetRange("Source Ref. No.", SourceRefNo);
+        ReservEntry.SetRange("Item No.", ItemNo);
+
+        if ReservEntry.FindSet() then begin
+            // if entries found, delete them
+            ReservEntry.DeleteAll();
+            exit(true);
+        end;
+
+        // did not find entries
+        exit(false);
+
+    end;
+
+    procedure SetSerialNo_(DocType: Integer; SalesDoc: Record "Sales Line"; PurchDoc: Record "Purchase Line"; SerialNo: Code[20]): Boolean
+    var
+        entryNo: Integer;
+        ReservEntry: Record "Reservation Entry";
+        PurchMessage: Label 'Purcase Reservation Entry not implemented. Contact Intelice.';
+
+    begin
+        Clear(ReservEntry);
+        ReservEntry.Reset();
+        ReservEntry.FindLast();
+        entryNo := ReservEntry."Entry No." + 1;
+        ReservEntry.Init();
+        ReservEntry."Entry No." := entryNo;
+
+        case DocType of
+
+            Database::"Sales Line":
+                begin
+                    ReservEntry.Positive := false;
+                    ReservEntry."Item No." := SalesDoc."No.";
+                    ReservEntry."Location Code" := SalesDoc."Location Code";
+                    ReservEntry.Validate("Quantity (Base)", SalesDoc."Quantity (Base)");
+                    //??? - should be simple Quantity??
+                    ReservEntry."Reservation Status" := ReservEntry."Reservation Status"::Surplus;
+                    ReservEntry."Creation Date" := WorkDate();
+                    ReservEntry."Shipment Date" := SalesDoc."Shipment Date";
+                    ReservEntry."Source Type" := DocType;
+                    ReservEntry."Source Subtype" := 1;
+                    ReservEntry."Source ID" := SalesDoc."Document No.";
+                    ReservEntry."Source Ref. No." := SalesDoc."Line No.";
+                    ReservEntry."Created By" := UserId;
+                    ReservEntry."Qty. per Unit of Measure" := SalesDoc."Qty. per Unit of Measure";
+                    ReservEntry."Disallow Cancellation" := false;
+                    ReservEntry.Correction := false;
+                    ReservEntry."Item Tracking" := ReservEntry."Item Tracking"::"Serial No.";
+                    ReservEntry."Untracked Surplus" := false;
+
+                    ReservEntry.Insert();
+                end;
+
+            Database::"Purchase Line":
+                begin
+                    Error(PurchMessage);
+                end;
+
+
+        end;
     end;
 
     var

@@ -103,7 +103,7 @@ tableextension 50114 CustomerExt extends Customer
                 END;
             end;
         }
-        field(50005; "User ID"; Code[20])
+        field(50005; "User ID"; Code[50])
         {
         }
         field(50006; "Internet Invoicing"; Boolean)
@@ -155,6 +155,11 @@ tableextension 50114 CustomerExt extends Customer
         }
         field(50012; "CC Fee Waived"; Boolean)
         {
+            Caption = 'CC Fee Waived';
+        }
+        field(50050; "Advaco Phone No."; Text[30])
+        {
+            Caption = 'Advaco Phone No.';
         }
     }
 

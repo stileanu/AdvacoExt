@@ -764,7 +764,8 @@ table 50003 Parts
         BEGIN
             OriginalRecord := Rec;
             Window.OPEN('Enter the new part number #1#########', NewPart);
-            Window.INPUT();
+            ///--!
+            //Window.INPUT();
             Window.CLOSE;
             IF NewPart <> '' THEN BEGIN
                 Item.RESET;

@@ -3,7 +3,7 @@ table 50005 QuoteMechanicsParts
 
     fields
     {
-        field(10; "Work Order No."; Code[10])
+        field(10; "Work Order No."; Code[20])
         {
             NotBlank = true;
         }

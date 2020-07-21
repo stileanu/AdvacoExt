@@ -40,7 +40,7 @@ table 50004 WorkInstructions
         }
         field(45; Model; Code[20])
         {
-            TableRelation = Item."No." WHERE(Class = CONST(MODEL));
+            TableRelation = Item."No." WHERE(Class = CONST('MODEL'));
         }
         field(46; "Customer Part No."; Code[20])
         {

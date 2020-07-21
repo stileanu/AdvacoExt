@@ -67,6 +67,10 @@ TableExtension 50103 VendorExt Extends Vendor
                 end;
             end;
         }
+        field(50050; "Advaco Phone No."; Text[30])
+        {
+            Caption = 'Advaco Phone No.';
+        }
         modify("No.")
         {
             trigger OnAfterValidate()

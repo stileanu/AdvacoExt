@@ -58,7 +58,7 @@ Tableextension 50117 SalesCrMemoHeaderExt extends "Sales Cr.Memo Header"
             Caption = 'Phone No.';
             AutoFormatExpression = "Phone No.";
         }
-        field(50011; "Work Order No."; Code[7])
+        field(50011; "Work Order No."; Code[20])
         {
             Caption = 'Work Order No.';
         }

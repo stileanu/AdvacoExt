@@ -202,6 +202,8 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
             Caption = 'Customer Order No.';
 
             trigger OnValidate()
+            var
+                PurchLine: Record "Purchase Line";
             begin
 
                 Duplicate := FALSE;
@@ -283,12 +285,16 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
                                 END;
                                 SalesLine.SETRANGE("Document Type", "Document Type");
                                 SalesLine.SETRANGE("Document No.", "No.");
+
                                 IF SalesLine.FIND('-') THEN BEGIN
                                     IF SalesLine.Type = SalesLine.Type::"G/L Account" THEN BEGIN
-                                        SalesLine."Serial No." := '';
-                                        SalesLine.MODIFY;
+                                        ///--! Clean Serial No.
+                                        //SalesLine."Serial No." := '';
+                                        //SalesLine.MODIFY;
+                                        WOD.ClearSerialNo_(Database::"Sales Line", SalesLine."Line No.", SalesLine."No.");
                                     END;
                                 END;
+
                                 COMMIT;
                             END;
                         END;
@@ -307,7 +313,9 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
                                     WOD.Attention := "Ship-to Contact";
                                     WOD."Phone No." := "Phone No.";
                                     WOD.MODIFY;
-                                    SalesLine."Serial No." := WOD."Serial No.";
+                                    ///--! Set Serial No.
+                                    //SalesLine."Serial No." := WOD."Serial No.";
+                                    WOD.SetSerialNo_(Database::"Sales Line", SalesLine, PurchLine, WOD."Serial No.");
                                     SalesLine."Commission Calculated" := TRUE;
                                     SalesLine.MODIFY;
                                     MODIFY;
@@ -341,8 +349,10 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
                             SalesLine.SETRANGE("Document No.", "No.");
                             IF SalesLine.FIND('-') THEN BEGIN
                                 IF SalesLine.Type = SalesLine.Type::"G/L Account" THEN BEGIN
-                                    SalesLine."Serial No." := '';
-                                    SalesLine.MODIFY;
+                                    ///--! Clean Serial No.
+                                    //SalesLine."Serial No." := '';
+                                    //SalesLine.MODIFY;
+                                    WOD.ClearSerialNo_(Database::"Sales Line", SalesLine."Line No.", SalesLine."No.");
                                 END;
                             END;
                             MODIFY;
@@ -382,7 +392,7 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
         }
         field(50030; "Name on Card"; Text[50])
         {
-            Caption = 'Work Order No.';
+            Caption = 'Name on Card';
         }
         field(50031; "Bill-to Address_1"; Text[100])
         {

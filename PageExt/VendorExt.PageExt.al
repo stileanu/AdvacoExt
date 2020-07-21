@@ -2,6 +2,14 @@ pageextension 50023 VendorCardExtPage extends "Vendor Card"
 {
     layout
     {
+        addafter("Phone No.")
+        {
+            field("Advaco Phone No."; "Advaco Phone No.")
+            {
+                Caption = 'Advaco Phone No.';
+                ApplicationArea = All;
+            }
+        }
         addafter(Receiving)
         {
             group(Advaco)
@@ -60,7 +68,24 @@ pageextension 50023 VendorCardExtPage extends "Vendor Card"
 
     actions
     {
-        // Add changes to page actions here
+        addafter("Incoming Documents")
+        {
+            group("Advanced Vacuum")
+            {
+                Caption = 'Advaco, Inc.';
+                Image = InteractionTemplate;
+                action(GetWorkOrderNo)
+                {
+                    Caption = 'GetWorkOrderNo';
+
+                    trigger OnAction()
+                    begin
+
+                    end;
+                }
+
+            }
+        }
     }
 
     var
