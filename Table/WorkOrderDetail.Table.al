@@ -188,7 +188,7 @@ table 50001 WorkOrderDetail
                                 "Phone No." := SalesHeader."Phone No.";
                                 MODIFY;
                                 ///--! Set Serial No.
-                                SalesLine."Serial No." := "Serial No.";
+                                //SalesLine."Serial No." := "Serial No.";
                                 SetSerialNo_(Database::"Sales Line", SalesLine, PurchLine, "Serial No.");
                                 SalesLine."Commission Calculated" := TRUE;
                                 SalesLine.MODIFY;
@@ -2040,6 +2040,7 @@ table 50001 WorkOrderDetail
                     ReservEntry."Source ID" := SalesDoc."Document No.";
                     ReservEntry."Source Ref. No." := SalesDoc."Line No.";
                     ReservEntry."Created By" := UserId;
+                    //ReservEntry.Quantity := SalesDoc.Quantity;
                     ReservEntry."Qty. per Unit of Measure" := SalesDoc."Qty. per Unit of Measure";
                     ReservEntry."Disallow Cancellation" := false;
                     ReservEntry.Correction := false;
