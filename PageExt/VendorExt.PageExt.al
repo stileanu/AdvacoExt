@@ -68,19 +68,24 @@ pageextension 50023 VendorCardExtPage extends "Vendor Card"
 
     actions
     {
-        addafter("Incoming Documents")
+        addafter(PayVendor)
         {
             group("Advanced Vacuum")
             {
                 Caption = 'Advaco, Inc.';
                 Image = InteractionTemplate;
+
                 action(GetWorkOrderNo)
                 {
                     Caption = 'GetWorkOrderNo';
+                    ApplicationArea = All;
 
                     trigger OnAction()
-                    begin
+                    var
+                        Parts: Record Parts;
 
+                    begin
+                        Parts.ReplacePart();
                     end;
                 }
 

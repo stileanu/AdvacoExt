@@ -485,7 +485,10 @@ table 50003 Parts
         PostLine: Codeunit "Item Jnl.-Post Line";
         AdjustmentAmount: Decimal;
         Resource: Record Resource;
-        Window: Dialog;
+        ///--!
+        //Window: Dialog;
+        GetItemNo: Page GetValueDialog;
+        SetType: Enum ValueType;
         NewPart: Code[20];
         NewPartRecord: Record Parts;
         OriginalRecord: Record Parts;
@@ -763,10 +766,14 @@ table 50003 Parts
     begin
         BEGIN
             OriginalRecord := Rec;
-            Window.OPEN('Enter the new part number #1#########', NewPart);
+            NewPart := '';
             ///--!
+            //Window.OPEN('Enter the new part number #1#########', NewPart);
             //Window.INPUT();
-            Window.CLOSE;
+            //Window.CLOSE;
+            GetItemNo.SetDialogValueType(SetType::Item, false);
+            if GetItemNo.RunModal() = Action::OK then
+                GetItemNo.GetWorkOrderNo_(NewPart);
             IF NewPart <> '' THEN BEGIN
                 Item.RESET;
                 IF Item.GET(NewPart) THEN BEGIN
