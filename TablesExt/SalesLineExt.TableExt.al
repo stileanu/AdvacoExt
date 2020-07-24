@@ -77,7 +77,7 @@ tableextension 50119 SalesLineExt extends "Sales Line"
         {
             Caption = 'Shipped Qty.';
         }
-        field(50140; "Credit Card Fee"; Decimal)
+        field(50140; "Credit Card Fee"; Boolean)
         {
             Caption = 'Credit Card Fee';
         }

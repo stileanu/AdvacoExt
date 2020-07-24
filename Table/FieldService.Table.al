@@ -2,7 +2,7 @@ table 50020 FieldService
 {
     fields
     {
-        field(10; "Field Service No."; Code[7])
+        field(10; "Field Service No."; Code[20])
         {
         }
         field(20; Customer; Code[20])

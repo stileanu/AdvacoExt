@@ -42,7 +42,6 @@ page 50100 GetValueDialog
     trigger OnOpenPage()
     begin
         ValueNo_ := ' ';
-
     end;
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
@@ -62,6 +61,11 @@ page 50100 GetValueDialog
                             if not ValidateItemNo_ then
                                 Message(AdvacoErr003, ValueNo_);
                         end;
+                    lValueType::FieldService:
+                        begin
+                            if not ValidateFieldServiceNo_ then
+                                Message(AdvacoErr004, ValueNo_);
+                        end;
                 end
             else begin
                 exit(true);
@@ -75,8 +79,10 @@ page 50100 GetValueDialog
         AdvacoErr001: Label 'Work Order No. %1 does not exist.';
         AdvacoErr002: Label 'Work Order No. %1 is completed';
         AdvacoErr003: Label 'Item No. %1 does not exists';
+        AdvacoErr004: Label 'Field Service No. %1 does not exists';
         WODRec: Record WorkOrderDetail;
         ItemRec: Record Item;
+        FService: Record FieldService;
 
     local procedure ValidateWONo_(): Boolean
     begin
@@ -88,6 +94,13 @@ page 50100 GetValueDialog
     procedure ValidateItemNo_(): Boolean
     begin
         if ItemRec.Get(ValueNo_) then
+            exit(true);
+        exit(false);
+    end;
+
+    procedure ValidateFieldServiceNo_(): Boolean
+    begin
+        if FService.Get(ValueNo_) then
             exit(true);
         exit(false);
     end;
