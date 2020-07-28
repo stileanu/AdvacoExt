@@ -61,7 +61,7 @@ tableextension 50104 ItemExt Extends Item
                             "Location Code" = FIELD("Location Filter"), "Drop Shipment" = FIELD("Drop Shipment Filter"), "Variant Code" = FIELD("Variant Filter"),
                             "Bin Code" = FIELD("Bin Filter"), "Expected Receipt Date" = FIELD("Date Filter")));
         }
-        field(50006; "User ID"; Code[20])
+        field(50006; "User ID"; Code[50])
         {
             Caption = 'User ID';
 
