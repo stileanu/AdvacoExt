@@ -12,9 +12,8 @@
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
             "tenant": "advaco.com",
-            "sandboxName": "AdvacoSandboxDev",
+            "sandboxName": "AdvacoSandboxDev2",
             "schemaUpdateMode": "ForceSync"
-            
         }
     ]
 }

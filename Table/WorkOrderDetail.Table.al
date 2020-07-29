@@ -529,7 +529,7 @@ table 50001 WorkOrderDetail
                 MODIFY;
             end;
         }
-        field(177; "Container Type"; Enum Container)
+        field(177; "Container Type"; Enum BOLContainer)
         {
             DataClassification = ToBeClassified;
 

@@ -47,7 +47,6 @@ codeunit 50020 FSParts
         WOS: Record Status;
         GetWODNo: Page GetValueDialog;
         SetType: Enum ValueType;
-
         //Window: Dialog;
         Open: Boolean;
         Parts: Record Parts;

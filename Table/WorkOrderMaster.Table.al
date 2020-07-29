@@ -457,7 +457,7 @@ table 50000 WorkOrderMaster
         {
             DataClassification = ToBeClassified;
         }
-        field(50030; "Name on Card "; Text[50])
+        field(50030; "Name on Card"; Text[50])
         {
             DataClassification = ToBeClassified;
         }

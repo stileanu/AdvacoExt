@@ -66,10 +66,8 @@ page 50100 GetValueDialog
                             if not ValidateFieldServiceNo_ then
                                 Message(AdvacoErr004, ValueNo_);
                         end;
-                end
-            else begin
-                exit(true);
-            end;
+                end;
+        exit(true);
     end;
 
     var
