@@ -34,7 +34,7 @@ Tableextension 50113 SalesInvoiceHeaderExt extends "Sales Invoice Header"
             //OptionMembers = " ",AM,DI,MC,VI;
             //OptionCaption = ' ,AM,DI,MC,VI';
         }
-        field(5006; "Credit Card No."; Code[20])
+        field(50006; "Credit Card No."; Code[20])
         {
             Caption = 'Credit Card No.';
             AutoFormatExpression = "Credit Card No.";

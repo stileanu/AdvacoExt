@@ -36,7 +36,7 @@ tableextension 50110 SalesShipmentHeaderExt extends "Sales Shipment Header"
             //OptionMembers = " ",AM,DI,MC,VI;
             //OptionCaption = ' ,AM,DI,MC,VI';
         }
-        field(5006; "Credit Card No."; Code[20])
+        field(50006; "Credit Card No."; Code[20])
         {
             Caption = 'Credit Card No.';
             AutoFormatExpression = "Credit Card No.";

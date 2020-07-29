@@ -2,7 +2,7 @@ TableExtension 50109 CommentLineExt extends "Comment Line"
 {
     fields
     {
-        field(5000; "User ID"; Code[20])
+        field(50000; "User ID"; Code[20])
         {
             Caption = 'User ID';
         }
