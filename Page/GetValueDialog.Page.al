@@ -51,20 +51,34 @@ page 50100 GetValueDialog
                 case lValueType of
                     lValueType::WorkOrder:
                         begin
-                            if not ValidateWONo_ then
+                            if not ValidateWONo_ then begin
                                 Message(AdvacoErr001, ValueNo_);
-                            if WODRec.Complete then
+                                exit(false);
+                            end;
+                            if WODRec.Complete then Begin
                                 Message(AdvacoErr002, ValueNo_);
+                                exit(false);
+                            end;
                         end;
                     lValueType::Item:
                         begin
-                            if not ValidateItemNo_ then
+                            if not ValidateItemNo_ then begin
                                 Message(AdvacoErr003, ValueNo_);
+                                exit(false);
+                            end;
                         end;
                     lValueType::FieldService:
                         begin
-                            if not ValidateFieldServiceNo_ then
+                            if not ValidateFieldServiceNo_ then begin
                                 Message(AdvacoErr004, ValueNo_);
+                                exit(false);
+                            end;
+                        end;
+                    lValueType::InstallText:
+                        begin
+                            if not Evaluate(dateInstall, ValueNo_) then begin
+                                Message(AdvacoErr005, ValueNo_);
+                            end;
                         end;
                 end;
         exit(true);
@@ -78,9 +92,11 @@ page 50100 GetValueDialog
         AdvacoErr002: Label 'Work Order No. %1 is completed';
         AdvacoErr003: Label 'Item No. %1 does not exists';
         AdvacoErr004: Label 'Field Service No. %1 does not exists';
+        AdvacoErr005: Label '%1 not a valid date';
         WODRec: Record WorkOrderDetail;
         ItemRec: Record Item;
         FService: Record FieldService;
+        dateInstall: Date;
 
     local procedure ValidateWONo_(): Boolean
     begin
@@ -111,6 +127,9 @@ page 50100 GetValueDialog
 
     procedure GetWorkOrderNo_(var WorkOrderNo_: Code[20])
     begin
-        WorkOrderNo_ := ValueNo_;
+        if lValueType = lValueType::InstallText then
+            WorkOrderNo_ := Format(dateInstall)
+        else
+            WorkOrderNo_ := ValueNo_;
     end;
 }
