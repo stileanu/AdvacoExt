@@ -577,7 +577,7 @@ table 50001 WorkOrderDetail
                 END;
             end;
         }
-        field(222; "Original Parts Cost"; Boolean)
+        field(222; "Original Parts Cost"; Decimal)
         {
             DataClassification = ToBeClassified;
         }
