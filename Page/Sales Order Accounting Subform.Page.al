@@ -10,7 +10,7 @@ page 50065 "Sales Order Accounting Subform"
     MultipleNewLines = true;
     PageType = ListPart;
     SourceTable = "Sales Line";
-    SourceTableView = WHERE("Document Type"=FILTER(Order));
+    SourceTableView = WHERE("Document Type" = FILTER(Order));
 
     layout
     {
@@ -18,10 +18,10 @@ page 50065 "Sales Order Accounting Subform"
         {
             repeater(Group)
             {
-                field(Type;Type)
+                field(Type; Type)
                 {
                 }
-                field("No.";"No.")
+                field("No."; "No.")
                 {
 
                     trigger OnValidate()
@@ -29,10 +29,10 @@ page 50065 "Sales Order Accounting Subform"
                         NoOnAfterValidate();
                     end;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                 }
-                field(Quantity;Quantity)
+                field(Quantity; Quantity)
                 {
                     Caption = 'Qty';
 
@@ -41,72 +41,72 @@ page 50065 "Sales Order Accounting Subform"
                         QtyOnAfterValidate();
                     end;
                 }
-                field("Reserved Quantity";"Reserved Quantity")
+                field("Reserved Quantity"; "Reserved Quantity")
                 {
                 }
-                field("Quantity Invoiced";"Quantity Invoiced")
+                field("Quantity Invoiced"; "Quantity Invoiced")
                 {
                 }
-                field("Qty. to Invoice";"Qty. to Invoice")
+                field("Qty. to Invoice"; "Qty. to Invoice")
                 {
                 }
-                field("Shipped Qty.";"Shipped Qty.")
+                field("Shipped Qty."; "Shipped Qty.")
                 {
                 }
-                field("Qty. to Ship";"Qty. to Ship")
+                field("Qty. to Ship"; "Qty. to Ship")
                 {
                 }
-                field("Unit Cost (LCY)";"Unit Cost (LCY)")
+                field("Unit Cost (LCY)"; "Unit Cost (LCY)")
                 {
                 }
-                field("Unit Price";"Unit Price")
+                field("Unit Price"; "Unit Price")
                 {
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     Editable = false;
                 }
-                field("Amount Including VAT";"Amount Including VAT")
+                field("Amount Including VAT"; "Amount Including VAT")
                 {
                 }
-                field("Tax Liable";"Tax Liable")
+                field("Tax Liable"; "Tax Liable")
                 {
                 }
-                field("VAT Prod. Posting Group";"VAT Prod. Posting Group")
+                field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
                 {
                 }
-                field("Gen. Prod. Posting Group";"Gen. Prod. Posting Group")
+                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                 {
                 }
-                field("Commission Calculated";"Commission Calculated")
+                field("Commission Calculated"; "Commission Calculated")
                 {
                 }
-                field(Reserve;Reserve)
+                field(Reserve; Reserve)
                 {
                 }
-                field("Line Discount %";"Line Discount %")
+                field("Line Discount %"; "Line Discount %")
                 {
                 }
-                field("Line Discount Amount";"Line Discount Amount")
+                field("Line Discount Amount"; "Line Discount Amount")
                 {
                 }
-                field("Shipment Date";"Shipment Date")
-                {
-                    Visible = false;
-                }
-                field("Package Tracking No.";"Package Tracking No.")
+                field("Shipment Date"; "Shipment Date")
                 {
                     Visible = false;
                 }
-                field("Drop Shipment";"Drop Shipment")
+                field("Package Tracking No."; "Package Tracking No.")
                 {
                     Visible = false;
                 }
-                field("Bin Code";"Bin Code")
+                field("Drop Shipment"; "Drop Shipment")
                 {
                     Visible = false;
                 }
-                field("Unit of Measure Code";"Unit of Measure Code")
+                field("Bin Code"; "Bin Code")
+                {
+                    Visible = false;
+                }
+                field("Unit of Measure Code"; "Unit of Measure Code")
                 {
 
                     trigger OnValidate()
@@ -114,15 +114,15 @@ page 50065 "Sales Order Accounting Subform"
                         QtyOnAfterValidate();
                     end;
                 }
-                field("Unit of Measure";"Unit of Measure")
+                field("Unit of Measure"; "Unit of Measure")
                 {
                     Visible = false;
                 }
-                field("Blanket Order No.";"Blanket Order No.")
+                field("Blanket Order No."; "Blanket Order No.")
                 {
                     Visible = false;
                 }
-                field("Blanket Order Line No.";"Blanket Order Line No.")
+                field("Blanket Order Line No."; "Blanket Order Line No.")
                 {
                     Visible = false;
                 }
@@ -148,18 +148,18 @@ page 50065 "Sales Order Accounting Subform"
 
                         trigger OnAction()
                         begin
-                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec,ItemAvailFormsMgt.ByPeriod)
+                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec, ItemAvailFormsMgt.ByPeriod)
                         end;
                     }
                     action(Location)
                     {
-                        AccessByPermission = TableData Location=R;
+                        AccessByPermission = TableData Location = R;
                         Caption = 'Location';
                         Image = Warehouse;
 
                         trigger OnAction()
                         begin
-                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec,ItemAvailFormsMgt.ByLocation)
+                            ItemAvailFormsMgt.ShowItemAvailFromSalesLine(Rec, ItemAvailFormsMgt.ByLocation)
                         end;
                     }
                 }
@@ -190,17 +190,17 @@ page 50065 "Sales Order Accounting Subform"
 
     procedure ApproveCalcInvDisc()
     begin
-        CODEUNIT.Run(CODEUNIT::"Sales-Disc. (Yes/No)",Rec);
+        CODEUNIT.Run(CODEUNIT::"Sales-Disc. (Yes/No)", Rec);
     end;
 
     procedure CalcInvDisc()
     begin
-        CODEUNIT.Run(CODEUNIT::"Sales-Calc. Discount",Rec);
+        CODEUNIT.Run(CODEUNIT::"Sales-Calc. Discount", Rec);
     end;
 
     procedure ExplodeBOM()
     begin
-        CODEUNIT.Run(CODEUNIT::"Sales-Explode BOM",Rec);
+        CODEUNIT.Run(CODEUNIT::"Sales-Explode BOM", Rec);
     end;
 
     procedure OpenPurchOrderForm()
@@ -209,8 +209,8 @@ page 50065 "Sales Order Accounting Subform"
         PurchOrder: Page "Purchase Order";
     begin
         if not "Drop Shipment" then
-          Error('The current sales line is not a drop shipment.');
-        PurchHeader.SetRange("No.","Purchase Order No.");
+            Error('The current sales line is not a drop shipment.');
+        PurchHeader.SetRange("No.", "Purchase Order No.");
         PurchOrder.SetTableView(PurchHeader);
         PurchOrder.Editable := false;
         PurchOrder.Run;
@@ -218,15 +218,15 @@ page 50065 "Sales Order Accounting Subform"
 
     procedure InsertExtendedText(Unconditionally: Boolean)
     begin
-        if TransferExtendedText.SalesCheckIfAnyExtText(Rec,Unconditionally) then begin
-          CurrPage.SaveRecord;
-          TransferExtendedText.InsertSalesExtText(Rec);
+        if TransferExtendedText.SalesCheckIfAnyExtText(Rec, Unconditionally) then begin
+            CurrPage.SaveRecord;
+            TransferExtendedText.InsertSalesExtText(Rec);
         end;
         if TransferExtendedText.MakeUpdate then
-          CurrPage.Update;
+            CurrPage.Update;
     end;
 
-    procedure ShowReservation()
+    procedure ShowReservation2()
     begin
         Find;
         Rec.ShowReservation;
@@ -245,8 +245,8 @@ page 50065 "Sales Order Accounting Subform"
     procedure QtyOnAfterValidate()
     begin
         if Reserve = Reserve::Always then begin
-          CurrPage.SaveRecord;
-          AutoReserve();
+            CurrPage.SaveRecord;
+            AutoReserve();
         end;
     end;
 

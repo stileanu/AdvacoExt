@@ -5,7 +5,7 @@ page 50079 "Purch. Invoice Subform Act"
     MultipleNewLines = true;
     PageType = ListPart;
     SourceTable = "Purchase Line";
-    SourceTableView = WHERE("Document Type"=FILTER(Invoice));
+    SourceTableView = WHERE("Document Type" = FILTER(Invoice));
 
     layout
     {
@@ -13,10 +13,10 @@ page 50079 "Purch. Invoice Subform Act"
         {
             repeater(Group)
             {
-                field(Type;Type)
+                field(Type; Type)
                 {
                 }
-                field("No.";"No.")
+                field("No."; "No.")
                 {
 
                     trigger OnValidate()
@@ -24,46 +24,46 @@ page 50079 "Purch. Invoice Subform Act"
                         NoOnAfterValidate;
                     end;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                 }
-                field(Quantity;Quantity)
+                field(Quantity; Quantity)
                 {
                 }
-                field("Quantity Invoiced";"Quantity Invoiced")
+                field("Quantity Invoiced"; "Quantity Invoiced")
                 {
                 }
-                field("Qty. to Invoice";"Qty. to Invoice")
+                field("Qty. to Invoice"; "Qty. to Invoice")
                 {
                 }
-                field("Quantity Received";"Quantity Received")
+                field("Quantity Received"; "Quantity Received")
                 {
                 }
-                field("Qty. to Receive";"Qty. to Receive")
+                field("Qty. to Receive"; "Qty. to Receive")
                 {
                 }
-                field("Direct Unit Cost";"Direct Unit Cost")
+                field("Direct Unit Cost"; "Direct Unit Cost")
                 {
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                 }
-                field("Amount Including VAT";"Amount Including VAT")
+                field("Amount Including VAT"; "Amount Including VAT")
                 {
                 }
-                field("Tax Area Code";"Tax Area Code")
+                field("Tax Area Code"; "Tax Area Code")
                 {
                 }
-                field("Gen. Prod. Posting Group";"Gen. Prod. Posting Group")
+                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                 {
                 }
-                field("Tax Liable";"Tax Liable")
+                field("Tax Liable"; "Tax Liable")
                 {
                 }
-                field("Tax Group Code";"Tax Group Code")
+                field("Tax Group Code"; "Tax Group Code")
                 {
                 }
-                field("Unit of Measure Code";"Unit of Measure Code")
+                field("Unit of Measure Code"; "Unit of Measure Code")
                 {
                 }
             }
@@ -89,18 +89,18 @@ page 50079 "Purch. Invoice Subform Act"
 
                         trigger OnAction()
                         begin
-                            ItemAvailFormsMgt.ShowItemAvailFromPurchLine(Rec,ItemAvailFormsMgt.ByPeriod)
+                            ItemAvailFormsMgt.ShowItemAvailFromPurchLine(Rec, ItemAvailFormsMgt.ByPeriod)
                         end;
                     }
                     action(Location)
                     {
-                        AccessByPermission = TableData Location=R;
+                        AccessByPermission = TableData Location = R;
                         Caption = 'Location';
                         Image = Warehouse;
 
                         trigger OnAction()
                         begin
-                            ItemAvailFormsMgt.ShowItemAvailFromPurchLine(Rec,ItemAvailFormsMgt.ByLocation)
+                            ItemAvailFormsMgt.ShowItemAvailFromPurchLine(Rec, ItemAvailFormsMgt.ByLocation)
                         end;
                     }
                 }
@@ -120,35 +120,35 @@ page 50079 "Purch. Invoice Subform Act"
 
     procedure ApproveCalcInvDisc()
     begin
-        CODEUNIT.Run(CODEUNIT::"Purch.-Disc. (Yes/No)",Rec);
+        CODEUNIT.Run(CODEUNIT::"Purch.-Disc. (Yes/No)", Rec);
     end;
 
     procedure CalcInvDisc()
     begin
-        CODEUNIT.Run(CODEUNIT::"Purch.-Calc.Discount",Rec);
+        CODEUNIT.Run(CODEUNIT::"Purch.-Calc.Discount", Rec);
     end;
 
     procedure ExplodeBOM()
     begin
-        CODEUNIT.Run(CODEUNIT::"Purch.-Explode BOM",Rec);
+        CODEUNIT.Run(CODEUNIT::"Purch.-Explode BOM", Rec);
     end;
 
     procedure GetReceipt()
     begin
-        CODEUNIT.Run(CODEUNIT::"Purch.-Get Receipt",Rec);
+        CODEUNIT.Run(CODEUNIT::"Purch.-Get Receipt", Rec);
     end;
 
     procedure InsertExtendedText(Unconditionally: Boolean)
     begin
-        if TransferExtendedText.PurchCheckIfAnyExtText(Rec,Unconditionally) then begin
-          CurrPage.SaveRecord;
-          TransferExtendedText.InsertPurchExtText(Rec);
+        if TransferExtendedText.PurchCheckIfAnyExtText(Rec, Unconditionally) then begin
+            CurrPage.SaveRecord;
+            TransferExtendedText.InsertPurchExtText(Rec);
         end;
         if TransferExtendedText.MakeUpdate then
-          CurrPage.Update;
+            CurrPage.Update;
     end;
 
-    procedure ShowReservation()
+    procedure ShowReservation2()
     begin
         Find;
         Rec.ShowReservation;

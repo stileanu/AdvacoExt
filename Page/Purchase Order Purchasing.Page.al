@@ -336,7 +336,7 @@ page 50074 "Purchase Order Purchasing"
                             exit;
                         // << Distribution - end
 
-                        CurrPage.PurchLines.PAGE.ShowReservation;
+                        CurrPage.PurchLines.PAGE.ShowReservation2;
                     end;
                 }
             }

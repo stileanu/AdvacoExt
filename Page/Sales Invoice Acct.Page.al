@@ -5,9 +5,9 @@ page 50066 "Sales Invoice Acct"
 
     PageType = Card;
     SourceTable = "Sales Header";
-    SourceTableView = SORTING("Document Type","Location Code","No.")
+    SourceTableView = SORTING("Document Type", "Location Code", "No.")
                       ORDER(Ascending)
-                      WHERE("Document Type"=FILTER(Invoice));
+                      WHERE("Document Type" = FILTER(Invoice));
 
     layout
     {
@@ -18,44 +18,44 @@ page 50066 "Sales Invoice Acct"
                 group(Control1220060035)
                 {
                     ShowCaption = false;
-                    field("No.";"No.")
+                    field("No."; "No.")
                     {
                         Editable = false;
 
                         trigger OnAssistEdit()
                         begin
                             if AssistEdit(xRec) then
-                              CurrPage.Update;
+                                CurrPage.Update;
                         end;
                     }
-                    field("Sell-to Customer No.";"Sell-to Customer No.")
+                    field("Sell-to Customer No."; "Sell-to Customer No.")
                     {
                     }
-                    field("Sell-to Customer Name";"Sell-to Customer Name")
-                    {
-                        Editable = false;
-                    }
-                    field("Sell-to Address";"Sell-to Address")
+                    field("Sell-to Customer Name"; "Sell-to Customer Name")
                     {
                         Editable = false;
                     }
-                    field("Sell-to Address 2";"Sell-to Address 2")
+                    field("Sell-to Address"; "Sell-to Address")
                     {
                         Editable = false;
                     }
-                    field("Sell-to City";"Sell-to City")
+                    field("Sell-to Address 2"; "Sell-to Address 2")
                     {
                         Editable = false;
                     }
-                    field("Sell-to Post Code";"Sell-to Post Code")
+                    field("Sell-to City"; "Sell-to City")
                     {
                         Editable = false;
                     }
-                    field("Sell-to County";"Sell-to County")
+                    field("Sell-to Post Code"; "Sell-to Post Code")
                     {
                         Editable = false;
                     }
-                    field("Sell-to Contact";"Sell-to Contact")
+                    field("Sell-to County"; "Sell-to County")
+                    {
+                        Editable = false;
+                    }
+                    field("Sell-to Contact"; "Sell-to Contact")
                     {
                         Editable = false;
                     }
@@ -63,30 +63,30 @@ page 50066 "Sales Invoice Acct"
                 group(Control1220060059)
                 {
                     ShowCaption = false;
-                    field("Posting Date";"Posting Date")
+                    field("Posting Date"; "Posting Date")
                     {
                     }
-                    field("Document Date";"Document Date")
+                    field("Document Date"; "Document Date")
                     {
                     }
-                    field("Salesperson Code";"Salesperson Code")
+                    field("Salesperson Code"; "Salesperson Code")
                     {
                         Caption = 'Inside Sales';
                     }
-                    field(Rep;Rep)
+                    field(Rep; Rep)
                     {
                     }
-                    field("Bill of Lading";"Bill of Lading")
+                    field("Bill of Lading"; "Bill of Lading")
                     {
                     }
-                    field(Status;Status)
+                    field(Status; Status)
                     {
                     }
                 }
             }
-            part(SalesLines;"Sales Invoice Acct Subform")
+            part(SalesLines; "Sales Invoice Acct Subform")
             {
-                SubPageLink = "Document No."=FIELD("No.");
+                SubPageLink = "Document No." = FIELD("No.");
             }
             group(Invoicing)
             {
@@ -94,56 +94,56 @@ page 50066 "Sales Invoice Acct"
                 group(Control1220060038)
                 {
                     ShowCaption = false;
-                    field("Bill-to Customer No.";"Bill-to Customer No.")
+                    field("Bill-to Customer No."; "Bill-to Customer No.")
                     {
                     }
-                    field("Bill-to Name";"Bill-to Name")
+                    field("Bill-to Name"; "Bill-to Name")
                     {
                     }
-                    field("Bill-to Address";"Bill-to Address")
+                    field("Bill-to Address"; "Bill-to Address")
                     {
                     }
-                    field("Bill-to Address 2";"Bill-to Address 2")
+                    field("Bill-to Address 2"; "Bill-to Address 2")
                     {
                     }
-                    field("Bill-to City";"Bill-to City")
+                    field("Bill-to City"; "Bill-to City")
                     {
                     }
-                    field("Bill-to County";"Bill-to County")
+                    field("Bill-to County"; "Bill-to County")
                     {
                     }
-                    field("Bill-to Post Code";"Bill-to Post Code")
+                    field("Bill-to Post Code"; "Bill-to Post Code")
                     {
                     }
-                    field("Bill-to Contact";"Bill-to Contact")
+                    field("Bill-to Contact"; "Bill-to Contact")
                     {
                     }
                 }
                 group(Control1220060028)
                 {
                     ShowCaption = false;
-                    field("Your Reference";"Your Reference")
+                    field("Your Reference"; "Your Reference")
                     {
                         Caption = 'Customer P.O Number';
                     }
-                    field("Shortcut Dimension 2 Code";"Shortcut Dimension 2 Code")
+                    field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
                     {
                         Caption = 'Project Code';
                     }
                 }
-                field("Payment Terms Code";"Payment Terms Code")
+                field("Payment Terms Code"; "Payment Terms Code")
                 {
                 }
-                field("Card Type";"Card Type")
+                field("Card Type"; "Card Type")
                 {
                 }
-                field("Credit Card No.";"Credit Card No.")
+                field("Credit Card No."; "Credit Card No.")
                 {
                 }
-                field("Credit Card Exp.";"Credit Card Exp.")
+                field("Credit Card Exp."; "Credit Card Exp.")
                 {
                 }
-                field("Due Date";"Due Date")
+                field("Due Date"; "Due Date")
                 {
                 }
             }
@@ -153,50 +153,50 @@ page 50066 "Sales Invoice Acct"
                 group(Control1220060022)
                 {
                     ShowCaption = false;
-                    field("Ship-to Code";"Ship-to Code")
+                    field("Ship-to Code"; "Ship-to Code")
                     {
                     }
-                    field("Ship-to Name";"Ship-to Name")
+                    field("Ship-to Name"; "Ship-to Name")
                     {
                     }
-                    field("Ship-to Address";"Ship-to Address")
+                    field("Ship-to Address"; "Ship-to Address")
                     {
                     }
-                    field("Ship-to Address 2";"Ship-to Address 2")
+                    field("Ship-to Address 2"; "Ship-to Address 2")
                     {
                     }
-                    field("Ship-to City";"Ship-to City")
+                    field("Ship-to City"; "Ship-to City")
                     {
                     }
-                    field("Ship-to County";"Ship-to County")
+                    field("Ship-to County"; "Ship-to County")
                     {
                     }
-                    field("Ship-to Post Code";"Ship-to Post Code")
+                    field("Ship-to Post Code"; "Ship-to Post Code")
                     {
                     }
-                    field("Ship-to Contact";"Ship-to Contact")
+                    field("Ship-to Contact"; "Ship-to Contact")
                     {
                     }
-                    field("Ship-to UPS Zone";"Ship-to UPS Zone")
+                    field("Ship-to UPS Zone"; "Ship-to UPS Zone")
                     {
                     }
                 }
                 group(Control1220060010)
                 {
                     ShowCaption = false;
-                    field("Shipping Agent Code";"Shipping Agent Code")
+                    field("Shipping Agent Code"; "Shipping Agent Code")
                     {
                     }
-                    field("Shipment Method Code";"Shipment Method Code")
+                    field("Shipment Method Code"; "Shipment Method Code")
                     {
                     }
-                    field("Package Tracking No.";"Package Tracking No.")
+                    field("Package Tracking No."; "Package Tracking No.")
                     {
                     }
-                    field("Tax Liable";"Tax Liable")
+                    field("Tax Liable"; "Tax Liable")
                     {
                     }
-                    field("Tax Area Code";"Tax Area Code")
+                    field("Tax Area Code"; "Tax Area Code")
                     {
                     }
                 }
@@ -215,23 +215,23 @@ page 50066 "Sales Invoice Acct"
                 {
                     Caption = 'Statistics';
                     RunObject = Page "Sales Statistics";
-                    RunPageLink = "Document Type"=FIELD("Document Type"),
-                                  "No."=FIELD("No.");
+                    RunPageLink = "Document Type" = FIELD("Document Type"),
+                                  "No." = FIELD("No.");
                     ShortCutKey = 'F9';
                 }
                 action(Card)
                 {
                     Caption = 'Card';
                     RunObject = Page "Customer Card";
-                    RunPageLink = "No."=FIELD("Sell-to Customer No.");
+                    RunPageLink = "No." = FIELD("Sell-to Customer No.");
                     ShortCutKey = 'Shift+F5';
                 }
                 action("Co&mments")
                 {
                     Caption = 'Co&mments';
                     RunObject = Page "Sales Comment Sheet";
-                    RunPageLink = "Document Type"=FIELD("Document Type"),
-                                  "No."=FIELD("No.");
+                    RunPageLink = "Document Type" = FIELD("Document Type"),
+                                  "No." = FIELD("No.");
                 }
             }
             group(Functions)
@@ -254,7 +254,7 @@ page 50066 "Sales Invoice Acct"
                 }
                 action("Insert &Ext. Text")
                 {
-                    AccessByPermission = TableData "Cust. Invoice Disc."=R;
+                    AccessByPermission = TableData "Cust. Invoice Disc." = R;
                     Caption = 'Insert &Ext. Text';
                     Image = CalculateInvoiceDiscount;
 
@@ -269,7 +269,7 @@ page 50066 "Sales Invoice Acct"
 
                     trigger OnAction()
                     begin
-                        CurrPage.SalesLines.PAGE.ShowReservation;
+                        CurrPage.SalesLines.PAGE.ShowReservation2;
                     end;
                 }
             }
@@ -357,10 +357,10 @@ page 50066 "Sales Invoice Acct"
     procedure UpdateAllowed() Response: Boolean
     begin
         if CurrPage.Editable = false then begin
-          Message('Unable to execute this function while in view only mode.');
-          exit(false);
+            Message('Unable to execute this function while in view only mode.');
+            exit(false);
         end else
-          exit(true);
+            exit(true);
     end;
 }
 

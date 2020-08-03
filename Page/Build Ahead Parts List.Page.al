@@ -1,8 +1,8 @@
 page 50024 "Build Ahead Parts List"
-    /*
-    IcE-MPC BC Upgrade
-      Replaced assignment of parts cost to getunitcost function from Item Ledger.  Unit cost field no longer exists.
-    */
+/*
+IcE-MPC BC Upgrade
+  Replaced assignment of parts cost to getunitcost function from Item Ledger.  Unit cost field no longer exists.
+*/
 {
     PageType = ListPart;
     SourceTable = Parts;
@@ -13,22 +13,22 @@ page 50024 "Build Ahead Parts List"
         {
             repeater(Group)
             {
-                field("Part Type";"Part Type")
+                field("Part Type"; "Part Type")
                 {
                 }
-                field("Part No.";"Part No.")
+                field("Part No."; "Part No.")
                 {
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                 }
-                field("Quoted Quantity";"Quoted Quantity")
+                field("Quoted Quantity"; "Quoted Quantity")
                 {
                 }
-                field("Pulled Quantity";"Pulled Quantity")
+                field("Pulled Quantity"; "Pulled Quantity")
                 {
                 }
-                field("Serial No.";"Serial No.")
+                field("Serial No."; "Serial No.")
                 {
 
                     trigger OnLookup(var Text: Text): Boolean
@@ -36,16 +36,16 @@ page 50024 "Build Ahead Parts List"
                         SelectItemEntry(FIELDNO("Serial No."));
                     end;
                 }
-                field("Quantity Backorder";"Quantity Backorder")
+                field("Quantity Backorder"; "Quantity Backorder")
                 {
                     Caption = 'Back Order Quantity';
                     Editable = false;
                 }
-                field("In-Process Quantity";"In-Process Quantity")
+                field("In-Process Quantity"; "In-Process Quantity")
                 {
                     Editable = false;
                 }
-                field("Committed Quantity";"Committed Quantity")
+                field("Committed Quantity"; "Committed Quantity")
                 {
                 }
             }
@@ -62,32 +62,32 @@ page 50024 "Build Ahead Parts List"
 
     procedure SelectItemEntry(CurrentFieldNo: Integer)
     begin
-        TESTFIELD("Part Type","Part Type"::Item);
-        ILE.SETCURRENTKEY("Item No.","Variant Code",Open,Positive,"Location Code","Posting Date");
-        ILE.SETRANGE("Item No.","Part No.");
-        ILE.SETRANGE(Open,TRUE);
-        ILE.SETRANGE(Positive,TRUE);
-        IF PAGE.RUNMODAL(PAGE::"Item Ledger Entries",ILE) = ACTION::LookupOK THEN BEGIN
-          Parts2 := Rec;
-          WITH Parts2 DO BEGIN
+        TESTFIELD("Part Type", "Part Type"::Item);
+        ILE.SETCURRENTKEY("Item No.", "Variant Code", Open, Positive, "Location Code", "Posting Date");
+        ILE.SETRANGE("Item No.", "Part No.");
+        ILE.SETRANGE(Open, TRUE);
+        ILE.SETRANGE(Positive, TRUE);
+        IF PAGE.RUNMODAL(PAGE::"Item Ledger Entries", ILE) = ACTION::LookupOK THEN BEGIN
+            Parts2 := Rec;
+            WITH Parts2 DO BEGIN
 
-            "Serial No." := ILE."Serial No.";
-            //"Part Cost" := ILE."Unit Cost"; ICE-MPC BC Upgrade
-            "Part Cost" := ILE.GetUnitCostLCY();
-          END;
-          Rec := Parts2;
+                "Serial No." := ILE."Serial No.";
+                //"Part Cost" := ILE."Unit Cost"; ICE-MPC BC Upgrade
+                "Part Cost" := ILE.GetUnitCostLCY();
+            END;
+            Rec := Parts2;
         END;
     end;
 
-    procedure PartsAllocation()
+    procedure PartsAllocation2()
     begin
         Rec.PartsAllocation;
     end;
 
-    procedure DeletePart()
+    procedure DeletePart2()
     begin
         IF "Quoted Quantity" > 0 THEN
-          ERROR('Quoted Quantity Must Be Zero to Delete');
+            ERROR('Quoted Quantity Must Be Zero to Delete');
 
         Rec.DeletePart;
     end;

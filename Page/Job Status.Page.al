@@ -81,16 +81,16 @@ page 50009 "Job Status"
                     group(Control1220060006)
                     {
                         ShowCaption = false;
-                        field("Order No.";"Order No.")
+                        field("Order No."; "Order No.")
                         {
                             Editable = false;
                         }
-                        field("WOM.Customer";WOM.Customer)
+                        field("WOM.Customer"; WOM.Customer)
                         {
                             Caption = 'Customer';
                             Editable = false;
                         }
-                        field("WOM.""Date Ordered""";WOM."Date Ordered")
+                        field("WOM.""Date Ordered"""; WOM."Date Ordered")
                         {
                             Caption = 'Order Date';
                             Editable = false;
@@ -104,68 +104,68 @@ page 50009 "Job Status"
                 group(Control1220060027)
                 {
                     ShowCaption = false;
-                    field("FORMAT(WOD.""Order Type"",0)";Format(WOD."Order Type",0))
+                    field("FORMAT(WOD.""Order Type"",0)"; Format(WOD."Order Type", 0))
                     {
                         Caption = 'Order Type';
                         Editable = false;
                     }
-                    field(Step;Step)
+                    field(Step; Step)
                     {
                         Caption = 'Current Job Step';
                         Editable = false;
                     }
-                    field(ModelNo;ModelNo)
+                    field(ModelNo; ModelNo)
                     {
                         Caption = 'Model No.';
                         Editable = ModelNoEditable;
                     }
-                    field("WOD.""Model Verified""";WOD."Model Verified")
+                    field("WOD.""Model Verified"""; WOD."Model Verified")
                     {
                         Caption = 'Model Verified';
                     }
-                    field(SerialNo;SerialNo)
+                    field(SerialNo; SerialNo)
                     {
                         Caption = 'Serial No.';
                         Editable = SerialNoEditable;
                     }
-                    field(Employee;Employee)
+                    field(Employee; Employee)
                     {
                     }
-                    field("Date In";"Date In")
+                    field("Date In"; "Date In")
                     {
                         Caption = 'Start Date';
                     }
-                    field("Date Out";"Date Out")
+                    field("Date Out"; "Date Out")
                     {
                         Caption = 'Finish Date';
                     }
-                    field("Regular Hours";"Regular Hours")
+                    field("Regular Hours"; "Regular Hours")
                     {
                         Caption = 'Reg Time On Step';
                     }
-                    field("Overtime Hours";"Overtime Hours")
+                    field("Overtime Hours"; "Overtime Hours")
                     {
                         Caption = 'OverTime on Step';
                     }
-                    field("WOD.oContainerSaved";WOD.oContainerSaved)
+                    field("WOD.oContainerSaved"; WOD.oContainerSaved)
                     {
                         Caption = 'Saved Container';
                         Editable = ContainerEditable;
                     }
-                    field("WOD.""Container Type""";WOD."Container Type")
+                    field("WOD.""Container Type"""; WOD."Container Type")
                     {
                         Caption = 'Container Type';
                         Editable = ContainerTypeEditable;
                     }
-                    field(Status;Status)
+                    field(Status; Status)
                     {
                         Caption = 'Status Code';
                     }
-                    field("WOD.""Safety Form""";WOD."Safety Form")
+                    field("WOD.""Safety Form"""; WOD."Safety Form")
                     {
                         Caption = 'Safety Form';
                     }
-                    field("WOD.""Receiving Notes""";WOD."Receiving Notes")
+                    field("WOD.""Receiving Notes"""; WOD."Receiving Notes")
                     {
                         Caption = 'Receiving Notes';
                         MultiLine = true;
@@ -175,7 +175,7 @@ page 50009 "Job Status"
                 {
                     Caption = '*  *  *  *  * *INTEL Non-Copper Segregation Required* *  *  *  *  *';
                     Visible = NonCopperVisible;
-                    field("WOD.Description";WOD.Description)
+                    field("WOD.Description"; WOD.Description)
                     {
                         Caption = 'Description';
                         Editable = false;
@@ -183,62 +183,62 @@ page 50009 "Job Status"
                     group("Current Work Instructions")
                     {
                         Caption = 'Current Work Instructions';
-                        field("Instr[1]";Instr[1])
+                        field("Instr[1]"; Instr[1])
                         {
                             Editable = false;
                             ShowCaption = false;
                         }
-                        field("Instr[2]";Instr[2])
+                        field("Instr[2]"; Instr[2])
                         {
                             Editable = false;
                             ShowCaption = false;
                         }
-                        field("Instr[3]";Instr[3])
+                        field("Instr[3]"; Instr[3])
                         {
                             Editable = false;
                             ShowCaption = false;
                         }
-                        field("Instr[4]";Instr[4])
+                        field("Instr[4]"; Instr[4])
                         {
                             Editable = false;
                             ShowCaption = false;
                         }
-                        field("Instr[5]";Instr[5])
+                        field("Instr[5]"; Instr[5])
                         {
                             Editable = false;
                             ShowCaption = false;
                         }
-                        field("Instr[6]";Instr[6])
+                        field("Instr[6]"; Instr[6])
                         {
                             Editable = false;
                             ShowCaption = false;
                         }
-                        field("Instr[7]";Instr[7])
+                        field("Instr[7]"; Instr[7])
                         {
                             Editable = false;
                             ShowCaption = false;
                         }
-                        field("Instr[8]";Instr[8])
+                        field("Instr[8]"; Instr[8])
                         {
                             Editable = false;
                             ShowCaption = false;
                         }
-                        field("Instr[9]";Instr[9])
+                        field("Instr[9]"; Instr[9])
                         {
                             Editable = false;
                             ShowCaption = false;
                         }
-                        field("Instr[10]";Instr[10])
+                        field("Instr[10]"; Instr[10])
                         {
                             Editable = false;
                             ShowCaption = false;
                         }
-                        field("Instr[11]";Instr[11])
+                        field("Instr[11]"; Instr[11])
                         {
                             Editable = false;
                             ShowCaption = false;
                         }
-                        field("Instr[12]";Instr[12])
+                        field("Instr[12]"; Instr[12])
                         {
                             Editable = false;
                             ShowCaption = false;
@@ -271,16 +271,16 @@ page 50009 "Job Status"
 
                 trigger OnAction()
                 begin
-                    if Step <> Step :: RCV then begin
-                      if WOD."Unrepairable BuildAhead" = true then begin
-                        Message('You Can''t skip this step because it is an Unrepairable Build Ahead');
-                      end else begin
-                        "Skip Step" := true;
-                        Modify;
-                        CurrPage.Close;
-                      end;
+                    if Step <> Step::RCV then begin
+                        if WOD."Unrepairable BuildAhead" = true then begin
+                            Message('You Can''t skip this step because it is an Unrepairable Build Ahead');
+                        end else begin
+                            "Skip Step" := true;
+                            Modify;
+                            CurrPage.Close;
+                        end;
                     end else begin
-                      Message('You can''t skip the Receiving Step');
+                        Message('You can''t skip the Receiving Step');
                     end;
                 end;
             }
@@ -291,12 +291,12 @@ page 50009 "Job Status"
     begin
         MessageNotDisplayed := true;
         NewInstructions := false;
-        MasterNo := CopyStr("Order No.",1,5) + '00';
-        if WOM.Get (MasterNo) then
-          OK := true;
+        MasterNo := CopyStr("Order No.", 1, 5) + '00';
+        if WOM.Get(MasterNo) then
+            OK := true;
 
-        if WOD.Get (Rec."Order No.") then
-          OLDWOD := WOD;
+        if WOD.Get(Rec."Order No.") then
+            OLDWOD := WOD;
 
         Clear(LineCount);
         Clear(Length);
@@ -304,122 +304,122 @@ page 50009 "Job Status"
         Clear(InstrDate);
         Clear(ISOFile);
 
-        case Step of
-          0:
-            begin
-              Instruction := WOD.RCV;
-              InstructionDate := WOD."REC Date";
-            end;
-          1:
-            begin
-              Instruction := WOD.DIS;
-              InstructionDate := WOD."DIS Date";
-            end;
+        case Step.AsInteger() of
+            0:
+                begin
+                    Instruction := WOD.RCV;
+                    InstructionDate := WOD."REC Date";
+                end;
+            1:
+                begin
+                    Instruction := WOD.DIS;
+                    InstructionDate := WOD."DIS Date";
+                end;
 
-          2:
-            begin
-              Instruction := WOD.QOT;
-              InstructionDate := WOD."QOT Date";
-            end;
+            2:
+                begin
+                    Instruction := WOD.QOT;
+                    InstructionDate := WOD."QOT Date";
+                end;
 
-          3:
-            begin
-              Instruction := WOD."B-O";
-              InstructionDate := WOD."B-O Date";
-            end;
+            3:
+                begin
+                    Instruction := WOD."B-O";
+                    InstructionDate := WOD."B-O Date";
+                end;
 
-          4:
-            begin
-              Instruction := WOD.CLN;
-              InstructionDate := WOD."CLN Date";
-            end;
+            4:
+                begin
+                    Instruction := WOD.CLN;
+                    InstructionDate := WOD."CLN Date";
+                end;
 
-          5:
-            begin
-              Instruction := WOD.ASM;
-              InstructionDate := WOD."ASM Date";
-            end;
+            5:
+                begin
+                    Instruction := WOD.ASM;
+                    InstructionDate := WOD."ASM Date";
+                end;
 
-          6:
-            begin
-              Instruction := WOD.TST;
-              InstructionDate := WOD."TST Date";
-            end;
+            6:
+                begin
+                    Instruction := WOD.TST;
+                    InstructionDate := WOD."TST Date";
+                end;
 
-          7:
-            begin
-              Instruction := WOD.ASM;
-              InstructionDate := WOD."ASM Date";
-            end;
+            7:
+                begin
+                    Instruction := WOD.ASM;
+                    InstructionDate := WOD."ASM Date";
+                end;
 
-          8:
-            begin
-              Instruction := WOD.TST;
-              InstructionDate := WOD."TST Date";
-            end;
+            8:
+                begin
+                    Instruction := WOD.TST;
+                    InstructionDate := WOD."TST Date";
+                end;
 
-          10:
-            begin
-              Instruction := WOD.PNT;
-              InstructionDate := WOD."PNT Date";
-            end;
+            10:
+                begin
+                    Instruction := WOD.PNT;
+                    InstructionDate := WOD."PNT Date";
+                end;
 
-          11:
-            begin
-              Instruction := WOD.QC;
-              InstructionDate := WOD."QC Date";
-            end;
+            11:
+                begin
+                    Instruction := WOD.QC;
+                    InstructionDate := WOD."QC Date";
+                end;
 
-          12:
-            begin
-              Instruction := WOD.SHP;
-              InstructionDate := WOD."SHP Date";
-            end;
+            12:
+                begin
+                    Instruction := WOD.SHP;
+                    InstructionDate := WOD."SHP Date";
+                end;
 
-          else
-            Instruction := '';
+            else
+                Instruction := '';
         end;
 
 
         if Instruction <> '' then begin
-          Length := StrLen(Instruction);
-          if Length > 70 then begin
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(Instruction,1,70);
-            InstrDate[LineCount] := InstructionDate;
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(Instruction,71,70);
-            InstrDate[LineCount] := InstructionDate;
-          end else begin
-            LineCount := LineCount + 1;
-            Instr[LineCount] := Instruction;
-            InstrDate[LineCount] := InstructionDate;
-          end;
+            Length := StrLen(Instruction);
+            if Length > 70 then begin
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(Instruction, 1, 70);
+                InstrDate[LineCount] := InstructionDate;
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(Instruction, 71, 70);
+                InstrDate[LineCount] := InstructionDate;
+            end else begin
+                LineCount := LineCount + 1;
+                Instr[LineCount] := Instruction;
+                InstrDate[LineCount] := InstructionDate;
+            end;
 
-          //Insert Blank Line
-          LineCount := LineCount + 1;
+            //Insert Blank Line
+            LineCount := LineCount + 1;
 
         end;
 
         // 01/05/2011 Start
         // Step,Model
-        GetInstructionPerStep(Step,'','',WOD."Model No.",'');
+        GetInstructionPerStep(Step, '', '', WOD."Model No.", '');
 
         // Step,Customer
-        GetInstructionPerStep(Step,WOD."Customer ID",'','','');
+        GetInstructionPerStep(Step, WOD."Customer ID", '', '', '');
 
         // Step,Customer,Part No.
         if (WOD."Customer Part No." <> '') then
-          GetInstructionPerStep(Step,WOD."Customer ID",'','',WOD."Customer Part No.");
+            GetInstructionPerStep(Step, WOD."Customer ID", '', '', WOD."Customer Part No.");
 
         // Step,Customer,Model
-        GetInstructionPerStep(Step,WOD."Customer ID",'',WOD."Model No.",'');
+        GetInstructionPerStep(Step, WOD."Customer ID", '', WOD."Model No.", '');
 
         // Step,Customer,ShipTo
-        GetInstructionPerStep(Step,WOD."Customer ID",WOM."Ship To Code",'','');
+        GetInstructionPerStep(Step, WOD."Customer ID", WOM."Ship To Code", '', '');
 
         // Step,Customer,ShiptTo,Model
-        GetInstructionPerStep(Step,WOD."Customer ID",WOM."Ship To Code",WOD."Model No.",'');
+        GetInstructionPerStep(Step, WOD."Customer ID", WOM."Ship To Code", WOD."Model No.", '');
 
         //CurrForm.QCFile.VISIBLE(QCFileName <> '');
         // 01/05/2011 End
@@ -430,23 +430,23 @@ page 50009 "Job Status"
         // Allow Shop Mgr and Shipping to edit Serian No. in REC step
         OK2 := false;
         Member.CalcFields(Member."User Name");
-        if (Step = Step :: RCV) then begin
-          Member.SetRange(Member."User Name",UserId);
-          if Member.Find('-') then begin
-            repeat
-              if (Member."Role ID" = 'ADV-SHOPMNGR') or
-                 (Member."Role ID" = 'ADV-SHIPPING') then  //AVF.SMS.032510
-                OK2 := true;
-            until Member.Next = 0;
-          end;
-          if OK2 then
-            SerialNoEditable := true
-          else
-            SerialNoEditable := false;
+        if (Step = Step::RCV) then begin
+            Member.SetRange(Member."User Name", UserId);
+            if Member.Find('-') then begin
+                repeat
+                    if (Member."Role ID" = 'ADV-SHOPMNGR') or
+                       (Member."Role ID" = 'ADV-SHIPPING') then  //AVF.SMS.032510
+                        OK2 := true;
+                until Member.Next = 0;
+            end;
+            if OK2 then
+                SerialNoEditable := true
+            else
+                SerialNoEditable := false;
             ModelNoEditable := true;
         end else begin
-          SerialNoEditable := false;
-          ModelNoEditable := false;
+            SerialNoEditable := false;
+            ModelNoEditable := false;
         end;
 
         // 04/16/18 Start
@@ -454,44 +454,44 @@ page 50009 "Job Status"
         //   CurrForm.Container.EDITABLE(TRUE)
         //ELSE
         //   CurrForm.Container.EDITABLE(FALSE);
-        if (Step = Step :: RCV) then begin
-          ContainerEditable := true;
-          if WOD.oContainerSaved = WOD.oContainerSaved::No then
-            ContainerTypeEditable := false
-          else
-            ContainerTypeEditable := true;
+        if (Step = Step::RCV) then begin
+            ContainerEditable := true;
+            if WOD.oContainerSaved = WOD.oContainerSaved::No then
+                ContainerTypeEditable := false
+            else
+                ContainerTypeEditable := true;
         end else begin
-          ContainerEditable := false;
-          ContainerTypeEditable := false;
+            ContainerEditable := false;
+            ContainerTypeEditable := false;
         end;
         // 04/16/18 End
 
-        if Status = Status :: Complete then
-          CurrPage.Editable(false)
+        if Status = Status::Complete then
+            CurrPage.Editable(false)
         else
-          CurrPage.Editable(true);
+            CurrPage.Editable(true);
 
         if WOD."Non Copper" then
-          NonCopperVisible := true
+            NonCopperVisible := true
         else
-           NonCopperVisible := false;
+            NonCopperVisible := false;
 
         //ISO Procedure Button
-        ISOProcedure.SetRange(ISOProcedure.Step,Step);
-        ISOProcedure.SetRange(ISOProcedure."Model Type",WOD."Model Type");
-        if ISOProcedure.Find ('-') then begin
-          ISOFile := ISOProcedure."ISO Filename";
-          cmdProcedureVisible := true;
-        end else begin
-          ISOProcedure2.SetRange(ISOProcedure2.Step,Step);
-          ISOProcedure2.SetRange(ISOProcedure2."Model Type", ISOProcedure2."Model Type" :: " ");
-          if ISOProcedure2.Find ('-') then  begin
-            ISOFile :=  ISOProcedure2."ISO Filename";
+        ISOProcedure.SetRange(ISOProcedure.Step, Step);
+        ISOProcedure.SetRange(ISOProcedure."Model Type", WOD."Model Type");
+        if ISOProcedure.Find('-') then begin
+            ISOFile := ISOProcedure."ISO Filename";
             cmdProcedureVisible := true;
-          end else begin
-            ISOFile := '';
-            cmdProcedureVisible := false;
-          end;
+        end else begin
+            ISOProcedure2.SetRange(ISOProcedure2.Step, Step);
+            ISOProcedure2.SetRange(ISOProcedure2."Model Type", ISOProcedure2."Model Type"::" ");
+            if ISOProcedure2.Find('-') then begin
+                ISOFile := ISOProcedure2."ISO Filename";
+                cmdProcedureVisible := true;
+            end else begin
+                ISOFile := '';
+                cmdProcedureVisible := false;
+            end;
         end;
     end;
 
@@ -510,8 +510,8 @@ page 50009 "Job Status"
         WI: Record WorkInstructions;
         LineCount: Integer;
         Length: Integer;
-        Instr: array [50] of Code[250];
-        InstrDate: array [50] of Date;
+        Instr: array[50] of Code[250];
+        InstrDate: array[50] of Date;
         NewInstructions: Boolean;
         MessageNotDisplayed: Boolean;
         Member: Record "Access Control";
@@ -534,55 +534,55 @@ page 50009 "Job Status"
         [InDataSet]
         cmdProcedureVisible: Boolean;
 
-    procedure GetInstructionPerStep(StepCode: Option REC,DIS,QOT,"B-O",CLN,ASM,TST,REP,RET,MSH,PNT,QC,SHP;CustCode: Code[20];ShpToCode: Code[10];ModelNo: Code[20];CustPartNo: Code[20])
+    procedure GetInstructionPerStep(StepCode: Enum DetailStep; CustCode: Code[20]; ShpToCode: Code[10]; ModelNo: Code[20]; CustPartNo: Code[20])
     begin
         // 01/05/2011 New function
         // set filters
-        WI.SetRange(WI."Customer Code",CustCode);
-        WI.SetRange(WI."Ship To Code",ShpToCode);
-        WI.SetRange(WI.Step,StepCode);
-        WI.SetRange(WI.Model,ModelNo);
-        WI.SetRange(WI."Customer Part No.",CustPartNo);
+        WI.SetRange(WI."Customer Code", CustCode);
+        WI.SetRange(WI."Ship To Code", ShpToCode);
+        WI.SetRange(WI.Step, StepCode);
+        WI.SetRange(WI.Model, ModelNo);
+        WI.SetRange(WI."Customer Part No.", CustPartNo);
 
         // 02/19/18 Start
         // Add filter per Blocked WI
-        WI.SetRange(Blocked,false);
+        WI.SetRange(Blocked, false);
         // 02/19/18 End
 
         if WI.Find('-') then begin
-          Length := StrLen(WI.Instruction);
-          if Length > 144 then begin
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(WI.Instruction,1,72);
-            InstrDate[LineCount] := WI."Date Last Modified";
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(WI.Instruction,73,72);
-            InstrDate[LineCount] := WI."Date Last Modified";
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(WI.Instruction,145,72);
-            InstrDate[LineCount] := WI."Date Last Modified";
-          end;
+            Length := StrLen(WI.Instruction);
+            if Length > 144 then begin
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(WI.Instruction, 1, 72);
+                InstrDate[LineCount] := WI."Date Last Modified";
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(WI.Instruction, 73, 72);
+                InstrDate[LineCount] := WI."Date Last Modified";
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(WI.Instruction, 145, 72);
+                InstrDate[LineCount] := WI."Date Last Modified";
+            end;
 
-          if (Length > 72) and (Length <= 144) then begin
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(WI.Instruction,1,72);
-            InstrDate[LineCount] := WI."Date Last Modified";
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(WI.Instruction,73,72);
-            InstrDate[LineCount] := WI."Date Last Modified";
-          end;
+            if (Length > 72) and (Length <= 144) then begin
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(WI.Instruction, 1, 72);
+                InstrDate[LineCount] := WI."Date Last Modified";
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(WI.Instruction, 73, 72);
+                InstrDate[LineCount] := WI."Date Last Modified";
+            end;
 
-          if Length <= 72 then begin
+            if Length <= 72 then begin
+                LineCount := LineCount + 1;
+                Instr[LineCount] := WI.Instruction;
+                InstrDate[LineCount] := WI."Date Last Modified";
+            end;
+
+            //Insert Blank Line
             LineCount := LineCount + 1;
-            Instr[LineCount] := WI.Instruction;
-            InstrDate[LineCount] := WI."Date Last Modified";
-          end;
 
-          //Insert Blank Line
-          LineCount := LineCount + 1;
-
-          if WI."Part Quality Ctrl Instructions" <> '' then
-            QCFileName := GetQCFileName(WI."Part Quality Ctrl Instructions");
+            if WI."Part Quality Ctrl Instructions" <> '' then
+                QCFileName := GetQCFileName(WI."Part Quality Ctrl Instructions");
 
         end;
         WI.Reset;
@@ -594,8 +594,8 @@ page 50009 "Job Status"
     begin
         // 01/05/2011 New function
         repeat
-          QCFull := CopyStr(QCFull,StrPos(QCFull,'\')+1);
-        until StrPos(QCFull,'\') = 0;
+            QCFull := CopyStr(QCFull, StrPos(QCFull, '\') + 1);
+        until StrPos(QCFull, '\') = 0;
         exit(QCFull);
     end;
 }

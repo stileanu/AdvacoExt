@@ -384,7 +384,7 @@ table 50020 FieldService
                 IF Agent.GET(Carrier) THEN BEGIN
                     IF "Shipping Charge" = "Shipping Charge"::Collect THEN BEGIN
                         "Shipping Account" := '';
-                        "Shipping Charge" := 0;
+                        "Shipping Charge" := "Shipping Charge"::" ";
                         MODIFY;
                         MESSAGE('Shipping Charge & Account No. were Deleted because Shipping Agent was Changed');
                     END ELSE BEGIN
@@ -415,9 +415,9 @@ table 50020 FieldService
                 END;
             end;
         }
-        field(530; "Shipping Charge"; Option)
+        field(530; "Shipping Charge"; Enum BOLShipCharge)
         {
-            OptionMembers = " ",Collect,"Pre-Paid","Pre-Paid & Add","3rd Party",Consignee;
+            //OptionMembers = " ",Collect,"Pre-Paid","Pre-Paid & Add","3rd Party",Consignee;
 
             trigger OnValidate();
             begin
@@ -426,13 +426,13 @@ table 50020 FieldService
                         IF Agent."Account No. Required" THEN BEGIN
                             IF "Shipping Account" = '' THEN BEGIN
                                 MESSAGE('Carrier Must be Entered First');
-                                "Shipping Charge" := 0;
+                                "Shipping Charge" := "Shipping Charge"::" ";
                                 MODIFY;
                             END;
                         END;
                     END ELSE BEGIN
                         MESSAGE('Carrier Must be Entered First');
-                        "Shipping Charge" := 0;
+                        "Shipping Charge" := "Shipping Charge"::" ";
                         MODIFY;
                     END;
                 END;

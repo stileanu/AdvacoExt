@@ -11,30 +11,30 @@ page 50022 "Back Order Parts List"
         {
             repeater(Group)
             {
-                field("Part No.";"Part No.")
+                field("Part No."; "Part No.")
                 {
                     Editable = false;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                     Editable = false;
                 }
-                field("Pulled Quantity";"Pulled Quantity")
+                field("Pulled Quantity"; "Pulled Quantity")
                 {
                 }
-                field("Quoted Quantity";"Quoted Quantity")
-                {
-                    Editable = false;
-                }
-                field("Quantity Backorder";"Quantity Backorder")
+                field("Quoted Quantity"; "Quoted Quantity")
                 {
                     Editable = false;
                 }
-                field("In-Process Quantity";"In-Process Quantity")
+                field("Quantity Backorder"; "Quantity Backorder")
                 {
                     Editable = false;
                 }
-                field("Purchase Order No.";"Purchase Order No.")
+                field("In-Process Quantity"; "In-Process Quantity")
+                {
+                    Editable = false;
+                }
+                field("Purchase Order No."; "Purchase Order No.")
                 {
                     Editable = false;
                 }
@@ -46,21 +46,21 @@ page 50022 "Back Order Parts List"
     {
     }
 
-    procedure PartsAllocation()
+    procedure PartsAllocation2()
     begin
-        Rec.PartsAllocation ;
+        Rec.PartsAllocation;
     end;
 
-    procedure ReplacePart()
+    procedure ReplacePart2()
     begin
         if "Pulled Quantity" > 0 then begin
-          Error('There is already a Quantity Pulled for this Item.');
+            Error('There is already a Quantity Pulled for this Item.');
         end else begin
-          Rec.ReplacePart;
+            Rec.ReplacePart;
         end;
     end;
 
-    procedure DeletePart()
+    procedure DeletePart2()
     begin
         Rec.DeletePart;
     end;

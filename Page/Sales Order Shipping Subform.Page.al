@@ -10,7 +10,7 @@ page 50061 "Sales Order Shipping Subform"
     MultipleNewLines = true;
     PageType = ListPart;
     SourceTable = "Sales Line";
-    SourceTableView = WHERE("Document Type"=FILTER(Order));
+    SourceTableView = WHERE("Document Type" = FILTER(Order));
 
     layout
     {
@@ -18,7 +18,7 @@ page 50061 "Sales Order Shipping Subform"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     Editable = false;
 
@@ -27,10 +27,10 @@ page 50061 "Sales Order Shipping Subform"
                         NoOnAfterValidate;
                     end;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                 }
-                field(Quantity;Quantity)
+                field(Quantity; Quantity)
                 {
                     Caption = 'Qty';
                     Editable = false;
@@ -40,21 +40,21 @@ page 50061 "Sales Order Shipping Subform"
                         QtyOnAfterValidate;
                     end;
                 }
-                field("Qty. to Ship";"Qty. to Ship")
+                field("Qty. to Ship"; "Qty. to Ship")
                 {
                 }
-                field("Shipped Qty.";"Shipped Qty.")
+                field("Shipped Qty."; "Shipped Qty.")
                 {
                 }
-                field("Shipment Date";"Shipment Date")
-                {
-                    Visible = false;
-                }
-                field("Package Tracking No.";"Package Tracking No.")
+                field("Shipment Date"; "Shipment Date")
                 {
                     Visible = false;
                 }
-                field("Unit of Measure Code";"Unit of Measure Code")
+                field("Package Tracking No."; "Package Tracking No.")
+                {
+                    Visible = false;
+                }
+                field("Unit of Measure Code"; "Unit of Measure Code")
                 {
                     Editable = false;
 
@@ -93,17 +93,17 @@ page 50061 "Sales Order Shipping Subform"
 
     procedure ApproveCalcInvDisc()
     begin
-        CODEUNIT.Run(CODEUNIT::"Sales-Disc. (Yes/No)",Rec);
+        CODEUNIT.Run(CODEUNIT::"Sales-Disc. (Yes/No)", Rec);
     end;
 
     procedure CalcInvDisc()
     begin
-        CODEUNIT.Run(CODEUNIT::"Sales-Calc. Discount",Rec);
+        CODEUNIT.Run(CODEUNIT::"Sales-Calc. Discount", Rec);
     end;
 
     procedure ExplodeBOM()
     begin
-        CODEUNIT.Run(CODEUNIT::"Sales-Explode BOM",Rec);
+        CODEUNIT.Run(CODEUNIT::"Sales-Explode BOM", Rec);
     end;
 
     procedure OpenPurchOrderForm()
@@ -112,8 +112,8 @@ page 50061 "Sales Order Shipping Subform"
         PurchOrder: Page "Purchase Order";
     begin
         if not "Drop Shipment" then
-          Error('The current sales line is not a drop shipment.');
-        PurchHeader.SetRange("No.","Purchase Order No.");
+            Error('The current sales line is not a drop shipment.');
+        PurchHeader.SetRange("No.", "Purchase Order No.");
         PurchOrder.SetTableView(PurchHeader);
         PurchOrder.Editable := false;
         PurchOrder.Run;
@@ -121,15 +121,15 @@ page 50061 "Sales Order Shipping Subform"
 
     procedure InsertExtendedText(Unconditionally: Boolean)
     begin
-        if TransferExtendedText.SalesCheckIfAnyExtText(Rec,Unconditionally) then begin
-          CurrPage.SaveRecord;
-          TransferExtendedText.InsertSalesExtText(Rec);
+        if TransferExtendedText.SalesCheckIfAnyExtText(Rec, Unconditionally) then begin
+            CurrPage.SaveRecord;
+            TransferExtendedText.InsertSalesExtText(Rec);
         end;
         if TransferExtendedText.MakeUpdate then
-          CurrPage.Update;
+            CurrPage.Update;
     end;
 
-    procedure ShowReservation()
+    procedure ShowReservation2()
     begin
         Find;
         Rec.ShowReservation;
@@ -153,8 +153,8 @@ page 50061 "Sales Order Shipping Subform"
     procedure QtyOnAfterValidate()
     begin
         if Reserve = Reserve::Always then begin
-          CurrPage.SaveRecord;
-          AutoReserve();
+            CurrPage.SaveRecord;
+            AutoReserve();
         end;
     end;
 }

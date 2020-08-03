@@ -54,85 +54,85 @@ page 50042 "Work Instructions"
             group(Control1000000018)
             {
                 ShowCaption = false;
-                field("Order No.";"Order No.")
+                field("Order No."; "Order No.")
                 {
                 }
-                field("STRSUBSTNO(QLTY_FILE_TO_PRINT,QCFileName)";StrSubstNo(QLTY_FILE_TO_PRINT,QCFileName))
+                field("STRSUBSTNO(QLTY_FILE_TO_PRINT,QCFileName)"; StrSubstNo(QLTY_FILE_TO_PRINT, QCFileName))
                 {
                     Caption = 'Current Work Instructions';
                     Visible = QCFileVisible;
                 }
-                field("Instr[1]";Instr[1])
+                field("Instr[1]"; Instr[1])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[2]";Instr[2])
+                field("Instr[2]"; Instr[2])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[3]";Instr[3])
+                field("Instr[3]"; Instr[3])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[4]";Instr[4])
+                field("Instr[4]"; Instr[4])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[5]";Instr[5])
+                field("Instr[5]"; Instr[5])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[6]";Instr[6])
+                field("Instr[6]"; Instr[6])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[7]";Instr[7])
+                field("Instr[7]"; Instr[7])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field(Step;Step)
+                field(Step; Step)
                 {
                     Caption = 'Current Job Step';
                     Editable = false;
                 }
-                field("Instr[8]";Instr[8])
+                field("Instr[8]"; Instr[8])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[9]";Instr[9])
+                field("Instr[9]"; Instr[9])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[10]";Instr[10])
+                field("Instr[10]"; Instr[10])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[11]";Instr[11])
+                field("Instr[11]"; Instr[11])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[12]";Instr[12])
+                field("Instr[12]"; Instr[12])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[13]";Instr[13])
+                field("Instr[13]"; Instr[13])
                 {
                     Editable = false;
                     ShowCaption = false;
                 }
-                field("Instr[14]";Instr[14])
+                field("Instr[14]"; Instr[14])
                 {
                     Editable = false;
                     ShowCaption = false;
@@ -147,135 +147,135 @@ page 50042 "Work Instructions"
 
     trigger OnAfterGetRecord()
     begin
-        MasterNo := CopyStr("Order No.",1,5) + '00';
-        if WOM.Get (MasterNo) then
-          OK := true;
+        MasterNo := CopyStr("Order No.", 1, 5) + '00';
+        if WOM.Get(MasterNo) then
+            OK := true;
 
-        if WOD.Get ("Order No.") then
-          OK := true;
+        if WOD.Get("Order No.") then
+            OK := true;
 
         Clear(LineCount);
         Clear(Length);
         Clear(Instr);
         Clear(InstrDate);
 
-        case Step of
-          0:
-            begin
-              //Instruction := WOD.REC;
-              Instruction := WOD.RCV;  //ICE-MPC field name misspelled.
-              InstructionDate := WOD."REC Date";
-            end;
-          1:
-            begin
-              Instruction := WOD.DIS;
-              InstructionDate := WOD."DIS Date";
-            end;
+        case Step.AsInteger() of
+            0:
+                begin
+                    //Instruction := WOD.REC;
+                    Instruction := WOD.RCV;  //ICE-MPC field name misspelled.
+                    InstructionDate := WOD."REC Date";
+                end;
+            1:
+                begin
+                    Instruction := WOD.DIS;
+                    InstructionDate := WOD."DIS Date";
+                end;
 
-          2:
-            begin
-              Instruction := WOD.QOT;
-              InstructionDate := WOD."QOT Date";
-            end;
+            2:
+                begin
+                    Instruction := WOD.QOT;
+                    InstructionDate := WOD."QOT Date";
+                end;
 
-          3:
-            begin
-              Instruction := WOD."B-O";
-              InstructionDate := WOD."B-O Date";
-            end;
+            3:
+                begin
+                    Instruction := WOD."B-O";
+                    InstructionDate := WOD."B-O Date";
+                end;
 
-          4:
-            begin
-              Instruction := WOD.CLN;
-              InstructionDate := WOD."CLN Date";
-            end;
+            4:
+                begin
+                    Instruction := WOD.CLN;
+                    InstructionDate := WOD."CLN Date";
+                end;
 
-          5:
-            begin
-              Instruction := WOD.ASM;
-              InstructionDate := WOD."ASM Date";
-            end;
+            5:
+                begin
+                    Instruction := WOD.ASM;
+                    InstructionDate := WOD."ASM Date";
+                end;
 
-          6:
-            begin
-              Instruction := WOD.TST;
-              InstructionDate := WOD."TST Date";
-            end;
+            6:
+                begin
+                    Instruction := WOD.TST;
+                    InstructionDate := WOD."TST Date";
+                end;
 
-          7:
-            begin
-              Instruction := WOD.ASM;
-              InstructionDate := WOD."ASM Date";
-            end;
+            7:
+                begin
+                    Instruction := WOD.ASM;
+                    InstructionDate := WOD."ASM Date";
+                end;
 
-          8:
-            begin
-              Instruction := WOD.TST;
-              InstructionDate := WOD."TST Date";
-            end;
+            8:
+                begin
+                    Instruction := WOD.TST;
+                    InstructionDate := WOD."TST Date";
+                end;
 
-          10:
-            begin
-              Instruction := WOD.PNT;
-              InstructionDate := WOD."PNT Date";
-            end;
+            10:
+                begin
+                    Instruction := WOD.PNT;
+                    InstructionDate := WOD."PNT Date";
+                end;
 
-          11:
-            begin
-              Instruction := WOD.QC;
-              InstructionDate := WOD."QC Date";
-            end;
+            11:
+                begin
+                    Instruction := WOD.QC;
+                    InstructionDate := WOD."QC Date";
+                end;
 
-          12:
-            begin
-              Instruction := WOD.SHP;
-              InstructionDate := WOD."SHP Date";
-            end;
+            12:
+                begin
+                    Instruction := WOD.SHP;
+                    InstructionDate := WOD."SHP Date";
+                end;
 
-          else
-            Instruction := '';
+            else
+                Instruction := '';
         end;
 
 
         if Instruction <> '' then begin
-          Length := StrLen(Instruction);
-          if Length > 115 then begin
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(Instruction,1,115);
-            InstrDate[LineCount] := InstructionDate;
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(Instruction,116,115);
-            InstrDate[LineCount] := InstructionDate;
-          end else begin
-            LineCount := LineCount + 1;
-            Instr[LineCount] := Instruction;
-            InstrDate[LineCount] := InstructionDate;
-          end;
+            Length := StrLen(Instruction);
+            if Length > 115 then begin
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(Instruction, 1, 115);
+                InstrDate[LineCount] := InstructionDate;
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(Instruction, 116, 115);
+                InstrDate[LineCount] := InstructionDate;
+            end else begin
+                LineCount := LineCount + 1;
+                Instr[LineCount] := Instruction;
+                InstrDate[LineCount] := InstructionDate;
+            end;
 
-          //Insert Blank Line
-          LineCount := LineCount + 1;
+            //Insert Blank Line
+            LineCount := LineCount + 1;
 
         end;
 
         // 01/05/2011 Start
         // Step,Model
-        GetInstructionPerStep(Step,'','',WOD."Model No.",'');
+        GetInstructionPerStep(Step, '', '', WOD."Model No.", '');
 
         // Step,Customer
-        GetInstructionPerStep(Step,WOD."Customer ID",'','','');
+        GetInstructionPerStep(Step, WOD."Customer ID", '', '', '');
 
         // Step,Customer,Part No.
         if (WOD."Customer Part No." <> '') then
-          GetInstructionPerStep(Step,WOD."Customer ID",'','',WOD."Customer Part No.");
+            GetInstructionPerStep(Step, WOD."Customer ID", '', '', WOD."Customer Part No.");
 
         // Step,Customer,Model
-        GetInstructionPerStep(Step,WOD."Customer ID",'',WOD."Model No.",'');
+        GetInstructionPerStep(Step, WOD."Customer ID", '', WOD."Model No.", '');
 
         // Step,Customer,ShipTo
-        GetInstructionPerStep(Step,WOD."Customer ID",WOM."Ship To Code",'','');
+        GetInstructionPerStep(Step, WOD."Customer ID", WOM."Ship To Code", '', '');
 
         // Step,Customer,ShiptTo,Model
-        GetInstructionPerStep(Step,WOD."Customer ID",WOM."Ship To Code",WOD."Model No.",'');
+        GetInstructionPerStep(Step, WOD."Customer ID", WOM."Ship To Code", WOD."Model No.", '');
 
         QCFileVisible := QCFileName <> '';
         // 01/05/2011 End
@@ -291,58 +291,58 @@ page 50042 "Work Instructions"
         WI: Record WorkInstructions;
         LineCount: Integer;
         Length: Integer;
-        Instr: array [50] of Code[250];
-        InstrDate: array [50] of Date;
+        Instr: array[50] of Code[250];
+        InstrDate: array[50] of Date;
         NewInstructions: Boolean;
         QCFileName: Text[120];
         QLTY_FILE_TO_PRINT: Label 'Attach the QC file <%1> to this Work Order.';
         [InDataSet]
         QCFileVisible: Boolean;
 
-    procedure GetInstructionPerStep(StepCode: Option REC,DIS,QOT,"B-O",CLN,ASM,TST,REP,RET,MSH,PNT,QC,SHP;CustCode: Code[20];ShpToCode: Code[10];ModelNo: Code[20];CustPartNo: Code[20])
+    procedure GetInstructionPerStep(StepCode: Enum DetailStep; CustCode: Code[20]; ShpToCode: Code[10]; ModelNo: Code[20]; CustPartNo: Code[20])
     begin
         // 01/05/2011 New function
         // set filters
-        WI.SetRange(WI."Customer Code",CustCode);
-        WI.SetRange(WI."Ship To Code",ShpToCode);
-        WI.SetRange(WI.Step,StepCode);
-        WI.SetRange(WI.Model,ModelNo);
-        WI.SetRange(WI."Customer Part No.",CustPartNo);
+        WI.SetRange(WI."Customer Code", CustCode);
+        WI.SetRange(WI."Ship To Code", ShpToCode);
+        WI.SetRange(WI.Step, StepCode);
+        WI.SetRange(WI.Model, ModelNo);
+        WI.SetRange(WI."Customer Part No.", CustPartNo);
 
         if WI.Find('-') then begin
-          Length := StrLen(WI.Instruction);
-          if Length > 230 then begin
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(WI.Instruction,1,115);
-            InstrDate[LineCount] := WI."Date Last Modified";
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(WI.Instruction,116,115);
-            InstrDate[LineCount] := WI."Date Last Modified";
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(WI.Instruction,231,50);
-            InstrDate[LineCount] := WI."Date Last Modified";
-          end;
+            Length := StrLen(WI.Instruction);
+            if Length > 230 then begin
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(WI.Instruction, 1, 115);
+                InstrDate[LineCount] := WI."Date Last Modified";
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(WI.Instruction, 116, 115);
+                InstrDate[LineCount] := WI."Date Last Modified";
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(WI.Instruction, 231, 50);
+                InstrDate[LineCount] := WI."Date Last Modified";
+            end;
 
-          if (Length > 115) and (Length <= 230) then begin
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(WI.Instruction,1,115);
-            InstrDate[LineCount] := WI."Date Last Modified";
-            LineCount := LineCount + 1;
-            Instr[LineCount] := CopyStr(WI.Instruction,116,115);
-            InstrDate[LineCount] := WI."Date Last Modified";
-          end;
+            if (Length > 115) and (Length <= 230) then begin
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(WI.Instruction, 1, 115);
+                InstrDate[LineCount] := WI."Date Last Modified";
+                LineCount := LineCount + 1;
+                Instr[LineCount] := CopyStr(WI.Instruction, 116, 115);
+                InstrDate[LineCount] := WI."Date Last Modified";
+            end;
 
-          if Length <= 115 then begin
+            if Length <= 115 then begin
+                LineCount := LineCount + 1;
+                Instr[LineCount] := WI.Instruction;
+                InstrDate[LineCount] := WI."Date Last Modified";
+            end;
+
+            //Insert Blank Line
             LineCount := LineCount + 1;
-            Instr[LineCount] := WI.Instruction;
-            InstrDate[LineCount] := WI."Date Last Modified";
-          end;
 
-          //Insert Blank Line
-          LineCount := LineCount + 1;
-
-          if WI."Part Quality Ctrl Instructions" <> '' then
-            QCFileName := GetQCFileName(WI."Part Quality Ctrl Instructions");
+            if WI."Part Quality Ctrl Instructions" <> '' then
+                QCFileName := GetQCFileName(WI."Part Quality Ctrl Instructions");
         end;
         WI.Reset;
     end;
@@ -353,8 +353,8 @@ page 50042 "Work Instructions"
     begin
         // 01/05/2011 New function
         repeat
-          QCFull := CopyStr(QCFull,StrPos(QCFull,'\')+1);
-        until StrPos(QCFull,'\') = 0;
+            QCFull := CopyStr(QCFull, StrPos(QCFull, '\') + 1);
+        until StrPos(QCFull, '\') = 0;
         exit(QCFull);
     end;
 }

@@ -1,10 +1,10 @@
 page 50021 "Back Order"
 {
     SourceTable = Status;
-    SourceTableView = SORTING("Order No.",Step)
+    SourceTableView = SORTING("Order No.", Step)
                       ORDER(Ascending)
-                      WHERE(Step=CONST("B-O"),
-                            Type=CONST(WorkOrder));
+                      WHERE(Step = CONST("B-O"),
+                            Type = CONST(WorkOrder));
 
     layout
     {
@@ -13,56 +13,56 @@ page 50021 "Back Order"
             group(Control1000000010)
             {
                 ShowCaption = false;
-                field("Order No.";"Order No.")
+                field("Order No."; "Order No.")
                 {
                     Editable = false;
                 }
-                field("WOD.""Model No.""";WOD."Model No.")
+                field("WOD.""Model No."""; WOD."Model No.")
                 {
                     Caption = 'Model No.';
 
                     trigger OnValidate()
                     begin
                         if WOD."Model No." <> OLDWOD."Model No." then begin
-                          WOD.Validate(WOD."Model No.");
-                          WOD.Modify;
+                            WOD.Validate(WOD."Model No.");
+                            WOD.Modify;
                         end;
                     end;
                 }
-                field("WOD.""Serial No.""";WOD."Serial No.")
+                field("WOD.""Serial No."""; WOD."Serial No.")
                 {
                     Caption = 'Serial No.';
 
                     trigger OnValidate()
                     begin
                         if WOD."Serial No." <> OLDWOD."Serial No." then
-                          WOD.Modify;
+                            WOD.Modify;
                     end;
                 }
-                field("WOM.Customer";WOM.Customer)
+                field("WOM.Customer"; WOM.Customer)
                 {
                     Caption = 'Customer';
                     Editable = false;
                 }
-                field("Date In";"Date In")
+                field("Date In"; "Date In")
                 {
                 }
-                field("Date Out";"Date Out")
+                field("Date Out"; "Date Out")
                 {
                 }
-                field(Employee;Employee)
+                field(Employee; Employee)
                 {
                 }
-                field("Regular Hours";"Regular Hours")
+                field("Regular Hours"; "Regular Hours")
                 {
                 }
-                field("Overtime Hours";"Overtime Hours")
+                field("Overtime Hours"; "Overtime Hours")
                 {
                 }
             }
-            part(PartsLines;"Back Order Parts List")
+            part(PartsLines; "Back Order Parts List")
             {
-                SubPageLink = "Work Order No."=FIELD("Order No.");
+                SubPageLink = "Work Order No." = FIELD("Order No.");
             }
         }
     }
@@ -81,8 +81,8 @@ page 50021 "Back Order"
                 trigger OnAction()
                 begin
                     if Confirm('Are you sure you want to replace this part?') then begin
-                      CurrPage.PartsLines.PAGE.ReplacePart;
-                      CurrPage.Update;
+                        CurrPage.PartsLines.PAGE.ReplacePart2;
+                        CurrPage.Update;
                     end;
                 end;
             }
@@ -97,8 +97,8 @@ page 50021 "Back Order"
                 begin
                     // CurrForm.PartsLines.FORM.PartsAllocation
 
-                    Parts.SetRange(Parts."Work Order No.","Order No.");
-                    PAGE.RunModal(PAGE :: "Parts Allocation",Parts);
+                    Parts.SetRange(Parts."Work Order No.", "Order No.");
+                    PAGE.RunModal(PAGE::"Parts Allocation", Parts);
                 end;
             }
             action("Picking Ticket")
@@ -112,8 +112,8 @@ page 50021 "Back Order"
                 begin
                     WOD.Reset;
                     WOD.Get("Order No.");
-                    WOD.SetFilter(WOD."Work Order No.","Order No.");
-                    REPORT.Run(50019,true,false,WOD);
+                    WOD.SetFilter(WOD."Work Order No.", "Order No.");
+                    REPORT.Run(50019, true, false, WOD);
                     WOD.Reset;
                 end;
             }
@@ -126,16 +126,16 @@ page 50021 "Back Order"
 
                 trigger OnAction()
                 begin
-                    Parts.SetCurrentKey("Work Order No.","Part Type","Part No.");
-                    Parts.SetRange(Parts."Work Order No.","Order No.");
+                    Parts.SetCurrentKey("Work Order No.", "Part Type", "Part No.");
+                    Parts.SetRange(Parts."Work Order No.", "Order No.");
                     if Parts.Find('-') then begin
-                      repeat
-                        Parts.CalcFields(Parts."In-Process Quantity");
-                        if Parts."In-Process Quantity" > 0 then begin
-                          Parts."Pulled Quantity" := Parts."In-Process Quantity";
-                          Parts.Modify;
-                        end;
-                      until Parts.Next = 0;
+                        repeat
+                            Parts.CalcFields(Parts."In-Process Quantity");
+                            if Parts."In-Process Quantity" > 0 then begin
+                                Parts."Pulled Quantity" := Parts."In-Process Quantity";
+                                Parts.Modify;
+                            end;
+                        until Parts.Next = 0;
                     end;
                 end;
             }

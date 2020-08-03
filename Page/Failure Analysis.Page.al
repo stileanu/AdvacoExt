@@ -113,9 +113,9 @@ page 50030 "Failure Analysis"
                                 ArrayCount := 1;
 
                                 if fItemCode[ArrayCount].AsInteger() > fItemCode[ArrayCount] ::" ".AsInteger() then begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(2);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::Test;
                                 end else begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(0);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::" ";
                                 end;
 
                                 //Convert to Codes
@@ -139,9 +139,9 @@ page 50030 "Failure Analysis"
                                 ArrayCount := 2;
 
                                 if fItemCode[ArrayCount].AsInteger() > 0 then begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(2);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::Test;
                                 end else begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(0);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::" ";
                                 end;
 
                                 //Convert to Codes
@@ -165,9 +165,9 @@ page 50030 "Failure Analysis"
                                 ArrayCount := 3;
 
                                 if fItemCode[ArrayCount].AsInteger() > 0 then begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(2);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::Test;
                                 end else begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(0);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::" ";
                                 end;
 
                                 //Convert to Codes
@@ -191,9 +191,9 @@ page 50030 "Failure Analysis"
                                 ArrayCount := 4;
 
                                 if fItemCode[ArrayCount].AsInteger() > 0 then begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(2);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::Test;
                                 end else begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(0);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::" ";
                                 end;
 
                                 //Convert to Codes
@@ -225,9 +225,9 @@ page 50030 "Failure Analysis"
                                 ArrayCount := 1;
 
                                 if fItemCode[ArrayCount].AsInteger() > 0 then begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(2);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::Test;
                                 end else begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(0);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::" ";
                                 end;
 
                                 //Convert to Codes
@@ -251,9 +251,9 @@ page 50030 "Failure Analysis"
                                 ArrayCount := 2;
 
                                 if fItemCode[ArrayCount].AsInteger() > 0 then begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(2);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::Test;
                                 end else begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(0);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::" ";
                                 end;
 
                                 //Convert to Codes
@@ -277,9 +277,9 @@ page 50030 "Failure Analysis"
                                 ArrayCount := 3;
 
                                 if fItemCode[ArrayCount].AsInteger() > 0 then begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(2);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::Test;
                                 end else begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(0);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::" ";
                                 end;
 
                                 //Convert to Codes
@@ -303,9 +303,9 @@ page 50030 "Failure Analysis"
                                 ArrayCount := 4;
 
                                 if fItemCode[ArrayCount].AsInteger() > 0 then begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(2);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::Test;
                                 end else begin
-                                    fFunctionalDepartment[ArrayCount] := FailureDept.FromInteger(0);
+                                    fFunctionalDepartment[ArrayCount] := PumpFailureDept::" ";
                                 end;
 
                                 //Convert to Codes
@@ -439,10 +439,10 @@ page 50030 "Failure Analysis"
 
     var
         fDefectCode: array[10] of Code[5];
-        fFunctionalDepartment: array[10] of Enum FailureDept;
+        fFunctionalDepartment: array[10] of Enum PumpFailureDept;
         fItemCode: array[10] of Enum FailureItem;
-        fKindCode: array[10] of Option " ",Missing,Wrong,Loose,"Broken/Cracked","Not Clean","Defective/Damaged",Contaiminated,"Out of Dim","Mis-Alignment",Peeling,"Surface Damage","Vacuum Leak","Poor Vacuum","Poor Pumping Speed","Leaks Oil","Seal Leak","Case Gasket Leaks","Window Leaks","Tubing Leaks",Seized,Noise,"Defective Bearings","High Vibration",Configuration;
-        fCategoryCode: array[10] of Option " ",Repaired,"Rework Required";
+        fKindCode: array[10] of Enum FailureCode;
+        fCategoryCode: array[10] of Enum FailWorkReq;
         fTech: array[10] of Code[10];
         FailureCodes: Record "Order Defects";
         FailureCodesInsert: Record "Order Defects";
@@ -463,22 +463,22 @@ page 50030 "Failure Analysis"
     begin
         Clear(FunctionalDepartment);
         case fFunctionalDepartment[ArrayCount] of
-            FailureDept::"Failure Analysis":
+            PumpFailureDept::"Failure Analysis":
                 begin
                     FunctionalDepartment := 'F';
                 end;
 
-            FailureDept::"Production Assembly":
+            PumpFailureDept::"Production Assembly":
                 begin
                     FunctionalDepartment := 'P';
                 end;
 
-            FailureDept::Test:
+            PumpFailureDept::Test:
                 begin
                     FunctionalDepartment := 'T';
                 end;
 
-            FailureDept::"Quality Control":
+            PumpFailureDept::"Quality Control":
                 begin
                     FunctionalDepartment := 'Q';
                 end;
@@ -495,87 +495,87 @@ page 50030 "Failure Analysis"
                     ItemCode := 'A';
                 end;
 
-            2:
+            FailureItem::Motor:
                 begin
                     ItemCode := 'B';
                 end;
 
-            3:
+            FailureItem::"Assembly":
                 begin
                     ItemCode := 'C';
                 end;
 
-            4:
+            FailureItem::Component:
                 begin
                     ItemCode := 'D';
                 end;
 
-            5:
+            FailureItem::Finish:
                 begin
                     ItemCode := 'E';
                 end;
 
-            6:
+            FailureItem::Hardware:
                 begin
                     ItemCode := 'F';
                 end;
 
-            7:
+            FailureItem::"Label":
                 begin
                     ItemCode := 'G';
                 end;
 
-            8:
+            FailureItem::Cover:
                 begin
                     ItemCode := 'H';
                 end;
 
-            9:
+            FailureItem::Base:
                 begin
                     ItemCode := 'I';
                 end;
 
-            10:
+            FailureItem::"Belt Guard":
                 begin
                     ItemCode := 'J';
                 end;
 
-            11:
+            FailureItem::Feet:
                 begin
                     ItemCode := 'K';
                 end;
 
-            12:
+            FailureItem::Tubing:
                 begin
                     ItemCode := 'L';
                 end;
 
-            13:
+            FailureItem::"Heat Exchanger":
                 begin
                     ItemCode := 'M';
                 end;
 
-            14:
+            FailureItem::Pulley:
                 begin
                     ItemCode := 'N';
                 end;
 
-            15:
+            FailureItem::Ballast:
                 begin
                     ItemCode := 'O';
                 end;
 
-            16:
+            FailureItem::"Oil Prep.":
                 begin
                     ItemCode := 'P';
                 end;
 
-            17:
+            FailureItem::"Line Cord":
                 begin
                     ItemCode := 'Q';
                 end;
 
-            18:
+            FailureItem::Documentation:
                 begin
                     ItemCode := 'R';
                 end;
@@ -585,7 +585,7 @@ page 50030 "Failure Analysis"
     procedure "fCodes Conversion"()
     begin
         Clear(KindCode);
-        case fKindCode[ArrayCount] of
+        case fKindCode[ArrayCount].AsInteger() of
             1:
                 begin
                     KindCode := '1';

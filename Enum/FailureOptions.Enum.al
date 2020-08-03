@@ -60,7 +60,6 @@ enum 50023 FailureDept
     value(1; "Production Assembly") { }
     value(2; Test) { }
     value(3; "Quality Control") { }
-    value(4; "Failure Analysis") { }
 }
 enum 50024 PumpFailureDept
 {

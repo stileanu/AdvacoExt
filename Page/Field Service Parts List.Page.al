@@ -16,24 +16,24 @@ page 50153 "Field Service Parts List"
         {
             repeater(Group)
             {
-                field("Part Type";"Part Type")
+                field("Part Type"; "Part Type")
                 {
                 }
-                field("Part No.";"Part No.")
+                field("Part No."; "Part No.")
                 {
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                 }
-                field("Quoted Quantity";"Quoted Quantity")
+                field("Quoted Quantity"; "Quoted Quantity")
                 {
                     Caption = 'Total Qty';
                 }
-                field("Pulled Quantity";"Pulled Quantity")
+                field("Pulled Quantity"; "Pulled Quantity")
                 {
                     Caption = 'Pulled Qty';
                 }
-                field("Serial No.";"Serial No.")
+                field("Serial No."; "Serial No.")
                 {
 
                     trigger OnValidate()
@@ -41,17 +41,17 @@ page 50153 "Field Service Parts List"
                         SelectItemEntry(FIELDNO("Serial No."));
                     end;
                 }
-                field("Quantity Backorder";"Quantity Backorder")
+                field("Quantity Backorder"; "Quantity Backorder")
                 {
                     Caption = 'BO Qty';
                     Editable = false;
                 }
-                field("In-Process Quantity";"In-Process Quantity")
+                field("In-Process Quantity"; "In-Process Quantity")
                 {
                     Caption = 'I/P Qty';
                     Editable = false;
                 }
-                field("Purchase Order No.";"Purchase Order No.")
+                field("Purchase Order No."; "Purchase Order No.")
                 {
                 }
             }
@@ -68,31 +68,31 @@ page 50153 "Field Service Parts List"
 
     procedure SelectItemEntry(CurrentFieldNo: Integer)
     begin
-        TESTFIELD("Part Type","Part Type"::Item);
-        ILE.SETCURRENTKEY("Item No.","Variant Code",Open,Positive,"Location Code","Posting Date");
-        ILE.SETRANGE("Item No.","Part No.");
-        ILE.SETRANGE(Open,TRUE);
-        ILE.SETRANGE(Positive,TRUE);
-        IF PAGE.RUNMODAL(PAGE::"Item Ledger Entries",ILE) = ACTION::LookupOK THEN BEGIN
-          Parts2 := Rec;
-          WITH Parts2 DO BEGIN
-            "Serial No." := ILE."Serial No.";
-            //"Part Cost" := ILE."Unit Cost"; ICE-MPC BC Upgrade
-            "Part Cost" := ILE.GetUnitCostLCY();
-          END;
-          Rec := Parts2;
+        TESTFIELD("Part Type", "Part Type"::Item);
+        ILE.SETCURRENTKEY("Item No.", "Variant Code", Open, Positive, "Location Code", "Posting Date");
+        ILE.SETRANGE("Item No.", "Part No.");
+        ILE.SETRANGE(Open, TRUE);
+        ILE.SETRANGE(Positive, TRUE);
+        IF PAGE.RUNMODAL(PAGE::"Item Ledger Entries", ILE) = ACTION::LookupOK THEN BEGIN
+            Parts2 := Rec;
+            WITH Parts2 DO BEGIN
+                "Serial No." := ILE."Serial No.";
+                //"Part Cost" := ILE."Unit Cost"; ICE-MPC BC Upgrade
+                "Part Cost" := ILE.GetUnitCostLCY();
+            END;
+            Rec := Parts2;
         END;
     end;
 
-    procedure PartsAllocation()
+    procedure PartsAllocation2()
     begin
         Rec.PartsAllocation;
     end;
 
-    procedure DeletePart()
+    procedure DeletePart2()
     begin
         IF "Quoted Quantity" > 0 THEN
-          ERROR('Quoted Quantity Must Be Zero to Delete');
+            ERROR('Quoted Quantity Must Be Zero to Delete');
 
         Rec.DeletePart;
     end;

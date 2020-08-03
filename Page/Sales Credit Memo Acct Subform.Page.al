@@ -5,7 +5,7 @@ page 50069 "Sales Credit Memo Acct Subform"
     MultipleNewLines = true;
     PageType = ListPart;
     SourceTable = "Sales Line";
-    SourceTableView = WHERE("Document Type"=FILTER("Credit Memo"));
+    SourceTableView = WHERE("Document Type" = FILTER("Credit Memo"));
 
     layout
     {
@@ -13,10 +13,10 @@ page 50069 "Sales Credit Memo Acct Subform"
         {
             repeater(Group)
             {
-                field(Type;Type)
+                field(Type; Type)
                 {
                 }
-                field("No.";"No.")
+                field("No."; "No.")
                 {
 
                     trigger OnValidate()
@@ -24,16 +24,16 @@ page 50069 "Sales Credit Memo Acct Subform"
                         NoOnAfterValidate();
                     end;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
                 }
-                field("Location Code";"Location Code")
+                field("Location Code"; "Location Code")
                 {
                 }
-                field("Gen. Prod. Posting Group";"Gen. Prod. Posting Group")
+                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                 {
                 }
-                field(Quantity;Quantity)
+                field(Quantity; Quantity)
                 {
                     Caption = 'Qty';
 
@@ -42,7 +42,7 @@ page 50069 "Sales Credit Memo Acct Subform"
                         QtyOnAfterValidate();
                     end;
                 }
-                field("Unit of Measure Code";"Unit of Measure Code")
+                field("Unit of Measure Code"; "Unit of Measure Code")
                 {
 
                     trigger OnValidate()
@@ -50,27 +50,27 @@ page 50069 "Sales Credit Memo Acct Subform"
                         QtyOnAfterValidate();
                     end;
                 }
-                field("Unit of Measure";"Unit of Measure")
+                field("Unit of Measure"; "Unit of Measure")
                 {
                     Visible = false;
                 }
-                field("Unit Price";"Unit Price")
+                field("Unit Price"; "Unit Price")
                 {
                 }
-                field("Unit Cost (LCY)";"Unit Cost (LCY)")
+                field("Unit Cost (LCY)"; "Unit Cost (LCY)")
                 {
                 }
-                field("Tax Group Code";"Tax Group Code")
+                field("Tax Group Code"; "Tax Group Code")
                 {
                 }
-                field(Amount;Amount)
+                field(Amount; Amount)
                 {
                     Editable = false;
                 }
-                field("Amount Including VAT";"Amount Including VAT")
+                field("Amount Including VAT"; "Amount Including VAT")
                 {
                 }
-                field("Appl.-to Item Entry";"Appl.-to Item Entry")
+                field("Appl.-to Item Entry"; "Appl.-to Item Entry")
                 {
                 }
             }
@@ -93,17 +93,17 @@ page 50069 "Sales Credit Memo Acct Subform"
 
     procedure ApproveCalcInvDisc()
     begin
-        CODEUNIT.Run(CODEUNIT::"Sales-Disc. (Yes/No)",Rec);
+        CODEUNIT.Run(CODEUNIT::"Sales-Disc. (Yes/No)", Rec);
     end;
 
     procedure CalcInvDisc()
     begin
-        CODEUNIT.Run(CODEUNIT::"Sales-Calc. Discount",Rec);
+        CODEUNIT.Run(CODEUNIT::"Sales-Calc. Discount", Rec);
     end;
 
     procedure ExplodeBOM()
     begin
-        CODEUNIT.Run(CODEUNIT::"Sales-Explode BOM",Rec);
+        CODEUNIT.Run(CODEUNIT::"Sales-Explode BOM", Rec);
     end;
 
     procedure OpenPurchOrderForm()
@@ -112,8 +112,8 @@ page 50069 "Sales Credit Memo Acct Subform"
         PurchOrder: Page "Purchase Order";
     begin
         if not "Drop Shipment" then
-          Error('The current sales line is not a drop shipment.');
-        PurchHeader.SetRange("No.","Purchase Order No.");
+            Error('The current sales line is not a drop shipment.');
+        PurchHeader.SetRange("No.", "Purchase Order No.");
         PurchOrder.SetTableView(PurchHeader);
         PurchOrder.Editable := false;
         PurchOrder.Run;
@@ -121,15 +121,15 @@ page 50069 "Sales Credit Memo Acct Subform"
 
     procedure InsertExtendedText(Unconditionally: Boolean)
     begin
-        if TransferExtendedText.SalesCheckIfAnyExtText(Rec,Unconditionally) then begin
-          CurrPage.SaveRecord;
-          TransferExtendedText.InsertSalesExtText(Rec);
+        if TransferExtendedText.SalesCheckIfAnyExtText(Rec, Unconditionally) then begin
+            CurrPage.SaveRecord;
+            TransferExtendedText.InsertSalesExtText(Rec);
         end;
         if TransferExtendedText.MakeUpdate then
-          CurrPage.Update;
+            CurrPage.Update;
     end;
 
-    procedure ShowReservation()
+    procedure ShowReservation2()
     begin
         Find;
         Rec.ShowReservation;
@@ -148,8 +148,8 @@ page 50069 "Sales Credit Memo Acct Subform"
     procedure QtyOnAfterValidate()
     begin
         if Reserve = Reserve::Always then begin
-          CurrPage.SaveRecord;
-          AutoReserve();
+            CurrPage.SaveRecord;
+            AutoReserve();
         end;
     end;
 
