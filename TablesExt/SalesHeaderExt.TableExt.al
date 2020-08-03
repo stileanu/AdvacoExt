@@ -124,7 +124,7 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
                 //<<End Insert
             end;
         }
-        field(50004; User; Code[15])
+        field(50004; User; Code[50])
         {
             Caption = 'User';
 

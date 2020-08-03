@@ -80,12 +80,19 @@ page 50100 GetValueDialog
                                 Message(AdvacoErr005, ValueNo_);
                             end;
                         end;
+                    lValueType::DateFilter:
+                        begin
+                            //if not Evaluate(dateInstall, ValueNo_) then begin
+                            //    Message(AdvacoErr005, ValueNo_);
+                            //end;
+                        end;
+
                 end;
         exit(true);
     end;
 
     var
-        ValueNo_: Code[20];
+        ValueNo_: Code[50];
         lValueType: Enum ValueType;
         lValidate: Boolean;
         AdvacoErr001: Label 'Work Order No. %1 does not exist.';
@@ -127,8 +134,8 @@ page 50100 GetValueDialog
 
     procedure GetWorkOrderNo_(var WorkOrderNo_: Code[20])
     begin
-        if lValueType = lValueType::InstallText then
-            WorkOrderNo_ := Format(dateInstall)
+        if (lValueType = lValueType::InstallText) or (lValueType = lValueType::DateFilter) then
+            WorkOrderNo_ := Format(ValueNo_)
         else
             WorkOrderNo_ := ValueNo_;
     end;
