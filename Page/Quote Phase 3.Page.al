@@ -9,6 +9,10 @@ page 50017 "Quote Phase 3"
     // 3/25/18
     //   Reset <Overwrite Cr. Limit> field after release, user needs to ask permission from Accounting again.
 
+    ///--! FileMgmt issue
+    // 08/05/20 ICE SII
+    //   Temporary commented File.Exist function not working in cloud
+
     SourceTable = WorkOrderDetail;
 
     layout
@@ -259,15 +263,17 @@ page 50017 "Quote Phase 3"
         WOS.SetRange(WOS."Order No.", "Work Order No.");
         if WOS.Find('+') then begin
             WOS."File Exists" := false;
+            ///--! FileMgmt issue
+            // 08/05/20 ICE SII
+            /*
             CustFile := 'C:\Windows\Desktop\' + WOM.Customer + '-' + WOM."Ship To Code" + '.doc';
             WOS."File Exists" := Exists(CustFile);
-
-
 
             if WOS."File Exists" = true then
                 CustInfoVisible := true
             else
                 CustInfoVisible := false;
+            */
         end;
 
         Type := "Order Type";

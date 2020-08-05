@@ -1,5 +1,14 @@
 page 50019 "Quote Modify"
 {
+    ///--! FileMgmt issue
+    // 08/05/20 ICE SII
+    //   Temporary commented File.Exist function not working in cloud
+
+    ///--! Email issue
+    // 08/05/20 ICE SII
+    //   Temporary commented NewMessage email function not working in Cloud 
+
+
     SourceTable = Status;
     SourceTableView = SORTING("Order No.", "Line No.")
                       ORDER(Ascending)
@@ -364,7 +373,9 @@ page 50019 "Quote Modify"
         OLDWOD := WOD;
 
         "File Exists" := false;
-
+        ///--! FileMgmt issue
+        // 08/05/20 ICE SII
+        /*
         CustFile := 'F:\SHARED\Customer Records\' + WOM.Customer + '-' + WOM."Ship To Code" + '.doc';
         "File Exists" := Exists(CustFile);
 
@@ -372,6 +383,7 @@ page 50019 "Quote Modify"
             CustInfoVisible := true
         else
             CustInfoVisible := false;
+        */
 
         //Prevents adding Pump Module No. before the Order is Processed by the Parts Department
         if WOD."Pump Module Processed" then
@@ -430,7 +442,7 @@ page 50019 "Quote Modify"
     procedure QuoteToPDFEmail(WOD: Record WorkOrderDetail; Customer: Record Customer)
     var
         UserSetup: Record "User Setup";
-        PDFPrinter: Codeunit "Export Invoices to PDF";
+        PDFPrinter: Codeunit ExportInvoicesToPDF;
         InternalEmail: Codeunit Mail;
         UserSignature: array[8] of Text[120];
         AttachmentName: Text[250];
@@ -478,7 +490,9 @@ page 50019 "Quote Modify"
                     BodyText += UserSignature[i] + CRLF;
                 i += 1;
             until i > 8;
-            InternalEmail.NewMessage(MailTo, MailCC, SubjectLine, BodyText, AttachmentName, '', false);
+            ///--! Email issue
+            // 08/05/20 ICE SII              
+            //InternalEmail.NewMessage(MailTo, MailCC, SubjectLine, BodyText, AttachmentName, '', false);
         end;
     end;
 }

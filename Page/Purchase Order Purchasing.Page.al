@@ -21,6 +21,14 @@ page 50074 "Purchase Order Purchasing"
     // 12/13/19
     //   Added code to check and correct link to Blanket Order
 
+    ///--! Email issue
+    // 08/05/20 ICE SII
+    //   Temporary commented NewMessage email function not working in Cloud 
+
+    ///--! Report not converted yet
+    // 08/05/20 ICE SII
+    //   Temporary commented out call to "Bill of Lading" Report    
+
     PageType = Card;
     SourceTable = "Purchase Header";
     SourceTableView = SORTING("Document Type", "Location Code", "No.")
@@ -696,7 +704,9 @@ page 50074 "Purchase Order Purchasing"
                         until LabelCounter >= LoopCounter;
                     end;
                 until PurchLine.Next = 0;
-                REPORT.Run(REPORT::"Bill of Lading Report");
+                ///--! Report not converted yet
+                // 08/05/20 ICE SII
+                //REPORT.Run(REPORT::"Bill of Lading Report");
             end;
         end;
     end;
@@ -704,7 +714,7 @@ page 50074 "Purchase Order Purchasing"
     procedure PrintPOPDFEmail(PurchaseOrder: Record "Purchase Header"; BuyFromVendor: Record Vendor): Boolean
     var
         UserSetup: Record "User Setup";
-        PDFPrinter: Codeunit "Export Invoices to PDF";
+        PDFPrinter: Codeunit ExportInvoicesToPDF;
         EmailToVendor: Codeunit Mail;
         UserSignature: array[8] of Text[120];
         AttachmentName: Text[250];
@@ -748,7 +758,9 @@ page 50074 "Purchase Order Purchasing"
                     BodyText += UserSignature[i] + CRLF;
                 i += 1;
             until i > 8;
-            EmailToVendor.NewMessage(MailTo, MailCC, SubjectLine, BodyText, AttachmentName, '', false);
+            ///--! Email issue
+            // 08/05/20 ICE SII 
+            //EmailToVendor.NewMessage(MailTo, MailCC, SubjectLine, BodyText, AttachmentName, '', false);
         end;
     end;
 }

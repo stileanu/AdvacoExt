@@ -442,7 +442,7 @@ page 50029 "QC Failure"
         fFunctionalDepartment: array[10] of Enum PumpFailureDept;
         fItemCode: array[10] of Enum FailureItem;
         fKindCode: array[10] of Enum FailureCode;
-        fCategoryCode: array[10] of Option " ",Repaired,"Rework Required";
+        fCategoryCode: array[10] of Enum FailWorkReq;
         fTech: array[10] of Code[10];
         FailureCodes: Record "Order Defects";
         FailureCodesInsert: Record "Order Defects";

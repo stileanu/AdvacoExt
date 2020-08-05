@@ -1,5 +1,13 @@
 page 50015 "Quote Phase 2"
 {
+    ///--! FileMgmt issue
+    // 08/05/20 ICE SII
+    //   Temporary commented File.Exist function not working in cloud
+
+    ///--! Email issue
+    // 08/05/20 ICE SII
+    //   Temporary commented NewMessage email function not working in Cloud     
+
     SourceTable = WorkOrderDetail;
 
     layout
@@ -312,6 +320,10 @@ page 50015 "Quote Phase 2"
         WOS.SetRange(WOS."Order No.", "Work Order No.");
         if WOS.Find('+') then begin
             WOS."File Exists" := false;
+
+            ///--! FileMgmt issue
+            // 08/05/20 ICE SII
+            /*
             CustFile := 'C:\Windows\Desktop\' + WOM.Customer + '-' + WOM."Ship To Code" + '.doc';
             WOS."File Exists" := Exists(CustFile);
 
@@ -319,6 +331,7 @@ page 50015 "Quote Phase 2"
                 CustInfoVisible := true
             else
                 CustInfoVisible := false;
+            */
         end;
     end;
 
@@ -344,7 +357,7 @@ page 50015 "Quote Phase 2"
     procedure QuoteToPDFEmail(WOD: Record WorkOrderDetail; Customer: Record Customer)
     var
         UserSetup: Record "User Setup";
-        PDFPrinter: Codeunit "Export Invoices to PDF";
+        PDFPrinter: Codeunit ExportInvoicesToPDF;
         InternalEmail: Codeunit Mail;
         UserSignature: array[8] of Text[120];
         AttachmentName: Text[250];
@@ -387,7 +400,9 @@ page 50015 "Quote Phase 2"
                     BodyText += UserSignature[i] + CRLF;
                 i += 1;
             until i > 8;
-            InternalEmail.NewMessage(MailTo, MailCC, SubjectLine, BodyText, AttachmentName, '', false);
+            ///--! Email issue
+            // 08/05/20 ICE SII     
+            //InternalEmail.NewMessage(MailTo, MailCC, SubjectLine, BodyText, AttachmentName, '', false);
         end;
     end;
 }
