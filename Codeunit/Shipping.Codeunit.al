@@ -197,5 +197,34 @@ codeunit 50006 Shipping
             END;
         END;
     end;
+
+    procedure ContainerToBOLContainer(ContVal: Enum Container): Enum BOLContainer
+    var
+        BOLCont: Enum BOLContainer;
+    begin
+        case ContVal of
+            ContVal::Skid:
+                BOLCont := BOLCont::Skid;
+            ContVal::Crate:
+                BOLCont := BOLCont::Crate;
+            ContVal::Drum:
+                BOLCont := BOLCont::Drum;
+            ContVal::"Skid Box":
+                BOLCont := BOLCont::"Skid Box";
+            ContVal::Loose:
+                BOLCont := BOLCont::Loose;
+            else
+                BOLCont := BOLContainer.FromInteger(ContVal.AsInteger());
+        end;
+
+        exit(BOLCont);
+    end;
+
+    procedure ShipChrgToBOLShipChrg(ShCharge: Enum ShippingCharge): Enum BOLShipCharge
+    var
+        BOLShpCrg: Enum BOLShipCharge;
+    begin
+        exit(BOLShipCharge.FromInteger(ShCharge.AsInteger()));
+    end;
 }
 

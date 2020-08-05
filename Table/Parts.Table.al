@@ -488,7 +488,7 @@ table 50003 Parts
         ///--!
         //Window: Dialog;
         GetItemNo: Page GetValueDialog;
-        SetType: Enum ValueType;
+        SetValType: Enum ValueType;
         NewPart: Code[20];
         NewPartRecord: Record Parts;
         OriginalRecord: Record Parts;
@@ -771,7 +771,7 @@ table 50003 Parts
             //Window.OPEN('Enter the new part number #1#########', NewPart);
             //Window.INPUT();
             //Window.CLOSE;
-            GetItemNo.SetDialogValueType(SetType::Item, false);
+            GetItemNo.SetDialogValueType(SetValType::Item, false);
             if GetItemNo.RunModal() = Action::OK then
                 GetItemNo.GetWorkOrderNo_(NewPart);
             IF NewPart <> '' THEN BEGIN

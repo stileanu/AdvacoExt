@@ -123,9 +123,15 @@ page 50013 "Quote Phase 1"
                             if not Confirm('Are you sure you wish to change the Order Type?') then begin
                                 Error('Order Type has not been changed');
                             end else begin
-                                Window.Open('Enter Order Change Reason #1#######################', OrderReason);
-                                Window.Input();
-                                Window.Close;
+                                ///--!
+                                //Window.Open('Enter Order Change Reason #1#######################', OrderReason);
+                                //Window.Input();
+                                //Window.Close;
+                                vOR := OrderReason;
+                                InValDialog.SetValueType(InValType::TextType, 'Enter Order Change Reason:');
+                                if InValDialog.RunModal() = Action::OK then
+                                    InValDialog.GetEnteredValue(vOR);
+                                OrderReason := StrSubstNo(vOR, 1, 100);
                                 if OrderReason = '' then begin
                                     Error('You must enter a reason in order to change the Order Type');
                                 end else begin
@@ -271,6 +277,9 @@ page 50013 "Quote Phase 1"
     end;
 
     var
+        vOR: Variant;
+        InValDialog: Page InputValueDialog;
+        InValType: Enum InValueType;
         Window: Dialog;
         OrderReason: Text[100];
         WOD: Record WorkOrderDetail;

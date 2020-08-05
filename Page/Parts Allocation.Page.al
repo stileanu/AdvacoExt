@@ -212,9 +212,15 @@ page 50010 "Parts Allocation"
                             Error('You can''t allocate parts until the Quote is Released');
                     end;
 
-                    Window.Open('Enter the amount to Allocate #1#########', PN);
-                    Window.Input();
-                    Window.Close;
+                    ///--!
+                    //Window.Open('Enter the amount to Allocate #1#########', PN);
+                    //Window.Input();
+                    //Window.Close;
+                    vPN := PN;
+                    InValDialog.SetValueType(InValType::IntegerType, 'Enter the amount to Allocate:');
+                    if InValDialog.RunModal() = Action::OK then
+                        InValDialog.GetEnteredValue(vPN);
+                    PN := vPN;
 
                     QtyOnHand := (Item.Inventory - Item."Reserved Qty. on Inventory");
 
@@ -356,6 +362,9 @@ page 50010 "Parts Allocation"
     end;
 
     var
+        vPN: Variant;
+        InValDialog: Page InputValueDialog;
+        InValType: Enum InValueType;
         Parts: Record Parts;
         Parts2: Record Parts;
         WOD: Record WorkOrderDetail;
