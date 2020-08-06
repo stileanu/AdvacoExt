@@ -7,6 +7,7 @@ page 50105 "Work Order Master List"
     PageType = List;
     ApplicationArea = All;
     UsageCategory = Lists;
+    CardPageId = "Work Order Master";
     SourceTable = WorkOrderMaster;
 
     layout

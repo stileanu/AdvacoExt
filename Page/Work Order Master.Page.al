@@ -10,6 +10,9 @@ page 50000 "Work Order Master"
     //   Added CC processing fields. Make CC fields editable for Sales Manager.
 
     PageType = Card;
+    //ApplicationArea = All;
+    //UsageCategory = Administration;
+    UsageCategory = None;
     SourceTable = WorkOrderMaster;
 
     layout
@@ -29,20 +32,25 @@ page 50000 "Work Order Master"
                         field("Work Order Master No."; "Work Order Master No.")
                         {
                             Editable = false;
+                            ApplicationArea = All;
                         }
                         field(Customer; Customer)
                         {
+                            ApplicationArea = All;
                         }
                         field("Ship To Code"; "Ship To Code")
                         {
+                            ApplicationArea = All;
                         }
                         field("Date Ordered"; "Date Ordered")
                         {
                             Editable = false;
+                            ApplicationArea = All;
                         }
                     }
                 }
             }
+
             group(General)
             {
                 group(Control1220060050)
@@ -51,38 +59,47 @@ page 50000 "Work Order Master"
                     field("Customer Name"; "Customer Name")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Customer Address 1"; "Customer Address 1")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Customer Address 2"; "Customer Address 2")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Customer City"; "Customer City")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Customer State"; "Customer State")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Customer Zip Code"; "Customer Zip Code")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Tax Liable"; "Tax Liable")
                     {
                         Editable = ControlsEditable;
+                        ApplicationArea = All;
                     }
                     field("Tax Exemption No."; "Tax Exemption No.")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Exempt Organization"; "Exempt Organization")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                 }
                 group(Control1220060051)
@@ -144,6 +161,8 @@ page 50000 "Work Order Master"
                     }
                 }
             }
+
+
             group(Payment)
             {
                 group(Control1220060052)
