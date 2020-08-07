@@ -83,15 +83,18 @@ page 50009 "Job Status"
                         ShowCaption = false;
                         field("Order No."; "Order No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("WOM.Customer"; WOM.Customer)
                         {
+                            ApplicationArea = All;
                             Caption = 'Customer';
                             Editable = false;
                         }
                         field("WOM.""Date Ordered"""; WOM."Date Ordered")
                         {
+                            ApplicationArea = All;
                             Caption = 'Order Date';
                             Editable = false;
                         }
@@ -106,67 +109,82 @@ page 50009 "Job Status"
                     ShowCaption = false;
                     field("FORMAT(WOD.""Order Type"",0)"; Format(WOD."Order Type", 0))
                     {
+                        ApplicationArea = All;
                         Caption = 'Order Type';
                         Editable = false;
                     }
                     field(Step; Step)
                     {
+                        ApplicationArea = All;
                         Caption = 'Current Job Step';
                         Editable = false;
                     }
                     field(ModelNo; ModelNo)
                     {
+                        ApplicationArea = All;
                         Caption = 'Model No.';
                         Editable = ModelNoEditable;
                     }
                     field("WOD.""Model Verified"""; WOD."Model Verified")
                     {
+                        ApplicationArea = All;
                         Caption = 'Model Verified';
                     }
                     field(SerialNo; SerialNo)
                     {
+                        ApplicationArea = All;
                         Caption = 'Serial No.';
                         Editable = SerialNoEditable;
                     }
                     field(Employee; Employee)
                     {
+                        ApplicationArea = All;
                     }
                     field("Date In"; "Date In")
                     {
+                        ApplicationArea = All;
                         Caption = 'Start Date';
                     }
                     field("Date Out"; "Date Out")
                     {
+                        ApplicationArea = All;
                         Caption = 'Finish Date';
                     }
                     field("Regular Hours"; "Regular Hours")
                     {
+                        ApplicationArea = All;
                         Caption = 'Reg Time On Step';
                     }
                     field("Overtime Hours"; "Overtime Hours")
                     {
+                        ApplicationArea = All;
                         Caption = 'OverTime on Step';
                     }
                     field("WOD.oContainerSaved"; WOD.oContainerSaved)
                     {
+                        ApplicationArea = All;
                         Caption = 'Saved Container';
                         Editable = ContainerEditable;
                     }
                     field("WOD.""Container Type"""; WOD."Container Type")
                     {
+                        ApplicationArea = All;
                         Caption = 'Container Type';
                         Editable = ContainerTypeEditable;
                     }
                     field(Status; Status)
                     {
+                        ApplicationArea = All;
                         Caption = 'Status Code';
                     }
                     field("WOD.""Safety Form"""; WOD."Safety Form")
                     {
+                        ApplicationArea = All;
                         Caption = 'Safety Form';
                     }
                     field("WOD.""Receiving Notes"""; WOD."Receiving Notes")
                     {
+                        ApplicationArea = All;
                         Caption = 'Receiving Notes';
                         MultiLine = true;
                     }
@@ -177,6 +195,7 @@ page 50009 "Job Status"
                     Visible = NonCopperVisible;
                     field("WOD.Description"; WOD.Description)
                     {
+                        ApplicationArea = All;
                         Caption = 'Description';
                         Editable = false;
                     }
@@ -185,61 +204,73 @@ page 50009 "Job Status"
                         Caption = 'Current Work Instructions';
                         field("Instr[1]"; Instr[1])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("Instr[2]"; Instr[2])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("Instr[3]"; Instr[3])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("Instr[4]"; Instr[4])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("Instr[5]"; Instr[5])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("Instr[6]"; Instr[6])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("Instr[7]"; Instr[7])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("Instr[8]"; Instr[8])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("Instr[9]"; Instr[9])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("Instr[10]"; Instr[10])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("Instr[11]"; Instr[11])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("Instr[12]"; Instr[12])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
@@ -255,6 +286,7 @@ page 50009 "Job Status"
         {
             action("ISO Procedure")
             {
+                ApplicationArea = All;
                 Caption = 'ISO Procedure';
                 Visible = cmdProcedureVisible;
 
@@ -267,6 +299,7 @@ page 50009 "Job Status"
             }
             action("&Skip Step")
             {
+                ApplicationArea = All;
                 Caption = '&Skip Step';
 
                 trigger OnAction()

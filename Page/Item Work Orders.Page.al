@@ -2,9 +2,9 @@ page 50056 "Item Work Orders"
 {
     PageType = List;
     SourceTable = Parts;
-    SourceTableView = SORTING("Work Order No.","Part No.")
+    SourceTableView = SORTING("Work Order No.", "Part No.")
                       ORDER(Ascending)
-                      WHERE(Complete=FILTER(false));
+                      WHERE(Complete = FILTER(false));
 
     layout
     {
@@ -12,26 +12,33 @@ page 50056 "Item Work Orders"
         {
             repeater(Group)
             {
-                field("Work Order No.";"Work Order No.")
+                field("Work Order No."; "Work Order No.")
                 {
+                    ApplicationArea = All;
                 }
-                field("Part No.";"Part No.")
+                field("Part No."; "Part No.")
                 {
+                    ApplicationArea = All;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
-                field("Quoted Quantity";"Quoted Quantity")
+                field("Quoted Quantity"; "Quoted Quantity")
                 {
+                    ApplicationArea = All;
                 }
-                field("Committed Quantity";"Committed Quantity")
+                field("Committed Quantity"; "Committed Quantity")
                 {
+                    ApplicationArea = All;
                 }
-                field("In-Process Quantity";"In-Process Quantity")
+                field("In-Process Quantity"; "In-Process Quantity")
                 {
+                    ApplicationArea = All;
                 }
-                field("Quantity Backorder";"Quantity Backorder")
+                field("Quantity Backorder"; "Quantity Backorder")
                 {
+                    ApplicationArea = All;
                 }
             }
         }

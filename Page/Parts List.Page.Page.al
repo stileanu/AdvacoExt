@@ -16,36 +16,46 @@ page 50005 "Parts List"
         {
             repeater(Group)
             {
-                field("Part No.";"Part No.")
+                field("Part No."; "Part No.")
                 {
+                    ApplicationArea = All;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
-                field("Serial No.";"Serial No.")
+                field("Serial No."; "Serial No.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
-                field("Quoted Price";"Quoted Price")
+                field("Quoted Price"; "Quoted Price")
                 {
+                    ApplicationArea = All;
                 }
-                field("Part Cost";"Part Cost")
+                field("Part Cost"; "Part Cost")
                 {
+                    ApplicationArea = All;
                 }
-                field("Quoted Quantity";"Quoted Quantity")
+                field("Quoted Quantity"; "Quoted Quantity")
                 {
+                    ApplicationArea = All;
                 }
-                field("Pulled Quantity";"Pulled Quantity")
+                field("Pulled Quantity"; "Pulled Quantity")
                 {
+                    ApplicationArea = All;
                 }
-                field("Committed Quantity";"Committed Quantity")
+                field("Committed Quantity"; "Committed Quantity")
                 {
+                    ApplicationArea = All;
                 }
-                field("BOM Quantity";"BOM Quantity")
+                field("BOM Quantity"; "BOM Quantity")
                 {
+                    ApplicationArea = All;
                 }
-                field("Purchase Order No.";"Purchase Order No.")
+                field("Purchase Order No."; "Purchase Order No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
             }

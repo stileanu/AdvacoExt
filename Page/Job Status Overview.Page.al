@@ -9,40 +9,48 @@ page 50007 "Job Status Overview"
             group(Control1000000001)
             {
                 ShowCaption = false;
-                field("Work Order No.";"Work Order No.")
+                field("Work Order No."; "Work Order No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
-                field("Order Type";"Order Type")
+                field("Order Type"; "Order Type")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
-                field("Model No.";"Model No.")
+                field("Model No."; "Model No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
-                field("Serial No.";"Serial No.")
+                field("Serial No."; "Serial No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
-                field("Customer ID";"Customer ID")
+                field("Customer ID"; "Customer ID")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
             }
-            part(Control1000000008;"Job Status List")
+            part(Control1000000008; "Job Status List")
             {
-                SubPageLink = "Order No."=FIELD("Work Order No.");
+                ApplicationArea = All;
+                SubPageLink = "Order No." = FIELD("Work Order No.");
             }
             group(Control1000000009)
             {
                 ShowCaption = false;
-                field(BO;BO)
+                field(BO; BO)
                 {
+                    ApplicationArea = All;
                     ShowCaption = false;
                 }
             }

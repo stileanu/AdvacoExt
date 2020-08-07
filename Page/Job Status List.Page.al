@@ -16,29 +16,37 @@ page 50008 "Job Status List"
         {
             repeater(Group)
             {
-                field("Order No.";"Order No.")
+                field("Order No."; "Order No.")
                 {
+                    ApplicationArea = All;
                 }
-                field(Step;Step)
+                field(Step; Step)
                 {
+                    ApplicationArea = All;
                 }
-                field("Date In";"Date In")
+                field("Date In"; "Date In")
                 {
+                    ApplicationArea = All;
                 }
-                field("Date Out";"Date Out")
+                field("Date Out"; "Date Out")
                 {
+                    ApplicationArea = All;
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
+                    ApplicationArea = All;
                 }
-                field(Employee;Employee)
+                field(Employee; Employee)
                 {
+                    ApplicationArea = All;
                 }
-                field("Regular Hours";"Regular Hours")
+                field("Regular Hours"; "Regular Hours")
                 {
+                    ApplicationArea = All;
                 }
-                field("Overtime Hours";"Overtime Hours")
+                field("Overtime Hours"; "Overtime Hours")
                 {
+                    ApplicationArea = All;
                 }
             }
         }

@@ -21,6 +21,8 @@ page 50002 "Work Order Detail"
     InsertAllowed = false;
     PageType = Card;
     SourceTable = WorkOrderDetail;
+    UsageCategory = Tasks;
+    ApplicationArea = All;
 
     layout
     {
@@ -39,16 +41,19 @@ page 50002 "Work Order Detail"
                         field("Work Order No."; "Work Order No.")
                         {
                             Editable = false;
+                            ApplicationArea = All;
                         }
                         field("Customer ID"; "Customer ID")
                         {
                             Caption = 'Customer';
                             Editable = false;
+                            ApplicationArea = All;
                         }
                         field("WOM.""Date Ordered"""; WOM."Date Ordered")
                         {
                             Caption = 'Order Date';
                             Editable = false;
+                            ApplicationArea = All;
                         }
                     }
                 }
@@ -60,6 +65,7 @@ page 50002 "Work Order Detail"
                     ShowCaption = false;
                     field("Order Type"; "Order Type")
                     {
+                        ApplicationArea = All;
 
                         trigger OnValidate()
                         begin
@@ -74,47 +80,60 @@ page 50002 "Work Order Detail"
                     }
                     field("Initial Order Type"; "Initial Order Type")
                     {
+                        ApplicationArea = All;
                         Editable = InitialWorkOrderTypeEditable;
                     }
                     field("Non Copper"; "Non Copper")
                     {
+                        ApplicationArea = All;
                         Caption = 'INTEL Non Copper';
                         Editable = NonCopperEditable;
                     }
                     field("System Shipment"; "System Shipment")
                     {
+                        ApplicationArea = All;
                     }
                     field("Detail No."; "Detail No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Model No."; "Model No.")
                     {
+                        ApplicationArea = All;
                     }
                     field(Description; Description)
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Model Type"; "Model Type")
                     {
+                        ApplicationArea = All;
                     }
                     field("Serial No."; "Serial No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Tool ID"; "Tool ID")
                     {
+                        ApplicationArea = All;
                     }
                     field("Customer Part No."; "Customer Part No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Customer PO No."; "Customer PO No.")
                     {
+                        ApplicationArea = All;
                     }
                     field(Notes; Notes)
                     {
+                        ApplicationArea = All;
                     }
                     field("Build Ahead"; "Build Ahead")
                     {
+                        ApplicationArea = All;
                     }
                 }
                 group(Control1220060125)
@@ -122,59 +141,75 @@ page 50002 "Work Order Detail"
                     ShowCaption = false;
                     field("Oil Type"; "Oil Type")
                     {
+                        ApplicationArea = All;
                     }
                     field("Income Code"; "Income Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Safety Form"; "Safety Form")
                     {
+                        ApplicationArea = All;
                     }
                     field("Tax Liable"; "Tax Liable")
                     {
+                        ApplicationArea = All;
                     }
                     field(TD; TD)
                     {
+                        ApplicationArea = All;
                     }
                     field(RD; RD)
                     {
+                        ApplicationArea = All;
                         Caption = 'PID';
                     }
                     field(Diagnosis; Diagnosis)
                     {
+                        ApplicationArea = All;
                         MultiLine = true;
                     }
                     field("Date Required"; "Date Required")
                     {
+                        ApplicationArea = All;
                     }
                     field("Quote Sent Date"; "Quote Sent Date")
                     {
+                        ApplicationArea = All;
                         Caption = 'Quote Sent';
                         Editable = false;
                     }
                     field(Control1220060025; "Install Date")
                     {
+                        ApplicationArea = All;
                         ShowCaption = false;
                     }
                     field("Sales Order No."; "Sales Order No.")
                     {
+                        ApplicationArea = All;
                         Editable = SalesOrderNoEditable;
                     }
                     field(Boxed; Boxed)
                     {
+                        ApplicationArea = All;
                     }
                     field(Expedite; Expedite)
                     {
+                        ApplicationArea = All;
                     }
                     field("Inventory Cost Adjusted"; "Inventory Cost Adjusted")
                     {
+                        ApplicationArea = All;
                         Editable = InvCostAdjustedEditable;
                     }
                     field("Customer Viewable Notes"; "Customer Viewable Notes")
                     {
+                        ApplicationArea = All;
                         MultiLine = true;
                     }
                     field("Ultimate Test"; "Ultimate Test")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                 }
@@ -191,14 +226,17 @@ page 50002 "Work Order Detail"
                         ShowCaption = false;
                         field(Quote; Quote)
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("Unrepairable Reason"; "Unrepairable Reason")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("Unrepairable Handling"; "Unrepairable Handling")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                     }
@@ -211,30 +249,39 @@ page 50002 "Work Order Detail"
                     Caption = 'Step Work Instructions:';
                     field(REC; RCV)
                     {
+                        ApplicationArea = All;
                     }
                     field(DIS; DIS)
                     {
+                        ApplicationArea = All;
                     }
                     field(QOT; QOT)
                     {
+                        ApplicationArea = All;
                     }
                     field(CLN; CLN)
                     {
+                        ApplicationArea = All;
                     }
                     field(ASM; ASM)
                     {
+                        ApplicationArea = All;
                     }
                     field(TST; TST)
                     {
+                        ApplicationArea = All;
                     }
                     field(PNT; PNT)
                     {
+                        ApplicationArea = All;
                     }
                     field(QC; QC)
                     {
+                        ApplicationArea = All;
                     }
                     field(SHP; SHP)
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
@@ -245,42 +292,55 @@ page 50002 "Work Order Detail"
                     ShowCaption = false;
                     field("Ship To Name"; "Ship To Name")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship To Address 1"; "Ship To Address 1")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship To Address 2"; "Ship To Address 2")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship To City"; "Ship To City")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship To State"; "Ship To State")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship To Zip Code"; "Ship To Zip Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Phone No."; "Phone No.")
                     {
+                        ApplicationArea = All;
                     }
                     field(Attention; Attention)
                     {
+                        ApplicationArea = All;
                     }
                     field("Payment Method"; "Payment Method")
                     {
+                        ApplicationArea = All;
                     }
                     field("Payment Terms"; "Payment Terms")
                     {
+                        ApplicationArea = All;
                     }
                     field("Card Type"; "Card Type")
                     {
+                        ApplicationArea = All;
                     }
                     field("Credit Card No."; "Credit Card No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Credit Card Exp."; "Credit Card Exp.")
                     {
+                        ApplicationArea = All;
                     }
                 }
                 group(Control1220060136)
@@ -288,58 +348,73 @@ page 50002 "Work Order Detail"
                     ShowCaption = false;
                     field(Carrier; Carrier)
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipping Method"; "Shipping Method")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipping Account"; "Shipping Account")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipping Charge"; "Shipping Charge")
                     {
+                        ApplicationArea = All;
                     }
                     field("Container Type"; "Container Type")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Container Quantity"; "Container Quantity")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field(oContainerSaved; oContainerSaved)
                     {
+                        ApplicationArea = All;
                         Caption = 'Container Saved';
                         Editable = false;
                     }
                     field("Ship Weight"; "Ship Weight")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Bill of Lading"; "Bill of Lading")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Package Tracking No."; "Package Tracking No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field(Accessories; Accessories)
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Receiving Notes"; "Receiving Notes")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Pump Module"; "Pump Module")
                     {
+                        ApplicationArea = All;
                     }
                     field("Pump Module No."; "Pump Module No.")
                     {
+                        ApplicationArea = All;
                         Editable = PumpModuleNoEditable;
                     }
                     field("Customer Order No."; "Customer Order No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                 }
@@ -351,36 +426,44 @@ page 50002 "Work Order Detail"
                     Caption = 'Total Work Order Time';
                     field("Current Reg Hours Used"; "Current Reg Hours Used")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Current OT Hours Used"; "Current OT Hours Used")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Current Extra Time Used"; "Current Extra Time Used")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Labor Hours Quoted"; "Labor Hours Quoted")
                     {
+                        ApplicationArea = All;
                         Caption = 'Total Quoted Hours';
                         Editable = false;
                     }
                     field("( ""Current Reg Hours Used"" + ""Current OT Hours Used"" + ""Current Extra Time Used"") - ""Labor Hours Quoted"""; ("Current Reg Hours Used" + "Current OT Hours Used" + "Current Extra Time Used") - "Labor Hours Quoted")
                     {
+                        ApplicationArea = All;
                         Caption = 'Variance';
                         Editable = false;
                     }
                     field("Original Parts Cost"; "Original Parts Cost")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Parts Cost"; "Parts Cost")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Parts Variance"; "Parts Cost" - "Original Parts Cost")
                     {
+                        ApplicationArea = All;
                         Caption = 'Parts Variance';
                         Editable = false;
                     }
@@ -390,33 +473,40 @@ page 50002 "Work Order Detail"
                     ShowCaption = false;
                     field("Original Parts Price"; "Original Parts Price")
                     {
+                        ApplicationArea = All;
                         Caption = 'Parts Price';
                         Editable = false;
                     }
                     field("Original Labor Price"; "Original Labor Price")
                     {
+                        ApplicationArea = All;
                         Caption = 'Labor Price';
                         Editable = false;
                     }
                     field("Order Adj."; "Order Adj.")
                     {
+                        ApplicationArea = All;
                         Caption = 'Order Adjustment';
                         Editable = false;
                     }
                     field("Unrepairable Charge"; "Unrepairable Charge")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field(QuotePrice; QuotePrice)
                     {
+                        ApplicationArea = All;
                         Caption = 'Quote Price';
                         Editable = false;
                     }
                     field(Freightin; Freightin)
                     {
+                        ApplicationArea = All;
                     }
                     field(Freightout; Freightout)
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
@@ -424,103 +514,131 @@ page 50002 "Work Order Detail"
             {
                 field("Vendor Repair"; "Vendor Repair")
                 {
+                    ApplicationArea = All;
                 }
                 field("Reverse Build Ahead"; "Reverse Build Ahead")
                 {
+                    ApplicationArea = All;
                 }
                 field("RMA No."; "RMA No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("RMA Date"; "RMA Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("RMA Description"; "RMA Description")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Carrier"; "Vendor Carrier")
                 {
+                    ApplicationArea = All;
                     Caption = 'Carrier';
                 }
                 field("Vendor Shipping Method"; "Vendor Shipping Method")
                 {
+                    ApplicationArea = All;
                     Caption = 'Shipping Method';
                 }
                 field("Vendor Shipping Account"; "Vendor Shipping Account")
                 {
+                    ApplicationArea = All;
                     Caption = 'Shipping Account';
                 }
                 field("Vendor Shipping Charge"; "Vendor Shipping Charge")
                 {
+                    ApplicationArea = All;
                     Caption = 'Shipping Charge';
                 }
                 field("Vendor Container"; "Vendor Container")
                 {
+                    ApplicationArea = All;
                     Caption = 'Container';
                     Editable = false;
                 }
                 field("Vendor Container Quantity"; "Vendor Container Quantity")
                 {
+                    ApplicationArea = All;
                     Caption = 'Container Quantity';
                     Editable = false;
                 }
                 field("Vendor Ship Weight"; "Vendor Ship Weight")
                 {
+                    ApplicationArea = All;
                     Caption = 'Ship Weight';
                     Editable = false;
                 }
                 field("Vendor Package Tracking No."; "Vendor Package Tracking No.")
                 {
+                    ApplicationArea = All;
                     Caption = 'Package Tracking No.';
                     Editable = false;
                 }
                 field("Vendor Bill of Lading"; "Vendor Bill of Lading")
                 {
+                    ApplicationArea = All;
                     Caption = 'Bill of Lading';
                     Editable = false;
                 }
                 field("RMA Ship Date"; "RMA Ship Date")
                 {
+                    ApplicationArea = All;
                     Caption = 'Ship Date';
                     Editable = false;
                 }
                 field("Exchange Pump"; "Exchange Pump")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Return"; "Vendor Return")
                 {
+                    ApplicationArea = All;
                 }
                 field("RMA PO No."; "RMA PO No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Code"; "Vendor Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Name"; "Vendor Name")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Address"; "Vendor Address")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Address2"; "Vendor Address2")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor City"; "Vendor City")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor State"; "Vendor State")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Zip"; "Vendor Zip")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Contact"; "Vendor Contact")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Phone No."; "Vendor Phone No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Fax No."; "Vendor Fax No.")
                 {
+                    ApplicationArea = All;
                 }
             }
             group("Third Party")
@@ -530,18 +648,23 @@ page 50002 "Work Order Detail"
                     Caption = 'Third Party Billing Information:';
                     field("Third Party Name"; "Third Party Name")
                     {
+                        ApplicationArea = All;
                     }
                     field("Third Party Address"; "Third Party Address")
                     {
+                        ApplicationArea = All;
                     }
                     field("Third Party City"; "Third Party City")
                     {
+                        ApplicationArea = All;
                     }
                     field("Third Party State"; "Third Party State")
                     {
+                        ApplicationArea = All;
                     }
                     field("Third Party Zip"; "Third Party Zip")
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
@@ -554,6 +677,7 @@ page 50002 "Work Order Detail"
         {
             action(FAR)
             {
+                ApplicationArea = All;
                 Caption = 'FAR';
                 Promoted = true;
 
@@ -606,6 +730,7 @@ page 50002 "Work Order Detail"
             }
             action(Freight)
             {
+                ApplicationArea = All;
                 Caption = 'Freight';
                 Promoted = true;
 
@@ -617,6 +742,7 @@ page 50002 "Work Order Detail"
             }
             action("Install Date")
             {
+                ApplicationArea = All;
                 Caption = 'Install Date';
                 Enabled = InstallEnabled;
                 Promoted = true;
@@ -648,6 +774,7 @@ page 50002 "Work Order Detail"
             }
             action("WO Traveler")
             {
+                ApplicationArea = All;
                 Caption = 'WO Traveler';
                 Enabled = TravelerEnabled;
                 Promoted = true;
@@ -659,6 +786,7 @@ page 50002 "Work Order Detail"
             }
             action("Current &Status")
             {
+                ApplicationArea = All;
                 Caption = 'Current &Status';
                 Promoted = true;
 
@@ -674,6 +802,7 @@ page 50002 "Work Order Detail"
                 action("Parts List")
                 {
                     Caption = 'Parts List';
+                    ApplicationArea = All;
                     Promoted = true;
                     RunObject = Page "Parts List";
                     RunPageLink = "Work Order No." = FIELD("Work Order No.");

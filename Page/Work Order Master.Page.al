@@ -19,40 +19,37 @@ page 50000 "Work Order Master"
     {
         area(content)
         {
-            group(Control1220060043)
-            {
-                ShowCaption = false;
-                grid(Control1220060044)
-                {
-                    GridLayout = Rows;
-                    ShowCaption = false;
-                    group(Control1220060045)
-                    {
-                        ShowCaption = false;
-                        field("Work Order Master No."; "Work Order Master No.")
-                        {
-                            Editable = false;
-                            ApplicationArea = All;
-                        }
-                        field(Customer; Customer)
-                        {
-                            ApplicationArea = All;
-                        }
-                        field("Ship To Code"; "Ship To Code")
-                        {
-                            ApplicationArea = All;
-                        }
-                        field("Date Ordered"; "Date Ordered")
-                        {
-                            Editable = false;
-                            ApplicationArea = All;
-                        }
-                    }
-                }
-            }
-
             group(General)
             {
+                group(Control1220060045)
+                {
+                    ShowCaption = false;
+                    field("Work Order Master No."; "Work Order Master No.")
+                    {
+                        Editable = false;
+                        ApplicationArea = All;
+                    }
+                    field(Customer; Customer)
+                    {
+                        ApplicationArea = All;
+                    }
+                    field("Ship To Code"; "Ship To Code")
+                    {
+                        ApplicationArea = All;
+                    }
+                    field("Date Ordered"; "Date Ordered")
+                    {
+                        Editable = false;
+                        ApplicationArea = All;
+                    }
+                }
+
+            }
+
+            group(gCustomer)
+            {
+                Caption = 'Customer';
+
                 group(Control1220060050)
                 {
                     ShowCaption = false;
@@ -108,56 +105,71 @@ page 50000 "Work Order Master"
                     field("Ship To Name"; "Ship To Name")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Ship To Address 1"; "Ship To Address 1")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship To Address 2"; "Ship To Address 2")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship To City"; "Ship To City")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Ship To State"; "Ship To State")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Ship To Zip Code"; "Ship To Zip Code")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Phone No."; "Phone No.")
                     {
                         Editable = ControlsEditable;
+                        ApplicationArea = All;
                     }
                     field(Attention; Attention)
                     {
                         Editable = ControlsEditable;
+                        ApplicationArea = All;
                     }
                     field("E-Mail"; "E-Mail")
                     {
+                        ApplicationArea = All;
                     }
                     field("Fax No."; "Fax No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Date Required"; "Date Required")
                     {
+                        ApplicationArea = All;
                     }
                     field("Inside Sales"; "Inside Sales")
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field(Rep; Rep)
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                     field("Pickup Sheet"; "Pickup Sheet")
                     {
+                        ApplicationArea = All;
                     }
                     field(Details; Details)
                     {
                         Editable = false;
+                        ApplicationArea = All;
                     }
                 }
             }
@@ -171,26 +183,32 @@ page 50000 "Work Order Master"
                     field("Payment Method"; "Payment Method")
                     {
                         Editable = ControlsEditable;
+                        ApplicationArea = All;
                     }
                     field("Customer Payment Terms"; "Customer Payment Terms")
                     {
                         Editable = ControlsEditable;
+                        ApplicationArea = All;
                     }
                     field("Card Type"; "Card Type")
                     {
                         Editable = ControlsEditable;
+                        ApplicationArea = All;
                     }
                     field("Credit Card No."; "Credit Card No.")
                     {
                         Editable = ControlsEditable;
+                        ApplicationArea = All;
                     }
                     field("Credit Card Exp."; "Credit Card Exp.")
                     {
                         Editable = ControlsEditable;
+                        ApplicationArea = All;
                     }
                     field("Credit Card SC"; "Credit Card SC")
                     {
                         Editable = ControlsEditable;
+                        ApplicationArea = All;
                     }
                     group("Credit Card Comments")
                     {
@@ -199,16 +217,19 @@ page 50000 "Work Order Master"
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
+                            ApplicationArea = All;
                         }
                         field("CC Comments 2"; "CC Comments 2")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
+                            ApplicationArea = All;
                         }
                         field("CC Comments 3"; "CC Comments 3")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
+                            ApplicationArea = All;
                         }
                     }
                 }
@@ -222,6 +243,7 @@ page 50000 "Work Order Master"
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
+                            ApplicationArea = All;
                         }
                     }
                     group("Bill-to Address")
@@ -231,21 +253,25 @@ page 50000 "Work Order Master"
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
+                            ApplicationArea = All;
                         }
                         field("Bill-to Address 2"; "Bill-to Address 2")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
+                            ApplicationArea = All;
                         }
                         field("Bill-to Address 3"; "Bill-to Address 3")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
+                            ApplicationArea = All;
                         }
                         field("Bill-to Address 4"; "Bill-to Address 4")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
+                            ApplicationArea = All;
                         }
                     }
                 }
@@ -255,26 +281,31 @@ page 50000 "Work Order Master"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Edit Credit Card")
             {
                 Caption = 'Edit Credit Card';
+                ApplicationArea = All;
                 Enabled = EditCCVisible;
                 Promoted = true;
+                PromotedCategory = Process;
+                Image = CreditCard;
 
                 trigger OnAction()
                 begin
                     ControlsEditable := true;
-
                     EditCreditCard := true;
                 end;
             }
             action("Customer Notes")
             {
                 Caption = 'Customer Notes';
+                ApplicationArea = All;
                 Enabled = CustInfoVisible;
+                PromotedCategory = Process;
                 Promoted = true;
+                Image = Customer;
 
                 trigger OnAction()
                 begin
@@ -290,6 +321,7 @@ page 50000 "Work Order Master"
             action("WO Traveler")
             {
                 Caption = 'WO Traveler';
+                ApplicationArea = All;
                 Enabled = TravelerEnabled;
                 Promoted = true;
 
@@ -325,6 +357,7 @@ page 50000 "Work Order Master"
             action(Envelope)
             {
                 Caption = 'Envelope';
+                ApplicationArea = All;
                 Enabled = EnvelopeEnabled;
                 Promoted = true;
 
@@ -339,6 +372,7 @@ page 50000 "Work Order Master"
             action("&View Details")
             {
                 Caption = '&View Details';
+                ApplicationArea = All;
                 Promoted = true;
 
                 trigger OnAction()
@@ -346,7 +380,7 @@ page 50000 "Work Order Master"
                     WorkOrderDetail.SetCurrentKey("Work Order Master No.");
                     WorkOrderDetail.SetRange(WorkOrderDetail."Work Order Master No.", "Work Order Master No.");
                     if WorkOrderDetail.Find('-') then begin
-                        PAGE.Run(50002, WorkOrderDetail);
+                        Page.Run(50002, WorkOrderDetail);
                     end else begin
                         Message('No Detail Records exist for this Master.');
                     end;
@@ -355,6 +389,7 @@ page 50000 "Work Order Master"
             action("&Add Detail")
             {
                 Caption = '&Add Detail';
+                ApplicationArea = All;
                 Enabled = AddEnabled;
                 Promoted = true;
 
@@ -428,10 +463,13 @@ page 50000 "Work Order Master"
     begin
         //HyperlinkString := '\\ADVACOSBS\advacoroot\Westminster\Shared\Customer Records\';
         HyperlinkString := 'Z:\';
+        Ok2 := false;
     end;
 
     trigger OnOpenPage()
     begin
+        ///--! Permission level check code. Should be replaced?
+        /*
         Member.CalcFields("User Name");
         Ok2 := true;
         Member.SetRange(Member."User Name", UserId);
@@ -468,6 +506,10 @@ page 50000 "Work Order Master"
             EditCCButton := true;
         EditCCVisible := EditCCButton;
         // 04/28/11 ADV: Stop
+        */
+        AddEnabled := true;
+        EnvelopeEnabled := true;
+        TravelerEnabled := true;
     end;
 
     var

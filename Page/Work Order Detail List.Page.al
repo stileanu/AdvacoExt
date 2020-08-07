@@ -33,64 +33,82 @@ page 50001 "Work Order Detail List"
             {
                 field("Customer ID"; "Customer ID")
                 {
+                    ApplicationArea = All;
                 }
                 field("Work Order No."; "Work Order No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Work Order Master No."; "Work Order Master No.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Model No."; "Model No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Serial No."; "Serial No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Customer Part No."; "Customer Part No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Customer PO No."; "Customer PO No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Work Order Date"; "Work Order Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("Order Type"; "Order Type")
                 {
+                    ApplicationArea = All;
                 }
                 field("Initial Order Type"; "Initial Order Type")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship Date"; "Ship Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("Tool ID"; "Tool ID")
                 {
+                    ApplicationArea = All;
                 }
                 field(QuotePrice; QuotePrice)
                 {
+                    ApplicationArea = All;
                     Caption = 'Quote Price';
                     Visible = QuotePriceVisible;
                 }
                 field("Order Adj."; "Order Adj.")
                 {
+                    ApplicationArea = All;
                     Visible = OrderAdjVisible;
                 }
                 field("Labor Hours Quoted"; "Labor Hours Quoted")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Current Reg Hours Used"; "Current Reg Hours Used")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field(Notes; Notes)
                 {
+                    ApplicationArea = All;
                     Visible = NotesVisible;
                 }
                 field(Diagnosis; Diagnosis)
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
             }
@@ -103,6 +121,7 @@ page 50001 "Work Order Detail List"
         {
             action("Current &Status")
             {
+                ApplicationArea = All;
                 Caption = 'Current &Status';
 
                 trigger OnAction()
@@ -113,6 +132,7 @@ page 50001 "Work Order Detail List"
             }
             action("&Parts List")
             {
+                ApplicationArea = All;
                 Caption = '&Parts List';
 
                 trigger OnAction()
