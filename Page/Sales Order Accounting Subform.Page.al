@@ -20,9 +20,11 @@ page 50065 "Sales Order Accounting Subform"
             {
                 field(Type; Type)
                 {
+                    ApplicationArea = All;
                 }
                 field("No."; "No.")
                 {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -31,9 +33,11 @@ page 50065 "Sales Order Accounting Subform"
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field(Quantity; Quantity)
                 {
+                    ApplicationArea = All;
                     Caption = 'Qty';
 
                     trigger OnValidate()
@@ -43,71 +47,92 @@ page 50065 "Sales Order Accounting Subform"
                 }
                 field("Reserved Quantity"; "Reserved Quantity")
                 {
+                    ApplicationArea = All;
                 }
                 field("Quantity Invoiced"; "Quantity Invoiced")
                 {
+                    ApplicationArea = All;
                 }
                 field("Qty. to Invoice"; "Qty. to Invoice")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shipped Qty."; "Shipped Qty.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Qty. to Ship"; "Qty. to Ship")
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit Cost (LCY)"; "Unit Cost (LCY)")
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit Price"; "Unit Price")
                 {
+                    ApplicationArea = All;
                 }
                 field(Amount; Amount)
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Amount Including VAT"; "Amount Including VAT")
                 {
+                    ApplicationArea = All;
                 }
                 field("Tax Liable"; "Tax Liable")
                 {
+                    ApplicationArea = All;
                 }
                 field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
                 {
+                    ApplicationArea = All;
                 }
                 field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                 {
+                    ApplicationArea = All;
                 }
                 field("Commission Calculated"; "Commission Calculated")
                 {
+                    ApplicationArea = All;
                 }
                 field(Reserve; Reserve)
                 {
+                    ApplicationArea = All;
                 }
                 field("Line Discount %"; "Line Discount %")
                 {
+                    ApplicationArea = All;
                 }
                 field("Line Discount Amount"; "Line Discount Amount")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shipment Date"; "Shipment Date")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Package Tracking No."; "Package Tracking No.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Drop Shipment"; "Drop Shipment")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Bin Code"; "Bin Code")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Unit of Measure Code"; "Unit of Measure Code")
                 {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -116,14 +141,17 @@ page 50065 "Sales Order Accounting Subform"
                 }
                 field("Unit of Measure"; "Unit of Measure")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Blanket Order No."; "Blanket Order No.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Blanket Order Line No."; "Blanket Order Line No.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
             }
@@ -143,6 +171,7 @@ page 50065 "Sales Order Accounting Subform"
                     Image = ItemAvailability;
                     action(Period)
                     {
+                        ApplicationArea = All;
                         Caption = 'Period';
                         Image = Period;
 
@@ -153,6 +182,7 @@ page 50065 "Sales Order Accounting Subform"
                     }
                     action(Location)
                     {
+                        ApplicationArea = All;
                         AccessByPermission = TableData Location = R;
                         Caption = 'Location';
                         Image = Warehouse;

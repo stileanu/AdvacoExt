@@ -840,7 +840,9 @@ table 50001 WorkOrderDetail
         }
         field(400; "Detail Step"; Enum DetailStep)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = Max (Status.Step WHERE("Order No." = FIELD("Work Order No.")));
         }
         field(405; BackorderText; Code[40])
         {
@@ -852,11 +854,15 @@ table 50001 WorkOrderDetail
         }
         field(500; "Current Reg Hours Used"; Decimal)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = Sum (Status."Regular Hours" WHERE("Order No." = FIELD("Work Order No.")));
         }
         field(505; "Current OT Hours Used"; Decimal)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = Sum (Status."Overtime Hours" WHERE("Order No." = FIELD("Work Order No.")));
         }
         field(510; "Current Extra Time Used"; Decimal)
         {

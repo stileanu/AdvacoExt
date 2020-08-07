@@ -97,7 +97,7 @@ table 50000 WorkOrderMaster
         {
             DataClassification = ToBeClassified;
         }
-        field(50; "Customer Address 2"; Code[20])
+        field(50; "Customer Address 2"; Code[100])
         {
             DataClassification = ToBeClassified;
         }

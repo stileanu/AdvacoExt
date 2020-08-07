@@ -15,9 +15,11 @@ page 50079 "Purch. Invoice Subform Act"
             {
                 field(Type; Type)
                 {
+                    ApplicationArea = All;
                 }
                 field("No."; "No.")
                 {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -26,45 +28,59 @@ page 50079 "Purch. Invoice Subform Act"
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field(Quantity; Quantity)
                 {
+                    ApplicationArea = All;
                 }
                 field("Quantity Invoiced"; "Quantity Invoiced")
                 {
+                    ApplicationArea = All;
                 }
                 field("Qty. to Invoice"; "Qty. to Invoice")
                 {
+                    ApplicationArea = All;
                 }
                 field("Quantity Received"; "Quantity Received")
                 {
+                    ApplicationArea = All;
                 }
                 field("Qty. to Receive"; "Qty. to Receive")
                 {
+                    ApplicationArea = All;
                 }
                 field("Direct Unit Cost"; "Direct Unit Cost")
                 {
+                    ApplicationArea = All;
                 }
                 field(Amount; Amount)
                 {
+                    ApplicationArea = All;
                 }
                 field("Amount Including VAT"; "Amount Including VAT")
                 {
+                    ApplicationArea = All;
                 }
                 field("Tax Area Code"; "Tax Area Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                 {
+                    ApplicationArea = All;
                 }
                 field("Tax Liable"; "Tax Liable")
                 {
+                    ApplicationArea = All;
                 }
                 field("Tax Group Code"; "Tax Group Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit of Measure Code"; "Unit of Measure Code")
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -84,6 +100,7 @@ page 50079 "Purch. Invoice Subform Act"
                     Image = ItemAvailability;
                     action(Period)
                     {
+                        ApplicationArea = All;
                         Caption = 'Period';
                         Image = Period;
 
@@ -94,6 +111,7 @@ page 50079 "Purch. Invoice Subform Act"
                     }
                     action(Location)
                     {
+                        ApplicationArea = All;
                         AccessByPermission = TableData Location = R;
                         Caption = 'Location';
                         Image = Warehouse;

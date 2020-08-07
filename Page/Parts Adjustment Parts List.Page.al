@@ -11,31 +11,39 @@ page 50026 "Parts Adjustment Parts List"
             {
                 field("Part Type"; "Part Type")
                 {
+                    ApplicationArea = All;
                 }
                 field("Part No."; "Part No.")
                 {
+                    ApplicationArea = All;
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field("After Quote Quantity"; "After Quote Quantity")
                 {
+                    ApplicationArea = All;
                     Caption = 'Adj. Qty';
                     Editable = false;
                 }
                 field("Quoted Quantity"; "Quoted Quantity")
                 {
+                    ApplicationArea = All;
                     Caption = 'Total Qty';
                 }
                 field("Pulled Quantity"; "Pulled Quantity")
                 {
+                    ApplicationArea = All;
                     Caption = 'Pulled Qty';
                 }
                 field(Reason; Reason)
                 {
+                    ApplicationArea = All;
                 }
                 field("Serial No."; "Serial No.")
                 {
+                    ApplicationArea = All;
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
@@ -44,16 +52,19 @@ page 50026 "Parts Adjustment Parts List"
                 }
                 field("Quantity Backorder"; "Quantity Backorder")
                 {
+                    ApplicationArea = All;
                     Caption = 'BO Qty';
                     Editable = false;
                 }
                 field("In-Process Quantity"; "In-Process Quantity")
                 {
+                    ApplicationArea = All;
                     Caption = 'I/P Qty';
                     Editable = false;
                 }
                 field("Purchase Order No."; "Purchase Order No.")
                 {
+                    ApplicationArea = All;
                 }
             }
         }

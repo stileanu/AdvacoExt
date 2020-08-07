@@ -7,9 +7,9 @@ page 50080 "Purchase Credit Memo Act"
     PromotedActionCategories = 'New,Process,Report,Approve,Request Approval,Credit Memo,Release,Posting,Navigate';
     RefreshOnActivate = true;
     SourceTable = "Purchase Header";
-    SourceTableView = SORTING("Document Type","No.")
+    SourceTableView = SORTING("Document Type", "No.")
                       ORDER(Ascending)
-                      WHERE("Document Type"=FILTER("Credit Memo"));
+                      WHERE("Document Type" = FILTER("Credit Memo"));
 
     layout
     {
@@ -18,7 +18,7 @@ page 50080 "Purchase Credit Memo Act"
             group(General)
             {
                 Caption = 'General';
-                field("No.";"No.")
+                field("No."; "No.")
                 {
                     ApplicationArea = All;
                     Importance = Standard;
@@ -28,20 +28,20 @@ page 50080 "Purchase Credit Memo Act"
                     trigger OnAssistEdit()
                     begin
                         if AssistEdit(xRec) then
-                          CurrPage.Update;
+                            CurrPage.Update;
                     end;
                 }
-                field("Buy-from Vendor No.";"Buy-from Vendor No.")
+                field("Buy-from Vendor No."; "Buy-from Vendor No.")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Vendor No.';
                     Importance = Additional;
                     NotBlank = true;
                     ToolTip = 'Specifies the number of the vendor who delivers the products.';
                 }
-                field("Buy-from Vendor Name";"Buy-from Vendor Name")
+                field("Buy-from Vendor Name"; "Buy-from Vendor Name")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Vendor Name';
                     Importance = Promoted;
                     QuickEntry = false;
@@ -54,107 +54,109 @@ page 50080 "Purchase Credit Memo Act"
                     begin
                     end;
                 }
-                field("Buy-from Address";"Buy-from Address")
+                field("Buy-from Address"; "Buy-from Address")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Address';
                     Importance = Additional;
                     QuickEntry = false;
                     ToolTip = 'Specifies the address of the vendor who ships the items.';
                 }
-                field("Buy-from Address 2";"Buy-from Address 2")
+                field("Buy-from Address 2"; "Buy-from Address 2")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Address 2';
                     Importance = Additional;
                     QuickEntry = false;
                     ToolTip = 'Specifies additional address information.';
                 }
-                field("Buy-from City";"Buy-from City")
+                field("Buy-from City"; "Buy-from City")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'City';
                     Importance = Additional;
                     QuickEntry = false;
                     ToolTip = 'Specifies the city of the vendor on the purchase document.';
                 }
-                field("Buy-from County";"Buy-from County")
+                field("Buy-from County"; "Buy-from County")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'State';
                     Importance = Additional;
                     QuickEntry = false;
                     ToolTip = 'Specifies the state, province or county as a part of the address.';
                 }
-                field("Buy-from Post Code";"Buy-from Post Code")
+                field("Buy-from Post Code"; "Buy-from Post Code")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'ZIP Code';
                     Importance = Additional;
                     QuickEntry = false;
                     ToolTip = 'Specifies the ZIP code.';
                 }
-                field("Buy-from Contact";"Buy-from Contact")
+                field("Buy-from Contact"; "Buy-from Contact")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Contact';
                     Editable = "Buy-from Vendor No." <> '';
                     ToolTip = 'Specifies the name of the person to contact about shipment of the item from this vendor.';
                 }
-                field("Location Code";"Location Code")
+                field("Location Code"; "Location Code")
                 {
                     ApplicationArea = Location;
                     Importance = Additional;
                     ToolTip = 'Specifies a code for the location where you want the items to be placed when they are received.';
                 }
-                field("Posting Date";"Posting Date")
+                field("Posting Date"; "Posting Date")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Importance = Additional;
                     QuickEntry = false;
                     ToolTip = 'Specifies the date when the posting of the purchase document will be recorded.';
                 }
-                field("Document Date";"Document Date")
+                field("Document Date"; "Document Date")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Importance = Additional;
                     QuickEntry = false;
                     ToolTip = 'Specifies the date when the related document was created.';
                 }
-                field("Vendor Cr. Memo No.";"Vendor Cr. Memo No.")
+                field("Vendor Cr. Memo No."; "Vendor Cr. Memo No.")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ShowMandatory = VendorCreditMemoNoMandatory;
                     ToolTip = 'Specifies the document number of the original document you received from the vendor. You can require the document number for posting, or let it be optional. By default, it''s required, so that this document references the original. Making document numbers optional removes a step from the posting process. For example, if you attach the original invoice as a PDF, you might not need to enter the document number. To specify whether document numbers are required, in the Purchases & Payables Setup window, select or clear the Ext. Doc. No. Mandatory field.';
                 }
-                field("Purchaser Code";"Purchaser Code")
+                field("Purchaser Code"; "Purchaser Code")
                 {
                     ApplicationArea = Suite;
                     Importance = Additional;
                     ToolTip = 'Specifies which purchaser is assigned to the vendor.';
                 }
-                field("Applies-to Doc. Type";"Applies-to Doc. Type")
+                field("Applies-to Doc. Type"; "Applies-to Doc. Type")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the type of the posted document that this document or journal line will be applied to when you post, for example to register payment.';
                 }
-                field("Applies-to Doc. No.";"Applies-to Doc. No.")
+                field("Applies-to Doc. No."; "Applies-to Doc. No.")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the number of the posted document that this document or journal line will be applied to when you post, for example to register payment.';
                 }
-                field("Applies-to ID";"Applies-to ID")
+                field("Applies-to ID"; "Applies-to ID")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the ID of entries that will be applied to when you choose the Apply Entries action.';
                 }
-                field(Status;Status)
+                field(Status; Status)
                 {
+                    ApplicationArea = All;
                 }
             }
-            part(PurchLines;"Purch. Cr. Memo Act Subform")
+            part(PurchLines; "Purch. Cr. Memo Act Subform")
             {
-                SubPageLink = "Document No."=FIELD("No.");
+                ApplicationArea = All;
+                SubPageLink = "Document No." = FIELD("No.");
             }
         }
     }
@@ -169,7 +171,7 @@ page 50080 "Purchase Credit Memo Act"
                 Image = CreditMemo;
                 action(Statistics)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Statistics';
                     Image = Statistics;
                     Promoted = true;
@@ -183,37 +185,37 @@ page 50080 "Purchase Credit Memo Act"
                         CalcInvDiscForHeader;
                         Commit;
                         if "Tax Area Code" = '' then
-                          PAGE.RunModal(PAGE::"Purchase Statistics",Rec)
+                            PAGE.RunModal(PAGE::"Purchase Statistics", Rec)
                         else
-                          PAGE.RunModal(PAGE::"Purchase Stats.",Rec);
+                            PAGE.RunModal(PAGE::"Purchase Stats.", Rec);
                         PurchCalcDiscByType.ResetRecalculateInvoiceDisc(Rec);
                     end;
                 }
                 action(Vendor)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Vendor';
                     Enabled = "Buy-from Vendor No." <> '';
                     Image = Vendor;
                     Promoted = true;
                     PromotedCategory = Category9;
                     RunObject = Page "Vendor Card";
-                    RunPageLink = "No."=FIELD("Buy-from Vendor No."),
-                                  "Date Filter"=FIELD("Date Filter");
+                    RunPageLink = "No." = FIELD("Buy-from Vendor No."),
+                                  "Date Filter" = FIELD("Date Filter");
                     ShortCutKey = 'Shift+F7';
                     ToolTip = 'View or edit detailed information about the vendor on the purchase document.';
                 }
                 action("Co&mments")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Co&mments';
                     Image = ViewComments;
                     Promoted = true;
                     PromotedCategory = Category6;
                     RunObject = Page "Purch. Comment Sheet";
-                    RunPageLink = "Document Type"=FIELD("Document Type"),
-                                  "No."=FIELD("No."),
-                                  "Document Line No."=CONST(0);
+                    RunPageLink = "Document Type" = FIELD("Document Type"),
+                                  "No." = FIELD("No."),
+                                  "Document Line No." = CONST(0);
                     ToolTip = 'View or add comments for the record.';
                 }
             }
@@ -246,7 +248,7 @@ page 50080 "Purchase Credit Memo Act"
                     }
                     action(Dimensions)
                     {
-                        AccessByPermission = TableData Dimension=R;
+                        AccessByPermission = TableData Dimension = R;
                         ApplicationArea = Dimensions;
                         Caption = 'Dimensions';
                         Enabled = "No." <> '';
@@ -266,8 +268,8 @@ page 50080 "Purchase Credit Memo Act"
                 }
                 action(CalculateInvoiceDiscount)
                 {
-                    AccessByPermission = TableData "Vendor Invoice Disc."=R;
-                    ApplicationArea = Basic,Suite;
+                    AccessByPermission = TableData "Vendor Invoice Disc." = R;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Calculate &Invoice Discount';
                     Image = CalculateInvoiceDiscount;
                     ToolTip = 'Calculate the invoice discount for the entire document.';
@@ -279,7 +281,7 @@ page 50080 "Purchase Credit Memo Act"
                 }
                 action("Copy Document")
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Copy Document';
                     Ellipsis = true;
                     Enabled = "No." <> '';
@@ -293,11 +295,12 @@ page 50080 "Purchase Credit Memo Act"
                         CopyPurchDoc.SetPurchHeader(Rec);
                         CopyPurchDoc.RunModal;
                         Clear(CopyPurchDoc);
-                        if Get("Document Type","No.") then;
+                        if Get("Document Type", "No.") then;
                     end;
                 }
                 action("Insert &Ext. Text")
                 {
+                    ApplicationArea = All;
                     Caption = 'Insert &Ext. Text';
 
                     trigger OnAction()
@@ -307,7 +310,7 @@ page 50080 "Purchase Credit Memo Act"
                 }
                 action(ApplyEntries)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Apply Entries';
                     Ellipsis = true;
                     Image = ApplyEntries;
@@ -318,7 +321,7 @@ page 50080 "Purchase Credit Memo Act"
 
                     trigger OnAction()
                     begin
-                        CODEUNIT.Run(CODEUNIT::"Purchase Header Apply",Rec);
+                        CODEUNIT.Run(CODEUNIT::"Purchase Header Apply", Rec);
                     end;
                 }
             }
@@ -328,7 +331,7 @@ page 50080 "Purchase Credit Memo Act"
                 Image = Post;
                 action(TestReport)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Test Report';
                     Ellipsis = true;
                     Image = TestReport;
@@ -341,7 +344,7 @@ page 50080 "Purchase Credit Memo Act"
                 }
                 action(Post)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'P&ost';
                     Image = PostOrder;
                     Promoted = true;
@@ -358,7 +361,7 @@ page 50080 "Purchase Credit Memo Act"
                 }
                 action(Preview)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Preview Posting';
                     Image = ViewPostedOrder;
                     Promoted = true;
@@ -375,7 +378,7 @@ page 50080 "Purchase Credit Memo Act"
                 }
                 action(PostAndPrint)
                 {
-                    ApplicationArea = Basic,Suite;
+                    ApplicationArea = Basic, Suite;
                     Caption = 'Post and &Print';
                     Image = PostPrint;
                     Promoted = true;
@@ -405,6 +408,7 @@ page 50080 "Purchase Credit Memo Act"
                 }
                 action("Post Credit")
                 {
+                    ApplicationArea = All;
                     Caption = 'Post Credit';
 
                     trigger OnAction()
@@ -424,6 +428,7 @@ page 50080 "Purchase Credit Memo Act"
                 }
                 action("Post and Print Credit")
                 {
+                    ApplicationArea = All;
                     Caption = 'Post and Print Credit';
 
                     trigger OnAction()
@@ -444,13 +449,14 @@ page 50080 "Purchase Credit Memo Act"
             }
             action("&Print")
             {
+                ApplicationArea = All;
                 Caption = '&Print';
 
                 trigger OnAction()
                 begin
-                    CM.SetRange(CM."Document Type","Document Type"::"Credit Memo");
-                    CM.SetRange(CM."No.","No.");
-                    REPORT.RunModal(50057,true,false,CM);
+                    CM.SetRange(CM."Document Type", "Document Type"::"Credit Memo");
+                    CM.SetRange(CM."No.", "No.");
+                    REPORT.RunModal(50057, true, false, CM);
                 end;
             }
         }
@@ -498,7 +504,7 @@ page 50080 "Purchase Credit Memo Act"
         IsOfficeAddin: Boolean;
         CanCancelApprovalForRecord: Boolean;
         DocumentIsPosted: Boolean;
-        OpenPostedPurchCrMemoQst: Label 'The credit memo is posted as number %1 and moved to the Posted Purchase Credit Memos window.\\Do you want to open the posted credit memo?', Comment='%1 = posted document number';
+        OpenPostedPurchCrMemoQst: Label 'The credit memo is posted as number %1 and moved to the Posted Purchase Credit Memos window.\\Do you want to open the posted credit memo?', Comment = '%1 = posted document number';
         CanRequestApprovalForFlow: Boolean;
         CanCancelApprovalForFlow: Boolean;
         IsSaaS: Boolean;

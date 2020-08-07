@@ -9,17 +9,21 @@ page 50012 "Mechanics Parts Phase 2"
         {
             repeater(Group)
             {
-                field(Entered;Entered)
+                field(Entered; Entered)
                 {
+                    ApplicationArea = All;
                 }
-                field("Part No.";"Part No.")
+                field("Part No."; "Part No.")
                 {
+                    ApplicationArea = All;
                 }
-                field("Part Description";"Part Description")
+                field("Part Description"; "Part Description")
                 {
+                    ApplicationArea = All;
                 }
-                field("Part Quantity";"Part Quantity")
+                field("Part Quantity"; "Part Quantity")
                 {
+                    ApplicationArea = All;
                 }
             }
         }

@@ -4,7 +4,7 @@ page 50054 "Inventory GL Accounts"
     SourceTable = "G/L Account";
     SourceTableView = SORTING("No.")
                       ORDER(Ascending)
-                      WHERE("No."=FILTER('120'..'132'));
+                      WHERE("No." = FILTER('120' .. '132'));
 
     layout
     {
@@ -12,21 +12,26 @@ page 50054 "Inventory GL Accounts"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
+                    ApplicationArea = All;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
+                    ApplicationArea = All;
                 }
-                field("Net Change";"Net Change")
+                field("Net Change"; "Net Change")
                 {
+                    ApplicationArea = All;
                 }
-                field("Balance at Date";"Balance at Date")
+                field("Balance at Date"; "Balance at Date")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
-                field(Balance;Balance)
+                field(Balance; Balance)
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -38,7 +43,7 @@ page 50054 "Inventory GL Accounts"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        SetupNewGLAcc(xRec,BelowxRec);
+        SetupNewGLAcc(xRec, BelowxRec);
     end;
 }
 

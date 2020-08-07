@@ -38,15 +38,18 @@ page 50013 "Quote Phase 1"
                         ShowCaption = false;
                         field("Order No."; "Order No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("WOM.Customer"; WOM.Customer)
                         {
+                            ApplicationArea = All;
                             Caption = 'Customer';
                             Editable = false;
                         }
                         field(Employee; Employee)
                         {
+                            ApplicationArea = All;
                         }
                     }
                 }
@@ -63,6 +66,7 @@ page 50013 "Quote Phase 1"
                         ShowCaption = false;
                         field("WOD.""Model No."""; WOD."Model No.")
                         {
+                            ApplicationArea = All;
                             Caption = 'Model No.';
 
                             trigger OnValidate()
@@ -74,9 +78,11 @@ page 50013 "Quote Phase 1"
                         }
                         field("Date In"; "Date In")
                         {
+                            ApplicationArea = All;
                         }
                         field("Regular Hours"; "Regular Hours")
                         {
+                            ApplicationArea = All;
                         }
                     }
                 }
@@ -93,6 +99,7 @@ page 50013 "Quote Phase 1"
                         ShowCaption = false;
                         field("WOD.""Serial No."""; WOD."Serial No.")
                         {
+                            ApplicationArea = All;
                             Caption = 'Serial No.';
 
                             trigger OnValidate()
@@ -103,9 +110,11 @@ page 50013 "Quote Phase 1"
                         }
                         field("Date Out"; "Date Out")
                         {
+                            ApplicationArea = All;
                         }
                         field("Overtime Hours"; "Overtime Hours")
                         {
+                            ApplicationArea = All;
                         }
                     }
                 }
@@ -115,6 +124,7 @@ page 50013 "Quote Phase 1"
                 ShowCaption = false;
                 field("WOD.""Order Type"""; WOD."Order Type")
                 {
+                    ApplicationArea = All;
                     Caption = 'Order Type';
 
                     trigger OnValidate()
@@ -151,6 +161,7 @@ page 50013 "Quote Phase 1"
                 }
                 field("WOD.""Warranty Type"""; WOD."Warranty Type")
                 {
+                    ApplicationArea = All;
                     Caption = 'Warranty Type';
 
                     trigger OnValidate()
@@ -167,6 +178,7 @@ page 50013 "Quote Phase 1"
                 }
                 field("WOD.""Build Ahead Report"""; WOD."Build Ahead Report")
                 {
+                    ApplicationArea = All;
                     Caption = 'Build Ahead';
 
                     trigger OnValidate()
@@ -177,6 +189,7 @@ page 50013 "Quote Phase 1"
                 }
                 field("WOD.""Warranty Reason"""; WOD."Warranty Reason")
                 {
+                    ApplicationArea = All;
                     Caption = 'Reason';
 
                     trigger OnValidate()
@@ -194,6 +207,7 @@ page 50013 "Quote Phase 1"
             }
             part(QuotePartsList; "Quote Phase 1 Parts List")
             {
+                ApplicationArea = All;
                 SubPageLink = "Work Order No." = FIELD("Order No.");
             }
         }
@@ -205,6 +219,7 @@ page 50013 "Quote Phase 1"
         {
             action(Instructions)
             {
+                ApplicationArea = All;
                 Caption = 'Instructions';
                 Promoted = true;
                 Visible = WorkInstructionsVisible;

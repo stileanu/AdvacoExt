@@ -18,6 +18,7 @@ page 50060 "Sales Order Shipping"
                     ShowCaption = false;
                     field("No."; "No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
 
                         trigger OnAssistEdit()
@@ -28,50 +29,62 @@ page 50060 "Sales Order Shipping"
                     }
                     field("Work Order No."; "Work Order No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Sell-to Customer No."; "Sell-to Customer No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to Code"; "Ship-to Code")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to Name"; "Ship-to Name")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to Address"; "Ship-to Address")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to Address 2"; "Ship-to Address 2")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to City"; "Ship-to City")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to County"; "Ship-to County")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to Contact"; "Ship-to Contact")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Phone No."; "Phone No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to UPS Zone"; "Ship-to UPS Zone")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Your Reference"; "Your Reference")
                     {
+                        ApplicationArea = All;
                         Caption = 'Customer P.O Number';
                         Editable = false;
                     }
@@ -81,55 +94,69 @@ page 50060 "Sales Order Shipping"
                     ShowCaption = false;
                     field(Shipper; Shipper)
                     {
+                        ApplicationArea = All;
                         Caption = 'Shippers Initals';
                         TableRelation = Resource."No." WHERE(Type = CONST(Person));
                     }
                     field(ShippingTime; ShippingTime)
                     {
+                        ApplicationArea = All;
                         Caption = 'Shipping Time';
                     }
                     field(ShippingWeight; ShippingWeight)
                     {
+                        ApplicationArea = All;
                         Caption = 'Shipment Weight';
                     }
                     field(ContainerQuantity; ContainerQuantity)
                     {
+                        ApplicationArea = All;
                         Caption = 'Total Containers';
                     }
                     field(ContainerType; ContainerType)
                     {
+                        ApplicationArea = All;
                         Caption = 'Container Type';
                     }
                     field(LabelsToPrint; LabelsToPrint)
                     {
+                        ApplicationArea = All;
                         Caption = 'Label Quantity';
                     }
                     field("Shipping Agent Code"; "Shipping Agent Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipment Method Code"; "Shipment Method Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipping Account"; "Shipping Account")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipping Charge"; "Shipping Charge")
                     {
+                        ApplicationArea = All;
                     }
                     field("Package Tracking No."; "Package Tracking No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Bill of Lading"; "Bill of Lading")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field(Status; Status)
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
             part(SalesLines; "Sales Order Shipping Subform")
             {
+                ApplicationArea = All;
                 SubPageLink = "Document No." = FIELD("No.");
             }
         }
@@ -141,6 +168,7 @@ page 50060 "Sales Order Shipping"
         {
             action("Print &BOL and Labels")
             {
+                ApplicationArea = All;
                 Caption = 'Print &BOL and Labels';
                 Visible = false;
 
@@ -444,6 +472,7 @@ page 50060 "Sales Order Shipping"
             }
             action("&Print")
             {
+                ApplicationArea = All;
                 Caption = '&Print';
 
                 trigger OnAction()

@@ -17,12 +17,15 @@ page 50010 "Parts Allocation"
                 ShowCaption = false;
                 field("Part No."; "Part No.")
                 {
+                    ApplicationArea = All;
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field("Item.Inventory - Item.""Reserved Qty. on Inventory"""; Item.Inventory - Item."Reserved Qty. on Inventory")
                 {
+                    ApplicationArea = All;
                     Caption = 'Current Qty Available';
                 }
             }
@@ -30,31 +33,38 @@ page 50010 "Parts Allocation"
             {
                 field("<PartNo.>"; "Part No.")
                 {
+                    ApplicationArea = All;
                     Caption = 'Part No.';
                 }
                 field("<Description`>"; Description)
                 {
+                    ApplicationArea = All;
                     Caption = 'Description';
                 }
                 field("Quoted Quantity"; "Quoted Quantity")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Committed Quantity"; "Committed Quantity")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Quantity Backorder"; "Quantity Backorder")
                 {
+                    ApplicationArea = All;
                     Caption = 'Backorder Quantity';
                     Editable = false;
                 }
                 field("In-Process Quantity"; "In-Process Quantity")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Pulled Quantity"; "Pulled Quantity")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
             }
@@ -67,6 +77,7 @@ page 50010 "Parts Allocation"
         {
             action("Allocate All")
             {
+                ApplicationArea = All;
                 Caption = 'Allocate All';
                 Image = Allocations;
                 Promoted = true;
@@ -194,6 +205,7 @@ page 50010 "Parts Allocation"
             }
             action("&Allocate")
             {
+                ApplicationArea = All;
                 Caption = '&Allocate';
                 Image = Allocate;
                 Promoted = true;

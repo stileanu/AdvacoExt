@@ -12,14 +12,17 @@ page 50041 "ADVACO Comment List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
+                    ApplicationArea = All;
                 }
-                field(Date;Date)
+                field(Date; Date)
                 {
+                    ApplicationArea = All;
                 }
-                field(Comment;Comment)
+                field(Comment; Comment)
                 {
+                    ApplicationArea = All;
                 }
             }
         }

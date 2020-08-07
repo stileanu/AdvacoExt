@@ -17,27 +17,33 @@ page 50032 "Work Order Vendor Shipping"
                 ShowCaption = false;
                 field(ShipmentWeight; ShipmentWeight)
                 {
+                    ApplicationArea = All;
                     Caption = 'Total Shipment Weight';
                 }
                 field(LabelsToPrint; LabelsToPrint)
                 {
+                    ApplicationArea = All;
                     Caption = 'Label Quantity';
                 }
                 field(ContainerType; ContainerType)
                 {
+                    ApplicationArea = All;
                     Caption = 'Container Type';
                 }
                 field(TotalContainerQuantity; TotalContainerQuantity)
                 {
+                    ApplicationArea = All;
                     Caption = 'Total Container Qty';
                 }
                 field(Shipper; Shipper)
                 {
+                    ApplicationArea = All;
                     Caption = 'Shippers Initals';
                     TableRelation = Resource."No." WHERE("Gen. Prod. Posting Group" = FILTER(''));
                 }
                 field(ShippingTime; ShippingTime)
                 {
+                    ApplicationArea = All;
                     Caption = 'Shipping Time';
                 }
             }
@@ -45,31 +51,38 @@ page 50032 "Work Order Vendor Shipping"
             {
                 field("Work Order No."; "Work Order No.")
                 {
+                    ApplicationArea = All;
                     Caption = 'WOD';
                     Editable = false;
                 }
                 field("Model No."; "Model No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Serial No."; "Serial No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Vendor Carrier"; "Vendor Carrier")
                 {
+                    ApplicationArea = All;
                     Caption = 'Carrier';
                 }
                 field("Vendor Shipping Charge"; "Vendor Shipping Charge")
                 {
+                    ApplicationArea = All;
                     Caption = 'Shipping Charge';
                 }
                 field("Vendor Shipping Method"; "Vendor Shipping Method")
                 {
+                    ApplicationArea = All;
                     Caption = 'Shipping Method';
                 }
                 field("Vendor Shipping Account"; "Vendor Shipping Account")
                 {
+                    ApplicationArea = All;
                     Caption = 'Shipping Account';
                 }
             }
@@ -78,44 +91,57 @@ page 50032 "Work Order Vendor Shipping"
                 ShowCaption = false;
                 field("Vendor Code"; "Vendor Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Name"; "Vendor Name")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Address"; "Vendor Address")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Address2"; "Vendor Address2")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor City"; "Vendor City")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor State"; "Vendor State")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Zip"; "Vendor Zip")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Ship Weight"; "Vendor Ship Weight")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Vendor Container Quantity"; "Vendor Container Quantity")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Packaging Location"; "Packaging Location")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Package Tracking No."; "Vendor Package Tracking No.")
                 {
+                    ApplicationArea = All;
                 }
                 field(Packaging; Packaging)
                 {
+                    ApplicationArea = All;
                 }
                 field(Accessories; Accessories)
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -127,6 +153,7 @@ page 50032 "Work Order Vendor Shipping"
         {
             action("Print All BOL's")
             {
+                ApplicationArea = All;
                 Caption = 'Print All BOL''s';
                 Enabled = false;
                 Visible = false;
@@ -166,6 +193,7 @@ page 50032 "Work Order Vendor Shipping"
             }
             action("&Ship")
             {
+                ApplicationArea = All;
                 Caption = '&Ship';
                 Promoted = true;
 

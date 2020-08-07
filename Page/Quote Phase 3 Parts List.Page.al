@@ -10,39 +10,49 @@ page 50018 "Quote Phase 3 Parts List"
         {
             repeater(Group)
             {
-                field("Part Type";"Part Type")
+                field("Part Type"; "Part Type")
                 {
+                    ApplicationArea = All;
                 }
-                field("Part No.";"Part No.")
+                field("Part No."; "Part No.")
                 {
+                    ApplicationArea = All;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
-                field("Quoted Quantity";"Quoted Quantity")
+                field("Quoted Quantity"; "Quoted Quantity")
                 {
+                    ApplicationArea = All;
                 }
-                field("Part Cost";"Part Cost")
+                field("Part Cost"; "Part Cost")
                 {
+                    ApplicationArea = All;
                 }
-                field("Quoted Price";"Quoted Price")
+                field("Quoted Price"; "Quoted Price")
                 {
+                    ApplicationArea = All;
                 }
-                field("BOM Quantity";"BOM Quantity")
+                field("BOM Quantity"; "BOM Quantity")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
-                field("Committed Quantity";"Committed Quantity")
+                field("Committed Quantity"; "Committed Quantity")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
-                field("Quantity Backorder";"Quantity Backorder")
+                field("Quantity Backorder"; "Quantity Backorder")
                 {
+                    ApplicationArea = All;
                     Caption = 'Backorder Quantity';
                     Editable = false;
                 }
-                field("In-Process Quantity";"In-Process Quantity")
+                field("In-Process Quantity"; "In-Process Quantity")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
             }

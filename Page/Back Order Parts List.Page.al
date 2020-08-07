@@ -13,29 +13,36 @@ page 50022 "Back Order Parts List"
             {
                 field("Part No."; "Part No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Pulled Quantity"; "Pulled Quantity")
                 {
+                    ApplicationArea = All;
                 }
                 field("Quoted Quantity"; "Quoted Quantity")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Quantity Backorder"; "Quantity Backorder")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("In-Process Quantity"; "In-Process Quantity")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Purchase Order No."; "Purchase Order No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
             }

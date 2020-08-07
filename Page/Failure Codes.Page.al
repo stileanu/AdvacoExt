@@ -9,11 +9,13 @@ page 50037 "Failure Codes"
         {
             repeater(Group)
             {
-                field("Failure Code";"Failure Code")
+                field("Failure Code"; "Failure Code")
                 {
+                    ApplicationArea = All;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
             }
         }

@@ -18,71 +18,90 @@ page 50003 "Model List"
             {
                 field("No."; "No.")
                 {
+                    ApplicationArea = All;
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field("Assembly BOM"; "Assembly BOM")
                 {
+                    ApplicationArea = All;
                 }
                 field("Base Unit of Measure"; "Base Unit of Measure")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shelf No."; "Shelf No.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Costing Method"; "Costing Method")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Standard Cost"; "Standard Cost")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Unit Cost"; "Unit Cost")
                 {
+                    ApplicationArea = All;
                 }
                 field("Last Direct Cost"; "Last Direct Cost")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Price/Profit Calculation"; "Price/Profit Calculation")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Profit %"; "Profit %")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Unit Price"; "Unit Price")
                 {
+                    ApplicationArea = All;
                 }
                 field("Inventory Posting Group"; "Inventory Posting Group")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Vendor No."; "Vendor No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Item No."; "Vendor Item No.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Tariff No."; "Tariff No.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Search Description"; "Search Description")
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -291,6 +310,7 @@ page 50003 "Model List"
                 }
                 action("Co&mments")
                 {
+                    ApplicationArea = All;
                     Caption = 'Co&mments';
                     RunObject = Page "Comment Sheet";
                     RunPageLink = "Table Name" = CONST(Item),
@@ -376,12 +396,14 @@ page 50003 "Model List"
                 }
                 action("Bill of Materials")
                 {
+                    ApplicationArea = All;
                     Caption = 'Bill of Materials';
                     RunObject = Page "Assembly BOM";
                     RunPageLink = "Parent Item No." = FIELD("No.");
                 }
                 action("Where-Used List")
                 {
+                    ApplicationArea = All;
                     Caption = 'Where-Used List';
                     RunObject = Page "Where-Used List";
                     RunPageLink = Type = CONST(Item),
@@ -394,6 +416,7 @@ page 50003 "Model List"
                 Image = Sales;
                 action("Line Discounts")
                 {
+                    ApplicationArea = All;
                     Caption = 'Line Discounts';
                     Image = LineDiscount;
                     ///--!Page Removal
@@ -407,6 +430,7 @@ page 50003 "Model List"
                 }
                 action(Prices)
                 {
+                    ApplicationArea = All;
                     Caption = 'Prices';
                     Image = Price;
                     ///--!Page Removal
@@ -419,6 +443,7 @@ page 50003 "Model List"
                 }
                 action(Orders)
                 {
+                    ApplicationArea = All;
                     Caption = 'Orders';
                     Image = Document;
                     RunObject = Page "Sales Orders";
@@ -433,6 +458,7 @@ page 50003 "Model List"
                 Image = Purchasing;
                 action("Ven&dors")
                 {
+                    ApplicationArea = All;
                     Caption = 'Ven&dors';
                     Image = Vendor;
                     RunObject = Page "Item Vendor Catalog";
@@ -441,6 +467,7 @@ page 50003 "Model List"
                 }
                 action(Action1220060009)
                 {
+                    ApplicationArea = All;
                     Caption = 'Prices';
                     Image = Price;
                     RunObject = Page "Purchase Prices";
@@ -449,6 +476,7 @@ page 50003 "Model List"
                 }
                 action(Action1220060008)
                 {
+                    ApplicationArea = All;
                     Caption = 'Line Discounts';
                     Image = LineDiscount;
                     ///--!Page Removal
@@ -461,6 +489,7 @@ page 50003 "Model List"
                 }
                 action(Action1220060006)
                 {
+                    ApplicationArea = All;
                     Caption = 'Orders';
                     Image = Document;
                     RunObject = Page "Purchase Orders";

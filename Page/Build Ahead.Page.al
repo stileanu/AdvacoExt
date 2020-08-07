@@ -15,10 +15,12 @@ page 50023 "Build Ahead"
                 ShowCaption = false;
                 field("Order No."; "Order No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("WOD.""Model No."""; WOD."Model No.")
                 {
+                    ApplicationArea = All;
                     Caption = 'Model No.';
 
                     trigger OnValidate()
@@ -31,6 +33,7 @@ page 50023 "Build Ahead"
                 }
                 field("WOD.""Serial No."""; WOD."Serial No.")
                 {
+                    ApplicationArea = All;
                     Caption = 'Serial No.';
 
                     trigger OnValidate()
@@ -41,35 +44,43 @@ page 50023 "Build Ahead"
                 }
                 field("WOM.Customer"; WOM.Customer)
                 {
+                    ApplicationArea = All;
                     Caption = 'Customer';
                     Editable = false;
                 }
                 field(DateIn; DateIn)
                 {
+                    ApplicationArea = All;
                     Caption = 'Date In';
                 }
                 field(DateOut; DateOut)
                 {
+                    ApplicationArea = All;
                     Caption = 'Date Out';
                 }
                 field(Employee; Employee)
                 {
+                    ApplicationArea = All;
                 }
                 field(Regular; Regular)
                 {
+                    ApplicationArea = All;
                     Caption = 'Regular Hours';
                 }
                 field(Overtime; Overtime)
                 {
+                    ApplicationArea = All;
                     Caption = 'Overtime Hours';
                 }
             }
             part(PartsLines; "Build Ahead Parts List")
             {
+                ApplicationArea = All;
                 SubPageLink = "Work Order No." = FIELD("Order No.");
             }
             part(PartsLines2; "Mechanics Parts Phase 2")
             {
+                ApplicationArea = All;
                 SubPageLink = "Work Order No." = FIELD("Order No.");
             }
         }
@@ -81,6 +92,7 @@ page 50023 "Build Ahead"
         {
             action("Build Ahead")
             {
+                ApplicationArea = All;
                 Caption = 'Build Ahead';
                 Promoted = true;
                 PromotedCategory = Process;
@@ -214,6 +226,7 @@ page 50023 "Build Ahead"
             }
             action("Allocate Parts")
             {
+                ApplicationArea = All;
                 Caption = 'Allocate Parts';
                 Promoted = true;
                 PromotedCategory = Process;
@@ -229,6 +242,7 @@ page 50023 "Build Ahead"
             }
             action("Picking Ticket")
             {
+                ApplicationArea = All;
                 Caption = 'Picking Ticket';
                 Promoted = true;
                 PromotedCategory = Process;
@@ -245,6 +259,7 @@ page 50023 "Build Ahead"
             }
             action("Pull Parts")
             {
+                ApplicationArea = All;
                 Caption = 'Pull Parts';
                 Promoted = true;
                 PromotedCategory = Process;

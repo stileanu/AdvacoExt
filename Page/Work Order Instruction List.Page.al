@@ -15,36 +15,45 @@ page 50039 "Work Order Instruction List"
         {
             repeater(Group)
             {
-                field(Blocked;Blocked)
+                field(Blocked; Blocked)
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     Enabled = false;
                     Visible = BlockedVisible;
                 }
-                field("Customer Code";"Customer Code")
+                field("Customer Code"; "Customer Code")
                 {
+                    ApplicationArea = All;
                 }
-                field("Ship To Code";"Ship To Code")
+                field("Ship To Code"; "Ship To Code")
                 {
+                    ApplicationArea = All;
                 }
-                field(Step;Step)
+                field(Step; Step)
                 {
+                    ApplicationArea = All;
                 }
-                field(Model;Model)
+                field(Model; Model)
                 {
+                    ApplicationArea = All;
                 }
-                field("Customer Part No.";"Customer Part No.")
+                field("Customer Part No."; "Customer Part No.")
                 {
+                    ApplicationArea = All;
                 }
-                field(Instruction;Instruction)
+                field(Instruction; Instruction)
                 {
+                    ApplicationArea = All;
                 }
-                field("Part Quality Ctrl Instructions";"Part Quality Ctrl Instructions")
+                field("Part Quality Ctrl Instructions"; "Part Quality Ctrl Instructions")
                 {
+                    ApplicationArea = All;
                     Visible = PartQualityCtrlInstructionsVisible;
                 }
-                field("Date Last Modified";"Date Last Modified")
+                field("Date Last Modified"; "Date Last Modified")
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -56,14 +65,15 @@ page 50039 "Work Order Instruction List"
         {
             action("Empty Lines")
             {
+                ApplicationArea = All;
                 Caption = 'Empty Lines';
 
                 trigger OnAction()
                 begin
-                    SetRange(Instruction,'');
+                    SetRange(Instruction, '');
                     if not FindFirst then begin
-                      Message(NO_EMPTY_REC);
-                      SetRange(Instruction);
+                        Message(NO_EMPTY_REC);
+                        SetRange(Instruction);
                     end;
                 end;
             }

@@ -30,39 +30,50 @@ page 50073 "Purchase Order Accounting"
                     ShowCaption = false;
                     field("No."; "No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Buy-from Vendor No."; "Buy-from Vendor No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Buy-from Vendor Name"; "Buy-from Vendor Name")
                     {
+                        ApplicationArea = All;
                     }
                     field("Buy-from Address"; "Buy-from Address")
                     {
+                        ApplicationArea = All;
                     }
                     field("Buy-from Address 2"; "Buy-from Address 2")
                     {
+                        ApplicationArea = All;
                     }
                     field("Buy-from City"; "Buy-from City")
                     {
+                        ApplicationArea = All;
                     }
                     field("Buy-from County"; "Buy-from County")
                     {
+                        ApplicationArea = All;
                     }
                     field("Buy-from Post Code"; "Buy-from Post Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Buy-from Contact"; "Buy-from Contact")
                     {
+                        ApplicationArea = All;
                     }
                     field(PurchPaymentTerms; PurchPaymentTerms)
                     {
+                        ApplicationArea = All;
                         Caption = 'Purch. Payment Terms';
                         Editable = false;
                     }
                     field(Notes; Notes)
                     {
+                        ApplicationArea = All;
                     }
                 }
                 group(Control1220060053)
@@ -70,30 +81,39 @@ page 50073 "Purchase Order Accounting"
                     ShowCaption = false;
                     field("Posting Date"; "Posting Date")
                     {
+                        ApplicationArea = All;
                     }
                     field("Order Date"; "Order Date")
                     {
+                        ApplicationArea = All;
                     }
                     field("Document Date"; "Document Date")
                     {
+                        ApplicationArea = All;
                     }
                     field("Placed By"; "Placed By")
                     {
+                        ApplicationArea = All;
                     }
                     field("Vendor Invoice No."; "Vendor Invoice No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Purchaser Code"; "Purchaser Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Quality Clause"; "Quality Clause")
                     {
+                        ApplicationArea = All;
                     }
                     field(Status; Status)
                     {
+                        ApplicationArea = All;
                     }
                     field(APPurchPaymentTerms; APPurchPaymentTerms)
                     {
+                        ApplicationArea = All;
                         Caption = 'AP Payment Terms Code';
                         Editable = false;
                     }
@@ -101,6 +121,7 @@ page 50073 "Purchase Order Accounting"
             }
             part(PurchLines; "Purchase Order All Subform")
             {
+                ApplicationArea = All;
                 SubPageLink = "Document No." = FIELD("No.");
             }
             group(Invoicing)
@@ -110,30 +131,39 @@ page 50073 "Purchase Order Accounting"
                     ShowCaption = false;
                     field("Pay-to Vendor No."; "Pay-to Vendor No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Pay-to Name"; "Pay-to Name")
                     {
+                        ApplicationArea = All;
                     }
                     field("Pay-to Address"; "Pay-to Address")
                     {
+                        ApplicationArea = All;
                     }
                     field("Pay-to Address 2"; "Pay-to Address 2")
                     {
+                        ApplicationArea = All;
                     }
                     field("Pay-to City"; "Pay-to City")
                     {
+                        ApplicationArea = All;
                     }
                     field("Pay-to County"; "Pay-to County")
                     {
+                        ApplicationArea = All;
                     }
                     field("Pay-to Post Code"; "Pay-to Post Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Pay-to Contact"; "Pay-to Contact")
                     {
+                        ApplicationArea = All;
                     }
                     field("On Hold"; "On Hold")
                     {
+                        ApplicationArea = All;
                     }
                 }
                 group(Control1220060055)
@@ -141,12 +171,15 @@ page 50073 "Purchase Order Accounting"
                     ShowCaption = false;
                     field("Due Date"; "Due Date")
                     {
+                        ApplicationArea = All;
                     }
                     field("Tax Liable"; "Tax Liable")
                     {
+                        ApplicationArea = All;
                     }
                     field("Tax Area Code"; "Tax Area Code")
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
@@ -157,27 +190,35 @@ page 50073 "Purchase Order Accounting"
                     ShowCaption = false;
                     field("Ship-to Name"; "Ship-to Name")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to Address"; "Ship-to Address")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to Address 2"; "Ship-to Address 2")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to City"; "Ship-to City")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to County"; "Ship-to County")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to Post Code"; "Ship-to Post Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to Contact"; "Ship-to Contact")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to UPS Zone"; "Ship-to UPS Zone")
                     {
+                        ApplicationArea = All;
                     }
                 }
                 group(Control1220060057)
@@ -185,21 +226,27 @@ page 50073 "Purchase Order Accounting"
                     ShowCaption = false;
                     field("Location Code"; "Location Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipment Method Code"; "Shipment Method Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipping Agent"; "Shipping Agent")
                     {
+                        ApplicationArea = All;
                     }
                     field("Expected Receipt Date"; "Expected Receipt Date")
                     {
+                        ApplicationArea = All;
                     }
                     field("Sell-to Customer No."; "Sell-to Customer No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to Code"; "Ship-to Code")
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
@@ -215,6 +262,7 @@ page 50073 "Purchase Order Accounting"
                 Caption = 'O&rder';
                 action(Statistics)
                 {
+                    ApplicationArea = All;
                     Caption = 'Statistics';
                     Image = Statistics;
                     Promoted = true;
@@ -225,6 +273,7 @@ page 50073 "Purchase Order Accounting"
                 }
                 action(Card)
                 {
+                    ApplicationArea = All;
                     Caption = 'Card';
                     Image = Card;
                     Promoted = true;
@@ -234,6 +283,7 @@ page 50073 "Purchase Order Accounting"
                 }
                 action("Co&mments")
                 {
+                    ApplicationArea = All;
                     Caption = 'Co&mments';
                     Image = ViewComments;
                     Promoted = true;
@@ -244,6 +294,7 @@ page 50073 "Purchase Order Accounting"
                 }
                 action(Receipts)
                 {
+                    ApplicationArea = All;
                     Caption = 'Receipts';
                     Image = PostedReceipts;
                     Promoted = true;
@@ -253,6 +304,7 @@ page 50073 "Purchase Order Accounting"
                 }
                 action(Invoices)
                 {
+                    ApplicationArea = All;
                     Caption = 'Invoices';
                     Image = Invoice;
                     Promoted = true;
@@ -267,6 +319,7 @@ page 50073 "Purchase Order Accounting"
                 Caption = 'F&unctions';
                 action("Calculate &Invoice Discount")
                 {
+                    ApplicationArea = All;
                     Caption = 'Calculate &Invoice Discount';
                     Image = Calculate;
                     Promoted = true;
@@ -285,6 +338,7 @@ page 50073 "Purchase Order Accounting"
                 }
                 action("Copy Document")
                 {
+                    ApplicationArea = All;
                     Caption = 'Copy Document';
                     Image = Copy;
                     Promoted = true;
@@ -305,6 +359,7 @@ page 50073 "Purchase Order Accounting"
                 }
                 action("Insert &Ext. Text")
                 {
+                    ApplicationArea = All;
                     Caption = 'Insert &Ext. Text';
                     Image = Insert;
                     Promoted = true;
@@ -323,6 +378,7 @@ page 50073 "Purchase Order Accounting"
                 }
                 action(Reserve)
                 {
+                    ApplicationArea = All;
                     Caption = 'Reserve';
                     Image = Reserve;
                     Promoted = true;
@@ -344,6 +400,7 @@ page 50073 "Purchase Order Accounting"
             }
             action(Release)
             {
+                ApplicationArea = All;
                 Caption = 'Re&lease';
                 Image = ReleaseDoc;
                 Promoted = true;
@@ -422,6 +479,7 @@ page 50073 "Purchase Order Accounting"
             }
             action(Reopen)
             {
+                ApplicationArea = All;
                 Caption = 'Re&open';
                 Image = ReOpen;
                 Promoted = true;
@@ -455,6 +513,7 @@ page 50073 "Purchase Order Accounting"
                 Caption = 'P&osting';
                 action("Test Report")
                 {
+                    ApplicationArea = All;
                     Caption = 'Test Report';
                     Image = "Report";
                     Promoted = true;
@@ -466,6 +525,7 @@ page 50073 "Purchase Order Accounting"
                 }
                 action("P&ost")
                 {
+                    ApplicationArea = All;
                     Caption = 'P&ost';
                     Image = Post;
                     Promoted = true;
@@ -483,6 +543,7 @@ page 50073 "Purchase Order Accounting"
                 }
                 action("Post and &Print")
                 {
+                    ApplicationArea = All;
                     Caption = 'Post and &Print';
                     Image = PostPrint;
                     Promoted = true;
@@ -500,6 +561,7 @@ page 50073 "Purchase Order Accounting"
                 }
                 action("Post &Batch")
                 {
+                    ApplicationArea = All;
                     Caption = 'Post &Batch';
                     Image = PostBatch;
                     Promoted = true;
@@ -518,6 +580,7 @@ page 50073 "Purchase Order Accounting"
             }
             action("&Print")
             {
+                ApplicationArea = All;
                 Caption = '&Print';
                 Image = Print;
 

@@ -20,125 +20,158 @@ page 50071 "Customer Card Sales"
                 group(Control1220060030)
                 {
                     ShowCaption = false;
-                    field("No.";"No.")
+                    field("No."; "No.")
                     {
+                        ApplicationArea = All;
 
                         trigger OnAssistEdit()
                         begin
                             if AssistEdit(xRec) then
-                              CurrPage.Update;
+                                CurrPage.Update;
                         end;
                     }
-                    field(Name;Name)
+                    field(Name; Name)
                     {
+                        ApplicationArea = All;
                     }
-                    field(Address;Address)
+                    field(Address; Address)
                     {
+                        ApplicationArea = All;
                     }
-                    field("Address 2";"Address 2")
+                    field("Address 2"; "Address 2")
                     {
+                        ApplicationArea = All;
                     }
-                    field(City;City)
+                    field(City; City)
                     {
+                        ApplicationArea = All;
                     }
-                    field(County;County)
+                    field(County; County)
                     {
+                        ApplicationArea = All;
                     }
-                    field("Post Code";"Post Code")
+                    field("Post Code"; "Post Code")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Phone No.";"Phone No.")
+                    field("Phone No."; "Phone No.")
                     {
+                        ApplicationArea = All;
                     }
-                    field(Contact;Contact)
+                    field(Contact; Contact)
                     {
+                        ApplicationArea = All;
                     }
-                    field("Shipping Advice";"Shipping Advice")
+                    field("Shipping Advice"; "Shipping Advice")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Ship on Sales Order";"Ship on Sales Order")
+                    field("Ship on Sales Order"; "Ship on Sales Order")
                     {
+                        ApplicationArea = All;
                     }
                 }
                 group(Control1220060031)
                 {
                     ShowCaption = false;
-                    field("Search Name";"Search Name")
+                    field("Search Name"; "Search Name")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Balance (LCY)";"Balance (LCY)")
+                    field("Balance (LCY)"; "Balance (LCY)")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Payment Terms Code";"Payment Terms Code")
+                    field("Payment Terms Code"; "Payment Terms Code")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Credit Limit (LCY)";"Credit Limit (LCY)")
+                    field("Credit Limit (LCY)"; "Credit Limit (LCY)")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Salesperson Code";"Salesperson Code")
+                    field("Salesperson Code"; "Salesperson Code")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field(Rep;Rep)
+                    field(Rep; Rep)
                     {
+                        ApplicationArea = All;
                     }
-                    field("Credit Issues";"Credit Issues")
+                    field("Credit Issues"; "Credit Issues")
                     {
+                        ApplicationArea = All;
                     }
-                    field(Blocked;Blocked)
+                    field(Blocked; Blocked)
                     {
+                        ApplicationArea = All;
                     }
-                    field("Last Date Modified";"Last Date Modified")
+                    field("Last Date Modified"; "Last Date Modified")
                     {
+                        ApplicationArea = All;
                     }
-                    field("CC Fee Waived";"CC Fee Waived")
+                    field("CC Fee Waived"; "CC Fee Waived")
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
             group(Communication)
             {
-                field("<PhoneNo.>";"Phone No.")
+                field("<PhoneNo.>"; "Phone No.")
                 {
+                    ApplicationArea = All;
                 }
-                field("Fax No.";"Fax No.")
+                field("Fax No."; "Fax No.")
                 {
+                    ApplicationArea = All;
                 }
-                field("E-Mail";"E-Mail")
+                field("E-Mail"; "E-Mail")
                 {
+                    ApplicationArea = All;
                 }
             }
             group(Invoicing)
             {
-                field("Shipment Method Code";"Shipment Method Code")
+                field("Shipment Method Code"; "Shipment Method Code")
                 {
+                    ApplicationArea = All;
                 }
-                field("Shipping Agent Code";"Shipping Agent Code")
+                field("Shipping Agent Code"; "Shipping Agent Code")
                 {
+                    ApplicationArea = All;
                 }
-                field("Shipping Account";"Shipping Account")
+                field("Shipping Account"; "Shipping Account")
                 {
+                    ApplicationArea = All;
                 }
-                field("Combine Shipments";"Combine Shipments")
+                field("Combine Shipments"; "Combine Shipments")
                 {
+                    ApplicationArea = All;
                 }
-                field("Internet Invoicing";"Internet Invoicing")
+                field("Internet Invoicing"; "Internet Invoicing")
                 {
+                    ApplicationArea = All;
                 }
-                field("Tax Liable";"Tax Liable")
+                field("Tax Liable"; "Tax Liable")
                 {
+                    ApplicationArea = All;
                 }
-                field("Tax Area Code";"Tax Area Code")
+                field("Tax Area Code"; "Tax Area Code")
                 {
+                    ApplicationArea = All;
                 }
-                field("Tax Exemption No.";"Tax Exemption No.")
+                field("Tax Exemption No."; "Tax Exemption No.")
                 {
+                    ApplicationArea = All;
                 }
-                field("Exempt Organization";"Exempt Organization")
+                field("Exempt Organization"; "Exempt Organization")
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -153,31 +186,34 @@ page 50071 "Customer Card Sales"
                 Caption = '&Customer';
                 action("Co&mments")
                 {
+                    ApplicationArea = All;
                     Caption = 'Co&mments';
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     RunObject = Page "Comment Sheet";
-                    RunPageLink = "Table Name"=CONST(Customer),
-                                  "No."=FIELD("No.");
+                    RunPageLink = "Table Name" = CONST(Customer),
+                                  "No." = FIELD("No.");
                 }
                 action("Bank Accounts")
                 {
+                    ApplicationArea = All;
                     Caption = 'Bank Accounts';
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     RunObject = Page "Customer Bank Account Card";
-                    RunPageLink = "Customer No."=FIELD("No.");
+                    RunPageLink = "Customer No." = FIELD("No.");
                 }
                 action("Ship-&to Addresses")
                 {
+                    ApplicationArea = All;
                     Caption = 'Ship-&to Addresses';
                     Promoted = true;
                     PromotedCategory = Process;
                     PromotedIsBig = true;
                     RunObject = Page "Ship-to Address";
-                    RunPageLink = "Customer No."=FIELD("No.");
+                    RunPageLink = "Customer No." = FIELD("No.");
                 }
             }
             group("S&ales")
@@ -185,34 +221,38 @@ page 50071 "Customer Card Sales"
                 Caption = 'S&ales';
                 action("Invoice &Discounts")
                 {
+                    ApplicationArea = All;
                     Caption = 'Invoice &Discounts';
                     Promoted = true;
                     RunObject = Page "Cust. Invoice Discounts";
-                    RunPageLink = Code=FIELD("Invoice Disc. Code");
+                    RunPageLink = Code = FIELD("Invoice Disc. Code");
                 }
                 action(Quotes)
                 {
+                    ApplicationArea = All;
                     Caption = 'Quotes';
                     Promoted = true;
                     RunObject = Page "Sales Quote";
-                    RunPageLink = "Sell-to Customer No."=FIELD("No.");
-                    RunPageView = SORTING("Document Type","Sell-to Customer No.","No.");
+                    RunPageLink = "Sell-to Customer No." = FIELD("No.");
+                    RunPageView = SORTING("Document Type", "Sell-to Customer No.", "No.");
                 }
                 action("Blanket Orders")
                 {
+                    ApplicationArea = All;
                     Caption = 'Blanket Orders';
                     Promoted = true;
                     RunObject = Page "Blanket Sales Order";
-                    RunPageLink = "Sell-to Customer No."=FIELD("No.");
-                    RunPageView = SORTING("Document Type","Sell-to Customer No.","No.");
+                    RunPageLink = "Sell-to Customer No." = FIELD("No.");
+                    RunPageView = SORTING("Document Type", "Sell-to Customer No.", "No.");
                 }
                 action(Orders)
                 {
+                    ApplicationArea = All;
                     Caption = 'Orders';
                     Promoted = true;
                     RunObject = Page "Sales Order Sales";
-                    RunPageLink = "Sell-to Customer No."=FIELD("No.");
-                    RunPageView = SORTING("Document Type","Sell-to Customer No.","No.");
+                    RunPageLink = "Sell-to Customer No." = FIELD("No.");
+                    RunPageView = SORTING("Document Type", "Sell-to Customer No.", "No.");
                 }
             }
         }

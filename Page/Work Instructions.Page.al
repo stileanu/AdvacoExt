@@ -56,84 +56,101 @@ page 50042 "Work Instructions"
                 ShowCaption = false;
                 field("Order No."; "Order No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("STRSUBSTNO(QLTY_FILE_TO_PRINT,QCFileName)"; StrSubstNo(QLTY_FILE_TO_PRINT, QCFileName))
                 {
+                    ApplicationArea = All;
                     Caption = 'Current Work Instructions';
                     Visible = QCFileVisible;
                 }
                 field("Instr[1]"; Instr[1])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[2]"; Instr[2])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[3]"; Instr[3])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[4]"; Instr[4])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[5]"; Instr[5])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[6]"; Instr[6])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[7]"; Instr[7])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field(Step; Step)
                 {
+                    ApplicationArea = All;
                     Caption = 'Current Job Step';
                     Editable = false;
                 }
                 field("Instr[8]"; Instr[8])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[9]"; Instr[9])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[10]"; Instr[10])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[11]"; Instr[11])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[12]"; Instr[12])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[13]"; Instr[13])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }
                 field("Instr[14]"; Instr[14])
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     ShowCaption = false;
                 }

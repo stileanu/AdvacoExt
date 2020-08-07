@@ -18,16 +18,19 @@ page 50029 "QC Failure"
                         ShowCaption = false;
                         field("Order No."; "Order No.")
                         {
+                            ApplicationArea = All;
                             Caption = 'Work Order No.';
                             Editable = false;
                         }
                         field("Model No."; "Model No.")
                         {
+                            ApplicationArea = All;
                             Caption = 'Model No.';
                             Editable = false;
                         }
                         field(Date; Date)
                         {
+                            ApplicationArea = All;
                             Caption = 'Date';
                             Editable = false;
                         }
@@ -45,26 +48,31 @@ page 50029 "QC Failure"
                         Caption = 'Code';
                         field("Defect Code"; "Defect Code")
                         {
+                            ApplicationArea = All;
                             Caption = '''';
                             ShowCaption = false;
                         }
                         field("fDefectCode[1]"; fDefectCode[1])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("fDefectCode[2]"; fDefectCode[2])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("fDefectCode[3]"; fDefectCode[3])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("fDefectCode[4]"; fDefectCode[4])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
@@ -74,25 +82,30 @@ page 50029 "QC Failure"
                         Caption = 'Department';
                         field(Control1220060020; Department)
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                         }
                         field("fFunctionalDepartment[1]"; fFunctionalDepartment[1])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("fFunctionalDepartment[2]"; fFunctionalDepartment[2])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("fFunctionalDepartment[3]"; fFunctionalDepartment[3])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
                         field("fFunctionalDepartment[4]"; fFunctionalDepartment[4])
                         {
+                            ApplicationArea = All;
                             Editable = false;
                             ShowCaption = false;
                         }
@@ -102,10 +115,12 @@ page 50029 "QC Failure"
                         Caption = 'Failure Item';
                         field(Control1220060026; "Failure Item")
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                         }
                         field("fItemCode[1]"; fItemCode[1])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
 
                             trigger OnValidate()
@@ -132,6 +147,7 @@ page 50029 "QC Failure"
                         }
                         field("fItemCode[2]"; fItemCode[2])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
 
                             trigger OnValidate()
@@ -158,6 +174,7 @@ page 50029 "QC Failure"
                         }
                         field("fItemCode[3]"; fItemCode[3])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
 
                             trigger OnValidate()
@@ -184,6 +201,7 @@ page 50029 "QC Failure"
                         }
                         field("fItemCode[4]"; fItemCode[4])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
 
                             trigger OnValidate()
@@ -214,10 +232,12 @@ page 50029 "QC Failure"
                         Caption = 'Code';
                         field(Control1220060031; Code)
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                         }
                         field("fKindCode[1]"; fKindCode[1])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
 
                             trigger OnValidate()
@@ -244,6 +264,7 @@ page 50029 "QC Failure"
                         }
                         field("fKindCode[2]"; fKindCode[2])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
 
                             trigger OnValidate()
@@ -270,6 +291,7 @@ page 50029 "QC Failure"
                         }
                         field("fKindCode[3]"; fKindCode[3])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
 
                             trigger OnValidate()
@@ -296,6 +318,7 @@ page 50029 "QC Failure"
                         }
                         field("fKindCode[4]"; fKindCode[4])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
 
                             trigger OnValidate()
@@ -326,22 +349,27 @@ page 50029 "QC Failure"
                         Caption = 'Category';
                         field(Control1220060033; Category)
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                         }
                         field("fCategoryCode[1]"; fCategoryCode[1])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                         }
                         field("fCategoryCode[2]"; fCategoryCode[2])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                         }
                         field("fCategoryCode[3]"; fCategoryCode[3])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                         }
                         field("fCategoryCode[4]"; fCategoryCode[4])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                         }
                     }
@@ -350,26 +378,31 @@ page 50029 "QC Failure"
                         Caption = 'Technician';
                         field(Control1220060042; Technician)
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                             TableRelation = Resource."No." WHERE(Type = CONST(Person));
                         }
                         field("fTech[1]"; fTech[1])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                             TableRelation = Resource."No." WHERE(Type = CONST(Person));
                         }
                         field("fTech[2]"; fTech[2])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                             TableRelation = Resource."No." WHERE(Type = CONST(Person));
                         }
                         field("fTech[3]"; fTech[3])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                             TableRelation = Resource."No." WHERE(Type = CONST(Person));
                         }
                         field("fTech[4]"; fTech[4])
                         {
+                            ApplicationArea = All;
                             ShowCaption = false;
                             TableRelation = Resource."No." WHERE(Type = CONST(Person));
                         }

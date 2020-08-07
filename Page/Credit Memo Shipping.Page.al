@@ -21,42 +21,52 @@ page 50141 "Credit Memo Shipping"
                     ShowCaption = false;
                     field("No."; "No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to Name"; "Ship-to Name")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to Address"; "Ship-to Address")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to Address 2"; "Ship-to Address 2")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to City"; "Ship-to City")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to County"; "Ship-to County")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to Post Code"; "Ship-to Post Code")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to Contact"; "Ship-to Contact")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Phone No."; "Phone No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship-to UPS Zone"; "Ship-to UPS Zone")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                 }
@@ -65,46 +75,58 @@ page 50141 "Credit Memo Shipping"
                     ShowCaption = false;
                     field(Shipper; Shipper)
                     {
+                        ApplicationArea = All;
                         Caption = 'Shippers Initals';
                         TableRelation = Resource."No." WHERE(Type = CONST(Person));
                     }
                     field(ShippingTime; ShippingTime)
                     {
+                        ApplicationArea = All;
                         Caption = 'Shipping Time';
                     }
                     field(ShippingWeight; ShippingWeight)
                     {
+                        ApplicationArea = All;
                         Caption = 'Shipment Weight';
                     }
                     field(ContainerQuantity; ContainerQuantity)
                     {
+                        ApplicationArea = All;
                         Caption = 'Total Containers';
                     }
                     field(ContainerType; ContainerType)
                     {
+                        ApplicationArea = All;
                         Caption = 'Container Type';
                     }
                     field(LabelCount; LabelCount)
                     {
+                        ApplicationArea = All;
                         Caption = 'Label Quantity';
                     }
                     field("Shipping Agent"; "Shipping Agent")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipment Method Code"; "Shipment Method Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipping Account"; "Shipping Account")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipping Charge"; "Shipping Charge")
                     {
+                        ApplicationArea = All;
                     }
                     field("Package Tracking No."; "Package Tracking No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Bill of Lading"; "Bill of Lading")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                 }
@@ -122,6 +144,7 @@ page 50141 "Credit Memo Shipping"
         {
             action("Print &BOL and Labels")
             {
+                ApplicationArea = All;
                 Caption = 'Print &BOL and Labels';
                 Image = PrintVoucher;
                 Promoted = true;

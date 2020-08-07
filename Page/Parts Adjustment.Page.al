@@ -18,15 +18,18 @@ page 50025 "Parts Adjustment"
                         ShowCaption = false;
                         field("Work Order No."; "Work Order No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("WOM.Customer"; WOM.Customer)
                         {
+                            ApplicationArea = All;
                             Caption = 'Customer';
                             Editable = false;
                         }
                         field("WOM.""Date Ordered"""; WOM."Date Ordered")
                         {
+                            ApplicationArea = All;
                             Caption = 'Order Date';
                             Editable = false;
                         }
@@ -45,14 +48,17 @@ page 50025 "Parts Adjustment"
                         ShowCaption = false;
                         field("Model No."; "Model No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field(Description; Description)
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("Serial No."; "Serial No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                     }
@@ -60,6 +66,7 @@ page 50025 "Parts Adjustment"
             }
             part(Partslines; "Parts Adjustment Parts List")
             {
+                ApplicationArea = All;
                 SubPageLink = "Work Order No." = FIELD("Work Order No.");
             }
         }
@@ -71,6 +78,7 @@ page 50025 "Parts Adjustment"
         {
             action("Pump Module Repair")
             {
+                ApplicationArea = All;
                 Caption = 'Pump Module Repair';
                 Visible = PumpModuleVisible;
 
@@ -161,6 +169,7 @@ page 50025 "Parts Adjustment"
             }
             action("Reverse Build Ahead for Vendor Repair")
             {
+                ApplicationArea = All;
                 Caption = 'Reverse Build Ahead for Vendor Repair';
                 Visible = VendorRepairVisible;
 
@@ -257,6 +266,7 @@ page 50025 "Parts Adjustment"
             }
             action("Unrepairable Parts Remove")
             {
+                ApplicationArea = All;
                 Caption = 'Unrepairable Parts Remove';
                 Visible = UnrepairableVisible;
 
@@ -332,6 +342,7 @@ page 50025 "Parts Adjustment"
             }
             action("Allocate Parts")
             {
+                ApplicationArea = All;
                 Caption = 'Allocate Parts';
 
                 trigger OnAction()
@@ -342,6 +353,7 @@ page 50025 "Parts Adjustment"
             }
             action("Pull Parts")
             {
+                ApplicationArea = All;
                 Caption = 'Pull Parts';
 
                 trigger OnAction()

@@ -112,10 +112,12 @@ page 50081 "Purch. Cr. Memo Act Subform"
                 }
                 field("Qty. to Invoice"; "Qty. to Invoice")
                 {
+                    ApplicationArea = All;
                     Caption = 'Qty. Credit Applied';
                 }
                 field("Qty. to Receive"; "Qty. to Receive")
                 {
+                    ApplicationArea = All;
                     Caption = 'Qty. Returned';
                 }
                 field("Direct Unit Cost"; "Direct Unit Cost")
@@ -129,6 +131,7 @@ page 50081 "Purch. Cr. Memo Act Subform"
                 }
                 field(Amount; Amount)
                 {
+                    ApplicationArea = All;
                 }
                 field("Amount Including VAT"; "Amount Including VAT")
                 {
@@ -165,12 +168,15 @@ page 50081 "Purch. Cr. Memo Act Subform"
                 }
                 field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                 {
+                    ApplicationArea = All;
                 }
                 field("Use Duplication List"; "Use Duplication List")
                 {
+                    ApplicationArea = All;
                 }
                 field("Reserved Quantity"; "Reserved Quantity")
                 {
+                    ApplicationArea = All;
 
                     trigger OnDrillDown()
                     begin
@@ -221,6 +227,7 @@ page 50081 "Purch. Cr. Memo Act Subform"
                 }
                 field("Expected Receipt Date"; "Expected Receipt Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("IC Partner Code"; "IC Partner Code")
                 {
@@ -248,9 +255,11 @@ page 50081 "Purch. Cr. Memo Act Subform"
                 }
                 field("Prod. Order No."; "Prod. Order No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Insurance No."; "Insurance No.")
                 {
+                    ApplicationArea = All;
                 }
             }
         }

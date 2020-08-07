@@ -17,38 +17,47 @@ page 50156 "Field Service Shipping"
                     ShowCaption = false;
                     field("Field Service No."; "Field Service No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field(Customer; Customer)
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship To Code"; "Ship To Code")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship To Name"; "Ship To Name")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship To Address 1"; "Ship To Address 1")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship To Address 2"; "Ship To Address 2")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship To City"; "Ship To City")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship To State"; "Ship To State")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Ship To Zip Code"; "Ship To Zip Code")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                 }
@@ -57,49 +66,61 @@ page 50156 "Field Service Shipping"
                     ShowCaption = false;
                     field(Shipper; Shipper)
                     {
+                        ApplicationArea = All;
                         Caption = 'Shippers Initals';
                         TableRelation = Resource."No." WHERE(Type = CONST(Person));
                     }
                     field(ShippingTime; ShippingTime)
                     {
+                        ApplicationArea = All;
                         Caption = 'Shipping Time';
                     }
                     field(ShipmentWeight; ShipmentWeight)
                     {
+                        ApplicationArea = All;
                         Caption = 'Shipment Weight';
                     }
                     field(ContainerQty; ContainerQty)
                     {
+                        ApplicationArea = All;
                         Caption = 'Total Containers';
                     }
                     field(ContainerType; ContainerType)
                     {
+                        ApplicationArea = All;
                         Caption = 'Container Type';
                     }
                     field(LabelCount; LabelCount)
                     {
+                        ApplicationArea = All;
                         Caption = 'Label Quantity';
                     }
                     field(Carrier; Carrier)
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipping Method"; "Shipping Method")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipping Account"; "Shipping Account")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipping Charge"; "Shipping Charge")
                     {
+                        ApplicationArea = All;
                     }
                     field(PackageTrackingNo; PackageTrackingNo)
                     {
+                        ApplicationArea = All;
                         Caption = 'Package Tracking No.';
                     }
                 }
             }
             part(FieldServiceParts; "Field Service Shipping Sub")
             {
+                ApplicationArea = All;
                 SubPageLink = "Work Order No." = FIELD("Field Service No.");
             }
         }
@@ -111,6 +132,7 @@ page 50156 "Field Service Shipping"
         {
             action("Print &BOL and Labels")
             {
+                ApplicationArea = All;
                 Caption = 'Print &BOL and Labels';
                 Image = PrintVoucher;
                 Promoted = true;

@@ -18,125 +18,163 @@ page 50140 "Credit Memo Entry"
             {
                 field("No."; "No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Pay-to Vendor No."; "Pay-to Vendor No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Buy-from Vendor Name"; "Buy-from Vendor Name")
                 {
+                    ApplicationArea = All;
                 }
                 field("Buy-from Address"; "Buy-from Address")
                 {
+                    ApplicationArea = All;
                 }
                 field("Buy-from Address 2"; "Buy-from Address 2")
                 {
+                    ApplicationArea = All;
                 }
                 field("Buy-from City"; "Buy-from City")
                 {
+                    ApplicationArea = All;
                 }
                 field("Buy-from County"; "Buy-from County")
                 {
+                    ApplicationArea = All;
                 }
                 field("Buy-from Post Code"; "Buy-from Post Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Buy-from Contact"; "Buy-from Contact")
                 {
+                    ApplicationArea = All;
                 }
                 field("Location Code"; "Location Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Return Reason"; "Return Reason")
                 {
+                    ApplicationArea = All;
                 }
                 field("Document Date"; "Document Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("Posting Date"; "Posting Date")
                 {
+                    ApplicationArea = All;
                     Enabled = false;
                 }
                 field("Credit Memo Posted"; "Credit Memo Posted")
                 {
+                    ApplicationArea = All;
                 }
                 field("Your Reference"; "Your Reference")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Invoice No."; "Vendor Invoice No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Vendor Cr. Memo No."; "Vendor Cr. Memo No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Authorized By"; "Authorized By")
                 {
+                    ApplicationArea = All;
                 }
                 field("Purchaser Code"; "Purchaser Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Credit Memo Action"; "Credit Memo Action")
                 {
+                    ApplicationArea = All;
                 }
                 field("Return to Vendor"; "Return to Vendor")
                 {
+                    ApplicationArea = All;
                 }
             }
             part(PurchLines; "Credit Memo Subform")
             {
+                ApplicationArea = All;
                 SubPageLink = "Document No." = FIELD("No.");
             }
             group(Shipping)
             {
                 field("Ship-to Name"; "Ship-to Name")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship-to Address"; "Ship-to Address")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship-to Address 2"; "Ship-to Address 2")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship-to City"; "Ship-to City")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship-to County"; "Ship-to County")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship-to Post Code"; "Ship-to Post Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship-to Contact"; "Ship-to Contact")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship-to UPS Zone"; "Ship-to UPS Zone")
                 {
+                    ApplicationArea = All;
                 }
                 field("RMA No."; "RMA No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shipping Agent"; "Shipping Agent")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shipment Method Code"; "Shipment Method Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shipping Charge"; "Shipping Charge")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shipping Account"; "Shipping Account")
                 {
+                    ApplicationArea = All;
                 }
                 field("Package Tracking No."; "Package Tracking No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Bill of Lading"; "Bill of Lading")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Shipment Date"; "Shipment Date")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
             }
@@ -149,6 +187,7 @@ page 50140 "Credit Memo Entry"
         {
             action("Close Credit Memo")
             {
+                ApplicationArea = All;
                 Caption = 'Close Credit Memo';
 
                 trigger OnAction()
@@ -183,6 +222,7 @@ page 50140 "Credit Memo Entry"
                 Caption = '&Cr. Memo';
                 action(Card)
                 {
+                    ApplicationArea = All;
                     Caption = 'Card';
                     RunObject = Page "Vendor Card";
                     RunPageLink = "No." = FIELD("Buy-from Vendor No.");
@@ -190,6 +230,7 @@ page 50140 "Credit Memo Entry"
                 }
                 action("Co&mments")
                 {
+                    ApplicationArea = All;
                     Caption = 'Co&mments';
                     RunObject = Page "Purch. Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -201,6 +242,7 @@ page 50140 "Credit Memo Entry"
                 Caption = 'F&unctions';
                 action("Copy Document")
                 {
+                    ApplicationArea = All;
                     Caption = 'Copy Document';
 
                     trigger OnAction()
@@ -213,6 +255,7 @@ page 50140 "Credit Memo Entry"
             }
             action("&Print")
             {
+                ApplicationArea = All;
                 Caption = '&Print';
                 Promoted = true;
 

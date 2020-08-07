@@ -11,27 +11,35 @@ page 50104 "Daily Parts Export"
             {
                 field("Item No."; "Item No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Posting Date"; "Posting Date")
                 {
+                    ApplicationArea = All;
                 }
                 field("Entry Type"; "Entry Type")
                 {
+                    ApplicationArea = All;
                 }
                 field("Document No."; "Document No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Source Type"; "Source Type")
                 {
+                    ApplicationArea = All;
                 }
                 field("Source No."; "Source No.")
                 {
+                    ApplicationArea = All;
                 }
                 field(Quantity; Quantity)
                 {
+                    ApplicationArea = All;
                 }
                 field("Entry No."; "Entry No.")
                 {
+                    ApplicationArea = All;
                 }
             }
         }

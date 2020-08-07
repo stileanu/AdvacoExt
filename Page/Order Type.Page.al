@@ -19,22 +19,27 @@ page 50045 "Order Type"
                     ShowCaption = false;
                     field("Work Order No."; "Work Order No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Model No."; "Model No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field(Description; Description)
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Serial No."; "Serial No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Order Type"; "Order Type")
                     {
+                        ApplicationArea = All;
 
                         trigger OnValidate()
                         begin
@@ -57,9 +62,11 @@ page 50045 "Order Type"
                     }
                     field("Order Type Reason"; "Order Type Reason")
                     {
+                        ApplicationArea = All;
                     }
                     field("Warranty Type"; "Warranty Type")
                     {
+                        ApplicationArea = All;
 
                         trigger OnValidate()
                         begin
@@ -74,6 +81,7 @@ page 50045 "Order Type"
                     }
                     field("Warranty Reason"; "Warranty Reason")
                     {
+                        ApplicationArea = All;
 
                         trigger OnValidate()
                         begin
@@ -92,6 +100,7 @@ page 50045 "Order Type"
                     ShowCaption = false;
                     field("Customer ID"; "Customer ID")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                 }

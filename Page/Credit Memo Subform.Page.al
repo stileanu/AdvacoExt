@@ -17,9 +17,11 @@ page 50142 "Credit Memo Subform"
             {
                 field(Type; Type)
                 {
+                    ApplicationArea = All;
                 }
                 field("No."; "No.")
                 {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -28,74 +30,94 @@ page 50142 "Credit Memo Subform"
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field(Quantity; Quantity)
                 {
+                    ApplicationArea = All;
                     Caption = 'Qty.';
                 }
                 field("Unit Cost (LCY)"; "Unit Cost (LCY)")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field(Amount; Amount)
                 {
+                    ApplicationArea = All;
                 }
                 field("Amount Including VAT"; "Amount Including VAT")
                 {
+                    ApplicationArea = All;
                 }
                 field("Tax Area Code"; "Tax Area Code")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Tax Liable"; "Tax Liable")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Tax Group Code"; "Tax Group Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Location Code"; "Location Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit of Measure Code"; "Unit of Measure Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit of Measure"; "Unit of Measure")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Direct Unit Cost"; "Direct Unit Cost")
                 {
+                    ApplicationArea = All;
                 }
                 field("Indirect Cost %"; "Indirect Cost %")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Unit Price (LCY)"; "Unit Price (LCY)")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Line Discount %"; "Line Discount %")
                 {
+                    ApplicationArea = All;
                 }
                 field("Line Discount Amount"; "Line Discount Amount")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Allow Invoice Disc."; "Allow Invoice Disc.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Inv. Discount Amount"; "Inv. Discount Amount")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Blanket Order No."; "Blanket Order No.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Blanket Order Line No."; "Blanket Order Line No.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
             }

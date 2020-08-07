@@ -14,14 +14,17 @@ page 50040 "ADVACO Comment Sheet"
         {
             repeater(Group)
             {
-                field(Date;Date)
+                field(Date; Date)
                 {
+                    ApplicationArea = All;
                 }
-                field(Comment;Comment)
+                field(Comment; Comment)
                 {
+                    ApplicationArea = All;
                 }
-                field("Code";Code)
+                field("Code"; Code)
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
             }

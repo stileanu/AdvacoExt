@@ -20,6 +20,7 @@ page 50066 "Sales Invoice Acct"
                     ShowCaption = false;
                     field("No."; "No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
 
                         trigger OnAssistEdit()
@@ -30,33 +31,41 @@ page 50066 "Sales Invoice Acct"
                     }
                     field("Sell-to Customer No."; "Sell-to Customer No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Sell-to Customer Name"; "Sell-to Customer Name")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Sell-to Address"; "Sell-to Address")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Sell-to Address 2"; "Sell-to Address 2")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Sell-to City"; "Sell-to City")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Sell-to Post Code"; "Sell-to Post Code")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Sell-to County"; "Sell-to County")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Sell-to Contact"; "Sell-to Contact")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                 }
@@ -65,27 +74,34 @@ page 50066 "Sales Invoice Acct"
                     ShowCaption = false;
                     field("Posting Date"; "Posting Date")
                     {
+                        ApplicationArea = All;
                     }
                     field("Document Date"; "Document Date")
                     {
+                        ApplicationArea = All;
                     }
                     field("Salesperson Code"; "Salesperson Code")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inside Sales';
                     }
                     field(Rep; Rep)
                     {
+                        ApplicationArea = All;
                     }
                     field("Bill of Lading"; "Bill of Lading")
                     {
+                        ApplicationArea = All;
                     }
                     field(Status; Status)
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
             part(SalesLines; "Sales Invoice Acct Subform")
             {
+                ApplicationArea = All;
                 SubPageLink = "Document No." = FIELD("No.");
             }
             group(Invoicing)
@@ -96,27 +112,35 @@ page 50066 "Sales Invoice Acct"
                     ShowCaption = false;
                     field("Bill-to Customer No."; "Bill-to Customer No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Bill-to Name"; "Bill-to Name")
                     {
+                        ApplicationArea = All;
                     }
                     field("Bill-to Address"; "Bill-to Address")
                     {
+                        ApplicationArea = All;
                     }
                     field("Bill-to Address 2"; "Bill-to Address 2")
                     {
+                        ApplicationArea = All;
                     }
                     field("Bill-to City"; "Bill-to City")
                     {
+                        ApplicationArea = All;
                     }
                     field("Bill-to County"; "Bill-to County")
                     {
+                        ApplicationArea = All;
                     }
                     field("Bill-to Post Code"; "Bill-to Post Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Bill-to Contact"; "Bill-to Contact")
                     {
+                        ApplicationArea = All;
                     }
                 }
                 group(Control1220060028)
@@ -124,27 +148,34 @@ page 50066 "Sales Invoice Acct"
                     ShowCaption = false;
                     field("Your Reference"; "Your Reference")
                     {
+                        ApplicationArea = All;
                         Caption = 'Customer P.O Number';
                     }
                     field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
                     {
+                        ApplicationArea = All;
                         Caption = 'Project Code';
                     }
                 }
                 field("Payment Terms Code"; "Payment Terms Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Card Type"; "Card Type")
                 {
+                    ApplicationArea = All;
                 }
                 field("Credit Card No."; "Credit Card No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Credit Card Exp."; "Credit Card Exp.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Due Date"; "Due Date")
                 {
+                    ApplicationArea = All;
                 }
             }
             group(Shipping)
@@ -155,30 +186,39 @@ page 50066 "Sales Invoice Acct"
                     ShowCaption = false;
                     field("Ship-to Code"; "Ship-to Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to Name"; "Ship-to Name")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to Address"; "Ship-to Address")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to Address 2"; "Ship-to Address 2")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to City"; "Ship-to City")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to County"; "Ship-to County")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to Post Code"; "Ship-to Post Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to Contact"; "Ship-to Contact")
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship-to UPS Zone"; "Ship-to UPS Zone")
                     {
+                        ApplicationArea = All;
                     }
                 }
                 group(Control1220060010)
@@ -186,18 +226,23 @@ page 50066 "Sales Invoice Acct"
                     ShowCaption = false;
                     field("Shipping Agent Code"; "Shipping Agent Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Shipment Method Code"; "Shipment Method Code")
                     {
+                        ApplicationArea = All;
                     }
                     field("Package Tracking No."; "Package Tracking No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Tax Liable"; "Tax Liable")
                     {
+                        ApplicationArea = All;
                     }
                     field("Tax Area Code"; "Tax Area Code")
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
@@ -213,6 +258,7 @@ page 50066 "Sales Invoice Acct"
                 Caption = '&Invoice';
                 action(Statistics)
                 {
+                    ApplicationArea = All;
                     Caption = 'Statistics';
                     RunObject = Page "Sales Statistics";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -221,6 +267,7 @@ page 50066 "Sales Invoice Acct"
                 }
                 action(Card)
                 {
+                    ApplicationArea = All;
                     Caption = 'Card';
                     RunObject = Page "Customer Card";
                     RunPageLink = "No." = FIELD("Sell-to Customer No.");
@@ -228,6 +275,7 @@ page 50066 "Sales Invoice Acct"
                 }
                 action("Co&mments")
                 {
+                    ApplicationArea = All;
                     Caption = 'Co&mments';
                     RunObject = Page "Sales Comment Sheet";
                     RunPageLink = "Document Type" = FIELD("Document Type"),
@@ -239,6 +287,7 @@ page 50066 "Sales Invoice Acct"
                 Caption = 'Functions';
                 action(CopyDocument)
                 {
+                    ApplicationArea = All;
                     Caption = 'Copy Document';
                     Ellipsis = true;
                     Image = CopyDocument;
@@ -254,6 +303,7 @@ page 50066 "Sales Invoice Acct"
                 }
                 action("Insert &Ext. Text")
                 {
+                    ApplicationArea = All;
                     AccessByPermission = TableData "Cust. Invoice Disc." = R;
                     Caption = 'Insert &Ext. Text';
                     Image = CalculateInvoiceDiscount;
@@ -265,6 +315,7 @@ page 50066 "Sales Invoice Acct"
                 }
                 action("&Reserve")
                 {
+                    ApplicationArea = All;
                     Caption = '&Reserve';
 
                     trigger OnAction()
@@ -278,6 +329,7 @@ page 50066 "Sales Invoice Acct"
                 Caption = 'P&osting';
                 action("Test Report")
                 {
+                    ApplicationArea = All;
                     Caption = 'Test Report';
 
                     trigger OnAction()
@@ -287,18 +339,21 @@ page 50066 "Sales Invoice Acct"
                 }
                 action("P&ost")
                 {
+                    ApplicationArea = All;
                     Caption = 'P&ost';
                     RunObject = Codeunit "Sales-Post (Yes/No)";
                     ShortCutKey = 'F11';
                 }
                 action("Post and &Print")
                 {
+                    ApplicationArea = All;
                     Caption = 'Post and &Print';
                     RunObject = Codeunit "Sales-Post + Print";
                     ShortCutKey = 'Shift+F11';
                 }
                 action("Post and &Email")
                 {
+                    ApplicationArea = All;
                     Caption = 'Post and &Email';
 
                     trigger OnAction()

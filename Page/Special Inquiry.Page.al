@@ -30,43 +30,55 @@ page 50031 "Special Inquiry"
                     Caption = 'Press F7 and enter Criteria';
                     field("Customer ID"; "Customer ID")
                     {
+                        ApplicationArea = All;
                     }
                     field("Work Order Date"; "Work Order Date")
                     {
+                        ApplicationArea = All;
                     }
                     field("Work Order No."; "Work Order No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Model No."; "Model No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Serial No."; "Serial No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Customer PO No."; "Customer PO No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Customer Part No."; "Customer Part No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Work Order Master No."; "Work Order Master No.")
                     {
+                        ApplicationArea = All;
                     }
                     field(Complete; Complete)
                     {
+                        ApplicationArea = All;
                     }
                     field("Order Adj."; "Order Adj.")
                     {
+                        ApplicationArea = All;
                         Caption = 'Order Adjustment';
                         Visible = OrderAdjVisible;
                     }
                     field(QuotePrice; QuotePrice)
                     {
+                        ApplicationArea = All;
                         Caption = 'Quote Price';
                         Visible = QuotePriceVisible;
                     }
                     field("Initial Order Type"; "Initial Order Type")
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
@@ -79,6 +91,7 @@ page 50031 "Special Inquiry"
         {
             action("&Detail Screen")
             {
+                ApplicationArea = All;
                 Caption = '&Detail Screen';
                 Enabled = DetailEnabled;
                 Promoted = true;
@@ -91,6 +104,7 @@ page 50031 "Special Inquiry"
             }
             action("Current &Status")
             {
+                ApplicationArea = All;
                 Caption = 'Current &Status';
                 Promoted = true;
 
@@ -102,6 +116,7 @@ page 50031 "Special Inquiry"
             }
             action("&Parts List")
             {
+                ApplicationArea = All;
                 Caption = '&Parts List';
                 Promoted = true;
 
@@ -113,6 +128,7 @@ page 50031 "Special Inquiry"
             }
             action("Detail &List")
             {
+                ApplicationArea = All;
                 Caption = 'Detail &List';
                 Promoted = true;
                 RunObject = Page "Work Order Vendor Shipping";

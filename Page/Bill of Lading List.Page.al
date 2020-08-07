@@ -10,44 +10,57 @@ page 50035 "Bill of Lading List"
         {
             repeater(Group)
             {
-                field("Bill of Lading";"Bill of Lading")
+                field("Bill of Lading"; "Bill of Lading")
                 {
+                    ApplicationArea = All;
                 }
-                field(Type;Type)
+                field(Type; Type)
                 {
+                    ApplicationArea = All;
                 }
-                field("Order No.";"Order No.")
+                field("Order No."; "Order No.")
                 {
+                    ApplicationArea = All;
                 }
-                field(Customer;Customer)
+                field(Customer; Customer)
                 {
+                    ApplicationArea = All;
                 }
-                field(Employee;Employee)
+                field(Employee; Employee)
                 {
+                    ApplicationArea = All;
                 }
-                field("Shipment Date";"Shipment Date")
+                field("Shipment Date"; "Shipment Date")
                 {
+                    ApplicationArea = All;
                 }
-                field("Container Quantity";"Container Quantity")
+                field("Container Quantity"; "Container Quantity")
                 {
+                    ApplicationArea = All;
                 }
-                field("Container Type";"Container Type")
+                field("Container Type"; "Container Type")
                 {
+                    ApplicationArea = All;
                 }
-                field(Carrier;Carrier)
+                field(Carrier; Carrier)
                 {
+                    ApplicationArea = All;
                 }
-                field("Shipping Method";"Shipping Method")
+                field("Shipping Method"; "Shipping Method")
                 {
+                    ApplicationArea = All;
                 }
-                field("Shipping Charge";"Shipping Charge")
+                field("Shipping Charge"; "Shipping Charge")
                 {
+                    ApplicationArea = All;
                 }
-                field("Shipping Account";"Shipping Account")
+                field("Shipping Account"; "Shipping Account")
                 {
+                    ApplicationArea = All;
                 }
-                field("Package Tracking No.";"Package Tracking No.")
+                field("Package Tracking No."; "Package Tracking No.")
                 {
+                    ApplicationArea = All;
                 }
             }
         }

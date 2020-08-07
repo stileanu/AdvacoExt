@@ -15,21 +15,27 @@ IcE-MPC BC Upgrade
             {
                 field("Part Type"; "Part Type")
                 {
+                    ApplicationArea = All;
                 }
                 field("Part No."; "Part No.")
                 {
+                    ApplicationArea = All;
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field("Quoted Quantity"; "Quoted Quantity")
                 {
+                    ApplicationArea = All;
                 }
                 field("Pulled Quantity"; "Pulled Quantity")
                 {
+                    ApplicationArea = All;
                 }
                 field("Serial No."; "Serial No.")
                 {
+                    ApplicationArea = All;
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
@@ -38,15 +44,18 @@ IcE-MPC BC Upgrade
                 }
                 field("Quantity Backorder"; "Quantity Backorder")
                 {
+                    ApplicationArea = All;
                     Caption = 'Back Order Quantity';
                     Editable = false;
                 }
                 field("In-Process Quantity"; "In-Process Quantity")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Committed Quantity"; "Committed Quantity")
                 {
+                    ApplicationArea = All;
                 }
             }
         }

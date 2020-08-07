@@ -15,9 +15,11 @@ page 50067 "Sales Invoice Acct Subform"
             {
                 field(Type; Type)
                 {
+                    ApplicationArea = All;
                 }
                 field("No."; "No.")
                 {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -26,9 +28,11 @@ page 50067 "Sales Invoice Acct Subform"
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field(Quantity; Quantity)
                 {
+                    ApplicationArea = All;
                     Caption = 'Qty';
 
                     trigger OnValidate()
@@ -38,43 +42,56 @@ page 50067 "Sales Invoice Acct Subform"
                 }
                 field("Quantity Invoiced"; "Quantity Invoiced")
                 {
+                    ApplicationArea = All;
                 }
                 field("Qty. to Invoice"; "Qty. to Invoice")
                 {
+                    ApplicationArea = All;
                 }
                 field("Quantity Shipped"; "Quantity Shipped")
                 {
+                    ApplicationArea = All;
                 }
                 field("Qty. to Ship"; "Qty. to Ship")
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit Cost (LCY)"; "Unit Cost (LCY)")
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit Price"; "Unit Price")
                 {
+                    ApplicationArea = All;
                 }
                 field(Amount; Amount)
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Amount Including VAT"; "Amount Including VAT")
                 {
+                    ApplicationArea = All;
                 }
                 field("Tax Liable"; "Tax Liable")
                 {
+                    ApplicationArea = All;
                 }
                 field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
                 {
+                    ApplicationArea = All;
                 }
                 field("Reserved Quantity"; "Reserved Quantity")
                 {
+                    ApplicationArea = All;
                 }
                 field(Reserve; Reserve)
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit of Measure Code"; "Unit of Measure Code")
                 {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -83,22 +100,28 @@ page 50067 "Sales Invoice Acct Subform"
                 }
                 field("Unit of Measure"; "Unit of Measure")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Tax Group Code"; "Tax Group Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Line Discount %"; "Line Discount %")
                 {
+                    ApplicationArea = All;
                 }
                 field("Allow Invoice Disc."; "Allow Invoice Disc.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Inv. Discount Amount"; "Inv. Discount Amount")
                 {
+                    ApplicationArea = All;
                 }
                 field("Appl.-to Item Entry"; "Appl.-to Item Entry")
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -117,6 +140,7 @@ page 50067 "Sales Invoice Acct Subform"
                     Image = ItemAvailability;
                     action(Period)
                     {
+                        ApplicationArea = All;
                         Caption = 'Period';
                         Image = Period;
 
@@ -127,6 +151,7 @@ page 50067 "Sales Invoice Acct Subform"
                     }
                     action(Location)
                     {
+                        ApplicationArea = All;
                         AccessByPermission = TableData Location = R;
                         Caption = 'Location';
                         Image = Warehouse;

@@ -31,6 +31,7 @@ page 50038 "Work Order Instructions"
                     ShowCaption = false;
                     field("Customer Code"; "Customer Code")
                     {
+                        ApplicationArea = All;
 
                         trigger OnValidate()
                         begin
@@ -39,17 +40,21 @@ page 50038 "Work Order Instructions"
                     }
                     field(Step; Step)
                     {
+                        ApplicationArea = All;
                     }
                     field("Ship To Code"; "Ship To Code")
                     {
+                        ApplicationArea = All;
                         Editable = ShipToCodeEditable;
                     }
                     field(Model; Model)
                     {
+                        ApplicationArea = All;
                         Editable = ModelEditable;
                     }
                     field("Customer Part No."; "Customer Part No.")
                     {
+                        ApplicationArea = All;
                         Editable = CustomerPartNoEditable;
 
                         trigger OnValidate()
@@ -93,6 +98,7 @@ page 50038 "Work Order Instructions"
                     }
                     field("Part Quality Ctrl Instructions"; "Part Quality Ctrl Instructions")
                     {
+                        ApplicationArea = All;
                         Editable = PartQualityCtrlEditable;
 
                         trigger OnDrillDown()
@@ -108,9 +114,11 @@ page 50038 "Work Order Instructions"
                     }
                     field(Instruction; Instruction)
                     {
+                        ApplicationArea = All;
                     }
                     field(Blocked; Blocked)
                     {
+                        ApplicationArea = All;
                         Enabled = false;
                         Visible = BlockedVisible;
                     }
@@ -120,6 +128,7 @@ page 50038 "Work Order Instructions"
                     ShowCaption = false;
                     field("Date Last Modified"; "Date Last Modified")
                     {
+                        ApplicationArea = All;
                         Caption = 'Date';
                     }
                 }
@@ -133,6 +142,7 @@ page 50038 "Work Order Instructions"
         {
             action("Block/Unblock")
             {
+                ApplicationArea = All;
                 Caption = 'Block/Unblock';
                 Enabled = BlockUnblockEnabled;
                 Promoted = true;

@@ -13,28 +13,34 @@ page 50034 "Boxed Entry"
                 group(Control1000000008)
                 {
                     ShowCaption = false;
-                    field("Customer ID";"Customer ID")
+                    field("Customer ID"; "Customer ID")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Work Order No.";"Work Order No.")
+                    field("Work Order No."; "Work Order No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sales Order No.";"Sales Order No.")
+                    field("Sales Order No."; "Sales Order No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Model No.";"Model No.")
+                    field("Model No."; "Model No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Serial No.";"Serial No.")
+                    field("Serial No."; "Serial No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field(Boxed;Boxed)
+                    field(Boxed; Boxed)
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
@@ -47,6 +53,7 @@ page 50034 "Boxed Entry"
         {
             action("&Close")
             {
+                ApplicationArea = All;
                 Caption = '&Close';
                 Image = Close;
                 Promoted = true;

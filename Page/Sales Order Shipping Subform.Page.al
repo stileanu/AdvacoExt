@@ -20,6 +20,7 @@ page 50061 "Sales Order Shipping Subform"
             {
                 field("No."; "No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
 
                     trigger OnValidate()
@@ -29,9 +30,11 @@ page 50061 "Sales Order Shipping Subform"
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field(Quantity; Quantity)
                 {
+                    ApplicationArea = All;
                     Caption = 'Qty';
                     Editable = false;
 
@@ -42,20 +45,25 @@ page 50061 "Sales Order Shipping Subform"
                 }
                 field("Qty. to Ship"; "Qty. to Ship")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shipped Qty."; "Shipped Qty.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shipment Date"; "Shipment Date")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Package Tracking No."; "Package Tracking No.")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Unit of Measure Code"; "Unit of Measure Code")
                 {
+                    ApplicationArea = All;
                     Editable = false;
 
                     trigger OnValidate()

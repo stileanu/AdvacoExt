@@ -10,29 +10,37 @@ page 50006 "Original Parts List"
         {
             repeater(Group)
             {
-                field("Work Order No.";"Work Order No.")
+                field("Work Order No."; "Work Order No.")
                 {
+                    ApplicationArea = All;
                 }
-                field("Part Type";"Part Type")
+                field("Part Type"; "Part Type")
                 {
+                    ApplicationArea = All;
                 }
-                field("Part No.";"Part No.")
+                field("Part No."; "Part No.")
                 {
+                    ApplicationArea = All;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
-                field("Quoted Quantity";"Quoted Quantity")
+                field("Quoted Quantity"; "Quoted Quantity")
                 {
+                    ApplicationArea = All;
                 }
-                field("Part Cost";"Part Cost")
+                field("Part Cost"; "Part Cost")
                 {
+                    ApplicationArea = All;
                 }
-                field("Quoted Price";"Quoted Price")
+                field("Quoted Price"; "Quoted Price")
                 {
+                    ApplicationArea = All;
                 }
-                field("Total Quote Price";"Total Quote Price")
+                field("Total Quote Price"; "Total Quote Price")
                 {
+                    ApplicationArea = All;
                 }
             }
         }

@@ -19,18 +19,22 @@ page 50150 "Field Service"
                         ShowCaption = false;
                         field("Field Service No."; "Field Service No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field(Customer; Customer)
                         {
+                            ApplicationArea = All;
                             Editable = ControlsEditable;
                         }
                         field("Ship To Code"; "Ship To Code")
                         {
+                            ApplicationArea = All;
                             Editable = ControlsEditable;
                         }
                         field("Date Ordered"; "Date Ordered")
                         {
+                            ApplicationArea = All;
                             Caption = 'Order Date';
                             Editable = false;
                         }
@@ -41,106 +45,132 @@ page 50150 "Field Service"
             {
                 field("Customer Name"; "Customer Name")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Customer Address 1"; "Customer Address 1")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Customer Address 2"; "Customer Address 2")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Customer City"; "Customer City")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Customer State"; "Customer State")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Customer Zip Code"; "Customer Zip Code")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Customer Payment Terms"; "Customer Payment Terms")
                 {
+                    ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
                 field("Card Type"; "Card Type")
                 {
+                    ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
                 field("Credit Card No."; "Credit Card No.")
                 {
+                    ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
                 field("Credit Card Exp."; "Credit Card Exp.")
                 {
+                    ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
                 field("Tax Liable"; "Tax Liable")
                 {
+                    ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
                 field("Tax Exemption No."; "Tax Exemption No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Exempt Organization"; "Exempt Organization")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Ship To Name"; "Ship To Name")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Ship To Address 1"; "Ship To Address 1")
                 {
+                    ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
                 field("Ship To Address 2"; "Ship To Address 2")
                 {
+                    ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
                 field("Ship To City"; "Ship To City")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Ship To State"; "Ship To State")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Ship To Zip Code"; "Ship To Zip Code")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field(Attention; Attention)
                 {
+                    ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
                 field("E-Mail"; "E-Mail")
                 {
+                    ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
                 field("Phone No."; "Phone No.")
                 {
+                    ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
                 field("Fax No."; "Fax No.")
                 {
+                    ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
                 field("Inside Sales"; "Inside Sales")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field(Rep; Rep)
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field(Complete; Complete)
                 {
+                    ApplicationArea = All;
                 }
             }
             group("Service Detail")
@@ -150,6 +180,7 @@ page 50150 "Field Service"
                     ShowCaption = false;
                     field("Service Type"; "Service Type")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
@@ -167,18 +198,22 @@ page 50150 "Field Service"
                     }
                     field("Income Code"; "Income Code")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
                     field("Customer PO No."; "Customer PO No.")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
                     field("Parts Required"; "Parts Required")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
                     field(Description; Description)
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
                 }
@@ -187,18 +222,22 @@ page 50150 "Field Service"
                     ShowCaption = false;
                     field(Carrier; Carrier)
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
                     field("Shipping Method"; "Shipping Method")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
                     field("Shipping Account"; "Shipping Account")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
                     field("Shipping Charge"; "Shipping Charge")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
                 }
@@ -211,10 +250,12 @@ page 50150 "Field Service"
                     ShowCaption = false;
                     field(Technician; Technician)
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
                     field(Lodging; Lodging)
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
@@ -234,6 +275,7 @@ page 50150 "Field Service"
                     }
                     field("Air Travel"; "Air Travel")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
@@ -253,6 +295,7 @@ page 50150 "Field Service"
                     }
                     field("Rental Car"; "Rental Car")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
@@ -272,6 +315,7 @@ page 50150 "Field Service"
                     }
                     field(Meals; Meals)
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
@@ -291,6 +335,7 @@ page 50150 "Field Service"
                     }
                     field(Freight; Freight)
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
@@ -310,6 +355,7 @@ page 50150 "Field Service"
                     }
                     field("Misc Expenses"; "Misc Expenses")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
@@ -337,6 +383,7 @@ page 50150 "Field Service"
                     ShowCaption = false;
                     field("Company Van Miles"; "Company Van Miles")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
@@ -362,6 +409,7 @@ page 50150 "Field Service"
                     }
                     field("Personal Vehicle Miles"; "Personal Vehicle Miles")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
@@ -387,6 +435,7 @@ page 50150 "Field Service"
                     }
                     field("Travel Hours"; "Travel Hours")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
@@ -406,6 +455,7 @@ page 50150 "Field Service"
                     }
                     field("Work Hours"; "Work Hours")
                     {
+                        ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
@@ -429,21 +479,25 @@ page 50150 "Field Service"
                     ShowCaption = false;
                     field("Parts Quoted"; "Parts Quoted")
                     {
+                        ApplicationArea = All;
                         Caption = 'Parts Price';
                         Editable = false;
                     }
                     field(LaborPrice; LaborPrice)
                     {
+                        ApplicationArea = All;
                         Caption = 'Labor Price';
                         Editable = false;
                     }
                     field(Expenses; Expenses)
                     {
+                        ApplicationArea = All;
                         Caption = 'Expenses';
                         Editable = false;
                     }
                     field("Order Adj."; "Order Adj.")
                     {
+                        ApplicationArea = All;
                         Editable = OrderAdjEditable;
 
                         trigger OnValidate()
@@ -453,6 +507,7 @@ page 50150 "Field Service"
                     }
                     field(QuotePrice; QuotePrice)
                     {
+                        ApplicationArea = All;
                         Caption = 'Quote Price';
                         Editable = false;
                     }
@@ -467,6 +522,7 @@ page 50150 "Field Service"
         {
             action("Complete Order")
             {
+                ApplicationArea = All;
                 Caption = 'Complete Order';
                 Promoted = true;
                 PromotedIsBig = true;
@@ -499,6 +555,7 @@ page 50150 "Field Service"
             }
             action(Traveler)
             {
+                ApplicationArea = All;
                 Caption = 'Traveler';
                 Promoted = true;
                 PromotedIsBig = true;
@@ -513,6 +570,7 @@ page 50150 "Field Service"
             }
             action(Envelope)
             {
+                ApplicationArea = All;
                 Caption = 'Envelope';
                 Promoted = true;
                 PromotedIsBig = true;
@@ -526,6 +584,7 @@ page 50150 "Field Service"
             }
             action("Current &Status")
             {
+                ApplicationArea = All;
                 Caption = 'Current &Status';
                 Promoted = true;
                 PromotedIsBig = true;

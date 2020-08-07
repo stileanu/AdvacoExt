@@ -24,27 +24,33 @@ page 50033 "Work Order Shipping"
                 ShowCaption = false;
                 field(ShipmentWeight; ShipmentWeight)
                 {
+                    ApplicationArea = All;
                     Caption = 'Total Shipment Weight';
                 }
                 field(LabelsToPrint; LabelsToPrint)
                 {
+                    ApplicationArea = All;
                     Caption = 'Label Quantity';
                 }
                 field(ContainerType; ContainerType)
                 {
+                    ApplicationArea = All;
                     Caption = 'Container Type';
                 }
                 field(TotalContainerQuantity; TotalContainerQuantity)
                 {
+                    ApplicationArea = All;
                     Caption = 'Total Container Qty';
                 }
                 field(Shipper; Shipper)
                 {
+                    ApplicationArea = All;
                     Caption = 'Shippers Initals';
                     TableRelation = Resource."No." WHERE("Gen. Prod. Posting Group" = FILTER(''));
                 }
                 field(ShippingTime; ShippingTime)
                 {
+                    ApplicationArea = All;
                     Caption = 'Shipping Time';
                 }
             }
@@ -52,34 +58,43 @@ page 50033 "Work Order Shipping"
             {
                 field(Ship; Ship)
                 {
+                    ApplicationArea = All;
                 }
                 field("Work Order No."; "Work Order No.")
                 {
+                    ApplicationArea = All;
                     Caption = 'WOD';
                     Editable = false;
                 }
                 field("Model No."; "Model No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Customer Part No."; "Customer Part No.")
                 {
+                    ApplicationArea = All;
                 }
                 field("Serial No."; "Serial No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field(Carrier; Carrier)
                 {
+                    ApplicationArea = All;
                 }
                 field("Shipping Charge"; "Shipping Charge")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shipping Method"; "Shipping Method")
                 {
+                    ApplicationArea = All;
                 }
                 field("Shipping Account"; "Shipping Account")
                 {
+                    ApplicationArea = All;
                 }
             }
             group(Control1220060018)
@@ -87,51 +102,67 @@ page 50033 "Work Order Shipping"
                 ShowCaption = false;
                 field("Customer ID"; "Customer ID")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship To Name"; "Ship To Name")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship To Address 1"; "Ship To Address 1")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship To Address 2"; "Ship To Address 2")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship To City"; "Ship To City")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship To State"; "Ship To State")
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship To Zip Code"; "Ship To Zip Code")
                 {
+                    ApplicationArea = All;
                 }
                 field(Attention; Attention)
                 {
+                    ApplicationArea = All;
                 }
                 field("Ship Weight"; "Ship Weight")
                 {
+                    ApplicationArea = All;
                 }
                 field("Container Quantity"; "Container Quantity")
                 {
+                    ApplicationArea = All;
                 }
                 field("Packaging Location"; "Packaging Location")
                 {
+                    ApplicationArea = All;
                 }
                 field("Package Tracking No."; "Package Tracking No.")
                 {
+                    ApplicationArea = All;
                 }
                 field(Packaging; Packaging)
                 {
+                    ApplicationArea = All;
                 }
                 field(Accessories; Accessories)
                 {
+                    ApplicationArea = All;
                 }
                 field("Receiving Notes"; "Receiving Notes")
                 {
+                    ApplicationArea = All;
                 }
                 field(SHP; SHP)
                 {
+                    ApplicationArea = All;
                 }
             }
             group("*  *  *  *  * *INTEL Non-Copper Segregation Required* *  *  *  *  *")
@@ -140,6 +171,7 @@ page 50033 "Work Order Shipping"
                 Visible = NonCopperVisible;
                 field(NonCopperMessage; NonCopperMessage)
                 {
+                    ApplicationArea = All;
                     ShowCaption = false;
                     Visible = NonCopperVisible;
                 }
@@ -153,6 +185,7 @@ page 50033 "Work Order Shipping"
         {
             action("Print All BOL's")
             {
+                ApplicationArea = All;
                 Caption = 'Print All BOL''s';
                 Enabled = false;
                 Visible = false;
@@ -192,6 +225,7 @@ page 50033 "Work Order Shipping"
             }
             action(Instructions)
             {
+                ApplicationArea = All;
                 Caption = 'Instructions';
                 Promoted = true;
                 Visible = WorkInstructionsVisible;
@@ -207,6 +241,7 @@ page 50033 "Work Order Shipping"
             }
             action("&Ship")
             {
+                ApplicationArea = All;
                 Caption = '&Ship';
                 Promoted = true;
 

@@ -18,18 +18,22 @@ page 50048 "Email Dialog 2"
                     ShowCaption = false;
                     field(ToAddress; ToAddress)
                     {
+                        ApplicationArea = All;
                         Caption = 'To:';
                     }
                     field(CCAddress; CCAddress)
                     {
+                        ApplicationArea = All;
                         Caption = 'CC:';
                     }
                     field(SubjectLine; SubjectLine)
                     {
+                        ApplicationArea = All;
                         Caption = 'Subject:';
                     }
                     field(Attached; Attached)
                     {
+                        ApplicationArea = All;
                         Caption = 'Attached:';
                         Editable = false;
 
@@ -43,6 +47,7 @@ page 50048 "Email Dialog 2"
                     }
                     field(eMailBody; eMailBody)
                     {
+                        ApplicationArea = All;
                         MultiLine = true;
                         ShowCaption = false;
                     }
@@ -52,41 +57,49 @@ page 50048 "Email Dialog 2"
                     Caption = 'Email Signature';
                     field("UserSignature[1]"; UserSignature[1])
                     {
+                        ApplicationArea = All;
                         Editable = false;
                         ShowCaption = false;
                     }
                     field("UserSignature[2]"; UserSignature[2])
                     {
+                        ApplicationArea = All;
                         Editable = false;
                         ShowCaption = false;
                     }
                     field("UserSignature[3]"; UserSignature[3])
                     {
+                        ApplicationArea = All;
                         Editable = false;
                         ShowCaption = false;
                     }
                     field("UserSignature[4]"; UserSignature[4])
                     {
+                        ApplicationArea = All;
                         Editable = false;
                         ShowCaption = false;
                     }
                     field("UserSignature[5]"; UserSignature[5])
                     {
+                        ApplicationArea = All;
                         Editable = false;
                         ShowCaption = false;
                     }
                     field("UserSignature[6]"; UserSignature[6])
                     {
+                        ApplicationArea = All;
                         Editable = false;
                         ShowCaption = false;
                     }
                     field("UserSignature[7]"; UserSignature[7])
                     {
+                        ApplicationArea = All;
                         Editable = false;
                         ShowCaption = false;
                     }
                     field("UserSignature[8]"; UserSignature[8])
                     {
+                        ApplicationArea = All;
                         Editable = false;
                         ShowCaption = false;
                     }

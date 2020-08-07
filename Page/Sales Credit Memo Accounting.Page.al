@@ -5,9 +5,9 @@ page 50068 "Sales Credit Memo Accounting"
 
     PageType = Card;
     SourceTable = "Sales Header";
-    SourceTableView = SORTING("Document Type","Location Code","No.")
+    SourceTableView = SORTING("Document Type", "Location Code", "No.")
                       ORDER(Ascending)
-                      WHERE("Document Type"=FILTER("Credit Memo"));
+                      WHERE("Document Type" = FILTER("Credit Memo"));
 
     layout
     {
@@ -18,72 +18,87 @@ page 50068 "Sales Credit Memo Accounting"
                 group(Control1220060035)
                 {
                     ShowCaption = false;
-                    field("No.";"No.")
+                    field("No."; "No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
 
                         trigger OnAssistEdit()
                         begin
                             if AssistEdit(xRec) then
-                              CurrPage.Update;
+                                CurrPage.Update;
                         end;
                     }
-                    field("Sell-to Customer No.";"Sell-to Customer No.")
+                    field("Sell-to Customer No."; "Sell-to Customer No.")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Sell-to Customer Name";"Sell-to Customer Name")
+                    field("Sell-to Customer Name"; "Sell-to Customer Name")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Address";"Sell-to Address")
+                    field("Sell-to Address"; "Sell-to Address")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Address 2";"Sell-to Address 2")
+                    field("Sell-to Address 2"; "Sell-to Address 2")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to City";"Sell-to City")
+                    field("Sell-to City"; "Sell-to City")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Post Code";"Sell-to Post Code")
+                    field("Sell-to Post Code"; "Sell-to Post Code")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to County";"Sell-to County")
+                    field("Sell-to County"; "Sell-to County")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Contact";"Sell-to Contact")
+                    field("Sell-to Contact"; "Sell-to Contact")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                 }
                 group(Control1220060059)
                 {
                     ShowCaption = false;
-                    field("Posting Date";"Posting Date")
+                    field("Posting Date"; "Posting Date")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Document Date";"Document Date")
+                    field("Document Date"; "Document Date")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Salesperson Code";"Salesperson Code")
+                    field("Salesperson Code"; "Salesperson Code")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inside Sales';
                     }
-                    field(Rep;Rep)
+                    field(Rep; Rep)
                     {
+                        ApplicationArea = All;
                     }
-                    field(Status;Status)
+                    field(Status; Status)
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
-            part(SalesLines;"Sales Credit Memo Acct Subform")
+            part(SalesLines; "Sales Credit Memo Acct Subform")
             {
-                SubPageLink = "Document No."=FIELD("No.");
+                ApplicationArea = All;
+                SubPageLink = "Document No." = FIELD("No.");
             }
             group(Invoicing)
             {
@@ -91,57 +106,72 @@ page 50068 "Sales Credit Memo Accounting"
                 group(Control1220060038)
                 {
                     ShowCaption = false;
-                    field("Bill-to Customer No.";"Bill-to Customer No.")
+                    field("Bill-to Customer No."; "Bill-to Customer No.")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Bill-to Name";"Bill-to Name")
+                    field("Bill-to Name"; "Bill-to Name")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Bill-to Address";"Bill-to Address")
+                    field("Bill-to Address"; "Bill-to Address")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Bill-to Address 2";"Bill-to Address 2")
+                    field("Bill-to Address 2"; "Bill-to Address 2")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Bill-to City";"Bill-to City")
+                    field("Bill-to City"; "Bill-to City")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Bill-to County";"Bill-to County")
+                    field("Bill-to County"; "Bill-to County")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Bill-to Post Code";"Bill-to Post Code")
+                    field("Bill-to Post Code"; "Bill-to Post Code")
                     {
+                        ApplicationArea = All;
                     }
-                    field("Bill-to Contact";"Bill-to Contact")
+                    field("Bill-to Contact"; "Bill-to Contact")
                     {
+                        ApplicationArea = All;
                     }
                 }
                 group(Control1220060028)
                 {
                     ShowCaption = false;
-                    field("Your Reference";"Your Reference")
+                    field("Your Reference"; "Your Reference")
                     {
+                        ApplicationArea = All;
                         Caption = 'Customer P.O Number';
                     }
-                    field("Shortcut Dimension 2 Code";"Shortcut Dimension 2 Code")
+                    field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
                     {
+                        ApplicationArea = All;
                         Caption = 'Project Code';
                     }
                 }
-                field("Applies-to Doc. Type";"Applies-to Doc. Type")
+                field("Applies-to Doc. Type"; "Applies-to Doc. Type")
                 {
+                    ApplicationArea = All;
                 }
-                field("Applies-to Doc. No.";"Applies-to Doc. No.")
+                field("Applies-to Doc. No."; "Applies-to Doc. No.")
                 {
+                    ApplicationArea = All;
                 }
-                field("Applies-to ID";"Applies-to ID")
+                field("Applies-to ID"; "Applies-to ID")
                 {
+                    ApplicationArea = All;
                 }
-                field("Tax Liable";"Tax Liable")
+                field("Tax Liable"; "Tax Liable")
                 {
+                    ApplicationArea = All;
                 }
-                field("Tax Area Code";"Tax Area Code")
+                field("Tax Area Code"; "Tax Area Code")
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -156,25 +186,28 @@ page 50068 "Sales Credit Memo Accounting"
                 Caption = '&Cr. Memo';
                 action(Statistics)
                 {
+                    ApplicationArea = All;
                     Caption = 'Statistics';
                     RunObject = Page "Sales Statistics";
-                    RunPageLink = "Document Type"=FIELD("Document Type"),
-                                  "No."=FIELD("No.");
+                    RunPageLink = "Document Type" = FIELD("Document Type"),
+                                  "No." = FIELD("No.");
                     ShortCutKey = 'F9';
                 }
                 action(Card)
                 {
+                    ApplicationArea = All;
                     Caption = 'Card';
                     RunObject = Page "Customer Card";
-                    RunPageLink = "No."=FIELD("Sell-to Customer No.");
+                    RunPageLink = "No." = FIELD("Sell-to Customer No.");
                     ShortCutKey = 'Shift+F5';
                 }
                 action("Co&mments")
                 {
+                    ApplicationArea = All;
                     Caption = 'Co&mments';
                     RunObject = Page "Sales Comment Sheet";
-                    RunPageLink = "Document Type"=FIELD("Document Type"),
-                                  "No."=FIELD("No.");
+                    RunPageLink = "Document Type" = FIELD("Document Type"),
+                                  "No." = FIELD("No.");
                 }
             }
             group(Functions)
@@ -187,7 +220,8 @@ page 50068 "Sales Credit Memo Accounting"
                 }
                 action("Calculate &Invoice Discount")
                 {
-                    AccessByPermission = TableData "Cust. Invoice Disc."=R;
+                    ApplicationArea = All;
+                    AccessByPermission = TableData "Cust. Invoice Disc." = R;
                     Caption = 'Calculate &Invoice Discount';
                     Image = CalculateInvoiceDiscount;
 
@@ -198,6 +232,7 @@ page 50068 "Sales Credit Memo Accounting"
                 }
                 action(CopyDocument)
                 {
+                    ApplicationArea = All;
                     Caption = 'Copy Document';
                     Ellipsis = true;
                     Image = CopyDocument;
@@ -213,7 +248,8 @@ page 50068 "Sales Credit Memo Accounting"
                 }
                 action("Insert &Ext. Text")
                 {
-                    AccessByPermission = TableData "Cust. Invoice Disc."=R;
+                    ApplicationArea = All;
+                    AccessByPermission = TableData "Cust. Invoice Disc." = R;
                     Caption = 'Insert &Ext. Text';
                     Image = CalculateInvoiceDiscount;
 
@@ -224,16 +260,18 @@ page 50068 "Sales Credit Memo Accounting"
                 }
                 action("Apply Entries")
                 {
+                    ApplicationArea = All;
                     Caption = 'Apply Entries';
 
                     trigger OnAction()
                     begin
-                        CODEUNIT.Run(CODEUNIT::"Sales Header Apply",Rec);
+                        CODEUNIT.Run(CODEUNIT::"Sales Header Apply", Rec);
                     end;
                 }
             }
             action(Release)
             {
+                ApplicationArea = All;
                 Caption = 'Release';
                 Image = ReleaseDoc;
                 Promoted = true;
@@ -245,7 +283,7 @@ page 50068 "Sales Credit Memo Accounting"
                 begin
                     // >> Distribution - start
                     if not UpdateAllowed then
-                      exit;
+                        exit;
                     // << Distribution - end
 
                     //>>  Whse. Management - start
@@ -253,17 +291,18 @@ page 50068 "Sales Credit Memo Accounting"
                     //<<  Whse. Management - end
 
                     if Status = Status::Released then begin
-                      ReopenVisible := true;
-                      ReleaseVisible := false;
+                        ReopenVisible := true;
+                        ReleaseVisible := false;
                     end else begin
-                      ReopenVisible := false;
-                      ReleaseVisible := true;
+                        ReopenVisible := false;
+                        ReleaseVisible := true;
                     end;
                     CurrPage.Update;
                 end;
             }
             action(Reopen)
             {
+                ApplicationArea = All;
                 Caption = 'Reopen';
                 Image = ReOpen;
                 Promoted = true;
@@ -275,7 +314,7 @@ page 50068 "Sales Credit Memo Accounting"
                 begin
                     // >> Distribution - start
                     if not UpdateAllowed then
-                      exit;
+                        exit;
                     // << Distribution - end
 
                     //>>  Warehouse Management - start
@@ -285,11 +324,11 @@ page 50068 "Sales Credit Memo Accounting"
                     //<<  Warehouse Management - end
 
                     if Status = Status::Open then begin
-                      ReopenVisible := false;
-                      ReleaseVisible := true;
+                        ReopenVisible := false;
+                        ReleaseVisible := true;
                     end else begin
-                      ReopenVisible := true;
-                      ReleaseVisible := false;
+                        ReopenVisible := true;
+                        ReleaseVisible := false;
                     end;
                     CurrPage.Update;
                 end;
@@ -299,6 +338,7 @@ page 50068 "Sales Credit Memo Accounting"
                 Caption = 'P&osting';
                 action("Test Report")
                 {
+                    ApplicationArea = All;
                     Caption = 'Test Report';
 
                     trigger OnAction()
@@ -308,23 +348,26 @@ page 50068 "Sales Credit Memo Accounting"
                 }
                 action("P&ost")
                 {
+                    ApplicationArea = All;
                     Caption = 'P&ost';
                     RunObject = Codeunit "Sales-Post (Yes/No)";
                     ShortCutKey = 'F11';
                 }
                 action("Post and &Print")
                 {
+                    ApplicationArea = All;
                     Caption = 'Post and &Print';
                     RunObject = Codeunit "Sales-Post + Print";
                     ShortCutKey = 'Shift+F11';
                 }
                 action("Post &Batch")
                 {
+                    ApplicationArea = All;
                     Caption = 'Post &Batch';
 
                     trigger OnAction()
                     begin
-                        REPORT.RunModal(REPORT::"Batch Post Sales Credit Memos",true,true,Rec);
+                        REPORT.RunModal(REPORT::"Batch Post Sales Credit Memos", true, true, Rec);
                         CurrPage.Update(false);
                     end;
                 }
@@ -336,11 +379,11 @@ page 50068 "Sales Credit Memo Accounting"
     begin
         //>> HEF 2/27/01
         if Status = Status::Open then begin
-          ReopenVisible := false;
-          ReleaseVisible := true;
+            ReopenVisible := false;
+            ReleaseVisible := true;
         end else begin
-          ReopenVisible := true;
-          ReleaseVisible := false;
+            ReopenVisible := true;
+            ReleaseVisible := false;
         end;
         //<< HEF 2/27/01
     end;
@@ -355,11 +398,11 @@ page 50068 "Sales Credit Memo Accounting"
     begin
         //>> HEF
         if Status = Status::Open then begin
-          ReopenVisible := false;
-          ReleaseVisible := true;
+            ReopenVisible := false;
+            ReleaseVisible := true;
         end else begin
-          ReopenVisible := true;
-          ReleaseVisible := false;
+            ReopenVisible := true;
+            ReleaseVisible := false;
         end;
         //<< END INSERT
     end;
@@ -402,10 +445,10 @@ page 50068 "Sales Credit Memo Accounting"
     procedure UpdateAllowed() Response: Boolean
     begin
         if CurrPage.Editable = false then begin
-          Message('Unable to execute this function while in view only mode.');
-          exit(false);
+            Message('Unable to execute this function while in view only mode.');
+            exit(false);
         end else
-          exit(true);
+            exit(true);
     end;
 }
 

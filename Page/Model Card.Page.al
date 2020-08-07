@@ -11,26 +11,31 @@ page 50004 "Model Card"
         {
             group(General)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
+                    ApplicationArea = All;
 
                     trigger OnAssistEdit()
                     begin
                         if AssistEdit() then
-                          CurrPage.Update;
+                            CurrPage.Update;
                     end;
                 }
-                field(Description;Description)
+                field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
-                field("Model Type";"Model Type")
+                field("Model Type"; "Model Type")
                 {
+                    ApplicationArea = All;
                 }
-                field("Gross Weight";"Gross Weight")
+                field("Gross Weight"; "Gross Weight")
                 {
+                    ApplicationArea = All;
                 }
-                field("Assembly BOM";"Assembly BOM")
+                field("Assembly BOM"; "Assembly BOM")
                 {
+                    ApplicationArea = All;
                 }
             }
         }
@@ -45,18 +50,20 @@ page 50004 "Model Card"
                 Caption = 'Model';
                 action("Bill of Materials")
                 {
+                    ApplicationArea = All;
                     Caption = 'Bill of Materials';
                     RunObject = Page "Assembly BOM";
-                    RunPageLink = "Parent Item No."=FIELD("No.");
+                    RunPageLink = "Parent Item No." = FIELD("No.");
                 }
                 action("Parts List")
                 {
+                    ApplicationArea = All;
                     Caption = 'Parts List';
 
                     trigger OnAction()
                     begin
-                        Item.SetRange(Item."No.","No.");
-                        REPORT.Run(50066,true,false,Item);
+                        Item.SetRange(Item."No.", "No.");
+                        REPORT.Run(50066, true, false, Item);
                     end;
                 }
             }

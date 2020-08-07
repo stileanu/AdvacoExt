@@ -15,10 +15,12 @@ page 50021 "Back Order"
                 ShowCaption = false;
                 field("Order No."; "Order No.")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("WOD.""Model No."""; WOD."Model No.")
                 {
+                    ApplicationArea = All;
                     Caption = 'Model No.';
 
                     trigger OnValidate()
@@ -31,6 +33,7 @@ page 50021 "Back Order"
                 }
                 field("WOD.""Serial No."""; WOD."Serial No.")
                 {
+                    ApplicationArea = All;
                     Caption = 'Serial No.';
 
                     trigger OnValidate()
@@ -41,23 +44,29 @@ page 50021 "Back Order"
                 }
                 field("WOM.Customer"; WOM.Customer)
                 {
+                    ApplicationArea = All;
                     Caption = 'Customer';
                     Editable = false;
                 }
                 field("Date In"; "Date In")
                 {
+                    ApplicationArea = All;
                 }
                 field("Date Out"; "Date Out")
                 {
+                    ApplicationArea = All;
                 }
                 field(Employee; Employee)
                 {
+                    ApplicationArea = All;
                 }
                 field("Regular Hours"; "Regular Hours")
                 {
+                    ApplicationArea = All;
                 }
                 field("Overtime Hours"; "Overtime Hours")
                 {
+                    ApplicationArea = All;
                 }
             }
             part(PartsLines; "Back Order Parts List")
@@ -73,6 +82,7 @@ page 50021 "Back Order"
         {
             action("Swap Part")
             {
+                ApplicationArea = All;
                 Caption = 'Swap Part';
                 Promoted = true;
                 PromotedCategory = Process;
@@ -88,6 +98,7 @@ page 50021 "Back Order"
             }
             action("Allocate Parts")
             {
+                ApplicationArea = All;
                 Caption = 'Allocate Parts';
                 Promoted = true;
                 PromotedCategory = Process;
@@ -103,6 +114,7 @@ page 50021 "Back Order"
             }
             action("Picking Ticket")
             {
+                ApplicationArea = All;
                 Caption = 'Picking Ticket';
                 Promoted = true;
                 PromotedCategory = Process;
@@ -119,6 +131,7 @@ page 50021 "Back Order"
             }
             action("Pull Parts")
             {
+                ApplicationArea = All;
                 Caption = 'Pull Parts';
                 Promoted = true;
                 PromotedCategory = Process;

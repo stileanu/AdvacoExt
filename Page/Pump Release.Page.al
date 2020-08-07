@@ -15,43 +15,52 @@ page 50044 "Pump Release"
                 group(Control1000000011)
                 {
                     ShowCaption = false;
-                    field("Work Order No.";"Work Order No.")
+                    field("Work Order No."; "Work Order No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Model No.";"Model No.")
+                    field("Model No."; "Model No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field(Description;Description)
+                    field(Description; Description)
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Serial No.";"Serial No.")
+                    field("Serial No."; "Serial No.")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Approval Code";"Approval Code")
+                    field("Approval Code"; "Approval Code")
                     {
+                        ApplicationArea = All;
                     }
-                    field(Unblocked;Unblocked)
+                    field(Unblocked; Unblocked)
                     {
+                        ApplicationArea = All;
                         Caption = 'Pump Released';
                     }
-                    field("Unblocked SHP";"Unblocked SHP")
+                    field("Unblocked SHP"; "Unblocked SHP")
                     {
+                        ApplicationArea = All;
                         Caption = 'Shipping Release';
                     }
                 }
                 group(Control1000000012)
                 {
                     ShowCaption = false;
-                    field("Customer ID";"Customer ID")
+                    field("Customer ID"; "Customer ID")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Overwrite Cr. Limit";"Overwrite Cr. Limit")
+                    field("Overwrite Cr. Limit"; "Overwrite Cr. Limit")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                 }

@@ -15,9 +15,11 @@ page 50077 "Blanket Purch Order Subform"
             {
                 field(Type; Type)
                 {
+                    ApplicationArea = All;
                 }
                 field("No."; "No.")
                 {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -26,46 +28,59 @@ page 50077 "Blanket Purch Order Subform"
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field(Quantity; Quantity)
                 {
+                    ApplicationArea = All;
                 }
                 field("Qty. to Receive"; "Qty. to Receive")
                 {
+                    ApplicationArea = All;
                     Caption = 'Qty to Release';
                 }
                 field("Qty. Released"; "Qty. Released")
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Quantity Received"; "Quantity Received")
                 {
+                    ApplicationArea = All;
                 }
                 field("Quantity Invoiced"; "Quantity Invoiced")
                 {
+                    ApplicationArea = All;
                 }
                 field("Direct Unit Cost"; "Direct Unit Cost")
                 {
+                    ApplicationArea = All;
                 }
                 field(Amount; Amount)
                 {
+                    ApplicationArea = All;
                 }
                 field("Amount Including VAT"; "Amount Including VAT")
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit of Measure Code"; "Unit of Measure Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit Cost (LCY)"; "Unit Cost (LCY)")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Unit Price (LCY)"; "Unit Price (LCY)")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Expected Receipt Date"; "Expected Receipt Date")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
             }

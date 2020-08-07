@@ -31,15 +31,18 @@ page 50017 "Quote Phase 3"
                         ShowCaption = false;
                         field("Work Order No."; "Work Order No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("WOM.Customer"; WOM.Customer)
                         {
+                            ApplicationArea = All;
                             Caption = 'Customer';
                             Editable = false;
                         }
                         field("WOM.""Date Ordered"""; WOM."Date Ordered")
                         {
+                            ApplicationArea = All;
                             Caption = 'Order Date';
                             Editable = false;
                         }
@@ -58,16 +61,19 @@ page 50017 "Quote Phase 3"
                         ShowCaption = false;
                         field("Model No."; "Model No.")
                         {
+                            ApplicationArea = All;
                             DrillDownPageID = "Model List";
                             Editable = false;
                             LookupPageID = "Model List";
                         }
                         field("Serial No."; "Serial No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("Labor Hours Quoted"; "Labor Hours Quoted")
                         {
+                            ApplicationArea = All;
                             DrillDownPageID = "Quote Phase 3 Parts List";
                         }
                     }
@@ -81,46 +87,57 @@ page 50017 "Quote Phase 3"
                     ShowCaption = false;
                     field("Labor Quoted"; "Labor Quoted")
                     {
+                        ApplicationArea = All;
                         DrillDownPageID = "Quote Phase 3 Parts List";
                     }
                     field("Parts Quoted"; "Parts Quoted")
                     {
+                        ApplicationArea = All;
                         DrillDownPageID = "Quote Phase 3 Parts List";
                     }
                     field("""Labor Quoted"" + ""Parts Quoted"""; "Labor Quoted" + "Parts Quoted")
                     {
+                        ApplicationArea = All;
                         Caption = 'Sub-Total';
                         Editable = false;
                     }
                     field("Order Adj."; "Order Adj.")
                     {
+                        ApplicationArea = All;
                         Caption = 'Adjustment';
                         Editable = OrderAdjEditable;
                     }
                     field("""Labor Quoted"" + ""Parts Quoted"" + ""Order Adj."""; "Labor Quoted" + "Parts Quoted" + "Order Adj.")
                     {
+                        ApplicationArea = All;
                         Caption = 'Total Quote';
                         Editable = false;
                     }
                     field("Order Type"; "Order Type")
                     {
+                        ApplicationArea = All;
                     }
                     field("Unrepairable Charge"; "Unrepairable Charge")
                     {
+                        ApplicationArea = All;
                         Caption = 'Return Charge';
                     }
                     field("Customer PO No."; "Customer PO No.")
                     {
+                        ApplicationArea = All;
                     }
                     field("Quote Sent Date"; "Quote Sent Date")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Tax Liable"; "Tax Liable")
                     {
+                        ApplicationArea = All;
                     }
                     field(BypassCreditLimit; BypassCreditLimit)
                     {
+                        ApplicationArea = All;
                         Caption = 'Bypass Credit Limit';
                     }
                 }
@@ -129,21 +146,26 @@ page 50017 "Quote Phase 3"
                     ShowCaption = false;
                     field(Quote; Quote)
                     {
+                        ApplicationArea = All;
                     }
                     field("Warranty Type"; "Warranty Type")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Unrepairable Reason"; "Unrepairable Reason")
                     {
+                        ApplicationArea = All;
                         Caption = 'Reason';
                     }
                     field("Warranty Reason"; "Warranty Reason")
                     {
+                        ApplicationArea = All;
                         Editable = false;
                     }
                     field("Unrepairable Handling"; "Unrepairable Handling")
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
@@ -156,6 +178,7 @@ page 50017 "Quote Phase 3"
         {
             action(Requote)
             {
+                ApplicationArea = All;
                 Caption = 'Requote';
                 Promoted = true;
 
@@ -178,6 +201,7 @@ page 50017 "Quote Phase 3"
             }
             action("Acceptance Form")
             {
+                ApplicationArea = All;
                 Caption = 'Acceptance Form';
                 Promoted = true;
 
@@ -206,6 +230,7 @@ page 50017 "Quote Phase 3"
             }
             action("Complete Quote")
             {
+                ApplicationArea = All;
                 Caption = 'Complete Quote';
                 Promoted = true;
 
@@ -232,6 +257,7 @@ page 50017 "Quote Phase 3"
             }
             action("Customer Info")
             {
+                ApplicationArea = All;
                 Caption = 'Customer Info';
                 Promoted = true;
                 Visible = CustInfoVisible;

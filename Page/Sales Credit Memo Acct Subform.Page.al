@@ -15,9 +15,11 @@ page 50069 "Sales Credit Memo Acct Subform"
             {
                 field(Type; Type)
                 {
+                    ApplicationArea = All;
                 }
                 field("No."; "No.")
                 {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -26,15 +28,19 @@ page 50069 "Sales Credit Memo Acct Subform"
                 }
                 field(Description; Description)
                 {
+                    ApplicationArea = All;
                 }
                 field("Location Code"; "Location Code")
                 {
+                    ApplicationArea = All;
                 }
                 field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
                 {
+                    ApplicationArea = All;
                 }
                 field(Quantity; Quantity)
                 {
+                    ApplicationArea = All;
                     Caption = 'Qty';
 
                     trigger OnValidate()
@@ -44,6 +50,7 @@ page 50069 "Sales Credit Memo Acct Subform"
                 }
                 field("Unit of Measure Code"; "Unit of Measure Code")
                 {
+                    ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
@@ -52,26 +59,33 @@ page 50069 "Sales Credit Memo Acct Subform"
                 }
                 field("Unit of Measure"; "Unit of Measure")
                 {
+                    ApplicationArea = All;
                     Visible = false;
                 }
                 field("Unit Price"; "Unit Price")
                 {
+                    ApplicationArea = All;
                 }
                 field("Unit Cost (LCY)"; "Unit Cost (LCY)")
                 {
+                    ApplicationArea = All;
                 }
                 field("Tax Group Code"; "Tax Group Code")
                 {
+                    ApplicationArea = All;
                 }
                 field(Amount; Amount)
                 {
+                    ApplicationArea = All;
                     Editable = false;
                 }
                 field("Amount Including VAT"; "Amount Including VAT")
                 {
+                    ApplicationArea = All;
                 }
                 field("Appl.-to Item Entry"; "Appl.-to Item Entry")
                 {
+                    ApplicationArea = All;
                 }
             }
         }

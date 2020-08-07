@@ -26,15 +26,18 @@ page 50015 "Quote Phase 2"
                         ShowCaption = false;
                         field("Work Order No."; "Work Order No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("WOM.Customer"; WOM.Customer)
                         {
+                            ApplicationArea = All;
                             Caption = 'Customer';
                             Editable = false;
                         }
                         field("WOM.""Date Ordered"""; WOM."Date Ordered")
                         {
+                            ApplicationArea = All;
                             Caption = 'Order Date';
                             Editable = false;
                         }
@@ -53,6 +56,7 @@ page 50015 "Quote Phase 2"
                         ShowCaption = false;
                         field("Model No."; "Model No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
 
                             trigger OnValidate()
@@ -64,10 +68,12 @@ page 50015 "Quote Phase 2"
                         }
                         field(Description; Description)
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("Serial No."; "Serial No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                     }
@@ -75,10 +81,12 @@ page 50015 "Quote Phase 2"
             }
             part(Control1220060004; "Quote Phase 2 Parts List")
             {
+                ApplicationArea = All;
                 SubPageLink = "Work Order No." = FIELD("Work Order No.");
             }
             part(Control1220060015; "Mechanics Parts Phase 2")
             {
+                ApplicationArea = All;
                 SubPageLink = "Work Order No." = FIELD("Work Order No.");
             }
         }
@@ -93,6 +101,7 @@ page 50015 "Quote Phase 2"
                 Caption = 'Instructions';
                 action("&Print")
                 {
+                    ApplicationArea = All;
                     Caption = '&Print';
 
                     trigger OnAction()
@@ -194,6 +203,7 @@ page 50015 "Quote Phase 2"
                 }
                 action("&Email...")
                 {
+                    ApplicationArea = All;
                     Caption = '&Email...';
 
                     trigger OnAction()
@@ -296,6 +306,7 @@ page 50015 "Quote Phase 2"
             }
             action("Customer Info")
             {
+                ApplicationArea = All;
                 Caption = 'Customer Info';
                 Visible = CustInfoVisible;
 

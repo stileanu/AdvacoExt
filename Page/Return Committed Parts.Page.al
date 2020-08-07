@@ -16,9 +16,11 @@ page 50055 "Return Committed Parts"
                     ShowCaption = false;
                     field("No."; "No.")
                     {
+                        ApplicationArea = All;
                     }
                     field(Description; Description)
                     {
+                        ApplicationArea = All;
                     }
                 }
             }
@@ -31,6 +33,7 @@ page 50055 "Return Committed Parts"
         {
             action("&Allocate")
             {
+                ApplicationArea = All;
                 Caption = '&Allocate';
                 Image = Allocate;
                 Promoted = true;

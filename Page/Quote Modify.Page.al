@@ -31,15 +31,18 @@ page 50019 "Quote Modify"
                         ShowCaption = false;
                         field("Order No."; "Order No.")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("WOM.Customer"; WOM.Customer)
                         {
+                            ApplicationArea = All;
                             Caption = 'Customer';
                             Editable = false;
                         }
                         field(Employee; Employee)
                         {
+                            ApplicationArea = All;
                         }
                     }
                 }
@@ -56,15 +59,18 @@ page 50019 "Quote Modify"
                         ShowCaption = false;
                         field("WOD.""Model No."""; WOD."Model No.")
                         {
+                            ApplicationArea = All;
                             Caption = 'Model No.';
                             Editable = false;
                         }
                         field("Date In"; "Date In")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                         field("Regular Hours"; "Regular Hours")
                         {
+                            ApplicationArea = All;
                             Editable = false;
                         }
                     }
@@ -82,13 +88,16 @@ page 50019 "Quote Modify"
                         ShowCaption = false;
                         field("WOD.""Serial No."""; WOD."Serial No.")
                         {
+                            ApplicationArea = All;
                             Caption = 'Serial No.';
                         }
                         field("Date Out"; "Date Out")
                         {
+                            ApplicationArea = All;
                         }
                         field("Overtime Hours"; "Overtime Hours")
                         {
+                            ApplicationArea = All;
                         }
                     }
                 }
@@ -98,10 +107,12 @@ page 50019 "Quote Modify"
                 ShowCaption = false;
                 field("WOD.""Order Type"""; WOD."Order Type")
                 {
+                    ApplicationArea = All;
                     Caption = 'Order Type';
                 }
                 field("WOD.""Pump Module No."""; WOD."Pump Module No.")
                 {
+                    ApplicationArea = All;
                     Caption = 'Pump Module No.';
                     Editable = PumpModifyEditable;
                     TableRelation = WorkOrderDetail."Work Order No." WHERE("Customer ID" = FILTER('ADV-01'),
@@ -112,10 +123,12 @@ page 50019 "Quote Modify"
             }
             part(Control1220060029; "Quote Modify Parts List")
             {
+                ApplicationArea = All;
                 SubPageLink = "Work Order No." = FIELD("Order No.");
             }
             part(Control1220060030; "Mechanics Parts Phase 2")
             {
+                ApplicationArea = All;
                 SubPageLink = "Work Order No." = FIELD("Order No.");
             }
         }
@@ -130,6 +143,7 @@ page 50019 "Quote Modify"
                 Caption = 'Instructions';
                 action("&Print")
                 {
+                    ApplicationArea = All;
                     Caption = '&Print';
 
                     trigger OnAction()
@@ -237,6 +251,7 @@ page 50019 "Quote Modify"
                 }
                 action("&Email...")
                 {
+                    ApplicationArea = All;
                     Caption = '&Email...';
 
                     trigger OnAction()
@@ -349,6 +364,7 @@ page 50019 "Quote Modify"
             }
             action("Customer Info")
             {
+                ApplicationArea = All;
                 Caption = 'Customer Info';
                 Visible = CustInfoVisible;
 

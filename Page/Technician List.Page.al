@@ -10,11 +10,13 @@ page 50110 "Technician List"
         {
             repeater(Group)
             {
-                field("No.";"No.")
+                field("No."; "No.")
                 {
+                    ApplicationArea = All;
                 }
-                field(Name;Name)
+                field(Name; Name)
                 {
+                    ApplicationArea = All;
                 }
             }
         }
