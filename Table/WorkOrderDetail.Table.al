@@ -2065,6 +2065,13 @@ table 50001 WorkOrderDetail
         end;
     end;
 
+    procedure SetOverrideConfirmation()
+    var
+        myInt: Integer;
+    begin
+        OverrideConfirmation := true;
+    end;
+
     var
         Window: Dialog;
         WorkOrderDetail: Record WorkOrderDetail;
@@ -2121,6 +2128,7 @@ table 50001 WorkOrderDetail
         Regular: Decimal;
         Overtime: Decimal;
         PartsMarkup: Decimal;
+        OverrideConfirmation: Boolean;
 
     trigger OnInsert()
     begin
@@ -2129,11 +2137,13 @@ table 50001 WorkOrderDetail
             ERROR('Cannot add a record with empty Order No.');
         END;
         // 2015/08/01 ADV End
-
-        IF CONFIRM('Do you want to add another Detail?') THEN
-            Ok := TRUE
-        ELSE
-            ERROR('');
+        if NOT OverrideConfirmation THEN begin
+            ;
+            IF CONFIRM('Do you want to add another Detail?') THEN
+                Ok := TRUE
+            ELSE
+                ERROR('');
+        end;
     end;
 
     trigger OnModify()
