@@ -1,5 +1,6 @@
 Tableextension 50108 UserSetupExt Extends "User Setup"
 {
+
     fields
     {
         field(50000; "Adobe Software"; Text[250])
@@ -18,53 +19,70 @@ Tableextension 50108 UserSetupExt Extends "User Setup"
         }
         field(50003; Signature1; Text[120])
         {
-            Caption = 'Signature1';
+            Caption = 'Signature 1';
 
         }
         field(50004; Signature2; Text[120])
         {
-            Caption = 'Signature2';
+            Caption = 'Signature 2';
 
         }
         field(50005; Signature3; Text[120])
         {
-            Caption = 'Signature3';
+            Caption = 'Signature 3';
 
         }
         field(50006; Signature4; Text[120])
         {
-            Caption = 'Signature4';
+            Caption = 'Signature 4';
 
         }
         field(50007; Signature5; Text[120])
         {
-            Caption = 'Signature5';
+            Caption = 'Signature 5';
 
         }
         field(50008; Signature6; Text[120])
         {
-            Caption = 'Signature6';
+            Caption = 'Signature 6';
 
         }
         field(50009; Signature7; Text[120])
         {
-            Caption = 'Signature7';
+            Caption = 'Signature 7';
 
         }
         field(50010; Signature8; Text[120])
         {
-            Caption = 'Signature8';
+            Caption = 'Signature 8';
 
         }
         field(50011; "PDF Path to Documents"; Text[100])
         {
             Caption = 'PDF Path to Documents';
-
         }
-
-
+        field(99001915; "Sales Location"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Sales Location';
+        }
+        field(99001916; "Purch. Location"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Purch. Location';
+        }
+        field(99001917; "Return Location"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Return Location';
+        }
+        field(99002580; "Inventory Management Location"; Code[10])
+        {
+            DataClassification = ToBeClassified;
+            Caption = 'Inventory Management Location';
+        }
     }
-    procedure GetParamStatus(var UserID: Code[20]; Var ParamID: Integer): Boolean
+    procedure GetParamStatus(var UserID: Code[20]; ParamID: Integer): Boolean
 
     var
         ADV001: Label 'Msg for Programmers: Incorrect Function ID.';

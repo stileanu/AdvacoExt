@@ -82,25 +82,23 @@ page 50039 "Work Order Instruction List"
 
     trigger OnOpenPage()
     begin
-        /*99999
         // 04/01/2013 Start
         // set FILTERGROUP based on permissions
         UserSetup.GET(USERID);
-        IF (NOT UserSetup.GetParamStatus(USERID,2)) AND (NOT UserSetup.GetParamStatus(USERID,3)) THEN BEGIN
-          prevFilterGroup := FILTERGROUP;
-          FILTERGROUP(9);
-          SETRANGE(Blocked,FALSE);
-          FILTERGROUP(prevFilterGroup);
-          BlockedVisible := FALSE;
+        IF (NOT UserSetup.GetParamStatus(USERID, 2)) AND (NOT UserSetup.GetParamStatus(USERID, 3)) THEN BEGIN
+            prevFilterGroup := FILTERGROUP;
+            FILTERGROUP(9);
+            SETRANGE(Blocked, FALSE);
+            FILTERGROUP(prevFilterGroup);
+            BlockedVisible := FALSE;
         END ELSE
-          BlockedVisible := TRUE;
+            BlockedVisible := TRUE;
         PartQualityCtrlInstructionsVisible := FALSE;
         // 04/01/2013 End
-        99999*/
-
     end;
 
     var
+        USERID: Code[50];
         UserSetup: Record "User Setup";
         prevFilterGroup: Integer;
         [InDataSet]

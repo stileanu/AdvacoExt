@@ -507,9 +507,14 @@ page 50000 "Work Order Master"
         EditCCVisible := EditCCButton;
         // 04/28/11 ADV: Stop
         */
+
         AddEnabled := true;
         EnvelopeEnabled := true;
         TravelerEnabled := true;
+        EditCCButton := true;
+        EditCCVisible := EditCCButton;
+        PickIpSheetEditable := true;
+
     end;
 
     var

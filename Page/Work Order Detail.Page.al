@@ -21,45 +21,37 @@ page 50002 "Work Order Detail"
     InsertAllowed = false;
     PageType = Card;
     SourceTable = WorkOrderDetail;
-    UsageCategory = Tasks;
-    ApplicationArea = All;
+    //UsageCategory = Tasks;
+    //ApplicationArea = All;
 
     layout
     {
         area(content)
         {
-            group(Control1220060124)
-            {
-                ShowCaption = false;
-                grid(Control1220060123)
-                {
-                    GridLayout = Rows;
-                    ShowCaption = false;
-                    group(Control1220060122)
-                    {
-                        ShowCaption = false;
-                        field("Work Order No."; "Work Order No.")
-                        {
-                            Editable = false;
-                            ApplicationArea = All;
-                        }
-                        field("Customer ID"; "Customer ID")
-                        {
-                            Caption = 'Customer';
-                            Editable = false;
-                            ApplicationArea = All;
-                        }
-                        field("WOM.""Date Ordered"""; WOM."Date Ordered")
-                        {
-                            Caption = 'Order Date';
-                            Editable = false;
-                            ApplicationArea = All;
-                        }
-                    }
-                }
-            }
+
             group(General)
             {
+                group(Control1220060122)
+                {
+                    ShowCaption = false;
+                    field("Work Order No."; "Work Order No.")
+                    {
+                        Editable = false;
+                        ApplicationArea = All;
+                    }
+                    field("Customer ID"; "Customer ID")
+                    {
+                        Caption = 'Customer';
+                        Editable = false;
+                        ApplicationArea = All;
+                    }
+                    field("WOM.""Date Ordered"""; WOM."Date Ordered")
+                    {
+                        Caption = 'Order Date';
+                        Editable = false;
+                        ApplicationArea = All;
+                    }
+                }
                 group(Control1220060119)
                 {
                     ShowCaption = false;
@@ -346,6 +338,7 @@ page 50002 "Work Order Detail"
                 group(Control1220060136)
                 {
                     ShowCaption = false;
+
                     field(Carrier; Carrier)
                     {
                         ApplicationArea = All;

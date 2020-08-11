@@ -14,7 +14,7 @@
             "debugServer": 4711,
             "tenant": "advaco.com",
             "sandboxName": "AdvacoSandboxDev2",
-            "schemaUpdateMode": "ForceSync"
+            "schemaUpdateMode": "Synchronize"
         }
     ]
 }

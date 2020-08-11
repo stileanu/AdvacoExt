@@ -555,15 +555,21 @@ table 50001 WorkOrderDetail
         }
         field(200; "Labor Hours Quoted"; Decimal)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = Sum (Parts."Quoted Quantity" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Resource)));
         }
         field(202; "Labor Quoted"; Decimal)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = Sum (Parts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Resource)));
         }
         field(210; "Parts Cost"; Decimal)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = Sum (Parts."Total Cost" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Item)));
         }
         field(220; "Order Adj."; Decimal)
         {
@@ -579,15 +585,21 @@ table 50001 WorkOrderDetail
         }
         field(222; "Original Parts Cost"; Decimal)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = Sum (OriginalQuotedParts."Total Quote Cost" WHERE("Work Order No." = FIELD("Work Order No.")));
         }
         field(223; "Original Parts Price"; Decimal)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = Sum (OriginalQuotedParts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Item)));
         }
         field(224; "Original Labor Price"; Decimal)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = Sum (OriginalQuotedParts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Resource)));
         }
         field(226; "Unrepairable Charge"; Decimal)
         {
@@ -705,7 +717,9 @@ table 50001 WorkOrderDetail
         }
         field(250; "Parts Quoted"; Decimal)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = Sum (Parts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Item)));
         }
         field(260; Carrier; Code[20])
         {
@@ -1638,7 +1652,8 @@ table 50001 WorkOrderDetail
         }
         field(5200; "Date Filter"; Date)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowFilter;
         }
         field(50000; "Overwrite Cr. Limit"; Boolean)
         {
@@ -1646,7 +1661,9 @@ table 50001 WorkOrderDetail
         }
         field(100003; Comment; Boolean)
         {
-            DataClassification = ToBeClassified;
+            //DataClassification = ToBeClassified;
+            FieldClass = FlowField;
+            CalcFormula = Exist ("ADVACO Comment Line" WHERE("Table Name" = CONST(WorkOrderDetail), "No." = FIELD("Work Order No.")));
         }
         field(100004; "Tool ID"; Code[20])
         {

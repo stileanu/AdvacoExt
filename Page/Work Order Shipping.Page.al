@@ -14,6 +14,8 @@ page 50033 "Work Order Shipping"
     InsertAllowed = false;
     PageType = List;
     SourceTable = WorkOrderDetail;
+    ApplicationArea = All;
+    UsageCategory = Tasks;
 
     layout
     {
