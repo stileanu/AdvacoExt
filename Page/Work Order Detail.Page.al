@@ -23,6 +23,7 @@ page 50002 "Work Order Detail"
     SourceTable = WorkOrderDetail;
     //UsageCategory = Tasks;
     //ApplicationArea = All;
+    PromotedActionCategories = 'New,Process,Report,Detail';
 
     layout
     {
@@ -242,38 +243,47 @@ page 50002 "Work Order Detail"
                     field(REC; RCV)
                     {
                         ApplicationArea = All;
+                        Caption = 'Receive';
                     }
                     field(DIS; DIS)
                     {
                         ApplicationArea = All;
+                        Caption = 'Disassemble';
                     }
                     field(QOT; QOT)
                     {
                         ApplicationArea = All;
+                        Caption = 'Quote';
                     }
                     field(CLN; CLN)
                     {
                         ApplicationArea = All;
+                        Caption = 'Clean';
                     }
                     field(ASM; ASM)
                     {
                         ApplicationArea = All;
+                        Caption = 'Assemble';
                     }
                     field(TST; TST)
                     {
                         ApplicationArea = All;
+                        Caption = 'Test';
                     }
                     field(PNT; PNT)
                     {
                         ApplicationArea = All;
+                        Caption = 'Paint';
                     }
                     field(QC; QC)
                     {
                         ApplicationArea = All;
+                        Caption = 'Quality Control';
                     }
                     field(SHP; SHP)
                     {
                         ApplicationArea = All;
+                        Caption = 'Ship';
                     }
                 }
             }
@@ -666,13 +676,16 @@ page 50002 "Work Order Detail"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action(FAR)
             {
+                // Potential Obsolite. It deals with Access DBs, no longer in use.
+                Visible = false;
                 ApplicationArea = All;
                 Caption = 'FAR';
                 Promoted = true;
+                PromotedCategory = Process;
 
                 trigger OnAction()
                 begin
@@ -726,11 +739,13 @@ page 50002 "Work Order Detail"
                 ApplicationArea = All;
                 Caption = 'Freight';
                 Promoted = true;
+                PromotedCategory = Process;
+                Image = CalculateShipment;
 
                 trigger OnAction()
                 begin
                     WOD.SetRange(WOD."Work Order No.", "Work Order No.");
-                    PAGE.RunModal(50046, WOD);
+                    Page.RunModal(Page::"Input Freight", WOD);
                 end;
             }
             action("Install Date")
@@ -739,6 +754,8 @@ page 50002 "Work Order Detail"
                 Caption = 'Install Date';
                 Enabled = InstallEnabled;
                 Promoted = true;
+                PromotedCategory = Process;
+                Image = DueDate;
 
                 trigger OnAction()
                 var
@@ -765,23 +782,33 @@ page 50002 "Work Order Detail"
                     WOD.Modify;
                 end;
             }
+        }
+        area(Reporting)
+        {
             action("WO Traveler")
             {
                 ApplicationArea = All;
                 Caption = 'WO Traveler';
                 Enabled = TravelerEnabled;
                 Promoted = true;
+                PromotedCategory = Report;
+                Image = StepInto;
 
                 trigger OnAction()
                 begin
                     REPORT.RunModal(50002);
                 end;
             }
+        }
+        area(Navigation)
+        {
             action("Current &Status")
             {
                 ApplicationArea = All;
                 Caption = 'Current &Status';
                 Promoted = true;
+                PromotedCategory = Category4;
+                Image = Status;
 
                 trigger OnAction()
                 begin
@@ -792,12 +819,24 @@ page 50002 "Work Order Detail"
             group("&Detail")
             {
                 Caption = '&Detail';
+                action(List)
+                {
+                    Caption = 'List';
+                    ApplicationArea = All;
+                    Promoted = true;
+                    PromotedCategory = Category4;
+                    Image = OrderList;
+                    RunObject = page "Work Order Detail List";
+                    RunPageLink = "Work Order Master No." = field("Work Order Master No.");
+                }
                 action("Parts List")
                 {
                     Caption = 'Parts List';
                     ApplicationArea = All;
                     Promoted = true;
-                    RunObject = Page "Parts List";
+                    PromotedCategory = Category4;
+                    Image = ItemLines;
+                    RunObject = page "Parts List";
                     RunPageLink = "Work Order No." = FIELD("Work Order No.");
                 }
             }

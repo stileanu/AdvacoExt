@@ -14,6 +14,7 @@ page 50000 "Work Order Master"
     //UsageCategory = Administration;
     UsageCategory = None;
     SourceTable = WorkOrderMaster;
+    PromotedActionCategories = 'New,Process,Report,Details';
 
     layout
     {
@@ -281,7 +282,9 @@ page 50000 "Work Order Master"
 
     actions
     {
+
         area(Processing)
+
         {
             action("Edit Credit Card")
             {
@@ -305,7 +308,7 @@ page 50000 "Work Order Master"
                 Enabled = CustInfoVisible;
                 PromotedCategory = Process;
                 Promoted = true;
-                Image = Customer;
+                Image = Notes;
 
                 trigger OnAction()
                 begin
@@ -324,6 +327,8 @@ page 50000 "Work Order Master"
                 ApplicationArea = All;
                 Enabled = TravelerEnabled;
                 Promoted = true;
+                PromotedCategory = Process;
+                Image = Documents;
 
                 trigger OnAction()
                 begin
@@ -356,10 +361,12 @@ page 50000 "Work Order Master"
             }
             action(Envelope)
             {
-                Caption = 'Envelope';
+                Caption = '&Envelope';
                 ApplicationArea = All;
                 Enabled = EnvelopeEnabled;
                 Promoted = true;
+                PromotedCategory = Process;
+                Image = DocumentsMaturity;
 
                 trigger OnAction()
                 begin
@@ -369,11 +376,17 @@ page 50000 "Work Order Master"
                     REPORT.RunModal(50000, true, false, WOM2);
                 end;
             }
+        }
+        area(Navigation)
+        {
+
             action("&View Details")
             {
                 Caption = '&View Details';
                 ApplicationArea = All;
                 Promoted = true;
+                PromotedCategory = Category4;
+                Image = ViewDetails;
 
                 trigger OnAction()
                 begin
@@ -392,6 +405,8 @@ page 50000 "Work Order Master"
                 ApplicationArea = All;
                 Enabled = AddEnabled;
                 Promoted = true;
+                PromotedCategory = Category4;
+                Image = AddAction;
 
                 trigger OnAction()
                 begin

@@ -38,6 +38,7 @@ page 50001 "Work Order Detail List"
                 field("Work Order No."; "Work Order No.")
                 {
                     ApplicationArea = All;
+                    TableRelation = WorkOrderDetail."Work Order No.";
                 }
                 field("Work Order Master No."; "Work Order Master No.")
                 {

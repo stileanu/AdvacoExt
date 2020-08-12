@@ -53,6 +53,7 @@ table 50001 WorkOrderDetail
         field(5; "Work Order Master No."; Code[20])
         {
             DataClassification = ToBeClassified;
+            TableRelation = WorkOrderMaster."Work Order Master No.";
         }
         field(6; "Customer ID"; Code[20])
         {
@@ -69,6 +70,7 @@ table 50001 WorkOrderDetail
         field(12; "Sales Order No."; Code[20])
         {
             DataClassification = ToBeClassified;
+            TableRelation = "Sales Header"."No." WHERE("Document Type" = FILTER(Order));
 
             trigger OnValidate()
             var
@@ -249,6 +251,7 @@ table 50001 WorkOrderDetail
         field(20; "Model No."; Code[20])
         {
             DataClassification = ToBeClassified;
+            TableRelation = Item."No." WHERE(Class = CONST('MODEL'));
 
             trigger OnValidate()
             begin
@@ -724,6 +727,7 @@ table 50001 WorkOrderDetail
         field(260; Carrier; Code[20])
         {
             DataClassification = ToBeClassified;
+            TableRelation = "Shipping Agent".Code;
 
             trigger OnValidate()
             begin
@@ -746,6 +750,7 @@ table 50001 WorkOrderDetail
         field(265; "Shipping Method"; Code[10])
         {
             DataClassification = ToBeClassified;
+            TableRelation = "Shipment Method".Code;
         }
         field(270; "Shipping Account"; Code[30])
         {
@@ -1186,6 +1191,7 @@ table 50001 WorkOrderDetail
         field(1005; "Payment Method"; Code[10])
         {
             DataClassification = ToBeClassified;
+            TableRelation = "Payment Method".Code;
         }
         field(1010; "Card Type"; Enum CreditCardType)
         {
@@ -1239,6 +1245,7 @@ table 50001 WorkOrderDetail
         field(1050; "Payment Terms"; Code[10])
         {
             DataClassification = ToBeClassified;
+            TableRelation = "Payment Terms".Code;
 
             trigger OnValidate()
             begin
@@ -1270,14 +1277,18 @@ table 50001 WorkOrderDetail
         field(2000; "Repaired Pump Part No."; Code[20])
         {
             DataClassification = ToBeClassified;
+            TableRelation = Item."No." WHERE(Class = FILTER('PUMP'));
         }
         field(4960; "Customer Order No."; Code[20])
         {
             DataClassification = ToBeClassified;
+            TableRelation = WorkOrderDetail."Work Order No." WHERE("Customer ID" = FILTER('<> ADV-01'));
         }
         field(4970; "Pump Module No."; Code[10])
         {
             DataClassification = ToBeClassified;
+            TableRelation = WorkOrderDetail."Work Order No." WHERE("Customer ID" = FILTER('ADV-01'), Complete = FILTER(false),
+                            "Pump Module No." = FILTER(''), "Sales Order No." = FILTER(''));
 
             trigger OnValidate()
             begin
@@ -1527,10 +1538,12 @@ table 50001 WorkOrderDetail
         field(5031; "Vendor Carrier"; Code[10])
         {
             DataClassification = ToBeClassified;
+            TableRelation = "Shipping Agent".Code;
         }
         field(5032; "Vendor Shipping Method"; Code[10])
         {
             DataClassification = ToBeClassified;
+            TableRelation = "Shipment Method".Code;
         }
         field(5033; "Vendor Shipping Account"; Code[30])
         {
@@ -1721,6 +1734,9 @@ table 50001 WorkOrderDetail
         {
         }
         key(Key12; "Initial Order Type")
+        {
+        }
+        key(Key14; Complete)
         {
         }
     }
