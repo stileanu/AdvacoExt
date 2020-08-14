@@ -1,5 +1,6 @@
 pageextension 62001 CustomerCardExt2 extends "Customer Card"
 {
+    // need more fields. and hide some more
     layout
     {
         // Add changes to page layout here

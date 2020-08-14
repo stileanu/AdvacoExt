@@ -486,10 +486,10 @@ page 50000 "Work Order Master"
     trigger OnOpenPage()
     begin
         ///--! Permission level check code. Should be replaced?
-
-        Member.CalcFields("User Name");
+        User.Get(UserSecurityId);
+        //Member.CalcFields("User Name");
         Ok2 := true;
-        Member.SetRange(Member."User Name", UserId);
+        Member.SetRange("User Security ID", User."User Security ID");
         if Member.Find('-') then begin
             repeat
                 if (Member."Role ID" = 'ADV-SALES') or (Member."Role ID" = 'SUPER') then
@@ -501,11 +501,16 @@ page 50000 "Work Order Master"
             AddEnabled := false;
             EnvelopeEnabled := false;
             TravelerEnabled := false;
+        end else begin
+            AddEnabled := true;
+            EnvelopeEnabled := true;
+            TravelerEnabled := true;
         end;
 
 
         Ok3 := true;
-        Member.SetRange(Member."User Name", UserId);
+        Member.Reset();
+        Member.SetRange("User Security ID", User."User Security ID");
         if Member.Find('-') then begin
             repeat
                 if (Member."Role ID" = 'ADV-SALESMNGR') or (Member."Role ID" = 'SUPER') then
@@ -514,7 +519,9 @@ page 50000 "Work Order Master"
         end;
 
         if Ok3 then
-            PickIpSheetEditable := false;
+            PickIpSheetEditable := false
+        else
+            PickIpSheetEditable := true;
 
         // 04/28/11 ADV: Start
         EditCreditCard := false;
@@ -525,12 +532,10 @@ page 50000 "Work Order Master"
         // 04/28/11 ADV: Stop
         //*/
 
-        AddEnabled := true;
-        EnvelopeEnabled := true;
-        TravelerEnabled := true;
-        EditCCButton := true;
-        EditCCVisible := EditCCButton;
-        PickIpSheetEditable := true;
+
+        //EditCCButton := true;
+        //EditCCVisible := EditCCButton;
+        //PickIpSheetEditable := true;
 
     end;
 
@@ -555,6 +560,7 @@ page 50000 "Work Order Master"
         CLOSEDCOUNT: Integer;
         WODEXIST: Record WorkOrderDetail;
         Member: Record "Access Control";
+        User: Record User;
         Ok2: Boolean;
         Pickup: Boolean;
         Ok3: Boolean;
