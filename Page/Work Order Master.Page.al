@@ -393,7 +393,9 @@ page 50000 "Work Order Master"
                     WorkOrderDetail.SetCurrentKey("Work Order Master No.");
                     WorkOrderDetail.SetRange(WorkOrderDetail."Work Order Master No.", "Work Order Master No.");
                     if WorkOrderDetail.Find('-') then begin
-                        Page.Run(50002, WorkOrderDetail);
+                        ///--! move to open detail list
+                        //Page.Run(50002, WorkOrderDetail);
+                        Page.Run(50001, WorkOrderDetail);
                     end else begin
                         Message('No Detail Records exist for this Master.');
                     end;
@@ -484,7 +486,7 @@ page 50000 "Work Order Master"
     trigger OnOpenPage()
     begin
         ///--! Permission level check code. Should be replaced?
-        /*
+
         Member.CalcFields("User Name");
         Ok2 := true;
         Member.SetRange(Member."User Name", UserId);
@@ -521,7 +523,7 @@ page 50000 "Work Order Master"
             EditCCButton := true;
         EditCCVisible := EditCCButton;
         // 04/28/11 ADV: Stop
-        */
+        //*/
 
         AddEnabled := true;
         EnvelopeEnabled := true;

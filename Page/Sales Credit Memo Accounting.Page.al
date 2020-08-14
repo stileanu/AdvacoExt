@@ -8,6 +8,8 @@ page 50068 "Sales Credit Memo Accounting"
     SourceTableView = SORTING("Document Type", "Location Code", "No.")
                       ORDER(Ascending)
                       WHERE("Document Type" = FILTER("Credit Memo"));
+    UsageCategory = Documents;
+    ApplicationArea = All;
 
     layout
     {

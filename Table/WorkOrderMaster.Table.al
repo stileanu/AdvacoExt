@@ -14,6 +14,7 @@ table 50000 WorkOrderMaster
         {
             DataClassification = ToBeClassified;
             TableRelation = Customer."No.";
+            ValidateTableRelation = false;
 
             trigger OnValidate()
             begin
@@ -122,6 +123,7 @@ table 50000 WorkOrderMaster
         {
             DataClassification = ToBeClassified;
             TableRelation = "Ship-to Address".Code WHERE("Customer No." = FIELD(Customer));
+            ValidateTableRelation = false;
 
             trigger OnValidate()
             begin
@@ -363,6 +365,7 @@ table 50000 WorkOrderMaster
         {
             DataClassification = ToBeClassified;
             TableRelation = "Payment Terms".Code;
+            ValidateTableRelation = false;
 
             trigger OnValidate()
             begin
@@ -411,6 +414,7 @@ table 50000 WorkOrderMaster
         {
             DataClassification = ToBeClassified;
             TableRelation = "Payment Method".Code;
+            ValidateTableRelation = false;
         }
         field(330; "Card Type"; Enum CreditCardType)
         {
