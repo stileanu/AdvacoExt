@@ -1,7 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
-        
+        /*
         {
             "name": "Publish: Your own server",
             "type": "al",
@@ -21,8 +21,8 @@
             "longRunningSqlStatementsThreshold": 500,
             "numberOfSqlStatements": 10
         }
+        */
         
-        /*
         {
             "type": "al",
             "request": "launch",
@@ -33,11 +33,11 @@
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
-            "debugServer": 4711,
+            //"debugServer": 4711,
             "tenant": "advaco.com",
             "sandboxName": "AdvacoSandboxDev2",
             "schemaUpdateMode": "Synchronize"
         }
-        */
+        
     ]
 }
