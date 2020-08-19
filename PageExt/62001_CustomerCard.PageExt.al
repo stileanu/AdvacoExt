@@ -277,10 +277,10 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         else
             lAccGroup := true;
 
-        lAccGroup := false;
+        //lAccGroup := false;
     end;
 
     var
         lAccGroup: Boolean;
-        lSalGroup: Boolean;
+    //lSalGroup: Boolean;
 }

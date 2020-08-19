@@ -1,7 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
-        /*
+        
         {
             "name": "Publish: Your own server",
             "type": "al",
@@ -11,8 +11,6 @@
             "port": 16069,
             "authentication": "Windows",
             "schemaUpdateMode": "Synchronize",
-            //"startupObjectId": 22,
-            //"startupObjectType": "Page",
             "breakOnError": true,
             "breakOnRecordWrite": false,
             "launchBrowser": true,
@@ -21,23 +19,21 @@
             "longRunningSqlStatementsThreshold": 500,
             "numberOfSqlStatements": 10
         }
-        */
         
+        /*
         {
             "type": "al",
             "request": "launch",
             "name": "Microsoft cloud sandbox",
-            //"startupObjectId": 22,
-            //"startupObjectType": "Page",
             "breakOnError": true,
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
-            //"debugServer": 4711,
+            "debugServer": 4711,
             "tenant": "advaco.com",
             "sandboxName": "AdvacoSandboxDev2",
             "schemaUpdateMode": "Synchronize"
         }
-        
+        */
     ]
 }
