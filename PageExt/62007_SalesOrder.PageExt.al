@@ -22,6 +22,10 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         {
             Editable = lAccGroup;
         }
+        modify("Your Reference")
+        {
+            Visible = false;
+        }
         modify("Salesperson Code")
         {
             Caption = 'Inside Sales';
@@ -155,6 +159,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         ToolTip = 'Specifies the customer P.O. number for this sales order.';
                     }
                 }
+
                 group(AdvacoShipData)
                 {
                     Caption = 'ADVACO';
@@ -197,6 +202,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         ToolTip = 'Specifies how many labels will be printed.';
                     }
                 }
+
                 group(ShipmentMethod)
                 {
                     Caption = 'Shipment Method';
@@ -218,13 +224,17 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         Caption = 'Agent Service';
                         ToolTip = 'Specifies the code that represents the default shipping agent service you are using for this sales order.';
                     }
-                    field("Shipping Account"; "Shipping Account")
+                    field(ShippingAccount; "Shipping Account")
                     {
                         ApplicationArea = All;
+                        Caption = 'Shipping Account';
                     }
-                    field("Shipping Charge"; "Shipping Charge")
+                    field(ShippingCharge; "Shipping Charge")
                     {
+                        Caption = 'Shipping Charge';
                         ApplicationArea = All;
+                        ToolTip = 'Specifies type of shipping charge.';
+
                     }
                     field(PackageTrackingNo; "Package Tracking No.")
                     {
@@ -237,9 +247,172 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         ApplicationArea = All;
                         Editable = false;
                     }
+                    field(ShipStatus; Status)
+                    {
+                        ApplicationArea = Suite;
+                        Importance = Additional;
+                        QuickEntry = false;
+                        ToolTip = 'Specifies whether the document is open, waiting to be approved, has been invoiced for prepayment, or has been released to the next stage of processing.';
+                    }
                 }
+
+            }
+        }
+        addafter("Tax Area Code")
+        {
+            field("Tax Exemption No."; "Tax Exemption No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies Tax Exemption Certificat No.';
+            }
+            field("Exempt Organization"; "Exempt Organization")
+            {
+                Caption = 'Exempt Organization No.';
+                ApplicationArea = All;
+                ToolTip = 'Specifies exempt orgnization no.';
+            }
+        }
+        addbefore("Package Tracking No.")
+        {
+            field("Shipping Charge"; "Shipping Charge")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies type of shipping charge.';
+            }
+            field("Shipping Account"; "Shipping Account")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies shipping account for current shipping.';
+            }
+        }
+        addafter("Package Tracking No.")
+        {
+            field("Work Order No."; "Work Order No.")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Specifies which Work Order is linked to this Sales Order.';
+            }
+            field(BillOfLading; "Bill of Lading")
+            {
+                ApplicationArea = All;
+                ToolTip = 'Bill of Lading No. for current shipment.';
+                Editable = false;
+            }
+        }
+        addbefore("Shipment Date")
+        {
+            field("Shipment Request Date"; "Shipment Request Date")
+            {
+                Caption = 'Date Required';
+                ApplicationArea = All;
+                ToolTip = 'Specifies the date when shipment is requested.';
+            }
+            field(YourReference; "Your Reference")
+            {
+                Caption = 'Customer P.O. Number';
+                ApplicationArea = All;
+                ToolTip = 'Specifies the customer''s reference. The content will be printed on sales documents.';
+            }
+            field(CustomerOrderNo; "Customer Order No.")
+            {
+                Caption = 'Customer Order No.';
+                ApplicationArea = All;
+                ToolTip = 'Specifies customer order (Advaco).';
             }
 
+        }
+        addbefore("Shipping and Billing")
+        {
+            group(Payment)
+            {
+                Visible = lSalesGroup;
+
+                group(CreditCardData)
+                {
+                    ShowCaption = false;
+
+                    field(PaymentTermsCode; "Payment Terms Code")
+                    {
+                        Caption = 'Payment Terms Code';
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies Payment Terms Code.';
+                        Importance = Promoted;
+                    }
+                    field("Card Type"; "Card Type")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies type of Credit Card: AMEX,MC,Discover,VISA.';
+                    }
+                    field("Credit Card No."; "Credit Card No.")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies Credit Card Acct. No.';
+                    }
+                    field("Credit Card Exp."; "Credit Card Exp.")
+                    {
+                        Caption = 'Credit Card Exp. Date';
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies Card expiration date.';
+                    }
+                    field("Credit Card SC"; "Credit Card SC")
+                    {
+                        Caption = 'Credit Card Security Code';
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies Credit Card security code.';
+                    }
+                }
+                group(CreditCardAddress)
+                {
+                    ShowCaption = false;
+
+                    field("Name on Card"; "Name on Card")
+                    {
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies Name on card.';
+                    }
+                    field(BillToAddress1; "Bill-to Address")
+                    {
+                        Caption = 'Bill-to Address';
+                        ToolTip = 'Specifies address on Card account.';
+                    }
+                    field(BillToAddress2; "Bill-to Address_2")
+                    {
+                        Caption = '                                                 ';
+                        ApplicationArea = All;
+                    }
+                    field(BillToAddress3; "Bill-to Address_3")
+                    {
+                        Caption = '                                                 ';
+                        ApplicationArea = All;
+                    }
+                    field(BillToAddress4; "Bill-to Address_4")
+                    {
+                        Caption = '                                                 ';
+                        ApplicationArea = All;
+                    }
+                }
+                group(CreditCardComments)
+                {
+                    ShowCaption = false;
+
+                    field("CC Comments 1"; "CC Comments 1")
+                    {
+                        Caption = 'Credit Card Comments';
+                        ApplicationArea = All;
+                        ToolTip = 'Specifies Credit Card comments.';
+                    }
+                    field("CC Comments 2"; "CC Comments 2")
+                    {
+                        Caption = '                                                 ';
+                        ApplicationArea = All;
+                    }
+                    field("CC Comments 3"; "CC Comments 3")
+                    {
+                        Caption = '                                                 ';
+                        ApplicationArea = All;
+                    }
+                }
+            }
         }
         addafter(Control1900201301)
         {
@@ -280,10 +453,12 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
 
     actions
     {
+
         // Add changes to page actions here
     }
 
     var
+
         lAccGroup: Boolean;
         lSalesGroup: Boolean;
         lShipGroup: Boolean;
@@ -305,6 +480,10 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         //User.CalcFields("User Name");
         Ok := true;
         User.SetRange("User Security ID", User."User Security ID");
+
+        lAccGroup := false;
+        lSalesGroup := false;
+        lShipGroup := false;
 
         //See if user is SUPER
         //user.setrange(user."User Name", userid);
@@ -329,7 +508,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
             lAccGroup := true;
         //lAccGroup := false;
         //lSalesGroup := true;
-        lShipGroup := true;
+        //lShipGroup := true;
     end;
 
 }

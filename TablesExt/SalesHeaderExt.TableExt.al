@@ -422,6 +422,10 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
         {
             Caption = 'CC Comments 3';
         }
+        field(50040; "Shipment Request Date"; Date)
+        {
+            Caption = 'Shipment Request Date';
+        }
 
     }
     trigger OnAfterInsert()
