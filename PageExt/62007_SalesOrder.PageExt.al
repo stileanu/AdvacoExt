@@ -506,7 +506,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
             ERROR('This Customer Card is for Accounting Only')
         else
             lAccGroup := true;
-        //lAccGroup := false;
+        lAccGroup := false;
         //lSalesGroup := true;
         //lShipGroup := true;
     end;

@@ -1,7 +1,10 @@
 page 50143 "IDR Header"
 {
+    Caption = 'Inspection Defect Report';
     PageType = Card;
     SourceTable = IDRHeader;
+    UsageCategory = Documents;
+    ApplicationArea = All;
 
     layout
     {

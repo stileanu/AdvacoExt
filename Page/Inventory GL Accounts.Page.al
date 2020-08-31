@@ -1,5 +1,6 @@
 page 50054 "Inventory GL Accounts"
 {
+    //Tested
     PageType = List;
     SourceTable = "G/L Account";
     SourceTableView = SORTING("No.")

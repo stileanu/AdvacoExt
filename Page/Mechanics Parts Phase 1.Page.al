@@ -1,5 +1,6 @@
 page 50011 "Mechanics Parts Phase 1"
 {
+    //Tested
     DelayedInsert = true;
     PageType = ListPart;
     SourceTable = QuoteMechanicsParts;

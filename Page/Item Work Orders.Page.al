@@ -1,5 +1,6 @@
 page 50056 "Item Work Orders"
 {
+    //Tested
     PageType = List;
     SourceTable = Parts;
     SourceTableView = SORTING("Work Order No.", "Part No.")

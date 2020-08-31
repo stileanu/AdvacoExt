@@ -3,7 +3,7 @@ page 50045 "Order Type"
     // 2010/10/14 ADV
     //   Allowed "Role ID" = ADV-SALESADVANCED to modify the type (for Trisha)
     // 2011/04/13 ADV
-    //   Set form editable for shipped orders for Sales Manager (Kaye)
+    //   Set form editable for shipped orders for Sales Manager(Kaye)
 
     SourceTable = WorkOrderDetail;
 

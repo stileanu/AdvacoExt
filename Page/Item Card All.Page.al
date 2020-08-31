@@ -3,7 +3,8 @@ page 50059 "Item Card All"
     // 1/9/01, htcs, rca - added variable: LocationItem
     // 
     // 05/24/12 ADV
-    // Added new control <RIA Reference> on tab Ordering for Reception Instruction document location.
+    // Added new control <RIA Reference> on tab Ordering for Reception Instruction document location. 
+    //Tested
 
     PageType = Card;
     SourceTable = Item;

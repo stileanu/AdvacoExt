@@ -1,5 +1,6 @@
 page 50012 "Mechanics Parts Phase 2"
 {
+    //Tested
     PageType = ListPart;
     SourceTable = QuoteMechanicsParts;
 

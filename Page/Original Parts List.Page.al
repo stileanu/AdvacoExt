@@ -1,5 +1,6 @@
 page 50006 "Original Parts List"
 {
+    //Tested
     Editable = false;
     PageType = List;
     SourceTable = OriginalQuotedParts;
