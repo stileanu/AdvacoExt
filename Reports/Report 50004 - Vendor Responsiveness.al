@@ -29,9 +29,9 @@ report 50004 "Vendor Responsiveness"
             column(TIME; TIME)
             {
             }
-            column(CurrReport_PAGENO; CurrReport.PAGENO)
-            {
-            }
+            //column(CurrReport_PAGENO; CurrReport.PAGENO)
+            //{
+            //}
             column(Vendor_TABLENAME__________VendorFilter; Vendor.TABLENAME + ': ' + VendorFilter)
             {
             }
