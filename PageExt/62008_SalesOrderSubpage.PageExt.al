@@ -44,6 +44,11 @@ pageextension 62008 SalesOrderSubpageExt extends "Sales Order Subform"
         }
         addafter("Unit Price")
         {
+            field(Reserve; Reserve)
+            {
+                ApplicationArea = All;
+                Visible = lAccGroup;
+            }
             field("Commission Calculated"; "Commission Calculated")
             {
                 ApplicationArea = All;

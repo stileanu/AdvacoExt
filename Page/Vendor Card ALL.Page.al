@@ -210,7 +210,7 @@ page 50072 "Vendor Card ALL"
                 trigger OnAction()
                 begin
                     Vendor := Rec;
-                    //Vendor.SETFILTER(Vendor."No.","No.");
+                    //Vendor.SETFILTER(Vendor."No.","No."); 
                     Vendor.SetRecFilter;
                     REPORT.RunModal(10085, true, false, Vendor);
 

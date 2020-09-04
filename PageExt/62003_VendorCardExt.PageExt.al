@@ -28,14 +28,13 @@ pageextension 62003 VendorCardExt extends "Vendor Card"
             {
                 Caption = 'Order E-Mail';
                 ApplicationArea = All;
-                ToolTip = 'Specifies the E-Mail address  where the Invoice should be sent.';
+                ToolTip = 'Specifies the E-Mail address where the Invoice should be sent.';
             }
         }
     }
 
     actions
     {
-        // Add changes to page actions here
         addafter("Open Vendor Entries")
         {
             action(Aging)
@@ -69,7 +68,7 @@ pageextension 62003 VendorCardExt extends "Vendor Card"
         User: Record User;
     begin
         OK := TRUE;
-        //See if user is SUPER
+        //See  if user is SUPER
         user.setrange(user."User Name", userid);
         IF User.FindFirst() THEN begin
 
