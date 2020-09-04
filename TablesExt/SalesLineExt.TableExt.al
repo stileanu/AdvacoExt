@@ -81,7 +81,10 @@ tableextension 50119 SalesLineExt extends "Sales Line"
         {
             Caption = 'Credit Card Fee';
         }
-
+        field(50150; "Cross Reference Item"; Code[20])
+        {
+            Caption = 'Cross Reference Item';
+        }
     }
 
     trigger OnAfterInsert()
