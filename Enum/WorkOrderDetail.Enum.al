@@ -135,6 +135,7 @@ enum 50010 DetailStep
     value(10; MSP) { }
     value(11; QC) { }
     value(12; SHP) { }
+    value(100; NON) { }
 }
 
 enum 50011 QuotePhase

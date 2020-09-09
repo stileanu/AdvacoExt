@@ -74,6 +74,9 @@ report 50004 "Vendor Responsiveness"
             column(Vendor_No_; "No.")
             {
             }
+            column(Show_Details; ShowDetails)
+            {
+            }
             dataitem(PurchRcptHeader; "Purch. Rcpt. Header")
             {
                 DataItemLink = "Buy-from Vendor No." = FIELD("No.");
