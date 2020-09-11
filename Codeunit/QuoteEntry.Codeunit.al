@@ -9,7 +9,10 @@ codeunit 50004 "Quote Entry"
         ///Window.CLOSE;
         GetWODNo.SetDialogValueType(SetType::WorkOrder, false);
         if GetWODNo.RunModal() = Action::OK then
-            GetWODNo.GetWorkOrderNo_(WODN);
+            GetWODNo.GetWorkOrderNo_(WODN)
+        else
+            exit;
+
         IF WODN <> '' THEN BEGIN
             WOD.SETCURRENTKEY(WOD."Work Order No.");
             WOD.SETRANGE(WOD."Work Order No.", WODN);

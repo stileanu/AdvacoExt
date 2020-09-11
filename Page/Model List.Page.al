@@ -8,6 +8,7 @@ page 50003 "Model List"
 
     Editable = false;
     PageType = List;
+    CardPageId = "Model Card";
     SourceTable = Item;
 
     layout

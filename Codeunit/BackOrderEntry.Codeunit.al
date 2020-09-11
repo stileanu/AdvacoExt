@@ -9,7 +9,10 @@ codeunit 50005 "Back Order Entry"
         //Window.CLOSE;
         GetWODNo.SetDialogValueType(SetType::WorkOrder, false);
         if GetWODNo.RunModal() = Action::OK then
-            GetWODNo.GetWorkOrderNo_(WODN);
+            GetWODNo.GetWorkOrderNo_(WODN)
+        else
+            exit;
+
         IF WODN <> '' THEN BEGIN
             WOD.SETCURRENTKEY(WOD."Work Order No.");
             IF WOD.GET(WODN) THEN BEGIN

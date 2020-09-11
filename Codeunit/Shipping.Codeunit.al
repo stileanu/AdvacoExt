@@ -16,7 +16,9 @@ codeunit 50006 Shipping
         //Window.CLOSE;
         GetWODNo.SetDialogValueType(SetType::WorkOrder, false);
         if GetWODNo.RunModal() = Action::OK then
-            GetWODNo.GetWorkOrderNo_(WODNo);
+            GetWODNo.GetWorkOrderNo_(WODNo)
+        else
+            exit;
 
         Continue := TRUE;
         WONo := COPYSTR(WODNo, 1, 5) + '00';

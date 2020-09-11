@@ -9,7 +9,10 @@ codeunit 50007 "Build Ahead"
         //Window.CLOSE;
         GetWODNo.SetDialogValueType(SetType::WorkOrder, false);
         if GetWODNo.RunModal() = Action::OK then
-            GetWODNo.GetWorkOrderNo_(WODN);
+            GetWODNo.GetWorkOrderNo_(WODN)
+        else
+            exit;
+
         if WODN <> '' then begin
             WOD.SetCurrentKey(WOD."Work Order No.");
             if WOD.GET(WODN) then begin

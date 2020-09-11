@@ -282,7 +282,7 @@ page 50009 "Job Status"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("ISO Procedure")
             {
@@ -301,6 +301,9 @@ page 50009 "Job Status"
             {
                 ApplicationArea = All;
                 Caption = '&Skip Step';
+                Promoted = true;
+                PromotedCategory = Process;
+                Image = StepOver;
 
                 trigger OnAction()
                 begin

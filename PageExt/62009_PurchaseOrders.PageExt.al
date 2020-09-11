@@ -16,7 +16,4 @@ pageextension 62009 PurchaseOrdersExt extends "Purchase Orders"
     {
         // Add changes to page actions here
     }
-
-    var
-        myInt: Integer;
 }

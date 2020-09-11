@@ -2,8 +2,8 @@ page 50100 GetValueDialog
 {
     Caption = 'Get Value';
     PageType = StandardDialog;
-    //ApplicationArea = All;
-    //UsageCategory = Administration;
+    ApplicationArea = All;
+    UsageCategory = Tasks;
     //SourceTable = TableName;
 
     layout
@@ -16,6 +16,9 @@ page 50100 GetValueDialog
                 field(ValueNo_; ValueNo_)
                 {
                     ApplicationArea = All;
+                    Caption = 'Enter the Number:';
+                    ShowMandatory = true;
+
 
                 }
             }

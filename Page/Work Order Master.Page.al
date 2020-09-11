@@ -218,18 +218,21 @@ page 50000 "Work Order Master"
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
+                            MultiLine = true;
                             ApplicationArea = All;
                         }
                         field("CC Comments 2"; "CC Comments 2")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
+                            MultiLine = true;
                             ApplicationArea = All;
                         }
                         field("CC Comments 3"; "CC Comments 3")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
+                            MultiLine = true;
                             ApplicationArea = All;
                         }
                     }

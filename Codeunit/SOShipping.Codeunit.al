@@ -14,7 +14,10 @@ codeunit 50011 SOShipping
         //Window.CLOSE;
         GetWODNo.SetDialogValueType(SetType::WorkOrder, false);
         if GetWODNo.RunModal() = Action::OK then
-            GetWODNo.GetWorkOrderNo_(SO);
+            GetWODNo.GetWorkOrderNo_(SO)
+        else
+            exit;
+
         IF SO <> '' THEN BEGIN
             SalesHeader.SETCURRENTKEY("Document Type", "No.");
             SalesHeader.SETRANGE("No.", SO);

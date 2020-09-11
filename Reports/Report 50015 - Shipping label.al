@@ -1,4 +1,4 @@
-report 50015 "Shipping label"
+report 50015 "Shipping Label"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/Shipping label.rdl';
