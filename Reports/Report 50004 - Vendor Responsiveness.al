@@ -340,6 +340,7 @@ report 50004 "Vendor Responsiveness"
                     Caption = 'Options';
                     field(ShowDetails; ShowDetails)
                     {
+                        ApplicationArea = All;
                         Caption = 'Show Details';
 
                         trigger OnValidate()
@@ -351,6 +352,7 @@ report 50004 "Vendor Responsiveness"
                     }
                     field(ExportToExcel; ExportToExcel)
                     {
+                        ApplicationArea = All;
                         Caption = 'Export to Excel';
 
                         trigger OnValidate()

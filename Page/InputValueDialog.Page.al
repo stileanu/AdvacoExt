@@ -15,6 +15,7 @@ page 50131 InputValueDialog
                 Caption = 'Get Value';
                 field(tValCaption; tValCaption)
                 {
+                    ApplicationArea = All;
                     Editable = false;
                     Enabled = false;
                 }

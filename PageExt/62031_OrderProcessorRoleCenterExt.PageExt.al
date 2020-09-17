@@ -42,6 +42,7 @@ pageextension 62031 OrderProcessorRoleCenterExt extends "Order Processor Role Ce
 
                 action(Action50001)
                 {
+                    ApplicationArea = All;
                     Caption = 'Work Order Master';
                     Image = OrderList;
                     RunObject = page "Work Order Master List";

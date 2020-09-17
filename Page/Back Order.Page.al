@@ -71,6 +71,7 @@ page 50021 "Back Order"
             }
             part(PartsLines; "Back Order Parts List")
             {
+                ApplicationArea = All;
                 SubPageLink = "Work Order No." = FIELD("Order No.");
             }
         }

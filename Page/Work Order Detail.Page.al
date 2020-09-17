@@ -123,10 +123,13 @@ page 50002 "Work Order Detail"
                     field(Notes; Notes)
                     {
                         ApplicationArea = All;
+                        MultiLine = true;
                     }
                     field("Build Ahead"; "Build Ahead")
                     {
                         ApplicationArea = All;
+                        Enabled = true;
+                        Editable = false;
                     }
                 }
                 group(Control1220060125)
@@ -175,7 +178,7 @@ page 50002 "Work Order Detail"
                     field(Control1220060025; "Install Date")
                     {
                         ApplicationArea = All;
-                        ShowCaption = false;
+                        //ShowCaption = false;
                     }
                     field("Sales Order No."; "Sales Order No.")
                     {

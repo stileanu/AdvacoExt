@@ -210,6 +210,12 @@ page 50013 "Quote Phase 1"
                 ApplicationArea = All;
                 SubPageLink = "Work Order No." = FIELD("Order No.");
             }
+            part(MechanicPartsList; "Mechanics Parts Phase 1")
+            {
+                ApplicationArea = All;
+                SubPageLink = "Work Order No." = FIELD("Order No.");
+            }
+
         }
     }
 

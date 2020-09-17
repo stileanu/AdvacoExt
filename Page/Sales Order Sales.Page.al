@@ -211,6 +211,7 @@ page 50062 "Sales Order Sales"
                     ShowCaption = false;
                     field("Your Reference"; "Your Reference")
                     {
+                        ApplicationArea = All;
                         Caption = 'Customer P.O Number';
                     }
                     field("Customer Order No."; "Customer Order No.")

@@ -427,7 +427,7 @@ page 50000 "Work Order Master"
     trigger OnAfterGetRecord()
     begin
         "File Exists" := false;
-        // 10/25/10 Start
+        // 10/25/10  Start
         //CustFile := 'F:\SHARED\Customer Records\' + Customer + '-' + "Ship To Code" + '.doc';
         CustFile := HyperlinkString + Customer + '-' + "Ship To Code" + '.doc';
         // 10/25/10 End

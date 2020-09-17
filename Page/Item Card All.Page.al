@@ -8,6 +8,8 @@ page 50059 "Item Card All"
 
     PageType = Card;
     SourceTable = Item;
+    UsageCategory = Tasks;
+    ApplicationArea = All;
 
     layout
     {

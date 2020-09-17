@@ -42,6 +42,8 @@ tableextension 50104 ItemExt Extends Item
                             "Shortcut Dimension 1 Code" = FIELD("Global Dimension 1 Filter"), "Shortcut Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
                             "Location Code" = FIELD("Location Filter"), "Drop Shipment" = FIELD("Drop Shipment Filter"), "Variant Code" = FIELD("Variant Filter"),
                             "Bin Code" = FIELD("Bin Filter"), "Expected Receipt Date" = FIELD("Date Filter")));
+            DecimalPlaces = 0 : 5;
+            Editable = false;
         }
         field(50004; "Qty. on Blanket Purch. Order"; Decimal)
         {
@@ -51,6 +53,8 @@ tableextension 50104 ItemExt Extends Item
                             "Shortcut Dimension 1 Code" = FIELD("Global Dimension 1 Filter"), "Shortcut Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
                             "Location Code" = FIELD("Location Filter"), "Drop Shipment" = FIELD("Drop Shipment Filter"), "Variant Code" = FIELD("Variant Filter"),
                             "Bin Code" = FIELD("Bin Filter"), "Expected Receipt Date" = FIELD("Date Filter")));
+            DecimalPlaces = 0 : 5;
+            Editable = false;
         }
         field(50005; "Qty. On Blanket Released"; Decimal)
         {
@@ -60,6 +64,8 @@ tableextension 50104 ItemExt Extends Item
                             "Shortcut Dimension 1 Code" = FIELD("Global Dimension 1 Filter"), "Shortcut Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
                             "Location Code" = FIELD("Location Filter"), "Drop Shipment" = FIELD("Drop Shipment Filter"), "Variant Code" = FIELD("Variant Filter"),
                             "Bin Code" = FIELD("Bin Filter"), "Expected Receipt Date" = FIELD("Date Filter")));
+            DecimalPlaces = 0 : 5;
+            Editable = false;
         }
         field(50006; "User ID"; Code[50])
         {

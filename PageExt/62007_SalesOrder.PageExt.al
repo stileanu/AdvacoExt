@@ -137,6 +137,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                     }
                     field(ShipShpToUPSZone; "Ship-to UPS Zone")
                     {
+                        ApplicationArea = All;
                         Caption = 'UPS Zone';
                         ToolTip = 'Specifies a UPS Zone code for this document if UPS is used for shipments.';
                     }
@@ -372,6 +373,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                     }
                     field(BillToAddress1; "Bill-to Address")
                     {
+                        ApplicationArea = All;
                         Caption = 'Bill-to Address';
                         ToolTip = 'Specifies address on Card account.';
                     }

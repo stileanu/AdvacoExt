@@ -61,22 +61,22 @@ Tableextension 50108 UserSetupExt Extends "User Setup"
         {
             Caption = 'PDF Path to Documents';
         }
-        field(99001915; "Sales Location"; Code[10])
+        field(50025; "Sales Location"; Code[10])
         {
             DataClassification = ToBeClassified;
             Caption = 'Sales Location';
         }
-        field(99001916; "Purch. Location"; Code[10])
+        field(50030; "Purch. Location"; Code[10])
         {
             DataClassification = ToBeClassified;
             Caption = 'Purch. Location';
         }
-        field(99001917; "Return Location"; Code[10])
+        field(50035; "Return Location"; Code[10])
         {
             DataClassification = ToBeClassified;
             Caption = 'Return Location';
         }
-        field(99002580; "Inventory Management Location"; Code[10])
+        field(50040; "Inventory Management Location"; Code[10])
         {
             DataClassification = ToBeClassified;
             Caption = 'Inventory Management Location';

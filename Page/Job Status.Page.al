@@ -129,6 +129,11 @@ page 50009 "Job Status"
                     {
                         ApplicationArea = All;
                         Caption = 'Model Verified';
+
+                        trigger OnValidate()
+                        begin
+                            WOD.VALIDATE("Model Verified");
+                        end;
                     }
                     field(SerialNo; SerialNo)
                     {

@@ -146,6 +146,7 @@ page 50074 "Purchase Order Purchasing"
             }
             part(PurchLines; "Purchase Order All Subform")
             {
+                ApplicationArea = All;
                 SubPageLink = "Document No." = FIELD("No.");
             }
             group(Invoicing)

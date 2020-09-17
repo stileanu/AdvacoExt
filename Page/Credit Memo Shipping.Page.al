@@ -133,6 +133,7 @@ page 50141 "Credit Memo Shipping"
             }
             part(PurchLines; "Credit Memo Subform")
             {
+                ApplicationArea = All;
                 SubPageLink = "Document No." = FIELD("No.");
             }
         }

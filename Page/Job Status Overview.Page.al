@@ -51,6 +51,8 @@ page 50007 "Job Status Overview"
                 field(BO; BO)
                 {
                     ApplicationArea = All;
+                    Editable = false;
+                    Enabled = false;
                     ShowCaption = false;
                 }
             }

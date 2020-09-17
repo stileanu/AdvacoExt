@@ -80,6 +80,7 @@ page 50103 "Close Work Order Details"
                     }
                     field("DetailTotalCost[3]"; DetailTotalCost[3])
                     {
+                        ApplicationArea = All;
                         Caption = 'Total';
                         Editable = false;
                         Visible = BoxControl3Visible;
