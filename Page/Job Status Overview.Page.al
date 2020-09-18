@@ -1,6 +1,7 @@
 page 50007 "Job Status Overview"
 {
     SourceTable = WorkOrderDetail;
+    Editable = false;
 
     layout
     {

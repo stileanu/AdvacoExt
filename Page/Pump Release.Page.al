@@ -49,6 +49,10 @@ page 50044 "Pump Release"
                         ApplicationArea = All;
                         Caption = 'Shipping Release';
                     }
+                    field(Complete; Complete)
+                    {
+                        ApplicationArea = All;
+                    }
                 }
                 group(Control1000000012)
                 {

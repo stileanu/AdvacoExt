@@ -10,9 +10,11 @@ page 50033 "Work Order Shipping"
     // 05/2/18
     //   Container Type control set to field options in table 50001. Make it editable.
 
+    ///--! SN: Serial No. issue - must find serial No.
+
     DeleteAllowed = false;
     InsertAllowed = false;
-    PageType = List;
+    //PageType = List;
     SourceTable = WorkOrderDetail;
     ApplicationArea = All;
     UsageCategory = Tasks;
@@ -806,21 +808,21 @@ page 50033 "Work Order Shipping"
         SalesHeader."Document Date" := Today;
         SalesHeader."Shipping No. Series" := SalesSetup."Posted Shipment Nos.";
         SalesHeader."Posting No. Series" := SalesSetup."Posted Invoice Nos.";
-        //SalesHeader.Rep := ShipTo.Rep;
+        SalesHeader.Rep := ShipTo.Rep;
         SalesHeader."Salesperson Code" := ShipTo."Inside Sales";
         SalesHeader."Payment Terms Code" := WOD."Payment Terms";
-        //SalesHeader."Card Type" := WOD."Card Type";
-        //SalesHeader."Credit Card No." := WOD."Credit Card No.";
-        //SalesHeader."Credit Card Exp." := WOD."Credit Card Exp.";
-        //SalesHeader."Approval Code" := WOD."Approval Code";
+        SalesHeader."Card Type" := WOD."Card Type";
+        SalesHeader."Credit Card No." := WOD."Credit Card No.";
+        SalesHeader."Credit Card Exp." := WOD."Credit Card Exp.";
+        SalesHeader."Approval Code" := WOD."Approval Code";
         SalesHeader."Shipment Date" := Today;
         SalesHeader."Shipment Method Code" := WOD."Shipping Method";
         SalesHeader."Shipping Agent Code" := WOD.Carrier;
-        //SalesHeader."Shipping Charge" := WOD."Shipping Charge";
-        //SalesHeader."Shipping Account" := WOD."Shipping Account";
+        SalesHeader."Shipping Charge" := WOD."Shipping Charge";
+        SalesHeader."Shipping Account" := WOD."Shipping Account";
         SalesHeader."Package Tracking No." := Tracking;
         SalesHeader."Shipping Advice" := SalesHeader."Shipping Advice"::Partial;
-        //SalesHeader."Bill of Lading" := BLInteger;
+        SalesHeader."Bill of Lading" := BLInteger;
 
         if WOD."Tax Liable" = true then begin
             SalesHeader."Tax Liable" := true;
@@ -833,11 +835,11 @@ page 50033 "Work Order Shipping"
         if Customer.Get(SalesHeader."Sell-to Customer No.") then begin
             if SalesHeader."Tax Liable" = false then begin
                 SalesHeader."Tax Exemption No." := Customer."Tax Exemption No.";
-                //SalesHeader."Exempt Organization" :=  Customer."Exempt Organization";
+                SalesHeader."Exempt Organization" := Customer."Exempt Organization";
             end;
         end else begin
             SalesHeader."Tax Exemption No." := '';
-            //SalesHeader."Exempt Organization" :=  '';
+            SalesHeader."Exempt Organization" := '';
         end;
 
         if PlaceOnLine = false then
@@ -857,8 +859,8 @@ page 50033 "Work Order Shipping"
         SalesLine.Validate("No.", '');
         SalesLine.Description := WOD."Work Order No." + ' ' + Format(WOD."Order Type");
         // + 'Total Price: ' + FORMAT(ROUND(WOD."Quote Price")); //REMOVED PER BLF 6/12/01
-        //SalesLine."Commission Calculated" := FALSE;
-        //SalesLine."Cross Reference Item" := WOD."Model No.";
+        SalesLine."Commission Calculated" := FALSE;
+        SalesLine."Cross Reference Item" := WOD."Model No.";
         SalesLine.Insert;
 
         //>> Description
@@ -867,7 +869,7 @@ page 50033 "Work Order Shipping"
             SalesLine.Type := SalesLine.Type::" ";
             SalesLine.Validate("No.", '');
             SalesLine.Description := WOD.Description;
-            //SalesLine."Commission Calculated" := FALSE;
+            SalesLine."Commission Calculated" := FALSE;
             SalesLine.Insert;
         end;
 
@@ -877,7 +879,7 @@ page 50033 "Work Order Shipping"
             SalesLine.Type := SalesLine.Type::" ";
             SalesLine.Validate("No.", '');
             SalesLine.Description := 'S/N' + ' ' + WOD."Serial No.";
-            //SalesLine."Commission Calculated" := FALSE;
+            SalesLine."Commission Calculated" := FALSE;
             SalesLine.Insert;
         end;
 
@@ -887,7 +889,7 @@ page 50033 "Work Order Shipping"
             SalesLine.Type := SalesLine.Type::" ";
             SalesLine.Validate("No.", '');
             SalesLine.Description := 'Customer P/N' + ' ' + WOD."Customer Part No.";
-            //SalesLine."Commission Calculated" := FALSE;
+            SalesLine."Commission Calculated" := FALSE;
             SalesLine.Insert;
         end;
 
@@ -898,7 +900,7 @@ page 50033 "Work Order Shipping"
                 SalesLine.Type := SalesLine.Type::" ";
                 SalesLine.Validate("No.", '');
                 SalesLine.Description := 'PO No.' + ' ' + WOD."Customer PO No.";
-                //SalesLine."Commission Calculated" := FALSE;
+                SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
         end;
@@ -909,7 +911,7 @@ page 50033 "Work Order Shipping"
             SalesLine.Type := SalesLine.Type::" ";
             SalesLine.Validate("No.", '');
             SalesLine.Description := 'Approval Code No.' + ' ' + WOD."Approval Code";
-            //SalesLine."Commission Calculated" := FALSE;
+            SalesLine."Commission Calculated" := FALSE;
             SalesLine.Insert;
         end;
 
@@ -953,10 +955,10 @@ page 50033 "Work Order Shipping"
                             SalesLine.Validate(Quantity);
                         end;
 
-                        //IF WOD."Order Type" = WOD."Order Type" :: Warranty THEN
-                        //SalesLine."Commission Calculated" := FALSE
-                        //ELSE
-                        //  SalesLine."Commission Calculated" := TRUE;
+                        IF WOD."Order Type" = WOD."Order Type"::Warranty THEN
+                            SalesLine."Commission Calculated" := FALSE
+                        ELSE
+                            SalesLine."Commission Calculated" := TRUE;
                         SalesLine.Insert;
                     end;
                 end;
@@ -978,10 +980,10 @@ page 50033 "Work Order Shipping"
                         SalesLine.Validate(Quantity);
                     end;
 
-                    //IF WOD."Order Type" = WOD."Order Type" :: Warranty THEN
-                    //  //SalesLine."Commission Calculated" := FALSE
-                    //ELSE
-                    //  SalesLine."Commission Calculated" := TRUE;
+                    IF WOD."Order Type" = WOD."Order Type"::Warranty THEN
+                        SalesLine."Commission Calculated" := FALSE
+                    ELSE
+                        SalesLine."Commission Calculated" := TRUE;
                     SalesLine.Insert;
                 end;
             end;
@@ -998,10 +1000,10 @@ page 50033 "Work Order Shipping"
                 SalesLine."Unit Price" := Round(ShopLabor + AdjRemainder);
                 SalesLine.Validate("Unit Price");
 
-                //IF WOD."Order Type" = WOD."Order Type" :: Warranty THEN
-                //  SalesLine."Commission Calculated" := FALSE
-                //ELSE
-                //  SalesLine."Commission Calculated" := TRUE;
+                IF WOD."Order Type" = WOD."Order Type"::Warranty THEN
+                    SalesLine."Commission Calculated" := FALSE
+                ELSE
+                    SalesLine."Commission Calculated" := TRUE;
                 SalesLine.Insert;
             end;
 
@@ -1032,10 +1034,10 @@ page 50033 "Work Order Shipping"
                             SalesLine.Validate(Quantity);
                         end;
 
-                        //IF WOD."Order Type" = WOD."Order Type" :: Warranty THEN
-                        //  SalesLine."Commission Calculated" := FALSE
-                        //ELSE
-                        //  SalesLine."Commission Calculated" := TRUE;
+                        IF WOD."Order Type" = WOD."Order Type"::Warranty THEN
+                            SalesLine."Commission Calculated" := FALSE
+                        ELSE
+                            SalesLine."Commission Calculated" := TRUE;
                         SalesLine.Insert;
                     end;
                 end;
@@ -1057,10 +1059,10 @@ page 50033 "Work Order Shipping"
                         SalesLine.Validate(Quantity);
                     end;
 
-                    //IF WOD."Order Type" = WOD."Order Type" :: Warranty THEN
-                    //  SalesLine."Commission Calculated" := FALSE
-                    //ELSE
-                    //  SalesLine."Commission Calculated" := TRUE;
+                    IF WOD."Order Type" = WOD."Order Type"::Warranty THEN
+                        SalesLine."Commission Calculated" := FALSE
+                    ELSE
+                        SalesLine."Commission Calculated" := TRUE;
                     SalesLine.Insert;
                 end;
             end;
@@ -1078,10 +1080,10 @@ page 50033 "Work Order Shipping"
                 SalesLine."Unit Price" := Round(WOD."Original Labor Price" + AdjRemainder);
                 SalesLine.Validate("Unit Price");
 
-                //IF WOD."Order Type" = WOD."Order Type" :: Warranty THEN
-                //  SalesLine."Commission Calculated" := FALSE
-                //ELSE
-                //  SalesLine."Commission Calculated" := TRUE;
+                IF WOD."Order Type" = WOD."Order Type"::Warranty THEN
+                    SalesLine."Commission Calculated" := FALSE
+                ELSE
+                    SalesLine."Commission Calculated" := TRUE;
                 SalesLine.Insert;
             end;
         end;
@@ -1096,7 +1098,7 @@ page 50033 "Work Order Shipping"
                 SalesLine.Validate(Quantity, 1);
                 SalesLine.Description := 'Handling Charge';
                 SalesLine.Validate("Unit Price", SalesSetup."UPS Handling Charge");
-                //SalesLine."Commission Calculated" := FALSE;
+                SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
         end;
@@ -1110,7 +1112,7 @@ page 50033 "Work Order Shipping"
                 SalesLine.Validate("No.", '312');   //Sales Account
                 SalesLine.Validate(Quantity, 1);
                 SalesLine.Description := 'UPS Shipping Charge';
-                //SalesLine."Commission Calculated" := FALSE;
+                SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
         end;
@@ -1123,7 +1125,7 @@ page 50033 "Work Order Shipping"
             SalesLine.Validate(Quantity, 1);
             SalesLine.Description := 'Inbound Freight Charge';
             SalesLine.Validate("Unit Price", WOD.Freightin);
-            //SalesLine."Commission Calculated" := FALSE;
+            SalesLine."Commission Calculated" := FALSE;
             SalesLine.Insert;
         end;
 
@@ -1145,10 +1147,10 @@ page 50033 "Work Order Shipping"
                     GPSLoopNoGLEntry;
                 SalesLine.Validate("Gen. Prod. Posting Group", GPS."Gen. Prod. Posting Group");
 
-                //IF WOD."Order Type" = WOD."Order Type" :: Warranty THEN
-                //  SalesLine."Commission Calculated" := FALSE
-                //ELSE
-                //  SalesLine."Commission Calculated" := TRUE;
+                IF WOD."Order Type" = WOD."Order Type"::Warranty THEN
+                    SalesLine."Commission Calculated" := FALSE
+                ELSE
+                    SalesLine."Commission Calculated" := TRUE;
                 SalesLine.Insert;
                 ResourceCost := ResourceCost + WOP."Total Quote Cost";
             until WOP.Next = 0;
@@ -1176,6 +1178,7 @@ page 50033 "Work Order Shipping"
                 SalesLine.Type := SalesLine.Type::Item;
                 SalesLine.Validate("No.", WOP."Part No.");
 
+                ///--! SN
                 //IF Item."Costing Method" = Item."Costing Method" :: Specific THEN BEGIN
                 //  SalesLine."Serial No." := SerialNo
                 //END;
@@ -1190,10 +1193,10 @@ page 50033 "Work Order Shipping"
                 if SalesLine."VAT Prod. Posting Group" = '' then
                     SalesLine."VAT Prod. Posting Group" := 'DEFAULT';
 
-                //IF WOD."Order Type" = WOD."Order Type" :: Warranty THEN
-                //  SalesLine."Commission Calculated" := FALSE
-                //ELSE
-                //  SalesLine."Commission Calculated" := TRUE;
+                IF WOD."Order Type" = WOD."Order Type"::Warranty THEN
+                    SalesLine."Commission Calculated" := FALSE
+                ELSE
+                    SalesLine."Commission Calculated" := TRUE;
 
                 SalesLine.Insert;
                 PartsCost := PartsCost + WOP."Total Quote Cost";
@@ -1216,8 +1219,8 @@ page 50033 "Work Order Shipping"
             SalesLine.Validate("No.", '');
             SalesLine.Description := WOD."Work Order No." + ' ' + Format(WOD."Order Type");
             // + 'Total Price: ' + FORMAT(ROUND(WOD."Quote Price")); //REMOVED PER BLF 6/12/01
-            //SalesLine."Commission Calculated" := FALSE;
-            //SalesLine."Cross Reference Item" := WOD."Model No.";
+            SalesLine."Commission Calculated" := FALSE;
+            SalesLine."Cross Reference Item" := WOD."Model No.";
             SalesLine.Insert;
 
             //>> Description
@@ -1226,7 +1229,7 @@ page 50033 "Work Order Shipping"
                 SalesLine.Type := SalesLine.Type::" ";
                 SalesLine.Validate("No.", '');
                 SalesLine.Description := WOD.Description;
-                //SalesLine."Commission Calculated" := FALSE;
+                SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
 
@@ -1236,7 +1239,7 @@ page 50033 "Work Order Shipping"
                 SalesLine.Type := SalesLine.Type::" ";
                 SalesLine.Validate("No.", '');
                 SalesLine.Description := 'S/N' + ' ' + WOD."Serial No.";
-                //SalesLine."Commission Calculated" := FALSE;
+                SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
 
@@ -1246,7 +1249,7 @@ page 50033 "Work Order Shipping"
                 SalesLine.Type := SalesLine.Type::" ";
                 SalesLine.Validate("No.", '');
                 SalesLine.Description := 'Customer P/N' + ' ' + WOD."Customer Part No.";
-                //SalesLine."Commission Calculated" := FALSE;
+                SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
 
@@ -1257,7 +1260,7 @@ page 50033 "Work Order Shipping"
                     SalesLine.Type := SalesLine.Type::" ";
                     SalesLine.Validate("No.", '');
                     SalesLine.Description := 'PO No.' + ' ' + WOD."Customer PO No.";
-                    //SalesLine."Commission Calculated" := FALSE;
+                    SalesLine."Commission Calculated" := FALSE;
                     SalesLine.Insert;
                 end;
             end;
@@ -1268,7 +1271,7 @@ page 50033 "Work Order Shipping"
                 SalesLine.Type := SalesLine.Type::" ";
                 SalesLine.Validate("No.", '');
                 SalesLine.Description := 'Approval Code No.' + ' ' + WOD."Approval Code";
-                //SalesLine."Commission Calculated" := FALSE;
+                SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
 
@@ -1283,7 +1286,7 @@ page 50033 "Work Order Shipping"
             SalesLine.Description := 'UnRepairable Charge';
             SalesLine."Unit Price" := WOD."Unrepairable Charge";
             SalesLine.Validate("Unit Price");
-            //SalesLine."Commission Calculated" := TRUE;
+            SalesLine."Commission Calculated" := TRUE;
             SalesLine.Insert;
         end;
 
@@ -1297,7 +1300,7 @@ page 50033 "Work Order Shipping"
                 SalesLine.Validate(Quantity, 1);
                 SalesLine.Description := 'Handling Charge';
                 SalesLine.Validate("Unit Price", SalesSetup."UPS Handling Charge");
-                //SalesLine."Commission Calculated" := FALSE;
+                SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
         end;
@@ -1311,7 +1314,7 @@ page 50033 "Work Order Shipping"
                 SalesLine.Validate("No.", '312');   //Sales Account
                 SalesLine.Validate(Quantity, 1);
                 SalesLine.Description := 'UPS Shipping Charge';
-                //SalesLine."Commission Calculated" := FALSE;
+                SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
         end;
@@ -1324,7 +1327,7 @@ page 50033 "Work Order Shipping"
             SalesLine.Validate(Quantity, 1);
             SalesLine.Description := 'Inbound Freight Charge';
             SalesLine.Validate("Unit Price", WOD.Freightin);
-            //SalesLine."Commission Calculated" := FALSE;
+            SalesLine."Commission Calculated" := FALSE;
             SalesLine.Insert;
         end;
     end;

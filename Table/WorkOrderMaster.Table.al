@@ -3,6 +3,8 @@ table 50000 WorkOrderMaster
     // To find commented code, use pattern <//--!>
 
     DataClassification = ToBeClassified;
+    DrillDownPageID = "Work Order Master List";
+    LookupPageID = "Work Order Master List";
 
     fields
     {

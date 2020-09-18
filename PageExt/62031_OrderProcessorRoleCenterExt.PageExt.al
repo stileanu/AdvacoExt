@@ -188,6 +188,14 @@ pageextension 62031 OrderProcessorRoleCenterExt extends "Order Processor Role Ce
             group("Sales&Shipping")
             {
                 Caption = 'Sales & Shipping Orders';
+                action(PumpRelease)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Pump Release';
+                    Image = ReleaseDoc;
+                    RunObject = codeunit PumpRelease;
+                    ToolTip = 'Enters data to release a Work Order Detail.';
+                }
                 action(SalesOrderShipping)
                 {
                     ApplicationArea = All;

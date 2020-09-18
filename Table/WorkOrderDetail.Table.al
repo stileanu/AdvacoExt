@@ -1,6 +1,9 @@
 table 50001 WorkOrderDetail
 {
     DataClassification = ToBeClassified;
+    DrillDownPageID = "Work Order Detail List";
+    LookupPageID = "Work Order Detail List";
+
     /*
         11/9/00 RJK TempStateCode can be removed but retained for possible later use.
 
