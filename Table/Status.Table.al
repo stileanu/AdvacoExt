@@ -1,5 +1,7 @@
 table 50002 Status
 {
+    DrillDownPageId = tableUtility_Status;
+    LookupPageId = tableUtility_Status;
     // To find commented code, use pattern <//--!>
     fields
     {

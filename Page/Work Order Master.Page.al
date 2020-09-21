@@ -481,7 +481,7 @@ page 50000 "Work Order Master"
 
     trigger OnInit()
     begin
-        //HyperlinkString := '\\ADVACOSBS\advacoroot\Westminster\Shared\Customer Records\';
+        //HyperlinkString := '\\ADVACOSBS\advacoroot\Westminster\Shared\Customer Records\ ';
         HyperlinkString := 'Z:\';
         Ok2 := false;
     end;

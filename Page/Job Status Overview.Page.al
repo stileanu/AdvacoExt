@@ -1,7 +1,7 @@
 page 50007 "Job Status Overview"
 {
     SourceTable = WorkOrderDetail;
-    Editable = false;
+    //Editable = false;
 
     layout
     {
@@ -45,6 +45,7 @@ page 50007 "Job Status Overview"
             {
                 ApplicationArea = All;
                 SubPageLink = "Order No." = FIELD("Work Order No.");
+                Editable = true;
             }
             group(Control1000000009)
             {

@@ -4,7 +4,7 @@ page 50008 "Job Status List"
     //   Repaired broken action for Show Status button on Special Inquiry form.
 
     DeleteAllowed = false;
-    Editable = false;
+    //Editable = false;
     InsertAllowed = false;
     ModifyAllowed = false;
     PageType = ListPart;

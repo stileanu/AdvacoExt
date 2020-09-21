@@ -125,6 +125,11 @@ page 50002 "Work Order Detail"
                         ApplicationArea = All;
                         MultiLine = true;
                     }
+                    field(Complete; Complete)
+                    {
+                        ApplicationArea = All;
+                        Editable = true;
+                    }
                     field("Build Ahead"; "Build Ahead")
                     {
                         ApplicationArea = All;

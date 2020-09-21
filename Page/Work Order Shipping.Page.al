@@ -1441,7 +1441,8 @@ page 50033 "Work Order Shipping"
 
     procedure PrintBOL()
     begin
-        Commit;
+        ///--! Commit
+        //Commit;
         if not Confirm('Is Bill of Lading and Labels loaded in Printers?', false) then begin
             if not Confirm('Last Chance, Is Bill of Lading and Labels loaded in Printers?', false) then begin
                 Ok := true;
@@ -1475,7 +1476,7 @@ page 50033 "Work Order Shipping"
                 repeat
                 begin
                     LabelCount := LabelCount - 1;
-                    REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
+                    //REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
                 end;
                 until LabelCount = 0;
                 BOL2."Label Printed" := true;
@@ -1748,7 +1749,8 @@ page 50033 "Work Order Shipping"
     procedure Reservation()
     begin
         // Reservation Entry
-        Commit;
+        ///!!-
+        //Commit;
         SalesLine.Reset;
         SalesLine.SetRange("Document Type", SalesHeader."Document Type");
         SalesLine.SetRange("Document No.", SalesHeader."No.");
