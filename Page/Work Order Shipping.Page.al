@@ -11,6 +11,7 @@ page 50033 "Work Order Shipping"
     //   Container Type control set to field options in table 50001. Make it editable.
 
     ///--! SN: Serial No. issue - must find serial No.
+    ///--! Report (BOL and Address Labels)
 
     DeleteAllowed = false;
     InsertAllowed = false;
@@ -185,7 +186,7 @@ page 50033 "Work Order Shipping"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Print All BOL's")
             {
@@ -232,6 +233,9 @@ page 50033 "Work Order Shipping"
                 ApplicationArea = All;
                 Caption = 'Instructions';
                 Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Documents;
                 Visible = WorkInstructionsVisible;
 
                 trigger OnAction()
@@ -248,6 +252,9 @@ page 50033 "Work Order Shipping"
                 ApplicationArea = All;
                 Caption = '&Ship';
                 Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+                Image = Shipment;
 
                 trigger OnAction()
                 begin
@@ -420,7 +427,7 @@ page 50033 "Work Order Shipping"
             repeat
                 WorkOrderDetail.Ship := false;
                 WorkOrderDetail.Modify;
-                Commit;
+            //Commit;
             until WorkOrderDetail.Next = 0;
         end;
     end;
@@ -1448,7 +1455,8 @@ page 50033 "Work Order Shipping"
                 Ok := true;
             end else begin
                 BOL2.SetRange(BOL2."Bill of Lading", BOL2."Bill of Lading");
-                REPORT.RunModal(50016, false, false, BOL2);               // BOL Document
+                ///--! Report
+                //REPORT.RunModal(50016, false, false, BOL2);               // BOL Document
                 BOL2."BOL Printed" := true;
                 BOL2.Modify;
                 LabelCount := LabelsToPrint;
@@ -1456,7 +1464,8 @@ page 50033 "Work Order Shipping"
                     repeat
                     begin
                         LabelCount := LabelCount - 1;
-                        REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
+                        ///--! Report
+                        //REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
                     end;
                     until LabelCount = 0;
                     BOL2."Label Printed" := true;
@@ -1468,7 +1477,8 @@ page 50033 "Work Order Shipping"
             end;
         end else begin
             BOL2.SetRange(BOL2."Bill of Lading", BOL2."Bill of Lading");
-            REPORT.RunModal(50016, false, false, BOL2);               // BOL Document
+            ///--! Report
+            //REPORT.RunModal(50016, false, false, BOL2);               // BOL Document
             BOL2."BOL Printed" := true;
             BOL2.Modify;
             LabelCount := LabelsToPrint;
@@ -1476,6 +1486,7 @@ page 50033 "Work Order Shipping"
                 repeat
                 begin
                     LabelCount := LabelCount - 1;
+                    ///--! Report
                     //REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
                 end;
                 until LabelCount = 0;

@@ -84,10 +84,10 @@ codeunit 50006 Shipping
     procedure OpenNextRecord();
     begin
         IF NOT CONFIRM('Do you want to update another record?', FALSE) THEN BEGIN
-            COMMIT;
+            //COMMIT;
             EXIT;
         END ELSE BEGIN
-            COMMIT;
+            //COMMIT;
             NextRecord.RUN
         END;
     end;

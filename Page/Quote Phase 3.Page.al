@@ -174,13 +174,16 @@ page 50017 "Quote Phase 3"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action(Requote)
             {
                 ApplicationArea = All;
                 Caption = 'Requote';
                 Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Image = Quote;
 
                 trigger OnAction()
                 begin
@@ -204,6 +207,9 @@ page 50017 "Quote Phase 3"
                 ApplicationArea = All;
                 Caption = 'Acceptance Form';
                 Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Image = Form;
 
                 trigger OnAction()
                 begin
@@ -233,6 +239,9 @@ page 50017 "Quote Phase 3"
                 ApplicationArea = All;
                 Caption = 'Complete Quote';
                 Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Image = Completed;
 
                 trigger OnAction()
                 begin

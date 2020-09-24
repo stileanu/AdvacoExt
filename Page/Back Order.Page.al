@@ -79,7 +79,7 @@ page 50021 "Back Order"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Swap Part")
             {
