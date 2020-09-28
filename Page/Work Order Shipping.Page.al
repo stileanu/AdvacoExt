@@ -1,6 +1,6 @@
 page 50033 "Work Order Shipping"
 {
-    // 2/1/01, HTCS, RCA - added code to "Ship" command button OnPush()
+    // 2/1/01, HTCS, RCA - added code to "Ship" command button OnPush() 
     // 2/20/01 HEF FIX BOL PROBLEM
     // 
     // 2/28/12 ADV Reverse the debug settings in Repairable() function to partially post the shippment
@@ -10,7 +10,7 @@ page 50033 "Work Order Shipping"
     // 05/2/18
     //   Container Type control set to field options in table 50001. Make it editable.
 
-    ///--! SN: Serial No. issue - must find serial No.
+    ///--! SN: Serial No. issue - must find serial No. 
     ///--! Report (BOL and Address Labels)
 
     DeleteAllowed = false;

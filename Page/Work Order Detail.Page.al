@@ -3,8 +3,8 @@ page 50002 "Work Order Detail"
     // 05/22/12 ADV
     //   Made "Labor Hours Quoted", Variance and "Order Adj." focusable, to allow Copy and Paste actions on values
     // 
-    // 12/07/12 ADV
-    //   Modify the caption of RD field to read PID, per Trisha request.
+    // 12/07/12 ADV 
+    //   Modify the caption of RD field to read PID, per Trisha request. 
     // 
     // 2016_02_27 ADV
     //   Added new control - <Initial Order Type> to show the original Order Type field.
@@ -16,7 +16,7 @@ page 50002 "Work Order Detail"
     //   Corrected sequence of controls for all controls of the pages, on all tabs.
     // 
     // 04/16/18
-    //   Transformed Saved Container control from check box to option (blank,yes,no).
+    //   Transformed Saved Container control from check box to option (blank,yes,no). 
 
     InsertAllowed = false;
     PageType = Card;

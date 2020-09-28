@@ -65,7 +65,7 @@ page 50105 "Work Order Master List"
     /*
     actions
     {
-        area(Processing)
+        area(Processing) 
         {
             action(ActionName)
             {
