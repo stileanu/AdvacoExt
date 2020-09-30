@@ -7,7 +7,7 @@ page 50038 "Work Order Instructions"
     // 
     // 09/18/12 ADV
     //   Modified the validation code to an inform message instead of error about the pre-existance
-    //   of Part No in the WO table. If user answers no, the add process is canceled.
+    //   of Part No in the WO table. If user answers no, the add process is canceled. 
     // 
     // 04/01/13 ADV
     //   Added control to show Block/Unblocked Status.

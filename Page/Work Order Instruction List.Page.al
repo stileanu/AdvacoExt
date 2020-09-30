@@ -1,7 +1,7 @@
 page 50039 "Work Order Instruction List"
 {
     // 04/01/2013 ADV
-    //   Added code to allow user to see/not see blocked records based on permissions.
+    //   Added code to allow user to see/not see blocked records based on permissions. 
 
     DeleteAllowed = false;
     InsertAllowed = false;

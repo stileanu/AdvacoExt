@@ -270,7 +270,7 @@ pageextension 62031 OrderProcessorRoleCenterExt extends "Order Processor Role Ce
                     ApplicationArea = All;
                     Caption = 'Shop Work Order Status';
                     Image = Status;
-                    RunObject = report "Shop Work Order Status Rpt";
+                    RunObject = report "Shop Work Order St. Rpt";
                     ToolTip = 'Runs Shop Work Order Status Report.';
                 }
                 action(BoxedWorkOrderStatus)

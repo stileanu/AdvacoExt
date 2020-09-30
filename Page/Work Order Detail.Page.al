@@ -9,13 +9,13 @@ page 50002 "Work Order Detail"
     // 2016_02_27 ADV
     //   Added new control - <Initial Order Type> to show the original Order Type field.
     // 
-    // 2018_03_31
+    // 2018_03_31 
     //   Corrected sequence of controls on Other tab to jump from Shipping Charge to Container Saved checkbox.
     // 
     // 2018_04_01
     //   Corrected sequence of controls for all controls of the pages, on all tabs.
     // 
-    // 04/16/18
+    // 04/16/18 
     //   Transformed Saved Container control from check box to option (blank,yes,no). 
 
     InsertAllowed = false;

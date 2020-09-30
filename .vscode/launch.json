@@ -4,7 +4,7 @@
         
         
         {
-            "name": "Publish: Your own server",
+            "name": "Advaco Code Development",
             "type": "al",
             "request": "launch",
             "server": "http://localhost",

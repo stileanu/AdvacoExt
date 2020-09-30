@@ -468,7 +468,7 @@ page 50009 "Job Status"
         SerialNo := WOD."Serial No.";
         ModelNo := WOD."Model No.";
 
-        // Allow Shop Mgr and Shipping to edit Serian No. in REC step
+        // Allow Shop Mgr and Shipping to edit Serial No. in REC step
         OK2 := false;
         Member.CalcFields(Member."User Name");
         if (Step = Step::RCV) then begin

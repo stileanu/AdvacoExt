@@ -1,4 +1,4 @@
-report 50005 "Shop Work Order Status Rpt"
+report 60005 "Shop Work Order St. Rpt"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/Shop Work Order Status Rpt.rdl';

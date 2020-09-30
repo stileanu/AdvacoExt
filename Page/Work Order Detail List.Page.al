@@ -170,7 +170,7 @@ page 50001 "Work Order Detail List"
         if not (UserId = 'KAYE') then begin
             NotesVisible := false;
             // 2013_08_26 Start
-            //CurrForm.Diagnosis.VISIBLE := FALSE;
+            //CurrForm.Diagnosis.VISIBLE := FALSE; 
             // 2013_08_26 End
         end;
 
@@ -195,7 +195,7 @@ page 50001 "Work Order Detail List"
 
     trigger OnOpenPage()
     begin
-        // 2011_09_01 - Start
+        // 2011_09_01 - Start 
         OK := true;
         Member.CalcFields("User Name");
         Member.SetRange(Member."User Name", UserId);
