@@ -13,7 +13,7 @@ page 50021 "Back Order"
             group(Control1000000010)
             {
                 ShowCaption = false;
-                field("Order No."; "Order No.")
+                field("Order No."; Rec."Order No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -48,23 +48,23 @@ page 50021 "Back Order"
                     Caption = 'Customer';
                     Editable = false;
                 }
-                field("Date In"; "Date In")
+                field("Date In"; Rec."Date In")
                 {
                     ApplicationArea = All;
                 }
-                field("Date Out"; "Date Out")
+                field("Date Out"; Rec."Date Out")
                 {
                     ApplicationArea = All;
                 }
-                field(Employee; Employee)
+                field(Employee; Rec.Employee)
                 {
                     ApplicationArea = All;
                 }
-                field("Regular Hours"; "Regular Hours")
+                field("Regular Hours"; Rec."Regular Hours")
                 {
                     ApplicationArea = All;
                 }
-                field("Overtime Hours"; "Overtime Hours")
+                field("Overtime Hours"; Rec."Overtime Hours")
                 {
                     ApplicationArea = All;
                 }
@@ -109,7 +109,7 @@ page 50021 "Back Order"
                 begin
                     // CurrForm.PartsLines.FORM.PartsAllocation
 
-                    Parts.SetRange(Parts."Work Order No.", "Order No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                     PAGE.RunModal(PAGE::"Parts Allocation", Parts);
                 end;
             }
@@ -124,8 +124,8 @@ page 50021 "Back Order"
                 trigger OnAction()
                 begin
                     WOD.Reset;
-                    WOD.Get("Order No.");
-                    WOD.SetFilter(WOD."Work Order No.", "Order No.");
+                    WOD.Get(Rec."Order No.");
+                    WOD.SetFilter(WOD."Work Order No.", Rec."Order No.");
                     REPORT.Run(50019, true, false, WOD);
                     WOD.Reset;
                 end;
@@ -141,7 +141,7 @@ page 50021 "Back Order"
                 trigger OnAction()
                 begin
                     Parts.SetCurrentKey("Work Order No.", "Part Type", "Part No.");
-                    Parts.SetRange(Parts."Work Order No.", "Order No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                     if Parts.Find('-') then begin
                         repeat
                             Parts.CalcFields(Parts."In-Process Quantity");

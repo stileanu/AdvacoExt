@@ -107,7 +107,7 @@ codeunit 50030 systemFunctionalLibrary
 
         repeat
         // if textGroup[locIndex] 
-
+        //review
         until locIndex = 0;
 
     end;

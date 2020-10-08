@@ -5,7 +5,7 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
     {
         addafter("Document Date")
         {
-            field("Placed By"; "Placed by")
+            field("Placed By"; Rec."Placed by")
             {
                 ApplicationArea = All;
             }
@@ -25,12 +25,12 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
                 Editable = false;
                 ApplicationArea = All;
             }
-            field("Vendor Repair"; "Vendor Repair")
+            field("Vendor Repair"; Rec."Vendor Repair")
             {
                 ApplicationArea = All;
                 Visible = lPurchGroup;
             }
-            field("Order Acknowledgement"; "Order Acknowledgement")
+            field("Order Acknowledgement"; Rec."Order Acknowledgement")
             {
                 ApplicationArea = All;
                 Visible = lPurchGroup;
@@ -38,17 +38,17 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
         }
         addafter("Purchaser Code")
         {
-            field("Quality Clause"; "Quality Clause")
+            field("Quality Clause"; Rec."Quality Clause")
             {
                 ApplicationArea = All;
 
             }
-            field("Phone No."; "Phone No.")
+            field("Phone No."; Rec."Phone No.")
             {
                 ApplicationArea = All;
                 Visible = lPurchGroup;
             }
-            field("Fax No."; "Vendor Fax")
+            field("Fax No."; Rec."Vendor Fax")
             {
                 ApplicationArea = All;
                 Visible = lPurchGroup;
@@ -119,9 +119,9 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
         //lShipGroup := true;
 
         // 04/30/12 ADV Start
-        IF PurchVendor.GET("Buy-from Vendor No.") THEN
+        IF PurchVendor.GET(Rec."Buy-from Vendor No.") THEN
             PurchPaymentTerms := PurchVendor."Payment Terms Code";
-        IF APPurchVendor.GET("Pay-to Vendor No.") THEN
+        IF APPurchVendor.GET(Rec."Pay-to Vendor No.") THEN
             APPurchPaymentTerms := APPurchVendor."Payment Terms Code";
         // 04/30/12 ADV End     
 
@@ -130,9 +130,9 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
     trigger OnAfterGetRecord()
     begin
         // 04/30/12 ADV Start
-        IF PurchVendor.GET("Buy-from Vendor No.") THEN
+        IF PurchVendor.GET(Rec."Buy-from Vendor No.") THEN
             PurchPaymentTerms := PurchVendor."Payment Terms Code";
-        IF APPurchVendor.GET("Pay-to Vendor No.") THEN
+        IF APPurchVendor.GET(Rec."Pay-to Vendor No.") THEN
             APPurchPaymentTerms := APPurchVendor."Payment Terms Code";
         // 04/30/12 ADV End       
     end;
@@ -158,8 +158,8 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
 
         IF CONFIRM('Are you ready to print Labels?') THEN BEGIN
             PurchLine.RESET;
-            PurchLine.SETRANGE(PurchLine."Document Type", "Document Type");
-            PurchLine.SETRANGE(PurchLine."Document No.", "No.");
+            PurchLine.SETRANGE(PurchLine."Document Type", Rec."Document Type");
+            PurchLine.SETRANGE(PurchLine."Document No.", Rec."No.");
             PurchLine.SETRANGE(PurchLine."Labels to Print", 0, 9999);
             IF PurchLine.FIND('-') THEN BEGIN
                 Labels.DELETEALL;

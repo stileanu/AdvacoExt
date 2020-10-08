@@ -13,11 +13,11 @@ page 50077 "Blanket Purch Order Subform"
         {
             repeater(Group)
             {
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = All;
                 }
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
 
@@ -26,59 +26,59 @@ page 50077 "Blanket Purch Order Subform"
                         NoOnAfterValidate;
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field(Quantity; Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = All;
                 }
-                field("Qty. to Receive"; "Qty. to Receive")
+                field("Qty. to Receive"; Rec."Qty. to Receive")
                 {
                     ApplicationArea = All;
                     Caption = 'Qty to Release';
                 }
-                field("Qty. Released"; "Qty. Released")
+                field("Qty. Released"; Rec."Qty. Released")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Quantity Received"; "Quantity Received")
+                field("Quantity Received"; Rec."Quantity Received")
                 {
                     ApplicationArea = All;
                 }
-                field("Quantity Invoiced"; "Quantity Invoiced")
+                field("Quantity Invoiced"; Rec."Quantity Invoiced")
                 {
                     ApplicationArea = All;
                 }
-                field("Direct Unit Cost"; "Direct Unit Cost")
+                field("Direct Unit Cost"; Rec."Direct Unit Cost")
                 {
                     ApplicationArea = All;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Including VAT"; "Amount Including VAT")
+                field("Amount Including VAT"; Rec."Amount Including VAT")
                 {
                     ApplicationArea = All;
                 }
-                field("Unit of Measure Code"; "Unit of Measure Code")
+                field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Unit Cost (LCY)"; "Unit Cost (LCY)")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Unit Price (LCY)"; "Unit Price (LCY)")
+                field("Unit Cost (LCY)"; Rec."Unit Cost (LCY)")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Expected Receipt Date"; "Expected Receipt Date")
+                field("Unit Price (LCY)"; Rec."Unit Price (LCY)")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Expected Receipt Date"; Rec."Expected Receipt Date")
                 {
                     ApplicationArea = All;
                     Visible = false;
@@ -122,7 +122,7 @@ page 50077 "Blanket Purch Order Subform"
 
     procedure ShowReservation2()
     begin
-        Find;
+        Rec.Find;
         Rec.ShowReservation;
     end;
 

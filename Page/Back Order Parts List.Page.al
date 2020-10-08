@@ -11,36 +11,36 @@ page 50022 "Back Order Parts List"
         {
             repeater(Group)
             {
-                field("Part No."; "Part No.")
+                field("Part No."; Rec."Part No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Pulled Quantity"; "Pulled Quantity")
+                field("Pulled Quantity"; Rec."Pulled Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("Quoted Quantity"; "Quoted Quantity")
-                {
-                    ApplicationArea = All;
-                    Editable = false;
-                }
-                field("Quantity Backorder"; "Quantity Backorder")
+                field("Quoted Quantity"; Rec."Quoted Quantity")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("In-Process Quantity"; "In-Process Quantity")
+                field("Quantity Backorder"; Rec."Quantity Backorder")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Purchase Order No."; "Purchase Order No.")
+                field("In-Process Quantity"; Rec."In-Process Quantity")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Purchase Order No."; Rec."Purchase Order No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -60,7 +60,7 @@ page 50022 "Back Order Parts List"
 
     procedure ReplacePart2()
     begin
-        if "Pulled Quantity" > 0 then begin
+        if Rec."Pulled Quantity" > 0 then begin
             Error('There is already a Quantity Pulled for this Item.');
         end else begin
             Rec.ReplacePart;

@@ -12,29 +12,29 @@ codeunit 50050 PurchPost_Yes_No_
     end;
 
     var
-        PurchHeader : Record "Purchase Header";
-        PurchPost : Codeunit "Purch.-Post";
-        Selection : Integer;
+        PurchHeader: Record "Purchase Header";
+        PurchPost: Codeunit "Purch.-Post";
+        Selection: Integer;
 
     local procedure "Code"();
     begin
-        WITH PurchHeader DO BEGIN
-          IF "Document Type" = "Document Type"::Order THEN BEGIN
-            Selection := STRMENU('&Receive',1);
+        //WITH PurchHeader DO BEGIN ///--! WITH Statement eliminated
+        IF PurchHeader."Document Type" = PurchHeader."Document Type"::Order THEN BEGIN
+            Selection := STRMENU('&Receive', 1);
             IF Selection = 0 THEN
-              EXIT;
-            Receive := Selection IN [1];
+                EXIT;
+            PurchHeader.Receive := Selection IN [1];
             PurchHeader.Invoice := FALSE;
-          END ELSE
+        END ELSE
             IF NOT
                CONFIRM(
-                 'Do you want to post the %1?',FALSE,
-                 "Document Type")
+                 'Do you want to post the %1?', FALSE,
+                 PurchHeader."Document Type")
             THEN
-              EXIT;
+                EXIT;
 
-            PurchPost.RUN(PurchHeader);
-        END;
+        PurchPost.RUN(PurchHeader);
+        //END;
     end;
 }
 

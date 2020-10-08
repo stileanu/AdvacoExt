@@ -13,7 +13,7 @@ page 50023 "Build Ahead"
             group(Control1000000010)
             {
                 ShowCaption = false;
-                field("Order No."; "Order No.")
+                field("Order No."; Rec."Order No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -58,7 +58,7 @@ page 50023 "Build Ahead"
                     ApplicationArea = All;
                     Caption = 'Date Out';
                 }
-                field(Employee; Employee)
+                field(Employee; Rec.Employee)
                 {
                     ApplicationArea = All;
                 }
@@ -121,7 +121,7 @@ page 50023 "Build Ahead"
 
                     if WOD."Customer ID" = 'ADV-01' then begin
                         Parts.SetCurrentKey(Parts."Work Order No.", Parts."Part No.");
-                        Parts.SetRange(Parts."Work Order No.", "Order No.");
+                        Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                         Parts.SetRange(Parts."Part Type", Parts."Part Type"::Item);
                         if Parts.Find('-') then begin
                             repeat
@@ -147,7 +147,7 @@ page 50023 "Build Ahead"
 
                         Parts.Reset;
                         Parts.SetCurrentKey(Parts."Work Order No.", Parts."Part No.");
-                        Parts.SetRange(Parts."Work Order No.", "Order No.");
+                        Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                         Parts.SetRange(Parts."Part Type", Parts."Part Type"::Item);
                         if Parts.Find('-') then begin
                             repeat
@@ -166,7 +166,7 @@ page 50023 "Build Ahead"
 
                     end else begin
                         Parts.SetCurrentKey(Parts."Work Order No.", Parts."Part No.");
-                        Parts.SetRange(Parts."Work Order No.", "Order No.");
+                        Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                         Parts.SetRange(Parts."Part Type", Parts."Part Type"::Item);
                         if Parts.Find('-') then begin
                             repeat
@@ -187,7 +187,7 @@ page 50023 "Build Ahead"
 
                         Parts.Reset;
                         Parts.SetCurrentKey(Parts."Work Order No.", Parts."Part No.");
-                        Parts.SetRange(Parts."Work Order No.", "Order No.");
+                        Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                         Parts.SetRange(Parts."Part Type", Parts."Part Type"::Item);
                         if Parts.Find('-') then begin
                             repeat
@@ -207,9 +207,9 @@ page 50023 "Build Ahead"
 
                     begin
                         WOS.Init;
-                        WOS."Order No." := "Order No.";
-                        WOS."Line No." := "Line No." + 10000;
-                        WOS.Step := DetailStep.FromInteger(Step.AsInteger() + 1);
+                        WOS."Order No." := Rec."Order No.";
+                        WOS."Line No." := Rec."Line No." + 10000;
+                        WOS.Step := DetailStep.FromInteger(Rec.Step.AsInteger() + 1);
                         WOS.Status := WOS2.Status::Waiting;
                         WOS."Date In" := DateIn;
                         WOS."Date Out" := DateOut;
@@ -236,7 +236,7 @@ page 50023 "Build Ahead"
                 begin
                     // CurrForm.PartsLines.FORM.PartsAllocation
 
-                    Parts.SetRange(Parts."Work Order No.", "Order No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                     PAGE.RunModal(PAGE::"Parts Allocation", Parts);
                 end;
             }
@@ -251,8 +251,8 @@ page 50023 "Build Ahead"
                 trigger OnAction()
                 begin
                     WOD.Reset;
-                    WOD.Get("Order No.");
-                    WOD.SetFilter(WOD."Work Order No.", "Order No.");
+                    WOD.Get(Rec."Order No.");
+                    WOD.SetFilter(WOD."Work Order No.", Rec."Order No.");
                     REPORT.Run(50019, true, false, WOD);
                     WOD.Reset;
                 end;
@@ -268,7 +268,7 @@ page 50023 "Build Ahead"
                 trigger OnAction()
                 begin
                     Parts.SetCurrentKey("Work Order No.", "Part Type", "Part No.");
-                    Parts.SetRange(Parts."Work Order No.", "Order No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                     if Parts.Find('-') then begin
                         repeat
                             Parts.CalcFields(Parts."In-Process Quantity");
@@ -285,14 +285,14 @@ page 50023 "Build Ahead"
 
     trigger OnAfterGetRecord()
     begin
-        MasterNo := CopyStr("Order No.", 1, 5) + '00';
+        MasterNo := CopyStr(Rec."Order No.", 1, 5) + '00';
         if WOM.Get(MasterNo) then
             OK := true;
 
-        WOD.Get("Order No.");
+        WOD.Get(Rec."Order No.");
         OLDWOD := WOD;
 
-        if WOI.Get(WOM.Customer, WOM."Ship To Code", Step) then
+        if WOI.Get(WOM.Customer, WOM."Ship To Code", Rec.Step) then
             Instructions := WOI.Instruction
         else
             Instructions := '';
@@ -337,11 +337,11 @@ page 50023 "Build Ahead"
             ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
             ItemJournalLine."Line No." := LineNumber;
             ItemJournalLine."Entry Type" := 4; //Transfer
-            ItemJournalLine."Document No." := "Order No.";
+            ItemJournalLine."Document No." := Rec."Order No.";
             ItemJournalLine."Item No." := Parts."Part No.";
             ItemJournalLine.Validate(ItemJournalLine."Item No.");
             ItemJournalLine."Posting Date" := WorkDate;
-            ItemJournalLine.Description := "Order No." + ' ' + 'Build Ahead';
+            ItemJournalLine.Description := Rec."Order No." + ' ' + 'Build Ahead';
             ItemJournalLine."Location Code" := 'COMMITTED';
             ItemJournalLine.Quantity := MoveInventoryQty;
             ItemJournalLine.Validate(ItemJournalLine.Quantity);

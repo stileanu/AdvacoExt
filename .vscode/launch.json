@@ -32,7 +32,7 @@
             "enableSqlInformationDebugger": true,
             "debugServer": 4711,
             "tenant": "advaco.com",
-            "sandboxName": "AdvacoSandboxDev2",
+            "sandboxName": "AdvacoSandbox",
             "schemaUpdateMode": "Synchronize"
         }
         */

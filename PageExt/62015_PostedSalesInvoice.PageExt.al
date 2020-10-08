@@ -5,11 +5,11 @@ pageextension 62015 PostedSalesInvoiceExt extends "Posted Sales Invoice"
         // Add changes to page layout here
         addafter("Salesperson Code")
         {
-            field(Rep; Rep)
+            field(Rep; Rec.Rep)
             {
                 ApplicationArea = all;
             }
-            field("Bill of Lading"; "Bill of Lading")
+            field("Bill of Lading"; Rec."Bill of Lading")
             {
                 ApplicationArea = all;
             }
@@ -17,19 +17,19 @@ pageextension 62015 PostedSalesInvoiceExt extends "Posted Sales Invoice"
         addafter("External Document No.")
         {
 
-            field("Card Type"; "Card Type")
+            field("Card Type"; Rec."Card Type")
             {
                 ApplicationArea = all;
             }
-            field("Credit Card No."; "Credit Card No.")
+            field("Credit Card No."; Rec."Credit Card No.")
             {
                 ApplicationArea = all;
             }
-            field("Credit Card Exp."; "Credit Card Exp.")
+            field("Credit Card Exp."; Rec."Credit Card Exp.")
             {
                 ApplicationArea = all;
             }
-            field("Approval Code"; "Approval Code")
+            field("Approval Code"; Rec."Approval Code")
             {
                 ApplicationArea = all;
             }
@@ -37,7 +37,7 @@ pageextension 62015 PostedSalesInvoiceExt extends "Posted Sales Invoice"
         }
         addafter("Package Tracking No.")
         {
-            field("Exempt Organization"; "Exempt Organization")
+            field("Exempt Organization"; Rec."Exempt Organization")
             {
                 ApplicationArea = all;
             }

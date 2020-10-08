@@ -24,74 +24,74 @@ codeunit 50053 PurchPost_Print_Act
 
     local procedure "Code"();
     begin
-        WITH PurchHeader DO BEGIN
-            IF "Document Type" = "Document Type"::Order THEN BEGIN
-                Selection := STRMENU('&Receive,&Invoice,Receive &and Invoice', 2);
-                IF Selection = 0 THEN
-                    EXIT;
-                Receive := Selection IN [1, 3];
-                Invoice := Selection IN [2, 3];
-            END ELSE
-                IF NOT
-                   CONFIRM(
-                     'Do you want to post and print the %1?', FALSE,
-                     "Document Type")
-                THEN
-                    EXIT;
-            //>>  HEF INSERTED TO CHECK FOR INVOICE NO. ON INVOICE POSTING
-            IF (Selection = 2) OR (Selection = 3) THEN BEGIN
-                IF "Vendor Invoice No." = '' THEN
-                    ERROR('Vendor Invoice No. must be Entered')
-                ELSE
-                  // 04/30/12 Start
-                  BEGIN
-                    APPaymentTerms;
-                    // 04/30/12 End
-                    PurchPost.RUN(PurchHeader);
-                    // 04/30/12 Start
-                END
-                // 04/30/12 End
-            END ELSE BEGIN
-                // 04/30/12 Start
+        //WITH PurchHeader DO BEGIN -- removed per BC17 warning ///--! Syntax update
+        IF PurchHeader."Document Type" = PurchHeader."Document Type"::Order THEN BEGIN
+            Selection := STRMENU('&Receive,&Invoice,Receive &and Invoice', 2);
+            IF Selection = 0 THEN
+                EXIT;
+            PurchHeader.Receive := Selection IN [1, 3];
+            PurchHeader.Invoice := Selection IN [2, 3];
+        END ELSE
+            IF NOT
+               CONFIRM(
+                 'Do you want to post and print the %1?', FALSE,
+                 PurchHeader."Document Type")
+            THEN
+                EXIT;
+        //>>  HEF INSERTED TO CHECK FOR INVOICE NO. ON INVOICE POSTING
+        IF (Selection = 2) OR (Selection = 3) THEN BEGIN
+            IF PurchHeader."Vendor Invoice No." = '' THEN
+                ERROR('Vendor Invoice No. must be Entered')
+            ELSE
+              // 04/30/12 Start
+              BEGIN
                 APPaymentTerms;
                 // 04/30/12 End
                 PurchPost.RUN(PurchHeader);
-            END;
-            //<< END INSERT
-            CASE "Document Type" OF
-                "Document Type"::Order:
-                    BEGIN
-                        IF Receive THEN BEGIN
-                            PurchReceiptHeader."No." := "Last Receiving No.";
-                            PurchReceiptHeader.SETRECFILTER;
-                            PrintReport(ReportSelection.Usage::"P.Receipt");
-                        END;
-                        IF Invoice THEN BEGIN
-                            PurchInvHeader."No." := "Last Posting No.";
-                            PurchInvHeader.SETRECFILTER;
-                            PrintReport(ReportSelection.Usage::"P.Invoice");
-                        END;
+                // 04/30/12 Start
+            END
+            // 04/30/12 End
+        END ELSE BEGIN
+            // 04/30/12 Start
+            APPaymentTerms;
+            // 04/30/12 End
+            PurchPost.RUN(PurchHeader);
+        END;
+        //<< END INSERT
+        CASE PurchHeader."Document Type" OF
+            PurchHeader."Document Type"::Order:
+                BEGIN
+                    IF PurchHeader.Receive THEN BEGIN
+                        PurchReceiptHeader."No." := PurchHeader."Last Receiving No.";
+                        PurchReceiptHeader.SETRECFILTER;
+                        PrintReport(ReportSelection.Usage::"P.Receipt");
                     END;
-                "Document Type"::Invoice:
-                    BEGIN
-                        IF "Last Posting No." = '' THEN
-                            PurchInvHeader."No." := "No."
-                        ELSE
-                            PurchInvHeader."No." := "Last Posting No.";
+                    IF PurchHeader.Invoice THEN BEGIN
+                        PurchInvHeader."No." := PurchHeader."Last Posting No.";
                         PurchInvHeader.SETRECFILTER;
                         PrintReport(ReportSelection.Usage::"P.Invoice");
                     END;
-                "Document Type"::"Credit Memo":
-                    BEGIN
-                        IF "Last Posting No." = '' THEN
-                            PurchCrMemoHeader."No." := "No."
-                        ELSE
-                            PurchCrMemoHeader."No." := "Last Posting No.";
-                        PurchCrMemoHeader.SETRECFILTER;
-                        PrintReport(ReportSelection.Usage::"P.Cr.Memo");
-                    END;
-            END;
+                END;
+            PurchHeader."Document Type"::Invoice:
+                BEGIN
+                    IF PurchHeader."Last Posting No." = '' THEN
+                        PurchInvHeader."No." := PurchHeader."No."
+                    ELSE
+                        PurchInvHeader."No." := PurchHeader."Last Posting No.";
+                    PurchInvHeader.SETRECFILTER;
+                    PrintReport(ReportSelection.Usage::"P.Invoice");
+                END;
+            PurchHeader."Document Type"::"Credit Memo":
+                BEGIN
+                    IF PurchHeader."Last Posting No." = '' THEN
+                        PurchCrMemoHeader."No." := PurchHeader."No."
+                    ELSE
+                        PurchCrMemoHeader."No." := PurchHeader."Last Posting No.";
+                    PurchCrMemoHeader.SETRECFILTER;
+                    PrintReport(ReportSelection.Usage::"P.Cr.Memo");
+                END;
         END;
+        //END;
     end;
 
     local procedure PrintReport(ReportUsage: Enum "Report Selection Usage");

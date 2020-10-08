@@ -151,7 +151,7 @@ page 50076 "Blanket Purchase Order Purch"
                 group(Control1220060055)
                 {
                     ShowCaption = false;
-                    field("Tax Liable"; "Tax Liable")
+                    field("Tax Liable"; Rec."Tax Liable")
                     {
                         ApplicationArea = All;
                     }

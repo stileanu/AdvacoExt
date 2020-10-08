@@ -5,7 +5,7 @@ pageextension 62017 PostedPurchaseRcptSubformExt extends "Posted Purchase Rcpt. 
         // Add changes to page layout here
         addafter("Expected Receipt Date")
         {
-            field("Orig. Expected Receipt Date"; "Orig. Expected Receipt Date")
+            field("Orig. Expected Receipt Date"; Rec."Orig. Expected Receipt Date")
             {
                 ApplicationArea = all;
             }

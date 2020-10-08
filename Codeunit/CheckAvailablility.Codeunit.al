@@ -6,23 +6,23 @@ codeunit 50000 "Check Availablility"
     begin
         CurrentRecord := Rec;
         LineNumber := LineNumber + 10000;
-        CALCFIELDS("Committed Quantity");
-        IF "BOM Quantity" > "Committed Quantity" THEN BEGIN
-            OrderAmount := "BOM Quantity" - "Committed Quantity";
-            IF Item.GET("Part No.") THEN BEGIN
+        Rec.CALCFIELDS("Committed Quantity");
+        IF Rec."BOM Quantity" > Rec."Committed Quantity" THEN BEGIN
+            OrderAmount := Rec."BOM Quantity" - Rec."Committed Quantity";
+            IF Item.GET(Rec."Part No.") THEN BEGIN
                 Item.SETRANGE(Item."Location Filter", 'MAIN');
                 Item.CALCFIELDS(Item.Inventory);
                 IF Item.Inventory <> 0 THEN BEGIN
                     IF Item.Inventory < OrderAmount THEN BEGIN
-                        BackOrder;
+                        Rec.BackOrder;
                     END ELSE BEGIN
-                        FillOrder;
+                        Rec.FillOrder;
                     END;
                 END;
             END;
         END ELSE BEGIN
-            IF "BOM Quantity" < "Committed Quantity" THEN BEGIN
-                IF Item.GET("Part No.") THEN BEGIN
+            IF Rec."BOM Quantity" < Rec."Committed Quantity" THEN BEGIN
+                IF Item.GET(Rec."Part No.") THEN BEGIN
                     ReturnStock;
                 END;
             END;

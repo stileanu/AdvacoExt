@@ -13,32 +13,32 @@ page 50034 "Boxed Entry"
                 group(Control1000000008)
                 {
                     ShowCaption = false;
-                    field("Customer ID"; "Customer ID")
+                    field("Customer ID"; Rec."Customer ID")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Work Order No."; "Work Order No.")
+                    field("Work Order No."; Rec."Work Order No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sales Order No."; "Sales Order No.")
+                    field("Sales Order No."; Rec."Sales Order No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Model No."; "Model No.")
+                    field("Model No."; Rec."Model No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Serial No."; "Serial No.")
+                    field("Serial No."; Rec."Serial No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field(Boxed; Boxed)
+                    field(Boxed; Rec.Boxed)
                     {
                         ApplicationArea = All;
                     }

@@ -310,12 +310,12 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
     procedure GetItemVendor(No: Code[20]; BuyFromVendorNo: Code[20]): Boolean
     begin
         // 07/20/19 new function
-        WITH ItemVendor DO BEGIN
-            SETRANGE("Item No.", No);
-            SETRANGE("Vendor No.", BuyFromVendorNo);
-            IF FIND('+') THEN
-                EXIT(TRUE);
-        END;
+        //WITH ItemVendor DO BEGIN ///--! With statement dropped
+        ItemVendor.SETRANGE("Item No.", No);
+        ItemVendor.SETRANGE("Vendor No.", BuyFromVendorNo);
+        IF ItemVendor.FIND('+') THEN
+            EXIT(TRUE);
+        //END;
         EXIT(FALSE);
     end;
 

@@ -11,7 +11,7 @@ codeunit 50002 "Work Order Detail Insert"
     begin
 
         WorkOrderDetail3.SETCURRENTKEY(WorkOrderDetail3."Work Order No.");
-        WorkOrderDetail3.SETRANGE(WorkOrderDetail3."Work Order Master No.", "Work Order Master No.");
+        WorkOrderDetail3.SETRANGE(WorkOrderDetail3."Work Order Master No.", Rec."Work Order Master No.");
         IF WorkOrderDetail3.FIND('+') THEN BEGIN
             WorkOrderDetail3.CALCFIELDS(WorkOrderDetail3."Detail Step");
             // 03/31/18 Start
@@ -23,7 +23,7 @@ codeunit 50002 "Work Order Detail Insert"
         END;
 
         WorkOrderDetail.SETCURRENTKEY(WorkOrderDetail."Work Order No.");
-        WorkOrderDetail.SETRANGE(WorkOrderDetail."Work Order Master No.", "Work Order Master No.");
+        WorkOrderDetail.SETRANGE(WorkOrderDetail."Work Order Master No.", Rec."Work Order Master No.");
         IF WorkOrderDetail.FIND('-') THEN BEGIN
             REPEAT
                 WorkOrderDetail.CALCFIELDS(WorkOrderDetail."Detail Step");
@@ -39,29 +39,29 @@ codeunit 50002 "Work Order Detail Insert"
                 ERROR('All Details are already in Shipping for this Work Order.  You must create a new Work Order.')
             ELSE BEGIN
                 WorkOrderDetail2.INIT;
-                WorkOrderDetail2."Work Order Master No." := "Work Order Master No.";
+                WorkOrderDetail2."Work Order Master No." := Rec."Work Order Master No.";
                 WorkOrderDetail2."Detail No." := NextWONo;
-                WorkOrderDetail2."Work Order No." := COPYSTR("Work Order Master No.", 1, 5) + WorkOrderDetail2."Detail No.";
-                WorkOrderDetail2."Customer ID" := Customer;
-                WorkOrderDetail2."Payment Method" := "Payment Method";
-                WorkOrderDetail2."Card Type" := "Card Type";
-                WorkOrderDetail2."Credit Card No." := "Credit Card No.";
-                WorkOrderDetail2."Credit Card Exp." := "Credit Card Exp.";
-                WorkOrderDetail2."Tax Liable" := "Tax Liable";
-                WorkOrderDetail2."Payment Terms" := "Customer Payment Terms";
-                WorkOrderDetail2."Ship To Name" := "Ship To Name";
-                WorkOrderDetail2."Ship To Address 1" := "Ship To Address 1";
-                WorkOrderDetail2."Ship To Address 2" := "Ship To Address 2";
-                WorkOrderDetail2."Ship To City" := "Ship To City";
-                WorkOrderDetail2."Ship To State" := "Ship To State";
-                WorkOrderDetail2."Ship To Zip Code" := "Ship To Zip Code";
-                WorkOrderDetail2.Attention := Attention;
-                WorkOrderDetail2."Phone No." := "Phone No.";
+                WorkOrderDetail2."Work Order No." := COPYSTR(Rec."Work Order Master No.", 1, 5) + WorkOrderDetail2."Detail No.";
+                WorkOrderDetail2."Customer ID" := Rec.Customer;
+                WorkOrderDetail2."Payment Method" := Rec."Payment Method";
+                WorkOrderDetail2."Card Type" := Rec."Card Type";
+                WorkOrderDetail2."Credit Card No." := Rec."Credit Card No.";
+                WorkOrderDetail2."Credit Card Exp." := Rec."Credit Card Exp.";
+                WorkOrderDetail2."Tax Liable" := Rec."Tax Liable";
+                WorkOrderDetail2."Payment Terms" := Rec."Customer Payment Terms";
+                WorkOrderDetail2."Ship To Name" := Rec."Ship To Name";
+                WorkOrderDetail2."Ship To Address 1" := Rec."Ship To Address 1";
+                WorkOrderDetail2."Ship To Address 2" := Rec."Ship To Address 2";
+                WorkOrderDetail2."Ship To City" := Rec."Ship To City";
+                WorkOrderDetail2."Ship To State" := Rec."Ship To State";
+                WorkOrderDetail2."Ship To Zip Code" := Rec."Ship To Zip Code";
+                WorkOrderDetail2.Attention := Rec.Attention;
+                WorkOrderDetail2."Phone No." := Rec."Phone No.";
                 WorkOrderDetail2."Container Quantity" := 1;
-                WorkOrderDetail2."Work Order Date" := "Date Ordered";
-                WorkOrderDetail2."Date Required" := "Date Required";
+                WorkOrderDetail2."Work Order Date" := Rec."Date Ordered";
+                WorkOrderDetail2."Date Required" := Rec."Date Required";
 
-                CUST.GET(Customer);
+                CUST.GET(Rec.Customer);
                 WorkOrderDetail2."Ship on Sales Order" := CUST."Ship on Sales Order";
 
                 WorkOrderDetail2.INSERT;
@@ -70,29 +70,29 @@ codeunit 50002 "Work Order Detail Insert"
 
         END ELSE BEGIN
             WorkOrderDetail2.INIT;
-            WorkOrderDetail2."Work Order Master No." := "Work Order Master No.";
+            WorkOrderDetail2."Work Order Master No." := Rec."Work Order Master No.";
             WorkOrderDetail2."Detail No." := '01';
-            WorkOrderDetail2."Work Order No." := COPYSTR("Work Order Master No.", 1, 5) + WorkOrderDetail2."Detail No.";
-            WorkOrderDetail2."Customer ID" := Customer;
-            WorkOrderDetail2."Payment Method" := "Payment Method";
-            WorkOrderDetail2."Card Type" := "Card Type";
-            WorkOrderDetail2."Credit Card No." := "Credit Card No.";
-            WorkOrderDetail2."Credit Card Exp." := "Credit Card Exp.";
-            WorkOrderDetail2."Tax Liable" := "Tax Liable";
-            WorkOrderDetail2."Payment Terms" := "Customer Payment Terms";
-            WorkOrderDetail2."Ship To Name" := "Ship To Name";
-            WorkOrderDetail2."Ship To Address 1" := "Ship To Address 1";
-            WorkOrderDetail2."Ship To Address 2" := "Ship To Address 2";
-            WorkOrderDetail2."Ship To City" := "Ship To City";
-            WorkOrderDetail2."Ship To State" := "Ship To State";
-            WorkOrderDetail2."Ship To Zip Code" := "Ship To Zip Code";
-            WorkOrderDetail2.Attention := Attention;
-            WorkOrderDetail2."Phone No." := "Phone No.";
+            WorkOrderDetail2."Work Order No." := COPYSTR(Rec."Work Order Master No.", 1, 5) + WorkOrderDetail2."Detail No.";
+            WorkOrderDetail2."Customer ID" := Rec.Customer;
+            WorkOrderDetail2."Payment Method" := Rec."Payment Method";
+            WorkOrderDetail2."Card Type" := Rec."Card Type";
+            WorkOrderDetail2."Credit Card No." := Rec."Credit Card No.";
+            WorkOrderDetail2."Credit Card Exp." := Rec."Credit Card Exp.";
+            WorkOrderDetail2."Tax Liable" := Rec."Tax Liable";
+            WorkOrderDetail2."Payment Terms" := Rec."Customer Payment Terms";
+            WorkOrderDetail2."Ship To Name" := Rec."Ship To Name";
+            WorkOrderDetail2."Ship To Address 1" := Rec."Ship To Address 1";
+            WorkOrderDetail2."Ship To Address 2" := Rec."Ship To Address 2";
+            WorkOrderDetail2."Ship To City" := Rec."Ship To City";
+            WorkOrderDetail2."Ship To State" := Rec."Ship To State";
+            WorkOrderDetail2."Ship To Zip Code" := Rec."Ship To Zip Code";
+            WorkOrderDetail2.Attention := Rec.Attention;
+            WorkOrderDetail2."Phone No." := Rec."Phone No.";
             WorkOrderDetail2."Container Quantity" := 1;
-            WorkOrderDetail2."Work Order Date" := "Date Ordered";
-            WorkOrderDetail2."Date Required" := "Date Required";
+            WorkOrderDetail2."Work Order Date" := Rec."Date Ordered";
+            WorkOrderDetail2."Date Required" := Rec."Date Required";
 
-            CUST.GET(Customer);
+            CUST.GET(Rec.Customer);
             WorkOrderDetail2."Ship on Sales Order" := CUST."Ship on Sales Order";
 
             WorkOrderDetail2.INSERT;

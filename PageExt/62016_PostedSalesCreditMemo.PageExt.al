@@ -5,7 +5,7 @@ pageextension 62016 PostedSalesCreditMemoExt extends "Posted Sales Credit Memo"
         // Add changes to page layout here
         addafter("Salesperson Code")
         {
-            field(Rep; Rep)
+            field(Rep; Rec.Rep)
             {
                 ApplicationArea = all;
             }

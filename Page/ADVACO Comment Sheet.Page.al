@@ -14,15 +14,15 @@ page 50040 "ADVACO Comment Sheet"
         {
             repeater(Group)
             {
-                field(Date; Date)
+                field(Date; Rec.Date)
                 {
                     ApplicationArea = All;
                 }
-                field(Comment; Comment)
+                field(Comment; Rec.Comment)
                 {
                     ApplicationArea = All;
                 }
-                field("Code"; Code)
+                field("Code"; Rec.Code)
                 {
                     ApplicationArea = All;
                     Visible = false;
@@ -37,7 +37,7 @@ page 50040 "ADVACO Comment Sheet"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        SetUpNewLine;
+        Rec.SetUpNewLine;
     end;
 }
 

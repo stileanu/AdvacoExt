@@ -33,57 +33,57 @@ codeunit 50025 SalesPost_PrintEmail
         IF Cust."Invoicing Email" = '' THEN
             ERROR('Address to Email Invoices for Customer %1 is empty', SalesHeader."Bill-to Customer No.");
 
-        WITH SalesHeader DO BEGIN
-            IF "Document Type" = "Document Type"::Order THEN BEGIN
-                Selection := STRMENU('&Ship,&Invoice,Ship &and Invoice', 3);
-                IF Selection = 0 THEN
-                    EXIT;
-                Ship := Selection IN [1, 3];
-                Invoice := Selection IN [2, 3];
-            END ELSE
-                IF NOT
-                   CONFIRM(
-                     'Do you want to post and email the %1?', FALSE,
-                     "Document Type")
-                THEN
-                    EXIT;
+        //WITH SalesHeader DO BEGIN ///--! Eliminate WITH Statement
+        IF SalesHeader."Document Type" = SalesHeader."Document Type"::Order THEN BEGIN
+            Selection := STRMENU('&Ship,&Invoice,Ship &and Invoice', 3);
+            IF Selection = 0 THEN
+                EXIT;
+            SalesHeader.Ship := Selection IN [1, 3];
+            SalesHeader.Invoice := Selection IN [2, 3];
+        END ELSE
+            IF NOT
+               CONFIRM(
+                 'Do you want to post and email the %1?', FALSE,
+                 SalesHeader."Document Type")
+            THEN
+                EXIT;
 
-            SalesPost.RUN(SalesHeader);
+        SalesPost.RUN(SalesHeader);
 
-            CASE "Document Type" OF
-                "Document Type"::Order:
-                    BEGIN
-                        IF Ship THEN BEGIN
-                            SalesShipmentHeader."No." := "Last Shipping No.";
-                            SalesShipmentHeader.SETRECFILTER;
-                            PrintReport(ReportSelection.Usage::"S.Shipment");
-                        END;
-                        IF Invoice THEN BEGIN
-                            SalesInvHeader."No." := "Last Posting No.";
-                            SalesInvHeader.SETRECFILTER;
-                            PrintReport(ReportSelection.Usage::"S.Invoice");
-                        END;
+        CASE SalesHeader."Document Type" OF
+            SalesHeader."Document Type"::Order:
+                BEGIN
+                    IF SalesHeader.Ship THEN BEGIN
+                        SalesShipmentHeader."No." := SalesHeader."Last Shipping No.";
+                        SalesShipmentHeader.SETRECFILTER;
+                        PrintReport(ReportSelection.Usage::"S.Shipment");
                     END;
-                "Document Type"::Invoice:
-                    BEGIN
-                        IF "Last Posting No." = '' THEN
-                            SalesInvHeader."No." := "No."
-                        ELSE
-                            SalesInvHeader."No." := "Last Posting No.";
+                    IF SalesHeader.Invoice THEN BEGIN
+                        SalesInvHeader."No." := SalesHeader."Last Posting No.";
                         SalesInvHeader.SETRECFILTER;
                         PrintReport(ReportSelection.Usage::"S.Invoice");
                     END;
-                "Document Type"::"Credit Memo":
-                    BEGIN
-                        IF "Last Posting No." = '' THEN
-                            SalesCrMemoHeader."No." := "No."
-                        ELSE
-                            SalesCrMemoHeader."No." := "Last Posting No.";
-                        SalesCrMemoHeader.SETRECFILTER;
-                        PrintReport(ReportSelection.Usage::"S.Cr.Memo");
-                    END;
-            END;
+                END;
+            SalesHeader."Document Type"::Invoice:
+                BEGIN
+                    IF SalesHeader."Last Posting No." = '' THEN
+                        SalesInvHeader."No." := SalesHeader."No."
+                    ELSE
+                        SalesInvHeader."No." := SalesHeader."Last Posting No.";
+                    SalesInvHeader.SETRECFILTER;
+                    PrintReport(ReportSelection.Usage::"S.Invoice");
+                END;
+            SalesHeader."Document Type"::"Credit Memo":
+                BEGIN
+                    IF SalesHeader."Last Posting No." = '' THEN
+                        SalesCrMemoHeader."No." := SalesHeader."No."
+                    ELSE
+                        SalesCrMemoHeader."No." := SalesHeader."Last Posting No.";
+                    SalesCrMemoHeader.SETRECFILTER;
+                    PrintReport(ReportSelection.Usage::"S.Cr.Memo");
+                END;
         END;
+        //END;
     end;
 
     local procedure PrintReport(ReportUsage: Enum "Report Selection Usage");
