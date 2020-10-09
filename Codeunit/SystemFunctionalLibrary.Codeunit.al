@@ -99,17 +99,63 @@ codeunit 50030 systemFunctionalLibrary
     // and true for and-ed multiple rols setup in textRoll array. 
     var
         locIndex: Integer;
+        locResult: Boolean;
+        locContFlag: Boolean;
 
     begin
+        if orAnd then
+            locResult := true
+        else
+            locResult := false;
         locIndex := ArrayLen(textGroup);
         if locIndex = 0 then
             exit(noElementsArray);
 
-        repeat
-        // if textGroup[locIndex] 
-        //review
-        until locIndex = 0;
+        locIndex := 1;
+        User.Get(UserSecurityId);
+        Role.SetRange("User Security ID", User."User Security ID");
+        if not Role.FindFirst() then
+            exit(noRoleFound);
 
+        repeat
+            Role.FindFirst();
+            case orAnd of
+                true:
+                    begin
+                        if locResult then
+                            repeat
+                                if textGroup[locIndex] = Role."Role ID" then begin
+                                    locContFlag := false;
+                                    locResult := true;
+                                end;
+                                if Role.Next() = 0 then begin
+                                    locResult := false;
+                                    locContFlag := false;
+                                end;
+                            until not locContFlag;
+                    end;
+                false:
+                    begin
+                        if not locResult then
+                            repeat
+                            until locContFlag;
+                    end;
+            end;
+            locIndex += 1;
+        //review 
+        until locIndex = 0;
+        /*
+        User.Get(UserSecurityId);  
+        //Member.CalcFields("User Name"); 
+        Ok2 := true;
+        Member.SetRange("User Security ID", User."User Security ID");
+        if Member.Find('-') then begin
+            repeat
+                if (Member."Role ID" = 'ADV-SALES') or (Member."Role ID" = 'SUPER') then
+                    Ok2 := false;
+            until Member.Next = 0;
+        end;
+        */
     end;
 
     var
@@ -121,5 +167,6 @@ codeunit 50030 systemFunctionalLibrary
         notSuchUser: Label 'No such user (%1).';
         notAccesCtrlRec: Label 'User access not setup (%1).';
         noElementsArray: Label 'Group/Rolls Array empty.';
+        noRoleFound: Label 'User does not have the role(s).';
         yesSuccess: Label 'OK';
 }
