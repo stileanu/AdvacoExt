@@ -276,7 +276,7 @@ table 50020 FieldService
         field(400; "Parts Quoted"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum (Parts."Total Price" WHERE("Work Order No." = FIELD("Field Service No."), "Part Type" = CONST(Item)));
+            CalcFormula = Sum(Parts."Total Price" WHERE("Work Order No." = FIELD("Field Service No."), "Part Type" = CONST(Item)));
         }
         field(420; "Order Adj."; Decimal)
         {
@@ -468,7 +468,7 @@ table 50020 FieldService
                 END;
             end;
         }
-        field(2010; "Completed USERID"; Code[20])
+        field(2010; "Completed USERID"; Code[50])
         {
         }
     }

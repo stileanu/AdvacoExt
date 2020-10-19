@@ -23,7 +23,7 @@ Tableextension 50117 SalesCrMemoHeaderExt extends "Sales Cr.Memo Header"
         {
             Caption = 'Exempt Organization';
         }
-        field(50004; User; Code[15])
+        field(50004; User; Code[50])
         {
             Caption = 'User';
 

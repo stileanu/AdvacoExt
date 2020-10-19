@@ -54,7 +54,7 @@ table 50004 WorkInstructions
         field(60; "Date Last Modified"; Date)
         {
         }
-        field(65; "Last User Modified"; Code[15])
+        field(65; "Last User Modified"; Code[50])
         {
         }
         field(70; "Date Created"; Date)

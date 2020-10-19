@@ -84,11 +84,11 @@ page 50153 "Field Service Parts List"
         ILE.SETRANGE(Positive, TRUE);
         IF PAGE.RUNMODAL(PAGE::"Item Ledger Entries", ILE) = ACTION::LookupOK THEN BEGIN
             Parts2 := Rec;
-            WITH Parts2 DO BEGIN
-                "Serial No." := ILE."Serial No.";
-                //"Part Cost" := ILE."Unit Cost"; ICE-MPC BC Upgrade
-                "Part Cost" := ILE.GetUnitCostLCY();
-            END;
+            ///WITH Parts2 DO BEGIN
+            Parts2."Serial No." := ILE."Serial No.";
+            //"Part Cost" := ILE."Unit Cost"; ICE-MPC BC Upgrade
+            Parts2."Part Cost" := ILE.GetUnitCostLCY();
+            ///END;
             Rec := Parts2;
         END;
     end;

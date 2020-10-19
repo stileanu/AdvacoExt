@@ -82,7 +82,7 @@ Tableextension 50108 UserSetupExt Extends "User Setup"
             Caption = 'Inventory Management Location';
         }
     }
-    procedure GetParamStatus(var UserID: Code[20]; ParamID: Integer): Boolean
+    procedure GetParamStatus(var UserID: Code[50]; ParamID: Integer): Boolean
 
     var
         ADV001: Label 'Msg for Programmers: Incorrect Function ID.';

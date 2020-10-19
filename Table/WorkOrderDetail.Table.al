@@ -563,19 +563,19 @@ table 50001 WorkOrderDetail
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Sum (Parts."Quoted Quantity" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Resource)));
+            CalcFormula = Sum(Parts."Quoted Quantity" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Resource)));
         }
         field(202; "Labor Quoted"; Decimal)
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Sum (Parts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Resource)));
+            CalcFormula = Sum(Parts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Resource)));
         }
         field(210; "Parts Cost"; Decimal)
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Sum (Parts."Total Cost" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Item)));
+            CalcFormula = Sum(Parts."Total Cost" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Item)));
         }
         field(220; "Order Adj."; Decimal)
         {
@@ -593,19 +593,19 @@ table 50001 WorkOrderDetail
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Sum (OriginalQuotedParts."Total Quote Cost" WHERE("Work Order No." = FIELD("Work Order No.")));
+            CalcFormula = Sum(OriginalQuotedParts."Total Quote Cost" WHERE("Work Order No." = FIELD("Work Order No.")));
         }
         field(223; "Original Parts Price"; Decimal)
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Sum (OriginalQuotedParts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Item)));
+            CalcFormula = Sum(OriginalQuotedParts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Item)));
         }
         field(224; "Original Labor Price"; Decimal)
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Sum (OriginalQuotedParts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Resource)));
+            CalcFormula = Sum(OriginalQuotedParts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Resource)));
         }
         field(226; "Unrepairable Charge"; Decimal)
         {
@@ -725,7 +725,7 @@ table 50001 WorkOrderDetail
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Sum (Parts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Item)));
+            CalcFormula = Sum(Parts."Total Quote Price" WHERE("Work Order No." = FIELD("Work Order No."), "Part Type" = CONST(Item)));
         }
         field(260; Carrier; Code[20])
         {
@@ -820,7 +820,7 @@ table 50001 WorkOrderDetail
         {
             DataClassification = ToBeClassified;
         }
-        field(305; "Released USERID"; Code[20])
+        field(305; "Released USERID"; Code[50])
         {
             DataClassification = ToBeClassified;
         }
@@ -864,7 +864,7 @@ table 50001 WorkOrderDetail
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Max (Status.Step WHERE("Order No." = FIELD("Work Order No.")));
+            CalcFormula = Max(Status.Step WHERE("Order No." = FIELD("Work Order No.")));
         }
         field(405; BackorderText; Code[40])
         {
@@ -878,13 +878,13 @@ table 50001 WorkOrderDetail
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Sum (Status."Regular Hours" WHERE("Order No." = FIELD("Work Order No.")));
+            CalcFormula = Sum(Status."Regular Hours" WHERE("Order No." = FIELD("Work Order No.")));
         }
         field(505; "Current OT Hours Used"; Decimal)
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Sum (Status."Overtime Hours" WHERE("Order No." = FIELD("Work Order No.")));
+            CalcFormula = Sum(Status."Overtime Hours" WHERE("Order No." = FIELD("Work Order No.")));
         }
         field(510; "Current Extra Time Used"; Decimal)
         {
@@ -1187,7 +1187,7 @@ table 50001 WorkOrderDetail
                 END;
             end;
         }
-        field(1001; "Last User Modified"; Code[10])
+        field(1001; "Last User Modified"; Code[50])
         {
             DataClassification = ToBeClassified;
         }
@@ -1679,7 +1679,7 @@ table 50001 WorkOrderDetail
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Exist ("ADVACO Comment Line" WHERE("Table Name" = CONST(WorkOrderDetail), "No." = FIELD("Work Order No.")));
+            CalcFormula = Exist("ADVACO Comment Line" WHERE("Table Name" = CONST(WorkOrderDetail), "No." = FIELD("Work Order No.")));
         }
         field(100004; "Tool ID"; Code[20])
         {

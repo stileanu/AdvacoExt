@@ -57,7 +57,7 @@ tableextension 50119 SalesLineExt extends "Sales Line"
         {
             Caption = 'Commission Calculated';
         }
-        field(50004; User; code[15])
+        field(50004; User; code[50])
         {
             Caption = 'User';
         }

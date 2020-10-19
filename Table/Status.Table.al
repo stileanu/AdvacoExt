@@ -95,7 +95,7 @@ table 50002 Status
         field(90; Passed; Boolean)
         {
         }
-        field(100; User; Code[10])
+        field(100; User; Code[50])
         {
         }
         field(200; "File Exists"; Boolean)

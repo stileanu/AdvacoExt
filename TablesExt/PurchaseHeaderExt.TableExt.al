@@ -191,7 +191,7 @@ tableextension 50120 PurchaseheaderExt extends "Purchase Header"
         {
             Caption = 'Completion Date';
         }
-        field(50022; "Completion USERID"; Code[20])
+        field(50022; "Completion USERID"; Code[50])
         {
             Caption = 'Completion USERID';
         }

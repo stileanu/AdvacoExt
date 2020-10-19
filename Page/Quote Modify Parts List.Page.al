@@ -79,11 +79,11 @@ IcE-MPC BC Upgrade
         ILE.SETRANGE(Positive, TRUE);
         IF PAGE.RUNMODAL(PAGE::"Item Ledger Entries", ILE) = ACTION::LookupOK THEN BEGIN
             Parts2 := Rec;
-            WITH Parts2 DO BEGIN
-                "Serial No." := ILE."Serial No.";
-                //"Part Cost" := ILE."Unit Cost";
-                "Part Cost" := ILE.GetUnitCostLCY(); //ICE-MPC BC UPGRADE
-            END;
+            ///WITH Parts2 DO BEGIN
+            Parts2."Serial No." := ILE."Serial No.";
+            //"Part Cost" := ILE."Unit Cost";
+            Parts2."Part Cost" := ILE.GetUnitCostLCY(); //ICE-MPC BC UPGRADE
+            ///END;
             Rec := Parts2;
         END;
     end;

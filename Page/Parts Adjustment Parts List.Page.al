@@ -87,10 +87,10 @@ page 50026 "Parts Adjustment Parts List"
         ILE.SetRange(Positive, true);
         if PAGE.RunModal(PAGE::"Item Ledger Entries", ILE) = ACTION::LookupOK then begin
             Parts2 := Rec;
-            with Parts2 do begin
-                "Serial No." := ILE."Serial No.";
-                //    "Part Cost" := ILE."Unit Cost";
-            end;
+            ///with Parts2 do begin
+            Parts2."Serial No." := ILE."Serial No.";
+            //    "Part Cost" := ILE."Unit Cost";
+            ///end;
             Rec := Parts2;
         end;
     end;

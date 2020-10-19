@@ -9,7 +9,7 @@ TableExtension 50116 SalesInvoiceLineExt extends "Sales Invoice Line"
         {
             Caption = 'Commission Calculated';
         }
-        field(50004; User; code[15])
+        field(50004; User; code[50])
         {
             Caption = 'User';
         }

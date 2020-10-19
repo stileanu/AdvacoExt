@@ -1,3 +1,19 @@
+/*
+enum 50099 eRet
+{
+    Extensible = true;
+
+    value(0; Ok)
+    {
+        Caption = 'Ok';
+    }
+    value(1; NoSuchUser)
+    {
+        Caption = 'No such user';
+    }
+}
+*/
+
 codeunit 50030 systemFunctionalLibrary
 {
     /*
@@ -37,6 +53,7 @@ codeunit 50030 systemFunctionalLibrary
             exit(notAccesCtrlRec);
 
     end;
+
 
     /*
     procedure setRollArray(aRoll: Code[20]; bRoll: Code[20]; cRoll: Code[20]; dRoll: Code[20]): Text
@@ -94,7 +111,7 @@ codeunit 50030 systemFunctionalLibrary
         exit(yesSuccess);
     end;
 
-    procedure getIfRoleId(orAnd: Boolean): Text
+    procedure getIfRoleId(orAnd: Boolean): Text;
     // orAnd is set as fasle for or-ed operation, 
     // and true for and-ed multiple rols setup in textRoll array. 
     var
@@ -107,7 +124,7 @@ codeunit 50030 systemFunctionalLibrary
             locResult := true
         else
             locResult := false;
-        locIndex := ArrayLen(textGroup);
+        locIndex := System.ArrayLen(textGroup);
         if locIndex = 0 then
             exit(noElementsArray);
 
@@ -138,24 +155,74 @@ codeunit 50030 systemFunctionalLibrary
                     begin
                         if not locResult then
                             repeat
+                                if textGroup[locIndex] = Role."Role ID" then begin
+                                    locContFlag := false;
+                                    locResult := true;
+                                end;
+                                if Role.Next() = 0 then begin
+                                    locResult := false;
+                                    locContFlag := false;
+                                end;
                             until locContFlag;
                     end;
             end;
             locIndex += 1;
-        //review 
+        //review  
         until locIndex = 0;
         /*
         User.Get(UserSecurityId);  
-        //Member.CalcFields("User Name"); 
-        Ok2 := true;
+        //Member.CalcFields("User Name");  
+        Ok2 := true; 
         Member.SetRange("User Security ID", User."User Security ID");
-        if Member.Find('-') then begin
+        if Member.Find('-') then begin 
             repeat
                 if (Member."Role ID" = 'ADV-SALES') or (Member."Role ID" = 'SUPER') then
-                    Ok2 := false;
+                    Ok2 := false; 
             until Member.Next = 0;
         end;
         */
+    end;
+
+    procedure getIfSingleRoleId(RoleId: Code[20]; var txtAnswer: Text): Boolean
+    begin
+        User.Get(UserSecurityId);
+        Role.SetRange("User Security ID", User."User Security ID");
+
+        if not Role.FindFirst() then begin
+            txtAnswer := StrSubstNo(notAccesCtrlRec, RoleId);
+            exit(false);
+        end;
+
+        repeat
+            if RoleId = Role."Role ID" then begin
+                txtAnswer := yesSuccess;
+                exit(true);
+            end;
+        until Role.Next() = 0;
+
+        txtAnswer := StrSubstNo(noRoleFound, RoleId);
+        exit(false);
+    end;
+
+    procedure getIfSingleGroupId(GroupId: Code[20]; var txtAnswer: Text): Boolean
+    begin
+        User.Get(UserSecurityId);
+        Member.SetRange("User Security ID", User."User Security ID");
+
+        if not Member.FindFirst() then begin
+            txtAnswer := StrSubstNo(notAccesGroupRec, GroupId);
+            exit(false);
+        end;
+
+        repeat
+            if GroupId = Role."Role ID" then begin
+                txtAnswer := yesSuccess;
+                exit(true);
+            end;
+        until Role.Next() = 0;
+
+        txtAnswer := StrSubstNo(noRoleFound, GroupId);
+        exit(false);
     end;
 
     var
@@ -166,7 +233,11 @@ codeunit 50030 systemFunctionalLibrary
         textGroup: array[4] of Code[20];
         notSuchUser: Label 'No such user (%1).';
         notAccesCtrlRec: Label 'User access not setup (%1).';
+        notAccesGroupRec: Label 'User group not setup (%1).';
         noElementsArray: Label 'Group/Rolls Array empty.';
-        noRoleFound: Label 'User does not have the role(s).';
+        noRoleFound: Label 'User is not set for the role %1.';
+        noGroupFound: Label 'User is not set for the group %1.';
         yesSuccess: Label 'OK';
+    //tRetValue: enum eRet;
+
 }

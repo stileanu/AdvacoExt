@@ -25,7 +25,7 @@ tableextension 50110 SalesShipmentHeaderExt extends "Sales Shipment Header"
         {
             Caption = 'Exempt Organization';
         }
-        field(50004; User; Code[15])
+        field(50004; User; Code[50])
         {
             Caption = 'User';
 
