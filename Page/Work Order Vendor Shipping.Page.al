@@ -1,7 +1,7 @@
 page 50032 "Work Order Vendor Shipping"
 {
     // 05/2/18
-    //   Container Type control set to field options in table 50001. Make it editable.
+    //   Container Type control set to field options in table 50001. Make it editable.  
 
     DeleteAllowed = false;
     InsertAllowed = false;
