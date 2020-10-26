@@ -318,9 +318,13 @@ pageextension 62032 PurchasingManagerRCExt extends "Purchasing Manager Role Cent
                     Caption = 'Inside/Rep Correction';
                     RunObject = page "Inside Sales/Sales Rep Update";
                 }
+                action(Sep4)
+                {
+                    Caption = '  ';
+                }
                 group(WOTransactions)
                 {
-                    Caption = '. . . .';
+                    Caption = '  ';
 
                     action(Action50051)
                     {
