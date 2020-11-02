@@ -91,6 +91,15 @@ page 50160 FinanceManagerRC
                     RunObject = codeunit PumpModule;
                     ToolTip = 'Enters data to modify the quote step for current Work Order.';
                 }
+                action(PumpRelease1)
+                {
+                    ///Visible = false;
+                    ApplicationArea = All;
+                    Caption = 'Pump Release';
+                    Image = ReleaseDoc;
+                    RunObject = codeunit PumpRelease;
+                    ToolTip = 'Enters data to release a Work Order Detail.';
+                }
             }
             group("Group")
             {
@@ -1043,11 +1052,36 @@ page 50160 FinanceManagerRC
                     Caption = 'Customers';
                     RunObject = page "Customer List";
                 }
-                action("Credit Management")
+                action(InsideSalespeople)
                 {
                     ApplicationArea = Basic, Suite;
-                    Caption = 'Credit Management';
-                    RunObject = page "Credit Manager Activities";
+                    Caption = 'Inside Salespeople';
+                    RunObject = page "Salespersons/Purchasers";
+                    ToolTip = 'Person inside company that fcilitate work with a Customer';
+                }
+                action(Reps)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Reps';
+                    RunObject = page "Outside Sales Reps";
+                    ToolTip = 'Entity ouside company that facilitate work with a Customer';
+                }
+                action(SalesJournals)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Sales Journals';
+                    RunObject = Page "General Journal Batches";
+                    RunPageView = WHERE("Template Type" = CONST(Sales),
+                                    Recurring = CONST(false));
+                    ToolTip = 'Post any sales-related transaction directly to a customer, bank, or general ledger account instead of using dedicated documents. You can post all types of financial sales transactions, including payments, refunds, and finance charge amounts. Note that you cannot post item quantities with a sales journal.';
+                }
+                action(SalesOrders)
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Sales Orders';
+                    Image = "Order";
+                    RunObject = Page "Sales Order List";
+                    ToolTip = 'Record your agreements with customers to sell certain products on certain delivery and payment terms. Sales orders, unlike sales invoices, allow you to ship partially, deliver directly from your vendor to your customer, initiate warehouse handling, and print various customer-facing documents. Sales invoicing is integrated in the sales order process.';
                 }
                 action("Invoices")
                 {
@@ -1060,6 +1094,23 @@ page 50160 FinanceManagerRC
                     ApplicationArea = Basic, Suite;
                     Caption = 'Sales Credit Memos';
                     RunObject = page "Sales Credit Memos";
+                }
+                group(CustomerCare)
+                {
+                    Caption = 'Customer Care';
+
+                    action("Credit Management")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Credit Management';
+                        RunObject = page "Credit Manager Activities";
+                    }
+                    action(CustomerOrderStatus)
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Customer Order Status';
+                        //RunObject = page "Customer Order Status";
+                    }
                 }
                 action("Direct Debit Collections")
                 {
@@ -2704,15 +2755,7 @@ page 50160 FinanceManagerRC
             group("Sales&Shipping")
             {
                 Caption = 'Sales & Shipping Orders';
-                action(PumpRelease)
-                {
-                    Visible = false;
-                    ApplicationArea = All;
-                    Caption = 'Pump Release';
-                    Image = ReleaseDoc;
-                    RunObject = codeunit PumpRelease;
-                    ToolTip = 'Enters data to release a Work Order Detail.';
-                }
+
                 action(SalesOrderShipping)
                 {
                     ApplicationArea = All;
@@ -2743,6 +2786,15 @@ page 50160 FinanceManagerRC
             {
                 Caption = 'Tasks';
 
+                action(PumpRelease)
+                {
+                    ///Visible = false;
+                    ApplicationArea = All;
+                    Caption = 'Pump Release';
+                    Image = ReleaseDoc;
+                    RunObject = codeunit PumpRelease;
+                    ToolTip = 'Enters data to release a Work Order Detail.';
+                }
                 action(OrderType)
                 {
                     ApplicationArea = All;
