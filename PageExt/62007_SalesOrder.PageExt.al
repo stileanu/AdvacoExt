@@ -901,7 +901,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         //See if user is SUPER
         //user.setrange(user."User Name", userid);
         ///--!
-        // Add the role for Accounting!
+        // Add the role for Accounting! 
         IF User.FindFirst() THEN begin
 
             AccessControl.setrange("User Security ID", User."User Security ID");
