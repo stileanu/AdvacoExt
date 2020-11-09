@@ -215,7 +215,7 @@ codeunit 50030 systemFunctionalLibrary
         end;
 
         repeat
-            if GroupId = Role."Role ID" then begin
+            if GroupId = Member."User Group Code" then begin
                 txtAnswer := yesSuccess;
                 exit(true);
             end;

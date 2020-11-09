@@ -882,29 +882,47 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         PartsComplete: Record Parts;
         DocPrintShp: Codeunit "Document-Print";
 
+        SysFunctions: Codeunit systemFunctionalLibrary;
+        Member: Record "User Group Member";
+        txtAnswer: Text[120];
+        AcctCode: Label 'ADVACO ACCOUNTING';
+        SalesCode: Label 'ADVACO SALES';
+        ShipCode: Label 'ADVACO SHIPPING';
+
     trigger OnOpenPage()
     var
         AccessControl: Record "Access Control";
         Ok: Boolean;
         User: Record User;
     begin
-        ///--! Permission level check code.
-        User.Get(UserSecurityId);
-        //User.CalcFields("User Name");
-        Ok := true;
-        User.SetRange("User Security ID", User."User Security ID");
-
+        // initialize group flag
         lAccGroup := false;
         lSalesGroup := false;
         lShipGroup := false;
 
+        ///--! Permission level check code.
+        User.Get(UserSecurityId);
+        Ok := true;
+        User.SetRange("User Security ID", User."User Security ID");
+        //Member.SetRange("User Security ID", User."User Security ID");
+
+        lAccGroup := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
+        if not lAccGroup then
+            lSalesGroup := SysFunctions.getIfSingleGroupId(SalesCode, txtAnswer);
+        if not (lAccGroup or lSalesGroup) then
+            lShipGroup := SysFunctions.getIfSingleGroupId(ShipCode, txtAnswer);
+
+        if not (lAccGroup or lSalesGroup or lShipGroup) then begin
+            Error('You must be member of Accounting, Sales or Shipping to open this page.');
+        end;
+
         //See if user is SUPER
-        //user.setrange(user."User Name", userid);
+        //user.setrange(user."User Name", userid);  
         ///--!
         // Add the role for Accounting! 
-        IF User.FindFirst() THEN begin
+        /*IF User.FindFirst() THEN begin 
 
-            AccessControl.setrange("User Security ID", User."User Security ID");
+            AccessControl.setrange("User Security ID",  User."User Security ID");
             IF AccessControl.find('-') THEN begin
                 repeat
                     ///--! To add what role is for accounting?? 
@@ -915,10 +933,12 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
 
             end;
         END;
-        IF Ok THEN
-            ERROR('This Customer Card is for Accounting Only')
-        else
-            lAccGroup := true;
+        */
+
+        //if Ok then
+        //    ERROR('This Customer Card is for Accounting Only')
+        //else
+        //   lAccGroup := true;
         //lAccGroup := false;
         //lSalesGroup := true;
         //lShipGroup := true;
