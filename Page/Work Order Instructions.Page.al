@@ -157,7 +157,7 @@ page 50038 "Work Order Instructions"
                     DelWI: Boolean;
                 begin
                     // 04/01/13 Start
-                    // Get permissions
+                    // Get permissions 
                     //99999 BlockWI := UserSetup.GetParamStatus(USERID,2);
 
                     if Blocked and BlockWI then begin
