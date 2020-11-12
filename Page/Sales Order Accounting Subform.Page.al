@@ -200,7 +200,7 @@ page 50065 "Sales Order Accounting Subform"
     trigger OnAfterGetRecord()
     begin
         /*99999
-        CALCFIELDS("Qty. Picked (Base)","Qty. Staged/Assembled (Base)");
+        Rec.CALCFIELDS("Qty. Picked (Base)","Qty. Staged/Assembled (Base)");
         "Qty. Picked" := ("Qty. Picked (Base)" / "Qty. per Unit of Measure");
         "Qty. Staged/Assembled" := ("Qty. Staged/Assembled (Base)" / "Qty. per Unit of Measure");
         99999*/

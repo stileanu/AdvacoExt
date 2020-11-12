@@ -204,5 +204,6 @@ page 50057 "Item Add"
         Location: Record Location;
         ContractType: Option Sales,Purchase;
         DisplayMessage: Boolean;
+    //LocationItem:Record "Location Item"
 }
 

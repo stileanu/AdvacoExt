@@ -114,18 +114,20 @@ page 50048 "Email Dialog 2"
 
     trigger OnOpenPage()
     begin
-        /*99999
+        //*99999
+        User.Get(UserSecurityId);
         //AttFileName := GetFileNameOnly(Attached);
-        // Get User's Email Signature
-        UserSetup.GET(USERID);
+        // Get User's Email Signature 
+        UserSetup.GET(User."User Security ID");
         i := UserSetup.GetSignature(UserSignature);
-        IF i=0 THEN
-          UserSignature[1] := NO_SIGNATURE_MSSG;
-        99999*/
+        IF i = 0 THEN
+            UserSignature[1] := NO_SIGNATURE_MSSG;
+        //99999*/
 
     end;
 
     var
+        User: Record User;
         UserSetup: Record "User Setup";
         UserSignature: array[8] of Text[120];
         ToAddress: Text[100];

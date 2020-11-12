@@ -233,7 +233,7 @@ page 50078 "Purchase Invoice Act"
     begin
         /*99999
         //>>  Location Management - start
-        IF CurrForm.EDITABLE THEN BEGIN
+        IF CurrPage.Editable THEN BEGIN
           IF MultiLocations.GetPurchLocation = '' THEN
             SETRANGE("Location Code")
           ELSE

@@ -158,7 +158,8 @@ page 50038 "Work Order Instructions"
                 begin
                     // 04/01/13 Start
                     // Get permissions 
-                    //99999 BlockWI := UserSetup.GetParamStatus(USERID,2);
+                    User.Get(UserSecurityId);
+                    BlockWI := UserSetup.GetParamStatus(User."User Security ID", 2);
 
                     if Blocked and BlockWI then begin
                         Blocked := false;
@@ -230,23 +231,21 @@ page 50038 "Work Order Instructions"
 
     trigger OnOpenPage()
     begin
-        /*99999
         // 04/01/13 Start
         // set FILTERGROUP based on permissions
-        UserSetup.GET(USERID);
-        IF (NOT UserSetup.GetParamStatus(USERID,2)) AND (NOT UserSetup.GetParamStatus(USERID,3)) THEN BEGIN
-          prevFilterGroup := FILTERGROUP;
-          FILTERGROUP(9);
-          SETRANGE(Blocked,FALSE);
-          FILTERGROUP(prevFilterGroup);
-          BlockUnblockVisible := FALSE;
-          BlockedVisible := FALSE;
+        UserSetup.GET(UserSecurityId);
+        IF (NOT UserSetup.GetParamStatus(User."User Security ID", 2)) AND (NOT UserSetup.GetParamStatus(User."User Security ID", 3)) THEN BEGIN
+            prevFilterGroup := FILTERGROUP;
+            FILTERGROUP(9);
+            SETRANGE(Blocked, FALSE);
+            FILTERGROUP(prevFilterGroup);
+            BlockUnblockVisible := FALSE;
+            BlockedVisible := FALSE;
         END ELSE BEGIN
-          IF NOT UserSetup.GetParamStatus(USERID,2) THEN
-            BlockUnblockEnabled := FALSE;
+            IF NOT UserSetup.GetParamStatus(User."User Security ID", 2) THEN
+                BlockUnblockEnabled := FALSE;
         END;
         // 04/01/13 End
-        99999*/
 
     end;
 
@@ -272,6 +271,7 @@ page 50038 "Work Order Instructions"
         BlockUnblockVisible: Boolean;
         [InDataSet]
         BlockUnblockEnabled: Boolean;
+        User: Record User;
 
     procedure CustomerCodeOnAfterValidate()
     begin

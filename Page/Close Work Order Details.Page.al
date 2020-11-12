@@ -523,8 +523,8 @@ page 50103 "Close Work Order Details"
         CODEUNIT.Run(CODEUNIT::"Item Jnl.-Post+Print", ItemJournal);
 
         // Modify Sales Order Line
-        //99999SalesLine.VALIDATE("Serial No.",SerialNoCode);
-        SalesLine.Modify;
+        //99999SalesLine.VALIDATE("Serial No.",SerialNoCode); 
+        //SalesLine.Modify;
     end;
 
     procedure SetWODetails(): Boolean

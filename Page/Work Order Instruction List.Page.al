@@ -84,8 +84,8 @@ page 50039 "Work Order Instruction List"
     begin
         // 04/01/2013 Start
         // set FILTERGROUP based on permissions
-        UserSetup.GET(USERID);
-        IF (NOT UserSetup.GetParamStatus(USERID, 2)) AND (NOT UserSetup.GetParamStatus(USERID, 3)) THEN BEGIN
+        UserSetup.GET(UserSecurityId);
+        IF (NOT UserSetup.GetParamStatus(User."User Security ID", 2)) AND (NOT UserSetup.GetParamStatus(User."User Security ID", 3)) THEN BEGIN
             prevFilterGroup := FILTERGROUP;
             FILTERGROUP(9);
             SETRANGE(Blocked, FALSE);
@@ -98,7 +98,7 @@ page 50039 "Work Order Instruction List"
     end;
 
     var
-        USERID: Code[50];
+        User: Record User;
         UserSetup: Record "User Setup";
         prevFilterGroup: Integer;
         [InDataSet]

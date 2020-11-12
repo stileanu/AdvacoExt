@@ -71,11 +71,14 @@ page 50052 "Inside Sales/Sales Rep Update"
                         ItemLedgerEntry.SETCURRENTKEY("Document No.","Posting Date");
                         ItemLedgerEntry.SETRANGE("Document No.","Document No.");
                         ItemLedgerEntry.SETRANGE("Posting Date","Posting Date");
+                        
+                        // How Sales Pres Code is managed??
+                        
                         IF ItemLedgerEntry.FIND('-') THEN REPEAT
                           ItemLedgerEntry."Salespers./Purch. Code" := "Salesperson Code";
                           ItemLedgerEntry.MODIFY;
                         UNTIL ItemLedgerEntry.NEXT = 0;
-                        99999*/
+                        //99999*/
 
                         if "Document Type" = "Document Type"::Invoice then begin
                             if SalesInvoiceHeader.Get("Document No.") then begin

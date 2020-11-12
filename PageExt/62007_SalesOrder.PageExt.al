@@ -573,7 +573,8 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         SalesLine2.SetRange("Document Type", "Document Type");
                         SalesLine2.SetRange("Document No.", "No.");
                         SalesLine2.SetFilter("Qty. to Ship", '<>%1', 0);
-                        /*99999IF SalesLine2.FIND('-') THEN BEGIN
+                        /*99999
+                        IF SalesLine2.FIND('-') THEN BEGIN
                           REPEAT
                             Main := 0;
                             IF Item2.GET(SalesLine2."No.") THEN BEGIN
@@ -888,6 +889,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         AcctCode: Label 'ADVACO ACCOUNTING';
         SalesCode: Label 'ADVACO SALES';
         ShipCode: Label 'ADVACO SHIPPING';
+        Permis: Label 'SUPER';
 
     trigger OnOpenPage()
     var
@@ -908,6 +910,8 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
 
         lAccGroup := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
         if not lAccGroup then
+            lAccGroup := SysFunctions.getIfSingleRoleId(Permis, txtAnswer);
+        if not lAccGroup then
             lSalesGroup := SysFunctions.getIfSingleGroupId(SalesCode, txtAnswer);
         if not (lAccGroup or lSalesGroup) then
             lShipGroup := SysFunctions.getIfSingleGroupId(ShipCode, txtAnswer);
@@ -915,6 +919,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         if not (lAccGroup or lSalesGroup or lShipGroup) then begin
             Error('You must be member of Accounting, Sales or Shipping to open this page.');
         end;
+
 
         //See if user is SUPER
         //user.setrange(user."User Name", userid);  

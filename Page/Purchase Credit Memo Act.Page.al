@@ -413,16 +413,16 @@ page 50080 "Purchase Credit Memo Act"
 
                     trigger OnAction()
                     begin
-                        /*99999
+                        //*99999
                         IF "Return to Vendor" THEN BEGIN
-                          IF "Bill of Lading" = 0 THEN
-                            MESSAGE('The Credit Memo hasn''t be shipped yet, Please Contact Shipping')
-                          ELSE
-                            PurchPostPrint.RUN(Rec);
+                            IF "Bill of Lading" = 0 THEN
+                                MESSAGE('The Credit Memo hasn''t be shipped yet, Please Contact Shipping')
+                            ELSE
+                                PurchPostPrint.RUN(Rec);
                         END ELSE BEGIN
-                          PurchPostPrint.RUN(Rec);
+                            PurchPostPrint.RUN(Rec);
                         END;
-                        99999*/
+                        //99999*/
 
                     end;
                 }
@@ -433,16 +433,16 @@ page 50080 "Purchase Credit Memo Act"
 
                     trigger OnAction()
                     begin
-                        /*99999
+                        //*99999
                         IF "Return to Vendor" THEN BEGIN
-                          IF "Bill of Lading" = 0 THEN
-                            MESSAGE('The Credit Memo hasn''t be shipped yet, Please Contact Shipping')
-                          ELSE
-                            PurchPostPrint.RUN(Rec);
+                            IF "Bill of Lading" = 0 THEN
+                                MESSAGE('The Credit Memo hasn''t be shipped yet, Please Contact Shipping')
+                            ELSE
+                                PurchPostPrint.RUN(Rec);
                         END ELSE BEGIN
-                          PurchPostPrint.RUN(Rec);
+                            PurchPostPrint.RUN(Rec);
                         END;
-                        99999*/
+                        //99999*/
 
                     end;
                 }
@@ -512,5 +512,6 @@ page 50080 "Purchase Credit Memo Act"
         IsPayToCountyVisible: Boolean;
         IsShipToCountyVisible: Boolean;
         CM: Record "Purchase Header";
+        PurchPostPrint: Codeunit "Purch.-Post + Print";
 }
 
