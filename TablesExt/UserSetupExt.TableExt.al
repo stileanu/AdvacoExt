@@ -82,7 +82,7 @@ Tableextension 50108 UserSetupExt Extends "User Setup"
             Caption = 'Inventory Management Location';
         }
     }
-    procedure GetParamStatus(var UserID: Code[50]; ParamID: Integer): Boolean
+    procedure GetParamStatus(var UserID: Guid; ParamID: Integer): Boolean
 
     var
         ADV001: Label 'Msg for Programmers: Incorrect Function ID.';
@@ -111,16 +111,16 @@ Tableextension 50108 UserSetupExt Extends "User Setup"
         END;
     end;
 
-    procedure SetParamStatus(var UserID: Code[2]; var ParamID: Integer; var setvalue: Boolean): Boolean
+    procedure SetParamStatus(var UserID: Guid; var ParamID: Integer; var setvalue: Boolean): Boolean
     var
         UserRec: Record "User Setup";
         PrevValue: Boolean;
         ADV001: Label 'Msg for Programmers: Incorrect Function ID.';
-        ADV002: Label 'Msg for Programmers: Incorrec User ID';
+        ADV002: Label 'Msg for Programmers: Incorrect User ID';
     begin
 
-        //  04/01/13 - new function
-        //  Parameter List is:
+        //  04/01/13 - new function 
+        //  Parameter List is: 
         //  1 - Register Time
         //  2 - Allow WI Blocking
         //  3 - Allow WI Deletion
