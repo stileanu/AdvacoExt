@@ -471,7 +471,7 @@ page 50009 "Job Status"
         // Allow Shop Mgr and Shipping to edit Serial No. in REC step
         OK2 := false;
         Member.CalcFields(Member."User Name");
-        if (Step = Step::RCV) then begin
+        if (Step = Step::RCV) then begin         //---!
             Member.SetRange(Member."User Name", UserId);
             if Member.Find('-') then begin
                 repeat

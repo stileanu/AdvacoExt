@@ -91,7 +91,7 @@ table 50013 "Order Defects"
         field(50; "Failure Item"; Enum FailureItem)
         {
             //OptionMembers = " ",Pump,Motor,Assembly,Component,Finish,Hardware,Label,Cover,Base,"Belt Guard",Feet,Tubing,"Heat Exchanger",Pulley,
-            //                Ballast,"Oil Prep.","Line Cord",Documentation;
+            //                Ballast,"Oil Prep.","Line Cord",Documentation; 
 
             trigger OnValidate();
             begin

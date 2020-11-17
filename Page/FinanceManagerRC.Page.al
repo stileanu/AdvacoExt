@@ -31,6 +31,14 @@ page 50160 FinanceManagerRC
                     RunObject = page "Work Order Master List";
                     ToolTip = 'View the list of Work Orders';
                 }
+                action(SepcialInquiry)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Special Inquiry';
+                    Image = ViewDetails;
+                    RunObject = page "Work Order Detail List";
+                    ToolTip = 'View the lst of all details.';
+                }
                 action(Action50002)
                 {
                     ApplicationArea = All;
@@ -903,146 +911,7 @@ page 50160 FinanceManagerRC
                     }
                 }
             }
-            group("Group20")
-            {
-                Caption = 'Cost Accounting';
-                action("Chart of Cost Centers")
-                {
-                    ApplicationArea = CostAccounting;
-                    Caption = 'Chart of Cost Centers';
-                    RunObject = page "Chart of Cost Centers";
-                }
-                action("Chart of Cost Objects")
-                {
-                    ApplicationArea = CostAccounting;
-                    Caption = 'Chart of Cost Objects';
-                    RunObject = page "Chart of Cost Objects";
-                }
-                action("Chart of Cost Types")
-                {
-                    ApplicationArea = CostAccounting;
-                    Caption = 'Chart of Cost Types';
-                    RunObject = page "Chart of Cost Types";
-                }
-                action("Allocations")
-                {
-                    ApplicationArea = CostAccounting;
-                    Caption = 'Cost Allocations';
-                    RunObject = page "Cost Allocation Sources";
-                }
-                action("Cost Budgets")
-                {
-                    ApplicationArea = CostAccounting;
-                    Caption = 'Cost Budgets';
-                    RunObject = page "Cost Budget Names";
-                }
-                action("Cost Journal")
-                {
-                    ApplicationArea = CostAccounting;
-                    Caption = 'Cost Journals';
-                    RunObject = page "Cost Journal";
-                }
-                group("Group21")
-                {
-                    Caption = 'Registers';
-                    action("Registers")
-                    {
-                        ApplicationArea = CostAccounting;
-                        Caption = 'Cost Registers';
-                        RunObject = page "Cost Registers";
-                    }
-                    action("Cost Budget Registers")
-                    {
-                        ApplicationArea = CostAccounting;
-                        Caption = 'Cost Budget Registers';
-                        RunObject = page "Cost Budget Registers";
-                    }
-                }
-                group("Group22")
-                {
-                    Caption = 'Reports';
-                    group("Group23")
-                    {
-                        Caption = 'Setup Information';
-                        action("Allocations1")
-                        {
-                            ApplicationArea = CostAccounting;
-                            Caption = 'Cost Allocations';
-                            RunObject = report "Cost Allocations";
-                        }
-                    }
-                    group("Group24")
-                    {
-                        Caption = 'Entries';
-                        action("Cost Journal1")
-                        {
-                            ApplicationArea = CostAccounting;
-                            Caption = 'Cost Acctg. Journal';
-                            RunObject = report "Cost Acctg. Journal";
-                        }
-                        action("Account Details")
-                        {
-                            ApplicationArea = CostAccounting;
-                            Caption = 'Cost Types Details';
-                            RunObject = report "Cost Types Details";
-                        }
-                    }
-                    group("Group25")
-                    {
-                        Caption = 'Cost & Revenue';
-                        action("P/L Statement")
-                        {
-                            ApplicationArea = CostAccounting;
-                            Caption = 'Cost Acctg. Statement';
-                            RunObject = report "Cost Acctg. Statement";
-                        }
-                        action("P/L Statement per Period")
-                        {
-                            ApplicationArea = CostAccounting;
-                            Caption = 'Cost Acctg. Stmt. per Period';
-                            RunObject = report "Cost Acctg. Stmt. per Period";
-                        }
-                        action("Analysis")
-                        {
-                            ApplicationArea = CostAccounting;
-                            Caption = 'Cost Acctg. Analysis';
-                            RunObject = report "Cost Acctg. Analysis";
-                        }
-                    }
-                    group("Group26")
-                    {
-                        Caption = 'Cost Budget';
-                        action("P/L Statement with Budget")
-                        {
-                            ApplicationArea = CostAccounting;
-                            Caption = 'Cost Acctg. Statement/Budget';
-                            RunObject = report "Cost Acctg. Statement/Budget";
-                        }
-                        action("Cost Center")
-                        {
-                            ApplicationArea = CostAccounting;
-                            Caption = 'Cost Acctg. Balance/Budget';
-                            RunObject = report "Cost Acctg. Balance/Budget";
-                        }
-                    }
-                }
-                group("Group27")
-                {
-                    Caption = 'Setup';
-                    action("Cost Accounting Setup")
-                    {
-                        ApplicationArea = CostAccounting;
-                        Caption = 'Cost Accounting Setup';
-                        RunObject = page "Cost Accounting Setup";
-                    }
-                    action("Cost Journal Templates")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Cost Journal Templates';
-                        RunObject = page "Cost Journal Templates";
-                    }
-                }
-            }
+
             group("Group28")
             {
                 Caption = 'Receivables';
@@ -1819,6 +1688,7 @@ page 50160 FinanceManagerRC
                     }
                 }
             }
+            /*
             group("Group42")
             {
                 Caption = 'Fixed Assets';
@@ -2133,6 +2003,7 @@ page 50160 FinanceManagerRC
                     }
                 }
             }
+            */
             group("Group50")
             {
                 Caption = 'Inventory';
@@ -2421,6 +2292,200 @@ page 50160 FinanceManagerRC
                         ApplicationArea = InventoryAnalysis;
                         Caption = 'Invt. Analysis Line Templates';
                         RunObject = report "Run Invt. Analysis Line Temp.";
+                    }
+                }
+            }
+
+            group(Action91)
+            {
+                Caption = 'Resources';
+                Image = Journals;
+                ToolTip = 'Manage the people or machines that are used to perform job tasks. ';
+                action(Action93)
+                {
+                    ApplicationArea = Jobs;
+                    Caption = 'Resources';
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    RunObject = Page "Resource List";
+                    ToolTip = 'Manage your resources'' job activities by setting up their costs and prices. The job-related prices, discounts, and cost factor rules are set up on the respective job card. You can specify the costs and prices for individual resources, resource groups, or all available resources of the company. When resources are used or sold in a job, the specified prices and costs are recorded for the project.';
+                }
+                action("Resource Groups")
+                {
+                    ApplicationArea = Suite;
+                    Caption = 'Resource Groups';
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    RunObject = Page "Resource Groups";
+                    ToolTip = 'Organize resources in groups, such as Consultants, for easier assignment of common values and to analyze financial figures by groups.';
+                }
+                action(ResourceJournals)
+                {
+                    ApplicationArea = Jobs;
+                    Caption = 'Resource Journals';
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    RunObject = Page "Resource Jnl. Batches";
+                    RunPageView = WHERE(Recurring = CONST(false));
+                    ToolTip = 'Post usage and sales of your resources for internal use and statistics. Use time sheet entries as input. Note that unlike with job journals, entries posted with resource journals are not posted to G/L accounts.';
+                }
+                action(RecurringResourceJournals)
+                {
+                    ApplicationArea = Jobs;
+                    Caption = 'Recurring Resource Journals';
+                    Promoted = true;
+                    PromotedCategory = Process;
+                    RunObject = Page "Resource Jnl. Batches";
+                    RunPageView = WHERE(Recurring = CONST(true));
+                    ToolTip = 'Post recurring usage and sales of your resources for internal use and statistics in a journal that is preset for your usual posting.';
+                }
+                action("Resource Registers")
+                {
+                    ApplicationArea = Jobs;
+                    Caption = 'Resource Registers';
+                    Image = ResourceRegisters;
+                    RunObject = Page "Resource Registers";
+                    ToolTip = 'View auditing details for all resource ledger entries. Every time an entry is posted, a register is created in which you can see the first and last number of its entries in order to document when entries were posted.';
+                }
+            }
+
+            group("Group20")
+            {
+                Caption = 'Cost Accounting';
+                action("Chart of Cost Centers")
+                {
+                    ApplicationArea = CostAccounting;
+                    Caption = 'Chart of Cost Centers';
+                    RunObject = page "Chart of Cost Centers";
+                }
+                action("Chart of Cost Objects")
+                {
+                    ApplicationArea = CostAccounting;
+                    Caption = 'Chart of Cost Objects';
+                    RunObject = page "Chart of Cost Objects";
+                }
+                action("Chart of Cost Types")
+                {
+                    ApplicationArea = CostAccounting;
+                    Caption = 'Chart of Cost Types';
+                    RunObject = page "Chart of Cost Types";
+                }
+                action("Allocations")
+                {
+                    ApplicationArea = CostAccounting;
+                    Caption = 'Cost Allocations';
+                    RunObject = page "Cost Allocation Sources";
+                }
+                action("Cost Budgets")
+                {
+                    ApplicationArea = CostAccounting;
+                    Caption = 'Cost Budgets';
+                    RunObject = page "Cost Budget Names";
+                }
+                action("Cost Journal")
+                {
+                    ApplicationArea = CostAccounting;
+                    Caption = 'Cost Journals';
+                    RunObject = page "Cost Journal";
+                }
+                group("Group21")
+                {
+                    Caption = 'Registers';
+                    action("Registers")
+                    {
+                        ApplicationArea = CostAccounting;
+                        Caption = 'Cost Registers';
+                        RunObject = page "Cost Registers";
+                    }
+                    action("Cost Budget Registers")
+                    {
+                        ApplicationArea = CostAccounting;
+                        Caption = 'Cost Budget Registers';
+                        RunObject = page "Cost Budget Registers";
+                    }
+                }
+                group("Group22")
+                {
+                    Caption = 'Reports';
+                    group("Group23")
+                    {
+                        Caption = 'Setup Information';
+                        action("Allocations1")
+                        {
+                            ApplicationArea = CostAccounting;
+                            Caption = 'Cost Allocations';
+                            RunObject = report "Cost Allocations";
+                        }
+                    }
+                    group("Group24")
+                    {
+                        Caption = 'Entries';
+                        action("Cost Journal1")
+                        {
+                            ApplicationArea = CostAccounting;
+                            Caption = 'Cost Acctg. Journal';
+                            RunObject = report "Cost Acctg. Journal";
+                        }
+                        action("Account Details")
+                        {
+                            ApplicationArea = CostAccounting;
+                            Caption = 'Cost Types Details';
+                            RunObject = report "Cost Types Details";
+                        }
+                    }
+                    group("Group25")
+                    {
+                        Caption = 'Cost & Revenue';
+                        action("P/L Statement")
+                        {
+                            ApplicationArea = CostAccounting;
+                            Caption = 'Cost Acctg. Statement';
+                            RunObject = report "Cost Acctg. Statement";
+                        }
+                        action("P/L Statement per Period")
+                        {
+                            ApplicationArea = CostAccounting;
+                            Caption = 'Cost Acctg. Stmt. per Period';
+                            RunObject = report "Cost Acctg. Stmt. per Period";
+                        }
+                        action("Analysis")
+                        {
+                            ApplicationArea = CostAccounting;
+                            Caption = 'Cost Acctg. Analysis';
+                            RunObject = report "Cost Acctg. Analysis";
+                        }
+                    }
+                    group("Group26")
+                    {
+                        Caption = 'Cost Budget';
+                        action("P/L Statement with Budget")
+                        {
+                            ApplicationArea = CostAccounting;
+                            Caption = 'Cost Acctg. Statement/Budget';
+                            RunObject = report "Cost Acctg. Statement/Budget";
+                        }
+                        action("Cost Center")
+                        {
+                            ApplicationArea = CostAccounting;
+                            Caption = 'Cost Acctg. Balance/Budget';
+                            RunObject = report "Cost Acctg. Balance/Budget";
+                        }
+                    }
+                }
+                group("Group27")
+                {
+                    Caption = 'Setup';
+                    action("Cost Accounting Setup")
+                    {
+                        ApplicationArea = CostAccounting;
+                        Caption = 'Cost Accounting Setup';
+                        RunObject = page "Cost Accounting Setup";
+                    }
+                    action("Cost Journal Templates")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Cost Journal Templates';
+                        RunObject = page "Cost Journal Templates";
                     }
                 }
             }

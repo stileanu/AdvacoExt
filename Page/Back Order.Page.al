@@ -165,5 +165,22 @@ page 50021 "Back Order"
         MasterNo: Code[7];
         OK: Boolean;
         Parts: Record Parts;
+
+    trigger OnAfterGetRecord()
+    begin
+
+        MasterNo := COPYSTR("Order No.", 1, 5) + '00';
+        IF WOM.GET(MasterNo) THEN
+            OK := TRUE;
+
+        WOD.GET("Order No.");
+        OLDWOD := WOD;
+
+        IF WOI.GET(WOM.Customer, WOM."Ship To Code", Step) THEN
+            Instructions := WOI.Instruction
+        ELSE
+            Instructions := '';
+
+    end;
 }
 

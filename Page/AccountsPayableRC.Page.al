@@ -31,6 +31,22 @@ page 50161 AccountsPayableRC
                     RunObject = page "Work Order Master List";
                     ToolTip = 'View the list of Work Orders';
                 }
+            }
+            /*
+            group(Action50000)
+            {
+                Caption = 'Work Orders';
+                Image = RegisteredDocs;
+                ToolTip = 'Vew or edit detailed information for the Work Orders in the system.';
+
+                action(Action50001)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Work Order Master';
+                    Image = OrderList;
+                    RunObject = page "Work Order Master List";
+                    ToolTip = 'View the list of Work Orders';
+                }
                 action(PumpRelease1)
                 {
                     ///Visible = false;
@@ -101,6 +117,7 @@ page 50161 AccountsPayableRC
                     ToolTip = 'Enters data to modify the quote step for current Work Order.';
                 }
             }
+            */
             group("Group28")
             {
                 Caption = 'Receivables';
@@ -302,6 +319,19 @@ page 50161 AccountsPayableRC
                         ApplicationArea = Basic, Suite;
                         Caption = 'Detailed Customer Ledger Entries';
                         RunObject = page "Detailed Cust. Ledg. Entries";
+                    }
+                }
+                group("Group456")
+                {
+                    Caption = 'Pump Release';
+                    action(PumpRelease1)
+                    {
+                        ///Visible = false;
+                        ApplicationArea = All;
+                        Caption = 'Pump Release';
+                        Image = ReleaseDoc;
+                        RunObject = codeunit PumpRelease;
+                        ToolTip = 'Enters data to release a Work Order Detail.';
                     }
                 }
                 group("Group34")
@@ -888,6 +918,7 @@ page 50161 AccountsPayableRC
                 RunObject = page "Work Order Master List";
                 ToolTip = 'View the list of Work Orders';
             }
+            /*
             group(StepEntries)
             {
                 Caption = 'WO Processing';
@@ -1049,6 +1080,20 @@ page 50161 AccountsPayableRC
                     ToolTip = 'Processes Field Service orders shipping.';
                 }
 
+            }
+            */
+            group("Group455")
+            {
+                Caption = 'Pump Release';
+                action(PumpRelease)
+                {
+                    ///Visible = false;
+                    ApplicationArea = All;
+                    Caption = 'Pump Release';
+                    Image = ReleaseDoc;
+                    RunObject = codeunit PumpRelease;
+                    ToolTip = 'Enters data to release a Work Order Detail.';
+                }
             }
             group(History)
             {
