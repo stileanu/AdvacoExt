@@ -2,7 +2,7 @@
     "version": "0.2.0",
     "configurations": [
         
-        
+        /*
         {
             "name": "Advaco Code Development",
             "type": "al",
@@ -20,8 +20,8 @@
             "longRunningSqlStatementsThreshold": 500,
             "numberOfSqlStatements": 10
         }
+        */
         
-        /*
         {
             "type": "al",
             "request": "launch",
@@ -37,7 +37,7 @@
             "environmentName": "AdvacoSandbox",
             "schemaUpdateMode": "Synchronize"
         }
-        */
+        
         
     ]
 }
