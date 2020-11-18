@@ -55,6 +55,7 @@ page 50002 "Work Order Detail"
                 }
                 group(Control1220060119)
                 {
+                    Editable = (not Complete);
                     ShowCaption = false;
                     field("Order Type"; "Order Type")
                     {
@@ -139,6 +140,7 @@ page 50002 "Work Order Detail"
                 }
                 group(Control1220060125)
                 {
+                    Editable = (not Complete);
                     ShowCaption = false;
                     field("Oil Type"; "Oil Type")
                     {
@@ -217,6 +219,7 @@ page 50002 "Work Order Detail"
             }
             group(Control1220060132)
             {
+                Editable = (not Complete);
                 ShowCaption = false;
                 grid(Control1220060127)
                 {
@@ -247,6 +250,7 @@ page 50002 "Work Order Detail"
             {
                 group("Step Work Instructions:")
                 {
+                    Editable = (not Complete);
                     Caption = 'Step Work Instructions:';
                     field(REC; RCV)
                     {
@@ -297,6 +301,7 @@ page 50002 "Work Order Detail"
             }
             group(Other)
             {
+                Editable = (not Complete);
                 group(Control1220060135)
                 {
                     ShowCaption = false;
@@ -523,6 +528,7 @@ page 50002 "Work Order Detail"
             }
             group("Return To Vendor")
             {
+                Editable = (not Complete);
                 field("Vendor Repair"; "Vendor Repair")
                 {
                     ApplicationArea = All;
@@ -654,6 +660,7 @@ page 50002 "Work Order Detail"
             }
             group("Third Party")
             {
+                Editable = (not Complete);
                 group("Third Party Billing Information:")
                 {
                     Caption = 'Third Party Billing Information:';
@@ -911,6 +918,7 @@ page 50002 "Work Order Detail"
         ok2 := true;
         purmngr := true;
 
+        //--!
         Member.CalcFields("User Name");
         Member.SetRange(Member."User Name", UserId);
         if Member.Find('-') then begin

@@ -32,6 +32,14 @@ page 50159 PurchaseMbrRC
                     RunObject = page "Work Order Master List";
                     ToolTip = 'View the list of Work Orders';
                 }
+                action(SepcialInquiry)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Special Inquiry';
+                    Image = ViewDetails;
+                    RunObject = page "Work Order Detail List";
+                    ToolTip = 'View the lst of all details.';
+                }
                 action(Action50002)
                 {
                     ApplicationArea = All;
@@ -565,6 +573,14 @@ page 50159 PurchaseMbrRC
                 Image = OrderList;
                 RunObject = page "Work Order Master List";
                 ToolTip = 'View the list of Work Orders';
+            }
+            action(SepcialInquiry1)
+            {
+                ApplicationArea = All;
+                Caption = 'Special Inquiry';
+                Image = ViewDetails;
+                RunObject = page "Work Order Detail List";
+                ToolTip = 'View the lst of all details.';
             }
             group(StepEntries)
             {

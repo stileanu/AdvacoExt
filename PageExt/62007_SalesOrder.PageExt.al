@@ -889,7 +889,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         AcctCode: Label 'ADVACO ACCOUNTING';
         SalesCode: Label 'ADVACO SALES';
         ShipCode: Label 'ADVACO SHIPPING';
-        Permis: Label 'SUPER';
+        Permiss: Label 'SUPER';
 
     trigger OnOpenPage()
     var
@@ -902,7 +902,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         lSalesGroup := false;
         lShipGroup := false;
 
-        ///--! Permission level check code.
+        ///--! Permission level check code. 
         User.Get(UserSecurityId);
         Ok := true;
         User.SetRange("User Security ID", User."User Security ID");
@@ -910,7 +910,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
 
         lAccGroup := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
         if not lAccGroup then
-            lAccGroup := SysFunctions.getIfSingleRoleId(Permis, txtAnswer);
+            lAccGroup := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
         if not lAccGroup then
             lSalesGroup := SysFunctions.getIfSingleGroupId(SalesCode, txtAnswer);
         if not (lAccGroup or lSalesGroup) then
