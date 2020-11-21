@@ -1,14 +1,16 @@
-report 60005 "Shop Work Order St. Rpt"
+report 50006 "Office Work Order Status Rpt"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Reports/Shop Work Order Status Rpt.rdl';
-
+    RDLCLayout = './Reports/50006_OfficeWorkOrderStatus.rdl';
+    UsageCategory = ReportsAndAnalysis;
+    ApplicationArea = all;
     dataset
     {
-        dataitem("Work Order Detail"; WorkOrderDetail)
+        dataitem("Work Order Detail"; "WorkOrderDetail")
         {
-            DataItemTableView = WHERE(Complete = CONST(false));
-            column(SHOP_WORK_ORDER_STATUS_REPORT_; 'SHOP WORK ORDER STATUS REPORT')
+            DataItemTableView = Sorting(Complete) WHERE(Complete = CONST(false));
+            RequestFilterFields = "Work Order Master No.", "Work Order No.";
+            column(OFFICE_WORK_ORDER_STATUS_REPORT_; 'OFFICE WORK ORDER STATUS REPORT')
             {
             }
             column(FORMAT_TODAY_0_4_; Format(Today, 0, 4))
@@ -20,9 +22,7 @@ report 60005 "Shop Work Order St. Rpt"
             column(TIME; Time)
             {
             }
-            //column(CurrReport_PAGENO;CurrReport.PageNo)
-            //{
-            //}
+
             column(Work_Order_Detail__Work_Order_No__; "Work Order No.")
             {
             }
@@ -53,10 +53,20 @@ report 60005 "Shop Work Order St. Rpt"
             column(Work_Order_Detail__Work_Order_Date_; "Work Order Date")
             {
             }
-            column(Serial_No__; "Serial No.")
+            column(WOM_Customer; WOM.Customer)
             {
             }
-            column(Work_Order_Detail__Tool_ID_; "Tool ID")
+            column(Cust_Name; Cust.Name)
+            {
+            }
+            column(Work_Order_Detail__Order_Adj__; "Order Adj.")
+            {
+                DecimalPlaces = 0 : 0;
+            }
+            column(QuotePrice; QuotePrice)
+            {
+            }
+            column(BA; BA)
             {
             }
             column(CurrReport_PAGENOCaption; CurrReport_PAGENOCaptionLbl)
@@ -65,7 +75,13 @@ report 60005 "Shop Work Order St. Rpt"
             column(LATECaption; LATECaptionLbl)
             {
             }
+            column(ValueCaption; ValueCaptionLbl)
+            {
+            }
             column(Date_InCaption; Date_InCaptionLbl)
+            {
+            }
+            column(Adj____Caption; Adj____CaptionLbl)
             {
             }
             column(QueCaption; QueCaptionLbl)
@@ -74,10 +90,10 @@ report 60005 "Shop Work Order St. Rpt"
             column(Date_OutCaption; Date_OutCaptionLbl)
             {
             }
-            column(Control83Caption; Control83CaptionLbl)
+            column(PreCaption; PreCaptionLbl)
             {
             }
-            column(PreCaption; PreCaptionLbl)
+            column(Model_No_Caption; Model_No_CaptionLbl)
             {
             }
             column(Due_DateCaption; Due_DateCaptionLbl)
@@ -86,16 +102,16 @@ report 60005 "Shop Work Order St. Rpt"
             column(W_O_DateCaption; W_O_DateCaptionLbl)
             {
             }
+            column(CustomerCaption; CustomerCaptionLbl)
+            {
+            }
+            column(Cust_IDCaption; Cust_IDCaptionLbl)
+            {
+            }
             column(TypeCaption; TypeCaptionLbl)
             {
             }
             column(W_O_No_Caption; W_O_No_CaptionLbl)
-            {
-            }
-            column(Serial_No_Caption; Serial_No_CaptionLbl)
-            {
-            }
-            column(Work_Order_Detail__Tool_ID_Caption; FieldCaption("Tool ID"))
             {
             }
 
@@ -108,15 +124,15 @@ report 60005 "Shop Work Order St. Rpt"
 
                 if WOM.Get("Work Order Detail"."Work Order Master No.") then
                     Cust.Get(WOM.Customer);
-                PreviousStep := PreviousStep::NON;
-                CurrentStep := CurrentStep::NON;
+                PreviousStep := 100;
+                CurrentStep := 100;
                 DateIn := 0D;
                 DateOut := 0D;
 
                 WOS.SetCurrentKey("Order No.", "Line No.");
                 WOS.SetRange(WOS."Order No.", "Work Order Detail"."Work Order No.");
                 if WOS.Find('+') then begin
-                    CurrentStep := WOS.Step;
+                    CurrentStep := WOS.Step.AsInteger();
                     DateIn := WOS."Date In";
                     PreviousLine := WOS."Line No." - 10000;
                     if PreviousLine >= 10000 then begin
@@ -124,9 +140,41 @@ report 60005 "Shop Work Order St. Rpt"
                         WOS2.SetRange(WOS2."Order No.", "Work Order Detail"."Work Order No.");
                         WOS2.SetRange(WOS2."Line No.", PreviousLine);
                         if WOS2.Find('+') then
-                            PreviousStep := WOS2.Step;
+                            PreviousStep := WOS2.Step.AsInteger();
                         DateOut := WOS2."Date Out";
                     end;
+                end;
+
+                if ("Work Order Detail"."Build Ahead") and ("Work Order Detail".Quote.AsInteger() = 0) then
+                    BA := 'BA'
+                else
+                    BA := '';
+
+                if WOS.Step.AsInteger() > 1 then begin
+                    if WOS.Step.AsInteger() > 2 then begin
+                        if "Work Order Detail".Quote.AsInteger() = 2 then begin  // UnRepairable
+                            QuotePrice := "Work Order Detail"."Unrepairable Charge";
+                        end else begin
+                            if "Work Order Detail".Quote.AsInteger() > 0 then begin
+                                "Work Order Detail".CalcFields("Work Order Detail"."Original Parts Price", "Work Order Detail"."Original Labor Price");
+                                QuotePrice :=
+                                "Work Order Detail"."Original Parts Price" + "Work Order Detail"."Original Labor Price" + "Work Order Detail".
+                       "Order Adj.";
+                            end else begin
+                                "Work Order Detail".CalcFields("Work Order Detail"."Labor Quoted", "Work Order Detail"."Parts Quoted");
+                                QuotePrice := "Work Order Detail"."Labor Quoted" + "Work Order Detail"."Parts Quoted" + "Work Order Detail"."Order Adj.";
+                            end;
+                        end;
+                    end else begin
+                        if "Work Order Detail"."Quote Phase".AsInteger() = 3 then begin
+                            "Work Order Detail".CalcFields("Work Order Detail"."Labor Quoted", "Work Order Detail"."Parts Quoted");
+                            QuotePrice := "Work Order Detail"."Labor Quoted" + "Work Order Detail"."Parts Quoted" + "Work Order Detail"."Order Adj.";
+                        end else begin
+                            QuotePrice := 0;
+                        end;
+                    end;
+                end else begin
+                    QuotePrice := 0;
                 end;
 
                 if "Work Order Detail"."Date Required" < WorkDate then begin
@@ -140,12 +188,12 @@ report 60005 "Shop Work Order St. Rpt"
                 Current;
 
 
-                case "Work Order Detail"."Order Type" of
-                    OrderType::Rebuild:
+                case "Work Order Detail"."Order Type".AsInteger() of
+                    0:
                         Rebuild;
-                    OrderType::Repair:
+                    1:
                         Repair;
-                    OrderType::Warranty:
+                    2:
                         WarrantyCount;
                 end;
             end;
@@ -158,6 +206,7 @@ report 60005 "Shop Work Order St. Rpt"
         dataitem("Integer"; "Integer")
         {
             MaxIteration = 1;
+            DataItemTableView = sorting(Number);
             column(Reb0; Reb0)
             {
             }
@@ -418,8 +467,8 @@ report 60005 "Shop Work Order St. Rpt"
     }
 
     var
-        WOM: Record WorkOrderMaster;
-        WOD: Record WorkOrderDetail;
+        WOM: Record "WorkOrderMaster";
+        WOD: Record "WorkOrderDetail";
         WOS: Record Status;
         WOS2: Record Status;
         Late: Boolean;
@@ -473,25 +522,29 @@ report 60005 "Shop Work Order St. Rpt"
         War12: Integer;
         Cust: Record Customer;
         PreviousLine: Integer;
-        PreviousStep: Enum DetailStep;
-        CurrentStep: Enum DetailStep;
+        PreviousStep: Option;
+        CurrentStep: Option;
         CStep: Code[10];
         PStep: Code[10];
         DateIn: Date;
         DateOut: Date;
         QuotePrice: Decimal;
+        BA: Code[2];
         CurrReport_PAGENOCaptionLbl: Label 'Page';
         LATECaptionLbl: Label 'LATE';
+        ValueCaptionLbl: Label 'Value';
         Date_InCaptionLbl: Label 'Date In';
+        Adj____CaptionLbl: Label 'Adj +/-';
         QueCaptionLbl: Label 'Que';
         Date_OutCaptionLbl: Label 'Date Out';
-        Control83CaptionLbl: Label 'Label83';
         PreCaptionLbl: Label 'Pre';
+        Model_No_CaptionLbl: Label 'Model No.';
         Due_DateCaptionLbl: Label 'Due Date';
         W_O_DateCaptionLbl: Label 'W/O Date';
+        CustomerCaptionLbl: Label 'Customer';
+        Cust_IDCaptionLbl: Label 'Cust ID';
         TypeCaptionLbl: Label 'Type';
         W_O_No_CaptionLbl: Label 'W/O No.';
-        Serial_No_CaptionLbl: Label 'Serial No.';
         REBUILDCaptionLbl: Label 'REBUILD';
         REPAIRCaptionLbl: Label 'REPAIR';
         WARRANTYCaptionLbl: Label 'WARRANTY';
@@ -516,35 +569,33 @@ report 60005 "Shop Work Order St. Rpt"
     begin
         "Work Order Detail".CalcFields("Work Order Detail"."Detail Step");
         RebTotal := RebTotal + 1;
-        case "Work Order Detail"."Detail Step" of
-            DetailStep::RCV:
+        case "Work Order Detail"."Detail Step".AsInteger() of
+            0:
                 Reb0 := Reb0 + 1;
-            DetailStep::DIS:
+            1:
                 Reb1 := Reb1 + 1;
-            DetailStep::QOT:
+            2:
                 Reb2 := Reb2 + 1;
-            DetailStep::"B-O":
+            3:
                 Reb3 := Reb3 + 1;
-            DetailStep::CLN:
+            4:
                 Reb4 := Reb4 + 1;
-            DetailStep::ASM:
+            5:
                 Reb5 := Reb5 + 1;
-            DetailStep::TST:
+            6:
                 Reb6 := Reb6 + 1;
-            DetailStep::REP:
+            7:
                 Reb7 := Reb7 + 1;
-            DetailStep::RET:
+            8:
                 Reb8 := Reb8 + 1;
-            DetailStep::PNT:
+            9:
                 Reb9 := Reb9 + 1;
-            DetailStep::MSP:
+            10:
                 Reb10 := Reb10 + 1;
-            DetailStep::QC:
+            11:
                 Reb11 := Reb11 + 1;
-            DetailStep::SHP:
+            12:
                 Reb12 := Reb12 + 1;
-            DetailStep::NON:
-                ;
         end;
 
         if "Work Order Detail"."Date Required" < WorkDate then begin
@@ -556,35 +607,33 @@ report 60005 "Shop Work Order St. Rpt"
     begin
         "Work Order Detail".CalcFields("Work Order Detail"."Detail Step");
         RepTotal := RepTotal + 1;
-        case "Work Order Detail"."Detail Step" of
-            DetailStep::RCV:
+        case "Work Order Detail"."Detail Step".AsInteger() of
+            0:
                 Rep0 := Rep0 + 1;
-            DetailStep::DIS:
+            1:
                 Rep1 := Rep1 + 1;
-            DetailStep::QOT:
+            2:
                 Rep2 := Rep2 + 1;
-            DetailStep::"B-O":
+            3:
                 Rep3 := Rep3 + 1;
-            DetailStep::CLN:
+            4:
                 Rep4 := Rep4 + 1;
-            DetailStep::ASM:
+            5:
                 Rep5 := Rep5 + 1;
-            DetailStep::TST:
+            6:
                 Rep6 := Rep6 + 1;
-            DetailStep::REP:
+            7:
                 Rep7 := Rep7 + 1;
-            DetailStep::RET:
+            8:
                 Rep8 := Rep8 + 1;
-            DetailStep::PNT:
+            9:
                 Rep9 := Rep9 + 1;
-            DetailStep::MSP:
+            10:
                 Rep10 := Rep10 + 1;
-            DetailStep::QC:
+            11:
                 Rep11 := Rep11 + 1;
-            DetailStep::SHP:
+            12:
                 Rep12 := Rep12 + 1;
-            DetailStep::NON:
-                ;
         end;
 
         if "Work Order Detail"."Date Required" < WorkDate then begin
@@ -596,35 +645,33 @@ report 60005 "Shop Work Order St. Rpt"
     begin
         "Work Order Detail".CalcFields("Work Order Detail"."Detail Step");
         WarTotal := WarTotal + 1;
-        case "Work Order Detail"."Detail Step" of
-            DetailStep::RCV:
+        case "Work Order Detail"."Detail Step".AsInteger() of
+            0:
                 War0 := War0 + 1;
-            DetailStep::DIS:
+            1:
                 War1 := War1 + 1;
-            DetailStep::QOT:
+            2:
                 War2 := War2 + 1;
-            DetailStep::"B-O":
+            3:
                 War3 := War3 + 1;
-            DetailStep::CLN:
+            4:
                 War4 := War4 + 1;
-            DetailStep::ASM:
+            5:
                 War5 := War5 + 1;
-            DetailStep::TST:
+            6:
                 War6 := War6 + 1;
-            DetailStep::REP:
+            7:
                 War7 := War7 + 1;
-            DetailStep::RET:
+            8:
                 War8 := War8 + 1;
-            DetailStep::PNT:
+            9:
                 War9 := War9 + 1;
-            DetailStep::MSP:
+            10:
                 War10 := War10 + 1;
-            DetailStep::QC:
+            11:
                 War11 := War11 + 1;
-            DetailStep::SHP:
+            12:
                 War12 := War12 + 1;
-            DetailStep::NON:
-                ;
         end;
 
         if "Work Order Detail"."Date Required" < WorkDate then begin
@@ -635,33 +682,33 @@ report 60005 "Shop Work Order St. Rpt"
     procedure Previous()
     begin
         case PreviousStep of
-            DetailStep::RCV:
+            0:
                 PStep := 'REC';
-            DetailStep::DIS:
+            1:
                 PStep := 'DIS';
-            DetailStep::QOT:
+            2:
                 PStep := 'QOT';
-            DetailStep::"B-O":
+            3:
                 PStep := 'B-O';
-            DetailStep::CLN:
+            4:
                 PStep := 'CLN';
-            DetailStep::ASM:
+            5:
                 PStep := 'ASM';
-            DetailStep::TST:
+            6:
                 PStep := 'TST';
-            DetailStep::REP:
+            7:
                 PStep := 'REP';
-            DetailStep::RET:
+            8:
                 PStep := 'RET';
-            DetailStep::PNT:
+            9:
                 PStep := 'MSP';
-            DetailStep::MSP:
+            10:
                 PStep := 'PNT';
-            DetailStep::QC:
+            11:
                 PStep := 'QC';
-            DetailStep::SHP:
+            12:
                 PStep := 'SHP';
-            DetailStep::NON:
+            100:
                 PStep := '';
         end;
     end;
@@ -669,33 +716,33 @@ report 60005 "Shop Work Order St. Rpt"
     procedure Current()
     begin
         case CurrentStep of
-            DetailStep::RCV:
+            0:
                 CStep := 'REC';
-            DetailStep::DIS:
+            1:
                 CStep := 'DIS';
-            DetailStep::QOT:
+            2:
                 CStep := 'QOT';
-            DetailStep::"B-O":
+            3:
                 CStep := 'B-O';
-            DetailStep::CLN:
+            4:
                 CStep := 'CLN';
-            DetailStep::ASM:
+            5:
                 CStep := 'ASM';
-            DetailStep::TST:
+            6:
                 CStep := 'TST';
-            DetailStep::REP:
+            7:
                 CStep := 'REP';
-            DetailStep::RET:
+            8:
                 CStep := 'RET';
-            DetailStep::PNT:
+            9:
                 CStep := 'MSP';
-            DetailStep::MSP:
+            10:
                 CStep := 'PNT';
-            DetailStep::QC:
+            11:
                 CStep := 'QC';
-            DetailStep::SHP:
+            12:
                 CStep := 'SHP';
-            DetailStep::NON:
+            100:
                 CStep := '';
         end;
     end;
