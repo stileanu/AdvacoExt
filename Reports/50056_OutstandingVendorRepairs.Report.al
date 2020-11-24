@@ -1,141 +1,141 @@
 report 50056 "Outstanding Vendor Repairs"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './50056_Outstanding Vendor Repairs.Rpt.rdl';
+    RDLCLayout = './Reports/50056_OutstandingVendorRepairs.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
     dataset
     {
-        dataitem("Purchase Line";"Purchase Line")
+        dataitem("Purchase Line"; "Purchase Line")
         {
             //DataItemTableView = SORTING("Document Type","Order No.","Line No.") ORDER(Ascending) WHERE("Document Type"=CONST(Order),"Outstanding Quantity"=FILTER(<>0),"Order No."=FILTER(<>''));
             //ICE-MPC 08/25/20 Need to have Order No. added back to the key on the table before go-live
-            DataItemTableView = SORTING("Document Type","Line No.") ORDER(Ascending) WHERE("Document Type"=CONST(Order),"Outstanding Quantity"=FILTER(<>0),"Order No."=FILTER(<>''));
-            column(CompanyInformation_Name;CompanyInformation.Name)
+            DataItemTableView = SORTING("Document Type", "Line No.") ORDER(Ascending) WHERE("Document Type" = CONST(Order), "Outstanding Quantity" = FILTER(<> 0), "Order No." = FILTER(<> ''));
+            column(CompanyInformation_Name; CompanyInformation.Name)
             {
             }
-            column(Outstanding_Vendor_Repairs_;'Outstanding Vendor Repairs')
+            column(Outstanding_Vendor_Repairs_; 'Outstanding Vendor Repairs')
             {
             }
-            column(FORMAT_TODAY_0_4_;Format(Today,0,4))
+            column(FORMAT_TODAY_0_4_; Format(Today, 0, 4))
             {
             }
-            column(USERID;UserId)
+            column(USERID; UserId)
             {
             }
-            column(TIME;Time)
+            column(TIME; Time)
             {
             }
-            column(Purchase_Line__No__;"No.")
+            column(Purchase_Line__No__; "No.")
             {
             }
-            column(Purchase_Line_Description;Description)
+            column(Purchase_Line_Description; Description)
             {
             }
-            column(Purchase_Line__Outstanding_Quantity_;"Outstanding Quantity")
+            column(Purchase_Line__Outstanding_Quantity_; "Outstanding Quantity")
             {
             }
-            column(Purchase_Line__Order_No__;"Order No.")
+            column(Purchase_Line__Order_No__; "Order No.")
             {
             }
-            column(Purchase_Line__Document_No__;"Document No.")
+            column(Purchase_Line__Document_No__; "Document No.")
             {
             }
-            column(rma;rma)
+            column(rma; rma)
             {
             }
-            column(WO___SOCaption;WO___SOCaptionLbl)
+            column(WO___SOCaption; WO___SOCaptionLbl)
             {
             }
-            column(PO_No_Caption;PO_No_CaptionLbl)
+            column(PO_No_Caption; PO_No_CaptionLbl)
             {
             }
-            column(Item_No_Caption;Item_No_CaptionLbl)
+            column(Item_No_Caption; Item_No_CaptionLbl)
             {
             }
-            column(DescriptionCaption;DescriptionCaptionLbl)
+            column(DescriptionCaption; DescriptionCaptionLbl)
             {
             }
-            column(QuantityCaption;QuantityCaptionLbl)
+            column(QuantityCaption; QuantityCaptionLbl)
             {
             }
-            column(CurrReport_PAGENOCaption;CurrReport_PAGENOCaptionLbl)
+            column(CurrReport_PAGENOCaption; CurrReport_PAGENOCaptionLbl)
             {
             }
-            column(RMA_No_Caption;RMA_No_CaptionLbl)
+            column(RMA_No_Caption; RMA_No_CaptionLbl)
             {
             }
-            column(Purchase_Line_Document_Type;"Document Type")
+            column(Purchase_Line_Document_Type; "Document Type")
             {
             }
-            column(Purchase_Line_Line_No_;"Line No.")
+            column(Purchase_Line_Line_No_; "Line No.")
             {
             }
 
             trigger OnAfterGetRecord()
             begin
-                if PurchaseHeader.Get("Document Type","Document No.") then begin
-                  if PurchaseHeader."Vendor Repair" then begin
-                    if WOD.Get("Purchase Line"."Order No.") then
-                      rma := WOD."RMA No."
-                    else
-                     rma := '';
+                if PurchaseHeader.Get("Document Type", "Document No.") then begin
+                    if PurchaseHeader."Vendor Repair" then begin
+                        if WOD.Get("Purchase Line"."Order No.") then
+                            rma := WOD."RMA No."
+                        else
+                            rma := '';
 
 
-                    if "Expected Receipt Date" <= WorkDate then
-                      BackOrderQuantity := "Outstanding Quantity"
-                    else
-                      BackOrderQuantity := 0;
-                    OutstandingExclTax := Round("Outstanding Quantity" * Amount / Quantity);
-                    OutstandExclInvDisc := Round("Outstanding Quantity" * "Unit Cost");
+                        if "Expected Receipt Date" <= WorkDate then
+                            BackOrderQuantity := "Outstanding Quantity"
+                        else
+                            BackOrderQuantity := 0;
+                        OutstandingExclTax := Round("Outstanding Quantity" * Amount / Quantity);
+                        OutstandExclInvDisc := Round("Outstanding Quantity" * "Unit Cost");
 
-                    if "Currency Code" = '' then begin
-                      "OutstandingExclTax$" := OutstandingExclTax;
-                      "OutstandExclInvDisc$" := OutstandExclInvDisc;
-                      "UnitCost($)" := "Unit Cost";
-                    end else begin
-                      "OutstandingExclTax$" :=
-                        Round(
-                          CurrencyExchRate.ExchangeAmtFCYToFCY(
-                            WorkDate,
-                            "Currency Code",
-                            '',
-                            OutstandingExclTax));
-                      "OutstandExclInvDisc$" :=
-                        Round(
-                          CurrencyExchRate.ExchangeAmtFCYToFCY(
-                            WorkDate,
-                            "Currency Code",
-                            '',
-                            OutstandExclInvDisc));
-                      "UnitCost($)" :=
-                        Round(
-                          CurrencyExchRate.ExchangeAmtFCYToFCY(
-                            WorkDate,
-                            "Currency Code",
-                            '',
-                            "Unit Cost"),
-                          0.00001);
-                    end;
+                        if "Currency Code" = '' then begin
+                            "OutstandingExclTax$" := OutstandingExclTax;
+                            "OutstandExclInvDisc$" := OutstandExclInvDisc;
+                            "UnitCost($)" := "Unit Cost";
+                        end else begin
+                            "OutstandingExclTax$" :=
+                              Round(
+                                CurrencyExchRate.ExchangeAmtFCYToFCY(
+                                  WorkDate,
+                                  "Currency Code",
+                                  '',
+                                  OutstandingExclTax));
+                            "OutstandExclInvDisc$" :=
+                              Round(
+                                CurrencyExchRate.ExchangeAmtFCYToFCY(
+                                  WorkDate,
+                                  "Currency Code",
+                                  '',
+                                  OutstandExclInvDisc));
+                            "UnitCost($)" :=
+                              Round(
+                                CurrencyExchRate.ExchangeAmtFCYToFCY(
+                                  WorkDate,
+                                  "Currency Code",
+                                  '',
+                                  "Unit Cost"),
+                                0.00001);
+                        end;
 
-                    if PrintAmountsInLocal then begin
-                        OutstandingExclTax := "OutstandingExclTax$";
-                        OutstandExclInvDisc := "OutstandExclInvDisc$";
-                        "Unit Cost" := "UnitCost($)";
-                    end else begin
-                      OutstandingExclTax := "OutstandingExclTax$";
-                      OutstandExclInvDisc := "OutstandExclInvDisc$";
-                      "Unit Cost" := "UnitCost($)";
-                    end;
-                  end else
-                    CurrReport.Skip;
+                        if PrintAmountsInLocal then begin
+                            OutstandingExclTax := "OutstandingExclTax$";
+                            OutstandExclInvDisc := "OutstandExclInvDisc$";
+                            "Unit Cost" := "UnitCost($)";
+                        end else begin
+                            OutstandingExclTax := "OutstandingExclTax$";
+                            OutstandExclInvDisc := "OutstandExclInvDisc$";
+                            "Unit Cost" := "UnitCost($)";
+                        end;
+                    end else
+                        CurrReport.Skip;
                 end;
             end;
 
             trigger OnPreDataItem()
             begin
                 //CurrReport.CreateTotals(OutstandExclInvDisc,OutstandingExclTax,
-                               // "OutstandExclInvDisc$","OutstandingExclTax$"); ICE-MPC 08/225/20
+                // "OutstandExclInvDisc$","OutstandingExclTax$"); ICE-MPC 08/225/20
             end;
         }
     }
