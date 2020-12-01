@@ -111,7 +111,7 @@ page 50001 "Work Order Detail List"
                 field(Diagnosis; Diagnosis)
                 {
                     ApplicationArea = All;
-                    Visible = false;
+                    Visible = DiagnVisible;
                 }
             }
         }
@@ -147,35 +147,79 @@ page 50001 "Work Order Detail List"
     }
 
     trigger OnAfterGetCurrRecord()
+    var
+        AccessControl: Record "Access Control";
+        Ok: Boolean;
+        User: Record User;
+
     begin
+        lADminIT := false;
+
+        ///--! Permission level check code. 
+        User.Get(UserSecurityId);
+        User.SetRange("User Security ID", User."User Security ID");
+        //Member.SetRange("User Security ID", User."User Security ID");
+
+        lAdminIT := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
+        if not lAdminIT then
+            lAdminIT := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+
         //IF NOT ((USERID = 'KAYE') OR (USERID = 'ADMIN')) THEN BEGIN
-        if not (UserId = 'KAYE') then begin
+
+        /*if not (UserId = 'KAYE') then begin
             NotesVisible := false;
             // 2013_08_26 Start
             //CurrForm.Diagnosis.VISIBLE := FALSE;
             // 2013_08_26 End
         end;
-
+        */
+        if not lAdminIT then begin
+            NotesVisible := false;
+            DiagnVisible := false;
+            QuotePriceVisible := false;
+            OrderAdjVisible := false;
+        end;
+        /*
         // 2011_09_01 - Start
         if OK then begin
             QuotePriceVisible := false;
             OrderAdjVisible := false;
         end;
         // 2011_08_25 ADV: Start
+        */
     end;
 
     trigger OnAfterGetRecord()
+    var
+        AccessControl: Record "Access Control";
+        Ok: Boolean;
+        User: Record User;
+
     begin
+        lADminIT := false;
+
+        ///--! Permission level check code. 
+        User.Get(UserSecurityId);
+        User.SetRange("User Security ID", User."User Security ID");
+        //Member.SetRange("User Security ID", User."User Security ID");
+
+        lAdminIT := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
+        if not lAdminIT then
+            lAdminIT := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+
         //IF NOT ((USERID = 'KAYE') OR (USERID = 'ADMIN')) THEN BEGIN
+        /*
         if not (UserId = 'KAYE') then begin
             NotesVisible := false;
             // 2013_08_26 Start
             //CurrForm.Diagnosis.VISIBLE := FALSE; 
             // 2013_08_26 End
         end;
-
+        */
         // 2011_09_01 - Start
-        if OK then begin
+        if not lAdminIT then begin
+            NotesVisible := false;
+            DiagnVisible := false;
             QuotePriceVisible := false;
             OrderAdjVisible := false;
         end else begin
@@ -194,8 +238,39 @@ page 50001 "Work Order Detail List"
     end;
 
     trigger OnOpenPage()
+    var
+        AccessControl: Record "Access Control";
+        Ok: Boolean;
+        User: Record User;
+
     begin
+        lADminIT := false;
+        //lSalesGroup := false;
+        //lShipGroup := false;
+
+        ///--! Permission level check code. 
+        User.Get(UserSecurityId);
+        User.SetRange("User Security ID", User."User Security ID");
+        //Member.SetRange("User Security ID", User."User Security ID");
+
+        lAdminIT := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
+        if not lAdminIT then
+            lAdminIT := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+
+        if lAdminIT then begin
+            NotesVisible := true;
+            DiagnVisible := true;
+            OrderAdjVisible := true;
+            QuotePriceVisible := true;
+        end else begin
+            NotesVisible := false;
+            DiagnVisible := false;
+            OrderAdjVisible := false;
+            QuotePriceVisible := false;
+        end;
+
         // 2011_09_01 - Start 
+        /*
         OK := true;
         Member.CalcFields("User Name");
         Member.SetRange(Member."User Name", UserId);
@@ -220,6 +295,7 @@ page 50001 "Work Order Detail List"
             QuotePriceVisible := true;
         end;
         // 2011_09_01 - End
+        */
     end;
 
     var
@@ -234,5 +310,11 @@ page 50001 "Work Order Detail List"
         OrderAdjVisible: Boolean;
         [InDataSet]
         QuotePriceVisible: Boolean;
+        DiagnVisible: Boolean;
+        SysFunctions: Codeunit systemFunctionalLibrary;
+        txtAnswer: Text[120];
+        lAdminIT: Boolean;
+        AcctCode: Label 'ADVACO IT ADMIN';
+        Permiss: Label 'SUPER';
 }
 

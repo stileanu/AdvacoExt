@@ -3122,7 +3122,7 @@
                                 <TextRun>
                                   <Value>=Fields!Work_Order_Detail__Work_Order_No__.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3149,7 +3149,7 @@
                                 <TextRun>
                                   <Value>=Fields!Work_Order_Detail__Order_Type_.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3177,7 +3177,7 @@
                                 <TextRun>
                                   <Value>=Fields!WOM_Customer.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3206,7 +3206,7 @@
                                 <TextRun>
                                   <Value>=Fields!Cust_Name.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3234,7 +3234,7 @@
                                 <TextRun>
                                   <Value>=Fields!Work_Order_Detail__Work_Order_Date_.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3261,7 +3261,7 @@
                                 <TextRun>
                                   <Value>=Fields!Work_Order_Detail__Date_Required_.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3288,7 +3288,7 @@
                                 <TextRun>
                                   <Value>=Fields!Work_Order_Detail__Model_No__.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3315,7 +3315,7 @@
                                 <TextRun>
                                   <Value>=Fields!PStep.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3342,7 +3342,7 @@
                                 <TextRun>
                                   <Value>=Fields!FORMAT_DateOut_0___Month_2___Day_2___.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3369,7 +3369,7 @@
                                 <TextRun>
                                   <Value>=Fields!CStep.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3397,7 +3397,7 @@
                                 <TextRun>
                                   <Value>=Fields!FORMAT_DateIn_0___Month_2___Day_2___.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3426,7 +3426,7 @@
                                 <TextRun>
                                   <Value>=Fields!Work_Order_Detail__Order_Adj__.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3455,7 +3455,7 @@
                                 <TextRun>
                                   <Value>=Fields!QuotePrice.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3484,7 +3484,7 @@
                                 <TextRun>
                                   <Value>=Fields!Late.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -3505,7 +3505,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.42333cm</Height>
+                  <Height>0.13229cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3960,8 +3960,8 @@
             <RepeatRowHeaders>true</RepeatRowHeaders>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.16004cm</Top>
-            <Height>1.89675cm</Height>
-            <Width>20.00902cm</Width>
+            <Height>1.60571cm</Height>
+            <Width>20.00903cm</Width>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>

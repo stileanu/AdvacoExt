@@ -29,9 +29,10 @@ report 50046 "Rep. Monthly Statement"
             column(RepAddress_5_; RepAddress[5])
             {
             }
-            column(CurrReport_PAGENO; CurrReport.PageNo)
-            {
-            }
+            ///--!
+            //column(CurrReport_PAGENO; CurrReport.PageNo)
+            //{
+            //}
             column(CURRENT_INVOICES_FOR___UPPERCASE_FORMAT_ThruPeriod_0___Month_Text____Year4____; 'CURRENT INVOICES FOR ' + UpperCase(Format(ThruPeriod, 0, '<Month Text>, <Year4>')))
             {
             }
@@ -237,9 +238,10 @@ report 50046 "Rep. Monthly Statement"
                         end;
                     until GLEntry.Next = 0;
 
-                if FirstTime then
-                    CurrReport.PageNo := 0
-                else
+                if not FirstTime then
+                    ///--!
+                    //CurrReport.PageNo := 0
+                    //else
                     FirstTime := true;
             end;
 

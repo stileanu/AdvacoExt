@@ -154,7 +154,7 @@ pageextension 62032 PurchasingManagerRCExt extends "Purchasing Manager Role Cent
                         ApplicationArea = All;
                         Caption = 'Office Work Order Status';
                         Image = Status;
-                        //RunObject = report "Office Work Order Status Rpt";
+                        RunObject = report "Office Work Order Status Rpt";
                         ToolTip = 'Runs Office Work Order Status Report.';
                     }
                     action(ShopWorkOrderStatus)
@@ -162,7 +162,7 @@ pageextension 62032 PurchasingManagerRCExt extends "Purchasing Manager Role Cent
                         ApplicationArea = All;
                         Caption = 'Shop Work Order Status';
                         Image = Status;
-                        RunObject = report "Shop Work Order St. Rpt";
+                        RunObject = report "Shop Work Order Status Rpt";
                         ToolTip = 'Runs Shop Work Order Status Report.';
                     }
                     action(BoxedWorkOrderStatus)
@@ -170,7 +170,7 @@ pageextension 62032 PurchasingManagerRCExt extends "Purchasing Manager Role Cent
                         ApplicationArea = All;
                         Caption = 'Boxed Work Order Status';
                         Image = Status;
-                        //RunObject = report "Boxed Work Order Status Rpt";
+                        RunObject = report "Boxed Work Order Status Rpt";
                         ToolTip = 'Runs Shop Work Order Status Report.';
                     }
                     action(VendorRepairsStatus)
@@ -178,7 +178,8 @@ pageextension 62032 PurchasingManagerRCExt extends "Purchasing Manager Role Cent
                         ApplicationArea = All;
                         Caption = 'Vendor Repairs';
                         Image = Status;
-                        //RunObject = report "Outstanding Vendor Repairs";
+                        //RunObject = report "Outstanding Vendor Repairs"; ///--!
+                        RunObject = codeunit UnderConstruction;
                         ToolTip = 'Runs Shop Work Order Status Report.';
                     }
                 }

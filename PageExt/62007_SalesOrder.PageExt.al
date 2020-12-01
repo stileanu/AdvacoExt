@@ -882,7 +882,6 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         PostLine: Codeunit "Item Jnl.-Post Line";
         PartsComplete: Record Parts;
         DocPrintShp: Codeunit "Document-Print";
-
         SysFunctions: Codeunit systemFunctionalLibrary;
         Member: Record "User Group Member";
         txtAnswer: Text[120];
@@ -896,6 +895,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         AccessControl: Record "Access Control";
         Ok: Boolean;
         User: Record User;
+
     begin
         // initialize group flag
         lAccGroup := false;

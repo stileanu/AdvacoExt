@@ -896,6 +896,7 @@ page 50002 "Work Order Detail"
         else
             InvCostAdjustedEditable := false;
 
+        CalcFields("Original Parts Price", "Original Labor Price");
         QuotePrice := 0;
 
         if Quote = Quote::Accepted then

@@ -699,7 +699,7 @@ page 50158 PurchaseMgrRC
                         ApplicationArea = All;
                         Caption = 'Sales Order Status';
                         Image = Status;
-                        //RunObject = report "Office Sales Order Status";
+                        RunObject = report "Office Sales Order Status"; ///--!
                         ToolTip = 'Reports Office Sales order Status.';
                     }
                     action(Action50055)
@@ -707,7 +707,8 @@ page 50158 PurchaseMgrRC
                         ApplicationArea = All;
                         Caption = 'Shipping Report';
                         Image = Status;
-                        //RunObject = report "Bill of Lading Report";
+                        //RunObject = report "Bill of Lading Report"; ///--!
+                        RunObject = codeunit UnderConstruction;
                         ToolTip = 'Reports Bill of Lading Status.';
                     }
                 }
@@ -738,7 +739,7 @@ page 50158 PurchaseMgrRC
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Adjust Resource Costs/Prices';
-                    RunObject = report "Adjust Resource Costs/Prices";
+                    //RunObject = report "Adjust Resource Costs/Prices";
                 }
                 group("Group50057")
                 {
@@ -1108,7 +1109,7 @@ page 50158 PurchaseMgrRC
                     ApplicationArea = All;
                     Caption = 'Office Work Order Status';
                     Image = Status;
-                    //RunObject = report "Office Work Order Status Rpt";
+                    RunObject = report "Office Work Order Status Rpt";
                     ToolTip = 'Runs Office Work Order Status Report.';
                 }
                 action(ShopWorkOrderStatus)
@@ -1116,7 +1117,7 @@ page 50158 PurchaseMgrRC
                     ApplicationArea = All;
                     Caption = 'Shop Work Order Status';
                     Image = Status;
-                    RunObject = report "Shop Work Order St. Rpt";
+                    RunObject = report "Shop Work Order Status Rpt";
                     ToolTip = 'Runs Shop Work Order Status Report.';
                 }
                 action(BoxedWorkOrderStatus)
@@ -1124,7 +1125,7 @@ page 50158 PurchaseMgrRC
                     ApplicationArea = All;
                     Caption = 'Boxed Work Order Status';
                     Image = Status;
-                    //RunObject = report "Boxed Work Order Status Rpt";
+                    RunObject = report "Boxed Work Order Status Rpt";
                     ToolTip = 'Runs Shop Work Order Status Report.';
                 }
                 action(VendorRepairsStatus)
@@ -1132,7 +1133,8 @@ page 50158 PurchaseMgrRC
                     ApplicationArea = All;
                     Caption = 'Vendor Repairs';
                     Image = Status;
-                    //RunObject = report "Outstanding Vendor Repairs";
+                    //RunObject = report "Outstanding Vendor Repairs"; ///--!
+                    RunObject = codeunit UnderConstruction;
                     ToolTip = 'Runs Shop Work Order Status Report.';
                 }
             }

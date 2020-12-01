@@ -308,7 +308,7 @@ page 50163 ShopTeamMbrRC
                     ApplicationArea = All;
                     Caption = 'Office Work Order Status';
                     Image = Status;
-                    //RunObject = report "Office Work Order Status Rpt";
+                    RunObject = report "Office Work Order Status Rpt";
                     ToolTip = 'Runs Office Work Order Status Report.';
                 }
                 action(ShopWorkOrderStatus)
@@ -316,7 +316,7 @@ page 50163 ShopTeamMbrRC
                     ApplicationArea = All;
                     Caption = 'Shop Work Order Status';
                     Image = Status;
-                    RunObject = report "Shop Work Order St. Rpt";
+                    RunObject = report "Shop Work Order Status Rpt";
                     ToolTip = 'Runs Shop Work Order Status Report.';
                 }
                 action(BoxedWorkOrderStatus)
@@ -324,15 +324,16 @@ page 50163 ShopTeamMbrRC
                     ApplicationArea = All;
                     Caption = 'Boxed Work Order Status';
                     Image = Status;
-                    //RunObject = report "Boxed Work Order Status Rpt";
-                    ToolTip = 'Runs Shop Work Order Status Report.';
+                    RunObject = report "Boxed Work Order Status Rpt";
+                    ToolTip = 'Runs Boxed Work Order Status Report.';
                 }
                 action(VendorRepairsStatus)
                 {
                     ApplicationArea = All;
                     Caption = 'Vendor Repairs';
                     Image = Status;
-                    //RunObject = report "Outstanding Vendor Repairs";
+                    //RunObject = report "Outstanding Vendor Repairs"; ///--!
+                    RunObject = codeunit UnderConstruction;
                     ToolTip = 'Runs Shop Work Order Status Report.';
                 }
             }

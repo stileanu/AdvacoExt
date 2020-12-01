@@ -73,6 +73,8 @@ Tableextension 50113 SalesInvoiceHeaderExt extends "Sales Invoice Header"
         field(50020; "Commision Amount"; Decimal)
         {
             Caption = 'Commision Amount';
+            FieldClass = FlowField;
+            CalcFormula = Sum("Sales Invoice Line".Amount WHERE("Document No." = FIELD("No."), "Commission Calculated" = FILTER(true)));
         }
     }
     trigger OnInsert()

@@ -978,7 +978,7 @@ page 50160 FinanceManagerRC
                     {
                         ApplicationArea = Basic, Suite;
                         Caption = 'Customer Order Status';
-                        //RunObject = page "Customer Order Status";
+                        RunObject = page "Customer Order Status"; ///--!
                     }
                 }
                 action("Direct Debit Collections")
@@ -2948,7 +2948,7 @@ page 50160 FinanceManagerRC
                     ApplicationArea = All;
                     Caption = 'Office Work Order Status';
                     Image = Status;
-                    //RunObject = report "Office Work Order Status Rpt";
+                    RunObject = report "Office Work Order Status Rpt";
                     ToolTip = 'Runs Office Work Order Status Report.';
                 }
                 action(ShopWorkOrderStatus)
@@ -2956,7 +2956,7 @@ page 50160 FinanceManagerRC
                     ApplicationArea = All;
                     Caption = 'Shop Work Order Status';
                     Image = Status;
-                    RunObject = report "Shop Work Order St. Rpt";
+                    RunObject = report "Shop Work Order Status Rpt";
                     ToolTip = 'Runs Shop Work Order Status Report.';
                 }
                 action(BoxedWorkOrderStatus)
@@ -2964,7 +2964,7 @@ page 50160 FinanceManagerRC
                     ApplicationArea = All;
                     Caption = 'Boxed Work Order Status';
                     Image = Status;
-                    //RunObject = report "Boxed Work Order Status Rpt";
+                    RunObject = report "Boxed Work Order Status Rpt";
                     ToolTip = 'Runs Shop Work Order Status Report.';
                 }
                 action(VendorRepairsStatus)
@@ -2972,8 +2972,279 @@ page 50160 FinanceManagerRC
                     ApplicationArea = All;
                     Caption = 'Vendor Repairs';
                     Image = Status;
-                    //RunObject = report "Outstanding Vendor Repairs";
+                    RunObject = report "Outstanding Vendor Repairs";
+                    //RunObject = codeunit UnderConstruction;
                     ToolTip = 'Runs Shop Work Order Status Report.';
+                }
+                group(WOReports)
+                {
+                    Caption = 'Sales Reports Office';
+
+                    action(CustomerCommentList)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Customer Comment List';
+                        Image = Comment;
+                        RunObject = report "Customer Comment List";
+                        ToolTip = 'Runs Customer Comments Report.';
+
+                    }
+                    action(CustomerDocumentNos_)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Customer Document Nos.';
+                        Image = Documents;
+                        RunObject = report "Customer Document Nos.";
+                        ToolTip = 'Runs Customer Document Nos. Report.';
+
+                    }
+
+                    action(CustomerListing)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Customer Listing';
+                        Image = List;
+                        RunObject = report "Customer Listing";
+                        ToolTip = 'Runs Customer Document Nos. Report.';
+
+                    }
+                    action(CustomerSalesStatistics)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Customer Sales Statistics';
+                        Image = StatisticsDocument;
+                        RunObject = report "Customer Sales Statistics";
+                        ToolTip = 'Runs Customer Document Nos. Report.';
+
+                    }
+                    action(OpenCustomerEntries_10053)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Open Customer Entries';
+                        Image = EntriesList;
+                        RunObject = report "Open Customer Entries";
+                        ToolTip = 'Runs Open Customer Entries Report.';
+                    }
+                    action(OutstandingSalesOrderAging_10055)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Outstanding Sales Order Aging';
+                        Image = Aging;
+                        RunObject = report "Outstanding Sales Order Aging";
+                        ToolTip = 'Runs Outstanding Sales Order Aging Report.';
+                    }
+                    action(OutstandingSalesOrderStatus_10056)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Outstanding Sales Order Status';
+                        Image = Status;
+                        RunObject = report "Outstanding Sales Order Status";
+                        ToolTip = 'Runs Outstanding Sales Order Status Report.';
+                    }
+                    action(ShipToAddressListing_10061)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Ship-To Address Listing';
+                        Image = ShipAddress;
+                        RunObject = report "Ship-To Address Listing";
+                        ToolTip = 'Runs Ship-To Address Listing Report.';
+                    }
+                    action(WOBillOfLading_50016)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'WO Bill Of Lading';
+                        Image = Document;
+                        RunObject = report "WO Bill Of Lading";
+                        ToolTip = 'Runs WO Bill Of Lading Report.';
+                    }
+                    action(SOBillOfLading_50017)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'SO Bill Of Lading';
+                        Image = Document;
+                        RunObject = report "SO Bill Of Lading";
+                        ToolTip = 'Runs SO Bill Of Lading Report.';
+                    }
+                    action(BillofLadingReport_50018)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Bill of Lading Report';
+                        Image = Documents;
+                        RunObject = report "Bill of Lading Report";
+                        //RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Bill of Lading Report.';
+                    }
+                    action(WorkOrderAnalysis_50025)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Work Order Analysis';
+                        Image = AnalysisView;
+                        RunObject = report "Work Order Analysis";
+                        //RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Work Order Analysis Report.';
+                    }
+                    action(RepMonthlyStatement_50046)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Rep. Monthly Statement';
+                        Image = PurchaseTaxStatement;
+                        RunObject = report "Rep. Monthly Statement";
+                        //RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Rep. Monthly Statement Report.';
+                    }
+                    action(SalesRepMonthlyInvoices_50058)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Sales Rep Monthly Invoices';
+                        Image = "Invoicing-Document";
+                        RunObject = report "Sales Rep Monthly Invoices";
+                        //RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Sales Rep Monthly Invoices Report.';
+                    }
+                    action(CommissionsPaidAndOutstanding_50044)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Commissions Paid & Outstanding';
+                        Image = PaymentForecast;
+                        RunObject = report "Commissions Paid & Outstanding";
+                        //RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Commissions Paid & Outstanding Report.';
+                    }
+                    action(OCXCommissionReport_50030)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'OCX Commission Report';
+                        Image = Percentage;
+                        RunObject = report "OCX Commission Report";
+                        //RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs OCX Commission Report Report.';
+                    }
+                    action(OCXBillingList_50031)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'OCX Billing List';
+                        Image = ReceivableBill;
+                        //RunObject = report "OCX Billing List";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs OCX Billing List Report.';
+                    }
+                    action(OCXSalesAnalysis_50027)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'OCX Sales Analysis';
+                        Image = Sales;
+                        //RunObject = report "OCX Sales Analysis";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs OCX Sales Analysis Report.';
+                    }
+                    action(OCXPurchasesAnalysis_50028)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'OCX Purchases Analysis';
+                        Image = Purchase;
+                        //RunObject = report "OCX Purchases Analysis";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs OCX Purchases Analysis Report.';
+                    }
+                    action(OCXCompletedWorkOrders_50032)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'OCX Completed Work Orders';
+                        Image = Completed;
+                        //RunObject = report "OCX Completed Work Orders";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs OCX Completed Work Orders Report.';
+                    }
+                    action(QuoteSentReport_50043)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Quote Sent Report';
+                        Image = Quote;
+                        //RunObject = report "Quote Sent Report";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Quote Sent Report Report.';
+                    }
+                    action(CustomerWorkOrderStatusRpt_50009)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Customer Work Order Status Rpt';
+                        Image = CustomerRating;
+                        //RunObject = report "Customer Work Order Status Rpt";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Customer Work Order Status Rpt Report.';
+                    }
+                    action(WarrantyAnalysis_50035)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Warranty Analysis';
+                        Image = WarrantyLedger;
+                        //RunObject = report "Warranty Analysis";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Warranty Analysis Report.';
+                    }
+                    action(ExpediteList_50013)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Expedite List';
+                        Image = PaymentForecast;
+                        //RunObject = report "Expedite List";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Expedite List Report.';
+                    }
+                    action(ShopEmployeeHours_50125)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Shop Employee Hours';
+                        Image = PaymentForecast;
+                        //RunObject = report "Shop Employee Hours";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Shop Employee Hours Report.';
+                    }
+                    action(WorkOrderDateStatusRpt_50036)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Work Order Date Status Rpt';
+                        Image = PaymentForecast;
+                        //RunObject = report "Work Order Date Status Rpt";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Work Order Date Status Rpt Report.';
+                    }
+                    action(FirststTimeTestFailures_50137)
+                    {
+                        ApplicationArea = All;
+                        Caption = '1st TimeTest Failures';
+                        Image = WarrantyLedger;
+                        //RunObject = report "1st TimeTest Failures";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs 1st TimeTest Failures Report.';
+                    }
+                    action(WorkOrderShipments_50118)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Work Order Shipments';
+                        Image = PaymentForecast;
+                        //RunObject = report "Work Order Shipments";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Work Order Shipments Report.';
+                    }
+                    action(WorkOrderInstallDate_50122)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Work Order Install Date';
+                        Image = PaymentForecast;
+                        //RunObject = report "Work Order Install Date";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Work Order Install Date Report.';
+                    }
+                    action(WorkOrderInstallDate_50088)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Work Order Install Date';
+                        Image = PaymentForecast;
+                        //RunObject = report "Work Order Install Date";
+                        RunObject = codeunit UnderConstruction;
+                        ToolTip = 'Runs Work Order Install Date Report.';
+                    }
                 }
             }
         }

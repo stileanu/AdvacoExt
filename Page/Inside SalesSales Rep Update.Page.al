@@ -62,23 +62,22 @@ page 50052 "Inside Sales/Sales Rep Update"
                         GLEntry.SetRange("Posting Date", "Posting Date");
                         if GLEntry.Find('-') then
                             repeat
-                                GLEntry."Sales Person Code" := "Salesperson Code";
+                                GLEntry."Salesperson Code" := "Salesperson Code";
                                 GLEntry.Modify;
                             until GLEntry.Next = 0;
 
-                        /*99999
+
                         ItemLedgerEntry.RESET;
-                        ItemLedgerEntry.SETCURRENTKEY("Document No.","Posting Date");
-                        ItemLedgerEntry.SETRANGE("Document No.","Document No.");
-                        ItemLedgerEntry.SETRANGE("Posting Date","Posting Date");
-                        
-                        // How Sales Pres Code is managed??
-                        
-                        IF ItemLedgerEntry.FIND('-') THEN REPEAT
-                          ItemLedgerEntry."Salespers./Purch. Code" := "Salesperson Code";
-                          ItemLedgerEntry.MODIFY;
-                        UNTIL ItemLedgerEntry.NEXT = 0;
-                        //99999*/
+                        ItemLedgerEntry.SETCURRENTKEY("Document No.", "Posting Date");
+                        ItemLedgerEntry.SETRANGE("Document No.", "Document No.");
+                        ItemLedgerEntry.SETRANGE("Posting Date", "Posting Date");
+
+                        ///--! How Sales Pres Code is managed??                        
+                        IF ItemLedgerEntry.FIND('-') THEN
+                            repeat
+                                ItemLedgerEntry."Salespers./Purch. Code" := "Salesperson Code";
+                                ItemLedgerEntry.MODIFY;
+                            until ItemLedgerEntry.NEXT = 0;
 
                         if "Document Type" = "Document Type"::Invoice then begin
                             if SalesInvoiceHeader.Get("Document No.") then begin
