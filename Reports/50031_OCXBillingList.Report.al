@@ -1,7 +1,9 @@
 report 50031 "OCX Billing List"
 {
-    DefaultLayout = RDLC;
-    RDLCLayout = './OCX Billing List.rdlc';
+    //DefaultLayout = RDLC;
+    //RDLCLayout = './OCX Billing List.rdlc';
+    UseRequestPage = true;
+    ProcessingOnly = true;
 
     dataset
     {
@@ -23,12 +25,12 @@ report 50031 "OCX Billing List"
                     WOS.SETCURRENTKEY("Order No.", "Line No.");
                     WOS.SETRANGE(WOS."Order No.", "Work Order No.");
                     IF WOS.FIND('+') THEN BEGIN
-                        IF WOS.Step > 1 THEN BEGIN
-                            IF WOS.Step > 2 THEN BEGIN
-                                IF Quote = 2 THEN BEGIN  // UnRepairable
+                        IF WOS.Step.AsInteger() > 1 THEN BEGIN
+                            IF WOS.Step.AsInteger() > 2 THEN BEGIN
+                                IF Quote.AsInteger() = 2 THEN BEGIN  // UnRepairable
                                     QuotePrice := "Unrepairable Charge";
                                 END ELSE BEGIN
-                                    IF Quote > 0 THEN BEGIN
+                                    IF Quote.AsInteger() > 0 THEN BEGIN
                                         CALCFIELDS("Original Parts Price", "Original Labor Price");
                                         QuotePrice := "Original Parts Price" + "Original Labor Price" + "Order Adj.";
                                     END ELSE BEGIN
@@ -37,7 +39,7 @@ report 50031 "OCX Billing List"
                                     END;
                                 END;
                             END ELSE BEGIN
-                                IF "Quote Phase" = 3 THEN BEGIN
+                                IF "Quote Phase".AsInteger() = 3 THEN BEGIN
                                     CALCFIELDS("Labor Quoted", "Parts Quoted");
                                     QuotePrice := "Labor Quoted" + "Parts Quoted" + "Order Adj.";
                                 END ELSE BEGIN
@@ -51,6 +53,7 @@ report 50031 "OCX Billing List"
                         CurrReport.SKIP;
                     END;
                 END;
+                FillExcelRow(TempExcelBuf, "Work Order Detail");
             end;
 
             trigger OnPreDataItem()
@@ -61,6 +64,14 @@ report 50031 "OCX Billing List"
                   Book := Excel.Workbooks.Add(-4167);
                   Sheet := Excel.ActiveSheet;
                   */
+                TempExcelBuf.CreateNewBook(SheetNameTxt);
+                FillHeaderData(TempExcelBuf);
+            end;
+
+            trigger OnPostDataItem()
+            begin
+                TempExcelBuf.WriteSheet(HeaderTxt, CompanyName(), UserId());
+                TempExcelBuf.CloseBook();
             end;
         }
     }
@@ -87,23 +98,100 @@ report 50031 "OCX Billing List"
         CreateAlphabet;
     end;
 
+    trigger OnPostReport()
+    begin
+        DownloadAndOpenExcel(TempExcelBuf);
+    end;
+
     var
+        BookNameTxt: Label 'Billing List';
+        SheetNameTxt: Label 'Billing';
+        HeaderTxt: Label 'Billing List';
+        TempExcelBuf: Record "Excel Buffer" temporary;
+        DetailStep: Enum DetailStep;
         WOS: Record Status;
         QuotePrice: Decimal;
-        CurrentStep: Option;
+        //CurrentStep: Option;
+        CurrentStep: Enum DetailStep;
         CStep: Code[10];
-        IncomeCode: Option;
+        //IncomeCode: Option;
+        IncomeCode: Enum IncomeCode;
         ICode: Code[10];
-        Excel: Automation;
-        Book: Automation;
-        Sheet: Automation;
-        Range: Automation;
         LaunchExcel: Boolean;
         AlphabetArray: array[26] of Text[1];
         CellRow: Integer;
         CellColumn: Integer;
         CellValue: Text[30];
         HeaderDone: Boolean;
+
+    local procedure DownloadAndOpenExcel(var TempExcelBuf: Record "Excel Buffer" temporary)
+    begin
+        TempExcelBuf.SetFriendlyFilename(BookNameTxt);
+        TempExcelBuf.OpenExcel();
+    end;
+
+    local procedure FillExcelRow(
+        var TempExcelBuf: Record "Excel Buffer" temporary;
+        "Work Order Detail": Record WorkOrderDetail)
+    begin
+        /*
+          CellRow := CellRow + 1;
+          Sheet.Range('A' + FORMAT(CellRow)).Value := "Work Order Detail"."Work Order No.";
+          Sheet.Range('B' + FORMAT(CellRow)).Value := "Work Order Detail"."Model No.";
+          Sheet.Range('C' + FORMAT(CellRow)).Value := CStep;
+          Sheet.Range('D' + FORMAT(CellRow)).Value := "Build Ahead";
+          Sheet.Range('E' + FORMAT(CellRow)).Value := QuotePrice;
+          Sheet.Range('F' + FORMAT(CellRow)).Value := '';
+          Sheet.Range('G' + FORMAT(CellRow)).Value := ICode;
+          IF "Income Code" = 2 THEN  // SALES
+            Sheet.Range('H' + FORMAT(CellRow)).Value := QuotePrice
+          ELSE
+            Sheet.Range('I' + FORMAT(CellRow)).Value := QuotePrice;
+        */
+        //with SalInvHeader do begin
+        TempExcelBuf.NewRow();
+        TempExcelBuf.AddColumn("Work Order Detail"."Work Order No.", false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn("Work Order Detail"."Model No.", false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn(CStep, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn("Work Order Detail"."Build Ahead", false, '', false, false, false, '', TempExcelBuf."Cell Type"::Number);
+        TempExcelBuf.AddColumn(QuotePrice, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('', false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn(ICode, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        if "Work Order Detail"."Income Code".AsInteger() = 2 then
+            TempExcelBuf.AddColumn(QuotePrice, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text)
+        else begin
+            TempExcelBuf.AddColumn('', false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+            TempExcelBuf.AddColumn(QuotePrice, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        end;
+        //end;
+    end;
+
+    local procedure FillHeaderData(var TempExcelBuf: Record "Excel Buffer" temporary)
+    begin
+        /*
+        Sheet.Range('A' + FORMAT(CellRow)).Value := 'Work Order #';
+        Sheet.Range('B' + FORMAT(CellRow)).Value := 'Model No.';
+        Sheet.Range('C' + FORMAT(CellRow)).Value := 'Queue';
+        Sheet.Range('D' + FORMAT(CellRow)).Value := 'Build Ahead';
+        Sheet.Range('E' + FORMAT(CellRow)).Value := 'Value';
+        Sheet.Range('F' + FORMAT(CellRow)).Value := 'Comments';
+        Sheet.Range('G' + FORMAT(CellRow)).Value := 'Income Code';
+        Sheet.Range('H' + FORMAT(CellRow)).Value := 'Sales';
+        Sheet.Range('I' + FORMAT(CellRow)).Value := 'Service';
+        */
+
+        TempExcelBuf.NewRow();
+        TempExcelBuf.AddColumn('Work Order #', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Model No.', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Queue', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Build Ahead', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Value', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Comments', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Income Code', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Sales', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Service', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+
+    end;
 
     procedure CreateAlphabet()
     begin
@@ -138,33 +226,33 @@ report 50031 "OCX Billing List"
     procedure Current()
     begin
         CASE CurrentStep OF
-            0:
+            CurrentStep::RCV:
                 CStep := 'REC';
-            1:
+            CurrentStep::DIS:
                 CStep := 'DIS';
-            2:
+            CurrentStep::QOT:
                 CStep := 'QOT';
-            3:
+            CurrentStep::"B-O":
                 CStep := 'B-O';
-            4:
+            CurrentStep::CLN:
                 CStep := 'CLN';
-            5:
+            CurrentStep::ASM:
                 CStep := 'ASM';
-            6:
+            CurrentStep::TST:
                 CStep := 'TST';
-            7:
+            CurrentStep::REP:
                 CStep := 'REP';
-            8:
+            CurrentStep::RET:
                 CStep := 'RET';
-            9:
+            CurrentStep::MSP:
                 CStep := 'MSP';
-            10:
+            CurrentStep::PNT:
                 CStep := 'PNT';
-            11:
+            CurrentStep::QC:
                 CStep := 'QC';
-            12:
+            CurrentStep::SHP:
                 CStep := 'SHP';
-            100:
+            CurrentStep::NON:
                 CStep := '';
         END;
     end;
@@ -172,19 +260,19 @@ report 50031 "OCX Billing List"
     procedure "Code"()
     begin
         CASE IncomeCode OF
-            0:
+            IncomeCode::" ":
                 ICode := '';
-            1:
+            IncomeCode::Service:
                 ICode := 'SERVICE';
-            2:
+            IncomeCode::Sales:
                 ICode := 'SALES';
-            3:
+            IncomeCode::Turbo:
                 ICode := 'TURBO';
-            4:
+            IncomeCode::Electronic:
                 ICode := 'ELECTRONIC';
-            5:
+            IncomeCode::Dry:
                 ICode := 'DRY';
-            6:
+            IncomeCode::Cryo:
                 ICode := 'CRYO';
         END;
     end;

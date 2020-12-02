@@ -3,7 +3,7 @@ report 50027 "OCX Sales Analysis"
     UseRequestPage = true;
     ProcessingOnly = true;
     //DefaultLayout = RDLC;
-    //RDLCLayout = './50027_OCX Sales Analysis.Rpt.rdl';
+    //RDLCLayout = './Reports/50027_OCX Sales Analysis.Rpt.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
     dataset
@@ -72,6 +72,7 @@ report 50027 "OCX Sales Analysis"
                 trigger OnAfterGetRecord()
                 begin
                     TotalUnitCost := Quantity * "Unit Cost (lcy)";
+                    FillExcelRow(TempExcelBuf, Lines);
                 end;
 
                 trigger OnPreDataItem()
@@ -91,11 +92,20 @@ report 50027 "OCX Sales Analysis"
 
             trigger OnPreDataItem()
             begin
-                // Excel  Removed ICE-MPC 09/11/20
+                // Excel
                 /*  CREATE(Excel);
                   Excel.Visible(TRUE);
                   Book := Excel.Workbooks.Add(-4167);
-                  Sheet := Excel.ActiveSheet;*/
+                  Sheet := Excel.ActiveSheet;
+                  */
+                TempExcelBuf.CreateNewBook(SheetNameTxt);
+                FillHeaderData(TempExcelBuf);
+            end;
+
+            trigger OnPostDataItem()
+            begin
+                TempExcelBuf.WriteSheet(HeaderTxt, CompanyName(), UserId());
+                TempExcelBuf.CloseBook();
             end;
         }
     }
@@ -122,16 +132,21 @@ report 50027 "OCX Sales Analysis"
         CreateAlphabet;
     end;
 
+    trigger OnPostReport()
+    begin
+        DownloadAndOpenExcel(TempExcelBuf);
+    end;
+
     var
         PartsCostInvoiceP: Decimal;
         TotalUnitCost: Decimal;
         ok: Boolean;
         TotalAmount: Decimal;
         OrderNo: Code[20];
-        //Excel: Automation ;
-        //Book: Automation ;
-        //Sheet: Automation ;
-        //Range: Automation ;
+        BookNameTxt: Label 'Sales Analysis';
+        SheetNameTxt: Label 'Sales';
+        HeaderTxt: Label 'Sales Analysis';
+        TempExcelBuf: Record "Excel Buffer" temporary;
         LaunchExcel: Boolean;
         AlphabetArray: array[26] of Text[1];
         CellRow: Integer;
@@ -145,6 +160,73 @@ report 50027 "OCX Sales Analysis"
         Invoice_No_CaptionLbl: Label 'Invoice No.';
         CustomerCaptionLbl: Label 'Customer';
         Order_No_CaptionLbl: Label 'Order No.';
+
+    local procedure DownloadAndOpenExcel(var TempExcelBuf: Record "Excel Buffer" temporary)
+    begin
+        TempExcelBuf.SetFriendlyFilename(BookNameTxt);
+        TempExcelBuf.OpenExcel();
+    end;
+
+    local procedure FillExcelRow(
+        var TempExcelBuf: Record "Excel Buffer" temporary;
+        Lines: Record "Sales Invoice Line")
+    begin
+        /*
+        IF Amount > 0 THEN BEGIN
+        PartsCostInvoiceP := TotalUnitCost / Amount;
+        END ELSE
+        PartsCostInvoiceP := 0;
+
+        CellRow := CellRow + 1;
+        Sheet.Range('A' + FORMAT(CellRow)).Value := Header."No.";
+        Sheet.Range('B' + FORMAT(CellRow)).Value := OrderNo;
+        Sheet.Range('C' + FORMAT(CellRow)).Value := Header."Sell-to Customer No.";
+        Sheet.Range('D' + FORMAT(CellRow)).Value := Amount;
+        Sheet.Range('E' + FORMAT(CellRow)).Value := TotalUnitCost;
+        Sheet.Range('F' + FORMAT(CellRow)).Value := (Amount - TotalUnitCost);
+        Sheet.Range('G' + FORMAT(CellRow)).Value := PartsCostInvoiceP;
+        */
+
+        //with SalInvHeader do begin
+        if Lines.Amount > 0 then
+            PartsCostInvoiceP := TotalUnitCost / Lines.Amount
+        else
+            PartsCostInvoiceP := 0;
+
+        TempExcelBuf.NewRow();
+        TempExcelBuf.AddColumn(Header."No.", false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn(OrderNo, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn(Header."Sell-to Customer No.", false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn(Lines.Amount, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Number);
+        TempExcelBuf.AddColumn(TotalUnitCost, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Number);
+        TempExcelBuf.AddColumn((Lines.Amount - TotalUnitCost), false, '', false, false, false, '', TempExcelBuf."Cell Type"::Number);
+        TempExcelBuf.AddColumn(PartsCostInvoiceP, false, '', false, false, false, '', TempExcelBuf."Cell Type"::Number);
+        //end;
+    end;
+
+    local procedure FillHeaderData(var TempExcelBuf: Record "Excel Buffer" temporary)
+    begin
+        /*
+
+        Sheet.Range('A' + FORMAT(CellRow)).Value := 'Invoice #';
+        Sheet.Range('B' + FORMAT(CellRow)).Value := 'Order #';
+        Sheet.Range('C' + FORMAT(CellRow)).Value := 'Customer';
+        Sheet.Range('D' + FORMAT(CellRow)).Value := 'Amount';
+        Sheet.Range('E' + FORMAT(CellRow)).Value := 'Parts Cost';
+        Sheet.Range('F' + FORMAT(CellRow)).Value := 'Profit/Loss';
+        Sheet.Range('G' + FORMAT(CellRow)).Value := 'Parts/Invoice';
+        */
+
+        TempExcelBuf.NewRow();
+        TempExcelBuf.AddColumn('Invoice #', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Order #', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Customer', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Amount', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Parts Cost', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Profit/Loss', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+        TempExcelBuf.AddColumn('Parts/Invoice', false, '', true, false, true, '', TempExcelBuf."Cell Type"::Text);
+
+    end;
 
     procedure CreateAlphabet()
     begin

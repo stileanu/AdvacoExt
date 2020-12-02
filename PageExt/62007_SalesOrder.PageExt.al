@@ -8,19 +8,19 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         }
         modify("No.")
         {
-            Editable = lAccGroup;
+            Editable = (lAccGroup or lSalesGroup);
         }
         modify("Sell-to Customer No.")
         {
-            Editable = lAccGroup;
+            Editable = (lAccGroup or lSalesGroup);
         }
         modify("Sell-to Customer Name")
         {
-            Editable = lAccGroup;
+            Editable = (lAccGroup or lSalesGroup);
         }
         modify("Sell-to")
         {
-            Editable = lAccGroup;
+            Editable = (lAccGroup or lSalesGroup);
         }
         modify("Your Reference")
         {

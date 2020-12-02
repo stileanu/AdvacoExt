@@ -1,5 +1,8 @@
 report 50030 "OCX Commission Report"
 {
+
+    UsageCategory = ReportsAndAnalysis;
+    ApplicationArea = All;
     UseRequestPage = true;
     ProcessingOnly = true;
     //DefaultLayout = RDLC;

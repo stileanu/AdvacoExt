@@ -3124,8 +3124,8 @@ page 50160 FinanceManagerRC
                         ApplicationArea = All;
                         Caption = 'OCX Billing List';
                         Image = ReceivableBill;
-                        //RunObject = report "OCX Billing List";
-                        RunObject = codeunit UnderConstruction;
+                        RunObject = report "OCX Billing List";
+                        //RunObject = codeunit UnderConstruction;
                         ToolTip = 'Runs OCX Billing List Report.';
                     }
                     action(OCXSalesAnalysis_50027)
@@ -3133,8 +3133,8 @@ page 50160 FinanceManagerRC
                         ApplicationArea = All;
                         Caption = 'OCX Sales Analysis';
                         Image = Sales;
-                        //RunObject = report "OCX Sales Analysis";
-                        RunObject = codeunit UnderConstruction;
+                        RunObject = report "OCX Sales Analysis";
+                        //RunObject = codeunit UnderConstruction;
                         ToolTip = 'Runs OCX Sales Analysis Report.';
                     }
                     action(OCXPurchasesAnalysis_50028)
@@ -3142,8 +3142,8 @@ page 50160 FinanceManagerRC
                         ApplicationArea = All;
                         Caption = 'OCX Purchases Analysis';
                         Image = Purchase;
-                        //RunObject = report "OCX Purchases Analysis";
-                        RunObject = codeunit UnderConstruction;
+                        RunObject = report "OCX Purchases Analysis";
+                        //RunObject = codeunit UnderConstruction;
                         ToolTip = 'Runs OCX Purchases Analysis Report.';
                     }
                     action(OCXCompletedWorkOrders_50032)
@@ -3236,14 +3236,14 @@ page 50160 FinanceManagerRC
                         RunObject = codeunit UnderConstruction;
                         ToolTip = 'Runs Work Order Install Date Report.';
                     }
-                    action(WorkOrderInstallDate_50088)
+                    action(CustomerInvoices_50088)
                     {
                         ApplicationArea = All;
-                        Caption = 'Work Order Install Date';
+                        Caption = 'Customer Invoices';
                         Image = PaymentForecast;
-                        //RunObject = report "Work Order Install Date";
+                        //RunObject = report "Customer Invoices";
                         RunObject = codeunit UnderConstruction;
-                        ToolTip = 'Runs Work Order Install Date Report.';
+                        ToolTip = 'Runs Customer Invoices Report.';
                     }
                 }
             }

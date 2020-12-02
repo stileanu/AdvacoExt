@@ -1,6 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
+
         
         
         {
@@ -35,7 +36,8 @@
             "tenant": "advaco.com",
             //"sandboxName": "AdvacoSandbox",
             "environmentType": "Sandbox",
-            "environmentName": "AdvacoSandboxDev2",
+            //"environmentName": "AdvacoSandboxDev2",
+            "environmentName": "AdvacoSandbox",
             "schemaUpdateMode": "Synchronize",
             //"schemaUpdateMode": "ForceSync",
         }
