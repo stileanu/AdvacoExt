@@ -3049,6 +3049,15 @@ page 50160 FinanceManagerRC
                         RunObject = report "Ship-To Address Listing";
                         ToolTip = 'Runs Ship-To Address Listing Report.';
                     }
+                    action(CustomerTop10List_111)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Top __ Customer List';
+                        Image = ShipAddress;
+                        RunObject = report "Customer - Top 10 List";
+                        ToolTip = 'Runs Top __ Customer List Report.';
+                    }
+
                     action(WOBillOfLading_50016)
                     {
                         ApplicationArea = All;
@@ -3151,8 +3160,8 @@ page 50160 FinanceManagerRC
                         ApplicationArea = All;
                         Caption = 'OCX Completed Work Orders';
                         Image = Completed;
-                        //RunObject = report "OCX Completed Work Orders";
-                        RunObject = codeunit UnderConstruction;
+                        RunObject = report "OCX Completed Work Orders";
+                        //RunObject = codeunit UnderConstruction;
                         ToolTip = 'Runs OCX Completed Work Orders Report.';
                     }
                     action(QuoteSentReport_50043)

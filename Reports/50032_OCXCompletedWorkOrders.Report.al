@@ -1,7 +1,12 @@
 report 50032 "OCX Completed Work Orders"
 {
-    DefaultLayout = RDLC;
-    RDLCLayout = './Reports/50032_OCXCompleteWorkOrders.rdl';
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
+    //DefaultLayout = RDLC;
+    //RDLCLayout = './Reports/50032_OCXCompleteWorkOrders.rdl';
+    UseRequestPage = true;
+    ProcessingOnly = true;
+
 
     dataset
     {

@@ -1,7 +1,9 @@
 report 50058 "Sales Rep Monthly Invoices"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Sales Rep Monthly Invoices.rdlc';
+    RDLCLayout = './Reports/50058_SalesRepMonthlyInvoices.rdl';
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {
