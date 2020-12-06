@@ -911,7 +911,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         lAccGroup := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
         if not lAccGroup then
             lAccGroup := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
-        if not lAccGroup then
+        if not lSalesGroup then  //ICE RSK 12/3/20 change from laccgroup to lsalesgroup
             lSalesGroup := SysFunctions.getIfSingleGroupId(SalesCode, txtAnswer);
         if not (lAccGroup or lSalesGroup) then
             lShipGroup := SysFunctions.getIfSingleGroupId(ShipCode, txtAnswer);

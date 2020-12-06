@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Work_Order_Shipments_">
+          <DataField>Work_Order_Shipments_</DataField>
+        </Field>
+        <Field Name="FORMAT_TODAY_0_4_">
+          <DataField>FORMAT_TODAY_0_4_</DataField>
+        </Field>
+        <Field Name="USERID">
+          <DataField>USERID</DataField>
+        </Field>
+        <Field Name="TIME">
+          <DataField>TIME</DataField>
+        </Field>
+        <Field Name="CompanyInformation_Name">
+          <DataField>CompanyInformation_Name</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Work_Order_No__">
+          <DataField>Work_Order_Detail__Work_Order_No__</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Order_Type_">
+          <DataField>Work_Order_Detail__Order_Type_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Model_No__">
+          <DataField>Work_Order_Detail__Model_No__</DataField>
+        </Field>
+        <Field Name="FORMAT_DateOut_0___Month_2___Day_2___Year_2___">
+          <DataField>FORMAT_DateOut_0___Month_2___Day_2___Year_2___</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Work_Order_Date_">
+          <DataField>Work_Order_Detail__Work_Order_Date_</DataField>
+        </Field>
+        <Field Name="WarTotal">
+          <DataField>WarTotal</DataField>
+        </Field>
+        <Field Name="RebTotal">
+          <DataField>RebTotal</DataField>
+        </Field>
+        <Field Name="RepTotal">
+          <DataField>RepTotal</DataField>
+        </Field>
+        <Field Name="RebTotal_RepTotal_WarTotal">
+          <DataField>RebTotal_RepTotal_WarTotal</DataField>
+        </Field>
+        <Field Name="WarPer">
+          <DataField>WarPer</DataField>
+        </Field>
+        <Field Name="WarPerFormat">
+          <DataField>WarPerFormat</DataField>
+        </Field>
+        <Field Name="RebPer">
+          <DataField>RebPer</DataField>
+        </Field>
+        <Field Name="RebPerFormat">
+          <DataField>RebPerFormat</DataField>
+        </Field>
+        <Field Name="RepPer">
+          <DataField>RepPer</DataField>
+        </Field>
+        <Field Name="RepPerFormat">
+          <DataField>RepPerFormat</DataField>
+        </Field>
+        <Field Name="V100_00_">
+          <DataField>V100_00_</DataField>
+        </Field>
+        <Field Name="CurrReport_PAGENOCaption">
+          <DataField>CurrReport_PAGENOCaption</DataField>
+        </Field>
+        <Field Name="Ship_DateCaption">
+          <DataField>Ship_DateCaption</DataField>
+        </Field>
+        <Field Name="Model_No_Caption">
+          <DataField>Model_No_Caption</DataField>
+        </Field>
+        <Field Name="W_O_DateCaption">
+          <DataField>W_O_DateCaption</DataField>
+        </Field>
+        <Field Name="TypeCaption">
+          <DataField>TypeCaption</DataField>
+        </Field>
+        <Field Name="W_O_No_Caption">
+          <DataField>W_O_No_Caption</DataField>
+        </Field>
+        <Field Name="Warranty_Caption">
+          <DataField>Warranty_Caption</DataField>
+        </Field>
+        <Field Name="Rebuild_Caption">
+          <DataField>Rebuild_Caption</DataField>
+        </Field>
+        <Field Name="Repair_Caption">
+          <DataField>Repair_Caption</DataField>
+        </Field>
+        <Field Name="Total_Orders_Caption">
+          <DataField>Total_Orders_Caption</DataField>
+        </Field>
+        <Field Name="Order_TypeCaption">
+          <DataField>Order_TypeCaption</DataField>
+        </Field>
+        <Field Name="QuantitiesCaption">
+          <DataField>QuantitiesCaption</DataField>
+        </Field>
+        <Field Name="PercentageCaption">
+          <DataField>PercentageCaption</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

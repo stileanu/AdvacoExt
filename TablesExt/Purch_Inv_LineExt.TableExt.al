@@ -6,7 +6,7 @@ tableextension 50129 Purch_Inv_LineExt extends "Purch. Inv. Line"
         {
             Caption = 'Work Order No.';
         }
-        field(50001; "Labels To Print"; Date)
+        field(50001; "Labels To Print"; Integer)
         {
             DataClassification = ToBeClassified;
             Caption = 'Labels To Print';

@@ -53,6 +53,7 @@ pageextension 62008 SalesOrderSubpageExt extends "Sales Order Subform"
             {
                 ApplicationArea = All;
                 Visible = not lShipGroup;
+                Editable = (lAccGroup or lSalesGroup);  //ICE RSK 12/3/20
             }
         }
         modify(Type)

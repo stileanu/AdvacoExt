@@ -47,12 +47,15 @@ codeunit 50031 SalesPost_RepFields
         GLAcc: Record "G/L Account";
 
     begin
-        GLAcc.Get(GenJournalLine."Account No.");
-
         GLEntry.Rep := GenJournalLine.Rep;
-        GLEntry."Include for Commissions" := GLAcc."Include for Commissions";
-        GLEntry."Commission Dept. Code" := GLAcc."Global Dimension 1 Code";
         GLEntry."Salesperson Code" := GenJournalLine."Salespers./Purch. Code";
+
+        if GenJournalLine."Account Type" = GenJournalLine."Account Type"::"G/L Account" then begin
+            if not GLAcc.Get(GenJournalLine."Account No.") then
+                exit;
+            GLEntry."Include for Commissions" := GLAcc."Include for Commissions";
+            GLEntry."Commission Dept. Code" := GLAcc."Global Dimension 1 Code";
+        end;
 
     end;
 

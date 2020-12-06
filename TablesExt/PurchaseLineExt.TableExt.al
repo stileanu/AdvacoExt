@@ -76,8 +76,9 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
                 "Orig. Expected Receipt Date" := "Expected Receipt Date";
                 // 04/26/16 ADV: End
 
-                GetItem();
+
                 IF Type = Type::Item then begin
+                    GetItem(); //ICE RSK 12/3/20
                     /// 08/27/12 Start
                     IF Item."Receiving Inspection" THEN BEGIN
                         // Test if "I" is already in "Quality Clause"

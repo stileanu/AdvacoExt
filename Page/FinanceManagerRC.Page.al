@@ -3232,8 +3232,8 @@ page 50160 FinanceManagerRC
                         ApplicationArea = All;
                         Caption = 'Work Order Shipments';
                         Image = PaymentForecast;
-                        //RunObject = report "Work Order Shipments";
-                        RunObject = codeunit UnderConstruction;
+                        RunObject = report "Work Order Shipments";
+                        //RunObject = codeunit UnderConstruction;
                         ToolTip = 'Runs Work Order Shipments Report.';
                     }
                     action(WorkOrderInstallDate_50122)

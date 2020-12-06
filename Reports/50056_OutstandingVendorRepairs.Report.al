@@ -4,6 +4,7 @@ report 50056 "Outstanding Vendor Repairs"
     RDLCLayout = './Reports/50056_OutstandingVendorRepairs.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
+
     dataset
     {
         dataitem("Purchase Line"; "Purchase Line")

@@ -4,7 +4,13 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
     layout
     {
         // Add changes to page layout here
-
+        addafter("Name")
+        {
+            field(Comment; Comment)
+            {
+                ApplicationArea = All;
+            }
+        }
         modify(Blocked)
         {
             Editable = lAccGroup;
@@ -242,6 +248,13 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
     var
         myInt: Integer;
         DistIntegration: Codeunit "Dist. Integration";
+        txtAnswer: Text[120];
+        AcctCode: Label 'ADVACO ACCOUNTING';
+        SalesCode: Label 'ADVACO SALES';
+        SysFunctions: Codeunit systemFunctionalLibrary;
+        Permiss: Label 'SUPER';
+        lAccGroup: Boolean;
+        lSalesGroup: Boolean;
 
     trigger OnOpenPage()
     var
@@ -249,19 +262,70 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         Ok: Boolean;
         User: Record User;
     begin
-        ///--! Permission level check code.
+        /*
+            ///--! Permission level check code.
+            User.Get(UserSecurityId);
+            //User.CalcFields("User Name");
+            Ok := true;
+            User.SetRange("User Security ID", User."User Security ID");
+
+            //See if user is SUPER
+            //user.setrange(user."User Name", userid);
+            ///--!
+            // Add the role for Accounting!
+            IF User.FindFirst() THEN begin
+
+                AccessControl.setrange("User Security ID", User."User Security ID");
+                IF AccessControl.find('-') THEN begin
+                    repeat
+                        ///--! To add what role is for accounting?? 
+                        //if (AccessControl."Role ID" = 'SUPER') or (AccessControl."Role ID" = 'ADV-ACCT') THEN                
+                        if AccessControl."Role ID" = 'SUPER' THEN
+                            OK := FALSE;
+                    until AccessControl.next = 0;
+
+                end;
+            END;
+            IF Ok THEN
+                ERROR('This Customer Card is for Accounting Only')
+            else
+                lAccGroup := true;
+
+            //lAccGroup := false;
+        end;
+    */
+
+        // initialize group flag
+        lAccGroup := false;
+        //lSalesGroup := false;
+        //lShipGroup := false;
+
+        ///--! Permission level check code. 
         User.Get(UserSecurityId);
-        //User.CalcFields("User Name");
         Ok := true;
         User.SetRange("User Security ID", User."User Security ID");
+        //Member.SetRange("User Security ID", User."User Security ID");
+
+        lAccGroup := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
+        if not lAccGroup then
+            lAccGroup := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+        if not lsalesGroup then
+            lSalesGroup := SysFunctions.getIfSingleGroupId(SalesCode, txtAnswer);
+        //if not (lAccGroup or lSalesGroup) then
+        //   lShipGroup := SysFunctions.getIfSingleGroupId(ShipCode, txtAnswer);
+
+        if not (lAccGroup or lSalesGroup) then begin
+            Error('You must be member of Accounting or Sales group to open this page.');
+        end;
+
 
         //See if user is SUPER
-        //user.setrange(user."User Name", userid);
-        ///--!
-        // Add the role for Accounting!
-        IF User.FindFirst() THEN begin
+        //user.setrange(user."User Name", userid);  
+        ///--! 
+        // Add the role for Accounting! 
+        /*IF User.FindFirst() THEN begin 
 
-            AccessControl.setrange("User Security ID", User."User Security ID");
+            AccessControl.setrange("User Security ID",  User."User Security ID");
             IF AccessControl.find('-') THEN begin
                 repeat
                     ///--! To add what role is for accounting?? 
@@ -272,15 +336,14 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
 
             end;
         END;
-        IF Ok THEN
+        
+        if Ok then
             ERROR('This Customer Card is for Accounting Only')
         else
-            lAccGroup := true;
-
-        //lAccGroup := false;
+           lAccGroup := true;
+        */
     end;
 
     var
-        lAccGroup: Boolean;
-    //lSalGroup: Boolean;
+
 }

@@ -208,7 +208,7 @@ codeunit 50030 systemFunctionalLibrary
     begin
         User.Get(UserSecurityId);
         Member.SetRange("User Security ID", User."User Security ID");
-
+        Member.Setrange("User Group Code", GroupId); //ICE RSK 12/3/20
         if not Member.FindFirst() then begin
             txtAnswer := StrSubstNo(notAccesGroupRec, GroupId);
             exit(false);
