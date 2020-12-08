@@ -1895,7 +1895,7 @@ table 50001 WorkOrderDetail
             ItemJournalLine.VALIDATE(ItemJournalLine."Journal Batch Name");
             ItemJournalLine."Line No." := LineNumber;
             ItemJournalLine."Document No." := "Work Order No.";
-            ItemJournalLine."Entry Type" := 4; //Transfer
+            ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
             ItemJournalLine."Item No." := ExistingParts."Part No.";
             ItemJournalLine.VALIDATE(ItemJournalLine."Item No.");
             ItemJournalLine."Posting Date" := WORKDATE;
@@ -1924,7 +1924,7 @@ table 50001 WorkOrderDetail
         ItemJournalLine.VALIDATE("Journal Template Name", 'TRANSFER');
         ItemJournalLine.VALIDATE("Journal Batch Name", 'TRANSFER');
         ItemJournalLine."Line No." := LineNumber;
-        ItemJournalLine."Entry Type" := 4; //Transfer
+        ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Document No." := "Work Order No.";
         ItemJournalLine.VALIDATE("Item No.", Item2."No.");
         ItemJournalLine."Posting Date" := WORKDATE;
@@ -1952,7 +1952,7 @@ table 50001 WorkOrderDetail
             ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
             ItemJournalLine.VALIDATE(ItemJournalLine."Journal Batch Name");
             ItemJournalLine."Line No." := LineNumber;
-            ItemJournalLine."Entry Type" := 4; //Transfer
+            ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
             ItemJournalLine."Document No." := "Work Order No.";
             ItemJournalLine."Item No." := Parts."Part No.";
             ItemJournalLine.VALIDATE(ItemJournalLine."Item No.");
@@ -2007,7 +2007,7 @@ table 50001 WorkOrderDetail
             ItemJournalLine.VALIDATE(ItemJournalLine."Journal Batch Name");
             ItemJournalLine."Line No." := LineNumber;
             ItemJournalLine."Document No." := "Work Order No.";
-            ItemJournalLine."Entry Type" := 4; //Transfer
+            ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
             ItemJournalLine."Item No." := ExistingParts."Part No.";
             ItemJournalLine.VALIDATE(ItemJournalLine."Item No.");
             ItemJournalLine."Posting Date" := WORKDATE;
@@ -2165,6 +2165,7 @@ table 50001 WorkOrderDetail
         Overtime: Decimal;
         PartsMarkup: Decimal;
         OverrideConfirmation: Boolean;
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     trigger OnInsert()
     begin

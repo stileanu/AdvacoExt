@@ -378,7 +378,7 @@ page 50017 "Quote Phase 3"
         BypassCCheckVisible: Boolean;
         [InDataSet]
         OrderAdjEditable: Boolean;
-
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     procedure Accept()
     var
@@ -693,7 +693,7 @@ page 50017 "Quote Phase 3"
             ItemJournalLine."Journal Batch Name" := 'COMMITTED';
             ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
             ItemJournalLine."Line No." := LineNumber;
-            ItemJournalLine."Entry Type" := 4; //Transfer
+            ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
             ItemJournalLine."Document No." := "Work Order No.";
             ItemJournalLine."Item No." := Parts."Part No.";
             ItemJournalLine.Validate(ItemJournalLine."Item No.");
@@ -733,7 +733,7 @@ page 50017 "Quote Phase 3"
             ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
             ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
             ItemJournalLine."Line No." := LineNumber;
-            ItemJournalLine."Entry Type" := 4; //Transfer
+            ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
             ItemJournalLine."Document No." := "Work Order No.";
             ItemJournalLine."Item No." := Parts."Part No.";
             ItemJournalLine.Validate(ItemJournalLine."Item No.");

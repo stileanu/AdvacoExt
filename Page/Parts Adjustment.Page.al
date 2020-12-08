@@ -458,6 +458,7 @@ page 50025 "Parts Adjustment"
         VendorRepairVisible: Boolean;
         [InDataSet]
         PumpModuleVisible: Boolean;
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     procedure RemoveInventory()
     begin
@@ -469,7 +470,7 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine."Journal Batch Name" := 'UNREPAIR';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 3; //Negative Adjustment
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::"Negative Adjmt."; ///--! Negative Adjustment
                 ItemJournalLine."Document No." := "Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
@@ -508,7 +509,7 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine."Journal Batch Name" := 'UNREPAIR';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 3; //Negative Adjustment
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::"Negative Adjmt."; ///--! Negative Adjustment
                 ItemJournalLine."Document No." := "Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
@@ -547,7 +548,7 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine."Journal Batch Name" := 'UNREPAIR';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 4; //Transfer
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
                 ItemJournalLine."Document No." := "Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
@@ -589,7 +590,7 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine."Journal Batch Name" := 'UNREPAIR';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 4; //Transfer
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
                 ItemJournalLine."Document No." := "Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");

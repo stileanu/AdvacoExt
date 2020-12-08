@@ -657,6 +657,7 @@ page 50150 "Field Service"
         OrderAdjEditable: Boolean;
         [InDataSet]
         ControlsEditable: Boolean;
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     procedure Paid()
     begin
@@ -1066,7 +1067,7 @@ page 50150 "Field Service"
                 ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 4; //Transfer
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
                 ItemJournalLine."Document No." := "Field Service No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
@@ -1109,7 +1110,7 @@ page 50150 "Field Service"
                 ItemJournalLine."Journal Batch Name" := 'WARRANTY';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 3; //Negative Adjustment
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::"Negative Adjmt."; ///--! Negative Adjustment
                 ItemJournalLine."Document No." := "Field Service No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");

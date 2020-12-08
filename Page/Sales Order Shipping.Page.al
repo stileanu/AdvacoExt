@@ -549,6 +549,7 @@ page 50060 "Sales Order Shipping"
         ItemStartPosition: Integer;
         OilPartNumber: Text[30];
         QtyOil: Integer;
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     procedure UpdateAllowed() Response: Boolean
     begin
@@ -696,7 +697,7 @@ page 50060 "Sales Order Shipping"
                 ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 4; //Transfer
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
                 ItemJournalLine."Document No." := "Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");

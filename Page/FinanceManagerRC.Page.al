@@ -3241,8 +3241,8 @@ page 50160 FinanceManagerRC
                         ApplicationArea = All;
                         Caption = 'Work Order Install Date';
                         Image = PaymentForecast;
-                        //RunObject = report "Work Order Install Date";
-                        RunObject = codeunit UnderConstruction;
+                        RunObject = report "Work Order Install Date";
+                        //RunObject = codeunit UnderConstruction;
                         ToolTip = 'Runs Work Order Install Date Report.';
                     }
                     action(CustomerInvoices_50088)

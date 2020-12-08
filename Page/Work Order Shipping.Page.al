@@ -510,6 +510,7 @@ page 50033 "Work Order Shipping"
         [InDataSet]
         NonCopperVisible: Boolean;
         NonCopperMessage: Label 'Blank';
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     procedure URCheck()
     begin
@@ -1601,7 +1602,7 @@ page 50033 "Work Order Shipping"
                 ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 4; //Transfer
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
                 ItemJournalLine."Document No." := "Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
@@ -1644,7 +1645,7 @@ page 50033 "Work Order Shipping"
                 ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 4; //Transfer
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
                 ItemJournalLine."Document No." := WOP."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
@@ -1687,7 +1688,7 @@ page 50033 "Work Order Shipping"
                 ItemJournalLine."Journal Batch Name" := 'WARRANTY';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 3; //Negative Adjustment
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::"Negative Adjmt."; ///--! Negative Adjustment
                 ItemJournalLine."Document No." := WOD."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
@@ -1727,7 +1728,7 @@ page 50033 "Work Order Shipping"
                 ItemJournalLine."Journal Batch Name" := 'WARRANTY';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 3; //Negative Adjustment
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::"Negative Adjmt."; ///--! Negative Adjustment
                 ItemJournalLine."Document No." := WODPM."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");

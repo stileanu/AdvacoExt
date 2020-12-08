@@ -325,6 +325,7 @@ page 50023 "Build Ahead"
         SerialNoFound: Code[10];
         NotChecked: Code[10];
         Mechanics: Record QuoteMechanicsParts;
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     procedure MoveInventory()
     begin
@@ -336,7 +337,7 @@ page 50023 "Build Ahead"
             ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
             ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
             ItemJournalLine."Line No." := LineNumber;
-            ItemJournalLine."Entry Type" := 4; //Transfer
+            ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
             ItemJournalLine."Document No." := Rec."Order No.";
             ItemJournalLine."Item No." := Parts."Part No.";
             ItemJournalLine.Validate(ItemJournalLine."Item No.");

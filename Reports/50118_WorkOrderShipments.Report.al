@@ -190,12 +190,15 @@ report 50118 "Work Order Shipments"
                     OrderType::Warranty:
                         WarrantyCount;
                 end;
+
+                CalcPercent();
             end;
 
             trigger OnPreDataItem()
             begin
                 OrderCount := "Work Order Detail".Count;
             end;
+
         }
         dataitem("Integer"; "Integer")
         {
@@ -493,5 +496,26 @@ report 50118 "Work Order Shipments"
                 CStep := '';
         end;
     end;
+
+    procedure CalcPercent()
+    begin
+
+        IF RebTotal > 0 THEN
+            RebPer := ROUND(RebTotal / (RebTotal + RepTotal + WarTotal) * 100, 0.01, '>')
+        ELSE
+            RebPer := 0;
+
+
+        IF RepTotal > 0 THEN
+            RepPer := ROUND(RepTotal / (RebTotal + RepTotal + WarTotal) * 100, 0.01, '>')
+        ELSE
+            RepPer := 0;
+
+        IF WarTotal > 0 THEN
+            WarPer := ROUND(WarTotal / (RebTotal + RepTotal + WarTotal) * 100, 0.01, '>')
+        ELSE
+            WarPer := 0;
+    end;
+
 }
 

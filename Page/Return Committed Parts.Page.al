@@ -108,6 +108,7 @@ page 50055 "Return Committed Parts"
         CurrentRecord: Record Parts;
         PartsReturn: Record Parts;
         QtyQuoted: Decimal;
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     procedure LocateParts()
     begin
@@ -317,7 +318,7 @@ page 50055 "Return Committed Parts"
         ItemJournalLine.Validate("Journal Template Name", 'TRANSFER');
         ItemJournalLine.Validate("Journal Batch Name", 'TRANSFER');
         ItemJournalLine."Line No." := LineNumber;
-        ItemJournalLine."Entry Type" := 4; //Transfer
+        ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Document No." := PartsSteal."Work Order No.";
         ItemJournalLine.Validate("Item No.", TempPartsFound."Part No.");
         ItemJournalLine."Posting Date" := WorkDate;

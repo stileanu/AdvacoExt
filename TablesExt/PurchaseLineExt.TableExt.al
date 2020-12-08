@@ -130,12 +130,14 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
         {
             trigger OnAfterValidate()
             begin
-                //insert by htcs, rca
-                "Qty. to Invoice" := 0;
-                "Qty. to Receive" := 0;
-                "Qty. to Invoice (Base)" := 0;
-                "Qty. to Receive (Base)" := 0;
-                //<< end rca insert
+                IF "Document Type" = "Document Type"::Order THEN begin  //ICE RSK 12/4/20 add criteria
+                    //insert by htcs, rca
+                    "Qty. to Invoice" := 0;
+                    "Qty. to Receive" := 0;
+                    "Qty. to Invoice (Base)" := 0;
+                    "Qty. to Receive (Base)" := 0;
+                    //<< end rca insert
+                END;
             end;
         }
         modify("Tax Liable")

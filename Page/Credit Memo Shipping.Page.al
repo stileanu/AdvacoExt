@@ -442,6 +442,7 @@ page 50141 "Credit Memo Shipping"
         PostLine: Codeunit "Item Jnl.-Post Line";
         PartsComplete: Record Parts;
         Item: Record Item;
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     procedure ConfirmLabelsCM()
     begin
@@ -536,7 +537,7 @@ page 50141 "Credit Memo Shipping"
                 ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 4; //Transfer
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
                 ItemJournalLine."Document No." := WOP."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
@@ -579,7 +580,7 @@ page 50141 "Credit Memo Shipping"
                 ItemJournalLine."Journal Batch Name" := 'WARRANTY';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 3; //Negative Adjustment
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::"Negative Adjmt."; ///--! Negative Adjustment
                 ItemJournalLine."Document No." := "WOD UPDATE"."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
@@ -619,7 +620,7 @@ page 50141 "Credit Memo Shipping"
                 ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 4; //Transfer
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
                 ItemJournalLine."Document No." := WOP."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
@@ -662,7 +663,7 @@ page 50141 "Credit Memo Shipping"
                 ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 4; //Transfer
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
                 ItemJournalLine."Document No." := WOP."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");

@@ -211,12 +211,12 @@ table 50003 Parts
         field(150; "Committed Quantity"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum ("Item Ledger Entry".Quantity WHERE("Document No." = FIELD("Work Order No."), "Item No." = FIELD("Part No."), "Location Code" = CONST('COMMITTED')));
+            CalcFormula = Sum("Item Ledger Entry".Quantity WHERE("Document No." = FIELD("Work Order No."), "Item No." = FIELD("Part No."), "Location Code" = CONST('COMMITTED')));
         }
         field(160; "In-Process Quantity"; Decimal)
         {
             FieldClass = FlowField;
-            CalcFormula = Sum ("Item Ledger Entry".Quantity WHERE("Document No." = FIELD("Work Order No."), "Item No." = FIELD("Part No."), "Location Code" = CONST('IN PROCESS')));
+            CalcFormula = Sum("Item Ledger Entry".Quantity WHERE("Document No." = FIELD("Work Order No."), "Item No." = FIELD("Part No."), "Location Code" = CONST('IN PROCESS')));
 
         }
         field(170; "Pulled Quantity"; Decimal)
@@ -506,6 +506,7 @@ table 50003 Parts
         WOD: Record WorkOrderDetail;
         QuoteStatus: Record Status;
         PartsMarkup: Decimal;
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     procedure CreateParts();
     begin
@@ -732,7 +733,7 @@ table 50003 Parts
         ItemJournalLine.VALIDATE("Journal Template Name", 'TRANSFER');
         ItemJournalLine.VALIDATE("Journal Batch Name", 'TRANSFER');
         ItemJournalLine."Line No." := LineNumber;
-        ItemJournalLine."Entry Type" := 4; //Transfer
+        ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Document No." := "Work Order No.";
         ItemJournalLine.VALIDATE("Item No.", Item2."No.");
         ItemJournalLine."Posting Date" := WORKDATE;

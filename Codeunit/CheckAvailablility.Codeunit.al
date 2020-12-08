@@ -38,6 +38,7 @@ codeunit 50000 "Check Availablility"
         CurrentRecord: Record Parts;
         PostLine: Codeunit "Item Jnl.-Post Line";
         ItemJournalClear: Record "Item Journal Line";
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     procedure BackOrder();
     begin
@@ -47,7 +48,7 @@ codeunit 50000 "Check Availablility"
         ItemJournalLine."Journal Batch Name" := 'COMMITTED';
         ItemJournalLine.VALIDATE(ItemJournalLine."Journal Batch Name");
         ItemJournalLine."Line No." := LineNumber;
-        ItemJournalLine."Entry Type" := 4; //Transfer
+        ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Document No." := CurrentRecord."Work Order No.";
         ItemJournalLine."Item No." := Item."No.";
         ItemJournalLine.VALIDATE(ItemJournalLine."Item No.");
@@ -79,7 +80,7 @@ codeunit 50000 "Check Availablility"
         ItemJournalLine."Journal Batch Name" := 'COMMITTED';
         ItemJournalLine.VALIDATE(ItemJournalLine."Journal Batch Name");
         ItemJournalLine."Line No." := LineNumber;
-        ItemJournalLine."Entry Type" := 4; //Transfer
+        ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Document No." := CurrentRecord."Work Order No.";
         ItemJournalLine."Item No." := Item."No.";
         ItemJournalLine.VALIDATE(ItemJournalLine."Item No.");
@@ -111,7 +112,7 @@ codeunit 50000 "Check Availablility"
         ItemJournalLine."Journal Batch Name" := 'COMMITTED';
         ItemJournalLine.VALIDATE(ItemJournalLine."Journal Batch Name");
         ItemJournalLine."Line No." := LineNumber;
-        ItemJournalLine."Entry Type" := 4; //Transfer
+        ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Document No." := CurrentRecord."Work Order No.";
         ItemJournalLine."Item No." := Item."No.";
         ItemJournalLine.VALIDATE(ItemJournalLine."Item No.");

@@ -405,6 +405,7 @@ page 50010 "Parts Allocation"
         QtyQuoted: Decimal;
         QtyBelowZero: Code[30];
         GetInput: Page GetValueDialog;
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     procedure Allocate()
     begin
@@ -415,7 +416,7 @@ page 50010 "Parts Allocation"
         ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
         ItemJournalLine."Line No." := LineNumber;
         ItemJournalLine."Document No." := "Work Order No.";
-        ItemJournalLine."Entry Type" := 4; //Transfer
+        ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Item No." := Parts2."Part No.";
         ItemJournalLine.Validate(ItemJournalLine."Item No.");
         ItemJournalLine."Posting Date" := WorkDate;
@@ -448,7 +449,7 @@ page 50010 "Parts Allocation"
         ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
         ItemJournalLine."Line No." := LineNumber;
         ItemJournalLine."Document No." := "Work Order No.";
-        ItemJournalLine."Entry Type" := 4; //Transfer
+        ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Item No." := Parts2."Part No.";
         ItemJournalLine.Validate(ItemJournalLine."Item No.");
         ItemJournalLine."Posting Date" := WorkDate;
@@ -505,7 +506,7 @@ page 50010 "Parts Allocation"
             ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
             ItemJournalLine."Line No." := LineNumber;
             ItemJournalLine."Document No." := "Work Order No.";
-            ItemJournalLine."Entry Type" := 4; //Transfer
+            ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
             ItemJournalLine."Item No." := Item."No.";
             ItemJournalLine.Validate(ItemJournalLine."Item No.");
             ItemJournalLine."Posting Date" := WorkDate;
@@ -539,7 +540,7 @@ page 50010 "Parts Allocation"
         ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
         ItemJournalLine."Line No." := LineNumber;
         ItemJournalLine."Document No." := "Work Order No.";
-        ItemJournalLine."Entry Type" := 4; //Transfer
+        ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Item No." := Item."No.";
         ItemJournalLine.Validate(ItemJournalLine."Item No.");
         ItemJournalLine."Posting Date" := WorkDate;
@@ -777,7 +778,7 @@ page 50010 "Parts Allocation"
         ItemJournalLine.Validate("Journal Template Name", 'TRANSFER');
         ItemJournalLine.Validate("Journal Batch Name", 'TRANSFER');
         ItemJournalLine."Line No." := LineNumber;
-        ItemJournalLine."Entry Type" := 4; //Transfer
+        ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Document No." := PartsSteal."Work Order No.";
         ItemJournalLine.Validate("Item No.", Item2."No.");
         ItemJournalLine."Posting Date" := WorkDate;

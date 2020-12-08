@@ -131,8 +131,8 @@ enum 50010 DetailStep
     value(6; TST) { }
     value(7; REP) { }
     value(8; RET) { }
-    value(9; PNT) { }
-    value(10; MSP) { }
+    value(9; MSP) { }
+    value(10; PNT) { }
     value(11; QC) { }
     value(12; SHP) { }
     value(100; NON) { }

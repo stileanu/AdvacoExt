@@ -231,6 +231,7 @@ page 50003 "Model List"
                             ItemTrackingDocMgt: Codeunit "Item Tracking Doc. Management";
                         begin
                             ItemTrackingDocMgt.ShowItemTrackingForMasterData(3, '', "No.", '', '', '', '');
+                            //ItemTrackingDocMgt.ShowItemTrackingForEntity();(3, '', "No.", '', '', '', '');
                         end;
                     }
                     action("&Warehouse Entries")

@@ -889,6 +889,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         SalesCode: Label 'ADVACO SALES';
         ShipCode: Label 'ADVACO SHIPPING';
         Permiss: Label 'SUPER';
+        ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
     trigger OnOpenPage()
     var
@@ -1099,7 +1100,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                 ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
-                ItemJournalLine."Entry Type" := 4; //Transfer
+                ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
                 ItemJournalLine."Document No." := "Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");

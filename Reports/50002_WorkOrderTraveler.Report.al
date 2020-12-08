@@ -169,16 +169,88 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control235; '___|___|___')
             {
             }
-            column(REG_HOURS_____________; 'REG HOURS :__________')
+            column(REG_HOURS_____________; 'REG HOURS:')
             {
             }
-            column(Instr_1_; Instr[1])
+            column(Instr_1_RCV; Instr_RCV[1])
             {
             }
-            column(Instr_3_; Instr[3])
+            column(Instr_3_RCV; Instr_RCV[3])
             {
             }
-            column(Instr_2_; Instr[2])
+            column(Instr_2_RCV; Instr_RCV[2])
+            {
+            }
+            column(Instr_1_DIS; Instr_DIS[1])
+            {
+            }
+            column(Instr_3_DIS; Instr_DIS[3])
+            {
+            }
+            column(Instr_2_DIS; Instr_DIS[2])
+            {
+            }
+            column(Instr_1_QOT; Instr_DIS[1])
+            {
+            }
+            column(Instr_3_QOT; Instr_DIS[3])
+            {
+            }
+            column(Instr_2_QOT; Instr_DIS[2])
+            {
+            }
+            column(Instr_1_CLN; Instr_DIS[1])
+            {
+            }
+            column(Instr_3_CLN; Instr_DIS[3])
+            {
+            }
+            column(Instr_2_CLN; Instr_DIS[2])
+            {
+            }
+            column(Instr_1_ASM; Instr_DIS[1])
+            {
+            }
+            column(Instr_3_ASM; Instr_DIS[3])
+            {
+            }
+            column(Instr_2_ASM; Instr_DIS[2])
+            {
+            }
+            column(Instr_1_TST; Instr_DIS[1])
+            {
+            }
+            column(Instr_3_TST; Instr_DIS[3])
+            {
+            }
+            column(Instr_2_TST; Instr_DIS[2])
+            {
+            }
+            column(Instr_1_PNT; Instr_DIS[1])
+            {
+            }
+            column(Instr_3_PNT; Instr_DIS[3])
+            {
+            }
+            column(Instr_2_PNT; Instr_DIS[2])
+            {
+            }
+            column(Instr_1_QC; Instr_DIS[1])
+            {
+            }
+            column(Instr_3_QC; Instr_DIS[3])
+            {
+            }
+            column(Instr_2_QC; Instr_DIS[2])
+            {
+            }
+            column(Instr_1_SHP; Instr_DIS[1])
+            {
+            }
+            column(Instr_3_SHP; Instr_DIS[3])
+            {
+            }
+            column(Instr_2_SHP; Instr_DIS[2])
             {
             }
             column(AddNotes; AddNotes)
@@ -202,7 +274,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control243; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control244; 'REG HOURS :__________')
+            column(REG_HOURS______________Control244; 'REG HOURS:')
             {
             }
             column(NOTES____Control65; 'NOTES :')
@@ -238,7 +310,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control252; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control253; 'REG HOURS :__________')
+            column(REG_HOURS______________Control253; 'REG HOURS:')
             {
             }
             column(NOTES____Control66; 'NOTES :')
@@ -274,7 +346,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control275; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control276; 'REG HOURS :__________')
+            column(REG_HOURS______________Control276; 'REG HOURS:')
             {
             }
             column(CLEANING_; 'CLEANING')
@@ -295,7 +367,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control286; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control287; 'REG HOURS :__________')
+            column(REG_HOURS______________Control287; 'REG HOURS:')
             {
             }
             column(NOTES____Control69; 'NOTES :')
@@ -331,7 +403,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control295; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control296; 'REG HOURS :__________')
+            column(REG_HOURS______________Control296; 'REG HOURS:')
             {
             }
             column(NOTES____Control70; 'NOTES :')
@@ -367,7 +439,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control304; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control305; 'REG HOURS :__________')
+            column(REG_HOURS______________Control305; 'REG HOURS:')
             {
             }
             column(NOTES____Control71; 'NOTES :')
@@ -403,7 +475,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control358; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control359; 'REG HOURS :__________')
+            column(REG_HOURS______________Control359; 'REG HOURS:')
             {
             }
             column(RE_TEST_; 'RE-TEST')
@@ -424,7 +496,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control349; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control350; 'REG HOURS :__________')
+            column(REG_HOURS______________Control350; 'REG HOURS:')
             {
             }
             column(MachineBalance; MachineBalance)
@@ -445,7 +517,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control340; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control341; 'REG HOURS :__________')
+            column(REG_HOURS______________Control341; 'REG HOURS:')
             {
             }
             column(PAINT_SHOP_; 'PAINT SHOP')
@@ -466,7 +538,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control313; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control314; 'REG HOURS :__________')
+            column(REG_HOURS______________Control314; 'REG HOURS:')
             {
             }
             column(NOTES____Control72; 'NOTES :')
@@ -502,7 +574,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control322; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control323; 'REG HOURS :__________')
+            column(REG_HOURS______________Control323; 'REG HOURS:')
             {
             }
             column(NOTES____Control73; 'NOTES :')
@@ -538,7 +610,7 @@ report 50002 "Work Order Traveler"
             column(EmptyString_Control331; '___|___|___')
             {
             }
-            column(REG_HOURS______________Control332; 'REG HOURS :__________')
+            column(REG_HOURS______________Control332; 'REG HOURS:')
             {
             }
             column(NOTES____Control74; 'NOTES :')
@@ -646,6 +718,9 @@ report 50002 "Work Order Traveler"
             column(INITIALS_Caption; INITIALS_CaptionLbl)
             {
             }
+            column(INITIALS_Underscore; INITIALS_UnderscoreLbl)
+            {
+            }
             column(INITIALS_Caption_Control238; INITIALS_Caption_Control238Lbl)
             {
             }
@@ -687,7 +762,15 @@ report 50002 "Work Order Traveler"
             }
             column(Carrier_Caption_Control56; Carrier_Caption_Control56Lbl)
             {
-
+            }
+            column(lMachineBalance; lMachineBalance)
+            {
+            }
+            column(lVendRepair; lVendRepair)
+            {
+            }
+            column(lPaintStep; lPaintStep)
+            {
             }
 
             trigger OnAfterGetRecord()
@@ -706,6 +789,34 @@ report 50002 "Work Order Traveler"
                     VendorRepair := '* * * * V E N D O R   R E P A I R * * * *'
                 else
                     Clear(VendorRepair);
+
+                ShipTo := ("Ship To City") + (', ') + ("Ship To State") + ('  ') + ("Ship To Zip Code");
+
+                // set visibility
+                lVendRepair := WorkOrderDetail."Vendor Repair";
+
+                IF (WorkOrderDetail."Income Code" = "Income Code"::Turbo) or
+                   (WorkOrderDetail."Income Code" = "Income Code"::Cryo) or
+                   (WorkOrderDetail."Income Code" = "Income Code"::Electronic) or
+                   lVendRepair then
+                    lPaintStep := true
+                else
+                    lPaintStep := false;
+                lPaintStep := lPaintStep or lVendRepair;
+
+                // Get Instructions 
+                // GetInstructions(WI.Step::RCV, Instr);
+                GetInstructions(WI.Step::RCV, Instr_RCV);
+                GetInstructions(WI.Step::DIS, Instr_DIS);
+                GetInstructions(WI.Step::QOT, Instr_QOT);
+                GetInstructions(WI.Step::CLN, Instr_CLN);
+                GetInstructions(WI.Step::ASM, Instr_ASM);
+                GetInstructions(WI.Step::TST, Instr_TST);
+                TestProcedureSet;
+                MachineBalanceSet(lMachineBalance, MachineBalance);
+                GetInstructions(WI.Step::PNT, Instr_PNT);
+                GetInstructions(WI.Step::QC, Instr_QC);
+                GetInstructions(WI.Step::SHP, Instr_SHP);
             end;
 
             trigger OnPreDataItem()
@@ -735,15 +846,28 @@ report 50002 "Work Order Traveler"
         WOM: Record WorkOrderMaster;
         CreditCardWarning: Text[80];
         ShipTo: Text[50];
+        lPaintStep: Boolean;
+        lVendRepair: Boolean;
         VendorRepair: Text[80];
         WI: Record WorkInstructions;
         LineCount: Integer;
         Length: Integer;
+        lMachineBalance: Boolean;
         Instr: array[50] of Code[250];
+        Instr_RCV: array[50] of Code[250];
+        Instr_DIS: array[50] of Code[250];
+        Instr_QOT: array[50] of Code[250];
+        Instr_CLN: array[50] of Code[250];
+        Instr_ASM: array[50] of Code[250];
+        Instr_TST: array[50] of Code[250];
+        Instr_PNT: array[50] of Code[250];
+        Instr_QC: array[50] of Code[250];
+        Instr_SHP: array[50] of Code[250];
         AddNotes: Code[30];
         TestProcedure: Code[30];
         MachineBalance: Text[50];
         BalanceProcedure: Text[50];
+        ShowOutput_Instruct: Boolean;
         QLTY_FILE_TO_PRINT: Label 'You need to print and attach the QC file <%1> to this Work Order.';
         QLTY_FILE_TO_OPEN: Label 'The linked QC file <%1> was open for you.';
         OpenFile: Record "Open File" temporary;
@@ -773,23 +897,25 @@ report 50002 "Work Order Traveler"
         Part_No__Caption_Control91Lbl: Label 'Part No.:';
         Diagnosis_Caption_Control94Lbl: Label 'Diagnosis:';
         INITIALS_CaptionLbl: Label 'INITIALS:';
-        INITIALS_Caption_Control238Lbl: Label 'INITIALS:_________';
-        INITIALS_Caption_Control247Lbl: Label 'INITIALS:_________';
-        INITIALS_Caption_Control267Lbl: Label 'INITIALS:_________';
-        INITIALS_Caption_Control281Lbl: Label 'INITIALS:_________';
-        INITIALS_Caption_Control290Lbl: Label 'INITIALS:_________';
-        INITIALS_Caption_Control299Lbl: Label 'INITIALS:_________';
-        INITIALS_Caption_Control353Lbl: Label 'INITIALS:_________';
-        INITIALS_Caption_Control344Lbl: Label 'INITIALS:_________';
-        INITIALS_Caption_Control335Lbl: Label 'INITIALS:_________';
-        INITIALS_Caption_Control308Lbl: Label 'INITIALS:_________';
-        INITIALS_Caption_Control317Lbl: Label 'INITIALS:_________';
-        INITIALS_Caption_Control326Lbl: Label 'INITIALS:_________';
+        INITIALS_UnderscoreLbl: Label '_________';
+        INITIALS_Caption_Control238Lbl: Label 'INITIALS:';
+        INITIALS_Caption_Control247Lbl: Label 'INITIALS:';
+        INITIALS_Caption_Control267Lbl: Label 'INITIALS:';
+        INITIALS_Caption_Control281Lbl: Label 'INITIALS:';
+        INITIALS_Caption_Control290Lbl: Label 'INITIALS:';
+        INITIALS_Caption_Control299Lbl: Label 'INITIALS:';
+        INITIALS_Caption_Control353Lbl: Label 'INITIALS:';
+        INITIALS_Caption_Control344Lbl: Label 'INITIALS:';
+        INITIALS_Caption_Control335Lbl: Label 'INITIALS:';
+        INITIALS_Caption_Control308Lbl: Label 'INITIALS:';
+        INITIALS_Caption_Control317Lbl: Label 'INITIALS:';
+        INITIALS_Caption_Control326Lbl: Label 'INITIALS:';
         Shipping_Acct_CaptionLbl: Label 'Shipping Acct:';
         Carrier_Caption_Control56Lbl: Label 'Carrier:';
 
 
-    procedure GetInstructionPerStep(StepCode: Option REC,DIS,QOT,"B-O",CLN,ASM,TST,REP,RET,MSH,PNT,QC,SHP; CustCode: Code[20]; ShpToCode: Code[10]; ModelNo: Code[20]; CustPartNo: Code[20])
+    //procedure GetInstructionPerStep(StepCode: Option REC,DIS,QOT,"B-O",CLN,ASM,TST,REP,RET,MSH,PNT,QC,SHP; CustCode: Code[20]; ShpToCode: Code[10]; ModelNo: Code[20]; CustPartNo: Code[20])
+    procedure GetInstructionPerStep(StepCode: Enum DetailStep; CustCode: Code[20]; ShpToCode: Code[10]; ModelNo: Code[20]; CustPartNo: Code[20]; var Instruc: array[50] of Code[250])
     var
         QCFileName: Text[120];
     begin
@@ -808,13 +934,13 @@ report 50002 "Work Order Traveler"
             Length := StrLen(WI.Instruction);
             if Length > 130 then begin
                 LineCount := LineCount + 1;
-                Instr[LineCount] := CopyStr(WI.Instruction, 1, 130);
+                Instruc[LineCount] := CopyStr(WI.Instruction, 1, 130);
                 LineCount := LineCount + 1;
-                Instr[LineCount] := CopyStr(WI.Instruction, 131, 120);
+                Instruc[LineCount] := CopyStr(WI.Instruction, 131, 120);
             end else
                 if Length <> 0 then begin
                     LineCount := LineCount + 1;
-                    Instr[LineCount] := WI.Instruction;
+                    Instruc[LineCount] := WI.Instruction;
                 end;
             if WI."Part Quality Ctrl Instructions" <> '' then begin
                 QCFileName := GetQCFileName(WI."Part Quality Ctrl Instructions");
@@ -826,8 +952,8 @@ report 50002 "Work Order Traveler"
             end;
         end;
         WI.Reset;
-        // Compact Instr vector
-        CompressArray(Instr);
+        // Compact Instruc vector
+        CompressArray(Instruc);
         //MESSAGE('Moves %1',NoOfMoves)
     end;
 
@@ -875,6 +1001,143 @@ report 50002 "Work Order Traveler"
         end;
 
         exit(true);
+    end;
+
+    procedure GetInstructions(DetStep: Enum DetailStep; var WInstr: array[50] of Code[250])
+    var
+        tInstr: Text[250];
+    begin
+
+        CLEAR(LineCount);
+        CLEAR(Length);
+        CLEAR(wInstr);
+
+        IF WODInstructions(DetStep, tInstr) THEN BEGIN
+            LineCount := LineCount + 1;
+            wInstr[LineCount] := tInstr;
+        END;
+
+        // 11/02/2010 Start
+        // Step,Model
+        GetInstructionPerStep(DetStep, '', '', WorkOrderDetail."Model No.", '', WInstr);
+
+        // Step,Customer
+        GetInstructionPerStep(DetStep, WorkOrderDetail."Customer ID", '', '', '', WInstr);
+
+        // Step,Customer,Part No.
+        IF (WorkOrderDetail."Customer Part No." <> '') THEN
+            GetInstructionPerStep(DetStep, WorkOrderDetail."Customer ID", '', '', WorkOrderDetail."Customer Part No.", WInstr);
+
+        // Step,Customer,Model
+        GetInstructionPerStep(DetStep, WorkOrderDetail."Customer ID", '', WorkOrderDetail."Model No.", '', WInstr);
+
+        // Step,Customer,ShipTo
+        GetInstructionPerStep(DetStep, WorkOrderDetail."Customer ID", WOM."Ship To Code", '', '', WInstr);
+
+        // Step,Customer,ShipTo,Model
+        GetInstructionPerStep(DetStep, WorkOrderDetail."Customer ID", WOM."Ship To Code", WorkOrderDetail."Model No.", '', WInstr);
+        // 11/02/2010 End
+
+        IF WInstr[4] <> '' THEN
+            AddNotes := 'Check Computer'
+        else
+            AddNotes := '';
+
+        //lShowInstr := NOT (WInstr[1] = '');
+    end;
+
+    procedure WODInstructions(DStep: Enum DetailStep; var tInstr: Text[250]): Boolean
+    begin
+        case DStep of
+            DStep::RCV:
+                if WorkOrderDetail.RCV <> '' then begin
+                    tInstr := WorkOrderDetail.RCV;
+                    exit(true);
+                end;
+            DStep::DIS:
+                if WorkOrderDetail.DIS <> '' then begin
+                    tInstr := WorkOrderDetail.DIS;
+                    exit(true);
+                end;
+            DStep::QOT:
+                if WorkOrderDetail.QOT <> '' then begin
+                    tInstr := WorkOrderDetail.QOT;
+                    exit(true);
+                end;
+            DStep::CLN:
+                if WorkOrderDetail.CLN <> '' then begin
+                    tInstr := WorkOrderDetail.CLN;
+                    exit(true);
+                end;
+            DStep::ASM:
+                if WorkOrderDetail.ASM <> '' then begin
+                    tInstr := WorkOrderDetail.ASM;
+                    exit(true);
+                end;
+            DStep::TST:
+                if WorkOrderDetail.TST <> '' then begin
+                    tInstr := WorkOrderDetail.TST;
+                    exit(true);
+                end;
+            ///
+            DStep::PNT:
+                if WorkOrderDetail.PNT <> '' then begin
+                    tInstr := WorkOrderDetail.PNT;
+                    exit(true);
+                end;
+            DStep::QC:
+                if WorkOrderDetail.QC <> '' then begin
+                    tInstr := WorkOrderDetail.QC;
+                    exit(true);
+                end;
+            DStep::SHP:
+                if WorkOrderDetail.SHP <> '' then begin
+                    tInstr := WorkOrderDetail.SHP;
+                    exit(true);
+                end;
+            else
+                exit(false);
+        end;
+    end;
+
+    procedure MachineBalanceSet(var lMachineBalance: Boolean; var MachBalance: Text[30])
+    begin
+
+        lMachineBalance := NOT (WorkOrderDetail."Vendor Repair");
+        IF (WorkOrderDetail."Income Code" = IncomeCode::CRYO) OR
+           (WorkOrderDetail."Income Code" = IncomeCode::ELECTRONIC) then
+            lMachineBalance := false
+        else begin
+            IF (WorkOrderDetail."Income Code" <> IncomeCode::TURBO) then begin
+                MachBalance := 'MACHINE SHOP';
+                BalanceProcedure := '';
+            end else begin
+                MachBalance := 'BALANCING';
+                BalanceProcedure := 'ADVACO-GMP-2005..2006';
+            end;
+        end;
+    end;
+
+    procedure TestProcedureSet()
+    begin
+
+        IF (WorkOrderDetail."Income Code" = IncomeCode::Turbo) THEN
+            TestProcedure := 'ADVACO-GTP-1007';
+
+        IF (WorkOrderDetail."Income Code" = IncomeCode::Cryo) THEN
+            TestProcedure := 'ADVACO-GTP-1004';
+
+        IF (WorkOrderDetail."Income Code" = IncomeCode::Electronic) THEN
+            TestProcedure := 'ADVACO-GTP-1008';
+
+        IF (WorkOrderDetail."Income Code" = IncomeCode::Service) THEN
+            TestProcedure := 'ADVACO-GTP-1002';
+
+        IF (WorkOrderDetail."Income Code" = IncomeCode::Sales) THEN
+            TestProcedure := 'ADVACO-GTP-1002';
+
+        IF (WorkOrderDetail."Income Code" = IncomeCode::Dry) THEN
+            TestProcedure := 'ADVACO-GTP-1002';
     end;
 }
 

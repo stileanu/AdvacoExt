@@ -12,8 +12,8 @@
             "serverInstance": "ADVBC160",
             "port": 16069,
             "authentication": "Windows",
-            //"schemaUpdateMode": "Synchronize",
-            "schemaUpdateMode": "ForceSync",
+            "schemaUpdateMode": "Synchronize",
+            //"schemaUpdateMode": "ForceSync",
             "breakOnError": true,
             "breakOnRecordWrite": false,
             "launchBrowser": true,
@@ -36,10 +36,10 @@
             "tenant": "advaco.com",
             //"sandboxName": "AdvacoSandbox",
             "environmentType": "Sandbox",
-            //"environmentName": "AdvacoSandboxDev2",
-            "environmentName": "AdvacoSandbox",
-            "schemaUpdateMode": "Synchronize",
-            //"schemaUpdateMode": "ForceSync",
+            "environmentName": "AdvacoSandboxDev2",
+            //"environmentName": "AdvacoSandbox",
+            //"schemaUpdateMode": "Synchronize",
+            "schemaUpdateMode": "ForceSync",
         }
         
         
