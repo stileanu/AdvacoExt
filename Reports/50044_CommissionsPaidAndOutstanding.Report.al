@@ -1,252 +1,253 @@
 report 50044 "Commissions Paid & Outstanding"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './50044_Commissions Paid & Outstanding.Rpt.rdl';
+    RDLCLayout = './Reports/50044_CommissionsPaidAndOutstanding.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
     dataset
     {
-        dataitem(Customer;Customer)
+        dataitem(Customer; Customer)
         {
-            DataItemTableView = SORTING("No.") ORDER(Ascending) WHERE("No."=FILTER('ADV-01'));
+            DataItemTableView = SORTING("No.") ORDER(Ascending) WHERE("No." = FILTER('ADV-01'));
             RequestFilterFields = "Date Filter";
-            column(Customer_Name;Customer.Name)
+            column(Customer_Name; Customer.Name)
             {
             }
-            column(Customer_Address;Address)
+            column(Customer_Address; Address)
             {
             }
-            column(City__________State__________ZIP_Code_;City + ', ' + County + ' ' + "Post Code")
+            column(City__________State__________ZIP_Code_; City + ', ' + County + ' ' + "Post Code")
             {
             }
-            column(Commissions_Statement_;'Commissions Statement')
+            column(Commissions_Statement_; 'Commissions Statement')
             {
             }
-            column(FORMAT_TODAY_0_4_;Format(Today,0,4))
+            column(FORMAT_TODAY_0_4_; Format(Today, 0, 4))
             {
             }
-            column(USERID;UserId)
+            column(USERID; UserId)
             {
             }
-            column(TIME;Time)
+            column(TIME; Time)
             {
             }
-            column(PeriodText;PeriodText)
+            column(PeriodText; PeriodText)
             {
             }
-            column(Total_;'Total')
+            column(Total_; 'Total')
             {
             }
-            column(Sales_Department_;'Sales Department')
+            column(Sales_Department_; 'Sales Department')
             {
             }
-            column(Service_Department_;'Service Department')
+            column(Service_Department_; 'Service Department')
             {
             }
-            column(ServiceCommission;ServiceCommission)
+            column(ServiceCommission; ServiceCommission)
             {
             }
-            column(SalesCommission;SalesCommission)
+            column(SalesCommission; SalesCommission)
             {
             }
-            column(ServiceCommission___SalesCommission;ServiceCommission + SalesCommission)
+            column(ServiceCommission___SalesCommission; ServiceCommission + SalesCommission)
             {
             }
-            column(Paid_Commissions_;'Paid Commissions')
+            column(Paid_Commissions_; 'Paid Commissions')
             {
             }
-            column(Open_Commissions_;'Open Commissions')
+            column(Open_Commissions_; 'Open Commissions')
             {
             }
-            column(OpenService;OpenService)
+            column(OpenService; OpenService)
             {
             }
-            column(OpenSales;OpenSales)
+            column(OpenSales; OpenSales)
             {
             }
-            column(OpenCommission;OpenCommission)
+            column(OpenCommission; OpenCommission)
             {
             }
-            column(Total_Commissions_;'Total Commissions')
+            column(Total_Commissions_; 'Total Commissions')
             {
             }
-            column(OpenService___ServiceCommission;OpenService + ServiceCommission)
+            column(OpenService___ServiceCommission; OpenService + ServiceCommission)
             {
             }
-            column(OpenSales___SalesCommission;OpenSales + SalesCommission)
+            column(OpenSales___SalesCommission; OpenSales + SalesCommission)
             {
             }
-            column(OpenCommission__ServiceCommission___SalesCommission;OpenCommission +ServiceCommission + SalesCommission)
+            column(OpenCommission__ServiceCommission___SalesCommission; OpenCommission + ServiceCommission + SalesCommission)
             {
             }
-            column(Field_Service_;'Field Service')
+            column(Field_Service_; 'Field Service')
             {
             }
-            column(FieldServiceCommission;FieldServiceCommission)
+            column(FieldServiceCommission; FieldServiceCommission)
             {
             }
-            column(OpenFieldService;OpenFieldService)
+            column(OpenFieldService; OpenFieldService)
             {
             }
-            column(OpenFieldService___FieldServiceCommission;OpenFieldService + FieldServiceCommission)
+            column(OpenFieldService___FieldServiceCommission; OpenFieldService + FieldServiceCommission)
             {
             }
-            column(g;g)
+            column(g; g)
             {
             }
-            column(i;i)
+            column(i; i)
             {
             }
-            column(l;l)
+            column(l; l)
             {
             }
-            column(s;s)
+            column(s; s)
             {
             }
-            column(te;te)
+            column(te; te)
             {
             }
-            column(tr;tr)
+            column(tr; tr)
             {
             }
-            column(ts;ts)
+            column(ts; ts)
             {
             }
-            column(va;va)
+            column(va; va)
             {
             }
-            column(vj;vj)
+            column(vj; vj)
             {
             }
-            column(g_;'g')
+            column(g_; 'g')
             {
             }
-            column(i_;'i')
+            column(i_; 'i')
             {
             }
-            column(l_;'l')
+            column(l_; 'l')
             {
             }
-            column(s_;'s')
+            column(s_; 's')
             {
             }
-            column(te_;'te')
+            column(te_; 'te')
             {
             }
-            column(tr_;'tr')
+            column(tr_; 'tr')
             {
             }
-            column(ts_;'ts')
+            column(ts_; 'ts')
             {
             }
-            column(va_;'va')
+            column(va_; 'va')
             {
             }
-            column(vj_;'vj')
+            column(vj_; 'vj')
             {
             }
-            column(CurrReport_PAGENOCaption;CurrReport_PAGENOCaptionLbl)
+            column(CurrReport_PAGENOCaption; CurrReport_PAGENOCaptionLbl)
             {
             }
-            column(Paid_CommissionsCaption;Paid_CommissionsLbl)
+            column(Paid_CommissionsCaption; Paid_CommissionsLbl)
             {
             }
-            column(Open_CommissionsCaption;Open_CommissionsLbl)
+            column(Open_CommissionsCaption; Open_CommissionsLbl)
             {
             }
-            column(Total_CommissionsCaption;Total_CommissionsLbl)
+            column(Total_CommissionsCaption; Total_CommissionsLbl)
             {
             }
-            column(Customer_No_;"No.")
+            column(Customer_No_; "No.")
             {
             }
-            
+
             trigger OnAfterGetRecord()
             begin
                 if UserId = 'HARLEN' then
-                  ShowReps := true
+                    ShowReps := true
                 else
-                  ShowReps := false;
-                Message('Customer Name is %1 and No. is %2',Customer.Name,Customer."No.");
+                    ShowReps := false;
+                Message('Customer Name is %1 and No. is %2', Customer.Name, Customer."No.");
 
                 // Search for open g/l entries
                 GLEntry.Reset;
-                GLEntry.SetCurrentKey("Include for Commissions",Rep,"Document No.","Posting Date");
-                GLEntry.SetRange("Include for Commissions",true);
-                GLEntry.SetFilter(GLEntry.Rep,'<>%1','');
-                GLEntry.SetFilter(Amount,'<>%1',0);
+                GLEntry.SetCurrentKey("Include for Commissions", Rep, "Document No.", "Posting Date");
+                GLEntry.SetRange("Include for Commissions", true);
+                GLEntry.SetFilter(GLEntry.Rep, '<>%1', '');
+                GLEntry.SetFilter(Amount, '<>%1', 0);
 
-                if GLEntry.Find('-') then repeat
-                  GLEntry.CalcFields(Open);
-                  Clear(DateClosed);
-                  // Analyze paid Commissions for whether paid previously to current period vs paid in current period.
-                  if not GLEntry.Open then begin
-                    // Find Date Closed
-                    CustLedgerEntry.Reset;
-                    CustLedgerEntry.SetCurrentKey("Document Type","Document No.","Customer No.");
-                    CustLedgerEntry.SetRange("Document Type",GLEntry."Document Type");
-                    CustLedgerEntry.SetRange("Document No.",GLEntry."Document No.");
-                    CustLedgerEntry.SetRange("Customer No.",GLEntry."Source No.");
-                    CustLedgerEntry.Find('-');
-                    if CustLedgerEntry."Closed at Date" <> 0D then
-                      DateClosed := CustLedgerEntry."Closed at Date"
-                    else begin
-                      CustLedgerEntry2.Reset;
-                      CustLedgerEntry2.SetCurrentKey("Closed by Entry No.");
-                      CustLedgerEntry2.SetRange("Closed by Entry No.",CustLedgerEntry."Entry No.");
-                      CustLedgerEntry2.Find('-');
-                      DateClosed := CustLedgerEntry2."Closed at Date";
-                    end;
-                    // Update either paid-to-date or paid via this statement.
-                    if (DateClosed >= FromPeriod) and (DateClosed <= ThruPeriod) then begin
-                      GetRep;
-                      CurrentDueTotalAmount := CurrentDueTotalAmount + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-                      //Determine Commission Department
-                      if GLEntry."Commission Dept. Code" = 'SERVICE' then
-                        ServiceCommission := ServiceCommission +  -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-                      if GLEntry."Commission Dept. Code" = 'SALES' then
-                        SalesCommission := SalesCommission +  -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-                      if GLEntry."Commission Dept. Code" = 'FIELDSERVICE' then
-                        FieldServiceCommission := FieldServiceCommission +  -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)))
-                ;
+                if GLEntry.Find('-') then
+                    repeat
+                        GLEntry.CalcFields(Open);
+                        Clear(DateClosed);
+                        // Analyze paid Commissions for whether paid previously to current period vs paid in current period.
+                        if not GLEntry.Open then begin
+                            // Find Date Closed
+                            CustLedgerEntry.Reset;
+                            CustLedgerEntry.SetCurrentKey("Document Type", "Document No.", "Customer No.");
+                            CustLedgerEntry.SetRange("Document Type", GLEntry."Document Type");
+                            CustLedgerEntry.SetRange("Document No.", GLEntry."Document No.");
+                            CustLedgerEntry.SetRange("Customer No.", GLEntry."Source No.");
+                            CustLedgerEntry.Find('-');
+                            if CustLedgerEntry."Closed at Date" <> 0D then
+                                DateClosed := CustLedgerEntry."Closed at Date"
+                            else begin
+                                CustLedgerEntry2.Reset;
+                                CustLedgerEntry2.SetCurrentKey("Closed by Entry No.");
+                                CustLedgerEntry2.SetRange("Closed by Entry No.", CustLedgerEntry."Entry No.");
+                                CustLedgerEntry2.Find('-');
+                                DateClosed := CustLedgerEntry2."Closed at Date";
+                            end;
+                            // Update either paid-to-date or paid via this statement.
+                            if (DateClosed >= FromPeriod) and (DateClosed <= ThruPeriod) then begin
+                                GetRep;
+                                CurrentDueTotalAmount := CurrentDueTotalAmount + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+                                //Determine Commission Department
+                                if GLEntry."Commission Dept. Code" = 'SERVICE' then
+                                    ServiceCommission := ServiceCommission + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+                                if GLEntry."Commission Dept. Code" = 'SALES' then
+                                    SalesCommission := SalesCommission + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+                                if GLEntry."Commission Dept. Code" = 'FIELDSERVICE' then
+                                    FieldServiceCommission := FieldServiceCommission + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)))
+                            ;
 
-                    end;
+                            end;
 
-                    if (DateClosed > ThruPeriod) and (GLEntry."Posting Date" <= ThruPeriod) then begin
-                      GetRep;
-                      REPComm;
-                      OpenCommission := OpenCommission + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-                      //Determine Commission Department
-                      if GLEntry."Commission Dept. Code" = 'SERVICE' then
-                        OpenService := OpenService +  -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-                      if GLEntry."Commission Dept. Code" = 'SALES' then
-                        OpenSales := OpenSales +  -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-                      if GLEntry."Commission Dept. Code" = 'FIELDSERVICE' then
-                        OpenFieldService := OpenFieldService +  -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-                    end;
-                  end;
-                  // Calculate all Open Commissions Due by G/L Account
-                  if (GLEntry.Open) and (GLEntry."Posting Date" <= ThruPeriod) then begin
-                    GetRep;
-                    REPComm;
-                    OpenCommission := OpenCommission + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-                    //Determine Commission Department
-                    if GLEntry."Commission Dept. Code" = 'SERVICE' then
-                      OpenService := OpenService +  -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-                    if GLEntry."Commission Dept. Code" = 'SALES' then
-                      OpenSales := OpenSales +  -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-                    if GLEntry."Commission Dept. Code" = 'FIELDSERVICE' then
-                      OpenFieldService := OpenFieldService +  -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+                            if (DateClosed > ThruPeriod) and (GLEntry."Posting Date" <= ThruPeriod) then begin
+                                GetRep;
+                                REPComm;
+                                OpenCommission := OpenCommission + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+                                //Determine Commission Department
+                                if GLEntry."Commission Dept. Code" = 'SERVICE' then
+                                    OpenService := OpenService + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+                                if GLEntry."Commission Dept. Code" = 'SALES' then
+                                    OpenSales := OpenSales + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+                                if GLEntry."Commission Dept. Code" = 'FIELDSERVICE' then
+                                    OpenFieldService := OpenFieldService + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+                            end;
+                        end;
+                        // Calculate all Open Commissions Due by G/L Account
+                        if (GLEntry.Open) and (GLEntry."Posting Date" <= ThruPeriod) then begin
+                            GetRep;
+                            REPComm;
+                            OpenCommission := OpenCommission + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+                            //Determine Commission Department
+                            if GLEntry."Commission Dept. Code" = 'SERVICE' then
+                                OpenService := OpenService + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+                            if GLEntry."Commission Dept. Code" = 'SALES' then
+                                OpenSales := OpenSales + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+                            if GLEntry."Commission Dept. Code" = 'FIELDSERVICE' then
+                                OpenFieldService := OpenFieldService + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
 
-                  end;
-                until GLEntry.Next = 0;
+                        end;
+                    until GLEntry.Next = 0;
             end;
 
             trigger OnPreDataItem()
             begin
                 FromPeriod := GetRangeMin("Date Filter");
                 ThruPeriod := GetRangeMax("Date Filter");
-                PeriodText := 'Current Period from ' + Format(FromPeriod,0,4) + ' to ' + Format(ThruPeriod,0,4);
+                PeriodText := 'Current Period from ' + Format(FromPeriod, 0, 4) + ' to ' + Format(ThruPeriod, 0, 4);
             end;
         }
     }
@@ -303,33 +304,34 @@ report 50044 "Commissions Paid & Outstanding"
         Paid_CommissionsLbl: Label 'PAID COMMISSIONS';
         Total_CommissionsLbl: Label 'TOTAL COMMISSIONS';
         Open_CommissionsLbl: Label 'OPEN COMMISSIONS';
+
     procedure GetRep()
     begin
         if "Outside Sales Reps".Get(GLEntry.Rep) then
-          OK := true;
+            OK := true;
     end;
 
     procedure REPComm()
     begin
         case GLEntry.Rep of
-          'GLT':
-            g := g + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-          'IES':
-            i := i + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-          'LIG':
-            l := l + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-          'SCH':
-            s := s +  -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-          'TEL':
-            te := te + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-          'TRI':
-            tr := tr + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-          'TST':
-            ts := ts + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-          'VAC':
-            va := va + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
-          'VJR':
-            vj := vj + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+            'GLT':
+                g := g + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+            'IES':
+                i := i + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+            'LIG':
+                l := l + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+            'SCH':
+                s := s + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+            'TEL':
+                te := te + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+            'TRI':
+                tr := tr + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+            'TST':
+                ts := ts + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+            'VAC':
+                va := va + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
+            'VJR':
+                vj := vj + -(Round(GLEntry.Amount * ("Outside Sales Reps"."Commission %" / 100)));
         end;
     end;
 }

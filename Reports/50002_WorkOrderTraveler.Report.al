@@ -190,67 +190,67 @@ report 50002 "Work Order Traveler"
             column(Instr_2_DIS; Instr_DIS[2])
             {
             }
-            column(Instr_1_QOT; Instr_DIS[1])
+            column(Instr_1_QOT; Instr_QOT[1])
             {
             }
-            column(Instr_3_QOT; Instr_DIS[3])
+            column(Instr_3_QOT; Instr_QOT[3])
             {
             }
-            column(Instr_2_QOT; Instr_DIS[2])
+            column(Instr_2_QOT; Instr_QOT[2])
             {
             }
-            column(Instr_1_CLN; Instr_DIS[1])
+            column(Instr_1_CLN; Instr_CLN[1])
             {
             }
-            column(Instr_3_CLN; Instr_DIS[3])
+            column(Instr_3_CLN; Instr_CLN[3])
             {
             }
-            column(Instr_2_CLN; Instr_DIS[2])
+            column(Instr_2_CLN; Instr_CLN[2])
             {
             }
-            column(Instr_1_ASM; Instr_DIS[1])
+            column(Instr_1_ASM; Instr_ASM[1])
             {
             }
-            column(Instr_3_ASM; Instr_DIS[3])
+            column(Instr_3_ASM; Instr_ASM[3])
             {
             }
-            column(Instr_2_ASM; Instr_DIS[2])
+            column(Instr_2_ASM; Instr_ASM[2])
             {
             }
-            column(Instr_1_TST; Instr_DIS[1])
+            column(Instr_1_TST; Instr_TST[1])
             {
             }
-            column(Instr_3_TST; Instr_DIS[3])
+            column(Instr_3_TST; Instr_TST[3])
             {
             }
-            column(Instr_2_TST; Instr_DIS[2])
+            column(Instr_2_TST; Instr_TST[2])
             {
             }
-            column(Instr_1_PNT; Instr_DIS[1])
+            column(Instr_1_PNT; Instr_PNT[1])
             {
             }
-            column(Instr_3_PNT; Instr_DIS[3])
+            column(Instr_3_PNT; Instr_PNT[3])
             {
             }
-            column(Instr_2_PNT; Instr_DIS[2])
+            column(Instr_2_PNT; Instr_PNT[2])
             {
             }
-            column(Instr_1_QC; Instr_DIS[1])
+            column(Instr_1_QC; Instr_QC[1])
             {
             }
-            column(Instr_3_QC; Instr_DIS[3])
+            column(Instr_3_QC; Instr_QC[3])
             {
             }
-            column(Instr_2_QC; Instr_DIS[2])
+            column(Instr_2_QC; Instr_QC[2])
             {
             }
-            column(Instr_1_SHP; Instr_DIS[1])
+            column(Instr_1_SHP; Instr_SHP[1])
             {
             }
-            column(Instr_3_SHP; Instr_DIS[3])
+            column(Instr_3_SHP; Instr_SHP[3])
             {
             }
-            column(Instr_2_SHP; Instr_DIS[2])
+            column(Instr_2_SHP; Instr_SHP[2])
             {
             }
             column(AddNotes; AddNotes)

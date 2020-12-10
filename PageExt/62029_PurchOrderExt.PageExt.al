@@ -77,11 +77,21 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
         }
     }
 
+    var
+        AcctCode: Label 'ADVACO ACCOUNTING';
+        SalesCode: Label 'ADVACO SALES';
+        SysFunctions: Codeunit systemFunctionalLibrary;
+        Permiss: Label 'SUPER';
+        PurchCode: Label 'ADVACO PURCHASING';
+        ShipCode: Label 'ADVACO SHIPPING';
+        txtAnswer: Text[120];
+
     trigger OnOpenPage()
     var
         AccessControl: Record "Access Control";
         Ok: Boolean;
         User: Record User;
+
     begin
         ///--! Permission level check code.
         User.Get(UserSecurityId);
@@ -98,22 +108,33 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
         ///--!
         // Add the role for Accounting!
         IF User.FindFirst() THEN begin
+            /*
+                        AccessControl.setrange("User Security ID", User."User Security ID");
+                        IF AccessControl.find('-') THEN begin
+                            repeat
+                                ///--! To add what role is for accounting?? 
+                                //if (AccessControl."Role ID" = 'SUPER') or (AccessControl."Role ID" = 'ADV-ACCT') THEN                
+                                if AccessControl."Role ID" = 'SUPER' THEN
+                                    OK := FALSE;
 
-            AccessControl.setrange("User Security ID", User."User Security ID");
-            IF AccessControl.find('-') THEN begin
-                repeat
-                    ///--! To add what role is for accounting?? 
-                    //if (AccessControl."Role ID" = 'SUPER') or (AccessControl."Role ID" = 'ADV-ACCT') THEN                
-                    if AccessControl."Role ID" = 'SUPER' THEN
-                        OK := FALSE;
-                until AccessControl.next = 0;
+                            until AccessControl.next = 0;
 
-            end;
+                        end;
+
+             */
+            lAccGroup := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
+            if not lAccGroup then
+                lAccGroup := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+            if not lpurchGroup then
+                lpurchGroup := SysFunctions.getIfSingleGroupId(PurchCode, txtAnswer);
+            if not laccGroup and not lPurchGroup then
+                lShipGroup := SysFunctions.getIfSingleGroupId(ShipCode, txtAnswer);
         END;
         IF Ok THEN
-            ERROR('This Purchase Order Card is for Accounting Only')
-        else
-            lAccGroup := true;
+            IF NOT (lAccGroup) AND not (lPurchGroup) and not (lShipGroup) THEN
+                ERROR('This Purchase Order Card is for Accounting Only')
+            else
+                lAccGroup := true;
         //lAccGroup := false;
         //lSalesGroup := true;
         //lShipGroup := true;

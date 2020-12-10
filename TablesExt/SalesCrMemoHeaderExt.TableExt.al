@@ -70,7 +70,7 @@ Tableextension 50117 SalesCrMemoHeaderExt extends "Sales Cr.Memo Header"
         {
             Caption = 'Freight Include in Price';
         }
-        field(50020; "Commision Amount"; Decimal)
+        field(50050; "Commision Amount"; Decimal)
         {
             Caption = 'Commision Amount';
         }

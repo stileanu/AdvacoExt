@@ -82,11 +82,13 @@ Tableextension 50108 UserSetupExt Extends "User Setup"
             Caption = 'Inventory Management Location';
         }
     }
-    procedure GetParamStatus(var UserID: Guid; ParamID: Integer): Boolean
+    procedure GetParamStatus(UserID: Guid; ParamID: Integer): Boolean
 
     var
         ADV001: Label 'Msg for Programmers: Incorrect Function ID.';
         ADV002: Label 'Msg for Programmers: Incorrect User ID.';
+        UserSetup: Record "User Setup";
+        UserRec: Record User;
 
     begin
 
@@ -97,21 +99,24 @@ Tableextension 50108 UserSetupExt Extends "User Setup"
         //  3 - Allow WI Deletion
         //  Return current value of field.
 
-        IF NOT GET(UserID) THEN
+        UserSetup.Reset();
+        IF NOT UserRec.GET(UserID) THEN
             ERROR(ADV002);
+        UserSetup.Get(UserRec."User Name");
+
         CASE ParamID OF
             1:
-                EXIT("Register Time");
+                EXIT(UserSetup."Register Time");
             2:
-                EXIT("Allow WI Blocking");
+                EXIT(UserSetup."Allow WI Blocking");
             3:
-                EXIT("Allow WI Deletion");
+                EXIT(UserSetup."Allow WI Deletion");
             ELSE
                 ERROR(ADV001);
         END;
     end;
 
-    procedure SetParamStatus(var UserID: Guid; var ParamID: Integer; var setvalue: Boolean): Boolean
+    procedure SetParamStatus(UserID: Guid; var ParamID: Integer; var setvalue: Boolean): Boolean
     var
         UserRec: Record "User Setup";
         PrevValue: Boolean;

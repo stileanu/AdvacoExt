@@ -811,7 +811,9 @@ page 50002 "Work Order Detail"
 
                 trigger OnAction()
                 begin
-                    REPORT.RunModal(50002);
+                    WOD.SetRange(WOD."Work Order No.", "Work Order No.");
+                    IF WOD.FindFirst() then;
+                    REPORT.RunModal(50002, true, false, WOD);
                 end;
             }
         }
@@ -915,11 +917,22 @@ page 50002 "Work Order Detail"
     end;
 
     trigger OnOpenPage()
+    var
+        AccessControl: Record "Access Control";
+        User: Record User;
+        AcctCode: Label 'ADVACO ACCOUNTING';
+        SalesCode: Label 'ADVACO SALES';
+        PurchCode: Label 'ADV-PURMNGR';
+        Permiss: Label 'SUPER';
+        txtAnswer: Text[120];
+
+
     begin
-        ok2 := true;
+        //ok2 := true;
         purmngr := true;
 
-        //--!
+        ///--!
+        /*
         Member.CalcFields("User Name");
         Member.SetRange(Member."User Name", UserId);
         if Member.Find('-') then begin
@@ -936,6 +949,36 @@ page 50002 "Work Order Detail"
             InstallEnabled := false;
             TravelerEnabled := false;
         end;
+        */
+        // initialize group flag
+        lAccGroup := false;
+        //lSalesGroup := false;
+        //lShipGroup := false;
+
+        ///--! Permission level check code. 
+        User.Get(UserSecurityId);
+        Ok := true;
+        //User.SetRange("User Security ID", User."User Security ID");
+        //Member.SetRange("User Security ID", User."User Security ID");
+
+        lAccGroup := (SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer) or
+                        SysFunctions.getIfSingleGroupId(SalesCode, txtAnswer));
+        lAccGroup := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+
+        //if not lAccGroup then
+        //    lAccGroup := SysFunctions.getIfSingleRoleId(PurchCode, txtAnswer);
+        //if not lAccGroup then
+        //    lAccGroup := SysFunctions.getIfSingleRoleId(SalesCode, txtAnswer);
+        if purmngr then
+            purmngr := not (SysFunctions.getIfSingleRoleId(PurchCode, txtAnswer));
+
+        //if not (lAccGroup or lSalesGroup) then
+        //   lShipGroup := SysFunctions.getIfSingleGroupId(ShipCode, txtAnswer);
+        if lAccGroup then begin
+            InstallEnabled := true;
+            TravelerEnabled := true;
+        end;
+
     end;
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
@@ -958,6 +1001,8 @@ page 50002 "Work Order Detail"
     end;
 
     var
+        lAccGroup: Boolean;
+        SysFunctions: Codeunit systemFunctionalLibrary;
         WorkOrderDetail2: Record WorkOrderDetail;
         WOM: Record WorkOrderMaster;
         OK: Boolean;

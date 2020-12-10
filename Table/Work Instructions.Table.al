@@ -19,6 +19,8 @@ table 50004 WorkInstructions
     //   Added filter for WI on Blocked field to do not show Blocked WI
 
     // To find commented code, use pattern <//--!>
+    DrillDownPageId = "Work Order Instruction List";
+    LookupPageId = "Work Order Instruction List";
 
     fields
     {

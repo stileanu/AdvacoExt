@@ -81,11 +81,15 @@ page 50039 "Work Order Instruction List"
     }
 
     trigger OnOpenPage()
+    var
+        UserSecureID: Guid;
     begin
         // 04/01/2013 Start
         // set FILTERGROUP based on permissions
-        UserSetup.GET(UserSecurityId);
-        IF (NOT UserSetup.GetParamStatus(User."User Security ID", 2)) AND (NOT UserSetup.GetParamStatus(User."User Security ID", 3)) THEN BEGIN
+        //UserSetup.GET(UserSecurityId);
+        UserSecureID := UserSecurityId();
+        //IF (NOT UserSetup.GetParamStatus(User."User Security ID", 2)) AND (NOT UserSetup.GetParamStatus(User."User Security ID", 3)) THEN BEGIN
+        IF (NOT UserSetup.GetParamStatus(UserSecureID, 2)) AND (NOT UserSetup.GetParamStatus(UserSecureID, 3)) THEN BEGIN
             prevFilterGroup := FILTERGROUP;
             FILTERGROUP(9);
             SETRANGE(Blocked, FALSE);

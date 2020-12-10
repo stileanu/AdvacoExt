@@ -339,22 +339,25 @@ page 50000 "Work Order Master"
                     WOM2 := Rec;
                     ///--! WOD.SetCurrentKey("Work Order No.");
                     WOD.SetRange(WOD."Work Order Master No.", "Work Order Master No.");
-                    REPORT.RunModal(50002, true, false, WOD);
-                    if (WODEXIST.Carrier = 'ADV') or (WODEXIST.Carrier = 'ADVNC') then begin
-                        if "Pickup Sheet" then begin
-                            Message('Pickup Sheet Already Printed, Please see Sales Manager if duplicate required');
-                        end else begin
-                            if not Confirm('Does Work Order %1 need to a Pick Up Sheet printed', false, "Work Order Master No.") then begin
-                                Pickup := true;
-                                Message('Pickup Sheet was Cancelled.');
+                    if WOD.FindFirst() then begin
+                        REPORT.RunModal(50002, true, false, WOD);
+                        if (WODEXIST.Carrier = 'ADV') or (WODEXIST.Carrier = 'ADVNC') then begin
+                            if "Pickup Sheet" then begin
+                                Message('Pickup Sheet Already Printed, Please see Sales Manager if duplicate required');
                             end else begin
-                                Pickup := true;
-                                WOM2.SetFilter("Work Order Master No.", "Work Order Master No.");
-                                WOM2.SetRecFilter;
-                                REPORT.RunModal(50003, true, false, WOM2);
+                                if not Confirm('Does Work Order %1 need to a Pick Up Sheet printed', false, "Work Order Master No.") then begin
+                                    Pickup := true;
+                                    Message('Pickup Sheet was Cancelled.');
+                                end else begin
+                                    Pickup := true;
+                                    WOM2.SetFilter("Work Order Master No.", "Work Order Master No.");
+                                    WOM2.SetRecFilter;
+                                    REPORT.RunModal(50003, true, false, WOM2);
+                                end;
                             end;
                         end;
-                    end;
+                    end else
+                        Message('No Details for this work order yet.');
 
                     if Pickup then begin
                         "Pickup Sheet" := true;
