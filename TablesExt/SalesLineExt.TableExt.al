@@ -20,6 +20,8 @@ tableextension 50119 SalesLineExt extends "Sales Line"
 
     05/02/13 ADV
       Added new field <Credit Card Fee> to indicate the line is Credit Card Fee for CC payments.
+
+    ICE RSK 12/12/20 add check for document type <> credit memo in no. onvalidate for tax liabiliby check
     */
 
     fields
@@ -37,8 +39,8 @@ tableextension 50119 SalesLineExt extends "Sales Line"
                 "Vendor No." := Item."Vendor No.";
                 "Vendor Item No." := Item."Vendor Item No.";
                 //<< HEF END INSERT
-                //>> insert by HEF
-                IF (SalesHeader."Ship-to County" = 'MD') THEN BEGIN
+                //>> insert by HEF                              //ICE RSK 12/12/20 skip document type credit memo
+                IF (SalesHeader."Ship-to County" = 'MD') and (salesheader."Document Type" <> salesheader."Document Type"::"Credit Memo") THEN BEGIN
                     IF (SalesHeader."Tax Liable" = FALSE) THEN BEGIN
                         IF (SalesHeader."Tax Exemption No." = '') AND (SalesHeader."Exempt Organization" = '') THEN
                             ERROR('Please complete the tax liability information on\' +

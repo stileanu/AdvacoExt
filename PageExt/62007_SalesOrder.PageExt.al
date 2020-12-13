@@ -515,6 +515,24 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         {
             Visible = not lShipGroup;
         }
+        addbefore("Work Order")
+        {
+            action(PrintEnvelope)
+            {
+                Caption = 'Envelope';
+                Image = PrintDocument;
+                ApplicationArea = All;
+                ToolTip = 'Print Sales Order Envelope.';
+
+                trigger OnAction()
+                begin
+                    SO := Rec;
+                    SO.SETFILTER("No.", "No.");
+                    SO.SETRECFILTER;
+                    REPORT.RUNMODAL(50001, TRUE, FALSE, SO);
+                end;
+            }
+        }
         addafter(Action21)
         {
             group(Shipping)
@@ -890,6 +908,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         ShipCode: Label 'ADVACO SHIPPING';
         Permiss: Label 'SUPER';
         ItemLedgEntryType: Enum "Item Ledger Entry Type";
+        SO: Record "Sales Header";
 
     trigger OnOpenPage()
     var

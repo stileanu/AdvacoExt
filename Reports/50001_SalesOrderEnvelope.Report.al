@@ -12,257 +12,267 @@ report 50001 "Sales Order Envelope"
     // 06/09/19
     //    Modified CC Message to include CC Fee Waived to indicate Credit Card fee is waived.
     DefaultLayout = RDLC;
-    RDLCLayout = './50001_Sales Order Envelope.Rpt.rdl';
+    RDLCLayout = './Reports/50001_SalesOrderEnvelope.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
 
     dataset
     {
-        dataitem("Sales Header";"Sales Header")
+        dataitem("Sales Header"; "Sales Header")
         {
-            DataItemTableView = SORTING("Document Type","No.") WHERE("Document Type"=CONST(Order));
+            DataItemTableView = SORTING("Document Type", "No.") WHERE("Document Type" = CONST(Order));
             RequestFilterFields = "No.";
             RequestFilterHeading = 'Sales Order Envelope';
-            column(Sales_Header__Sell_to_Customer_No__;"Sell-to Customer No.")
+            column(Sales_Header__Sell_to_Customer_No__; "Sell-to Customer No.")
             {
             }
-            column(Sales_Header__No__;"No.")
+            column(Sales_Header__No__; "No.")
             {
             }
-            column(Sales_Header_Name;"Bill-to Name")
+            column(Sales_Header_Name; "Bill-to Name")
             {
             }
-            column(Sales_Header_Address;"Bill-to Address")
+            column(Sales_Header_Address; "Bill-to Address")
             {
             }
-            column(BillToAd2;BillToAd2)
+            column(BillToAd2; BillToAd2)
             {
             }
-            column(Sales_Header__Ship_to_Name_;"Ship-to Name")
+            column(Sales_Header__Ship_to_Name_; "Ship-to Name")
             {
             }
-            column(Sales_Header__Ship_to_Address_;"Ship-to Address")
+            column(Sales_Header__Ship_to_Address_; "Ship-to Address")
             {
             }
-            column(ShipToAd2;ShipToAd2)
+            column(ShipToAd2; ShipToAd2)
             {
             }
-            column(Sales_Header__Payment_Terms_Code_;"Payment Terms Code")
+            column(Sales_Header__Payment_Terms_Code_; "Payment Terms Code")
             {
             }
-            column(Sales_Header__Card_Type_;"Card Type")
+            column(Sales_Header__Card_Type_; "Card Type")
             {
             }
-            column(Sales_Header__Credit_Card_No__;"Credit Card No.")
+            column(Sales_Header__Credit_Card_No__; "Credit Card No.")
             {
             }
-            column(Sales_Header__Credit_Card_Exp__;"Credit Card Exp.")
+            column(Sales_Header__Credit_Card_Exp__; "Credit Card Exp.")
             {
             }
-            column(Sales_Header_Rep;Rep)
+            column(Sales_Header_Rep; Rep)
             {
             }
-            column(Sales_Header__Shipping_Agent_Code_;"Shipping Agent Code")
+            column(Sales_Header__Shipping_Agent_Code_; "Shipping Agent Code")
             {
             }
-            column(Sales_Header__Salesperson_Code_;"Salesperson Code")
+            column(Sales_Header__Salesperson_Code_; "Salesperson Code")
             {
             }
-            column(Sales_Header__Order_Date_;"Order Date")
+            column(Sales_Header__Order_Date_; "Order Date")
             {
             }
-            column(Sales_Header_Date_Required_;"shipment request date")
+            column(Sales_Header_Date_Required_; "Shipment Request Date")
             {
             }
-            column(Sales_Header__Ship_to_Contact_;"Ship-to Contact")
+            column(Sales_Header__Ship_to_Contact_; "Ship-to Contact")
             {
             }
-            column(Sales_Header__Your_Reference_;"Your Reference")
+            column(Sales_Header__Your_Reference_; "Your Reference")
             {
             }
-            column(BillTo;BillTo)
+            column(BillTo; BillTo)
             {
             }
-            column(ShipTo;ShipTo)
+            column(ShipTo; ShipTo)
             {
             }
-            column(EmptyString;'_________________________')
+            column(EmptyString; '____________')
             {
             }
-            column(Sales_Header__Shipping_Charge_;"Shipping Charge")
+            column(Sales_Header__Shipping_Charge_; "Shipping Charge")
             {
             }
-            column(Internet;Invoicing)
+            column(Internet; Invoicing)
             {
             }
-            column(Sales_Header__Phone_No__;"Phone No.")
+            column(Sales_Header__Phone_No__; "Phone No.")
             {
             }
-            column(Sales_Header__Credit_Card_SC_;"Credit Card SC")
+            column(Sales_Header__Credit_Card_SC_; "Credit Card SC")
             {
             }
-            column(Sales_Header__Name_on_Card_;"Name on Card")
+            column(Sales_Header__Name_on_Card_; "Name on Card")
             {
             }
-            column(Sales_Header__Bill_to_Address_1_;"Bill-to Address")
+            column(Sales_Header__Bill_to_Address_1_; "Bill-to Address")
             {
             }
-            column(Sales_Header__Bill_to_Address_2_;"Bill-to Address 2")
+            column(Sales_Header__Bill_to_Address_2_; "Bill-to Address 2")
             {
             }
-            column(Sales_Header__Bill_to_Address_3_;"Bill-to Address_3")
+            column(Sales_Header__Bill_to_Address_3_; "Bill-to Address_3")
             {
             }
-            column(Sales_Header__Bill_to_Address_4_;"Bill-to Address_4")
+            column(Sales_Header__Bill_to_Address_4_; "Bill-to Address_4")
             {
             }
-            column(CCComments;CCComments)
+            column(CCComments; CCComments)
             {
             }
-            column(Sales_Header__CC_Comments_2_;"CC Comments 2")
+            column(Sales_Header__CC_Comments_2_; "CC Comments 2")
             {
             }
-            column(Sales_Header__CC_Comments_3_;"CC Comments 3")
+            column(Sales_Header__CC_Comments_3_; "CC Comments 3")
             {
             }
-            column(TaxLiable;TaxLiable)
+            column(TaxLiable; TaxLiable)
             {
             }
-            column(Customer__Caption;Customer__CaptionLbl)
+            column(Customer__Caption; Customer__CaptionLbl)
             {
             }
-            column(S_O__Caption;S_O__CaptionLbl)
+            column(S_O__Caption; S_O__CaptionLbl)
             {
             }
-            column(Terms_Caption;Terms_CaptionLbl)
+            column(Terms_Caption; Terms_CaptionLbl)
             {
             }
-            column(Credit_Card_Caption;Credit_Card_CaptionLbl)
+            column(Credit_Card_Caption; Credit_Card_CaptionLbl)
             {
             }
-            column(Account_Caption;Account_CaptionLbl)
+            column(Account_Caption; Account_CaptionLbl)
             {
             }
-            column(Exp__Date_Caption;Exp__Date_CaptionLbl)
+            column(Exp__Date_Caption; Exp__Date_CaptionLbl)
             {
             }
-            column(Rep_Caption;Rep_CaptionLbl)
+            column(Rep_Caption; Rep_CaptionLbl)
             {
             }
-            column(Carrier_Caption;Carrier_CaptionLbl)
+            column(Carrier_Caption; Carrier_CaptionLbl)
             {
             }
-            column(SALES_ORDER___Caption;SALES_ORDER___CaptionLbl)
+            column(SALES_ORDER___Caption; SALES_ORDER___CaptionLbl)
             {
             }
-            column(Inside_Sales_Caption;Inside_Sales_CaptionLbl)
+            column(Inside_Sales_Caption; Inside_Sales_CaptionLbl)
             {
             }
-            column(Order_Date_Caption;Order_Date_CaptionLbl)
+            column(Order_Date_Caption; Order_Date_CaptionLbl)
             {
             }
-            column(Attention_Caption;Attention_CaptionLbl)
+            column(Shipment_Request_Date_CaptionLbl; Shipment_Request_Date_CaptionLbl)
+            {
+
+            }
+            column(Attention_Caption; Attention_CaptionLbl)
             {
             }
-            column(PO_No__Caption;PO_No__CaptionLbl)
+            column(PO_No__Caption; PO_No__CaptionLbl)
             {
             }
-            column(Ship_To_CustomerCaption;Ship_To_CustomerCaptionLbl)
+            column(Ship_To_CustomerCaption; Ship_To_CustomerCaptionLbl)
             {
             }
-            column(Bill_To_CustomerCaption;Bill_To_CustomerCaptionLbl)
+            column(Bill_To_CustomerCaption; Bill_To_CustomerCaptionLbl)
             {
             }
-            column(Weight_Caption;Weight_CaptionLbl)
+            column(Weight_Caption; Weight_CaptionLbl)
             {
             }
-            column(Charge_Caption;Charge_CaptionLbl)
+            column(Charge_Caption; Charge_CaptionLbl)
             {
             }
-            column(Sales_Header__Phone_No__Caption;FieldCaption("Phone No."))
+            column(Sales_Header__Phone_No__Caption; FieldCaption("Phone No.") + ':')
             {
             }
-            column(Credit_Card_SC_Caption;Credit_Card_SC_CaptionLbl)
+            column(Credit_Card_SC_Caption; Credit_Card_SC_CaptionLbl)
             {
             }
-            column(Name_on_Card_Caption;Name_on_Card_CaptionLbl)
+            column(Name_on_Card_Caption; Name_on_Card_CaptionLbl)
             {
             }
-            column(Bill_to_Address_Caption;Bill_to_Address_CaptionLbl)
+            column(Bill_to_Address_Caption; Bill_to_Address_CaptionLbl)
             {
             }
-            column(Comments_Caption;Comments_CaptionLbl)
+            column(Comments_Caption; Comments_CaptionLbl)
             {
             }
-            column(Sales_Header_Document_Type;"Document Type")
+            column(Sales_Header_Document_Type; "Document Type")
             {
             }
-            dataitem("Sales Line";"Sales Line")
+
+
+
+            dataitem("Sales Line"; "Sales Line")
             {
-                DataItemLink = "Document No."=FIELD("No.");
+                DataItemLink = "Document No." = FIELD("No.");
                 DataItemLinkReference = "Sales Header";
-                DataItemTableView = SORTING("Document Type","Document No.","Line No.") WHERE("Document Type"=CONST(Order));
-                column(ItemNo;ItemNo)
+                DataItemTableView = SORTING("Document Type", "Document No.", "Line No.") WHERE("Document Type" = CONST(Order));
+                column(ItemNo; ItemNo)
                 {
                 }
-                column(Sales_Line_Description;Description)
+                column(Sales_Line_Description; Description)
                 {
                 }
-                column(Sales_Line__Gen__Prod__Posting_Group_;"Gen. Prod. Posting Group")
+                column(Sales_Line__Gen__Prod__Posting_Group_; "Gen. Prod. Posting Group")
                 {
                 }
-                column(EmptyString_Control21;'_________________________')
+                column(EmptyString_Control21; '____________')
                 {
                 }
-                column(Sales_Line_Quantity;Quantity)
+                column(Sales_Line_Quantity; Quantity)
                 {
                 }
-                column(Sales_Line__Unit_Price_;"Unit Price")
+                column(Sales_Line__Unit_Price_; "Unit Price")
                 {
                 }
-                column(Sales_Line_Amount;Amount)
+                column(Sales_Line_Amount; Amount)
                 {
                 }
-                column(EmptyString_Control43;'_________________________')
+                column(EmptyString_Control43; '____________')
                 {
                 }
-                column(CCFeeText;CCFeeText)
+                column(CCFeeText; CCFeeText)
                 {
                 }
-                column(Surcharge;Surcharge)
+                column(Surcharge; Surcharge)
                 {
                 }
-                column(Item_No_Caption;Item_No_CaptionLbl)
+                column(Item_No_Caption; Item_No_CaptionLbl)
                 {
                 }
-                column(Sales_Line_DescriptionCaption;FieldCaption(Description))
+                column(Sales_Line_DescriptionCaption; FieldCaption(Description))
                 {
                 }
-                column(Posting_GroupCaption;Posting_GroupCaptionLbl)
+                column(Posting_GroupCaption; Posting_GroupCaptionLbl)
                 {
                 }
-                column(Invoice__Caption;Invoice__CaptionLbl)
+                column(Invoice__Caption; Invoice__CaptionLbl)
                 {
                 }
-                column(Sales_Line_QuantityCaption;FieldCaption(Quantity))
+                column(Sales_Line_QuantityCaption; FieldCaption(Quantity))
                 {
                 }
-                column(Sales_Line__Unit_Price_Caption;FieldCaption("Unit Price"))
+                column(Sales_Line__Unit_Price_Caption; 'Unit Price')
                 {
                 }
-                column(Total_PriceCaption;Total_PriceCaptionLbl)
+                column(Total_PriceCaption; Total_PriceCaptionLbl)
                 {
                 }
-                column(InitialsCaption;InitialsCaptionLbl)
+                column(InitialsCaption; InitialsCaptionLbl)
                 {
                 }
-                column(Sales_Line_Document_Type;"Document Type")
+                column(Sales_Line_Document_Type; "Document Type")
                 {
                 }
-                column(Sales_Line_Document_No_;"Document No.")
+                column(Sales_Line_Document_No_; "Document No.")
                 {
                 }
-                column(Sales_Line_Line_No_;"Line No.")
+                column(Sales_Line_Line_No_; "Line No.")
+                {
+                }
+                column(Serial_No__Caption; Serial_No__CaptionLbl)
                 {
                 }
 
@@ -272,29 +282,29 @@ report 50001 "Sales Order Envelope"
                     SurchargeItem := false;
 
                     if Type = Type::"G/L Account" then begin
-                      if ("No." <> '311') or ("No." <> '312') then begin
-                    //    ItemNo := "Cross Reference Item";
-                      end else begin
-                        ItemNo := '';
-                      end;
+                        if ("No." <> '311') or ("No." <> '312') then begin
+                            //    ItemNo := "Cross Reference Item";
+                        end else begin
+                            ItemNo := '';
+                        end;
                     end else begin
-                      ItemNo := "No.";
+                        ItemNo := "No.";
                     end;
 
                     if "Sales Header"."Shipping Agent Code" = 'UPS' then begin
-                      if ("Sales Header"."Shipping Charge" = "Sales Header"."Shipping Charge" :: "Pre-Paid") or
-                         ("Sales Header"."Shipping Charge" = "Sales Header"."Shipping Charge" :: "Pre-Paid & Add") then begin
-                        if Type = Type::Item then begin
-                          if Item.Get("Sales Line"."No.") then begin
-                            if Item."UPS Shipping Surcharge" = true then begin
-                              SalesSetup.Get();
-                              SurchargeAmount := Format(SalesSetup."UPS Shipping Surcharge");
-                              Surcharge := ('$') + (SurchargeAmount) + (' / EACH ') + ('UPS Shipping Surcharge');
-                              SurchargeItem := true;
+                        if ("Sales Header"."Shipping Charge" = "Sales Header"."Shipping Charge"::"Pre-Paid") or
+                           ("Sales Header"."Shipping Charge" = "Sales Header"."Shipping Charge"::"Pre-Paid & Add") then begin
+                            if Type = Type::Item then begin
+                                if Item.Get("Sales Line"."No.") then begin
+                                    if Item."UPS Shipping Surcharge" = true then begin
+                                        SalesSetup.Get();
+                                        SurchargeAmount := Format(SalesSetup."UPS Shipping Surcharge");
+                                        Surcharge := ('$') + (SurchargeAmount) + (' / EACH ') + ('UPS Shipping Surcharge');
+                                        SurchargeItem := true;
+                                    end;
+                                end;
                             end;
-                          end;
                         end;
-                      end;
                     end;
                 end;
             }
@@ -302,9 +312,65 @@ report 50001 "Sales Order Envelope"
             trigger OnAfterGetRecord()
             begin
                 if "Tax Liable" then
-                  TaxLiable := '*** TAX LIABLE ***'
+                    TaxLiable := '*** TAX LIABLE ***'
                 else
-                  TaxLiable := '                  ';
+                    TaxLiable := '                  ';
+
+                IF "Sales Header"."Bill-to Address 2" = '' THEN BEGIN
+                    BillToAd2 := ("Sales Header"."Bill-to City") + (', ') + ("Sales Header"."Bill-to County") + ('  ') + ("Sales Header"."Bill-to Post Code");
+                    BillTo := '';
+                END ELSE BEGIN
+                    BillToAd2 := "Sales Header"."Bill-to Address 2";
+                    BillTo := ("Sales Header"."Bill-to City") + (', ') + ("Sales Header"."Bill-to County") + ('  ') + ("Sales Header"."Bill-to Post Code");
+                END;
+
+                IF "Sales Header"."Ship-to Address 2" = '' THEN BEGIN
+                    ShipToAd2 := ("Sales Header"."Ship-to City") + (', ') + ("Sales Header"."Ship-to County") + ('  ') + ("Sales Header"."Ship-to Post Code");
+                    ShipTo := '';
+                END ELSE BEGIN
+                    ShipToAd2 := "Sales Header"."Ship-to Address 2";
+                    ShipTo := ("Sales Header"."Ship-to City") + (', ') + ("Sales Header"."Ship-to County") + ('  ') + ("Sales Header"."Ship-to Post Code");
+                END;
+
+                IF Cust.GET("Sales Header"."Sell-to Customer No.") THEN BEGIN
+                    IF Cust."Internet Invoicing" THEN
+                        Invoicing := 'Internet Invoicing'
+                    ELSE
+                        IF Cust."No Internet/Paper Invoice" THEN
+                            Invoicing := 'No Internet/Paper Invoice'
+                        ELSE
+                            Invoicing := '';
+                END;
+
+                // 05/02/13 Start
+                CCComments := "CC Comments 1";
+                IF Cust.GET("Sales Header"."Bill-to Customer No.") THEN;
+                IF Cust."Email Invoice" THEN BEGIN
+                    IF STRLEN(Invoicing) = 0 THEN BEGIN
+                        Invoicing := 'Email Invoice';
+                    END ELSE BEGIN
+                        Invoicing += '\Email Invoice';
+                    END;
+                    IF STRLEN(CCComments) = 0 THEN BEGIN
+                        // Invoicing email
+                        //CCComments := Cust."E-Mail";
+                        CCComments := Cust."Invoicing Email";
+                    END ELSE BEGIN
+                        // Invoicing email
+                        //CCComments := Cust."E-Mail" + ' | ' +CCComments;
+                        CCComments := Cust."Invoicing Email" + ' | ' + CCComments;
+                    END;
+                END;
+                IF "Sales Header"."Payment Terms Code" = GLSetup."Credit Card Payment Code" THEN
+                    // 06/09/19 Start
+                    IF Cust."CC Fee Waived" THEN
+                        CCFeeText := 'No Credit Card Fee'
+                    ELSE
+                        // 06/09/19 End
+                        CCFeeText := 'Credit Card Fee ' + FORMAT(GLSetup."Credit Card Fee %") + ' % _________'
+                ELSE
+                    CCFeeText := '';
+                // 05/02/13 End
             end;
         }
     }
@@ -374,6 +440,7 @@ report 50001 "Sales Order Envelope"
         Invoice__CaptionLbl: Label 'Invoice #';
         Total_PriceCaptionLbl: Label 'Total Price';
         InitialsCaptionLbl: Label 'Initials';
-        Shipment_Request_Date_CaptionLbl: Label 'Date Required';
-}
+        Shipment_Request_Date_CaptionLbl: Label 'Date Required:';
+        Serial_No__CaptionLbl: Label 'Serial No.';
 
+}

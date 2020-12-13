@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Sales_Header__Sell_to_Customer_No__">
+          <DataField>Sales_Header__Sell_to_Customer_No__</DataField>
+        </Field>
+        <Field Name="Sales_Header__No__">
+          <DataField>Sales_Header__No__</DataField>
+        </Field>
+        <Field Name="Sales_Header_Name">
+          <DataField>Sales_Header_Name</DataField>
+        </Field>
+        <Field Name="Sales_Header_Address">
+          <DataField>Sales_Header_Address</DataField>
+        </Field>
+        <Field Name="BillToAd2">
+          <DataField>BillToAd2</DataField>
+        </Field>
+        <Field Name="Sales_Header__Ship_to_Name_">
+          <DataField>Sales_Header__Ship_to_Name_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Ship_to_Address_">
+          <DataField>Sales_Header__Ship_to_Address_</DataField>
+        </Field>
+        <Field Name="ShipToAd2">
+          <DataField>ShipToAd2</DataField>
+        </Field>
+        <Field Name="Sales_Header__Payment_Terms_Code_">
+          <DataField>Sales_Header__Payment_Terms_Code_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Card_Type_">
+          <DataField>Sales_Header__Card_Type_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Credit_Card_No__">
+          <DataField>Sales_Header__Credit_Card_No__</DataField>
+        </Field>
+        <Field Name="Sales_Header__Credit_Card_Exp__">
+          <DataField>Sales_Header__Credit_Card_Exp__</DataField>
+        </Field>
+        <Field Name="Sales_Header_Rep">
+          <DataField>Sales_Header_Rep</DataField>
+        </Field>
+        <Field Name="Sales_Header__Shipping_Agent_Code_">
+          <DataField>Sales_Header__Shipping_Agent_Code_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Salesperson_Code_">
+          <DataField>Sales_Header__Salesperson_Code_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Order_Date_">
+          <DataField>Sales_Header__Order_Date_</DataField>
+        </Field>
+        <Field Name="Sales_Header_Date_Required_">
+          <DataField>Sales_Header_Date_Required_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Ship_to_Contact_">
+          <DataField>Sales_Header__Ship_to_Contact_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Your_Reference_">
+          <DataField>Sales_Header__Your_Reference_</DataField>
+        </Field>
+        <Field Name="BillTo">
+          <DataField>BillTo</DataField>
+        </Field>
+        <Field Name="ShipTo">
+          <DataField>ShipTo</DataField>
+        </Field>
+        <Field Name="EmptyString">
+          <DataField>EmptyString</DataField>
+        </Field>
+        <Field Name="Sales_Header__Shipping_Charge_">
+          <DataField>Sales_Header__Shipping_Charge_</DataField>
+        </Field>
+        <Field Name="Internet">
+          <DataField>Internet</DataField>
+        </Field>
+        <Field Name="Sales_Header__Phone_No__">
+          <DataField>Sales_Header__Phone_No__</DataField>
+        </Field>
+        <Field Name="Sales_Header__Credit_Card_SC_">
+          <DataField>Sales_Header__Credit_Card_SC_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Name_on_Card_">
+          <DataField>Sales_Header__Name_on_Card_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Bill_to_Address_1_">
+          <DataField>Sales_Header__Bill_to_Address_1_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Bill_to_Address_2_">
+          <DataField>Sales_Header__Bill_to_Address_2_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Bill_to_Address_3_">
+          <DataField>Sales_Header__Bill_to_Address_3_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Bill_to_Address_4_">
+          <DataField>Sales_Header__Bill_to_Address_4_</DataField>
+        </Field>
+        <Field Name="CCComments">
+          <DataField>CCComments</DataField>
+        </Field>
+        <Field Name="Sales_Header__CC_Comments_2_">
+          <DataField>Sales_Header__CC_Comments_2_</DataField>
+        </Field>
+        <Field Name="Sales_Header__CC_Comments_3_">
+          <DataField>Sales_Header__CC_Comments_3_</DataField>
+        </Field>
+        <Field Name="TaxLiable">
+          <DataField>TaxLiable</DataField>
+        </Field>
+        <Field Name="Customer__Caption">
+          <DataField>Customer__Caption</DataField>
+        </Field>
+        <Field Name="S_O__Caption">
+          <DataField>S_O__Caption</DataField>
+        </Field>
+        <Field Name="Terms_Caption">
+          <DataField>Terms_Caption</DataField>
+        </Field>
+        <Field Name="Credit_Card_Caption">
+          <DataField>Credit_Card_Caption</DataField>
+        </Field>
+        <Field Name="Account_Caption">
+          <DataField>Account_Caption</DataField>
+        </Field>
+        <Field Name="Exp__Date_Caption">
+          <DataField>Exp__Date_Caption</DataField>
+        </Field>
+        <Field Name="Rep_Caption">
+          <DataField>Rep_Caption</DataField>
+        </Field>
+        <Field Name="Carrier_Caption">
+          <DataField>Carrier_Caption</DataField>
+        </Field>
+        <Field Name="SALES_ORDER___Caption">
+          <DataField>SALES_ORDER___Caption</DataField>
+        </Field>
+        <Field Name="Inside_Sales_Caption">
+          <DataField>Inside_Sales_Caption</DataField>
+        </Field>
+        <Field Name="Order_Date_Caption">
+          <DataField>Order_Date_Caption</DataField>
+        </Field>
+        <Field Name="Attention_Caption">
+          <DataField>Attention_Caption</DataField>
+        </Field>
+        <Field Name="PO_No__Caption">
+          <DataField>PO_No__Caption</DataField>
+        </Field>
+        <Field Name="Ship_To_CustomerCaption">
+          <DataField>Ship_To_CustomerCaption</DataField>
+        </Field>
+        <Field Name="Bill_To_CustomerCaption">
+          <DataField>Bill_To_CustomerCaption</DataField>
+        </Field>
+        <Field Name="Weight_Caption">
+          <DataField>Weight_Caption</DataField>
+        </Field>
+        <Field Name="Charge_Caption">
+          <DataField>Charge_Caption</DataField>
+        </Field>
+        <Field Name="Sales_Header__Phone_No__Caption">
+          <DataField>Sales_Header__Phone_No__Caption</DataField>
+        </Field>
+        <Field Name="Credit_Card_SC_Caption">
+          <DataField>Credit_Card_SC_Caption</DataField>
+        </Field>
+        <Field Name="Name_on_Card_Caption">
+          <DataField>Name_on_Card_Caption</DataField>
+        </Field>
+        <Field Name="Bill_to_Address_Caption">
+          <DataField>Bill_to_Address_Caption</DataField>
+        </Field>
+        <Field Name="Comments_Caption">
+          <DataField>Comments_Caption</DataField>
+        </Field>
+        <Field Name="Sales_Header_Document_Type">
+          <DataField>Sales_Header_Document_Type</DataField>
+        </Field>
+        <Field Name="ItemNo">
+          <DataField>ItemNo</DataField>
+        </Field>
+        <Field Name="Sales_Line_Description">
+          <DataField>Sales_Line_Description</DataField>
+        </Field>
+        <Field Name="Sales_Line__Gen__Prod__Posting_Group_">
+          <DataField>Sales_Line__Gen__Prod__Posting_Group_</DataField>
+        </Field>
+        <Field Name="EmptyString_Control21">
+          <DataField>EmptyString_Control21</DataField>
+        </Field>
+        <Field Name="Sales_Line_Quantity">
+          <DataField>Sales_Line_Quantity</DataField>
+        </Field>
+        <Field Name="Sales_Line_QuantityFormat">
+          <DataField>Sales_Line_QuantityFormat</DataField>
+        </Field>
+        <Field Name="Sales_Line__Unit_Price_">
+          <DataField>Sales_Line__Unit_Price_</DataField>
+        </Field>
+        <Field Name="Sales_Line__Unit_Price_Format">
+          <DataField>Sales_Line__Unit_Price_Format</DataField>
+        </Field>
+        <Field Name="Sales_Line_Amount">
+          <DataField>Sales_Line_Amount</DataField>
+        </Field>
+        <Field Name="Sales_Line_AmountFormat">
+          <DataField>Sales_Line_AmountFormat</DataField>
+        </Field>
+        <Field Name="EmptyString_Control43">
+          <DataField>EmptyString_Control43</DataField>
+        </Field>
+        <Field Name="CCFeeText">
+          <DataField>CCFeeText</DataField>
+        </Field>
+        <Field Name="Surcharge">
+          <DataField>Surcharge</DataField>
+        </Field>
+        <Field Name="Item_No_Caption">
+          <DataField>Item_No_Caption</DataField>
+        </Field>
+        <Field Name="Sales_Line_DescriptionCaption">
+          <DataField>Sales_Line_DescriptionCaption</DataField>
+        </Field>
+        <Field Name="Posting_GroupCaption">
+          <DataField>Posting_GroupCaption</DataField>
+        </Field>
+        <Field Name="Invoice__Caption">
+          <DataField>Invoice__Caption</DataField>
+        </Field>
+        <Field Name="Sales_Line_QuantityCaption">
+          <DataField>Sales_Line_QuantityCaption</DataField>
+        </Field>
+        <Field Name="Sales_Line__Unit_Price_Caption">
+          <DataField>Sales_Line__Unit_Price_Caption</DataField>
+        </Field>
+        <Field Name="Total_PriceCaption">
+          <DataField>Total_PriceCaption</DataField>
+        </Field>
+        <Field Name="InitialsCaption">
+          <DataField>InitialsCaption</DataField>
+        </Field>
+        <Field Name="Sales_Line_Document_Type">
+          <DataField>Sales_Line_Document_Type</DataField>
+        </Field>
+        <Field Name="Sales_Line_Document_No_">
+          <DataField>Sales_Line_Document_No_</DataField>
+        </Field>
+        <Field Name="Sales_Line_Line_No_">
+          <DataField>Sales_Line_Line_No_</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

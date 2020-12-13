@@ -36,8 +36,8 @@
             "tenant": "advaco.com",
             //"sandboxName": "AdvacoSandbox",
             "environmentType": "Sandbox",
-            "environmentName": "AdvacoSandboxDev2",
-            //"environmentName": "AdvacoSandbox",
+            //"environmentName": "AdvacoSandboxDev2",
+            "environmentName": "AdvacoSandbox",
             "schemaUpdateMode": "Synchronize",
             //"schemaUpdateMode": "ForceSync",
         }

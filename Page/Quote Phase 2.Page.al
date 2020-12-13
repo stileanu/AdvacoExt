@@ -94,7 +94,7 @@ page 50015 "Quote Phase 2"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             group(Instructions)
             {
