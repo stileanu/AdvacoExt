@@ -8,6 +8,8 @@ page 50000 "Work Order Master"
     //   Select keys to eliminate slow search in WO Details.
     // 04/28/11 ADV
     //   Added CC processing fields. Make CC fields editable for Sales Manager.
+    //ICE RSK 12/13/20 added comment field
+
 
     PageType = Card;
     //ApplicationArea = All;
@@ -42,6 +44,12 @@ page 50000 "Work Order Master"
                     {
                         Editable = false;
                         ApplicationArea = All;
+                    }
+                    //ICE RSK 12/13/20
+                    field(Comment; Format(Comment))
+                    {
+
+                        ApplicationArea = all;
                     }
                 }
 
@@ -423,6 +431,17 @@ page 50000 "Work Order Master"
 
                     AddRecords.Run(Rec);
                 end;
+            }
+            //ICE RSK 12/13/20
+            action(Comments)
+            {
+                Caption = 'Comments';
+                ApplicationArea = all;
+                Promoted = True;
+                PromotedCategory = Category4;
+                Image = ViewComments;
+                RunObject = page "ADVACO Comment Sheet";
+                RunPageLink = "Table Name" = const(WorkOrderMaster), "No." = field("Work Order Master No.");
             }
         }
     }

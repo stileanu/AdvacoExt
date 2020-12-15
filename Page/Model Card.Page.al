@@ -43,7 +43,7 @@ page 50004 "Model Card"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             group(Model)
             {

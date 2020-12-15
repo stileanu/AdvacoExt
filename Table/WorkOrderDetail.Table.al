@@ -1678,8 +1678,11 @@ table 50001 WorkOrderDetail
         field(100003; Comment; Boolean)
         {
             //DataClassification = ToBeClassified;
-            FieldClass = FlowField;
+            Caption = 'Comment';
             CalcFormula = Exist("ADVACO Comment Line" WHERE("Table Name" = CONST(WorkOrderDetail), "No." = FIELD("Work Order No.")));
+            Editable = false; //ICE RSK 12/13/20
+
+            FieldClass = FlowField;
         }
         field(100004; "Tool ID"; Code[20])
         {

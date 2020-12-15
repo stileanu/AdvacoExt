@@ -1,7 +1,9 @@
 table 50016 "ADVACO Comment Line"
 {
     // version US2.60
-
+    Caption = 'Advaco Comment Line';
+    DrillDownPageId = "ADVACO Comment List"; //ICE RSK 12/13/20
+    LookupPageId = "ADVACO Comment List"; //ICE RSK 12/13/20
 
     fields
     {

@@ -402,7 +402,7 @@ table 50000 WorkOrderMaster
         {
             //DataClassification = ToBeClassified;
             FieldClass = FlowField;
-            CalcFormula = Count (WorkOrderDetail WHERE("Work Order Master No." = FIELD("Work Order Master No.")));
+            CalcFormula = Count(WorkOrderDetail WHERE("Work Order Master No." = FIELD("Work Order Master No.")));
         }
         field(290; Notes; Text[80])
         {
@@ -516,8 +516,11 @@ table 50000 WorkOrderMaster
         field(100003; Comment; Boolean)
         {
             //DataClassification = ToBeClassified;
+
+            CalcFormula = Exist("ADVACO Comment Line" WHERE("Table Name" = CONST(WorkOrderMaster), "No." = FIELD("Work Order Master No.")));
+            Editable = false; //ICE RSK 12/13/20
+            Caption = 'Comment';
             FieldClass = FlowField;
-            CalcFormula = Exist ("ADVACO Comment Line" WHERE("Table Name" = CONST(WorkOrderMaster), "No." = FIELD("Work Order Master No.")));
         }
     }
 

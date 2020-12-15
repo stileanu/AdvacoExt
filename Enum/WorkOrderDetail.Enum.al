@@ -231,3 +231,9 @@ enum 50020 IDRDept
     value(2; Test) { }
     value(3; "Quality Control") { }
 }
+enum 50222 ShippingAdvice
+{
+    value(0; "Ship Partial") { }
+    value(1; "Ship Complete") { }
+
+}

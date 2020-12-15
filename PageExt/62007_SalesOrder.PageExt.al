@@ -532,6 +532,21 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                     REPORT.RUNMODAL(50001, TRUE, FALSE, SO);
                 end;
             }
+            action(PrintPickList)
+            {
+                Caption = 'Pick List';
+                Image = PrintDocument;
+                ApplicationArea = All;
+                ToolTip = 'Print Sales Order Envelope.';
+
+                trigger OnAction()
+                begin
+                    SO := Rec;
+                    SO.SETFILTER("No.", "No.");
+                    SO.SETRECFILTER;
+                    REPORT.RUNMODAL(50020, TRUE, FALSE, SO);
+                end;
+            }
         }
         addafter(Action21)
         {

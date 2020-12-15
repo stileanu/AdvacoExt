@@ -35,6 +35,11 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
                 ApplicationArea = All;
                 Visible = lPurchGroup;
             }
+            field("Shipping Advice"; "Shipping Advice")
+            {
+                ApplicationArea = all;
+                Visible = lPurchGroup;
+            }
         }
         addafter("Purchaser Code")
         {
@@ -53,6 +58,15 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
                 ApplicationArea = All;
                 Visible = lPurchGroup;
             }
+        }
+        addafter("Ship-to Code")
+        {
+            field("Shipping Agent"; rec."Shipping Agent")
+            {
+                ApplicationArea = all;
+                visible = lPurchGroup;
+            }
+
         }
 
     }

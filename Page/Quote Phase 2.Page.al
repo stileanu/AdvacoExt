@@ -176,7 +176,7 @@ page 50015 "Quote Phase 2"
                                 Message('Quoted Qty is Zero for Pump with Serial Number, Unable to Print');
 
                             if EmptyQuotePrice <> '' then
-                                Message('Quoted Price is Zero for Atleast one Item or Resource, Unable to Print');
+                                Message('Quoted Price is Zero for at least one Item or Resource, Unable to Print');
 
                             Mechanics.SetRange(Mechanics."Work Order No.", WOD."Work Order No.");
                             Mechanics.SetRange(Mechanics.Entered, false);

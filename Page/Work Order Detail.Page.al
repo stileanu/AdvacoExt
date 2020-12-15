@@ -17,6 +17,7 @@ page 50002 "Work Order Detail"
     // 
     // 04/16/18 
     //   Transformed Saved Container control from check box to option (blank,yes,no). 
+    //ICE RSK 12/13/20 added comment field
 
     InsertAllowed = false;
     PageType = Card;
@@ -51,6 +52,11 @@ page 50002 "Work Order Detail"
                         Caption = 'Order Date';
                         Editable = false;
                         ApplicationArea = All;
+                    }
+                    field(Comment; Format(Comment))
+                    {
+
+                        ApplicationArea = all;
                     }
                 }
                 group(Control1220060119)
@@ -855,6 +861,17 @@ page 50002 "Work Order Detail"
                     Image = ItemLines;
                     RunObject = page "Parts List";
                     RunPageLink = "Work Order No." = FIELD("Work Order No.");
+                }
+                //ICE RSK 12/13/20
+                action(Comments)
+                {
+                    Caption = 'Comments';
+                    ApplicationArea = all;
+                    Promoted = True;
+                    PromotedCategory = Category4;
+                    Image = ViewComments;
+                    RunObject = page "ADVACO Comment Sheet";
+                    RunPageLink = "Table Name" = const(WorkOrderDetail), "No." = field("Work Order No.");
                 }
             }
         }

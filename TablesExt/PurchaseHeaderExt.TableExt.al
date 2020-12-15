@@ -199,6 +199,11 @@ tableextension 50120 PurchaseheaderExt extends "Purchase Header"
         {
             Caption = 'RMA No.';
         }
+        field(50024; "Shipping Advice"; enum ShippingAdvice)
+        {
+            Caption = 'Shipping Advice';
+
+        }
 
     }
 
