@@ -547,6 +547,21 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                     REPORT.RUNMODAL(50020, TRUE, FALSE, SO);
                 end;
             }
+            action(PrintSalesOrderConfirmation)
+            {
+                Caption = 'Confirmation';
+                Image = PrintDocument;
+                ApplicationArea = All;
+                ToolTip = 'Print Sales Order Confirmation.';
+
+                trigger OnAction()
+                begin
+                    SO := Rec;
+                    SO.SETFILTER("No.", "No.");
+                    SO.SETRECFILTER;
+                    REPORT.RUNMODAL(50022, TRUE, FALSE, SO);
+                end;
+            }
         }
         addafter(Action21)
         {

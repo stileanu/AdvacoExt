@@ -409,7 +409,7 @@ report 50001 "Sales Order Envelope"
         SalesSetup: Record "Sales & Receivables Setup";
         SurchargeAmount: Code[10];
         SurchargeItem: Boolean;
-        Invoicing: Text[30];
+        Invoicing: Text[50];
         Cust: Record Customer;
         CCComments: Text[127];
         CCFeeText: Text[30];

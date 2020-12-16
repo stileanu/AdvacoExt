@@ -3,6 +3,27 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
     PromotedActionCategories = 'New,Process,Report,Approve,Release,Posting,Prepare,Order,Request Approval,Print/Send,Navigate';
     layout
     {
+        modify("Shipment Method Code")
+        {
+            Visible = false;
+        }
+        addbefore(Control83)
+        {
+            field(ShipmentMethodCode; "Shipment Method Code")
+            {
+                Caption = 'Shipment Method Code';
+                ApplicationArea = All;
+                Visible = lPurchGroup;
+                ToolTip = 'Specifies the delivery conditions of the related shipment, such as free on board (FOB).';
+
+            }
+            field("Shipping Agent"; "Shipping Agent")
+            {
+                ApplicationArea = all;
+                Visible = lPurchGroup;
+                ToolTip = 'Specifies the Agent picked for shipment.';
+            }
+        }
         addafter("Document Date")
         {
             field("Placed By"; Rec."Placed by")
@@ -58,15 +79,6 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
                 ApplicationArea = All;
                 Visible = lPurchGroup;
             }
-        }
-        addafter("Ship-to Code")
-        {
-            field("Shipping Agent"; rec."Shipping Agent")
-            {
-                ApplicationArea = all;
-                visible = lPurchGroup;
-            }
-
         }
 
     }
@@ -145,8 +157,10 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
                 lShipGroup := SysFunctions.getIfSingleGroupId(ShipCode, txtAnswer);
         END;
         IF Ok THEN
-            IF NOT (lAccGroup) AND not (lPurchGroup) and not (lShipGroup) THEN
-                ERROR('This Purchase Order Card is for Accounting Only')
+            IF NOT (lAccGroup) AND not (lPurchGroup) and not (lShipGroup) THEN begin
+                ; //ERROR('This Purchase Order Card is for Accounting Only')
+            end
+
             else
                 lAccGroup := true;
         //lAccGroup := false;

@@ -21,27 +21,40 @@
             "enableLongRunningSqlStatements": true,
             "longRunningSqlStatementsThreshold": 500,
             "numberOfSqlStatements": 10
-        }
-        
+        }        
         ,
         {
             "type": "al",
             "request": "launch",
-            "name": "Microsoft cloud sandbox",
+            "name": "Cloud sandbox AdvacoSandbox",
             "breakOnError": true,
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
             "enableSqlInformationDebugger": true,
             "debugServer": 4711,
             "tenant": "advaco.com",
-            //"sandboxName": "AdvacoSandbox",
             "environmentType": "Sandbox",
-            //"environmentName": "AdvacoSandboxDev2",
             "environmentName": "AdvacoSandbox",
+            //"environmentName": "AdvacoSandbox",
             "schemaUpdateMode": "Synchronize",
             //"schemaUpdateMode": "ForceSync",
         }
-        
-        
+        ,
+        {
+            "type": "al",
+            "request": "launch",
+            "name": "cloud  sandbox AdvacoSandboxDev2",
+            "breakOnError": true,
+            "launchBrowser": true,
+            "enableLongRunningSqlStatements": true,
+            "enableSqlInformationDebugger": true,
+            "debugServer": 4711,
+            "tenant": "advaco.com",
+            "environmentType": "Sandbox",
+            "environmentName": "AdvacoSandboxDev2",
+            //"environmentName": "AdvacoSandbox",
+            "schemaUpdateMode": "Synchronize",
+            //"schemaUpdateMode": "ForceSync",
+        }    
     ]
 }

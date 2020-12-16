@@ -4,6 +4,11 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
     layout
     {
         // Add changes to page layout here
+        //ICE RSK 12/15/20
+        Modify("Credit Limit (LCY)")
+        {
+            Editable = lAccGroup;
+        }
         addafter("Name")
         {
             field(Comment; Comment)

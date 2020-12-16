@@ -146,7 +146,7 @@ page 50000 "Work Order Master"
                     }
                     field(Attention; Attention)
                     {
-                        Editable = ControlsEditable;
+                        //Editable = ControlsEditable;
                         ApplicationArea = All;
                     }
                     field("E-Mail"; "E-Mail")
@@ -191,12 +191,12 @@ page 50000 "Work Order Master"
                     ShowCaption = false;
                     field("Payment Method"; "Payment Method")
                     {
-                        Editable = ControlsEditable;
+                        //Editable = ControlsEditable;
                         ApplicationArea = All;
                     }
                     field("Customer Payment Terms"; "Customer Payment Terms")
                     {
-                        Editable = ControlsEditable;
+                        //Editable = ControlsEditable;
                         ApplicationArea = All;
                     }
                     field("Card Type"; "Card Type")
@@ -224,21 +224,21 @@ page 50000 "Work Order Master"
                         Caption = 'Credit Card Comments';
                         field("CC Comments 1"; "CC Comments 1")
                         {
-                            Editable = ControlsEditable;
+                            //Editable = ControlsEditable;
                             ShowCaption = false;
                             MultiLine = true;
                             ApplicationArea = All;
                         }
                         field("CC Comments 2"; "CC Comments 2")
                         {
-                            Editable = ControlsEditable;
+                            //Editable = ControlsEditable;
                             ShowCaption = false;
                             MultiLine = true;
                             ApplicationArea = All;
                         }
                         field("CC Comments 3"; "CC Comments 3")
                         {
-                            Editable = ControlsEditable;
+                            //Editable = ControlsEditable;
                             ShowCaption = false;
                             MultiLine = true;
                             ApplicationArea = All;
