@@ -515,6 +515,14 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         {
             Visible = not lShipGroup;
         }
+        modify("Work Order")
+        {
+            Visible = false;
+        }
+        modify("Pick Instruction")
+        {
+            Visible = false;
+        }
         addbefore("Work Order")
         {
             action(PrintEnvelope)
@@ -532,21 +540,6 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                     REPORT.RUNMODAL(50001, TRUE, FALSE, SO);
                 end;
             }
-            action(PrintPickList)
-            {
-                Caption = 'Pick List';
-                Image = PrintDocument;
-                ApplicationArea = All;
-                ToolTip = 'Print Sales Order Envelope.';
-
-                trigger OnAction()
-                begin
-                    SO := Rec;
-                    SO.SETFILTER("No.", "No.");
-                    SO.SETRECFILTER;
-                    REPORT.RUNMODAL(50020, TRUE, FALSE, SO);
-                end;
-            }
             action(PrintSalesOrderConfirmation)
             {
                 Caption = 'Confirmation';
@@ -560,6 +553,21 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                     SO.SETFILTER("No.", "No.");
                     SO.SETRECFILTER;
                     REPORT.RUNMODAL(50022, TRUE, FALSE, SO);
+                end;
+            }
+            action(PrintPickList)
+            {
+                Caption = 'Pick List';
+                Image = PrintDocument;
+                ApplicationArea = All;
+                ToolTip = 'Print Sales Order Pick Ticket.';
+
+                trigger OnAction()
+                begin
+                    SO := Rec;
+                    SO.SETFILTER("No.", "No.");
+                    SO.SETRECFILTER;
+                    REPORT.RUNMODAL(50020, TRUE, FALSE, SO);
                 end;
             }
         }

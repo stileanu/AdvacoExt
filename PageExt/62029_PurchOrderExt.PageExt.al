@@ -61,6 +61,11 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
                 ApplicationArea = all;
                 Visible = lPurchGroup;
             }
+            Field(Notes; Notes)  //ICE RSK 12/16/20
+            {
+                ApplicationArea = all;
+                MultiLine = true;
+            }
         }
         addafter("Purchaser Code")
         {
@@ -98,6 +103,33 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
                 trigger OnAction()
                 begin
                     PrintLabels;
+                end;
+            }
+        }
+        addbefore(SendCustom)
+        {
+            action(RecInspect)
+            {
+                ApplicationArea = Suite;
+                Caption = 'Receiving Inspection';
+                //Ellipsis = true;
+                Image = ReceivableBill;
+                Promoted = true;
+                PromotedCategory = Category10;
+                ToolTip = 'Print Receiving Inspection document.';
+
+                trigger OnAction()
+                var
+                    PurchaseHeader: Record "Purchase Header";
+                    POLine2: Record "Purchase Line";
+                    POFilter: Text[200];
+
+                begin
+                    POFilter := Rec.GETFILTER("No.");
+                    POLine2.SETRANGE(POLine2."Document Type", Rec."Document Type");
+                    POLine2.SETFILTER(POLine2."Document No.", POFilter);
+
+                    REPORT.RUN(50060, true, false, POLine2);
                 end;
             }
         }

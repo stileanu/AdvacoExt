@@ -2058,7 +2058,7 @@ table 50001 WorkOrderDetail
     var
         entryNo: Integer;
         ReservEntry: Record "Reservation Entry";
-        PurchMessage: Label 'Purcase Reservation Entry not implemented. Contact Intelice.';
+        PurchMessage: Label 'Purchase Reservation Entry not implemented. Contact Intelice.';
 
     begin
         Clear(ReservEntry);
@@ -2102,6 +2102,44 @@ table 50001 WorkOrderDetail
 
 
         end;
+    end;
+
+    procedure GetSerialNo_(DocType: Integer; SalesDoc: Record "Sales Line"; PurchDoc: Record "Purchase Line"; var SerialNo: Code[20]): Boolean
+    var
+        entryNo: Integer;
+        ReservEntry: Record "Reservation Entry";
+        PurchMessage: Label 'Purchase Reservation Entry not implemented. Contact Intelice.';
+
+    begin
+
+        ReservEntry.Reset();
+
+        case DocType of
+
+            Database::"Sales Line":
+                begin
+                    ReservEntry.SetRange("Source ID", SalesDoc."Document No.");
+                    ReservEntry.SetRange("Source Ref. No.", SalesDoc."Line No.");
+                    ReservEntry.SetRange("Item No.", SalesDoc."No.");
+                    ReservEntry.SetRange("Item Tracking", ReservEntry."Item Tracking"::"Serial No.");
+                    ReservEntry.SetRange("Source Type", DocType);
+
+                    if ReservEntry.FindFirst() then begin
+                        SerialNo := ReservEntry."Serial No.";
+                        exit(true);
+                    end;
+                end;
+
+            Database::"Purchase Line":
+                begin
+                    Error(PurchMessage);
+                end;
+
+
+        end;
+
+        exit(false);
+
     end;
 
     procedure SetOverrideConfirmation()

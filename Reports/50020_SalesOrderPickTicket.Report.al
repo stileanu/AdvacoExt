@@ -201,24 +201,34 @@ report 50020 "Sales Order Pick Ticket"
                 column(Sales_Line_Document_No_; "Document No.")
                 {
                 }
-                column(Sales_Line_Line_No_; "Line No.")
+                column(Sales_Line_Line_No_; Format("Line No."))
+                {
+                }
+                column(WO_Serial_No; WO_Serial_No)
                 {
                 }
 
                 trigger OnAfterGetRecord()
+                var
+                    WOD: Record WorkOrderDetail;
+                    PurchLine: Record "Purchase Line";
+
                 begin
                     Bin := '';
-                    if Type = Type::"G/L Account" then begin
+                    if (Type = Type::"G/L Account") then begin
                         if ("No." <> '311') or ("No." <> '312') then begin
-                            //    ITEMNO := "Cross Reference Item";
-                            //  END ELSE BEGIN
-                            //    ITEMNO := '';
+                            ITEMNO := "Cross Reference Item";
+                        end else begin
+                            ITEMNO := '';
                         end;
                     end else begin
                         ITEMNO := "No.";
                         if Item.Get("No.") then
                             Bin := Item."Shelf No.";
                     end;
+
+                    if not WOD.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, WO_Serial_No) then
+                        WO_Serial_No := ' ';
                 end;
             }
             dataitem("Sales Comment Line"; "Sales Comment Line")
@@ -239,7 +249,48 @@ report 50020 "Sales Order Pick Ticket"
                 column(Sales_Comment_Line_Line_No_; "Line No.")
                 {
                 }
+                column(Note_Capt; NoteCapt)
+                {
+                }
+
+                trigger OnPreDataItem()
+                begin
+                    NoteCapt := 0;
+                end;
+
+                trigger OnAfterGetRecord()
+                begin
+                    NoteCapt += 1;
+                end;
             }
+
+            trigger OnAfterGetRecord()
+            begin
+
+                IF "Sales Header"."Bill-to Address 2" = '' THEN BEGIN
+                    BillToAd2 := ("Bill-to City") + (', ') + ("Bill-to County") + ('  ') + ("Bill-to Post Code");
+                    BillTo := '';
+                END ELSE BEGIN
+                    BillToAd2 := "Sales Header"."Bill-to Address 2";
+                    BillTo := ("Bill-to City") + (', ') + ("Bill-to County") + ('  ') + ("Bill-to Post Code");
+                END;
+
+                IF "Sales Header"."Ship-to Address 2" = '' THEN BEGIN
+                    ShipToAd2 := ("Ship-to City") + (', ') + ("Ship-to County") + ('  ') + ("Ship-to Post Code");
+                    ShipTo := '';
+                END ELSE BEGIN
+                    ShipToAd2 := "Sales Header"."Ship-to Address 2";
+                    ShipTo := ("Ship-to City") + (', ') + ("Ship-to County") + ('  ') + ("Ship-to Post Code");
+                END;
+
+                IF ("Sales Header"."Payment Terms Code" = 'CC') THEN
+                    CC := 'Contact Accounting for Credit Card Approval Before Shipping!'
+                ELSE
+                    IF ("Sales Header"."Payment Terms Code" = 'COD') THEN
+                        CC := 'Contact Accounting to Calculate COD Charges, and enter COD Approval Before Shipping!'
+                    ELSE
+                        CC := '';
+            end;
         }
     }
 
@@ -260,6 +311,7 @@ report 50020 "Sales Order Pick Ticket"
     }
 
     var
+        NoteCapt: Integer;
         WO_Serial_No: Code[50];
         BillTo: Text[50];
         ShipTo: Text[50];

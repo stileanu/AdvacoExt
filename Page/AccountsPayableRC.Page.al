@@ -604,6 +604,12 @@ page 50161 AccountsPayableRC
                     Caption = 'Vendors';
                     RunObject = page "Vendor List";
                 }
+                action("Orders1") //ICE RSK 12/16/20
+                {
+                    ApplicationArea = Basic, Suite;
+                    Caption = 'Purchase Orders';
+                    RunObject = page "purchase order list";
+                }
                 action("Invoices1")
                 {
                     ApplicationArea = Basic, Suite;

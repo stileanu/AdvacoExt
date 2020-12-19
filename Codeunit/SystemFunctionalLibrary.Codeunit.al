@@ -240,4 +240,76 @@ codeunit 50030 systemFunctionalLibrary
         yesSuccess: Label 'OK';
     //tRetValue: enum eRet;
 
+    /*
+        procedure ClearSerialNo_(DocType: Integer; SourceRefNo: Integer; ItemNo: Code[20]): Boolean
+        var
+            ReservEntry: Record "Reservation Entry";
+
+        begin
+            ReservEntry.Reset();
+            ReservEntry.SetRange("Source Type", DocType);
+            ReservEntry.SetRange("Source Ref. No.", SourceRefNo);
+            ReservEntry.SetRange("Item No.", ItemNo);
+
+            if ReservEntry.FindSet() then begin
+                // if entries found, delete them
+                ReservEntry.DeleteAll();
+                exit(true);
+            end;
+
+            // did not find entries
+            exit(false);
+
+        end;
+
+        procedure SetSerialNo_(DocType: Integer; SalesDoc: Record "Sales Line"; PurchDoc: Record "Purchase Line"; var SerialNo: Code[20]): Boolean
+        var
+            entryNo: Integer;
+            ReservEntry: Record "Reservation Entry";
+            PurchMessage: Label 'Purcase Reservation Entry not implemented. Contact Intelice.';
+
+        begin
+            Clear(ReservEntry);
+            ReservEntry.Reset();
+            ReservEntry.FindLast();
+            entryNo := ReservEntry."Entry No." + 1;
+            ReservEntry.Init();
+            ReservEntry."Entry No." := entryNo;
+
+            case DocType of
+
+                Database::"Sales Line":
+                    begin
+                        ReservEntry.Positive := false;
+                        ReservEntry."Item No." := SalesDoc."No.";
+                        ReservEntry."Location Code" := SalesDoc."Location Code";
+                        ReservEntry.Validate("Quantity (Base)", SalesDoc."Quantity (Base)");
+                        //??? - should be simple Quantity??
+                        ReservEntry."Reservation Status" := ReservEntry."Reservation Status"::Surplus;
+                        ReservEntry."Creation Date" := WorkDate();
+                        ReservEntry."Shipment Date" := SalesDoc."Shipment Date";
+                        ReservEntry."Source Type" := DocType;
+                        ReservEntry."Source Subtype" := 1;
+                        ReservEntry."Source ID" := SalesDoc."Document No.";
+                        ReservEntry."Source Ref. No." := SalesDoc."Line No.";
+                        ReservEntry."Created By" := UserId;
+                        //ReservEntry.Quantity := SalesDoc.Quantity;
+                        ReservEntry."Qty. per Unit of Measure" := SalesDoc."Qty. per Unit of Measure";
+                        ReservEntry."Disallow Cancellation" := false;
+                        ReservEntry.Correction := false;
+                        ReservEntry."Item Tracking" := ReservEntry."Item Tracking"::"Serial No.";
+                        ReservEntry."Untracked Surplus" := false;
+
+                        ReservEntry.Insert();
+                    end;
+
+                Database::"Purchase Line":
+                    begin
+                        Error(PurchMessage);
+                    end;
+
+
+            end;
+        end;
+        */
 }

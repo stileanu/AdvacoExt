@@ -178,21 +178,31 @@ report 50022 "Sales Order - ADVACO"
                 column(Avail_Caption; Avail_CaptionLbl)
                 {
                 }
+                column(Serial_No_Caption; Serial_No_CaptionLbl)
+                {
+                }
                 column(Sales_Line_Document_Type; "Document Type")
                 {
                 }
                 column(Sales_Line_Document_No_; "Document No.")
                 {
                 }
-                column(Sales_Line_Line_No_; "Line No.")
+                column(Sales_Line_Line_No_; Format("Line No."))
+                {
+                }
+                column(WO_Serial_No; WO_Serial_No)
                 {
                 }
 
                 trigger OnAfterGetRecord()
+                var
+                    PurchLine: Record "Purchase Line";
+                    WOD: Record WorkOrderDetail;
+
                 begin
                     if Type = Type::"G/L Account" then begin
                         if ("No." <> '311') or ("No." <> '312') then begin
-                            //    ITEMNO := "Cross Reference Item";
+                            ITEMNO := "Cross Reference Item";
                         end else begin
                             ITEMNO := '';
                         end;
@@ -207,6 +217,9 @@ report 50022 "Sales Order - ADVACO"
                         Item.CalcFields(Inventory, "Qty. on Purch. Order", "Reserved Qty. on Inventory");
                         QtyAvailable := (Item.Inventory - Item."Reserved Qty. on Inventory");
                     end;
+
+                    if not WOD.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, WO_Serial_No) then
+                        WO_Serial_No := ' ';
                 end;
             }
             dataitem("Sales Comment Line"; "Sales Comment Line")
@@ -228,7 +241,48 @@ report 50022 "Sales Order - ADVACO"
                 column(Sales_Comment_Line_Line_No_; "Line No.")
                 {
                 }
+                column(Note_Capt; NoteCapt)
+                {
+                }
+
+                trigger OnPreDataItem()
+                begin
+                    NoteCapt := 0;
+                end;
+
+                trigger OnAfterGetRecord()
+                begin
+                    NoteCapt += 1;
+                end;
             }
+
+            trigger OnAfterGetRecord()
+            begin
+
+                IF "Sales Header"."Bill-to Address 2" = '' THEN BEGIN
+                    BillToAd2 := ("Bill-to City") + (', ') + ("Bill-to County") + ('  ') + ("Bill-to Post Code");
+                    BillTo := '';
+                END ELSE BEGIN
+                    BillToAd2 := "Sales Header"."Bill-to Address 2";
+                    BillTo := ("Bill-to City") + (', ') + ("Bill-to County") + ('  ') + ("Bill-to Post Code");
+                END;
+
+                IF "Sales Header"."Ship-to Address 2" = '' THEN BEGIN
+                    ShipToAd2 := ("Ship-to City") + (', ') + ("Ship-to County") + ('  ') + ("Ship-to Post Code");
+                    ShipTo := '';
+                END ELSE BEGIN
+                    ShipToAd2 := "Sales Header"."Ship-to Address 2";
+                    ShipTo := ("Ship-to City") + (', ') + ("Ship-to County") + ('  ') + ("Ship-to Post Code");
+                END;
+
+                IF ("Sales Header"."Payment Terms Code" = 'CC') THEN
+                    CC := 'Contact Accounting for Credit Card Approval Before Shipping!'
+                ELSE
+                    IF ("Sales Header"."Payment Terms Code" = 'COD') THEN
+                        CC := 'Contact Accounting to Calculate COD Charges, and enter COD Approval Before Shipping!'
+                    ELSE
+                        CC := '';
+            end;
         }
     }
 
@@ -249,6 +303,8 @@ report 50022 "Sales Order - ADVACO"
     }
 
     var
+        NoteCapt: Integer;
+        WO_Serial_No: Code[50];
         BillTo: Text[50];
         ShipTo: Text[50];
         BillToAd2: Text[50];
@@ -279,5 +335,6 @@ report 50022 "Sales Order - ADVACO"
         VendorCaptionLbl: Label 'Vendor';
         Avail_CaptionLbl: Label 'Avail.';
         Notes_CaptionLbl: Label 'Notes:';
+        Serial_No_CaptionLbl: Label 'Serial No.';
 }
 

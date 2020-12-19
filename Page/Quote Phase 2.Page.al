@@ -99,10 +99,10 @@ page 50015 "Quote Phase 2"
             group(Instructions)
             {
                 Caption = 'Instructions';
-                action("&Print")
+                action("&PrintParts")
                 {
                     ApplicationArea = All;
-                    Caption = '&Print';
+                    Caption = '&Print Parts';
 
                     trigger OnAction()
                     begin
@@ -148,11 +148,16 @@ page 50015 "Quote Phase 2"
                                 WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
                                 WOD.SetRecFilter;
                                 REPORT.RunModal(50040, false, false, WOD);
+                                ///--!
+                                /*
+                                Message('Do you want Quote Review?');
+
                                 WOD.Reset;
                                 WOD.Get("Work Order No.");
                                 WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
                                 WOD.SetRecFilter;
                                 REPORT.RunModal(50041, false, false, WOD);
+                                */
                                 WOD.Reset;
                             end;
 
@@ -191,6 +196,122 @@ page 50015 "Quote Phase 2"
                                 WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
                                 WOD.SetRecFilter;
                                 REPORT.RunModal(50040, false, false, WOD);
+                                ///--!
+                                /*
+                                Message('Do you want Quote Review?');
+                                WOD.Reset;
+                                WOD.Get("Work Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
+                                WOD.SetRecFilter;
+                                REPORT.RunModal(50041, false, false, WOD);
+                                */
+                                WOD.Reset;
+                            end;
+                        end;
+                    end;
+                }
+
+                action("&PrintQuote")
+                {
+                    ApplicationArea = All;
+                    Caption = '&Print Quote Review';
+
+                    trigger OnAction()
+                    begin
+                        SerialNo := '';
+                        NotChecked := '';
+                        QuotedQty := '';
+                        EmptyQuotePrice := '';
+
+                        if "Customer ID" = 'ADV-01' then begin
+                            Parts.SetRange(Parts."Work Order No.", WOS."Order No.");
+                            if Parts.Find('-') then begin
+                                repeat
+                                    if Parts."Serial No." <> '' then begin
+                                        SerialNo := 'FOUND';
+                                        if Parts."Quoted Quantity" = 0 then
+                                            QuotedQty := 'ZERO';
+                                    end;
+
+                                    if Parts."Quoted Quantity" > 0 then begin
+                                        if Parts."Quoted Price" = 0 then
+                                            EmptyQuotePrice := 'TRUE';
+                                    end;
+                                until Parts.Next = 0;
+                            end;
+
+                            if SerialNo = '' then
+                                Message('The ADVACO Pump must be included in the QUOTE, Unable to Print');
+                            if (SerialNo <> '') and (QuotedQty <> '') then
+                                Message('Quoted Qty is Zero for Pump with Serial Number, Unable to Print');
+                            if EmptyQuotePrice <> '' then
+                                Message('Quoted Price is Zero for Atleast one Item or Resource, Unable to Print');
+
+                            Mechanics.SetRange(Mechanics."Work Order No.", WOD."Work Order No.");
+                            Mechanics.SetRange(Mechanics.Entered, false);
+                            if Mechanics.Find('-') then begin
+                                Message('All Mechanics Parts must be checked as Entered, Unable to Print');
+                                NotChecked := 'NotChecked';
+                            end;
+
+                            if (NotChecked = '') and (SerialNo = 'FOUND') and (QuotedQty = '') and (EmptyQuotePrice = '') then begin
+                                /*
+                                WOD.Reset;
+                                WOD.Get("Work Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
+                                WOD.SetRecFilter;
+                                REPORT.RunModal(50040, false, false, WOD);
+                                */
+                                ///--!
+                                //Message('Do you want Quote Review?');
+
+                                WOD.Reset;
+                                WOD.Get("Work Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
+                                WOD.SetRecFilter;
+                                REPORT.RunModal(50041, false, false, WOD);
+                                WOD.Reset;
+                            end;
+
+                        end else begin
+                            Parts.SetRange(Parts."Work Order No.", WOS."Order No.");
+                            if Parts.Find('-') then begin
+                                repeat
+                                    if Parts."Serial No." <> '' then begin
+                                        if Parts."Quoted Quantity" = 0 then
+                                            QuotedQty := 'ZERO';
+                                    end;
+
+                                    if Parts."Quoted Quantity" > 0 then begin
+                                        if Parts."Quoted Price" = 0 then
+                                            EmptyQuotePrice := 'TRUE';
+                                    end;
+                                until Parts.Next = 0;
+                            end;
+
+                            if (QuotedQty <> '') then
+                                Message('Quoted Qty is Zero for Pump with Serial Number, Unable to Print');
+
+                            if EmptyQuotePrice <> '' then
+                                Message('Quoted Price is Zero for at least one Item or Resource, Unable to Print');
+
+                            Mechanics.SetRange(Mechanics."Work Order No.", WOD."Work Order No.");
+                            Mechanics.SetRange(Mechanics.Entered, false);
+                            if Mechanics.Find('-') then begin
+                                Message('All Mechanics Parts must be checked as Entered, Unable to Print');
+                                NotChecked := 'NotChecked';
+                            end;
+
+                            if (NotChecked = '') and (QuotedQty = '') and (EmptyQuotePrice = '') then begin
+                                /*
+                                WOD.Reset;
+                                WOD.Get("Work Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
+                                WOD.SetRecFilter;
+                                */
+                                //REPORT.RunModal(50040, false, false, WOD);
+                                ///--!
+                                //Message('Do you want Quote Review?');
                                 WOD.Reset;
                                 WOD.Get("Work Order No.");
                                 WOD.SetFilter(WOD."Work Order No.", "Work Order No.");

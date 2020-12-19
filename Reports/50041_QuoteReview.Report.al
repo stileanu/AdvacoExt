@@ -4,6 +4,8 @@ report 50041 "Quote Review"
     RDLCLayout = './Reports/50041_QuoteReview.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
+    UseRequestPage = true;
+
     dataset
     {
         dataitem(WorkOrderDetail; WorkOrderDetail)
@@ -178,6 +180,24 @@ report 50041 "Quote Review"
             column(ChargeCaption; ChargeCaptionLbl)
             {
             }
+            column(Parts__Part_No__Caption; Parts_NoLbl)
+            {
+            }
+            column(Parts_DescriptionCaption; Parts_DescriptionLbl)
+            {
+            }
+            column(QuantityCaption; QuantityCaptionLbl)
+            {
+            }
+            column(CostCaption; CostCaptionLbl)
+            {
+            }
+            column(PriceCaption; PriceCaptionLbl)
+            {
+            }
+            column(Total_PriceCaption; Total_PriceCaptionLbl)
+            {
+            }
             dataitem(Parts; Parts)
             {
                 DataItemLink = "Work Order No." = FIELD("Work Order No.");
@@ -201,24 +221,6 @@ report 50041 "Quote Review"
                 {
                 }
                 column(TotalPrice; PartsTotal)
-                {
-                }
-                column(Parts__Part_No__Caption; FieldCaption("Part No."))
-                {
-                }
-                column(Parts_DescriptionCaption; FieldCaption(Description))
-                {
-                }
-                column(QuantityCaption; QuantityCaptionLbl)
-                {
-                }
-                column(PriceCaption; PriceCaptionLbl)
-                {
-                }
-                column(CostCaption; CostCaptionLbl)
-                {
-                }
-                column(Total_PriceCaption; Total_PriceCaptionLbl)
                 {
                 }
                 column(Parts_TotalCaption; Parts_TotalCaptionLbl)
@@ -282,9 +284,19 @@ report 50041 "Quote Review"
                 column(Parts2_Part_Type; "Part Type")
                 {
                 }
+                column(show_TotParts; showTotParts)
+                {
+                }
+
+                trigger OnPreDataItem()
+                begin
+                    showTotParts := 0;
+                end;
 
                 trigger OnAfterGetRecord()
                 begin
+                    showTotParts += 1;
+
                     if Parts2."Quoted Quantity" = 0 then begin
                         CurrReport.Skip;
                     end else begin
@@ -349,7 +361,10 @@ report 50041 "Quote Review"
         CostCaptionLbl: Label 'Cost';
         Total_PriceCaptionLbl: Label 'Total Price';
         Parts_TotalCaptionLbl: Label 'Parts Total';
-        Resouce_TotalCaptionLbl: Label 'Resouce Total';
+        Resouce_TotalCaptionLbl: Label 'Resource Total';
         TotalCaptionLbl: Label 'Total';
+        Parts_NoLbl: Label 'Part No.';
+        Parts_DescriptionLbl: Label 'Description';
+        showTotParts: Integer;
 }
 

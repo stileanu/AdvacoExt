@@ -9,7 +9,7 @@ report 50006 "Office Work Order Status Rpt"
         dataitem("Work Order Detail"; "WorkOrderDetail")
         {
             DataItemTableView = Sorting(Complete) WHERE(Complete = CONST(false));
-            RequestFilterFields = "Work Order Master No.", "Work Order No.";
+            RequestFilterFields = "Work Order Master No.", "Work Order No.", "Work Order Date";
             column(OFFICE_WORK_ORDER_STATUS_REPORT_; 'OFFICE WORK ORDER STATUS REPORT')
             {
             }
