@@ -125,7 +125,7 @@ report 50121 "Sales Invoice New - ADVACO"
             column(Page_Caption; Page_CaptionLbl)
             {
             }
-            column(Document_Date; "Document Date")
+            column(Document_Date; Format("Document Date", 0, 4))
             {
 
             }

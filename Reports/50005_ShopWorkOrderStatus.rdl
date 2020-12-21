@@ -19,7 +19,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.2cm</Width>
+                  <Width>1.50554cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.2cm</Width>
@@ -95,7 +95,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -531,7 +530,7 @@
                                 <TextRun>
                                   <Value>=Fields!Work_Order_Detail__Work_Order_No__.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -558,7 +557,7 @@
                                 <TextRun>
                                   <Value>=Fields!Work_Order_Detail__Order_Type_.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -583,9 +582,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Work_Order_Detail__Work_Order_Date_.Value</Value>
+                                  <Value>=FormatDateTime(Fields!Work_Order_Detail__Work_Order_Date_.Value, DateFormat.ShortDate)</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -610,9 +609,9 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Work_Order_Detail__Date_Required_.Value</Value>
+                                  <Value>=FormatDateTime(Fields!Work_Order_Detail__Date_Required_.Value, DateFormat.ShortDate)</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -639,7 +638,7 @@
                                 <TextRun>
                                   <Value>=Fields!Work_Order_Detail__Model_No__.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -666,7 +665,7 @@
                                 <TextRun>
                                   <Value>=Fields!PStep.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -693,7 +692,7 @@
                                 <TextRun>
                                   <Value>=Fields!FORMAT_DateOut_0___Month_2___Day_2___.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -720,7 +719,7 @@
                                 <TextRun>
                                   <Value>=Fields!CStep.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -748,7 +747,7 @@
                                 <TextRun>
                                   <Value>=Fields!FORMAT_DateIn_0___Month_2___Day_2___.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -777,7 +776,7 @@
                                 <TextRun>
                                   <Value>=Fields!Late.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -806,7 +805,7 @@
                                 <TextRun>
                                   <Value>=Fields!Serial_No__.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -835,7 +834,7 @@
                                 <TextRun>
                                   <Value>=Fields!Work_Order_Detail__Tool_ID_.Value</Value>
                                   <Style>
-                                    <FontSize>8pt</FontSize>
+                                    <FontSize>7pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -856,7 +855,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.635cm</Height>
+                  <Height>1.348cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1238,7 +1237,11 @@
                     <DataElementName>Detail</DataElementName>
                   </Group>
                   <TablixMembers>
-                    <TablixMember />
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>=iif(Fields!Work_Order_Detail__Work_Order_No__.Value &lt;&gt; "",false, true)</Hidden>
+                      </Visibility>
+                    </TablixMember>
                     <TablixMember />
                   </TablixMembers>
                   <DataElementName>Detail_Collection</DataElementName>
@@ -1252,32 +1255,32 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.26458cm</Top>
             <Left>0.03013in</Left>
-            <Height>1.738cm</Height>
-            <Width>16.73347cm</Width>
+            <Height>2.451cm</Height>
+            <Width>17.03901cm</Width>
             <Style />
           </Tablix>
           <Tablix Name="Tablix1">
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>2.7cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>1.95cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>1.95cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>1.95cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.5cm</Width>
+                  <Width>1.95cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.846cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1290,6 +1293,7 @@
                                 <TextRun>
                                   <Value />
                                   <Style>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -1300,7 +1304,7 @@
                           <rd:DefaultName>Textbox5</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1322,19 +1326,23 @@
                                 <TextRun>
                                   <Value>REBUILD</Value>
                                   <Style>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox7</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <VerticalAlign>Bottom</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1354,19 +1362,23 @@
                                 <TextRun>
                                   <Value>REPAIR</Value>
                                   <Style>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox9</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <VerticalAlign>Bottom</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1386,19 +1398,23 @@
                                 <TextRun>
                                   <Value>WARRANTY</Value>
                                   <Style>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox56</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <VerticalAlign>Bottom</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1418,19 +1434,23 @@
                                 <TextRun>
                                   <Value>TOTALS</Value>
                                   <Style>
+                                    <FontSize>7pt</FontSize>
                                     <FontWeight>Bold</FontWeight>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox45</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
+                            <VerticalAlign>Bottom</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -1442,7 +1462,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1453,8 +1473,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Orders</Value>
-                                  <Style />
+                                  <Value>=UCase("Orders")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1463,7 +1486,7 @@
                           <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1484,16 +1507,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!RebTotal.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>RebTotal</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1514,16 +1541,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!RepTotal.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>RepTotal</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1544,16 +1575,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!WarTotal.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>WarTotal</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1574,16 +1609,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!WarTotal_RepTotal_RebTotal.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>WarTotal_RepTotal_RebTotal</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1597,7 +1636,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1608,8 +1647,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Receiving</Value>
-                                  <Style />
+                                  <Value>=UCase("Receiving")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1618,7 +1660,7 @@
                           <rd:DefaultName>Textbox18</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1639,16 +1681,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb0.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb0</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1669,16 +1715,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep0.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep0</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1699,16 +1749,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War0.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War0</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1729,16 +1783,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War0_Rep0_Reb0.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War0_Rep0_Reb0</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1752,7 +1810,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1763,8 +1821,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Disassembly</Value>
-                                  <Style />
+                                  <Value>=UCase("Disassembly")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1773,7 +1834,7 @@
                           <rd:DefaultName>Textbox33</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1794,16 +1855,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb1.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb1</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1824,16 +1889,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep1.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep1</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1854,16 +1923,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War1.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War1</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1884,16 +1957,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War1_Rep1_Reb1.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War1_Rep1_Reb1</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1907,7 +1984,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -1918,8 +1995,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Quoting</Value>
-                                  <Style />
+                                  <Value>=UCase("Quoting")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -1928,7 +2008,7 @@
                           <rd:DefaultName>Textbox30</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1949,16 +2029,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb2.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb2</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -1979,16 +2063,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep2.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep2</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2009,16 +2097,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War2.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War2</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2039,16 +2131,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War2_Rep2_Reb2.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War2_Rep2_Reb2</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2062,7 +2158,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2073,8 +2169,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Back Order</Value>
-                                  <Style />
+                                  <Value>=UCase("Back Order")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2083,7 +2182,7 @@
                           <rd:DefaultName>Textbox27</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2104,16 +2203,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb3.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb3</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2134,16 +2237,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep3.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep3</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2164,16 +2271,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War3.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War3</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2194,16 +2305,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War3_Rep3_Reb3.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War3_Rep3_Reb3</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2217,7 +2332,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2228,8 +2343,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Cleaning</Value>
-                                  <Style />
+                                  <Value>=UCase("Cleaning")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2238,7 +2356,7 @@
                           <rd:DefaultName>Textbox24</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2259,16 +2377,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb4.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb4</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2289,16 +2411,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep4.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep4</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2319,16 +2445,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War4.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War4</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2349,16 +2479,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War4_Rep4_Reb4.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War4_Rep4_Reb4</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2372,7 +2506,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2383,8 +2517,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Assembly</Value>
-                                  <Style />
+                                  <Value>=UCase("Assembly")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2393,7 +2530,7 @@
                           <rd:DefaultName>Textbox21</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2414,16 +2551,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb5.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb5</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2444,16 +2585,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep5.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep5</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2474,16 +2619,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War5.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War5</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2504,16 +2653,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War5_Rep5_Reb5.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War5_Rep5_Reb5</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2527,7 +2680,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2538,8 +2691,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Testing</Value>
-                                  <Style />
+                                  <Value>=UCase("Testing")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2548,7 +2704,7 @@
                           <rd:DefaultName>Textbox42</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2569,16 +2725,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb6.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb6</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2599,16 +2759,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep6.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep6</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2629,16 +2793,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War6.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War6</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2659,16 +2827,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War6_Rep6_Reb6.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War6_Rep6_Reb6</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2682,7 +2854,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2693,8 +2865,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Retesting</Value>
-                                  <Style />
+                                  <Value>=UCase("Retesting")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2703,7 +2878,7 @@
                           <rd:DefaultName>Textbox39</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2724,16 +2899,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb7.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb7</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2754,16 +2933,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep7.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep7</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2784,16 +2967,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War7.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War7</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2814,16 +3001,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War7_Rep7_Reb7.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War7_Rep7_Reb7</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2837,7 +3028,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -2848,8 +3039,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Repair</Value>
-                                  <Style />
+                                  <Value>=UCase("Repair")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -2858,7 +3052,7 @@
                           <rd:DefaultName>Textbox36</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2879,16 +3073,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb8.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb8</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2909,16 +3107,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep8.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep8</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2939,16 +3141,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War8.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War8</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2969,16 +3175,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War8_Rep8_Reb8.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War8_Rep8_Reb8</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -2992,7 +3202,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3003,8 +3213,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Paint Shop</Value>
-                                  <Style />
+                                  <Value>=UCase("Paint Shop")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3013,7 +3226,7 @@
                           <rd:DefaultName>Textbox67</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3034,16 +3247,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb9.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb81</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3064,16 +3281,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep9.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep9</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3094,16 +3315,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War9.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War9</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3124,16 +3349,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War9_Rep9_Reb9.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War9_Rep9_Reb9</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3147,7 +3376,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3158,8 +3387,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Machine Ship</Value>
-                                  <Style />
+                                  <Value>=UCase("Machine Ship")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3168,7 +3400,7 @@
                           <rd:DefaultName>Textbox72</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3189,16 +3421,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb10.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb10</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3219,16 +3455,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep10.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep10</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3249,16 +3489,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War10.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War10</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3279,16 +3523,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War10_Rep10_Reb10.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War10_Rep10_Reb10</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3302,7 +3550,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3313,8 +3561,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Quality Control</Value>
-                                  <Style />
+                                  <Value>=UCase("Quality Control")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3323,7 +3574,7 @@
                           <rd:DefaultName>Textbox77</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3344,16 +3595,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb11.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb11</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3374,16 +3629,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep11.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep11</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3404,16 +3663,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War11.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War11</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3434,16 +3697,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War11_Rep11_Reb11.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War11_Rep11_Reb11</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3457,7 +3724,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3468,8 +3735,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Shipping</Value>
-                                  <Style />
+                                  <Value>=UCase("Shipping")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3478,7 +3748,7 @@
                           <rd:DefaultName>Textbox87</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3499,16 +3769,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Reb12.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Reb12</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3529,16 +3803,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!Rep12.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Rep12</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3559,16 +3837,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War12.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War12</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3589,16 +3871,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!War12_Rep12_Reb12.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>War12_Rep12_Reb12</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3612,7 +3898,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.6cm</Height>
+                  <Height>0.423cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -3623,8 +3909,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Late</Value>
-                                  <Style />
+                                  <Value>=UCase("Late")</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -3633,7 +3922,7 @@
                           <rd:DefaultName>Textbox82</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3654,16 +3943,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!LateRebuild.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>LateRebuild</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3684,16 +3977,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!LateRepair.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>LateRepair</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3714,16 +4011,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!LateWarranty.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>LateWarranty</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3744,16 +4045,20 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!LateWarranty_LateRepair_LateRebuild.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Right</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>LateWarranty_LateRepair_LateRebuild</rd:DefaultName>
                           <Style>
                             <Border>
-                              <Color>LightGrey</Color>
+                              <Color>White</Color>
                               <Style>Solid</Style>
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -3817,15 +4122,16 @@
                 </FilterValues>
               </Filter>
             </Filters>
-            <Top>2.32582cm</Top>
-            <Left>0.49953cm</Left>
-            <Height>9.6cm</Height>
-            <Width>12.5cm</Width>
+            <Top>3.43707cm</Top>
+            <Left>0.47307cm</Left>
+            <Height>7.191cm</Height>
+            <Width>10.5cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
                 <Style>None</Style>
               </Border>
+              <FontSize>7pt</FontSize>
             </Style>
           </Tablix>
         </ReportItems>
@@ -3882,7 +4188,7 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.07056cm</Top>
+              <Top>0cm</Top>
               <Left>0cm</Left>
               <Height>0.423cm</Height>
               <Width>19.35cm</Width>
@@ -3910,9 +4216,9 @@
                 </Paragraph>
               </Paragraphs>
               <Top>0cm</Top>
-              <Left>16.16521cm</Left>
+              <Left>14.36604cm</Left>
               <Height>0.423cm</Height>
-              <Width>3.18479cm</Width>
+              <Width>4.98396cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
@@ -3936,9 +4242,9 @@
                 </Paragraph>
               </Paragraphs>
               <Top>0.91656cm</Top>
-              <Left>15.63292cm</Left>
+              <Left>14.36604cm</Left>
               <Height>0.423cm</Height>
-              <Width>3.71708cm</Width>
+              <Width>4.98396cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>

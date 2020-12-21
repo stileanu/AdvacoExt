@@ -198,6 +198,15 @@ report 50041 "Quote Review"
             column(Total_PriceCaption; Total_PriceCaptionLbl)
             {
             }
+            column(Parts_TotalCaption; Parts_TotalCaptionLbl)
+            {
+            }
+            column(Resouce_TotalCaption; Resouce_TotalCaptionLbl)
+            {
+            }
+            column(TotalCaption; TotalCaptionLbl)
+            {
+            }
             dataitem(Parts; Parts)
             {
                 DataItemLink = "Work Order No." = FIELD("Work Order No.");
@@ -221,9 +230,6 @@ report 50041 "Quote Review"
                 {
                 }
                 column(TotalPrice; PartsTotal)
-                {
-                }
-                column(Parts_TotalCaption; Parts_TotalCaptionLbl)
                 {
                 }
                 column(Parts_Work_Order_No_; "Work Order No.")
@@ -272,12 +278,6 @@ report 50041 "Quote Review"
                 column(TotalPrice_Control4; LaborTotal + PartsTotal)
                 {
                 }
-                column(Resouce_TotalCaption; Resouce_TotalCaptionLbl)
-                {
-                }
-                column(TotalCaption; TotalCaptionLbl)
-                {
-                }
                 column(Parts2_Work_Order_No_; "Work Order No.")
                 {
                 }
@@ -287,7 +287,11 @@ report 50041 "Quote Review"
                 column(show_TotParts; showTotParts)
                 {
                 }
-
+                /*column(PriceLabor; LaborPrice)
+                {
+                }
+                column()
+                */
                 trigger OnPreDataItem()
                 begin
                     showTotParts := 0;

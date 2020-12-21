@@ -22,19 +22,19 @@
                   <Width>1.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.871cm</Width>
+                  <Width>1.976cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.841cm</Width>
+                  <Width>3.082cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.027cm</Width>
+                  <Width>2.899cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.315cm</Width>
+                  <Width>4.443cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.841cm</Width>
+                  <Width>2.892cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.2cm</Width>
@@ -169,8 +169,10 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
-                                  <Style />
+                                  <Value>=Fields!Purchase_Line__Cross_Ref_Item.Value</Value>
+                                  <Style>
+                                    <FontSize>7pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -432,7 +434,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Item_No_Caption.Value</Value>
+                                  <Value>=Fields!Vendor_Item_No__Caption.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -617,14 +619,14 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
             <Height>0.423cm</Height>
-            <Width>19.595cm</Width>
+            <Width>19.992cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>0.423cm</Height>
+        <Height>1.269cm</Height>
         <Style />
       </Body>
-      <Width>19.98801cm</Width>
+      <Width>19.992cm</Width>
       <Page>
         <PageHeader>
           <Height>2.858cm</Height>
@@ -804,7 +806,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>2.223cm</Top>
+              <Top>2.222cm</Top>
               <Left>1.59cm</Left>
               <Height>0.423cm</Height>
               <Width>1.87cm</Width>
@@ -947,6 +949,33 @@
                 <VerticalAlign>Bottom</VerticalAlign>
               </Style>
             </Textbox>
+            <Textbox Name="Item_No_Caption2">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!Item_No_Caption.Value</Value>
+                      <Style>
+                        <FontSize>7pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>1.799cm</Top>
+              <Left>6.56258cm</Left>
+              <Height>0.846cm</Height>
+              <Width>2.727cm</Width>
+              <ZIndex>12</ZIndex>
+              <Style>
+                <VerticalAlign>Bottom</VerticalAlign>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style />
         </PageHeader>
@@ -1035,6 +1064,9 @@ End Function
         <Field Name="Purchase_Line__Document_No__">
           <DataField>Purchase_Line__Document_No__</DataField>
         </Field>
+        <Field Name="Purchase_Line__Cross_Ref_Item">
+          <DataField>Purchase_Line__Cross_Ref_Item</DataField>
+        </Field>
         <Field Name="rma">
           <DataField>rma</DataField>
         </Field>
@@ -1064,6 +1096,9 @@ End Function
         </Field>
         <Field Name="Purchase_Line_Line_No_">
           <DataField>Purchase_Line_Line_No_</DataField>
+        </Field>
+        <Field Name="Vendor_Item_No__Caption">
+          <DataField>Vendor_Item_No__Caption</DataField>
         </Field>
       </Fields>
       <Query>

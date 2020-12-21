@@ -14,7 +14,7 @@ report 50005 "Shop Work Order Status Rpt"
         {
 
             DataItemTableView = sorting(Complete) WHERE(Complete = CONST(false));
-            RequestFilterFields = "Work Order Master No.", "Work Order No.";
+            RequestFilterFields = "Work Order Master No.", "Work Order No.", "Work Order Date";
             column(SHOP_WORK_ORDER_STATUS_REPORT_; 'SHOP WORK ORDER STATUS REPORT')
             {
             }

@@ -6637,7 +6637,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.423cm</Height>
+                  <Height>0.5cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -7126,7 +7126,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox84</rd:DefaultName>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -7151,7 +7151,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox85</rd:DefaultName>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -7176,7 +7176,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox86</rd:DefaultName>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -7199,7 +7199,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox87</rd:DefaultName>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -7226,7 +7226,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox88</rd:DefaultName>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -7238,7 +7238,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.423cm</Height>
+                  <Height>0.5cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -7710,7 +7710,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Parts2__Total_Quote_Price_.Value</Value>
+                                  <Value>=Fields!Work_Order_Detail__Labor_Quoted_.Value</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>n2</Format>
@@ -7753,7 +7753,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox73</rd:DefaultName>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -7780,7 +7780,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox285</rd:DefaultName>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -7803,7 +7803,7 @@
                           </Paragraphs>
                           <rd:DefaultName>Textbox260</rd:DefaultName>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -7824,7 +7824,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -7849,7 +7849,7 @@
                             </Paragraph>
                           </Paragraphs>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -7861,7 +7861,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.67938cm</Height>
+                  <Height>0.62646cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -8016,7 +8016,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Sum(Fields!TotalPrice_Control4.Value)</Value>
+                                  <Value>=Fields!Work_Order_Detail__Parts_Quoted_.Value + Fields!Work_Order_Detail__Labor_Quoted_.Value</Value>
                                   <Style>
                                     <FontWeight>Bold</FontWeight>
                                     <Format>n2</Format>
@@ -8299,7 +8299,7 @@
                         </TablixMember>
                         <TablixMember>
                           <Visibility>
-                            <Hidden>=iif(Fields!show_TotParts.Value &lt;&gt; 1, true,false)</Hidden>
+                            <Hidden>=iif((Fields!show_TotParts.Value &lt;&gt; 1) or (Fields!Work_Order_Detail__Parts_Quoted_.Value = 0), true,false)</Hidden>
                           </Visibility>
                         </TablixMember>
                         <TablixMember>
@@ -8313,6 +8313,9 @@
                       <KeepTogether>true</KeepTogether>
                     </TablixMember>
                     <TablixMember>
+                      <Visibility>
+                        <Hidden>=iif(Fields!Work_Order_Detail__Labor_Quoted_.Value &lt;&gt; 0, false, true)</Hidden>
+                      </Visibility>
                       <KeepWithGroup>Before</KeepWithGroup>
                       <KeepTogether>true</KeepTogether>
                     </TablixMember>
@@ -8325,7 +8328,7 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
-            <Height>12.31605cm</Height>
+            <Height>12.41713cm</Height>
             <Width>19.97045cm</Width>
             <Style />
           </Tablix>
@@ -8591,6 +8594,15 @@ End Function
         <Field Name="Total_PriceCaption">
           <DataField>Total_PriceCaption</DataField>
         </Field>
+        <Field Name="Parts_TotalCaption">
+          <DataField>Parts_TotalCaption</DataField>
+        </Field>
+        <Field Name="Resouce_TotalCaption">
+          <DataField>Resouce_TotalCaption</DataField>
+        </Field>
+        <Field Name="TotalCaption">
+          <DataField>TotalCaption</DataField>
+        </Field>
         <Field Name="Parts__Part_No__">
           <DataField>Parts__Part_No__</DataField>
         </Field>
@@ -8626,9 +8638,6 @@ End Function
         </Field>
         <Field Name="TotalPriceFormat">
           <DataField>TotalPriceFormat</DataField>
-        </Field>
-        <Field Name="Parts_TotalCaption">
-          <DataField>Parts_TotalCaption</DataField>
         </Field>
         <Field Name="Parts_Work_Order_No_">
           <DataField>Parts_Work_Order_No_</DataField>
@@ -8677,12 +8686,6 @@ End Function
         </Field>
         <Field Name="TotalPrice_Control4Format">
           <DataField>TotalPrice_Control4Format</DataField>
-        </Field>
-        <Field Name="Resouce_TotalCaption">
-          <DataField>Resouce_TotalCaption</DataField>
-        </Field>
-        <Field Name="TotalCaption">
-          <DataField>TotalCaption</DataField>
         </Field>
         <Field Name="Parts2_Work_Order_No_">
           <DataField>Parts2_Work_Order_No_</DataField>

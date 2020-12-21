@@ -42,6 +42,9 @@ report 50056 "Outstanding Vendor Repairs"
             column(Purchase_Line__Document_No__; "Document No.")
             {
             }
+            column(Purchase_Line__Cross_Ref_Item; "Cross-Reference Type No.")
+            {
+            }
             column(rma; rma)
             {
             }
@@ -70,6 +73,9 @@ report 50056 "Outstanding Vendor Repairs"
             {
             }
             column(Purchase_Line_Line_No_; "Line No.")
+            {
+            }
+            column(Vendor_Item_No__Caption; Vendor_Item_No__CaptionLbl)
             {
             }
 
@@ -189,5 +195,6 @@ report 50056 "Outstanding Vendor Repairs"
         QuantityCaptionLbl: Label 'Quantity';
         CurrReport_PAGENOCaptionLbl: Label 'Page';
         RMA_No_CaptionLbl: Label 'RMA No.';
+        Vendor_Item_No__CaptionLbl: Label 'Vendor Item No';
 }
 

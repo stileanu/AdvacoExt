@@ -260,6 +260,10 @@ report 50025 "Work Order Analysis"
 
                     TotalFreight := TotalFreight + WorkOrderDetail.Freightin + WorkOrderDetail.Freightout;
 
+                    IF TotalInvoice > 0 THEN
+                        TotalPartsCostPercentage := TotalPartsCost / TotalInvoice
+                    ELSE
+                        TotalPartsCostPercentage := 0;
 
                 end else begin
                     CurrReport.Skip;
