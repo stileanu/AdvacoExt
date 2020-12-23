@@ -83,6 +83,7 @@ report 50046 "Rep. Monthly Statement"
                 {
                 }
 
+
                 trigger OnPreDataItem()
                 begin
                     SetRange(Number, 1, PastDueCount);

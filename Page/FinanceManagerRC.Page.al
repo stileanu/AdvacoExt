@@ -2959,7 +2959,7 @@ page 50160 FinanceManagerRC
                     RunObject = report "Shop Work Order Status Rpt";
                     ToolTip = 'Runs Shop Work Order Status Report.';
                 }
-                action(BoxedWorkOrderStatus)
+                action(BoxedWorkOrderStatus_50008)
                 {
                     ApplicationArea = All;
                     Caption = 'Boxed Work Order Status';
@@ -2967,7 +2967,7 @@ page 50160 FinanceManagerRC
                     RunObject = report "Boxed Work Order Status Rpt";
                     ToolTip = 'Runs Shop Work Order Status Report.';
                 }
-                action(VendorRepairsStatus)
+                action(VendorRepairsStatus_50056)
                 {
                     ApplicationArea = All;
                     Caption = 'Vendor Repairs';
@@ -3169,8 +3169,8 @@ page 50160 FinanceManagerRC
                         ApplicationArea = All;
                         Caption = 'Quote Sent Report';
                         Image = Quote;
-                        //RunObject = report "Quote Sent Report";
-                        RunObject = codeunit UnderConstruction;
+                        RunObject = report "Quote Sent Report";
+                        //RunObject = codeunit UnderConstruction;
                         ToolTip = 'Runs Quote Sent Report Report.';
                     }
                     action(CustomerWorkOrderStatusRpt_50009)
@@ -3178,8 +3178,8 @@ page 50160 FinanceManagerRC
                         ApplicationArea = All;
                         Caption = 'Customer Work Order Status Rpt';
                         Image = CustomerRating;
-                        //RunObject = report "Customer Work Order Status Rpt";
-                        RunObject = codeunit UnderConstruction;
+                        RunObject = report "Customer Work Order Status Rpt";
+                        //RunObject = codeunit UnderConstruction;
                         ToolTip = 'Runs Customer Work Order Status Rpt Report.';
                     }
                     action(WarrantyAnalysis_50035)

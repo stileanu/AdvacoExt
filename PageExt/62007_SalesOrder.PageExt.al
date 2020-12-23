@@ -38,6 +38,11 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         {
             Visible = not lShipGroup;
         }
+        //ICE RSK 12/22/20
+        modify("Shipping Advice")
+        {
+            Visible = false;
+        }
         modify(Control1900201301)
         {
             Visible = not lShipGroup;
@@ -322,6 +327,16 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
             }
 
         }
+        Addafter("Shipment Date")
+        {
+            field("Advaco Shipping Advice"; "Advaco Shipping Advice")
+            {
+                Caption = 'Advaco Shipping Advice';
+                ApplicationArea = All;
+                ToolTip = 'Specifies partial or complete (Advaco).';
+
+            }
+        }
         addbefore("Shipping and Billing")
         {
             group(Payment)
@@ -523,6 +538,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         {
             Visible = false;
         }
+
         addbefore("Work Order")
         {
             action(PrintEnvelope)

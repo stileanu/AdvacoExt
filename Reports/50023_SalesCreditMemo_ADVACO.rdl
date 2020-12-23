@@ -8,7 +8,7 @@
         <ConnectString />
       </ConnectionProperties>
       <rd:SecurityType>None</rd:SecurityType>
-      <rd:DataSourceID>59514c26-368f-4df7-afb7-cafaaa5be63e</rd:DataSourceID>
+      <rd:DataSourceID>a9df8783-147b-41a9-9741-d2871cf20242</rd:DataSourceID>
     </DataSource>
   </DataSources>
   <DataSets>
@@ -18,8 +18,8 @@
         <CommandText />
       </Query>
       <Fields>
-        <Field Name="Sales_Invoice_Header_No_">
-          <DataField>Sales_Invoice_Header_No_</DataField>
+        <Field Name="Sales_Cr_Memo_Header_No_">
+          <DataField>Sales_Cr_Memo_Header_No_</DataField>
         </Field>
         <Field Name="CompanyAddress_1_">
           <DataField>CompanyAddress_1_</DataField>
@@ -39,17 +39,11 @@
         <Field Name="CompanyAddress_6_">
           <DataField>CompanyAddress_6_</DataField>
         </Field>
-        <Field Name="CompanyAddress_7_">
-          <DataField>CompanyAddress_7_</DataField>
-        </Field>
-        <Field Name="CompanyAddress_8_">
-          <DataField>CompanyAddress_8_</DataField>
+        <Field Name="CopyTxt">
+          <DataField>CopyTxt</DataField>
         </Field>
         <Field Name="BillToAddress_1_">
           <DataField>BillToAddress_1_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___No__">
-          <DataField>Sales_Invoice_Header___No__</DataField>
         </Field>
         <Field Name="BillToAddress_2_">
           <DataField>BillToAddress_2_</DataField>
@@ -69,14 +63,8 @@
         <Field Name="BillToAddress_7_">
           <DataField>BillToAddress_7_</DataField>
         </Field>
-        <Field Name="Sales_Invoice_Header___Posting_Date_">
-          <DataField>Sales_Invoice_Header___Posting_Date_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Due_Date_">
-          <DataField>Sales_Invoice_Header___Due_Date_</DataField>
-        </Field>
-        <Field Name="PaymentTerms_Description">
-          <DataField>PaymentTerms_Description</DataField>
+        <Field Name="Sales_Cr_Memo_Header___Applies_to_Doc__No__">
+          <DataField>Sales_Cr_Memo_Header___Applies_to_Doc__No__</DataField>
         </Field>
         <Field Name="ShipToAddress_1_">
           <DataField>ShipToAddress_1_</DataField>
@@ -99,44 +87,47 @@
         <Field Name="ShipToAddress_7_">
           <DataField>ShipToAddress_7_</DataField>
         </Field>
-        <Field Name="Sales_Invoice_Header___Bill_to_Customer_No__">
-          <DataField>Sales_Invoice_Header___Bill_to_Customer_No__</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Your_Reference_">
-          <DataField>Sales_Invoice_Header___Your_Reference_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Order_Date_">
-          <DataField>Sales_Invoice_Header___Order_Date_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Order_No__">
-          <DataField>Sales_Invoice_Header___Order_No__</DataField>
-        </Field>
-        <Field Name="OutsideRep__Rep_Name_">
-          <DataField>OutsideRep__Rep_Name_</DataField>
-        </Field>
-        <Field Name="ShippingAgent_Name">
-          <DataField>ShippingAgent_Name</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Bill_of_Lading_">
-          <DataField>Sales_Invoice_Header___Bill_of_Lading_</DataField>
+        <Field Name="Sales_Cr_Memo_Header___Bill_to_Customer_No__">
+          <DataField>Sales_Cr_Memo_Header___Bill_to_Customer_No__</DataField>
         </Field>
         <Field Name="SalesPurchPerson_Name">
           <DataField>SalesPurchPerson_Name</DataField>
         </Field>
+        <Field Name="Sales_Cr_Memo_Header___No__">
+          <DataField>Sales_Cr_Memo_Header___No__</DataField>
+        </Field>
+        <Field Name="CompanyAddress_7_">
+          <DataField>CompanyAddress_7_</DataField>
+        </Field>
+        <Field Name="CompanyAddress_8_">
+          <DataField>CompanyAddress_8_</DataField>
+        </Field>
+        <Field Name="BillToAddress_8_">
+          <DataField>BillToAddress_8_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_8_">
+          <DataField>ShipToAddress_8_</DataField>
+        </Field>
+        <Field Name="Sales_Cr_Memo_Header___Posting_Date_">
+          <DataField>Sales_Cr_Memo_Header___Posting_Date_</DataField>
+        </Field>
+        <Field Name="Sales_Cr_Memo_Header___Your_Reference_">
+          <DataField>Sales_Cr_Memo_Header___Your_Reference_</DataField>
+        </Field>
+        <Field Name="Credit_MemoCaption">
+          <DataField>Credit_MemoCaption</DataField>
+        </Field>
         <Field Name="Page_Caption">
           <DataField>Page_Caption</DataField>
-        </Field>
-        <Field Name="CopyTxt">
-          <DataField>CopyTxt</DataField>
         </Field>
         <Field Name="PageLoop_Number">
           <DataField>PageLoop_Number</DataField>
         </Field>
-        <Field Name="HighDescription">
-          <DataField>HighDescription</DataField>
+        <Field Name="TempSalesCrMemoLine_Quantity">
+          <DataField>TempSalesCrMemoLine_Quantity</DataField>
         </Field>
-        <Field Name="LowDescription">
-          <DataField>LowDescription</DataField>
+        <Field Name="TempSalesCrMemoLine_QuantityFormat">
+          <DataField>TempSalesCrMemoLine_QuantityFormat</DataField>
         </Field>
         <Field Name="UnitPriceToPrint">
           <DataField>UnitPriceToPrint</DataField>
@@ -144,83 +135,50 @@
         <Field Name="UnitPriceToPrintFormat">
           <DataField>UnitPriceToPrintFormat</DataField>
         </Field>
-        <Field Name="TempSalesInvoiceLine_Quantity">
-          <DataField>TempSalesInvoiceLine_Quantity</DataField>
+        <Field Name="AmountExclInvDisc">
+          <DataField>AmountExclInvDisc</DataField>
         </Field>
-        <Field Name="TempSalesInvoiceLine_QuantityFormat">
-          <DataField>TempSalesInvoiceLine_QuantityFormat</DataField>
+        <Field Name="AmountExclInvDiscFormat">
+          <DataField>AmountExclInvDiscFormat</DataField>
         </Field>
-        <Field Name="OrderedQuantity">
-          <DataField>OrderedQuantity</DataField>
+        <Field Name="TempSalesCrMemoLine_Description_________TempSalesCrMemoLine__Description_2_">
+          <DataField>TempSalesCrMemoLine_Description_________TempSalesCrMemoLine__Description_2_</DataField>
         </Field>
-        <Field Name="OrderedQuantityFormat">
-          <DataField>OrderedQuantityFormat</DataField>
+        <Field Name="TempSalesCrMemoLine_Quantity_Control28">
+          <DataField>TempSalesCrMemoLine_Quantity_Control28</DataField>
         </Field>
-        <Field Name="ModelNo">
-          <DataField>ModelNo</DataField>
+        <Field Name="TempSalesCrMemoLine_Quantity_Control28Format">
+          <DataField>TempSalesCrMemoLine_Quantity_Control28Format</DataField>
         </Field>
-        <Field Name="LowDescription_Control35">
-          <DataField>LowDescription_Control35</DataField>
+        <Field Name="AmountExclInvDisc_Control79">
+          <DataField>AmountExclInvDisc_Control79</DataField>
         </Field>
-        <Field Name="LowDescription_Control35Format">
-          <DataField>LowDescription_Control35Format</DataField>
+        <Field Name="AmountExclInvDisc_Control79Format">
+          <DataField>AmountExclInvDisc_Control79Format</DataField>
         </Field>
-        <Field Name="Amount2">
-          <DataField>Amount2</DataField>
+        <Field Name="TempSalesCrMemoLine__Amount_Including_Tax____TempSalesCrMemoLine_Amount">
+          <DataField>TempSalesCrMemoLine__Amount_Including_Tax____TempSalesCrMemoLine_Amount</DataField>
         </Field>
-        <Field Name="Amount2Format">
-          <DataField>Amount2Format</DataField>
+        <Field Name="TempSalesCrMemoLine__Amount_Including_Tax____TempSalesCrMemoLine_AmountFormat">
+          <DataField>TempSalesCrMemoLine__Amount_Including_Tax____TempSalesCrMemoLine_AmountFormat</DataField>
         </Field>
-        <Field Name="AmountExclInvDisc___Miscellaneous___Freight">
-          <DataField>AmountExclInvDisc___Miscellaneous___Freight</DataField>
+        <Field Name="TempSalesCrMemoLine__Amount_Including_Tax_">
+          <DataField>TempSalesCrMemoLine__Amount_Including_Tax_</DataField>
         </Field>
-        <Field Name="AmountExclInvDisc___Miscellaneous___FreightFormat">
-          <DataField>AmountExclInvDisc___Miscellaneous___FreightFormat</DataField>
-        </Field>
-        <Field Name="Miscellaneous">
-          <DataField>Miscellaneous</DataField>
-        </Field>
-        <Field Name="MiscellaneousFormat">
-          <DataField>MiscellaneousFormat</DataField>
-        </Field>
-        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_Amount">
-          <DataField>TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_Amount</DataField>
-        </Field>
-        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_AmountFormat">
-          <DataField>TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_AmountFormat</DataField>
-        </Field>
-        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax_">
-          <DataField>TempSalesInvoiceLine__Amount_Including_Tax_</DataField>
-        </Field>
-        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax_Format">
-          <DataField>TempSalesInvoiceLine__Amount_Including_Tax_Format</DataField>
-        </Field>
-        <Field Name="Freight">
-          <DataField>Freight</DataField>
-        </Field>
-        <Field Name="FreightFormat">
-          <DataField>FreightFormat</DataField>
-        </Field>
-        <Field Name="THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_">
-          <DataField>THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_</DataField>
+        <Field Name="TempSalesCrMemoLine__Amount_Including_Tax_Format">
+          <DataField>TempSalesCrMemoLine__Amount_Including_Tax_Format</DataField>
         </Field>
         <Field Name="Subtotal_Caption">
           <DataField>Subtotal_Caption</DataField>
         </Field>
-        <Field Name="Miscellaneous_Charges_Caption">
-          <DataField>Miscellaneous_Charges_Caption</DataField>
-        </Field>
         <Field Name="Sales_Tax_Caption">
           <DataField>Sales_Tax_Caption</DataField>
         </Field>
-        <Field Name="Total_Caption">
-          <DataField>Total_Caption</DataField>
+        <Field Name="Credit_Total_Caption">
+          <DataField>Credit_Total_Caption</DataField>
         </Field>
-        <Field Name="Freight_Charges_Caption">
-          <DataField>Freight_Charges_Caption</DataField>
-        </Field>
-        <Field Name="SalesInvoiceLine_Number">
-          <DataField>SalesInvoiceLine_Number</DataField>
+        <Field Name="SalesCrMemoLine_Number">
+          <DataField>SalesCrMemoLine_Number</DataField>
         </Field>
       </Fields>
     </DataSet>
@@ -233,19 +191,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.318cm</Width>
+                  <Width>1.62cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.86035cm</Width>
+                  <Width>1.05cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.43929cm</Width>
+                  <Width>2.338cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>8.152cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.2cm</Width>
@@ -317,25 +272,13 @@
                   <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>6.86016cm</Width>
-                </TablixColumn>
-                <TablixColumn>
                   <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.33336cm</Width>
-                </TablixColumn>
-                <TablixColumn>
                   <Width>0.2cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.12531cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.2cm</Width>
@@ -347,70 +290,48 @@
                   <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.17354cm</Width>
+                  <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.17167cm</Width>
+                  <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.11875cm</Width>
+                  <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.22458cm</Width>
+                  <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.17167cm</Width>
+                  <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.17167cm</Width>
+                  <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.11875cm</Width>
+                  <Width>2.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.96593cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.11875cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.22458cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>2.21484cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.14521cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.11875cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.11875cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.19813cm</Width>
+                  <Width>2.5cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.60821cm</Height>
+                  <Height>0.872cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="OrderedQuantity">
+                        <Textbox Name="TempSalesCrMemoLine_Quantity">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.BlankZero(Fields!OrderedQuantity.Value)</Value>
+                                  <Value>=Code.BlankZero(Fields!TempSalesCrMemoLine_Quantity.Value)</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
-                                    <Format>=Fields!OrderedQuantityFormat.Value</Format>
+                                    <Format>=Fields!TempSalesCrMemoLine_QuantityFormat.Value</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -418,8 +339,12 @@
                             </Paragraph>
                           </Paragraphs>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>0.131cm</PaddingRight>
+                            <PaddingRight>0.22cm</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -428,16 +353,15 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="TempSalesInvoiceLine_Quantity">
+                        <Textbox Name="TempSalesCrMemoLine_Quantity_Control28">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.BlankZero(Fields!TempSalesInvoiceLine_Quantity.Value)</Value>
+                                  <Value>=Code.BlankZero(Fields!TempSalesCrMemoLine_Quantity.Value)</Value>
                                   <Style>
-                                    <FontSize>9pt</FontSize>
-                                    <Format>=Fields!TempSalesInvoiceLine_QuantityFormat.Value</Format>
+                                    <Format>=Fields!TempSalesCrMemoLine_Quantity_Control28Format.Value</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -445,8 +369,12 @@
                             </Paragraph>
                           </Paragraphs>
                           <Style>
-                            <PaddingLeft>0.131cm</PaddingLeft>
-                            <PaddingRight>0.7205cm</PaddingRight>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>0.22cm</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -455,26 +383,156 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ModelNo">
+                        <Textbox Name="TextBox1">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ModelNo.Value</Value>
-                                  <Style>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
+                                  <Value />
+                                  <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style>
-                                <TextAlign>Left</TextAlign>
-                              </Style>
+                              <Style />
                             </Paragraph>
                           </Paragraphs>
                           <Style>
-                            <PaddingLeft>0.7205cm</PaddingLeft>
-                            <PaddingRight>0.0655cm</PaddingRight>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="TempSalesCrMemoLine_Description_________TempSalesCrMemoLine__Description_2_3">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!TempSalesCrMemoLine_Description_________TempSalesCrMemoLine__Description_2_.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>0.2595cm</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox25">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!TempSalesCrMemoLine__Amount_Including_Tax_.Value)</Value>
+                                  <Style>
+                                    <Color>Red</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox25</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>0.2595cm</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox7">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!TempSalesCrMemoLine__Amount_Including_Tax____TempSalesCrMemoLine_Amount.Value)</Value>
+                                  <Style>
+                                    <Color>Red</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox7</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>0.2595cm</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox2">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Sum(Fields!AmountExclInvDisc.Value)</Value>
+                                  <Style>
+                                    <Color>Red</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox2</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>0.2595cm</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -903,73 +961,13 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Sales_Invoice_Header___Posting_Date_">
+                        <Textbox Name="Sales_Cr_Memo_Header___Applies_to_Doc__No__">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Sales_Invoice_Header___Posting_Date_.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Sales_Invoice_Header___Due_Date_">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Sales_Invoice_Header___Due_Date_.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="PaymentTerms_Description">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!PaymentTerms_Description.Value</Value>
+                                  <Value>=Fields!Sales_Cr_Memo_Header___Applies_to_Doc__No__.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1203,13 +1201,13 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Sales_Invoice_Header___Bill_to_Customer_No__">
+                        <Textbox Name="Sales_Cr_Memo_Header___Bill_to_Customer_No__">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Sales_Invoice_Header___Bill_to_Customer_No__.Value</Value>
+                                  <Value>=Fields!Sales_Cr_Memo_Header___Bill_to_Customer_No__.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1233,43 +1231,13 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LowDescription">
-                          <CanGrow>true</CanGrow>
+                        <Textbox Name="SalesPurchPerson_Name">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!LowDescription.Value</Value>
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>LowDescription</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Sales_Invoice_Header___Your_Reference_">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Sales_Invoice_Header___Your_Reference_.Value</Value>
+                                  <Value>=Fields!SalesPurchPerson_Name.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1293,103 +1261,13 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Sales_Invoice_Header___Order_Date_">
+                        <Textbox Name="Sales_Cr_Memo_Header___No__">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Sales_Invoice_Header___Order_Date_.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Sales_Invoice_Header___Order_No__">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Sales_Invoice_Header___Order_No__.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="OutsideRep__Rep_Name_">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!OutsideRep__Rep_Name_.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Sales_Invoice_Header___No__">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Sales_Invoice_Header___No__.Value</Value>
+                                  <Value>=Fields!Sales_Cr_Memo_Header___No__.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1473,13 +1351,13 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="ShippingAgent_Name">
+                        <Textbox Name="BillToAddress_8_">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ShippingAgent_Name.Value</Value>
+                                  <Value>=Fields!BillToAddress_8_.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1503,13 +1381,13 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Sales_Invoice_Header___Bill_of_Lading_">
+                        <Textbox Name="ShipToAddress_8_">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Sales_Invoice_Header___Bill_of_Lading_.Value</Value>
+                                  <Value>=Fields!ShipToAddress_8_.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1533,13 +1411,73 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="SalesPurchPerson_Name">
+                        <Textbox Name="Sales_Cr_Memo_Header___Posting_Date_">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!SalesPurchPerson_Name.Value</Value>
+                                  <Value>=Fields!Sales_Cr_Memo_Header___Posting_Date_.Value</Value>
+                                  <Style>
+                                    <Color>#ff0000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Sales_Cr_Memo_Header___Your_Reference_">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Sales_Cr_Memo_Header___Your_Reference_.Value</Value>
+                                  <Style>
+                                    <Color>#ff0000</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Credit_MemoCaption">
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Credit_MemoCaption.Value</Value>
                                   <Style>
                                     <Color>#ff0000</Color>
                                   </Style>
@@ -1593,218 +1531,7 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Subtotal_Caption1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Subtotal_Caption.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Subtotal_Caption1</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Miscellaneous_Charges_Caption1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Miscellaneous_Charges_Caption.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Miscellaneous_Charges_Caption1</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Freight_Charges_Caption1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Freight_Charges_Caption.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Freight_Charges_Caption1</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Sales_Tax_Caption1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Sales_Tax_Caption.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Sales_Tax_Caption1</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Total_Caption1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Total_Caption.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Total_Caption1</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_1</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox6">
-                          <CanGrow>true</CanGrow>
+                        <Textbox Name="UnitPriceToPrint2">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
@@ -1812,21 +1539,20 @@
                                 <TextRun>
                                   <Value>=Code.BlankZero(Fields!UnitPriceToPrint.Value)</Value>
                                   <Style>
-                                    <Format>#,0.00;(#,0.00);'0.00'</Format>
+                                    <Format>=Fields!UnitPriceToPrintFormat.Value</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingLeft>0.2595cm</PaddingLeft>
+                            <PaddingRight>0.1845cm</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -1835,238 +1561,27 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="AmountExclInvDisc___Miscellaneous___Freight">
-                          <CanGrow>true</CanGrow>
+                        <Textbox Name="AmountExclInvDisc2">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Code.BlankZero(Sum(Fields!AmountExclInvDisc___Miscellaneous___Freight.Value))</Value>
+                                  <Value>=Code.BlankZero(Fields!AmountExclInvDisc.Value)</Value>
                                   <Style>
-                                    <Color>#ff0000</Color>
+                                    <Format>=Fields!AmountExclInvDiscFormat.Value</Format>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
                           <Style>
                             <Border>
                               <Style>None</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox7">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Sum(Fields!TempSalesInvoiceLine__Amount_Including_Tax_.Value)</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox7</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Amount2">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Amount2.Value</Value>
-                                  <Style>
-                                    <Format>#,0.00;(#,0.00);'0.00'</Format>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Amount2</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox4">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=sum(Fields!AmountExclInvDisc___Miscellaneous___Freight.Value)</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox4</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Miscellaneous">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Miscellaneous.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Miscellaneous</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Freight">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!Freight.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Freight</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_Amount">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value>=Fields!TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_Amount.Value</Value>
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_Amount</rd:DefaultName>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingLeft>0.1845cm</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
@@ -2080,18 +1595,6 @@
             </TablixBody>
             <TablixColumnHierarchy>
               <TablixMembers>
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
@@ -2153,18 +1656,18 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
-            <Height>0.60821cm</Height>
-            <Width>25.67142cm</Width>
+            <Height>0.872cm</Height>
+            <Width>25.36cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>0.6578cm</Height>
+        <Height>0.872cm</Height>
         <Style />
       </Body>
-      <Width>25.67142cm</Width>
+      <Width>25.56979cm</Width>
       <Page>
         <PageHeader>
-          <Height>9.89628cm</Height>
+          <Height>10.998cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -2183,251 +1686,113 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.52028cm</Top>
-              <Left>21.43cm</Left>
+              <Top>2.538cm</Top>
+              <Left>16.14cm</Left>
               <Height>0.423cm</Height>
               <Width>0.63cm</Width>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ShipToAddress_3_1">
+            <Textbox Name="Sales_Cr_Memo_Header___Your_Reference_1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!ShipToAddress_3_.Value</Value>
+                      <Value>=ReportItems!Sales_Cr_Memo_Header___Your_Reference_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>4.76678cm</Top>
-              <Left>15.039cm</Left>
+              <Top>10.152cm</Top>
+              <Left>0.448cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
+              <Width>4.3cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
-                <VerticalAlign>Middle</VerticalAlign>
+                <VerticalAlign>Bottom</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ShipToAddress_4_1">
+            <Textbox Name="Sales_Cr_Memo_Header___Posting_Date_1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!ShipToAddress_4_.Value</Value>
+                      <Value>=ReportItems!Sales_Cr_Memo_Header___Posting_Date_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>5.18978cm</Top>
-              <Left>15.039cm</Left>
+              <Top>9.306cm</Top>
+              <Left>0.448cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
+              <Width>2.3cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
-                <VerticalAlign>Middle</VerticalAlign>
+                <VerticalAlign>Bottom</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ShipToAddress_5_1">
+            <Textbox Name="ShipToAddress_8_1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!ShipToAddress_5_.Value</Value>
+                      <Value>=ReportItems!ShipToAddress_8_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>5.61278cm</Top>
-              <Left>15.039cm</Left>
+              <Top>8.46cm</Top>
+              <Left>11.76cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
+              <Width>7.56cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ShipToAddress_6_1">
+            <Textbox Name="BillToAddress_8_1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!ShipToAddress_6_.Value</Value>
+                      <Value>=ReportItems!BillToAddress_8_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>6.03578cm</Top>
-              <Left>15.039cm</Left>
+              <Top>8.461cm</Top>
+              <Left>0.84cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
+              <Width>7.56cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ShipToAddress_7_1">
+            <Textbox Name="Sales_Cr_Memo_Header___No__1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!ShipToAddress_7_.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>6.45878cm</Top>
-              <Left>15.039cm</Left>
-              <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="Sales_Invoice_Header___Bill_to_Customer_No__1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!Sales_Invoice_Header___Bill_to_Customer_No__.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>1.41028cm</Top>
-              <Left>17.9365cm</Left>
-              <Height>0.423cm</Height>
-              <Width>2.1cm</Width>
-              <ZIndex>6</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="Sales_Invoice_Header___Your_Reference_1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!Sales_Invoice_Header___Your_Reference_.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>9.07628cm</Top>
-              <Left>2.248cm</Left>
-              <Height>0.423cm</Height>
-              <Width>4.722cm</Width>
-              <ZIndex>7</ZIndex>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="Sales_Invoice_Header___Order_Date_1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!Sales_Invoice_Header___Order_Date_.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>9.07628cm</Top>
-              <Left>7.022cm</Left>
-              <Height>0.423cm</Height>
-              <Width>2.463cm</Width>
-              <ZIndex>8</ZIndex>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="Sales_Invoice_Header___Order_No__1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!Sales_Invoice_Header___Order_No__.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>9.07628cm</Top>
-              <Left>18.712cm</Left>
-              <Height>0.423cm</Height>
-              <Width>3.635cm</Width>
-              <ZIndex>9</ZIndex>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="OutsideRep__Rep_Name_1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!OutsideRep__Rep_Name_.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>9.07628cm</Top>
-              <Left>14.256cm</Left>
-              <Height>0.423cm</Height>
-              <Width>4.463cm</Width>
-              <ZIndex>10</ZIndex>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="Sales_Invoice_Header___No__1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!Sales_Invoice_Header___No__.Value</Value>
+                      <Value>=ReportItems!Sales_Cr_Memo_Header___No__.Value</Value>
                       <Style>
                         <FontSize>13pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -2439,82 +1804,15 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.27328cm</Top>
-              <Left>16.349cm</Left>
+              <Top>0.423cm</Top>
+              <Left>16.353cm</Left>
               <Height>0.423cm</Height>
-              <Width>4.41cm</Width>
-              <ZIndex>11</ZIndex>
+              <Width>4.213cm</Width>
+              <ZIndex>5</ZIndex>
               <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="ShippingAgent_Name1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!ShippingAgent_Name.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>7.91278cm</Top>
-              <Left>4.505cm</Left>
-              <Height>0.423cm</Height>
-              <Width>4.953cm</Width>
-              <ZIndex>12</ZIndex>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="Sales_Invoice_Header___Bill_of_Lading_1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!Sales_Invoice_Header___Bill_of_Lading_.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>7.91278cm</Top>
-              <Left>9.443cm</Left>
-              <Height>0.423cm</Height>
-              <Width>7.502cm</Width>
-              <ZIndex>13</ZIndex>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="ShipToAddress_2_1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!ShipToAddress_2_.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>4.34378cm</Top>
-              <Left>15.039cm</Left>
-              <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
-              <ZIndex>14</ZIndex>
-              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
@@ -2524,7 +1822,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!SalesPurchPerson_Name.Value</Value>
+                      <Value>=ReportItems!SalesPurchPerson_Name.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -2533,68 +1831,22 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.07628cm</Top>
-              <Left>9.44cm</Left>
+              <Top>10.152cm</Top>
+              <Left>7.23cm</Left>
               <Height>0.423cm</Height>
-              <Width>4.833cm</Width>
-              <ZIndex>15</ZIndex>
+              <Width>8.5cm</Width>
+              <ZIndex>6</ZIndex>
               <Style>
                 <VerticalAlign>Bottom</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="ShipToAddress_1_1">
+            <Textbox Name="Sales_Cr_Memo_Header___Bill_to_Customer_No__1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!ShipToAddress_1_.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>3.92078cm</Top>
-              <Left>15.039cm</Left>
-              <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
-              <ZIndex>16</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="Sales_Invoice_Header___Due_Date_1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!Sales_Invoice_Header___Due_Date_.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>7.91278cm</Top>
-              <Left>20.054cm</Left>
-              <Height>0.423cm</Height>
-              <Width>2.287cm</Width>
-              <ZIndex>17</ZIndex>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="CopyTxt1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!CopyTxt.Value</Value>
+                      <Value>=ReportItems!Sales_Cr_Memo_Header___Bill_to_Customer_No__.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -2603,33 +1855,237 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>3.36528cm</Top>
-              <Left>16.343cm</Left>
+              <Top>1.507cm</Top>
+              <Left>16.354cm</Left>
               <Height>0.423cm</Height>
-              <Width>2.52cm</Width>
-              <ZIndex>18</ZIndex>
+              <Width>2.209cm</Width>
+              <ZIndex>7</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="BillToAddress_1_1">
+            <Textbox Name="ShipToAddress_7_1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!BillToAddress_1_.Value</Value>
+                      <Value>=ReportItems!ShipToAddress_7_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>3.94778cm</Top>
-              <Left>0.759cm</Left>
+              <Top>8.037cm</Top>
+              <Left>11.76cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
-              <ZIndex>19</ZIndex>
+              <Width>7.56cm</Width>
+              <ZIndex>8</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="ShipToAddress_6_1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!ShipToAddress_6_.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>7.614cm</Top>
+              <Left>11.76cm</Left>
+              <Height>0.423cm</Height>
+              <Width>7.56cm</Width>
+              <ZIndex>9</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="ShipToAddress_5_1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!ShipToAddress_5_.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>7.191cm</Top>
+              <Left>11.76cm</Left>
+              <Height>0.423cm</Height>
+              <Width>7.56cm</Width>
+              <ZIndex>10</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="ShipToAddress_4_1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!ShipToAddress_4_.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>6.768cm</Top>
+              <Left>11.76cm</Left>
+              <Height>0.423cm</Height>
+              <Width>7.56cm</Width>
+              <ZIndex>11</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="ShipToAddress_3_1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!ShipToAddress_3_.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>6.345cm</Top>
+              <Left>11.76cm</Left>
+              <Height>0.423cm</Height>
+              <Width>7.56cm</Width>
+              <ZIndex>12</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="ShipToAddress_2_1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!ShipToAddress_2_.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>5.922cm</Top>
+              <Left>11.76cm</Left>
+              <Height>0.423cm</Height>
+              <Width>7.56cm</Width>
+              <ZIndex>13</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="ShipToAddress_1_1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!ShipToAddress_1_.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>5.499cm</Top>
+              <Left>11.76cm</Left>
+              <Height>0.423cm</Height>
+              <Width>7.56cm</Width>
+              <ZIndex>14</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="Sales_Cr_Memo_Header___Applies_to_Doc__No__1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!Sales_Cr_Memo_Header___Applies_to_Doc__No__.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>10.152cm</Top>
+              <Left>16.141cm</Left>
+              <Height>0.423cm</Height>
+              <Width>4.196cm</Width>
+              <ZIndex>15</ZIndex>
+              <Style>
+                <VerticalAlign>Bottom</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="Credit_MemoCaption1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!Credit_MemoCaption.Value</Value>
+                      <Style>
+                        <FontSize>24pt</FontSize>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>3.359cm</Top>
+              <Left>14.21cm</Left>
+              <Height>1.322cm</Height>
+              <Width>6.379cm</Width>
+              <ZIndex>16</ZIndex>
+              <Style>
+                <VerticalAlign>Middle</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="CopyTxt1">
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=ReportItems!CopyTxt.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <Top>3.807cm</Top>
+              <Left>1.288cm</Left>
+              <Height>0.423cm</Height>
+              <Width>2.52cm</Width>
+              <ZIndex>17</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -2640,18 +2096,18 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!BillToAddress_2_.Value</Value>
+                      <Value>=ReportItems!BillToAddress_2_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>4.37078cm</Top>
-              <Left>0.759cm</Left>
+              <Top>5.923cm</Top>
+              <Left>0.84cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
-              <ZIndex>20</ZIndex>
+              <Width>7.56cm</Width>
+              <ZIndex>18</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -2662,18 +2118,18 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!BillToAddress_3_.Value</Value>
+                      <Value>=ReportItems!BillToAddress_3_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>4.79378cm</Top>
-              <Left>0.759cm</Left>
+              <Top>6.346cm</Top>
+              <Left>0.84cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
-              <ZIndex>21</ZIndex>
+              <Width>7.56cm</Width>
+              <ZIndex>19</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -2684,18 +2140,18 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!BillToAddress_4_.Value</Value>
+                      <Value>=ReportItems!BillToAddress_4_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>5.21678cm</Top>
-              <Left>0.759cm</Left>
+              <Top>6.769cm</Top>
+              <Left>0.84cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
-              <ZIndex>22</ZIndex>
+              <Width>7.56cm</Width>
+              <ZIndex>20</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -2706,18 +2162,18 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!BillToAddress_5_.Value</Value>
+                      <Value>=ReportItems!BillToAddress_5_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>5.63978cm</Top>
-              <Left>0.759cm</Left>
+              <Top>7.192cm</Top>
+              <Left>0.84cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
-              <ZIndex>23</ZIndex>
+              <Width>7.56cm</Width>
+              <ZIndex>21</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -2728,18 +2184,18 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!BillToAddress_6_.Value</Value>
+                      <Value>=ReportItems!BillToAddress_6_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>6.06278cm</Top>
-              <Left>0.759cm</Left>
+              <Top>7.615cm</Top>
+              <Left>0.84cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
-              <ZIndex>24</ZIndex>
+              <Width>7.56cm</Width>
+              <ZIndex>22</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -2750,68 +2206,42 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!BillToAddress_7_.Value</Value>
+                      <Value>=ReportItems!BillToAddress_7_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>6.48578cm</Top>
-              <Left>0.759cm</Left>
+              <Top>8.038cm</Top>
+              <Left>0.84cm</Left>
               <Height>0.423cm</Height>
-              <Width>7.77cm</Width>
-              <ZIndex>25</ZIndex>
+              <Width>7.56cm</Width>
+              <ZIndex>23</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
-            <Textbox Name="Sales_Invoice_Header___Posting_Date_1">
+            <Textbox Name="BillToAddress_1_1">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!Sales_Invoice_Header___Posting_Date_.Value</Value>
+                      <Value>=ReportItems!BillToAddress_1_.Value</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
+                  <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>7.91278cm</Top>
-              <Left>2.221cm</Left>
+              <Top>5.499cm</Top>
+              <Left>0.84cm</Left>
               <Height>0.423cm</Height>
-              <Width>2.273cm</Width>
-              <ZIndex>26</ZIndex>
+              <Width>7.56cm</Width>
+              <ZIndex>24</ZIndex>
               <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-              </Style>
-            </Textbox>
-            <Textbox Name="PaymentTerms_Description1">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!PaymentTerms_Description.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>7.91278cm</Top>
-              <Left>16.889cm</Left>
-              <Height>0.423cm</Height>
-              <Width>3.161cm</Width>
-              <ZIndex>27</ZIndex>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
+                <VerticalAlign>Middle</VerticalAlign>
               </Style>
             </Textbox>
             <Textbox Name="Page_Caption1">
@@ -2820,7 +2250,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!Page_Caption.Value</Value>
+                      <Value EvaluationMode="Constant">Page</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -2829,11 +2259,11 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.52028cm</Top>
-              <Left>19.99cm</Left>
+              <Top>2.538cm</Top>
+              <Left>14.7cm</Left>
               <Height>0.423cm</Height>
               <Width>1.26cm</Width>
-              <ZIndex>28</ZIndex>
+              <ZIndex>25</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
               </Style>
@@ -2842,48 +2272,18 @@
           <Style />
         </PageHeader>
         <PageFooter>
-          <Height>5.18583cm</Height>
+          <Height>3.20146cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Textbox Name="Textbox58">
+            <Textbox Name="Textbox6">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=ReportItems!Subtotal_Caption1.Value</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox8</rd:DefaultName>
-              <Top>0.25689in</Top>
-              <Left>7.15207in</Left>
-              <Height>0.23622in</Height>
-              <Width>1.12546in</Width>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="TextBox131">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Sum(Reportitems!Textbox4.Value)</Value>
+                      <Value>=Reportitems!Textbox2.Value</Value>
                       <Style>
                         <Format>#,0.00;(#,0.00);'0.00'</Format>
                       </Style>
@@ -2892,196 +2292,107 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>0.25689in</Top>
-              <Left>9.05141in</Left>
-              <Height>0.23622in</Height>
-              <Width>0.82677in</Width>
+              <rd:DefaultName>Textbox6</rd:DefaultName>
+              <Top>0.82782cm</Top>
+              <Left>22.86cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox24">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Reportitems!Textbox7.Value</Value>
+                      <Style>
+                        <Format>#,0.00;(#,0.00);'0.00'</Format>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox24</rd:DefaultName>
+              <Top>1.62157cm</Top>
+              <Left>22.86cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Miscellaneous_Charges_Caption3">
+            <Textbox Name="Textbox29">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=ReportItems!Miscellaneous_Charges_Caption1.Value</Value>
+                      <Value>=Reportitems!Textbox25.Value</Value>
                       <Style>
-                        <FontSize>9pt</FontSize>
+                        <Format>#,0.00;(#,0.00);'0.00'</Format>
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
+                  <Style />
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>Miscellaneous_Charges_Caption2</rd:DefaultName>
-              <Top>0.54173in</Top>
-              <Left>6.43425in</Left>
-              <Height>0.20833in</Height>
-              <Width>1.84328in</Width>
+              <rd:DefaultName>Textbox29</rd:DefaultName>
+              <Top>2.52116cm</Top>
+              <Left>22.86cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Reportitems!THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_1.Value</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.02778in</Top>
-              <Left>3.97773in</Left>
-              <Height>0.21862in</Height>
-              <Width>4.902in</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>0.0655cm</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Freight_Charges_Caption2">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Reportitems!Freight_Charges_Caption1.Value</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>0.79173in</Top>
-              <Left>7.17545in</Left>
-              <Height>0.19432in</Height>
-              <Width>1.12546in</Width>
-              <ZIndex>4</ZIndex>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Sales_Tax_Caption2">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Reportitems!Sales_Tax_Caption1.Value</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>1.05549in</Top>
-              <Left>7.17545in</Left>
-              <Height>0.22929in</Height>
-              <Width>1.12546in</Width>
-              <ZIndex>5</ZIndex>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Total_Caption2">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Reportitems!Total_Caption1.Value</Value>
-                      <Style>
-                        <FontSize>9pt</FontSize>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <Top>1.35423in</Top>
-              <Left>7.17545in</Left>
-              <Height>0.16654in</Height>
-              <Width>1.12546in</Width>
-              <ZIndex>6</ZIndex>
-              <Style>
-                <VerticalAlign>Bottom</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox75">
+            <Textbox Name="Textbox30">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Sum(Reportitems!Textbox7.Value)</Value>
-                      <Style>
-                        <Format>#,0.00;(#,0.00);'0.00'</Format>
-                      </Style>
+                      <Value EvaluationMode="Constant">Subtotal:</Value>
+                      <Style />
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>Textbox75</rd:DefaultName>
-              <Top>3.43974cm</Top>
-              <Left>23.12141cm</Left>
-              <Height>0.42301cm</Height>
-              <Width>1.96917cm</Width>
-              <ZIndex>7</ZIndex>
+              <rd:DefaultName>Textbox30</rd:DefaultName>
+              <Top>0.82782cm</Top>
+              <Left>19.86703cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
+              <ZIndex>3</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -3092,93 +2403,64 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="TextBox135">
+            <Textbox Name="Textbox31">
+              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Sum(Reportitems!Miscellaneous.Value)</Value>
-                      <Style>
-                        <Format>#,0.00;(#,0.00);'0.00'</Format>
-                      </Style>
+                      <Value EvaluationMode="Constant">Sales Tax:</Value>
+                      <Style />
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.56939in</Top>
-              <Left>9.0499in</Left>
-              <Height>0.23622in</Height>
-              <Width>0.82677in</Width>
-              <ZIndex>8</ZIndex>
+              <rd:DefaultName>Textbox31</rd:DefaultName>
+              <Top>1.72741cm</Top>
+              <Left>19.84058cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
+              <ZIndex>4</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="TextBox139">
+            <Textbox Name="Textbox32">
+              <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Sum(Reportitems!Freight.Value)</Value>
-                      <Style>
-                        <Format>#,0.00;(#,0.00)</Format>
-                      </Style>
+                      <Value EvaluationMode="Constant">Credit Total:</Value>
+                      <Style />
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.81939in</Top>
-              <Left>9.0499in</Left>
-              <Height>0.23622in</Height>
-              <Width>0.82677in</Width>
-              <ZIndex>9</ZIndex>
+              <rd:DefaultName>Textbox32</rd:DefaultName>
+              <Top>2.60053cm</Top>
+              <Left>19.84058cm</Left>
+              <Height>0.6cm</Height>
+              <Width>2.5cm</Width>
+              <ZIndex>5</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
                 </Border>
-                <VerticalAlign>Middle</VerticalAlign>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="TextBox143">
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Sum(ReportItems!TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_Amount.Value)</Value>
-                      <Style>
-                        <Format>#,0.00;(#,0.00);'0.00'</Format>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <Top>1.06939in</Top>
-              <Left>9.0499in</Left>
-              <Height>0.23622in</Height>
-              <Width>0.82677in</Width>
-              <ZIndex>10</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <VerticalAlign>Middle</VerticalAlign>
                 <PaddingLeft>2pt</PaddingLeft>
                 <PaddingRight>2pt</PaddingRight>
                 <PaddingTop>2pt</PaddingTop>
@@ -3193,10 +2475,10 @@
           </Style>
         </PageFooter>
         <PageHeight>29.7cm</PageHeight>
-        <PageWidth>25.84003cm</PageWidth>
+        <PageWidth>26.70203cm</PageWidth>
         <LeftMargin>0cm</LeftMargin>
         <RightMargin>0cm</RightMargin>
-        <TopMargin>1cm</TopMargin>
+        <TopMargin>0.75cm</TopMargin>
         <BottomMargin>2cm</BottomMargin>
         <Style />
       </Page>
@@ -3246,5 +2528,5 @@ End Function
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
-  <rd:ReportID>ebb3cb4b-f317-4c56-a02a-032637233c96</rd:ReportID>
+  <rd:ReportID>154f7a7f-38c9-46ea-b91f-5cb107c09540</rd:ReportID>
 </Report>

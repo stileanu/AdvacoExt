@@ -426,6 +426,11 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
         {
             Caption = 'Shipment Request Date';
         }
+        //ICE RSK 12/22/20 add own shipping advice field
+        field(50041; "Advaco Shipping Advice"; enum ShippingAdvice)
+        {
+            Caption = 'Advaco Shipping Advice';
+        }
 
     }
     trigger OnAfterInsert()

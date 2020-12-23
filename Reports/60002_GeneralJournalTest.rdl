@@ -19,7 +19,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>19.2366cm</Width>
+                  <Width>19.31184cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -966,19 +966,19 @@
                                     <Width>36.14674pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>62.17129pt</Width>
+                                    <Width>51.67129pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>45.53889pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>63.96441pt</Width>
+                                    <Width>49.36864pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>35.54673pt</Width>
+                                    <Width>70.33649pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>15.47069pt</Width>
+                                    <Width>25.97069pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>37.03497pt</Width>
@@ -993,7 +993,7 @@
                                     <Width>13.58678pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>16.7549pt</Width>
+                                    <Width>7.06087pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>38.18817pt</Width>
@@ -4282,7 +4282,7 @@
                               </Filters>
                               <Top>0.07937cm</Top>
                               <Height>9.24279cm</Height>
-                              <Width>536.92209pt</Width>
+                              <Width>547.42212pt</Width>
                               <ZIndex>1</ZIndex>
                               <Visibility>
                                 <Hidden>=IIF(Fields!LineNo_GenJnlLine.Value&lt;&gt;0,False,True)</Hidden>
@@ -4370,14 +4370,14 @@
             </Filters>
             <Top>0.17222in</Top>
             <Height>11.74224cm</Height>
-            <Width>19.2366cm</Width>
+            <Width>19.31184cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
         <Height>12.44074cm</Height>
         <Style />
       </Body>
-      <Width>545.28945pt</Width>
+      <Width>547.42212pt</Width>
       <Page>
         <PageHeader>
           <Height>2.32833cm</Height>

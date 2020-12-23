@@ -162,8 +162,7 @@ report 50009 "Customer Work Order Status Rpt"
                             if "Work Order Detail".Quote.AsInteger() > 0 then begin
                                 "Work Order Detail".CalcFields("Work Order Detail"."Original Parts Price", "Work Order Detail"."Original Labor Price");
                                 QuotePrice :=
-                                "Work Order Detail"."Original Parts Price" + "Work Order Detail"."Original Labor Price" + "Work Order Detail".
-                       "Order Adj.";
+                                "Work Order Detail"."Original Parts Price" + "Work Order Detail"."Original Labor Price" + "Work Order Detail"."Order Adj.";
                             end else begin
                                 "Work Order Detail".CalcFields("Work Order Detail"."Labor Quoted", "Work Order Detail"."Parts Quoted");
                                 QuotePrice := "Work Order Detail"."Labor Quoted" + "Work Order Detail"."Parts Quoted" + "Work Order Detail"."Order Adj.";

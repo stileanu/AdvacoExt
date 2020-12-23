@@ -52,6 +52,8 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
                     "Expected Receipt Date" := PurchHeader."Expected Receipt Date"
                 ELSE BEGIN
                     IF Type = Type::Item THEN BEGIN
+                        IF "Expected Receipt Date" = 0D then
+                            "Expected Receipt Date" := today; //ICE RSK 12/21/20 
                         ItemRec.GET("No.");
                         IF GetItemVendor("No.", "Buy-from Vendor No.") THEN BEGIN
                             IF Format(ItemVendor."Lead Time Calculation") <> '' THEN

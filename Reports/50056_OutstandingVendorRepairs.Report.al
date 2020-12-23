@@ -11,7 +11,7 @@ report 50056 "Outstanding Vendor Repairs"
         {
             //DataItemTableView = SORTING("Document Type","Order No.","Line No.") ORDER(Ascending) WHERE("Document Type"=CONST(Order),"Outstanding Quantity"=FILTER(<>0),"Order No."=FILTER(<>''));
             //ICE-MPC 08/25/20 Need to have Order No. added back to the key on the table before go-live
-            DataItemTableView = SORTING("Document Type", "Line No.") ORDER(Ascending) WHERE("Document Type" = CONST(Order), "Outstanding Quantity" = FILTER(<> 0), "Order No." = FILTER(<> ''));
+            DataItemTableView = SORTING("Document Type", "Line No.") ORDER(Ascending) WHERE("Document Type" = CONST(Order), "Outstanding Quantity" = FILTER(<> 0), "Work Order No." = FILTER(<> ''));
             column(CompanyInformation_Name; CompanyInformation.Name)
             {
             }

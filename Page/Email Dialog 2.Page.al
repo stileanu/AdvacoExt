@@ -118,7 +118,7 @@ page 50048 "Email Dialog 2"
         User.Get(UserSecurityId);
         //AttFileName := GetFileNameOnly(Attached);
         // Get User's Email Signature 
-        UserSetup.GET(User."User Security ID");
+        UserSetup.GET(User."User Name");
         i := UserSetup.GetSignature(UserSignature);
         IF i = 0 THEN
             UserSignature[1] := NO_SIGNATURE_MSSG;

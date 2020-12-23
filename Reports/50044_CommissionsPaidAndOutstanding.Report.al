@@ -163,11 +163,12 @@ report 50044 "Commissions Paid & Outstanding"
 
             trigger OnAfterGetRecord()
             begin
+                ///--?  ?????????????????? - ask Kaye
                 if UserId = 'HARLEN' then
                     ShowReps := true
                 else
                     ShowReps := false;
-                Message('Customer Name is %1 and No. is %2', Customer.Name, Customer."No.");
+                //Message('Customer Name is %1 and No. is %2', Customer.Name, Customer."No.");
 
                 // Search for open g/l entries
                 GLEntry.Reset;

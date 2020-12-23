@@ -328,8 +328,13 @@ page 50015 "Quote Phase 2"
                     Caption = '&Email...';
 
                     trigger OnAction()
+                    var
+                        User: Record User;
+
                     begin
-                        UserSetup.Get(UserId);
+                        User.Get(UserSecurityId);
+                        //UserSetup.Get(UserId);
+                        UserSetup.Get(User."User Name");
                         if UserSetup."PDF Path to Documents" = '' then
                             Error('Call Administrator. Path to storage for PDF files not set for User %1.', UserSetup."User ID");
                         WOD.Get("Work Order No.");
@@ -339,6 +344,7 @@ page 50015 "Quote Phase 2"
                         NotChecked := '';
                         QuotedQty := '';
                         EmptyQuotePrice := '';
+
 
                         if "Customer ID" = 'ADV-01' then begin
                             Parts.SetRange(Parts."Work Order No.", WOS."Order No.");

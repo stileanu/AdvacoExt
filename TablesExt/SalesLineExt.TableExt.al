@@ -35,6 +35,8 @@ tableextension 50119 SalesLineExt extends "Sales Line"
 
             begin
                 if not SalesHeader.Get("Document Type", "Document No.") then;
+                ///--! Added Get item rec
+                if not Item.Get(Rec."No.") then;
                 //>> HEF INSERT FOR SALES ORDER REPORT
                 "Vendor No." := Item."Vendor No.";
                 "Vendor Item No." := Item."Vendor Item No.";
