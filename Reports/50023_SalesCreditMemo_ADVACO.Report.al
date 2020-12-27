@@ -13,6 +13,15 @@ report 50023 "Sales Credit Memo - ADVACO"
             column(Sales_Cr_Memo_Header_No_; "No.")
             {
             }
+            //ICE RSK 12/23/20 begin
+            column(DocumentDate; Format("Document Date", 0, 4))
+            {
+            }
+            column(Amount_Including_VAT; "Amount Including VAT")
+            {
+
+            }
+            //ICE RSK 12/23/20 end
             dataitem("Sales Cr.Memo Line"; "Sales Cr.Memo Line")
             {
                 DataItemLink = "Document No." = FIELD("No.");
@@ -298,15 +307,16 @@ report 50023 "Sales Credit Memo - ADVACO"
 
                 FormatAddress.SalesCrMemoBillTo(BillToAddress, "Sales Cr.Memo Header");
                 FormatAddress.SalesCrMemoShipTo(ShipToAddress, ShipToAddress, "Sales Cr.Memo Header");
+                CalcFields("Amount Including VAT"); //ICE RSK 12/23/20
             end;
 
             trigger OnPreDataItem()
             begin
-                if PrintCompany then begin
-                    CompanyInformation.Get('');
-                    FormatAddress.Company(CompanyAddress, CompanyInformation);
-                end else
-                    Clear(CompanyAddress);
+                //if PrintCompany then begin
+                CompanyInformation.Get('');
+                FormatAddress.Company(CompanyAddress, CompanyInformation);
+                //end else
+                //    Clear(CompanyAddress);
             end;
         }
     }

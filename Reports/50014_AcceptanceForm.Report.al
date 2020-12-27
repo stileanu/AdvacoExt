@@ -188,7 +188,7 @@ report 50014 "Acceptance Form"
                 CalcFields("Parts Quoted", "Labor Quoted");
 
                 //if WorkOrderDetail"."Order Type" = "Order Type" :: Warranty then
-                if WorkOrderDetail."Order Type".asinteger() = "Order Type".asinteger() then
+                if WorkOrderDetail."Order Type" = workorderdetail."Order Type"::Warranty then
                     RebuildPrice := 0
                 else
                     RebuildPrice := "Parts Quoted" + "Labor Quoted" + "Order Adj.";

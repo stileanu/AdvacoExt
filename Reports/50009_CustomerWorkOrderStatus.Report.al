@@ -204,6 +204,19 @@ report 50009 "Customer Work Order Status Rpt"
             trigger OnPreDataItem()
             begin
                 OrderCount := "Work Order Detail".Count;
+                //ICE RSK 12/24/20
+                case sortby of
+                    sortby::"work order no.":
+                        "Work Order Detail".SetCurrentKey("Work Order No.");
+                    sortby::"work order master no.":
+                        "Work Order Detail".SetCurrentKey("Work Order Master No.");
+                    sortby::"Customer Part no":
+                        "Work Order Detail".SetCurrentKey("Customer Part No.");
+                    sortby::"Customer ID":
+                        "Work Order Detail".SetCurrentKey("Customer ID");
+                    sortby::"Order type":
+                        "Work Order Detail".SetCurrentKey("Order Type");
+                end
             end;
         }
         dataitem("Integer"; "Integer")
@@ -457,6 +470,20 @@ report 50009 "Customer Work Order Status Rpt"
 
         layout
         {
+            area(content)
+            {
+                group(Options)
+                {
+                    Caption = 'Options';
+
+                    field(sortby; sortby)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Sort By';
+                        OptionCaption = 'Work Order No.,Work Order Master No.,Customer Part No.,Customer ID,Order Type';
+                    }
+                }
+            }
         }
 
         actions
@@ -566,6 +593,7 @@ report 50009 "Customer Work Order Status Rpt"
         MACHINE_SHOPCaptionLbl: Label 'MACHINE SHOP';
         ASSEMBLYCaptionLbl: Label 'ASSEMBLY';
         custname: text[100];
+        sortby: option "work order no.","work order master no.","Customer Part no","Customer ID","Order type";
 
     procedure Rebuild()
     begin

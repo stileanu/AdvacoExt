@@ -103,8 +103,11 @@ page 50023 "Build Ahead"
                     if WOD."Build Ahead" = true then
                         Error('The Work Order Parts have already been moved to In-Process Inventory');
 
-                    if Person = '' then
-                        Error('You must enter an Employee before Converting the Work Order to a Build Ahead');
+                    //if Person = '' then
+                    if Rec.Employee = '' then
+                        Error('You must enter an Employee before Converting the Work Order to a Build Ahead')
+                    else
+                        Person := Rec.Employee;
 
                     if DateIn = 0D then
                         Error('You must enter a Date In before Converting the Work Order to a Build Ahead');

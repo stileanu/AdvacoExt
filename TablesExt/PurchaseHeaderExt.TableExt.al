@@ -218,7 +218,7 @@ tableextension 50120 PurchaseheaderExt extends "Purchase Header"
 
             IF PurchaseHeader.FIND('+') THEN BEGIN
                 "No." := INCSTR(PurchaseHeader."No.");
-                IF "Document Type" = "Document Type"::"Credit Memo" THEN BEGIN
+                IF "Document Type" = "Document Type"::"Blanket Order" THEN BEGIN  //ICE RSK 12/23/20 change from credit memo to blanket order
                     "Blanket Order No." := "No.";
                 END;
             END ELSE BEGIN

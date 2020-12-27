@@ -221,7 +221,7 @@ page 50013 "Quote Phase 1"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action(Instructions)
             {

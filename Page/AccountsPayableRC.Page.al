@@ -895,6 +895,19 @@ page 50161 AccountsPayableRC
                         Caption = 'Vendor/Item Statistics';
                         RunObject = Report "Vendor/Item Statistics";
                     }
+                    Action(POReceivedNotInvoiced)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'PO Received not Invoiced';
+                        RunObject = Report "PO Received not Invoiced";
+
+                    }
+                    Action(OutstandingEFTInvoices)
+                    {
+                        ApplicationArea = all;
+                        Caption = 'Outstanding EFT Purchase Invoices';
+                        RunObject = report "Outstanding EFT Purch.Invoices";
+                    }
                 }
                 group("Group41")
                 {

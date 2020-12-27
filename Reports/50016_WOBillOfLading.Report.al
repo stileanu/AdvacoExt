@@ -100,6 +100,9 @@ report 50016 "WO Bill Of Lading"
                 column(Work_Order_Detail_Customer_Bill_of_Lading; "Bill of Lading")
                 {
                 }
+                column(Third_Party_Charge; ThirdPartyCharge)
+                {
+                }
 
                 trigger OnAfterGetRecord()
                 begin
@@ -115,6 +118,8 @@ report 50016 "WO Bill Of Lading"
 
                     if ("Third Party City" <> '') or ("Third Party State" <> '') or ("Third Party Zip" <> '') then
                         ThirdPartyAddress := ("Third Party City") + (', ') + ("Third Party State") + ('  ') + ("Third Party Zip");
+
+                    ThirdPartyCharge := "Work Order Detail Customer"."Shipping Charge" <> "Work Order Detail Customer"."Shipping Charge"::"3rd Party";
                 end;
             }
             dataitem("Work Order Detail Vendor"; WorkOrderDetail)
@@ -164,8 +169,12 @@ report 50016 "WO Bill Of Lading"
 
                 if Carrier = '' then
                     Clear(Agent)
-                else
-                    Agent.Get(Carrier);
+                else begin
+                    strCarrier := CopyStr(Carrier, 1, 10);
+                    if not Agent.Get(strCarrier) then
+                        Clear(Agent);
+                end;
+
                 AgentName := Agent.Name;
 
                 if "Shipping Charge" = "Shipping Charge"::Collect then
@@ -206,5 +215,7 @@ report 50016 "WO Bill Of Lading"
         line3: Code[50];
         Att: Code[50];
         ThirdPartyAddress: Code[70];
+        ThirdPartyCharge: Boolean;
+        strCarrier: Code[10];
 }
 

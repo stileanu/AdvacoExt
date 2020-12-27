@@ -272,6 +272,16 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
         }
     }
 
+    keys
+    {
+
+        key(Key1; "Work Order No.")
+        {
+
+        }
+    }
+
+
     trigger OnAfterModify()
     begin
         //>> HEF Insert
@@ -330,4 +340,6 @@ tableextension 50121 PurchaseLineExt extends "Purchase Line"
         IF Item."No." <> "No." THEN
             Item.GET("No.");
     end;
+
+
 }

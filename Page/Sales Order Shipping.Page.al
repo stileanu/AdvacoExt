@@ -470,6 +470,63 @@ page 50060 "Sales Order Shipping"
 
                 end;
             }
+            action(Release)
+            {
+                ApplicationArea = all;
+                caption = 'Release';
+                Image = ReleaseDoc;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                PromotedOnly = true;
+                ShortCutKey = 'Ctrl+F9';
+                ToolTip = 'Release the document to the next stage of processing. When a document is released, it will be included in all availability calculations from the expected receipt date of the items. You must reopen the document before you can make changes to it.';
+
+                trigger OnAction()
+                begin
+
+                    IF NOT UpdateAllowed THEN
+                        EXIT;
+                    // << Distribution - end
+
+                    //>>  Whse. Management - start
+                    SalesOrderRelease.PerformManualRelease(Rec);
+                    //<<  Whse. Management - end
+
+
+
+                end;
+
+            }
+            Action(Reopen)
+            {
+                ApplicationArea = all;
+                caption = 'Reopen';
+                Enabled = Status <> Status::Open;
+                Image = ReOpen;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedOnly = true;
+                ToolTip = 'Reopen the document to change it after it has been approved. Approved documents have the Released status and must be opened before they can be changed.';
+
+
+                trigger OnAction()
+                begin
+
+
+                    // >> Distribution - start
+                    IF NOT UpdateAllowed THEN
+                        EXIT;
+                    // << Distribution - end
+
+                    //>>  Warehouse Management - start
+                    //Released := FALSE;
+                    //"Order Status" := "Order Status"::Open;
+                    salesorderrelease.PerformManualReopen(Rec);
+                    //<<  Warehouse Management - end
+
+                end;
+            }
             action("&Print")
             {
                 ApplicationArea = All;
@@ -550,6 +607,8 @@ page 50060 "Sales Order Shipping"
         OilPartNumber: Text[30];
         QtyOil: Integer;
         ItemLedgEntryType: Enum "Item Ledger Entry Type";
+
+        salesorderrelease: Codeunit "Release Sales Document";
 
     procedure UpdateAllowed() Response: Boolean
     begin

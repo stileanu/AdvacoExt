@@ -1,7 +1,7 @@
-report 60015 "Shipping Label_1"
+report 50015 "Shipping Label"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Reports/Shipping label.rdl';
+    RDLCLayout = './Reports/50015_ShippingLabel.rdl';
 
     dataset
     {

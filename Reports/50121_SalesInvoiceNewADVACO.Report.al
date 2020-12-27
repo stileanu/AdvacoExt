@@ -5,7 +5,7 @@ report 50121 "Sales Invoice New - ADVACO"
     // 2/13/01, htcs, rca - added code to Sales Invoice Line, OnAfterGetRecord()
     //                       added code to SalesInvoiceLine, Body (2), OnPreSection
     DefaultLayout = RDLC;
-    RDLCLayout = './Reports/50121_SalesInvoiceNewADVACO.Rpt.rdl';
+    RDLCLayout = './Reports/50121_SalesInvoiceNewADVACO.rdl';
 
 
     dataset
@@ -125,6 +125,15 @@ report 50121 "Sales Invoice New - ADVACO"
             column(Page_Caption; Page_CaptionLbl)
             {
             }
+            //ICE RSK 12/23/20 begin
+            column(DocumentDate; Format("Document Date", 0, 4))
+            {
+            }
+            column(Amount_Including_VAT; "Amount Including VAT")
+            {
+
+            }
+            //ICE RSK 12/23/20 end
             dataitem("Sales Invoice Line"; "Sales Invoice Line")
             {
                 DataItemLink = "Document No." = FIELD("No.");
@@ -470,6 +479,7 @@ report 50121 "Sales Invoice New - ADVACO"
                     Clear(ShippingAgent)
                 else
                     ShippingAgent.Get("Shipping Agent Code");
+                CalcFields("Amount Including VAT"); //ICE RSK 12/23/20
             end;
 
             trigger OnPreDataItem()

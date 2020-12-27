@@ -446,6 +446,12 @@ page 50159 PurchaseMbrRC
                         Caption = 'Purchasing Deferral Summary';
                         RunObject = report "Deferral Summary - Purchasing";
                     }
+                    action("PO Received not Invoiced")
+                    {
+                        ApplicationArea = Suite;
+                        Caption = 'PO Received not Invoiced';
+                        RunObject = report "po received not invoiced";
+                    }
                 }
             }
 
