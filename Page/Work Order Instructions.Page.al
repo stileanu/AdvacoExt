@@ -138,7 +138,7 @@ page 50038 "Work Order Instructions"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Block/Unblock")
             {
@@ -159,6 +159,8 @@ page 50038 "Work Order Instructions"
                     // 04/01/13 Start
                     // Get permissions 
                     User.Get(UserSecurityId);
+
+                    UserSetup.Get(User."User Name");
                     BlockWI := UserSetup.GetParamStatus(User."User Security ID", 2);
 
                     if Blocked and BlockWI then begin
@@ -233,7 +235,9 @@ page 50038 "Work Order Instructions"
     begin
         // 04/01/13 Start
         // set FILTERGROUP based on permissions
-        UserSetup.GET(UserSecurityId);
+        User.Get(UserSecurityId);
+
+        UserSetup.Get(User."User Name");
         IF (NOT UserSetup.GetParamStatus(User."User Security ID", 2)) AND (NOT UserSetup.GetParamStatus(User."User Security ID", 3)) THEN BEGIN
             prevFilterGroup := FILTERGROUP;
             FILTERGROUP(9);

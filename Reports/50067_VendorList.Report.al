@@ -4,7 +4,7 @@ report 50067 "Vendor List"
     RDLCLayout = './Reports/50067_VendorList.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
-    caption = 'Vendor List';
+    caption = 'Advaco Vendor List';
     dataset
     {
         dataitem(Vendor; Vendor)

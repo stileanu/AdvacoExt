@@ -3205,8 +3205,8 @@ page 50160 FinanceManagerRC
                         ApplicationArea = All;
                         Caption = 'Shop Employee Hours';
                         Image = PaymentForecast;
-                        //RunObject = report "Shop Employee Hours";
-                        RunObject = codeunit UnderConstruction;
+                        RunObject = report "Shop Employee Hours";
+                        //RunObject = codeunit UnderConstruction;
                         ToolTip = 'Runs Shop Employee Hours Report.';
                     }
                     action(WorkOrderDateStatusRpt_50036)

@@ -54,7 +54,7 @@ page 50055 "Return Committed Parts"
                         vPN := PN;
                         InValDialog.SetValueType(InValType::IntegerType, 'Enter the amount to Allocate:');
                         if InValDialog.RunModal() = Action::OK then
-                            InValDialog.GetEnteredValue(vPN);
+                            InValDialog.GetIntegerValue(PN);
                         PN := vPN;
                         if PN <= 0 then
                             Error('Can''t Allocate A Negative or Zero Quantity');

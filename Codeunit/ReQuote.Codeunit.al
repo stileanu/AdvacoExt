@@ -98,11 +98,13 @@ codeunit 50003 "Re-Quote"
                 END;
             END ELSE BEGIN
                 MESSAGE('Work Order Detail %1 not found', WODN);
-                NextRecord.RUN;
+                //NextRecord.RUN;
+                OpenNextRecord;
             END;
         END ELSE BEGIN
-            MESSAGE('You must enter a number.');
-            NextRecord.RUN;
+            //MESSAGE('You must enter a number.');
+            //NextRecord.RUN;
+            OpenNextRecord;
         END;
     end;
 

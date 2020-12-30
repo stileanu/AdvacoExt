@@ -247,6 +247,41 @@ page 50033 "Work Order Shipping"
                     PAGE.RunModal(50042, WSI);
                 end;
             }
+            group("Print")
+            {
+                Caption = 'Print';
+                Image = PrintForm;
+
+                action(BillOfLading)
+                {
+                    Caption = 'Bill of Lading';
+                    ApplicationArea = All;
+                    Promoted = true;
+                    PromotedIsBig = true;
+                    PromotedCategory = Report;
+
+                    trigger OnAction()
+                    begin
+                        PrintBOL;
+                    end;
+                }
+
+                action(AddrLabels)
+                {
+                    Caption = 'Address Labels';
+                    ApplicationArea = All;
+                    Promoted = true;
+                    PromotedIsBig = true;
+                    PromotedCategory = Report;
+
+                    trigger OnAction()
+                    begin
+                        PrintLabels;
+                    end;
+
+                }
+
+            }
             action("&Ship")
             {
                 ApplicationArea = All;
@@ -255,6 +290,7 @@ page 50033 "Work Order Shipping"
                 PromotedIsBig = true;
                 PromotedCategory = Process;
                 Image = Shipment;
+                Visible = True; //ICE RSK 12/28/20
 
                 trigger OnAction()
                 begin
@@ -263,8 +299,8 @@ page 50033 "Work Order Shipping"
                     SystemWO := '';
 
                     // 04/17/18 start
-                    //IF oContainerSaved = oContainerSaved::Yes THEN
-                    //  MESSAGE(STRSUBSTNO('Be sure to ship with Saved Customer Container [%1]',FORMAT("Container Type")));
+                    IF oContainerSaved = oContainerSaved::Yes THEN
+                        MESSAGE(STRSUBSTNO('Be sure to ship with Saved Customer Container [%1]', FORMAT("Container Type")));
                     // 04/17/18 end
 
                     if (MessageShowed > 0) and (InstructionRead = false) then
@@ -617,6 +653,7 @@ page 50033 "Work Order Shipping"
                     Reservation; // COMMIT included!
                     CreateBOLRecords;
                     PrintBOL; // another COMMIT
+                    PrintLabels;
                 end else begin
                     ZeroChargeRepairable;
                 end;
@@ -654,6 +691,7 @@ page 50033 "Work Order Shipping"
         until WOD.Next = 0;
         CreateBOLRecords;
         PrintBOL;
+        PrintLabels;
     end;
 
     procedure WarrantyShip()
@@ -701,6 +739,7 @@ page 50033 "Work Order Shipping"
                 until WOD.Next = 0;
                 CreateBOLRecords;
                 PrintBOL;
+                PrintLabels;
             end;
         end;
     end;
@@ -735,6 +774,7 @@ page 50033 "Work Order Shipping"
                 CreateShippingLine;
                 CreateBOLRecords;
                 PrintBOL;
+                PrintLabels;
             end;
         end;
     end;
@@ -763,6 +803,7 @@ page 50033 "Work Order Shipping"
 
                 CreateBOLRecords;
                 PrintBOL;
+                PrintLabels;
             end;
         end;
     end;
@@ -1451,31 +1492,19 @@ page 50033 "Work Order Shipping"
     begin
         ///--! Commit
         //Commit;
-        if not Confirm('Is Bill of Lading and Labels loaded in Printers?', false) then begin
-            if not Confirm('Last Chance, Is Bill of Lading and Labels loaded in Printers?', false) then begin
-                Ok := true;
-            end else begin
-                BOL2.SetRange(BOL2."Bill of Lading", BOL2."Bill of Lading");
-                ///--! Report
-                //REPORT.RunModal(50016, false, false, BOL2);               // BOL Document
-                BOL2."BOL Printed" := true;
-                BOL2.Modify;
-                LabelCount := LabelsToPrint;
-                if LabelCount > 0 then begin
-                    repeat
-                    begin
-                        LabelCount := LabelCount - 1;
-                        ///--! Report
-                        //REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
-                    end;
-                    until LabelCount = 0;
-                    BOL2."Label Printed" := true;
-                end else begin
-                    BOL2."Label Printed" := false;
-                end;
-                BOL2.Modify;
-                ConfirmLabels;
-            end;
+        if not Confirm('Is Bill of Lading loaded in Printer?', false) then
+            if not Confirm('Last Chance, Is Bill of Lading loaded in Printer?', false) then
+                //Ok := true;
+                Exit;
+        //end else begin
+        BOL2.SetRange("Bill of Lading", BOL2."Bill of Lading");
+        ///--! Report
+        REPORT.RunModal(50016, false, false, BOL2);               // BOL Document Print 
+        BOL2."BOL Printed" := true;
+        BOL2.Modify;
+
+        //end;
+        /*
         end else begin
             BOL2.SetRange(BOL2."Bill of Lading", BOL2."Bill of Lading");
             ///--! Report
@@ -1498,6 +1527,27 @@ page 50033 "Work Order Shipping"
             BOL2.Modify;
             ConfirmLabels;
         end;
+        */
+    end;
+
+    procedure PrintLabels()
+    begin
+        LabelCount := LabelsToPrint;
+        if LabelCount > 0 then begin
+            if not Confirm('Is Label Printer ready?', false) then
+                if not Confirm('Last Chance, is Label Printer ready?', false) then
+                    Exit;
+            repeat begin
+                LabelCount := LabelCount - 1;
+                ///--! Report
+                REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
+            end;
+            until LabelCount = 0;
+            BOL2."Label Printed" := true;
+        end else
+            BOL2."Label Printed" := false;
+        BOL2.Modify;
+        //ConfirmLabels;
     end;
 
     procedure ConfirmLabels()

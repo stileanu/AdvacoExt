@@ -18,122 +18,6 @@ report 50121 "Sales Invoice New - ADVACO"
             column(Sales_Invoice_Header_No_; "No.")
             {
             }
-            column(CompanyAddress_1_; CompanyAddress[1])
-            {
-            }
-            column(CompanyAddress_2_; CompanyAddress[2])
-            {
-            }
-            column(CompanyAddress_3_; CompanyAddress[3])
-            {
-            }
-            column(CompanyAddress_4_; CompanyAddress[4])
-            {
-            }
-            column(CompanyAddress_5_; CompanyAddress[5])
-            {
-            }
-            column(CompanyAddress_6_; CompanyAddress[6])
-            {
-            }
-            column(CompanyAddress_7_; CompanyAddress[7])
-            {
-            }
-            column(CompanyAddress_8_; CompanyAddress[8])
-            {
-            }
-            column(BillToAddress_1_; BillToAddress[1])
-            {
-            }
-            column(Sales_Invoice_Header___No__; "Sales Invoice Header"."No.")
-            {
-            }
-            column(BillToAddress_2_; BillToAddress[2])
-            {
-            }
-            column(BillToAddress_3_; BillToAddress[3])
-            {
-            }
-            column(BillToAddress_4_; BillToAddress[4])
-            {
-            }
-            column(BillToAddress_5_; BillToAddress[5])
-            {
-            }
-            column(BillToAddress_6_; BillToAddress[6])
-            {
-            }
-            column(BillToAddress_7_; BillToAddress[7])
-            {
-            }
-            column(Sales_Invoice_Header___Posting_Date_; "Sales Invoice Header"."Posting Date")
-            {
-            }
-            column(Sales_Invoice_Header___Due_Date_; "Sales Invoice Header"."Due Date")
-            {
-            }
-            column(PaymentTerms_Description; PaymentTerms.Description)
-            {
-            }
-            column(ShipToAddress_1_; ShipToAddress[1])
-            {
-            }
-            column(ShipToAddress_2_; ShipToAddress[2])
-            {
-            }
-            column(ShipToAddress_3_; ShipToAddress[3])
-            {
-            }
-            column(ShipToAddress_4_; ShipToAddress[4])
-            {
-            }
-            column(ShipToAddress_5_; ShipToAddress[5])
-            {
-            }
-            column(ShipToAddress_6_; ShipToAddress[6])
-            {
-            }
-            column(ShipToAddress_7_; ShipToAddress[7])
-            {
-            }
-            column(Sales_Invoice_Header___Bill_to_Customer_No__; "Sales Invoice Header"."Bill-to Customer No.")
-            {
-            }
-            column(Sales_Invoice_Header___Your_Reference_; "Sales Invoice Header"."Your Reference")
-            {
-            }
-            column(Sales_Invoice_Header___Order_Date_; "Sales Invoice Header"."Order Date")
-            {
-            }
-            column(Sales_Invoice_Header___Order_No__; "Sales Invoice Header"."Order No.")
-            {
-            }
-            column(OutsideRep__Rep_Name_; OutsideRep."Rep Name")
-            {
-            }
-
-
-            column(ShippingAgent_Name; ShippingAgent.Name)
-            {
-            }
-            column(Sales_Invoice_Header___Bill_of_Lading_; "Sales Invoice Header"."Bill of Lading")
-            {
-            }
-            column(SalesPurchPerson_Name; SalesPurchPerson.Name)
-            {
-            }
-            column(Page_Caption; Page_CaptionLbl)
-            {
-            }
-            //ICE RSK 12/23/20 begin
-            column(DocumentDate; Format("Document Date", 0, 4))
-            {
-            }
-            column(Amount_Including_VAT; "Amount Including VAT")
-            {
-
-            }
-            //ICE RSK 12/23/20 end
             dataitem("Sales Invoice Line"; "Sales Invoice Line")
             {
                 DataItemLink = "Document No." = FIELD("No.");
@@ -141,7 +25,7 @@ report 50121 "Sales Invoice New - ADVACO"
 
                 trigger OnAfterGetRecord()
                 begin
-                    if (("Sales Invoice Header"."Shortcut Dimension 2 Code" = 'WO') or ("Sales Invoice Header"."Shortcut Dimension 2 Code" = 'FS')) and (Type.AsInteger > 1) then
+                    if (("Sales Invoice Header"."Shortcut Dimension 2 Code" = 'WO') or ("Sales Invoice Header"."Shortcut Dimension 2 Code" = 'FS')) and (Type.asinteger > 1) then
                         CurrReport.Skip;
 
                     TempSalesInvoiceLine := "Sales Invoice Line";
@@ -162,11 +46,11 @@ report 50121 "Sales Invoice New - ADVACO"
 
                 trigger OnAfterGetRecord()
                 begin
-                    //with TempSalesInvoiceLine do begin  ICE-MPC
-                    TempsalesInvoiceline.Init;
-                    tempsalesinvoiceline."Document No." := "Sales Invoice Header"."No.";
+                    //with TempSalesInvoiceLine do begin
+                    TempSalesInvoiceLine.Init;
+                    TempSalesInvoiceLine."Document No." := "Sales Invoice Header"."No.";
                     TempSalesInvoiceLine."Line No." := HighestLineNo + 1000;
-                    HighestLineNo := TempSalesInvoiceLine."Line No.";
+                    HighestLineNo := "Line No.";
                     //end;
                     if StrLen(Comment) <= MaxStrLen(TempSalesInvoiceLine.Description) then begin
                         TempSalesInvoiceLine.Description := Comment;
@@ -190,15 +74,171 @@ report 50121 "Sales Invoice New - ADVACO"
                 dataitem(PageLoop; "Integer")
                 {
                     DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
-
+                    column(CompanyAddress_2_; CompanyAddress[2])
+                    {
+                    }
+                    column(CompanyAddress_3_; CompanyAddress[3])
+                    {
+                    }
+                    column(CompanyAddress_4_; CompanyAddress[4])
+                    {
+                    }
                     column(CopyTxt; CopyTxt)
                     {
                     }
-
-
-
+                    column(BillToAddress_1_; BillToAddress[1])
+                    {
+                    }
+                    column(BillToAddress_2_; BillToAddress[2])
+                    {
+                    }
+                    column(BillToAddress_3_; BillToAddress[3])
+                    {
+                    }
+                    column(BillToAddress_4_; BillToAddress[4])
+                    {
+                    }
+                    column(BillToAddress_5_; BillToAddress[5])
+                    {
+                    }
+                    column(Sales_Invoice_Header___Posting_Date_; "Sales Invoice Header"."Posting Date")
+                    {
+                    }
+                    column(Sales_Invoice_Header___Due_Date_; "Sales Invoice Header"."Due Date")
+                    {
+                    }
+                    column(PaymentTerms_Description; PaymentTerms.Description)
+                    {
+                    }
+                    column(ShipToAddress_1_; ShipToAddress[1])
+                    {
+                    }
+                    column(ShipToAddress_2_; ShipToAddress[2])
+                    {
+                    }
+                    column(ShipToAddress_3_; ShipToAddress[3])
+                    {
+                    }
+                    column(ShipToAddress_4_; ShipToAddress[4])
+                    {
+                    }
+                    column(ShipToAddress_5_; ShipToAddress[5])
+                    {
+                    }
+                    column(Sales_Invoice_Header___Bill_to_Customer_No__; "Sales Invoice Header"."Bill-to Customer No.")
+                    {
+                    }
+                    column(Sales_Invoice_Header___Your_Reference_; "Sales Invoice Header"."Your Reference")
+                    {
+                    }
+                    column(Sales_Invoice_Header___Order_Date_; "Sales Invoice Header"."Order Date")
+                    {
+                    }
+                    column(Sales_Invoice_Header___Order_No__; "Sales Invoice Header"."Order No.")
+                    {
+                    }
+                    column(OutsideRep__Rep_Name_; OutsideRep."Rep Name")
+                    {
+                    }
+                    column(Sales_Invoice_Header___No__; "Sales Invoice Header"."No.")
+                    {
+                    }
+                    //column(CurrReport_PAGENO;CurrReport.PageNo)
+                    //{
+                    //}
+                    column(ShippingAgent_Name; ShippingAgent.Name)
+                    {
+                    }
+                    column(Sales_Invoice_Header___Bill_of_Lading_; "Sales Invoice Header"."Bill of Lading")
+                    {
+                    }
+                    column(SalesPurchPerson_Name; SalesPurchPerson.Name)
+                    {
+                    }
+                    column(CompanyInformation_Picture; CompanyInformation.Picture)
+                    {
+                    }
+                    column(CompanyAddress_5_; CompanyAddress[5])
+                    {
+                    }
+                    column(Page_Caption; Page_CaptionLbl)
+                    {
+                    }
+                    column(INVOICECaption; INVOICECaptionLbl)
+                    {
+                    }
+                    column(CUSTOMER_NO_Caption; CUSTOMER_NO_CaptionLbl)
+                    {
+                    }
+                    column(BILL_TO_Caption; BILL_TO_CaptionLbl)
+                    {
+                    }
+                    column(SHIP_TO_Caption; SHIP_TO_CaptionLbl)
+                    {
+                    }
+                    column(DATECaption; DATECaptionLbl)
+                    {
+                    }
+                    column(SHIP_VIACaption; SHIP_VIACaptionLbl)
+                    {
+                    }
+                    column(BILL_OF_LADINGCaption; BILL_OF_LADINGCaptionLbl)
+                    {
+                    }
+                    column(PAYMENT_TERMSCaption; PAYMENT_TERMSCaptionLbl)
+                    {
+                    }
+                    column(DUE_DATECaption; DUE_DATECaptionLbl)
+                    {
+                    }
+                    column(PURCHASE_ORDER_NO_Caption; PURCHASE_ORDER_NO_CaptionLbl)
+                    {
+                    }
+                    column(ORDER_DATECaption; ORDER_DATECaptionLbl)
+                    {
+                    }
+                    column(SALESPERSONCaption; SALESPERSONCaptionLbl)
+                    {
+                    }
+                    column(SALES_REPRESENTATIVECaption; SALES_REPRESENTATIVECaptionLbl)
+                    {
+                    }
+                    column(ADVACO_ORDER_NO_Caption; ADVACO_ORDER_NO_CaptionLbl)
+                    {
+                    }
+                    column(QUANTITYCaption; QUANTITYCaptionLbl)
+                    {
+                    }
+                    column(ORDEREDCaption; ORDEREDCaptionLbl)
+                    {
+                    }
+                    column(SHIPPEDCaption; SHIPPEDCaptionLbl)
+                    {
+                    }
+                    column(B_O_Caption; B_O_CaptionLbl)
+                    {
+                    }
+                    column(ITEM_NUMBERCaption; ITEM_NUMBERCaptionLbl)
+                    {
+                    }
+                    column(DESCRIPTIONCaption; DESCRIPTIONCaptionLbl)
+                    {
+                    }
+                    column(UNIT_PRICECaption; UNIT_PRICECaptionLbl)
+                    {
+                    }
+                    column(AMOUNTCaption; AMOUNTCaptionLbl)
+                    {
+                    }
                     column(PageLoop_Number; Number)
                     {
+                    }
+                    column(Sales_Invoice_Header_Document_Date_; "Sales Invoice Header"."Document Date")
+                    {
+                    }
+                    column(Sales_Invoice_Header_Amount_Including_Tax_; "Sales Invoice Header"."Amount Including VAT")
+                    {
+
                     }
                     dataitem(SalesInvoiceLine; "Integer")
                     {
@@ -248,6 +288,15 @@ report 50121 "Sales Invoice New - ADVACO"
                         column(THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_; 'THANK YOU FOR ALLOWING US TO BE OF SERVICE TO YOU')
                         {
                         }
+                        column(FinancialCharges; FinancialCharges)
+                        {
+                        }
+                        column(FedID; FedID)
+                        {
+                        }
+                        column(OurCustomer; OurCustomer)
+                        {
+                        }
                         column(Subtotal_Caption; Subtotal_CaptionLbl)
                         {
                         }
@@ -279,15 +328,15 @@ report 50121 "Sales Invoice New - ADVACO"
                             No := '';
 
                             if OnLineNumber = 1 then
-                                tempsalesInvoiceLine.Find('-')
+                                TempSalesInvoiceLine.Find('-')
                             else
-                                tempsalesInvoiceline.Next;
+                                TempSalesInvoiceLine.Next;
 
                             OrderedQuantity := 0;
                             if "Sales Invoice Header"."Order No." = '' then
                                 OrderedQuantity := TempSalesInvoiceLine.Quantity
                             else begin
-                                if OrderLine.Get(1, "Sales Invoice Header"."Order No.", TempsalesInvoiceLine."Line No.") then
+                                if OrderLine.Get(1, "Sales Invoice Header"."Order No.", TempSalesInvoiceLine."Line No.") then
                                     OrderedQuantity := OrderLine.Quantity
                                 else begin
                                     ShipmentLine.SetRange("Order No.", "Sales Invoice Header"."Order No.");
@@ -299,7 +348,7 @@ report 50121 "Sales Invoice New - ADVACO"
                                 end;
                             end;
 
-                            DescriptionToPrint := TempSalesInvoiceLine.Description + ' ' + TempSalesInvoiceline."Description 2";
+                            DescriptionToPrint := TempSalesInvoiceLine.Description + ' ' + TempSalesInvoiceLine."Description 2";
                             if TempSalesInvoiceLine.Type.AsInteger() = 0 then begin
                                 // HEF REMOVED 07/02/01 Combined Lines which isn't what we want
                                 /*  IF OnLineNumber < NumberOfLines THEN BEGIN
@@ -378,18 +427,16 @@ report 50121 "Sales Invoice New - ADVACO"
 
                             AmountExclInvDisc := TempSalesInvoiceLine.Amount + TempSalesInvoiceLine."Inv. Discount Amount";
 
-                            if TempSalesInvoiceLine.Quantity = 0 then
-                                UnitPriceToPrint := 0  // so it won't print
-                            else
+                            if TempSalesInvoiceLine.Quantity = 0 then begin
+                                UnitPriceToPrint := 0;  // so it won't print
+                                Amount2 := 0;
+                            end else begin
                                 UnitPriceToPrint := Round(AmountExclInvDisc / TempSalesInvoiceLine.Quantity, 0.00001);
+                                Amount2 := AmountExclInvDisc;
+                            end;
                             //end;
 
-                            IF (GLCode = '312') OR (GLCode = '311') THEN BEGIN
-                                UnitPriceToPrint := 0;
-                                Amount2 := 0;
-                            END ELSE BEGIN
-                                Amount2 := AmountExclInvDisc;
-                            END;
+
 
                         end;
 
@@ -401,7 +448,7 @@ report 50121 "Sales Invoice New - ADVACO"
 
                         trigger OnPreDataItem()
                         begin
-                            //(TaxLiable,AmountExclInvDisc,TempSalesInvoiceLine.Amount,TempSalesInvoiceLine."Amount Including VAT");
+                            //CurrReport.CreateTotals(TaxLiable,AmountExclInvDisc,TempSalesInvoiceLine.Amount,TempSalesInvoiceLine."Amount Including VAT");
                             NumberOfLines := TempSalesInvoiceLine.Count;
                             SetRange(Number, 1, NumberOfLines);
                             OnLineNumber := 0;
@@ -428,7 +475,8 @@ report 50121 "Sales Invoice New - ADVACO"
 
                 trigger OnPreDataItem()
                 begin
-                    NoLoops := 1 + Abs(NoCopies) + Customer."Invoice Copies";
+                    //NoLoops := 1 + ABS(NoCopies) + Customer."Invoice Copies";
+                    NoLoops := 1 + Abs(NoCopies);
                     if NoLoops <= 0 then
                         NoLoops := 1;
                     CopyNo := 0;
@@ -479,16 +527,20 @@ report 50121 "Sales Invoice New - ADVACO"
                     Clear(ShippingAgent)
                 else
                     ShippingAgent.Get("Shipping Agent Code");
-                CalcFields("Amount Including VAT"); //ICE RSK 12/23/20
             end;
 
             trigger OnPreDataItem()
             begin
-                //if PrintCompany then begin
-                CompanyInformation.Get();
-                FormatAddress.Company(CompanyAddress, CompanyInformation);
-                //end else
-                //Clear(CompanyAddress);
+                if PrintCompany then begin
+                    CompanyInformation.Get('');
+                    FormatAddress.Company(CompanyAddress, CompanyInformation);
+                    CompanyAddress[2] := UpperCase(CompanyAddress[2]);
+                    CompanyAddress[3] := UpperCase(CompanyAddress[3]);
+                    CompanyAddress[4] := 'www.advaco.com';
+                    CompanyAddress[5] := '(410) 876-8200    FAX (410) 876-5820';
+                    CompanyInformation.CalcFields(Picture);
+                end else
+                    Clear(CompanyAddress);
             end;
         }
     }
@@ -507,7 +559,7 @@ report 50121 "Sales Invoice New - ADVACO"
                     {
                         Caption = 'Number of Copies';
                     }
-                    field(PrintCompany; PrintCompany)
+                    field(PrintCompanyAddress; PrintCompany)
                     {
                         Caption = 'Print Company Address';
                     }
@@ -523,6 +575,17 @@ report 50121 "Sales Invoice New - ADVACO"
     labels
     {
     }
+
+    trigger OnInitReport()
+    begin
+        PrintCompany := true;
+        CompanyInformation.get('');
+        CompanyInformation.CalcFields(Picture);
+        FinancialCharges := 'BALANCES OVER 30 DAYS WILL BE SUBJECT TO A FINANCE CHARGE OF 1.5% PER MONTH. (ANNUAL RATE OF 18%)';
+        FedID := 'FED ID #52-0954655';
+        OurCustomer := '"...Our Customer Is Our MOST Important Asset".';
+        CompanyInformation.CalcFields(Picture);
+    end;
 
     trigger OnPreReport()
     begin
@@ -572,11 +635,38 @@ report 50121 "Sales Invoice New - ADVACO"
         ok: Boolean;
         No: Code[10];
         SalesPeople: Code[100];
+        FinancialCharges: Text[250];
+        FedID: Text[30];
+        OurCustomer: Text[100];
         Page_CaptionLbl: Label 'Page:';
+        INVOICECaptionLbl: Label 'INVOICE';
+        CUSTOMER_NO_CaptionLbl: Label 'CUSTOMER NO.';
+        BILL_TO_CaptionLbl: Label 'BILL TO:';
+        SHIP_TO_CaptionLbl: Label 'SHIP TO:';
+        DATECaptionLbl: Label 'DATE';
+        SHIP_VIACaptionLbl: Label 'SHIP VIA';
+        BILL_OF_LADINGCaptionLbl: Label 'BILL OF LADING';
+        PAYMENT_TERMSCaptionLbl: Label 'PAYMENT TERMS';
+        DUE_DATECaptionLbl: Label 'DUE DATE';
+        PURCHASE_ORDER_NO_CaptionLbl: Label 'PURCHASE ORDER NO.';
+        ORDER_DATECaptionLbl: Label 'ORDER DATE';
+        SALESPERSONCaptionLbl: Label 'SALESPERSON';
+        SALES_REPRESENTATIVECaptionLbl: Label 'SALES REPRESENTATIVE';
+        ADVACO_ORDER_NO_CaptionLbl: Label 'ADVACO ORDER NO.';
+        QUANTITYCaptionLbl: Label 'QUANTITY';
+        ORDEREDCaptionLbl: Label 'ORDERED';
+        SHIPPEDCaptionLbl: Label 'SHIPPED';
+        B_O_CaptionLbl: Label 'B.O.';
+        ITEM_NUMBERCaptionLbl: Label 'ITEM NUMBER';
+        DESCRIPTIONCaptionLbl: Label 'DESCRIPTION';
+        UNIT_PRICECaptionLbl: Label 'UNIT PRICE';
+        AMOUNTCaptionLbl: Label 'AMOUNT';
         Subtotal_CaptionLbl: Label 'Subtotal:';
         Miscellaneous_Charges_CaptionLbl: Label 'Miscellaneous Charges:';
         Sales_Tax_CaptionLbl: Label 'Sales Tax:';
         Total_CaptionLbl: Label 'Total:';
         Freight_Charges_CaptionLbl: Label 'Freight Charges:';
 }
+
+
 

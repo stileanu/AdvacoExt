@@ -76,7 +76,7 @@ report 50128 "Inventory Turnover"
                 CountItem := false;
                 NoShow := false;
 
-                CalcFields("Sales (Qty.)", "Sales (LCY)", "Assembly BOM");
+                CalcFields("Sales (Qty.)", "Sales (LCY)", "Assembly BOM", Inventory);
 
                 if ("Sales (Qty.)" > 0) then
                     CurrReport.Skip;

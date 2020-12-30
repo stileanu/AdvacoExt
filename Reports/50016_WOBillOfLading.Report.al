@@ -120,6 +120,9 @@ report 50016 "WO Bill Of Lading"
                         ThirdPartyAddress := ("Third Party City") + (', ') + ("Third Party State") + ('  ') + ("Third Party Zip");
 
                     ThirdPartyCharge := "Work Order Detail Customer"."Shipping Charge" <> "Work Order Detail Customer"."Shipping Charge"::"3rd Party";
+
+                    CustSwitch := true;
+
                 end;
             }
             dataitem("Work Order Detail Vendor"; WorkOrderDetail)
@@ -144,6 +147,11 @@ report 50016 "WO Bill Of Lading"
                 column(Work_Order_Detail_Vendor_Vendor_Bill_of_Lading; "Vendor Bill of Lading")
                 {
                 }
+
+                trigger OnAfterGetRecord()
+                begin
+                    VendSwitch := true;
+                end;
             }
 
             trigger OnAfterGetRecord()
@@ -181,6 +189,9 @@ report 50016 "WO Bill Of Lading"
                     Collect := 'X'
                 else
                     Collect := '';
+
+                CustSwitch := false;
+                VendSwitch := false;
             end;
         }
     }
@@ -216,6 +227,8 @@ report 50016 "WO Bill Of Lading"
         Att: Code[50];
         ThirdPartyAddress: Code[70];
         ThirdPartyCharge: Boolean;
+        CustSwitch: Boolean;
+        VendSwitch: Boolean;
         strCarrier: Code[10];
 }
 

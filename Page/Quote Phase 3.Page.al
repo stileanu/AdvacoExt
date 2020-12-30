@@ -75,6 +75,7 @@ page 50017 "Quote Phase 3"
                         {
                             ApplicationArea = All;
                             DrillDownPageID = "Quote Phase 3 Parts List";
+                            Editable = false;
                         }
                     }
                 }
@@ -89,11 +90,13 @@ page 50017 "Quote Phase 3"
                     {
                         ApplicationArea = All;
                         DrillDownPageID = "Quote Phase 3 Parts List";
+                        Editable = false;
                     }
                     field("Parts Quoted"; "Parts Quoted")
                     {
                         ApplicationArea = All;
                         DrillDownPageID = "Quote Phase 3 Parts List";
+                        Editable = false;
                     }
                     field("""Labor Quoted"" + ""Parts Quoted"""; "Labor Quoted" + "Parts Quoted")
                     {
@@ -116,6 +119,7 @@ page 50017 "Quote Phase 3"
                     field("Order Type"; "Order Type")
                     {
                         ApplicationArea = All;
+                        Editable = false;
                     }
                     field("Unrepairable Charge"; "Unrepairable Charge")
                     {
@@ -134,11 +138,13 @@ page 50017 "Quote Phase 3"
                     field("Tax Liable"; "Tax Liable")
                     {
                         ApplicationArea = All;
+                        Editable = false;
                     }
                     field(BypassCreditLimit; BypassCreditLimit)
                     {
                         ApplicationArea = All;
                         Caption = 'Bypass Credit Limit';
+                        Visible = BypassCCheckVisible;
                     }
                 }
                 group(Control1220060030)
@@ -341,12 +347,18 @@ page 50017 "Quote Phase 3"
     trigger OnOpenPage()
     begin
         BypassCCheckVisible := false;
-        if UserId = 'KAYE' then
+        lSuperUser := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+        if lSuperUser then
             //IF USERID = 'ADMIN' THEN
             BypassCCheckVisible := true;
+
     end;
 
     var
+        lSuperUser: Boolean;
+        SysFunctions: Codeunit systemFunctionalLibrary;
+        txtAnswer: Text[120];
+        Permiss: Label 'SUPER';
         WOM: Record WorkOrderMaster;
         WOS: Record Status;
         WOS2: Record Status;

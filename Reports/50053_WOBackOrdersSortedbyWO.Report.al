@@ -4,7 +4,7 @@ report 50053 "WO Back Orders Sorted by WO"
     RDLCLayout = './Reports/50053_WOBackOrdersSortedbyWO.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
-    Caption = 'WO Back Orders Soted by WO';
+    Caption = 'WO Back Orders Sorted by WO';
 
     dataset
     {

@@ -466,7 +466,7 @@ page 50162 SalesMarketingMbrRC
                     Caption = 'Work Instructions';
                     ApplicationArea = Basic, Suite;
                     Image = Documents;
-                    RunObject = Page "Work Order Instructions";
+                    RunObject = Page "Work Order Instruction List";
                     ToolTip = 'View or edit instructions for a specific Work Order.';
                 }
                 action(SalesOrders)
@@ -536,7 +536,7 @@ page 50162 SalesMarketingMbrRC
                         ApplicationArea = All;
                         Caption = 'Re-Quote';
                         Image = OrderList;
-                        RunObject = codeunit "Quote Entry";
+                        RunObject = codeunit "Re-Quote";
                         ToolTip = 'Re-quote an Work Order.';
                     }
                 }

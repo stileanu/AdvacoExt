@@ -29,7 +29,7 @@ report 50039 "Quote Pick Ticket"
             column(Work_Order_Detail__Work_Order_No__; "Work Order No.")
             {
             }
-            column(Work_Order_Detail__Work_Order_Date_; "Work Order Date")
+            column(Work_Order_Detail__Work_Order_Date_; Format("Work Order Date"))
             {
             }
             column(Work_Order_Detail__Model_No__; "Model No.")
@@ -44,7 +44,7 @@ report 50039 "Quote Pick Ticket"
             column(MechanicCaption; MechanicCaptionLbl)
             {
             }
-            column(Work_Order_Detail__Work_Order_No__Caption; FieldCaption("Work Order No."))
+            column(Work_Order_Detail__Work_Order_No__Caption; 'Work Order')
             {
             }
             column(W_O_DateCaption; W_O_DateCaptionLbl)
@@ -134,10 +134,19 @@ report 50039 "Quote Pick Ticket"
                 column(Quote_Mechanics_Parts_Sequence; Sequence)
                 {
                 }
+                column(MechCaption_Show; MechCaption)
+                {
+                }
             }
+
+            trigger OnPreDataItem()
+            begin
+                MechCaption := 0;
+            end;
 
             trigger OnAfterGetRecord()
             begin
+                MechCaption += 1;
                 WOS.SetCurrentKey(WOS."Order No.");
                 WOS.SetRange(WOS."Order No.", "Work Order No.");
                 WOS.SetRange(WOS.Step, WOS.Step::QOT);
@@ -185,5 +194,6 @@ report 50039 "Quote Pick Ticket"
         Quantity_PulledCaptionLbl: Label 'Quantity Pulled';
         BinCaptionLbl: Label 'Bin';
         Mechanic_Parts_ListCaptionLbl: Label 'Mechanic Parts List';
+        MechCaption: Integer;
 }
 

@@ -53,6 +53,11 @@ page 50005 "Parts List"
                 {
                     ApplicationArea = All;
                 }
+                //ICE RSK 12/29/20
+                field("Quantity Backorder"; "Quantity Backorder")
+                {
+                    ApplicationArea = all;
+                }
                 field("Purchase Order No."; "Purchase Order No.")
                 {
                     ApplicationArea = All;

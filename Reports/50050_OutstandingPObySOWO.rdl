@@ -28,10 +28,10 @@
                   <Width>1.191cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.945cm</Width>
+                  <Width>1.13045cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.527cm</Width>
+                  <Width>1.60638cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.55cm</Width>
@@ -40,13 +40,13 @@
                   <Width>2.762cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.315cm</Width>
+                  <Width>4.42617cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.927cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.21775cm</Width>
+                  <Width>0.98479cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.07938cm</Width>
@@ -851,14 +851,14 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
             <Height>0.423cm</Height>
-            <Width>18.15cm</Width>
+            <Width>19.29311cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
         <Height>1.023cm</Height>
         <Style />
       </Body>
-      <Width>18.15cm</Width>
+      <Width>19.29311cm</Width>
       <Page>
         <PageHeader>
           <Height>2.777cm</Height>
@@ -1045,7 +1045,7 @@
               <Top>2.223cm</Top>
               <Left>6.617cm</Left>
               <Height>0.423cm</Height>
-              <Width>2.533cm</Width>
+              <Width>2.46483cm</Width>
               <ZIndex>6</ZIndex>
               <Style>
                 <VerticalAlign>Bottom</VerticalAlign>
@@ -1070,9 +1070,9 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.223cm</Top>
-              <Left>3.969cm</Left>
+              <Left>3.86317cm</Left>
               <Height>0.423cm</Height>
-              <Width>0.962cm</Width>
+              <Width>1.06783cm</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <VerticalAlign>Bottom</VerticalAlign>
@@ -1097,7 +1097,7 @@
               <Top>2.223cm</Top>
               <Left>2.698cm</Left>
               <Height>0.423cm</Height>
-              <Width>1.279cm</Width>
+              <Width>1.09461cm</Width>
               <ZIndex>8</ZIndex>
               <Style>
                 <VerticalAlign>Bottom</VerticalAlign>
@@ -1301,9 +1301,9 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.21289cm</Top>
-              <Left>9.28844cm</Left>
+              <Left>9.08183cm</Left>
               <Height>0.423cm</Height>
-              <Width>2.533cm</Width>
+              <Width>2.73961cm</Width>
               <ZIndex>16</ZIndex>
               <Style>
                 <VerticalAlign>Bottom</VerticalAlign>

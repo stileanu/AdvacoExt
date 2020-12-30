@@ -191,6 +191,41 @@ page 50032 "Work Order Vendor Shipping"
 
                 end;
             }
+            group("Print")
+            {
+                Caption = 'Print';
+                Image = PrintForm;
+
+                action(BillOfLading)
+                {
+                    Caption = 'Bill of Lading';
+                    ApplicationArea = All;
+                    Promoted = true;
+                    PromotedIsBig = true;
+                    PromotedCategory = Report;
+
+                    trigger OnAction()
+                    begin
+                        PrintBOL;
+                    end;
+                }
+
+                action(AddrLabels)
+                {
+                    Caption = 'Address Labels';
+                    ApplicationArea = All;
+                    Promoted = true;
+                    PromotedIsBig = true;
+                    PromotedCategory = Report;
+
+                    trigger OnAction()
+                    begin
+                        PrintLabels;
+                    end;
+
+                }
+
+            }
             action("&Ship")
             {
                 ApplicationArea = All;
@@ -391,30 +426,19 @@ page 50032 "Work Order Vendor Shipping"
 
     procedure PrintBOL()
     begin
-        Commit;
-        if not Confirm('Is Bill of Lading and Labels loaded in Printers?', false) then begin
-            if not Confirm('Last Chance, Is Bill of Lading and Labels loaded in Printers?', false) then begin
-                Ok := true;
-            end else begin
-                BOL2.SetRange(BOL2."Bill of Lading", BOL2."Bill of Lading");
-                REPORT.RunModal(50016, false, false, BOL2);               // BOL Document
-                BOL2."BOL Printed" := true;
-                BOL2.Modify;
-                LabelCount := LabelsToPrint;
-                if LabelCount > 0 then begin
-                    repeat
-                    begin
-                        LabelCount := LabelCount - 1;
-                        REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
-                    end;
-                    until LabelCount = 0;
-                    BOL2."Label Printed" := true;
-                end else begin
-                    BOL2."Label Printed" := false;
-                end;
-                BOL2.Modify;
-                ConfirmLabels;
-            end;
+        ///--!
+        //Commit;
+        if not Confirm('Is Bill of Lading loaded in Printer?', false) then
+            if not Confirm('Last Chance, Is Bill of Lading loaded in Printer?', false) then
+                //Ok := true;
+                Exit;
+        //end else begin
+        BOL2.SetRange("Bill of Lading", BOL2."Bill of Lading");
+        ///--! Report
+        REPORT.RunModal(50016, false, false, BOL2);               // BOL Document Print 
+        BOL2."BOL Printed" := true;
+        BOL2.Modify;
+        /*
         end else begin
             BOL2.SetRange(BOL2."Bill of Lading", BOL2."Bill of Lading");
             REPORT.RunModal(50016, false, false, BOL2);               // BOL Document
@@ -435,6 +459,27 @@ page 50032 "Work Order Vendor Shipping"
             BOL2.Modify;
             ConfirmLabels;
         end;
+        */
+    end;
+
+    procedure PrintLabels()
+    begin
+        LabelCount := LabelsToPrint;
+        if LabelCount > 0 then begin
+            if not Confirm('Is Label Printer ready?', false) then
+                if not Confirm('Last Chance, is Label Printer ready?', false) then
+                    Exit;
+            repeat begin
+                LabelCount := LabelCount - 1;
+                ///--! Report
+                REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
+            end;
+            until LabelCount = 0;
+            BOL2."Label Printed" := true;
+        end else
+            BOL2."Label Printed" := false;
+        BOL2.Modify;
+        //ConfirmLabels;
     end;
 
     procedure ConfirmLabels()

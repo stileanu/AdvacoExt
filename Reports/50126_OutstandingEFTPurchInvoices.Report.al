@@ -7,7 +7,7 @@ report 50126 "Outstanding EFT Purch.Invoices"
     //   Eliminated detail lines.
     //   Original report stored as report 50187.
     DefaultLayout = RDLC;
-    RDLCLayout = './Reports/50126_Outstanding EFT Purch.Invoices.Rpt.rdl';
+    RDLCLayout = './Reports/50126_OutstandingEFTPurchInvoices.rdl';
     caption = 'Outstanding EFT Purch. Invoices';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = all;

@@ -16,13 +16,14 @@ page 50131 InputValueDialog
                 field(tValCaption; tValCaption)
                 {
                     ApplicationArea = All;
+                    ShowCaption = false;
                     Editable = false;
                     Enabled = false;
                 }
                 field(ValueNo_; ValueNo_)
                 {
                     ApplicationArea = All;
-
+                    ShowCaption = false;
                 }
             }
         }
@@ -83,6 +84,8 @@ page 50131 InputValueDialog
                 RetValue := ValueNo_;
             lValueType::CodeType:
                 RetValue := UpperCase(ValueNo_);
+            lValueType::IntegerType:
+                Evaluate(RetValue, ValueNo_);
             else
                 if not Evaluate(RetValue, ValueNo_) then
                     Error('Not a valid value.');
@@ -93,5 +96,11 @@ page 50131 InputValueDialog
         else
             WorkOrderNo_ := ValueNo_;
         */
+    end;
+
+    procedure GetIntegerValue(var RetVal: Integer): Boolean
+    begin
+        Evaluate(RetVal, ValueNo_);
+        exit(true);
     end;
 }

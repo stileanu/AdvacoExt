@@ -156,13 +156,13 @@ page 50001 "Work Order Detail List"
         lADminIT := false;
 
         ///--! Permission level check code. 
-        User.Get(UserSecurityId);
-        User.SetRange("User Security ID", User."User Security ID");
+        //User.Get(UserSecurityId);
+        //User.SetRange("User Security ID", User."User Security ID");
         //Member.SetRange("User Security ID", User."User Security ID");
 
-        lAdminIT := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
-        if not lAdminIT then
-            lAdminIT := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+        //lAdminIT := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
+        //if not lAdminIT then
+        //    lAdminIT := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
 
         //IF NOT ((USERID = 'KAYE') OR (USERID = 'ADMIN')) THEN BEGIN
 
@@ -172,13 +172,14 @@ page 50001 "Work Order Detail List"
             //CurrForm.Diagnosis.VISIBLE := FALSE;
             // 2013_08_26 End
         end;
-        */
+       
         if not lAdminIT then begin
             NotesVisible := false;
             DiagnVisible := false;
             QuotePriceVisible := false;
             OrderAdjVisible := false;
         end;
+         */
         /*
         // 2011_09_01 - Start
         if OK then begin
@@ -196,6 +197,7 @@ page 50001 "Work Order Detail List"
         User: Record User;
 
     begin
+        /*
         lADminIT := false;
 
         ///--! Permission level check code. 
@@ -215,7 +217,7 @@ page 50001 "Work Order Detail List"
             //CurrForm.Diagnosis.VISIBLE := FALSE; 
             // 2013_08_26 End
         end;
-        */
+        
         // 2011_09_01 - Start
         if not lAdminIT then begin
             NotesVisible := false;
@@ -223,17 +225,18 @@ page 50001 "Work Order Detail List"
             QuotePriceVisible := false;
             OrderAdjVisible := false;
         end else begin
-            // 2011_08_25 ADV: Start
-            QuotePrice := 0;
+            */
+        // 2011_08_25 ADV: Start
+        QuotePrice := 0;
 
-            CalcFields("Original Parts Price", "Original Labor Price");
-            if Quote = Quote::Accepted then
-                QuotePrice := "Original Parts Price" + "Original Labor Price" + "Order Adj.";
+        CalcFields("Original Parts Price", "Original Labor Price");
+        if Quote = Quote::Accepted then
+            QuotePrice := "Original Parts Price" + "Original Labor Price" + "Order Adj.";
 
-            if Quote = Quote::"Not Repairable" then
-                QuotePrice := "Unrepairable Charge";
-            // 2011_08_25 ADV: End
-        end;
+        if Quote = Quote::"Not Repairable" then
+            QuotePrice := "Unrepairable Charge";
+        // 2011_08_25 ADV: End
+        //end;
         // 2011_09_01 - End
     end;
 
@@ -254,20 +257,29 @@ page 50001 "Work Order Detail List"
         //Member.SetRange("User Security ID", User."User Security ID");
 
         lAdminIT := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
+
         if not lAdminIT then
             lAdminIT := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+
+        lSalesCode := SysFunctions.getIfSingleGroupId(SalesCode, txtAnswer);
 
         if lAdminIT then begin
             NotesVisible := true;
             DiagnVisible := true;
             OrderAdjVisible := true;
             QuotePriceVisible := true;
-        end else begin
-            NotesVisible := false;
-            DiagnVisible := false;
-            OrderAdjVisible := false;
-            QuotePriceVisible := false;
-        end;
+        end else
+            if lSalesCode then begin
+                NotesVisible := false;
+                DiagnVisible := false;
+                OrderAdjVisible := true;
+                QuotePriceVisible := true;
+            end else begin
+                NotesVisible := false;
+                DiagnVisible := false;
+                OrderAdjVisible := false;
+                QuotePriceVisible := false;
+            end;
 
         // 2011_09_01 - Start 
         /*
@@ -315,6 +327,8 @@ page 50001 "Work Order Detail List"
         txtAnswer: Text[120];
         lAdminIT: Boolean;
         AcctCode: Label 'ADVACO IT ADMIN';
+        SalesCode: Label 'ADVACO SALES';
+        lSalesCode: Boolean;
         Permiss: Label 'SUPER';
 }
 

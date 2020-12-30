@@ -102,21 +102,26 @@ report 50017 "SO Bill Of Lading"
                 }
 
                 trigger OnAfterGetRecord()
+                var
+                    WorkOrder: Record WorkOrderDetail;
+                    PurchLine: Record "Purchase Line";
+                    SerialNo: Code[20];
+
                 begin
                     SalesHeader.SetRange("Document Type", "Document Type");
                     SalesHeader.SetRange("No.", "Document No.");
                     if SalesHeader.Find('-') then begin
                         if SalesHeader."Work Order No." <> '' then begin
                             if "Sales Line"."Line No." = 10000 then begin
-                                //      IF "Sales Line".Type = 1 THEN
-                                //        ItemNo := "Sales Line"."Cross Reference Item"
-                                //      ELSE
-                                //        ItemNo := "Sales Line"."No.";
+                                if "Sales Line".Type = "Sales Line Type".FromInteger(1) then
+                                    ItemNo := "Sales Line"."Cross Reference Item"
+                                else
+                                    ItemNo := "Sales Line"."No.";
 
-                                //      IF "Sales Line"."Serial No." = '' THEN
-                                //        Serial := ''
-                                //    ELSE
-                                //    Serial := 'SN#  ' + "Serial No.";
+                                if not WorkOrder.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, SerialNo) then
+                                    Serial := ''
+                                else
+                                    Serial := 'SN#  ' + SerialNo;
                             end else begin
                                 CurrReport.Skip;
                             end;
@@ -127,11 +132,15 @@ report 50017 "SO Bill Of Lading"
                             if ("Sales Line"."No." = '311') or ("Sales Line"."No." = '312') then
                                 CurrReport.Skip;
 
-                            //    IF "Sales Line".Type = 1 THEN
-                            //      ItemNo := "Sales Line"."Cross Reference Item"
-                            //    ELSE
-                            //      ItemNo := "Sales Line"."No.";
+                            if "Sales Line".Type = "Sales Line Type".FromInteger(1) then
+                                ItemNo := "Sales Line"."Cross Reference Item"
+                            else
+                                ItemNo := "Sales Line"."No.";
 
+                            if not WorkOrder.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, SerialNo) then
+                                Serial := ''
+                            else
+                                Serial := 'SN#  ' + SerialNo;
                             //    IF "Sales Line"."Serial No." = '' THEN
                             //      Serial := ''
                             //    ELSE
@@ -165,11 +174,16 @@ report 50017 "SO Bill Of Lading"
                 column(Sales_Header_No_; "No.")
                 {
                 }
+                column(Third_Party_Charge; ThirdPartyCharge)
+                {
+                }
 
                 trigger OnAfterGetRecord()
                 begin
                     if ("Third Party City" <> '') or ("Third Party State" <> '') or ("Third Party Zip" <> '') then
                         ThirdPartyAddress := ("Third Party City") + (', ') + ("Third Party State") + ('  ') + ("Third Party Zip");
+
+                    ThirdPartyCharge := "Sales Header"."Shipping Charge" <> "Sales Header"."Shipping Charge"::"3rd Party";
                 end;
             }
 
@@ -229,6 +243,7 @@ report 50017 "SO Bill Of Lading"
         Method: Text[30];
         Collect: Code[1];
         ItemNo: Code[30];
+        ThirdPartyCharge: Boolean;
         Serial: Code[30];
         SalesHeader: Record "Sales Header";
         ThirdPartyAddress: Code[70];

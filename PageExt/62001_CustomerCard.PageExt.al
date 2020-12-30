@@ -16,6 +16,29 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
                 ApplicationArea = All;
             }
         }
+        addafter("Salesperson Code")
+        {
+            field(Rep; Rep)
+            {
+                ApplicationArea = All;
+                Editable = lAccGroup;
+                ToolTip = 'Specifies the External Rep for this Customer.';
+            }
+            field("Payment Terms Code_1"; "Payment Terms Code")
+            {
+                ApplicationArea = All;
+                Caption = 'Payment Terms Code';
+                Editable = lAccGroup;
+                ToolTip = 'Specifies the Payment Terms set for this Customer.';
+            }
+            field("Payment Method Code_1"; "Payment Method Code")
+            {
+                ApplicationArea = All;
+                Caption = 'Payment Method Code';
+                Editable = lAccGroup;
+                ToolTip = 'Specifies the Payment Method set for this Customer.';
+            }
+        }
         modify(Blocked)
         {
             Editable = lAccGroup;
@@ -220,6 +243,22 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
             //ApplicationArea = All;
             Visible = lAccGroup;
         }
+        modify("Sales Journal")
+        {
+            Visible = lAccGroup;
+        }
+        modify("Post Cash Receipts")
+        {
+            Visible = lAccGroup;
+        }
+        modify(PaymentRegistration)
+        {
+            Visible = lAccGroup;
+        }
+        modify("Bank Accounts")
+        {
+            Visible = lAccGroup;
+        }
         modify("&Jobs")
         {
             ApplicationArea = All;
@@ -234,6 +273,38 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         {
             Promoted = true;
             PromotedCategory = Category4;
+        }
+        modify("Aged Accounts Receivable")
+        {
+            Visible = lAccGroup;
+        }
+        modify("Account Detail")
+        {
+            Visible = lAccGroup;
+        }
+        modify("Cash Applied")
+        {
+            Visible = lAccGroup;
+        }
+        modify("Customer Jobs (Price)")
+        {
+            Visible = lAccGroup;
+        }
+        modify("Customer/Item Statistics")
+        {
+            Visible = lAccGroup;
+        }
+        modify("Customer Jobs (Cost)")
+        {
+            Visible = lAccGroup;
+        }
+        modify("Report Statement")
+        {
+            Visible = lAccGroup;
+        }
+        modify(BackgroundStatement)
+        {
+            Visible = lAccGroup;
         }
         // Add changes to page actions here
         addafter("Entry Statistics")

@@ -195,7 +195,8 @@ page 50019 "Quote Modify"
                                 WOD.SetFilter(WOD."Work Order No.", "Order No.");
                                 WOD.SetRecFilter;
                                 if WOD."Build Ahead" then
-                                    REPORT.RunModal(50042, false, false, WOD)
+                                    MESSAGE('Quote Review build ahead (50042) is under construction.')
+                                //REPORT.RunModal(50042, false, false, WOD)
                                 else
                                     REPORT.RunModal(50041, false, false, WOD);
                                 WOD.Reset;
@@ -241,7 +242,8 @@ page 50019 "Quote Modify"
                                 WOD.SetFilter(WOD."Work Order No.", "Order No.");
                                 WOD.SetRecFilter;
                                 if WOD."Build Ahead" then
-                                    REPORT.RunModal(50042, false, false, WOD)
+                                    MESSAGE('quote review build ahead (50052) is under construction')
+                                //REPORT.RunModal(50042, false, false, WOD)
                                 else
                                     REPORT.RunModal(50041, false, false, WOD);
                                 WOD.Reset;
@@ -307,7 +309,8 @@ page 50019 "Quote Modify"
                                     WOD.SetFilter(WOD."Work Order No.", "Order No.");
                                     WOD.SetRecFilter;
                                     if WOD."Build Ahead" then
-                                        REPORT.RunModal(50042, false, true, WOD)
+                                        MESSAGE('quote review build ahead (50052) is under construction')
+                                    //REPORT.RunModal(50042, false, true, WOD)
                                     else
                                         REPORT.RunModal(50041, false, true, WOD);
                                     WOD.Reset;
@@ -352,7 +355,8 @@ page 50019 "Quote Modify"
                                     WOD.SetFilter(WOD."Work Order No.", "Order No.");
                                     WOD.SetRecFilter;
                                     if WOD."Build Ahead" then
-                                        REPORT.RunModal(50042, false, true, WOD)
+                                        MESSAGE('quote review build ahead (50052) is under construction')
+                                    //REPORT.RunModal(50042, false, true, WOD)
                                     else
                                         REPORT.RunModal(50041, false, true, WOD);
                                     WOD.Reset;

@@ -66,17 +66,18 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.68758cm</Height>
+                  <Height>0.07938cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Purch__Rcpt__Header__Purch__Rcpt__Header___Buy_from_Vendor_No__">
+                        <Textbox Name="Textbox17">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Purch__Rcpt__Header__Purch__Rcpt__Header___Buy_from_Vendor_No__.Value</Value>
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -85,6 +86,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
+                          <rd:DefaultName>Textbox17</rd:DefaultName>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -97,13 +99,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Purch__Rcpt__Header__Purch__Rcpt__Header___Order_No__">
+                        <Textbox Name="Textbox30">
+                          <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Purch__Rcpt__Header__Purch__Rcpt__Header___Order_No__.Value</Value>
+                                  <Value />
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -112,6 +115,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
+                          <rd:DefaultName>Textbox30</rd:DefaultName>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>0.026cm</PaddingLeft>
@@ -289,7 +293,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.68758cm</Height>
+                  <Height>0.07938cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -570,14 +574,13 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox42">
-                          <CanGrow>true</CanGrow>
+                        <Textbox Name="Purch__Rcpt__Header__Purch__Rcpt__Header___Buy_from_Vendor_No__">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!Purch__Rcpt__Header__Purch__Rcpt__Header___Buy_from_Vendor_No__.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -586,7 +589,6 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox42</rd:DefaultName>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
                             <PaddingLeft>2pt</PaddingLeft>
@@ -599,23 +601,25 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="TextBox18">
+                        <Textbox Name="Purch__Rcpt__Header__Purch__Rcpt__Header___Order_No__">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value />
+                                  <Value>=Fields!Purch__Rcpt__Header__Purch__Rcpt__Header___Order_No__.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
-                              <Style />
+                              <Style>
+                                <TextAlign>Center</TextAlign>
+                              </Style>
                             </Paragraph>
                           </Paragraphs>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingLeft>0.026cm</PaddingLeft>
+                            <PaddingRight>0.1125cm</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
@@ -2141,8 +2145,8 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
-            <Height>4.22203cm</Height>
-            <Width>19.631cm</Width>
+            <Height>3.00562cm</Height>
+            <Width>19.63103cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
@@ -2330,7 +2334,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.196cm</Top>
-              <Left>2.511cm</Left>
+              <Left>3.146cm</Left>
               <Height>0.423cm</Height>
               <Width>2.323cm</Width>
               <ZIndex>6</ZIndex>
@@ -2382,7 +2386,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.196cm</Top>
-              <Left>4.996cm</Left>
+              <Left>5.631cm</Left>
               <Height>0.423cm</Height>
               <Width>2.1cm</Width>
               <ZIndex>8</ZIndex>
@@ -2408,7 +2412,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>2.196cm</Top>
-              <Left>7.302cm</Left>
+              <Left>10.1595cm</Left>
               <Height>0.423cm</Height>
               <Width>2.442cm</Width>
               <ZIndex>9</ZIndex>

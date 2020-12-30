@@ -8,6 +8,7 @@ page 50039 "Work Order Instruction List"
     ModifyAllowed = false;
     PageType = List;
     SourceTable = WorkInstructions;
+    CardPageId = "Work Order Instructions";
 
     layout
     {
@@ -61,8 +62,24 @@ page 50039 "Work Order Instruction List"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
+            action("WI Card")
+            {
+                ApplicationArea = All;
+                Caption = 'Work Instruction card';
+                Promoted = true;
+                PromotedIsBig = true;
+                PromotedCategory = Process;
+
+                //RunObject = page "Work Order Instructions";
+                //RunPageLink = ""
+                trigger OnAction()
+                begin
+                    Page.RunModal(50038, Rec);
+                end;
+
+            }
             action("Empty Lines")
             {
                 ApplicationArea = All;

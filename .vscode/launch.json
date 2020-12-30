@@ -4,7 +4,7 @@
 
         
         
-        {
+        /*{
             "name": "Advaco Code Development",
             "type": "al",
             "request": "launch",
@@ -22,7 +22,7 @@
             "longRunningSqlStatementsThreshold": 500,
             "numberOfSqlStatements": 10
         }        
-        ,
+        ,*/
         {
             "type": "al",
             "request": "launch",

@@ -61,11 +61,13 @@ codeunit 50005 "Back Order Entry"
                 END;
             END ELSE BEGIN
                 MESSAGE('Work Order Detail %1 not found', WODN);
-                NextRecord.RUN;
+                //NextRecord.RUN;
+                OpenNextRecord();
             END;
         END ELSE BEGIN
             MESSAGE('You must enter a number.');
-            NextRecord.RUN;
+            //NextRecord.RUN;
+            OpenNextRecord();
         END;
     end;
 
@@ -233,6 +235,17 @@ codeunit 50005 "Back Order Entry"
                 END;
             END;
         END;
+    end;
+
+    procedure OpenNextRecord();
+    begin
+        if NOT CONFIRM('Do you want to update another record?', FALSE) then begin
+            COMMIT;
+            EXIT;
+        end ELSE begin
+            COMMIT;
+            NextRecord.RUN
+        end;
     end;
 }
 

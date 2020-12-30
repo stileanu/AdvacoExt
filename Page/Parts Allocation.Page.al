@@ -228,11 +228,12 @@ page 50010 "Parts Allocation"
                     //Window.Open('Enter the amount to Allocate #1#########', PN);
                     //Window.Input();
                     //Window.Close;
-                    vPN := PN;
+                    //vPN := PN;
+                    Clear(InValDialog);
                     InValDialog.SetValueType(InValType::IntegerType, 'Enter the amount to Allocate:');
                     if InValDialog.RunModal() = Action::OK then
-                        InValDialog.GetEnteredValue(vPN);
-                    PN := vPN;
+                        InValDialog.GetIntegerValue(PN);
+                    //PN := vPN;
 
                     QtyOnHand := (Item.Inventory - Item."Reserved Qty. on Inventory");
 

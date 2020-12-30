@@ -164,7 +164,7 @@ page 50060 "Sales Order Shipping"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Print &BOL and Labels")
             {

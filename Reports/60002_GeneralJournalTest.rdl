@@ -19,7 +19,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>19.31184cm</Width>
+                  <Width>19.2366cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -960,10 +960,10 @@
                               <TablixBody>
                                 <TablixColumns>
                                   <TablixColumn>
-                                    <Width>55.46049pt</Width>
+                                    <Width>47.09316pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>36.14674pt</Width>
+                                    <Width>44.51407pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>51.67129pt</Width>
@@ -981,19 +981,19 @@
                                     <Width>25.97069pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>37.03497pt</Width>
+                                    <Width>25.1523pt</Width>
+                                  </TablixColumn>
+                                  <TablixColumn>
+                                    <Width>29.5695pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>37.03497pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>37.03497pt</Width>
+                                    <Width>6.68142pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
-                                    <Width>13.58678pt</Width>
-                                  </TablixColumn>
-                                  <TablixColumn>
-                                    <Width>7.06087pt</Width>
+                                    <Width>31.1817pt</Width>
                                   </TablixColumn>
                                   <TablixColumn>
                                     <Width>38.18817pt</Width>
@@ -2197,7 +2197,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>Bal. Account Type</Value>
                                                     <Style>
                                                       <FontFamily>Segoe UI Semibold</FontFamily>
                                                       <FontSize>7pt</FontSize>
@@ -2642,14 +2642,14 @@
                                       <TablixCell />
                                       <TablixCell>
                                         <CellContents>
-                                          <Textbox Name="Textbox12">
+                                          <Textbox Name="Bal__Account_Type">
                                             <CanGrow>true</CanGrow>
                                             <KeepTogether>true</KeepTogether>
                                             <Paragraphs>
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value />
+                                                    <Value>=Fields!Bal__Account_Type.Value</Value>
                                                     <Style>
                                                       <FontFamily>Segoe UI</FontFamily>
                                                       <FontSize>7pt</FontSize>
@@ -2659,7 +2659,7 @@
                                                 <Style />
                                               </Paragraph>
                                             </Paragraphs>
-                                            <rd:DefaultName>Textbox12</rd:DefaultName>
+                                            <rd:DefaultName>Bal__Account_Type</rd:DefaultName>
                                             <Style>
                                               <BackgroundColor>=iif(Code.GetRowColor() = TRUE, "#EBEBEB", "White")</BackgroundColor>
                                               <VerticalAlign>Middle</VerticalAlign>
@@ -4282,7 +4282,7 @@
                               </Filters>
                               <Top>0.07937cm</Top>
                               <Height>9.24279cm</Height>
-                              <Width>547.42212pt</Width>
+                              <Width>545.28945pt</Width>
                               <ZIndex>1</ZIndex>
                               <Visibility>
                                 <Hidden>=IIF(Fields!LineNo_GenJnlLine.Value&lt;&gt;0,False,True)</Hidden>
@@ -4370,14 +4370,14 @@
             </Filters>
             <Top>0.17222in</Top>
             <Height>11.74224cm</Height>
-            <Width>19.31184cm</Width>
+            <Width>19.2366cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
         <Height>12.44074cm</Height>
         <Style />
       </Body>
-      <Width>547.42212pt</Width>
+      <Width>545.28945pt</Width>
       <Page>
         <PageHeader>
           <Height>2.32833cm</Height>
@@ -4852,6 +4852,9 @@ End Function</Code>
         </Field>
         <Field Name="BalAccNo_GenJnlLine">
           <DataField>BalAccNo_GenJnlLine</DataField>
+        </Field>
+        <Field Name="Bal__Account_Type">
+          <DataField>Bal__Account_Type</DataField>
         </Field>
         <Field Name="BalanceLCY_GenJnlLine">
           <DataField>BalanceLCY_GenJnlLine</DataField>
