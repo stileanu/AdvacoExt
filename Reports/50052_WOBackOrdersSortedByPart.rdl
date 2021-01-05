@@ -19,7 +19,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.426cm</Width>
+                  <Width>3.167cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>4.376cm</Width>
@@ -967,7 +967,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
             <Height>1.692cm</Height>
-            <Width>16.102cm</Width>
+            <Width>16.843cm</Width>
             <Style />
           </Tablix>
         </ReportItems>

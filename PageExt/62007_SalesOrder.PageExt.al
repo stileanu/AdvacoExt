@@ -353,6 +353,22 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         ApplicationArea = All;
                         ToolTip = 'Specifies Payment Terms Code.';
                         Importance = Promoted;
+
+                        trigger OnValidate()
+                        var
+                            GLSetup: Record "General Ledger Setup";
+                        begin
+                            if "Payment Terms Code" = 'CC' then begin
+                                GLSetup.Get;
+                                if lAccGroup then
+                                    if GLSetup."Credit Card Payment Code" = "Payment Terms Code" then begin
+                                        if not CCFeeCode.IsCCFee(Rec) then
+                                            CCFeeInsertVisible := true;
+                                    end;
+                                //CCFeeInsertVisible := true
+                            end else
+                                CCFeeInsertVisible := false;
+                        end;
                     }
                     field("Card Type"; "Card Type")
                     {
@@ -538,7 +554,31 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         {
             Visible = false;
         }
+        addbefore(Dimensions)
+        {
+            action("Credit Card Fee Insert")
+            {
+                ApplicationArea = All;
+                Caption = 'Credit Card Fee Insert';
+                Image = CreditCard;
+                Promoted = true;
+                PromotedCategory = Process;
+                PromotedIsBig = true;
+                Visible = CCFeeInsertVisible;
 
+                trigger OnAction()
+                begin
+                    // 05/02/13 Start
+                    // Make control invisible
+                    CCFeeInsertVisible := false;
+                    // Insert line
+                    if not CCFeeCode.IsCCFee(Rec) then begin
+                        CCFeeCode.InsertCreditCardFeeLine(Rec);
+                    end;
+                    // 05/02/13 End
+                end;
+            }
+        }
         addbefore("Work Order")
         {
             action(PrintEnvelope)
@@ -963,12 +1003,15 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         Permiss: Label 'SUPER';
         ItemLedgEntryType: Enum "Item Ledger Entry Type";
         SO: Record "Sales Header";
+        CCFeeInsertVisible: Boolean;
+        CCFeeCode: Codeunit CreditCardFeeFunctions;
 
     trigger OnOpenPage()
     var
         AccessControl: Record "Access Control";
         Ok: Boolean;
         User: Record User;
+        GLSetup: Record "General Ledger Setup";
 
     begin
         // initialize group flag
@@ -985,7 +1028,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         lAccGroup := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
         if not lAccGroup then
             lAccGroup := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
-        if not lSalesGroup then  //ICE RSK 12/3/20 change from laccgroup to lsalesgroup
+        if not lSalesGroup then  //ICE RSK 12/3/20 change from laccgroup to lsalesgroup 
             lSalesGroup := SysFunctions.getIfSingleGroupId(SalesCode, txtAnswer);
         if not (lAccGroup or lSalesGroup) then
             lShipGroup := SysFunctions.getIfSingleGroupId(ShipCode, txtAnswer);
@@ -994,9 +1037,20 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
             Error('You must be member of Accounting, Sales or Shipping to open this page.');
         end;
 
+        //Insert Action for CC Fee
+        // 05/02/13 Start
+        GLSetup.Get;
+        // Make control visible if CC pay and no fee line
+        CCFeeInsertVisible := false;
+        if lAccGroup then
+            if GLSetup."Credit Card Payment Code" = "Payment Terms Code" then begin
+                if not CCFeeCode.IsCCFee(Rec) then
+                    CCFeeInsertVisible := true;
+            end;
 
+        // 05/02/13 End
         //See if user is SUPER
-        //user.setrange(user."User Name", userid);  
+        //user.setrange(user."User Name", userid);   
         ///--! 
         // Add the role for Accounting! 
         /*IF User.FindFirst() THEN begin 

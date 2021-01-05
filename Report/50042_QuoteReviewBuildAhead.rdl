@@ -424,6 +424,9 @@ End Function
         <Field Name="Parts2_Part_Type">
           <DataField>Parts2_Part_Type</DataField>
         </Field>
+        <Field Name="Show_TotParts">
+          <DataField>Show_TotParts</DataField>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DataSource</DataSourceName>

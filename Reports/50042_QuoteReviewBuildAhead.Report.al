@@ -339,9 +339,18 @@ report 50042 "Quote Review Build Ahead"
                 column(Parts2_Part_Type; "Part Type")
                 {
                 }
+                column(Show_TotParts; ShowTotPart)
+                {
+                }
+
+                trigger OnPreDataItem()
+                begin
+                    ShowTotPart := 0;
+                end;
 
                 trigger OnAfterGetRecord()
                 begin
+                    ShowTotPart += 1;
                     if Parts2."Quoted Quantity" = 0 then begin
                         CurrReport.Skip;
                     end else begin
@@ -435,5 +444,6 @@ report 50042 "Quote Review Build Ahead"
         Parts_TotalCaptionLbl: Label 'Parts Total';
         Resouce_TotalCaptionLbl: Label 'Resouce Total';
         TotalCaptionLbl: Label 'Total';
+        ShowTotPart: Integer;
 }
 

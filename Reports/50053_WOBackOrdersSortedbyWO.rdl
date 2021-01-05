@@ -22,7 +22,7 @@
                   <Width>1.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.426cm</Width>
+                  <Width>3.226cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>4.376cm</Width>
@@ -43,13 +43,13 @@
                   <Width>1.5cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.289cm</Width>
+                  <Width>1.18025cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.2cm</Width>
@@ -1079,7 +1079,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
             <Height>1.63875cm</Height>
-            <Width>17.939cm</Width>
+            <Width>18.389cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
