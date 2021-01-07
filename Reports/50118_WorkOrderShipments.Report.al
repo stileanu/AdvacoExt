@@ -2,6 +2,8 @@ report 50118 "Work Order Shipments"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50118_WorkOrderShipments.rdl';
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {

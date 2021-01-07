@@ -4,6 +4,8 @@ report 50031 "OCX Billing List"
     //RDLCLayout = './OCX Billing List.rdlc';
     UseRequestPage = true;
     ProcessingOnly = true;
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {

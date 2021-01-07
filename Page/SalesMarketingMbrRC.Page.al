@@ -615,7 +615,7 @@ page 50162 SalesMarketingMbrRC
                     action(PIPAccountDetailReport)
                     {
                         ApplicationArea = All;
-                        Caption = 'VPIP Account Detail Report';
+                        Caption = 'PIP Account Detail Report';
                         //RunObject = report "PIP Account Detail Report";
                         RunObject = codeunit UnderConstruction;
                     }

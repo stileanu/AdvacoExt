@@ -5,6 +5,7 @@ report 50062 "Inventory List"
     RDLCLayout = './Reports/50062_Inventory List.rdl';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = all;
+
     dataset
     {
         dataitem(Item; Item)

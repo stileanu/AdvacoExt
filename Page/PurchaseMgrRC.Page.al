@@ -465,6 +465,396 @@ page 50158 PurchaseMgrRC
                     }
 
                 }
+                group(BOMReportsOffice)
+                {
+                    Caption = 'BOM Reports Office';
+
+                    action(ModelList)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Model List';
+                        RunObject = report "Model List";
+                    }
+                    action(BOLPullSheet)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Bill of Material Pull Sheet';
+                        //RunObject = report "Bill of Material Pull Sheet";
+                        RunObject = codeunit UnderConstruction;
+                    }
+                    action(ModelBOL)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Model - Bill of Material';
+                        RunObject = report "Model - Bill of Materials";
+                    }
+                }
+                group(ItemReportsOffice)
+                {
+                    Caption = 'Item Reports Office';
+                    action(WO_BOSortedByPart)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'WO Back Orders Sorted By Part';
+                        RunObject = report "WO Back Orders Sorted By Part";
+                    }
+                    action(WO_BOSortedByWO)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'WO Back Orders Sorted by WO';
+                        RunObject = report "WO Back Orders Sorted by WO";
+                    }
+                    action(AvailabilityProjection)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Availability Projection';
+                        RunObject = report "Availability Projection";
+                    }
+                    action(AvailabilityStatus)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Availability Status';
+                        RunObject = report "Availability Status";
+                    }
+
+                    action(BackOrderFillByCustomer)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Back Order Fill by Customer';
+                        RunObject = report "Back Order Fill by Customer";
+                    }
+                    action(BackOrderFillByItem)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Back Order Fill by Item';
+                        RunObject = report "Back Order Fill by Item";
+                    }
+                    action(InventoryLabels)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Inventory Labels';
+                        RunObject = report "Inventory Labels";
+                    }
+                    action(InventoryValuation)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Inventory Valuation';
+                        RunObject = report "Inventory Valuation";
+                    }
+                    action(InventoryList)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Inventory List';
+                        RunObject = report "Inventory List";
+                    }
+                    action(InventoryToGLReconcile)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Inventory to G/L Reconcile';
+                        RunObject = report "Inventory to G/L Reconcile";
+                    }
+                    action(InventoryReorders)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Inventory - Reorders';
+                        RunObject = report "Inventory - Reorders";
+                    }
+                    action(InventoryReOrderLevelList)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Inventory Re-Order Level List';
+                        RunObject = report "Inventory Re-Order Level List";
+                    }
+                    action(IssueHistory)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Issue History';
+                        RunObject = report "Issue History";
+                    }
+                    action(ItemCommentList)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Item Comment List';
+                        RunObject = report "Item Comment List";
+                    }
+                    action(ItemCostAndPriceList)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Item Cost and Price List';
+                        RunObject = report "Item Cost and Price List";
+                    }
+                    action(ItemRegister)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Item Register';
+                        RunObject = report "Item Register";
+                    }
+                    action(ItemSalesByCustomer)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Item Sales by Customer';
+                        RunObject = report "Item Sales by Customer";
+                    }
+                    action(ItemSalesStatistics)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Item Sales Statistics';
+                        RunObject = report "Item Sales Statistics";
+                    }
+                    action(ItemTransactionDetail)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Item Transaction Detail';
+                        RunObject = report "Item Transaction Detail";
+                    }
+                    action(ItemTurnover)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Item Turnover';
+                        RunObject = report "Item Turnover";
+                    }
+                    action(ItemVendorCatalog)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Item/Vendor Catalog';
+                        RunObject = report "Item/Vendor Catalog";
+                    }
+                    action(ListPriceSheet)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'List Price Sheet';
+                        RunObject = report "List Price Sheet";
+                    }
+                    action(LocationList)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Location List';
+                        RunObject = report "Location List";
+                    }
+                    action(OverStock)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Over Stock';
+                        RunObject = report "Over Stock";
+                    }
+                    action(PhysicalInventoryCount)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Physical Inventory Count';
+                        RunObject = report "Physical Inventory Count";
+                    }
+                    action(InventoryTurnover)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Inventory Turnover';
+                        RunObject = report "Inventory Turnover";
+                    }
+                    action(PickingListByItem)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Picking List by Item';
+                        RunObject = report "Picking List by Item";
+                    }
+                    action(PickingListByOrder)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Picking List by Order';
+                        RunObject = report "Picking List by Order";
+                    }
+                    action(PurchaseAdvice)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Purchase Advice';
+                        RunObject = report "Purchase Advice";
+                    }
+                    action(PurchaseOrderStatus)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Purchase Order Status';
+                        RunObject = report "Purchase Order Status";
+                    }
+                    action(SalesHistory)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Sales History';
+                        RunObject = report "Sales History";
+                    }
+                    action(SalesOrderStatus)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Sales Order Status';
+                        RunObject = report "Sales Order Status";
+                    }
+                    action(TopInventoryItems)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Top __ Inventory Items';
+                        RunObject = report "Top __ Inventory Items";
+                    }
+                    action(VendorPurchasesByItem)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Vendor Purchases by Item';
+                        RunObject = report "Vendor Purchases by Item";
+                    }
+                    action(InspectionDefectReport)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Inspection Defect Report';
+                        //RunObject = report "Inspection Defect Report";
+                        RunObject = codeunit UnderConstruction;
+                    }
+                    action(InventoryRPQtyExclusion)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Inventory RP & Qty Exclusion';
+                        //RunObject = report "Inventory RP & Qty Exclusion";
+                        RunObject = codeunit UnderConstruction;
+                    }
+                    action(InventoryEOQReOrderReport)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Inventory EOQ ReOrder Report';
+                        //RunObject = report "Inventory EOQ ReOrder Report";
+                        RunObject = codeunit UnderConstruction;
+                    }
+                }
+                group(Purch_ReportsOffice)
+                {
+                    Caption = 'Purchase Reports Office';
+                    action(ItemStatisticsByPurchaser)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Item Statistics by Purchaser';
+                        RunObject = report "Item Statistics by Purchaser";
+                    }
+                    action(OpenVendorEntries)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Open Vendor Entries';
+                        RunObject = report "Open Vendor Entries";
+                    }
+                    action(OutstandingOrderStatByPO)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Outstanding Order Stat. by PO';
+                        RunObject = report "Outstanding Order Stat. by PO";
+                    }
+                    action(OutstandingPurchOrderAging)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Outstanding Purch. Order Aging';
+                        RunObject = report "Outstanding Purch. Order Aging";
+                    }
+                    action(OutstandingPurchOrderStatus)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Outstanding Purch.Order Status';
+                        RunObject = report "Outstanding Purch.Order Status";
+                    }
+                    action(OutstandingPOBySO_WO)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Outstanding PO  by SO/WO';
+                        RunObject = report "Outstanding PO  by SO/WO";
+                    }
+                    action(OutstandingBlanketOrders)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Outstanding Blanket Orders';
+                        RunObject = report "Outstanding Blanket Orders";
+                    }
+                    action(OutstandingEFTPurchInvoices)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Outstanding EFT Purch.Invoices';
+                        RunObject = report "Outstanding EFT Purch.Invoices";
+                    }
+                    action(PurchaseOrderReceivingRpt)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Purchase Order Receiving Rpt';
+                        RunObject = report "Purchase Order Receiving Rpt";
+                    }
+                    action(POReceivedNotInvoiced)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'PO Received not Invoiced';
+                        RunObject = report "PO Received not Invoiced";
+                    }
+                    action(Top_VendorList)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Top __ Vendor List';
+                        RunObject = report "Top __ Vendor List";
+                    }
+                    action(VendorCommentList)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Vendor Comment List';
+                        RunObject = report "Vendor Comment List";
+                    }
+                    /*
+                    action(VendorDocumentNos_)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Vendor Document Nos.';
+                        RunObject = report "Vendor Document Nos.";
+                    }
+                    */
+                    action(VendorLabels)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Vendor Labels';
+                        RunObject = report "Vendor Labels";
+                    }
+                    action(VendorPurchaseStatistics)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Vendor Purchase Statistics';
+                        RunObject = report "Vendor Purchase Statistics";
+                    }
+                    action(VendorItemStatistics)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Vendor/Item Statistics';
+                        RunObject = report "Vendor/Item Statistics";
+                    }
+                    action(VendorList)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Vendor List';
+                        RunObject = report "Vendor List";
+                    }
+                    action(PIPAccountDetailReport)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'VPIP Account Detail Report';
+                        //RunObject = report "PIP Account Detail Report";
+                        RunObject = codeunit UnderConstruction;
+                    }
+                    action(VendorReturnStatistics)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Vendor Return Statistics';
+                        //RunObject = report "Vendor Return Statistics";
+                        RunObject = codeunit UnderConstruction;
+                    }
+                    action(InspectionDefectReport1)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Inspection Defect Report';
+                        //RunObject = report "Inspection Defect Report";
+                        RunObject = codeunit UnderConstruction;
+                    }
+                    action(VendorResponsivness)
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Vendor Responsivness';
+                        //RunObject = report "Vendor Responsivness";
+                        RunObject = codeunit UnderConstruction;
+                    }
+                }
             }
             group("Group8")
             {

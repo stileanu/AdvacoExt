@@ -6,7 +6,8 @@ report 50035 "Warranty Analysis"
     // 7/26/15 add code to select only first detail of a system shipment
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50035_WarrantyAnalysis.rdl';
-
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {

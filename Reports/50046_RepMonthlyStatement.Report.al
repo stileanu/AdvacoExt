@@ -6,7 +6,8 @@ report 50046 "Rep. Monthly Statement"
     // // Value  CommPaidToDate
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50046_RepMonthlyStatement.rdl';
-
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {

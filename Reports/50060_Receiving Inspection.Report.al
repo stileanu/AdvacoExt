@@ -5,7 +5,8 @@ report 50060 "Receiving Inspection"
     // Adobe software set in <User Setup> table, document reference in Item card.
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50060_Receiving Inspection.rdl';
-
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
     UseRequestPage = true;
     UseSystemPrinter = true;
 

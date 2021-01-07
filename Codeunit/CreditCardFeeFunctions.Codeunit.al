@@ -49,7 +49,7 @@ codeunit 50014 CreditCardFeeFunctions
             SalesLine."VAT Calculation Type" := SalesLine."VAT Calculation Type"::"Sales Tax";
             SalesLine."VAT Prod. Posting Group" := 'DEFAULT';
             SalesLine.VALIDATE(Quantity, 1);
-            SalesLine.VALIDATE("Unit Price", SalesHeader."Amount Including VAT" * GLSetup."Credit Card Fee %" / 100);
+            SalesLine.VALIDATE("Unit Price", Round(SalesHeader."Amount Including VAT" * GLSetup."Credit Card Fee %" / 100, 0.01, '>'));
             SalesLine."Bill-to Customer No." := SalesHeader."Bill-to Customer No.";
 
             SalesLine.INSERT(FALSE);

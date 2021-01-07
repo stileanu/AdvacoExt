@@ -2,6 +2,8 @@ report 50023 "Sales Credit Memo - ADVACO"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50023_SalesCreditMemo_ADVACO.rdl';
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {

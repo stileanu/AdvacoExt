@@ -4,6 +4,7 @@ report 50051 "Purchase Order Receiving Rpt"
     RDLCLayout = './Reports/50051_PurchaseOrderReceiving.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
+
     dataset
     {
         dataitem("Purch. Rcpt. Header"; "Purch. Rcpt. Header")

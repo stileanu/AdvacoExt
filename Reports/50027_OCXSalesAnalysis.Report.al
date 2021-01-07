@@ -6,6 +6,7 @@ report 50027 "OCX Sales Analysis"
     //RDLCLayout = './Reports/50027_OCX Sales Analysis.Rpt.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
+
     dataset
     {
         dataitem(Header; "Sales Invoice Header")

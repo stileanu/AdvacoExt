@@ -1,5 +1,7 @@
 report 50015 "Shipping Label"
 {
+    UsageCategory = ReportsAndAnalysis;
+    ApplicationArea = All;
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50015_ShippingLabel.rdl';
 

@@ -4,7 +4,8 @@ report 50020 "Sales Order Pick Ticket"
     //   Modified CC Footer to be of Footer Type not TransFooter type
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50020_SalesOrderPickTicket.rdl';
-
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {

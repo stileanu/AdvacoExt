@@ -3,6 +3,8 @@ report 50017 "SO Bill Of Lading"
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50017_SOBillOfLading.rdl';
     UseSystemPrinter = false;
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {

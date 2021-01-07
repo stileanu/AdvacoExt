@@ -3,6 +3,8 @@ report 50016 "WO Bill Of Lading"
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50016_WOBillOfLading.rdl';
     UseSystemPrinter = false;
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {

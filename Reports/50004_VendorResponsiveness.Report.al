@@ -3,6 +3,8 @@ report 50004 "Vendor Responsiveness"
     // 04/24/16 New report
     // 11/29/16 Test for "Orig. Expected Receipt Date" <> 0D
     // 06/03/18 Skip Receipts without any date
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50004_VendorResponsiveness.rdl';
 

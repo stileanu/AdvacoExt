@@ -5,6 +5,7 @@ report 50067 "Vendor List"
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
     caption = 'Advaco Vendor List';
+
     dataset
     {
         dataitem(Vendor; Vendor)

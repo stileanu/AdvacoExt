@@ -4,6 +4,7 @@ report 50025 "Work Order Analysis"
     RDLCLayout = './Reports/50025_WorkOrderAnalysis.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
+
     dataset
     {
         dataitem(WorkOrderDetail; WorkOrderDetail)

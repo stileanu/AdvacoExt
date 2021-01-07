@@ -2,6 +2,8 @@ report 50022 "Sales Order - ADVACO"
 {
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50022_SalesOrder_ADVACO.rdl';
+    ApplicationArea = All;
+    UsageCategory = ReportsAndAnalysis;
 
     dataset
     {

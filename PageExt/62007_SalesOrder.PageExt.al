@@ -365,7 +365,6 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                                         if not CCFeeCode.IsCCFee(Rec) then
                                             CCFeeInsertVisible := true;
                                     end;
-                                //CCFeeInsertVisible := true
                             end else
                                 CCFeeInsertVisible := false;
                         end;
@@ -574,6 +573,10 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                     // Insert line
                     if not CCFeeCode.IsCCFee(Rec) then begin
                         CCFeeCode.InsertCreditCardFeeLine(Rec);
+                        /// part function call
+                        CurrPage.SalesLines.Page.DeltaUpdateTotals();
+                        CurrPage.SalesLines.Page.Update();
+                        CurrPage.Update();
                     end;
                     // 05/02/13 End
                 end;

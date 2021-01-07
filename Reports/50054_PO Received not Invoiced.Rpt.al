@@ -5,6 +5,7 @@ report 50054 "PO Received not Invoiced"
     caption = 'PO Received not Invoiced';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = all;
+
     dataset
     {
         dataitem("Purchase Header"; "Purchase Header")
