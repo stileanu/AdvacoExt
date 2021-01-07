@@ -1,7 +1,7 @@
 report 50042 "Quote Review Build Ahead"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './Report/50042_QuoteReviewBuildAhead.rdl';
+    RDLCLayout = './Reports/50042_QuoteReviewBuildAhead.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
     dataset

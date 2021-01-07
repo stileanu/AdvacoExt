@@ -240,7 +240,7 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         }
         modify("Issued Documents")
         {
-            //ApplicationArea = All;
+            //ApplicationArea = All; 
             Visible = lAccGroup;
         }
         modify("Sales Journal")

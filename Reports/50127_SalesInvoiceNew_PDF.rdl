@@ -1508,7 +1508,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Amount2.Value</Value>
+                                  <Value>=Code.BlankZero(Fields!Amount2.Value)</Value>
                                   <Style>
                                     <Format>#,0.00;(#,0.00);'0.00'</Format>
                                   </Style>
@@ -2725,7 +2725,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value EvaluationMode="Constant">Custome NO.</Value>
+                      <Value EvaluationMode="Constant">Customer NO.</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>

@@ -306,7 +306,8 @@ report 50023 "Sales Credit Memo - ADVACO"
                     SalesPurchPerson.Get("Salesperson Code");
 
                 FormatAddress.SalesCrMemoBillTo(BillToAddress, "Sales Cr.Memo Header");
-                FormatAddress.SalesCrMemoShipTo(ShipToAddress, ShipToAddress, "Sales Cr.Memo Header");
+                //FormatAddress.SalesCrMemoShipTo(ShipToAddress, ShipToAddress, "Sales Cr.Memo Header");
+                FormatAddress.SalesCrMemoShipTo(ShipToAddress, BillToAddress, "Sales Cr.Memo Header");
                 CalcFields("Amount Including VAT"); //ICE RSK 12/23/20
             end;
 

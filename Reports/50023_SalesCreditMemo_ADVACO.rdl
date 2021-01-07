@@ -19,9 +19,6 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.57799cm</Width>
-                </TablixColumn>
-                <TablixColumn>
                   <Width>1.62cm</Width>
                 </TablixColumn>
                 <TablixColumn>
@@ -136,7 +133,7 @@
                   <Width>0.2cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.24799cm</Width>
+                  <Width>1.82598cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.11283cm</Width>
@@ -149,38 +146,6 @@
                 <TablixRow>
                   <Height>0.872cm</Height>
                   <TablixCells>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="Textbox3">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style />
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox3</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>0.22cm</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
                     <TablixCell>
                       <CellContents>
                         <Textbox Name="TempSalesCrMemoLine_Quantity">
@@ -196,7 +161,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -228,7 +193,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -1481,7 +1446,6 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -1531,8 +1495,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>10.152cm</Top>
-              <Left>0.448cm</Left>
+              <Top>9.73067cm</Top>
+              <Left>0.48084cm</Left>
               <Height>0.423cm</Height>
               <Width>4.3cm</Width>
               <Style>
@@ -1554,10 +1518,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.306cm</Top>
-              <Left>0.7655cm</Left>
+              <Top>8.88467cm</Top>
+              <Left>0.48084cm</Left>
               <Height>0.423cm</Height>
-              <Width>2.3cm</Width>
+              <Width>2.18916cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
                 <VerticalAlign>Bottom</VerticalAlign>
@@ -1576,7 +1540,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>9.095cm</Top>
+              <Top>8.84839cm</Top>
               <Left>12.395cm</Left>
               <Height>0.423cm</Height>
               <Width>7.56cm</Width>
@@ -1603,10 +1567,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>1.64008cm</Top>
-              <Left>17.32cm</Left>
+              <Top>0.68758cm</Top>
+              <Left>17.6375cm</Left>
               <Height>0.423cm</Height>
-              <Width>3.453cm</Width>
+              <Width>2.635cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -1630,8 +1594,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>10.152cm</Top>
-              <Left>6.2775cm</Left>
+              <Top>9.73067cm</Top>
+              <Left>6.31034cm</Left>
               <Height>0.423cm</Height>
               <Width>8.5cm</Width>
               <ZIndex>4</ZIndex>
@@ -1654,10 +1618,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.90929cm</Top>
-              <Left>16.925cm</Left>
+              <Top>1.95679cm</Top>
+              <Left>17.6375cm</Left>
               <Height>0.423cm</Height>
-              <Width>2.209cm</Width>
+              <Width>2.449cm</Width>
               <ZIndex>5</ZIndex>
               <Style>
                 <VerticalAlign>Middle</VerticalAlign>
@@ -1832,8 +1796,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>10.152cm</Top>
-              <Left>16.141cm</Left>
+              <Top>9.73067cm</Top>
+              <Left>16.17384cm</Left>
               <Height>0.423cm</Height>
               <Width>4.196cm</Width>
               <ZIndex>13</ZIndex>

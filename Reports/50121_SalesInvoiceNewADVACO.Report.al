@@ -249,6 +249,9 @@ report 50121 "Sales Invoice New - ADVACO"
                         column(LowDescription; LowDescriptionToPrint)
                         {
                         }
+                        column(DescriptionToPrint; DescriptionToPrint)
+                        {
+                        }
                         column(UnitPriceToPrint; UnitPriceToPrint)
                         {
                             DecimalPlaces = 2 : 5;

@@ -88,7 +88,7 @@ page 50023 "Build Ahead"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Build Ahead")
             {

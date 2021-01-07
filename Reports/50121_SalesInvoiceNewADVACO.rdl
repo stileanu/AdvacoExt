@@ -19,34 +19,13 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.54158cm</Width>
-                </TablixColumn>
-                <TablixColumn>
                   <Width>1.84303cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.01044cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.1224cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.2cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.13406cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.2cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.14406cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.2cm</Width>
-                </TablixColumn>
-                <TablixColumn>
-                  <Width>0.15103cm</Width>
+                  <Width>2.12308cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.14061cm</Width>
@@ -106,7 +85,7 @@
                   <Width>0.16339cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.52033cm</Width>
+                  <Width>4.89137cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.2cm</Width>
@@ -190,39 +169,6 @@
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="Textbox1">
-                          <CanGrow>true</CanGrow>
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <FontSize>9pt</FontSize>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style>
-                                <TextAlign>Right</TextAlign>
-                              </Style>
-                            </Paragraph>
-                          </Paragraphs>
-                          <rd:DefaultName>Textbox1</rd:DefaultName>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>0.131cm</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
                         <Textbox Name="OrderedQuantity">
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
@@ -237,7 +183,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -269,7 +215,7 @@
                                 </TextRun>
                               </TextRuns>
                               <Style>
-                                <TextAlign>Right</TextAlign>
+                                <TextAlign>Center</TextAlign>
                               </Style>
                             </Paragraph>
                           </Paragraphs>
@@ -293,7 +239,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!ModelNo.Value</Value>
+                                  <Value>=Fields!HighDescription.Value</Value>
                                   <Style>
                                     <FontSize>9pt</FontSize>
                                   </Style>
@@ -311,189 +257,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="CompanyAddress_1_">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value EvaluationMode="Constant" />
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="CompanyAddress_2_">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value />
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="CompanyAddress_3_">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value EvaluationMode="Constant" />
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="CompanyAddress_4_">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value EvaluationMode="Constant" />
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="CompanyAddress_5_">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value EvaluationMode="Constant" />
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
-                      </CellContents>
-                    </TablixCell>
-                    <TablixCell>
-                      <CellContents>
-                        <Textbox Name="CompanyAddress_6_">
-                          <KeepTogether>true</KeepTogether>
-                          <Paragraphs>
-                            <Paragraph>
-                              <TextRuns>
-                                <TextRun>
-                                  <Value EvaluationMode="Constant" />
-                                  <Style>
-                                    <Color>#ff0000</Color>
-                                  </Style>
-                                </TextRun>
-                              </TextRuns>
-                              <Style />
-                            </Paragraph>
-                          </Paragraphs>
-                          <Visibility>
-                            <Hidden>true</Hidden>
-                          </Visibility>
-                          <Style>
-                            <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingLeft>2pt</PaddingLeft>
-                            <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
-                          </Style>
-                        </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1967,13 +1731,6 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
-                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -1994,7 +1751,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
             <Height>0.60821cm</Height>
-            <Width>21.50404cm</Width>
+            <Width>21.30503cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
@@ -2023,8 +1780,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.61528cm</Top>
-              <Left>12.54cm</Left>
+              <Top>2.52028cm</Top>
+              <Left>17.3025cm</Left>
               <Height>0.423cm</Height>
               <Width>0.63cm</Width>
               <Style>
@@ -2044,7 +1801,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>6.98928cm</Top>
+              <Top>6.35428cm</Top>
               <Left>13.4515cm</Left>
               <Height>0.423cm</Height>
               <Width>7.77cm</Width>
@@ -2066,7 +1823,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>7.41228cm</Top>
+              <Top>6.77728cm</Top>
               <Left>13.4515cm</Left>
               <Height>0.423cm</Height>
               <Width>7.77cm</Width>
@@ -2088,7 +1845,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>7.83528cm</Top>
+              <Top>7.20028cm</Top>
               <Left>13.4515cm</Left>
               <Height>0.423cm</Height>
               <Width>7.77cm</Width>
@@ -2112,8 +1869,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.04528cm</Top>
-              <Left>17.3015cm</Left>
+              <Top>1.72778cm</Top>
+              <Left>17.619cm</Left>
               <Height>0.423cm</Height>
               <Width>2.1cm</Width>
               <ZIndex>4</ZIndex>
@@ -2136,8 +1893,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.6673cm</Top>
-              <Left>0.81016cm</Left>
+              <Top>9.93188cm</Top>
+              <Left>0.78316cm</Left>
               <Height>0.423cm</Height>
               <Width>4.722cm</Width>
               <ZIndex>5</ZIndex>
@@ -2160,8 +1917,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.6673cm</Top>
-              <Left>5.58416cm</Left>
+              <Top>9.93188cm</Top>
+              <Left>5.55716cm</Left>
               <Height>0.423cm</Height>
               <Width>2.09597cm</Width>
               <ZIndex>6</ZIndex>
@@ -2184,8 +1941,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.6673cm</Top>
-              <Left>17.27416cm</Left>
+              <Top>9.93188cm</Top>
+              <Left>17.24716cm</Left>
               <Height>0.423cm</Height>
               <Width>3.635cm</Width>
               <ZIndex>7</ZIndex>
@@ -2208,8 +1965,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.6673cm</Top>
-              <Left>12.81816cm</Left>
+              <Top>9.93188cm</Top>
+              <Left>12.79116cm</Left>
               <Height>0.423cm</Height>
               <Width>4.463cm</Width>
               <ZIndex>8</ZIndex>
@@ -2235,8 +1992,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.90828cm</Top>
-              <Left>17.3015cm</Left>
+              <Top>0.59078cm</Top>
+              <Left>17.619cm</Left>
               <Height>0.423cm</Height>
               <Width>2.58248cm</Width>
               <ZIndex>9</ZIndex>
@@ -2259,8 +2016,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>8.8213cm</Top>
-              <Left>2.56445cm</Left>
+              <Top>9.08588cm</Top>
+              <Left>2.53745cm</Left>
               <Height>0.423cm</Height>
               <Width>5.45571cm</Width>
               <ZIndex>10</ZIndex>
@@ -2286,8 +2043,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>8.8213cm</Top>
-              <Left>8.00516cm</Left>
+              <Top>9.08588cm</Top>
+              <Left>7.97816cm</Left>
               <Height>0.423cm</Height>
               <Width>7.502cm</Width>
               <ZIndex>11</ZIndex>
@@ -2308,7 +2065,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>6.56628cm</Top>
+              <Top>5.93128cm</Top>
               <Left>13.4515cm</Left>
               <Height>0.423cm</Height>
               <Width>7.77cm</Width>
@@ -2332,8 +2089,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.6673cm</Top>
-              <Left>8.00216cm</Left>
+              <Top>9.93188cm</Top>
+              <Left>7.97516cm</Left>
               <Height>0.423cm</Height>
               <Width>4.833cm</Width>
               <ZIndex>13</ZIndex>
@@ -2354,7 +2111,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>6.14328cm</Top>
+              <Top>5.50828cm</Top>
               <Left>13.4515cm</Left>
               <Height>0.423cm</Height>
               <Width>7.77cm</Width>
@@ -2378,8 +2135,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>8.8213cm</Top>
-              <Left>18.95423cm</Left>
+              <Top>9.08588cm</Top>
+              <Left>18.92723cm</Left>
               <Height>0.423cm</Height>
               <Width>1.8864cm</Width>
               <ZIndex>15</ZIndex>
@@ -2424,7 +2181,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>6.17028cm</Top>
+              <Top>5.53528cm</Top>
               <Left>2.029cm</Left>
               <Height>0.423cm</Height>
               <Width>7.77cm</Width>
@@ -2446,7 +2203,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>6.59328cm</Top>
+              <Top>5.95828cm</Top>
               <Left>2.029cm</Left>
               <Height>0.423cm</Height>
               <Width>7.77cm</Width>
@@ -2468,7 +2225,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>7.01628cm</Top>
+              <Top>6.38128cm</Top>
               <Left>2.029cm</Left>
               <Height>0.423cm</Height>
               <Width>7.77cm</Width>
@@ -2490,7 +2247,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>7.43928cm</Top>
+              <Top>6.80428cm</Top>
               <Left>2.029cm</Left>
               <Height>0.423cm</Height>
               <Width>7.77cm</Width>
@@ -2512,7 +2269,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>7.86228cm</Top>
+              <Top>7.22728cm</Top>
               <Left>2.029cm</Left>
               <Height>0.423cm</Height>
               <Width>7.77cm</Width>
@@ -2536,8 +2293,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>8.8213cm</Top>
-              <Left>0.78316cm</Left>
+              <Top>9.08588cm</Top>
+              <Left>0.75616cm</Left>
               <Height>0.423cm</Height>
               <Width>2.273cm</Width>
               <ZIndex>22</ZIndex>
@@ -2563,8 +2320,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>8.8213cm</Top>
-              <Left>15.45116cm</Left>
+              <Top>9.08588cm</Top>
+              <Left>15.42416cm</Left>
               <Height>0.423cm</Height>
               <Width>3.02682cm</Width>
               <ZIndex>23</ZIndex>
@@ -2581,7 +2338,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Fields!Page_Caption.Value</Value>
+                      <Value EvaluationMode="Constant">Page</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -2590,8 +2347,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.61528cm</Top>
-              <Left>11.1cm</Left>
+              <Top>2.52028cm</Top>
+              <Left>15.8625cm</Left>
               <Height>0.423cm</Height>
               <Width>1.26cm</Width>
               <ZIndex>24</ZIndex>
@@ -3173,6 +2930,9 @@ End Function
         </Field>
         <Field Name="LowDescription">
           <DataField>LowDescription</DataField>
+        </Field>
+        <Field Name="DescriptionToPrint">
+          <DataField>DescriptionToPrint</DataField>
         </Field>
         <Field Name="UnitPriceToPrint">
           <DataField>UnitPriceToPrint</DataField>

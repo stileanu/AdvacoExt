@@ -11,380 +11,6 @@
       <rd:DataSourceID>12c1a7c1-7e04-46a1-a6b1-f637ddffb9cc</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="Work_Order_Detail__Labor_Quoted_">
-          <DataField>Work_Order_Detail__Labor_Quoted_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Labor_Quoted_Format">
-          <DataField>Work_Order_Detail__Labor_Quoted_Format</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail_Notes">
-          <DataField>Work_Order_Detail_Notes</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Labor_Hours_Quoted_">
-          <DataField>Work_Order_Detail__Labor_Hours_Quoted_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Labor_Hours_Quoted_Format">
-          <DataField>Work_Order_Detail__Labor_Hours_Quoted_Format</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Customer_PO_No__">
-          <DataField>Work_Order_Detail__Customer_PO_No__</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Model_No__">
-          <DataField>Work_Order_Detail__Model_No__</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Income_Code_">
-          <DataField>Work_Order_Detail__Income_Code_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Serial_No__">
-          <DataField>Work_Order_Detail__Serial_No__</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Oil_Type_">
-          <DataField>Work_Order_Detail__Oil_Type_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Order_Type_">
-          <DataField>Work_Order_Detail__Order_Type_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail_Description">
-          <DataField>Work_Order_Detail_Description</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Work_Order_No__">
-          <DataField>Work_Order_Detail__Work_Order_No__</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Current_Reg_Hours_Used_">
-          <DataField>Work_Order_Detail__Current_Reg_Hours_Used_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Current_Reg_Hours_Used_Format">
-          <DataField>Work_Order_Detail__Current_Reg_Hours_Used_Format</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Current_OT_Hours_Used_">
-          <DataField>Work_Order_Detail__Current_OT_Hours_Used_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Current_OT_Hours_Used_Format">
-          <DataField>Work_Order_Detail__Current_OT_Hours_Used_Format</DataField>
-        </Field>
-        <Field Name="Labor_Hours_Quoted_____Current_Reg_Hours_Used____Current_OT_Hours_Used_">
-          <DataField>Labor_Hours_Quoted_____Current_Reg_Hours_Used____Current_OT_Hours_Used_</DataField>
-        </Field>
-        <Field Name="Labor_Hours_Quoted_____Current_Reg_Hours_Used____Current_OT_Hours_Used_Format">
-          <DataField>Labor_Hours_Quoted_____Current_Reg_Hours_Used____Current_OT_Hours_Used_Format</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Parts_Quoted_">
-          <DataField>Work_Order_Detail__Parts_Quoted_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Parts_Quoted_Format">
-          <DataField>Work_Order_Detail__Parts_Quoted_Format</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Ship_To_Name_">
-          <DataField>Work_Order_Detail__Ship_To_Name_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Ship_To_Address_1_">
-          <DataField>Work_Order_Detail__Ship_To_Address_1_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Ship_To_Address_2_">
-          <DataField>Work_Order_Detail__Ship_To_Address_2_</DataField>
-        </Field>
-        <Field Name="Ship_To_City___________Ship_To_State___________Ship_To_Zip_Code_">
-          <DataField>Ship_To_City___________Ship_To_State___________Ship_To_Zip_Code_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Customer_ID_">
-          <DataField>Work_Order_Detail__Customer_ID_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Work_Order_Date_">
-          <DataField>Work_Order_Detail__Work_Order_Date_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail_Attention">
-          <DataField>Work_Order_Detail_Attention</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Payment_Terms_">
-          <DataField>Work_Order_Detail__Payment_Terms_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail_Carrier">
-          <DataField>Work_Order_Detail_Carrier</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Shipping_Method_">
-          <DataField>Work_Order_Detail__Shipping_Method_</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Shipping_Charge_">
-          <DataField>Work_Order_Detail__Shipping_Charge_</DataField>
-        </Field>
-        <Field Name="EmptyString">
-          <DataField>EmptyString</DataField>
-        </Field>
-        <Field Name="EmptyString_Control11">
-          <DataField>EmptyString_Control11</DataField>
-        </Field>
-        <Field Name="Quote_TotalCaption">
-          <DataField>Quote_TotalCaption</DataField>
-        </Field>
-        <Field Name="AdjustmentCaption">
-          <DataField>AdjustmentCaption</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Labor_Quoted_Caption">
-          <DataField>Work_Order_Detail__Labor_Quoted_Caption</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail_NotesCaption">
-          <DataField>Work_Order_Detail_NotesCaption</DataField>
-        </Field>
-        <Field Name="Hours_QuotedCaption">
-          <DataField>Hours_QuotedCaption</DataField>
-        </Field>
-        <Field Name="PO_No_Caption">
-          <DataField>PO_No_Caption</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Model_No__Caption">
-          <DataField>Work_Order_Detail__Model_No__Caption</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Income_Code_Caption">
-          <DataField>Work_Order_Detail__Income_Code_Caption</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Serial_No__Caption">
-          <DataField>Work_Order_Detail__Serial_No__Caption</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Oil_Type_Caption">
-          <DataField>Work_Order_Detail__Oil_Type_Caption</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Order_Type_Caption">
-          <DataField>Work_Order_Detail__Order_Type_Caption</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail_DescriptionCaption">
-          <DataField>Work_Order_Detail_DescriptionCaption</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Work_Order_No__Caption">
-          <DataField>Work_Order_Detail__Work_Order_No__Caption</DataField>
-        </Field>
-        <Field Name="Reg_Hours_UsedCaption">
-          <DataField>Reg_Hours_UsedCaption</DataField>
-        </Field>
-        <Field Name="O_T_Hours_UsedCaption">
-          <DataField>O_T_Hours_UsedCaption</DataField>
-        </Field>
-        <Field Name="VarianceCaption">
-          <DataField>VarianceCaption</DataField>
-        </Field>
-        <Field Name="Work_Order_Detail__Parts_Quoted_Caption">
-          <DataField>Work_Order_Detail__Parts_Quoted_Caption</DataField>
-        </Field>
-        <Field Name="CustomerCaption">
-          <DataField>CustomerCaption</DataField>
-        </Field>
-        <Field Name="Order_DateCaption">
-          <DataField>Order_DateCaption</DataField>
-        </Field>
-        <Field Name="NameCaption">
-          <DataField>NameCaption</DataField>
-        </Field>
-        <Field Name="AddressCaption">
-          <DataField>AddressCaption</DataField>
-        </Field>
-        <Field Name="Address2Caption">
-          <DataField>Address2Caption</DataField>
-        </Field>
-        <Field Name="City__St__ZipCaption">
-          <DataField>City__St__ZipCaption</DataField>
-        </Field>
-        <Field Name="AttentionCaption">
-          <DataField>AttentionCaption</DataField>
-        </Field>
-        <Field Name="TermsCaption">
-          <DataField>TermsCaption</DataField>
-        </Field>
-        <Field Name="CarrierCaption">
-          <DataField>CarrierCaption</DataField>
-        </Field>
-        <Field Name="MethodCaption">
-          <DataField>MethodCaption</DataField>
-        </Field>
-        <Field Name="ChargeCaption">
-          <DataField>ChargeCaption</DataField>
-        </Field>
-        <Field Name="Parts__Part_No__">
-          <DataField>Parts__Part_No__</DataField>
-        </Field>
-        <Field Name="Parts_Description">
-          <DataField>Parts_Description</DataField>
-        </Field>
-        <Field Name="Parts__Quoted_Price_">
-          <DataField>Parts__Quoted_Price_</DataField>
-        </Field>
-        <Field Name="Parts__Quoted_Price_Format">
-          <DataField>Parts__Quoted_Price_Format</DataField>
-        </Field>
-        <Field Name="Parts__Part_Cost_">
-          <DataField>Parts__Part_Cost_</DataField>
-        </Field>
-        <Field Name="Parts__Part_Cost_Format">
-          <DataField>Parts__Part_Cost_Format</DataField>
-        </Field>
-        <Field Name="Parts__Quoted_Quantity_">
-          <DataField>Parts__Quoted_Quantity_</DataField>
-        </Field>
-        <Field Name="Parts__Quoted_Quantity_Format">
-          <DataField>Parts__Quoted_Quantity_Format</DataField>
-        </Field>
-        <Field Name="Parts__Total_Price_">
-          <DataField>Parts__Total_Price_</DataField>
-        </Field>
-        <Field Name="Parts__Total_Price_Format">
-          <DataField>Parts__Total_Price_Format</DataField>
-        </Field>
-        <Field Name="Parts__After_Quote_Quantity_">
-          <DataField>Parts__After_Quote_Quantity_</DataField>
-        </Field>
-        <Field Name="Parts__After_Quote_Quantity_Format">
-          <DataField>Parts__After_Quote_Quantity_Format</DataField>
-        </Field>
-        <Field Name="Parts_Reason">
-          <DataField>Parts_Reason</DataField>
-        </Field>
-        <Field Name="Parts__Total_Quote_Price_">
-          <DataField>Parts__Total_Quote_Price_</DataField>
-        </Field>
-        <Field Name="Parts__Total_Quote_Price_Format">
-          <DataField>Parts__Total_Quote_Price_Format</DataField>
-        </Field>
-        <Field Name="TotalPrice">
-          <DataField>TotalPrice</DataField>
-        </Field>
-        <Field Name="TotalPriceFormat">
-          <DataField>TotalPriceFormat</DataField>
-        </Field>
-        <Field Name="TotalPrice_Control12">
-          <DataField>TotalPrice_Control12</DataField>
-        </Field>
-        <Field Name="TotalPrice_Control12Format">
-          <DataField>TotalPrice_Control12Format</DataField>
-        </Field>
-        <Field Name="Parts__Part_No__Caption">
-          <DataField>Parts__Part_No__Caption</DataField>
-        </Field>
-        <Field Name="Parts_DescriptionCaption">
-          <DataField>Parts_DescriptionCaption</DataField>
-        </Field>
-        <Field Name="Total_QtyCaption">
-          <DataField>Total_QtyCaption</DataField>
-        </Field>
-        <Field Name="PriceCaption">
-          <DataField>PriceCaption</DataField>
-        </Field>
-        <Field Name="CostCaption">
-          <DataField>CostCaption</DataField>
-        </Field>
-        <Field Name="Total_PriceCaption">
-          <DataField>Total_PriceCaption</DataField>
-        </Field>
-        <Field Name="Added_QtyCaption">
-          <DataField>Added_QtyCaption</DataField>
-        </Field>
-        <Field Name="Parts_ReasonCaption">
-          <DataField>Parts_ReasonCaption</DataField>
-        </Field>
-        <Field Name="Quote_PriceCaption">
-          <DataField>Quote_PriceCaption</DataField>
-        </Field>
-        <Field Name="Parts_TotalCaption">
-          <DataField>Parts_TotalCaption</DataField>
-        </Field>
-        <Field Name="Parts_Work_Order_No_">
-          <DataField>Parts_Work_Order_No_</DataField>
-        </Field>
-        <Field Name="Parts_Part_Type">
-          <DataField>Parts_Part_Type</DataField>
-        </Field>
-        <Field Name="Parts2__Total_Quote_Price_">
-          <DataField>Parts2__Total_Quote_Price_</DataField>
-        </Field>
-        <Field Name="Parts2__Total_Quote_Price_Format">
-          <DataField>Parts2__Total_Quote_Price_Format</DataField>
-        </Field>
-        <Field Name="Parts2__Total_Price_">
-          <DataField>Parts2__Total_Price_</DataField>
-        </Field>
-        <Field Name="Parts2__Total_Price_Format">
-          <DataField>Parts2__Total_Price_Format</DataField>
-        </Field>
-        <Field Name="Parts2__Quoted_Price_">
-          <DataField>Parts2__Quoted_Price_</DataField>
-        </Field>
-        <Field Name="Parts2__Quoted_Price_Format">
-          <DataField>Parts2__Quoted_Price_Format</DataField>
-        </Field>
-        <Field Name="Parts2__Part_Cost_">
-          <DataField>Parts2__Part_Cost_</DataField>
-        </Field>
-        <Field Name="Parts2__Part_Cost_Format">
-          <DataField>Parts2__Part_Cost_Format</DataField>
-        </Field>
-        <Field Name="Parts2_Reason">
-          <DataField>Parts2_Reason</DataField>
-        </Field>
-        <Field Name="Parts2__After_Quote_Quantity_">
-          <DataField>Parts2__After_Quote_Quantity_</DataField>
-        </Field>
-        <Field Name="Parts2__After_Quote_Quantity_Format">
-          <DataField>Parts2__After_Quote_Quantity_Format</DataField>
-        </Field>
-        <Field Name="Parts2__Quoted_Quantity_">
-          <DataField>Parts2__Quoted_Quantity_</DataField>
-        </Field>
-        <Field Name="Parts2__Quoted_Quantity_Format">
-          <DataField>Parts2__Quoted_Quantity_Format</DataField>
-        </Field>
-        <Field Name="Parts2_Description">
-          <DataField>Parts2_Description</DataField>
-        </Field>
-        <Field Name="Parts2__Part_No__">
-          <DataField>Parts2__Part_No__</DataField>
-        </Field>
-        <Field Name="TotalPrice_Control18">
-          <DataField>TotalPrice_Control18</DataField>
-        </Field>
-        <Field Name="TotalPrice_Control18Format">
-          <DataField>TotalPrice_Control18Format</DataField>
-        </Field>
-        <Field Name="TotalPrice_Control4">
-          <DataField>TotalPrice_Control4</DataField>
-        </Field>
-        <Field Name="TotalPrice_Control4Format">
-          <DataField>TotalPrice_Control4Format</DataField>
-        </Field>
-        <Field Name="TotalPrice_Control13">
-          <DataField>TotalPrice_Control13</DataField>
-        </Field>
-        <Field Name="TotalPrice_Control13Format">
-          <DataField>TotalPrice_Control13Format</DataField>
-        </Field>
-        <Field Name="TotalPrice_Control14">
-          <DataField>TotalPrice_Control14</DataField>
-        </Field>
-        <Field Name="TotalPrice_Control14Format">
-          <DataField>TotalPrice_Control14Format</DataField>
-        </Field>
-        <Field Name="Resouce_TotalCaption">
-          <DataField>Resouce_TotalCaption</DataField>
-        </Field>
-        <Field Name="TotalCaption">
-          <DataField>TotalCaption</DataField>
-        </Field>
-        <Field Name="Parts2_Work_Order_No_">
-          <DataField>Parts2_Work_Order_No_</DataField>
-        </Field>
-        <Field Name="Parts2_Part_Type">
-          <DataField>Parts2_Part_Type</DataField>
-        </Field>
-        <Field Name="Show_TotParts">
-          <DataField>ShowTotPart</DataField>
-          <rd:UserDefined>true</rd:UserDefined>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -396,7 +22,7 @@
                   <Width>2.7cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.75cm</Width>
+                  <Width>0.67062cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.35cm</Width>
@@ -423,7 +49,7 @@
                   <Width>0.723cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.5cm</Width>
+                  <Width>1.36771cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.545cm</Width>
@@ -435,10 +61,10 @@
                   <Width>0.54cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.2cm</Width>
+                  <Width>2.09417cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.175cm</Width>
+                  <Width>2.06917cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -6526,6 +6152,8 @@
                           </Paragraphs>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
                           </Style>
                         </Textbox>
                         <ColSpan>2</ColSpan>
@@ -7149,6 +6777,8 @@
                               <Style>None</Style>
                             </Border>
                             <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingTop>3pt</PaddingTop>
+                            <PaddingBottom>3pt</PaddingBottom>
                           </Style>
                         </Textbox>
                         <ColSpan>2</ColSpan>
@@ -8064,31 +7694,25 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
             <Height>12.87805cm</Height>
-            <Width>20.898cm</Width>
+            <Width>20.47467cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
         <Height>13.16055cm</Height>
         <Style />
       </Body>
-      <Width>21.10105cm</Width>
+      <Width>20.59834cm</Width>
       <Page>
         <InteractiveHeight>11in</InteractiveHeight>
         <InteractiveWidth>8.5in</InteractiveWidth>
-        <LeftMargin>0cm</LeftMargin>
+        <LeftMargin>0.6cm</LeftMargin>
         <RightMargin>0cm</RightMargin>
-        <TopMargin>1cm</TopMargin>
-        <BottomMargin>1cm</BottomMargin>
+        <TopMargin>0.7cm</TopMargin>
+        <BottomMargin>0.7cm</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -8128,4 +7752,377 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>e717590a-370a-4bda-96b6-83a1ecbc5f66</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Work_Order_Detail__Labor_Quoted_">
+          <DataField>Work_Order_Detail__Labor_Quoted_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Labor_Quoted_Format">
+          <DataField>Work_Order_Detail__Labor_Quoted_Format</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail_Notes">
+          <DataField>Work_Order_Detail_Notes</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Labor_Hours_Quoted_">
+          <DataField>Work_Order_Detail__Labor_Hours_Quoted_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Labor_Hours_Quoted_Format">
+          <DataField>Work_Order_Detail__Labor_Hours_Quoted_Format</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Customer_PO_No__">
+          <DataField>Work_Order_Detail__Customer_PO_No__</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Model_No__">
+          <DataField>Work_Order_Detail__Model_No__</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Income_Code_">
+          <DataField>Work_Order_Detail__Income_Code_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Serial_No__">
+          <DataField>Work_Order_Detail__Serial_No__</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Oil_Type_">
+          <DataField>Work_Order_Detail__Oil_Type_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Order_Type_">
+          <DataField>Work_Order_Detail__Order_Type_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail_Description">
+          <DataField>Work_Order_Detail_Description</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Work_Order_No__">
+          <DataField>Work_Order_Detail__Work_Order_No__</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Current_Reg_Hours_Used_">
+          <DataField>Work_Order_Detail__Current_Reg_Hours_Used_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Current_Reg_Hours_Used_Format">
+          <DataField>Work_Order_Detail__Current_Reg_Hours_Used_Format</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Current_OT_Hours_Used_">
+          <DataField>Work_Order_Detail__Current_OT_Hours_Used_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Current_OT_Hours_Used_Format">
+          <DataField>Work_Order_Detail__Current_OT_Hours_Used_Format</DataField>
+        </Field>
+        <Field Name="Labor_Hours_Quoted_____Current_Reg_Hours_Used____Current_OT_Hours_Used_">
+          <DataField>Labor_Hours_Quoted_____Current_Reg_Hours_Used____Current_OT_Hours_Used_</DataField>
+        </Field>
+        <Field Name="Labor_Hours_Quoted_____Current_Reg_Hours_Used____Current_OT_Hours_Used_Format">
+          <DataField>Labor_Hours_Quoted_____Current_Reg_Hours_Used____Current_OT_Hours_Used_Format</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Parts_Quoted_">
+          <DataField>Work_Order_Detail__Parts_Quoted_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Parts_Quoted_Format">
+          <DataField>Work_Order_Detail__Parts_Quoted_Format</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Ship_To_Name_">
+          <DataField>Work_Order_Detail__Ship_To_Name_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Ship_To_Address_1_">
+          <DataField>Work_Order_Detail__Ship_To_Address_1_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Ship_To_Address_2_">
+          <DataField>Work_Order_Detail__Ship_To_Address_2_</DataField>
+        </Field>
+        <Field Name="Ship_To_City___________Ship_To_State___________Ship_To_Zip_Code_">
+          <DataField>Ship_To_City___________Ship_To_State___________Ship_To_Zip_Code_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Customer_ID_">
+          <DataField>Work_Order_Detail__Customer_ID_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Work_Order_Date_">
+          <DataField>Work_Order_Detail__Work_Order_Date_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail_Attention">
+          <DataField>Work_Order_Detail_Attention</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Payment_Terms_">
+          <DataField>Work_Order_Detail__Payment_Terms_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail_Carrier">
+          <DataField>Work_Order_Detail_Carrier</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Shipping_Method_">
+          <DataField>Work_Order_Detail__Shipping_Method_</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Shipping_Charge_">
+          <DataField>Work_Order_Detail__Shipping_Charge_</DataField>
+        </Field>
+        <Field Name="EmptyString">
+          <DataField>EmptyString</DataField>
+        </Field>
+        <Field Name="EmptyString_Control11">
+          <DataField>EmptyString_Control11</DataField>
+        </Field>
+        <Field Name="Quote_TotalCaption">
+          <DataField>Quote_TotalCaption</DataField>
+        </Field>
+        <Field Name="AdjustmentCaption">
+          <DataField>AdjustmentCaption</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Labor_Quoted_Caption">
+          <DataField>Work_Order_Detail__Labor_Quoted_Caption</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail_NotesCaption">
+          <DataField>Work_Order_Detail_NotesCaption</DataField>
+        </Field>
+        <Field Name="Hours_QuotedCaption">
+          <DataField>Hours_QuotedCaption</DataField>
+        </Field>
+        <Field Name="PO_No_Caption">
+          <DataField>PO_No_Caption</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Model_No__Caption">
+          <DataField>Work_Order_Detail__Model_No__Caption</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Income_Code_Caption">
+          <DataField>Work_Order_Detail__Income_Code_Caption</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Serial_No__Caption">
+          <DataField>Work_Order_Detail__Serial_No__Caption</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Oil_Type_Caption">
+          <DataField>Work_Order_Detail__Oil_Type_Caption</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Order_Type_Caption">
+          <DataField>Work_Order_Detail__Order_Type_Caption</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail_DescriptionCaption">
+          <DataField>Work_Order_Detail_DescriptionCaption</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Work_Order_No__Caption">
+          <DataField>Work_Order_Detail__Work_Order_No__Caption</DataField>
+        </Field>
+        <Field Name="Reg_Hours_UsedCaption">
+          <DataField>Reg_Hours_UsedCaption</DataField>
+        </Field>
+        <Field Name="O_T_Hours_UsedCaption">
+          <DataField>O_T_Hours_UsedCaption</DataField>
+        </Field>
+        <Field Name="VarianceCaption">
+          <DataField>VarianceCaption</DataField>
+        </Field>
+        <Field Name="Work_Order_Detail__Parts_Quoted_Caption">
+          <DataField>Work_Order_Detail__Parts_Quoted_Caption</DataField>
+        </Field>
+        <Field Name="CustomerCaption">
+          <DataField>CustomerCaption</DataField>
+        </Field>
+        <Field Name="Order_DateCaption">
+          <DataField>Order_DateCaption</DataField>
+        </Field>
+        <Field Name="NameCaption">
+          <DataField>NameCaption</DataField>
+        </Field>
+        <Field Name="AddressCaption">
+          <DataField>AddressCaption</DataField>
+        </Field>
+        <Field Name="Address2Caption">
+          <DataField>Address2Caption</DataField>
+        </Field>
+        <Field Name="City__St__ZipCaption">
+          <DataField>City__St__ZipCaption</DataField>
+        </Field>
+        <Field Name="AttentionCaption">
+          <DataField>AttentionCaption</DataField>
+        </Field>
+        <Field Name="TermsCaption">
+          <DataField>TermsCaption</DataField>
+        </Field>
+        <Field Name="CarrierCaption">
+          <DataField>CarrierCaption</DataField>
+        </Field>
+        <Field Name="MethodCaption">
+          <DataField>MethodCaption</DataField>
+        </Field>
+        <Field Name="ChargeCaption">
+          <DataField>ChargeCaption</DataField>
+        </Field>
+        <Field Name="Parts__Part_No__">
+          <DataField>Parts__Part_No__</DataField>
+        </Field>
+        <Field Name="Parts_Description">
+          <DataField>Parts_Description</DataField>
+        </Field>
+        <Field Name="Parts__Quoted_Price_">
+          <DataField>Parts__Quoted_Price_</DataField>
+        </Field>
+        <Field Name="Parts__Quoted_Price_Format">
+          <DataField>Parts__Quoted_Price_Format</DataField>
+        </Field>
+        <Field Name="Parts__Part_Cost_">
+          <DataField>Parts__Part_Cost_</DataField>
+        </Field>
+        <Field Name="Parts__Part_Cost_Format">
+          <DataField>Parts__Part_Cost_Format</DataField>
+        </Field>
+        <Field Name="Parts__Quoted_Quantity_">
+          <DataField>Parts__Quoted_Quantity_</DataField>
+        </Field>
+        <Field Name="Parts__Quoted_Quantity_Format">
+          <DataField>Parts__Quoted_Quantity_Format</DataField>
+        </Field>
+        <Field Name="Parts__Total_Price_">
+          <DataField>Parts__Total_Price_</DataField>
+        </Field>
+        <Field Name="Parts__Total_Price_Format">
+          <DataField>Parts__Total_Price_Format</DataField>
+        </Field>
+        <Field Name="Parts__After_Quote_Quantity_">
+          <DataField>Parts__After_Quote_Quantity_</DataField>
+        </Field>
+        <Field Name="Parts__After_Quote_Quantity_Format">
+          <DataField>Parts__After_Quote_Quantity_Format</DataField>
+        </Field>
+        <Field Name="Parts_Reason">
+          <DataField>Parts_Reason</DataField>
+        </Field>
+        <Field Name="Parts__Total_Quote_Price_">
+          <DataField>Parts__Total_Quote_Price_</DataField>
+        </Field>
+        <Field Name="Parts__Total_Quote_Price_Format">
+          <DataField>Parts__Total_Quote_Price_Format</DataField>
+        </Field>
+        <Field Name="TotalPrice">
+          <DataField>TotalPrice</DataField>
+        </Field>
+        <Field Name="TotalPriceFormat">
+          <DataField>TotalPriceFormat</DataField>
+        </Field>
+        <Field Name="TotalPrice_Control12">
+          <DataField>TotalPrice_Control12</DataField>
+        </Field>
+        <Field Name="TotalPrice_Control12Format">
+          <DataField>TotalPrice_Control12Format</DataField>
+        </Field>
+        <Field Name="Parts__Part_No__Caption">
+          <DataField>Parts__Part_No__Caption</DataField>
+        </Field>
+        <Field Name="Parts_DescriptionCaption">
+          <DataField>Parts_DescriptionCaption</DataField>
+        </Field>
+        <Field Name="Total_QtyCaption">
+          <DataField>Total_QtyCaption</DataField>
+        </Field>
+        <Field Name="PriceCaption">
+          <DataField>PriceCaption</DataField>
+        </Field>
+        <Field Name="CostCaption">
+          <DataField>CostCaption</DataField>
+        </Field>
+        <Field Name="Total_PriceCaption">
+          <DataField>Total_PriceCaption</DataField>
+        </Field>
+        <Field Name="Added_QtyCaption">
+          <DataField>Added_QtyCaption</DataField>
+        </Field>
+        <Field Name="Parts_ReasonCaption">
+          <DataField>Parts_ReasonCaption</DataField>
+        </Field>
+        <Field Name="Quote_PriceCaption">
+          <DataField>Quote_PriceCaption</DataField>
+        </Field>
+        <Field Name="Parts_TotalCaption">
+          <DataField>Parts_TotalCaption</DataField>
+        </Field>
+        <Field Name="Parts_Work_Order_No_">
+          <DataField>Parts_Work_Order_No_</DataField>
+        </Field>
+        <Field Name="Parts_Part_Type">
+          <DataField>Parts_Part_Type</DataField>
+        </Field>
+        <Field Name="Parts2__Total_Quote_Price_">
+          <DataField>Parts2__Total_Quote_Price_</DataField>
+        </Field>
+        <Field Name="Parts2__Total_Quote_Price_Format">
+          <DataField>Parts2__Total_Quote_Price_Format</DataField>
+        </Field>
+        <Field Name="Parts2__Total_Price_">
+          <DataField>Parts2__Total_Price_</DataField>
+        </Field>
+        <Field Name="Parts2__Total_Price_Format">
+          <DataField>Parts2__Total_Price_Format</DataField>
+        </Field>
+        <Field Name="Parts2__Quoted_Price_">
+          <DataField>Parts2__Quoted_Price_</DataField>
+        </Field>
+        <Field Name="Parts2__Quoted_Price_Format">
+          <DataField>Parts2__Quoted_Price_Format</DataField>
+        </Field>
+        <Field Name="Parts2__Part_Cost_">
+          <DataField>Parts2__Part_Cost_</DataField>
+        </Field>
+        <Field Name="Parts2__Part_Cost_Format">
+          <DataField>Parts2__Part_Cost_Format</DataField>
+        </Field>
+        <Field Name="Parts2_Reason">
+          <DataField>Parts2_Reason</DataField>
+        </Field>
+        <Field Name="Parts2__After_Quote_Quantity_">
+          <DataField>Parts2__After_Quote_Quantity_</DataField>
+        </Field>
+        <Field Name="Parts2__After_Quote_Quantity_Format">
+          <DataField>Parts2__After_Quote_Quantity_Format</DataField>
+        </Field>
+        <Field Name="Parts2__Quoted_Quantity_">
+          <DataField>Parts2__Quoted_Quantity_</DataField>
+        </Field>
+        <Field Name="Parts2__Quoted_Quantity_Format">
+          <DataField>Parts2__Quoted_Quantity_Format</DataField>
+        </Field>
+        <Field Name="Parts2_Description">
+          <DataField>Parts2_Description</DataField>
+        </Field>
+        <Field Name="Parts2__Part_No__">
+          <DataField>Parts2__Part_No__</DataField>
+        </Field>
+        <Field Name="TotalPrice_Control18">
+          <DataField>TotalPrice_Control18</DataField>
+        </Field>
+        <Field Name="TotalPrice_Control18Format">
+          <DataField>TotalPrice_Control18Format</DataField>
+        </Field>
+        <Field Name="TotalPrice_Control4">
+          <DataField>TotalPrice_Control4</DataField>
+        </Field>
+        <Field Name="TotalPrice_Control4Format">
+          <DataField>TotalPrice_Control4Format</DataField>
+        </Field>
+        <Field Name="TotalPrice_Control13">
+          <DataField>TotalPrice_Control13</DataField>
+        </Field>
+        <Field Name="TotalPrice_Control13Format">
+          <DataField>TotalPrice_Control13Format</DataField>
+        </Field>
+        <Field Name="TotalPrice_Control14">
+          <DataField>TotalPrice_Control14</DataField>
+        </Field>
+        <Field Name="TotalPrice_Control14Format">
+          <DataField>TotalPrice_Control14Format</DataField>
+        </Field>
+        <Field Name="Resouce_TotalCaption">
+          <DataField>Resouce_TotalCaption</DataField>
+        </Field>
+        <Field Name="TotalCaption">
+          <DataField>TotalCaption</DataField>
+        </Field>
+        <Field Name="Parts2_Work_Order_No_">
+          <DataField>Parts2_Work_Order_No_</DataField>
+        </Field>
+        <Field Name="Parts2_Part_Type">
+          <DataField>Parts2_Part_Type</DataField>
+        </Field>
+        <Field Name="Show_TotParts">
+          <DataField>Show_TotParts</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

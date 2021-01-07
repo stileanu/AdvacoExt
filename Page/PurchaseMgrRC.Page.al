@@ -369,19 +369,27 @@ page 50158 PurchaseMgrRC
                     Caption = 'Reports';
                     action("Inventory Purchase Orders")
                     {
-                        ApplicationArea = Suite;
+                        ApplicationArea = All;
                         Caption = 'Purchase Advice';
                         RunObject = Report "Purchase Advice";
                     }
                     action("Inventory - Transaction Detail")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inventory Transaction Detail';
                         RunObject = Report "Item Transaction Detail";
                     }
                     action("Inventory - Reorders")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inventory Reorders';
                         RunObject = report "Inventory - Reorders";
+                    }
+                    action("Issue History")
+                    {
+                        Caption = 'Issue History';
+                        ApplicationArea = All;
+                        RunObject = report "Issue History";
                     }
                     action("Item/Vendor Catalog")
                     {
@@ -415,6 +423,7 @@ page 50158 PurchaseMgrRC
                     }
                     action("Inventory - Vendor Purchases")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inventory - Vendor Purchases';
                         RunObject = Report "Vendor Purchases by Item";
                     }
@@ -432,6 +441,7 @@ page 50158 PurchaseMgrRC
                     }
                     action("Purchase Order Status")
                     {
+                        ApplicationArea = All;
                         Caption = 'Purchase Order Status';
                         RunObject = Report "Purchase Order Status";
                     }
@@ -449,7 +459,7 @@ page 50158 PurchaseMgrRC
                     }
                     action("PO Received not Invoiced")
                     {
-                        ApplicationArea = Suite;
+                        ApplicationArea = All;
                         Caption = 'PO Received not Invoiced';
                         RunObject = report "po received not invoiced";
                     }
