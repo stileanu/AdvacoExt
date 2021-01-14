@@ -187,6 +187,18 @@ report 60003 "Advaco Payment Journal - Test"
                     {
 
                     }
+                    column(Debit_Amount; totaldebit)
+                    {
+
+                    }
+                    column(Credit_Amount; totalcredit)
+                    {
+
+                    }
+                    Column(totalbatchcaption; totalbatchcaption)
+                    {
+
+                    }
                     dataitem(TempLoop; "Integer")
                     {
                         DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
@@ -294,6 +306,20 @@ report 60003 "Advaco Payment Journal - Test"
 
                         if not EmptyLine then begin
                             MakeRecurringTexts("Gen. Journal Line");
+
+                            //ICE RSK 1/11/21
+                            IF "Gen. Journal Line"."Amount (LCY)" > 0 THEN BEGIN
+                                IF "Gen. Journal Line"."Account No." <> '' THEN
+                                    TotalDebit := TotalDebit + "Gen. Journal Line"."Amount (LCY)";
+                                IF "Gen. Journal Line"."Bal. Account No." <> '' THEN
+                                    TotalCredit := TotalCredit + "Gen. Journal Line"."Amount (LCY)";
+                            END ELSE BEGIN
+                                IF "Gen. Journal Line"."Account No." <> '' THEN
+                                    TotalCredit := TotalCredit - "Gen. Journal Line"."Amount (LCY)";
+                                IF "Gen. Journal Line"."Bal. Account No." <> '' THEN
+                                    TotalDebit := TotalDebit - "Gen. Journal Line"."Amount (LCY)";
+                            END;
+
 
                             AmountError := false;
 
@@ -788,6 +814,7 @@ report 60003 "Advaco Payment Journal - Test"
             trigger OnAfterGetRecord()
             begin
                 GenJnlTemplate.Get("Gen. Journal Batch"."Journal Template Name");
+                totalbatchcaption := 'Totals for Journal ' + "Gen. Journal Batch"."Journal Template Name" + ', Batch' + "Gen. Journal Batch".Name;
             end;
 
             trigger OnPreDataItem()
@@ -994,6 +1021,9 @@ report 60003 "Advaco Payment Journal - Test"
         GLAccNetChange_NameCaptionLbl: Label 'Name';
         GLAccNetChange__Net_Change_in_Jnl__CaptionLbl: Label 'Net Change in Jnl.';
         GLAccNetChange__Balance_after_Posting_CaptionLbl: Label 'Balance after Posting';
+        totalbatchcaption: text;
+        totaldebit: Decimal;
+        totalcredit: decimal;
 
     local procedure CheckRecurringLine(GenJnlLine2: Record "Gen. Journal Line")
     begin
@@ -1400,6 +1430,8 @@ report 60003 "Advaco Payment Journal - Test"
     end;
 
     local procedure CheckVend(var GenJnlLine: Record "Gen. Journal Line"; var AccName: Text[100])
+    var
+        VendPostingGrp: Record "Vendor Posting Group";
     begin
         with GenJnlLine do
             if not Vend.Get("Account No.") then
@@ -1455,6 +1487,12 @@ report 60003 "Advaco Payment Journal - Test"
                               ICPartner.TableCaption, Vend."IC Partner Code")));
                 VendPosting := true;
                 TestPostingType;
+
+                // Reconcile Payables Account  //ICE RSK 12/16/20 added from old version
+                IF VendPostingGrp.GET(Vend."Vendor Posting Group") THEN
+                    IF VendPostingGrp."Payables Account" <> '' THEN
+                        ReconcileGLAccNo(VendPostingGrp."Payables Account",
+                                         ROUND(genjnlline."Amount (lcy)" / (1 + genjnlline."vat %" / 100)));
 
                 if "Recurring Method" = "Recurring Method"::" " then
                     if "Document Type" in

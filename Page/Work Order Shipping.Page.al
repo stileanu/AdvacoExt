@@ -12,6 +12,10 @@ page 50033 "Work Order Shipping"
 
     ///--! SN: Serial No. issue - must find serial No. 
     ///--! Report (BOL and Address Labels)
+    // 
+    // 2021_01_11 Intelice  
+    //    Added logic to test for processed shipped orders to stop reprocess and allow printing BOL and Address labels
+    //
 
     DeleteAllowed = false;
     InsertAllowed = false;
@@ -262,6 +266,12 @@ page 50033 "Work Order Shipping"
 
                     trigger OnAction()
                     begin
+                        // 2021_01_11 Intelice Start
+                        if not Rec."Shipping Processed" then begin
+                            Message('You nedd to <Ship> this order to be able to print BOL.');
+                            exit;
+                        end;
+                        // 2021_01_11 Intelice End
                         PrintBOL;
                     end;
                 }
@@ -276,6 +286,12 @@ page 50033 "Work Order Shipping"
 
                     trigger OnAction()
                     begin
+                        // 2021_01_11 Intelice Start
+                        if not Rec."Shipping Processed" then begin
+                            Message('You nedd to <Ship> this order to be able to print Address Labels.');
+                            exit;
+                        end;
+                        // 2021_01_11 Intelice End
                         PrintLabels;
                     end;
 
@@ -290,13 +306,21 @@ page 50033 "Work Order Shipping"
                 PromotedIsBig = true;
                 PromotedCategory = Process;
                 Image = Shipment;
-                Visible = True; //ICE RSK 12/28/20
+                Visible = True; //ICE RSK 12/28/20 
 
                 trigger OnAction()
                 begin
                     SystemShipment := false;
                     IncompleteSystem := false;
                     SystemWO := '';
+
+                    // 2021_01_11 Intelice Start
+                    // Test for processed order
+                    if Rec."Shipping Processed" then begin
+                        Message('Current Order %1 is already processed. You cannot process it.');
+                        exit;
+                    end;
+                    // 2021_01_11 Intelice End
 
                     // 04/17/18 start
                     IF oContainerSaved = oContainerSaved::Yes THEN
@@ -349,7 +373,13 @@ page 50033 "Work Order Shipping"
 
                     URCheck;
 
-                    CurrPage.Close;
+                    // 2021_01_11 Intelice Start
+                    // Mark current WOD as processed
+                    Rec."Shipping Processed" := true;
+                    Rec.Modify();
+                    // 2021_01_11 Intelice End
+
+                    //CurrPage.Close;
                 end;
             }
         }
@@ -901,6 +931,9 @@ page 50033 "Work Order Shipping"
     end;
 
     procedure CreateLines()
+    var
+        PurchLine: Record "Purchase Line";
+
     begin
         //>> Work Order No. & Order Type
         LineLoop;
@@ -1248,7 +1281,13 @@ page 50033 "Work Order Shipping"
                     SalesLine."Commission Calculated" := TRUE;
 
                 SalesLine.Insert;
-                PartsCost := PartsCost + WOP."Total Quote Cost";
+
+                /// Set Serial No
+                /// 
+                /// Create Reservation Entry for Parts
+                if not WOD.SetSerialNo_(37, SalesLine, PurchLine, SerialNo) then
+                    Error('Serial No. %1 not saved for the line %2.', SerialNo, SalesLine."Line No.");
+                ////Commit;                PartsCost := PartsCost + WOP."Total Quote Cost";
                 WOP."In-Process Quantity" := 0;
                 WOP.Modify;
             until WOP.Next = 0;
@@ -1497,7 +1536,9 @@ page 50033 "Work Order Shipping"
                 //Ok := true;
                 Exit;
         //end else begin
-        BOL2.SetRange("Bill of Lading", BOL2."Bill of Lading");
+        BOL2.SetRange("Bill of Lading", Rec."Bill of Lading");
+        if not BOL2.FindFirst() then
+            Error('Cannot find BOL %1', Rec."Bill of Lading");
         ///--! Report
         REPORT.RunModal(50016, false, false, BOL2);               // BOL Document Print 
         BOL2."BOL Printed" := true;
@@ -1533,6 +1574,10 @@ page 50033 "Work Order Shipping"
     procedure PrintLabels()
     begin
         LabelCount := LabelsToPrint;
+        BOL2.SetRange("Bill of Lading", Rec."Bill of Lading");
+        if not BOL2.FindFirst() then
+            Error('Cannot find BOL %1', Rec."Bill of Lading");
+
         if LabelCount > 0 then begin
             if not Confirm('Is Label Printer ready?', false) then
                 if not Confirm('Last Chance, is Label Printer ready?', false) then
@@ -1811,7 +1856,7 @@ page 50033 "Work Order Shipping"
     procedure Reservation()
     begin
         // Reservation Entry
-        ///!!-
+        ///!!- Commit   
         //Commit;
         SalesLine.Reset;
         SalesLine.SetRange("Document Type", SalesHeader."Document Type");

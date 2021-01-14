@@ -2,6 +2,10 @@ page 50032 "Work Order Vendor Shipping"
 {
     // 05/2/18
     //   Container Type control set to field options in table 50001. Make it editable.  
+    // 
+    // 2021_01_11 Intelice  
+    //    Added logic to test for processed shipped orders to stop reprocess and allow printing BOL and Address labels
+    //
 
     DeleteAllowed = false;
     InsertAllowed = false;
@@ -149,7 +153,7 @@ page 50032 "Work Order Vendor Shipping"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Print All BOL's")
             {
@@ -206,6 +210,12 @@ page 50032 "Work Order Vendor Shipping"
 
                     trigger OnAction()
                     begin
+                        // 2021_01_11 Intelice Start
+                        if not Rec."Shipping Processed" then begin
+                            Message('You nedd to <Ship> this order to be able to print BOL.');
+                            exit;
+                        end;
+                        // 2021_01_11 Intelice End                        
                         PrintBOL;
                     end;
                 }
@@ -220,6 +230,12 @@ page 50032 "Work Order Vendor Shipping"
 
                     trigger OnAction()
                     begin
+                        // 2021_01_11 Intelice Start
+                        if not Rec."Shipping Processed" then begin
+                            Message('You nedd to <Ship> this order to be able to print Address Labels.');
+                            exit;
+                        end;
+                        // 2021_01_11 Intelice End                        
                         PrintLabels;
                     end;
 
@@ -234,6 +250,15 @@ page 50032 "Work Order Vendor Shipping"
 
                 trigger OnAction()
                 begin
+
+                    // 2021_01_11 Intelice Start
+                    // Test for processed order
+                    if Rec."Shipping Processed" then begin
+                        Message('Current Order %1 is already processed. You cannot ship it.');
+                        exit;
+                    end;
+                    // 2021_01_11 Intelice End
+
                     if ShipmentWeight = 0 then
                         Error('Shipment Weight must be entered.');
 
@@ -273,7 +298,13 @@ page 50032 "Work Order Vendor Shipping"
                         end;
                     end;
 
-                    CurrPage.Close;
+                    // 2021_01_11 Intelice Start
+                    // Mark current WOD as processed
+                    Rec."Shipping Processed" := true;
+                    Rec.Modify();
+                    // 2021_01_11 Intelice End
+
+                    //CurrPage.Close;
                 end;
             }
         }
@@ -293,7 +324,7 @@ page 50032 "Work Order Vendor Shipping"
             repeat
                 WorkOrderDetail.Ship := false;
                 WorkOrderDetail.Modify;
-                Commit;
+            //Commit;
             until WorkOrderDetail.Next = 0;
         end;
     end;
@@ -433,7 +464,11 @@ page 50032 "Work Order Vendor Shipping"
                 //Ok := true;
                 Exit;
         //end else begin
-        BOL2.SetRange("Bill of Lading", BOL2."Bill of Lading");
+        BOL2.SetRange("Bill of Lading", Rec."Bill of Lading");
+        if not BOL2.FindFirst() then
+            Error('Cannot find BOL %1', Rec."Bill of Lading");
+        BOL2."BOL Printed" := false;
+        BOL2.Modify(false);
         ///--! Report
         REPORT.RunModal(50016, false, false, BOL2);               // BOL Document Print 
         BOL2."BOL Printed" := true;
@@ -464,6 +499,12 @@ page 50032 "Work Order Vendor Shipping"
 
     procedure PrintLabels()
     begin
+        BOL2.SetRange("Bill of Lading", Rec."Bill of Lading");
+        if not BOL2.FindFirst() then
+            Error('Cannot find BOL %1', Rec."Bill of Lading");
+        BOL2."Label Printed" := false;
+        BOL2.Modify(false);
+
         LabelCount := LabelsToPrint;
         if LabelCount > 0 then begin
             if not Confirm('Is Label Printer ready?', false) then

@@ -256,6 +256,10 @@ report 50127 "Sales Invoice New - PDF"
                         column(LowDescription; LowDescriptionToPrint)
                         {
                         }
+                        column(DescriptionToPrint;DescriptionToPrint)
+                        {
+                            
+                        }
                         column(UnitPriceToPrint; UnitPriceToPrint)
                         {
                             DecimalPlaces = 2 : 5;
@@ -321,6 +325,9 @@ report 50127 "Sales Invoice New - PDF"
                         }
                         column(SalesInvoiceLine_Number; Number)
                         {
+                        }
+                        column(SubTotal;SubTotal)
+                        {                            
                         }
 
                         trigger OnAfterGetRecord()
@@ -394,6 +401,7 @@ report 50127 "Sales Invoice New - PDF"
                                 end;
                                 No := TempSalesInvoiceLine."No.";
                             end;
+                            
 
 
                             if No <> '' then begin
@@ -440,6 +448,8 @@ report 50127 "Sales Invoice New - PDF"
                             end else begin
                                 UnitPriceToPrint := Round(AmountExclInvDisc / TempSalesInvoiceLine.Quantity, 0.00001);
                                 Amount2 := AmountExclInvDisc;
+                                if (TempSalesInvoiceLine."No." <> '311') and (TempSalesInvoiceLine."No."<> '312') then
+                                  Subtotal := Subtotal + AmountExclInvDisc;  //ICE-MPC 01/11/21
                             end;
                             //end;
 
@@ -606,6 +616,7 @@ report 50127 "Sales Invoice New - PDF"
         OrderedQuantity: Decimal;
         UnitPriceToPrint: Decimal;
         AmountExclInvDisc: Decimal;
+        SubTotal: Decimal; //ICE-MPC 01/12/20
         ShipmentMethod: Record "Shipment Method";
         PaymentTerms: Record "Payment Terms";
         SalesPurchPerson: Record "Salesperson/Purchaser";

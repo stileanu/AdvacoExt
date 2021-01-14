@@ -1,5 +1,9 @@
 page 50060 "Sales Order Shipping"
 {
+    // 2021_01_11 Intelice  
+    //    Added logic to test for processed shipped orders to stop reprocess and allow printing BOL and Address labels
+    //
+
     PageType = Card;
     SourceTable = "Sales Header";
     SourceTableView = SORTING("Document Type", "Location Code", "No.")
@@ -166,17 +170,28 @@ page 50060 "Sales Order Shipping"
     {
         area(Processing)
         {
-            action("Print &BOL and Labels")
+            //action("Print &BOL and Labels")
+            action(ProcessOrder)
             {
                 ApplicationArea = All;
-                Caption = 'Print &BOL and Labels';
-                Visible = false;
+                Caption = 'Process Order for Shipping';
+                //Visible = true;
 
                 trigger OnAction()
                 var
                     Ship: Codeunit Shipping;
+                    PurchLine: Record "Purchase Line";
 
                 begin
+
+                    // 2021_01_11 Intelice Start
+                    // Test for processed order
+                    if Rec."Shipping Processed" then begin
+                        Message('Current Order %1 is already processed. You cannot process it.');
+                        exit;
+                    end;
+                    // 2021_01_11 Intelice End
+
                     if "Your Reference" = '' then
                         Error('Customer PO Number must be Entered');
 
@@ -212,59 +227,65 @@ page 50060 "Sales Order Shipping"
                     SalesLine2.SetRange("Document Type", "Document Type");
                     SalesLine2.SetRange("Document No.", "No.");
                     SalesLine2.SetFilter("Qty. to Ship", '<>%1', 0);
-                    /*99999IF SalesLine2.FIND('-') THEN BEGIN
-                      REPEAT
-                        Main := 0;
-                        IF Item2.GET(SalesLine2."No.") THEN BEGIN
-                          IF Item2."Costing Method" = Item."Costing Method" :: Specific THEN BEGIN
-                            IF SalesLine2."Serial No." = '' THEN
-                              ERROR('Item %1 Serial No. is blank, so the Item can not be shipped',SalesLine2."No.");
-                            IF SalesLine2."Serial No." <> '' THEN BEGIN
-                              ItemLedgerSerial.SETCURRENTKEY("Item No.",Open,"Serial No.","Location Code");
-                              ItemLedgerSerial.SETRANGE("Item No.",Item2."No.");
-                              ItemLedgerSerial.SETRANGE(ItemLedgerSerial.Open,TRUE);
-                              ItemLedgerSerial.SETRANGE("Serial No.",SalesLine2."Serial No.");
-                              ItemLedgerSerial.SETRANGE("Location Code",'MAIN');
-                              IF ItemLedgerSerial.FIND('-') THEN BEGIN
-                                OK := TRUE;
-                              END ELSE BEGIN
-                                ERROR('Item %1 Serial No. %2 hasn''t been received, Contact Purchasing',Item2."No.",SalesLine2."Serial No.");
-                              END;
+
+                    IF SalesLine2.FIND('-') THEN BEGIN
+                        REPEAT
+                            Main := 0;
+                            IF Item2.GET(SalesLine2."No.") THEN BEGIN
+                                IF Item2."Costing Method" = Item."Costing Method"::Specific THEN BEGIN
+                                    if not WOD.GetSerialNo_(37, SalesLine2, PurchLine, SerialNo_) then
+                                        ERROR('Item %1 Serial No. is blank, so the Item can not be shipped', SalesLine2."No.");
+                                    IF SerialNo_ = '' THEN
+                                        ERROR('Item %1 Serial No. is blank, so the Item can not be shipped', SalesLine2."No.");
+                                    IF SerialNo_ <> '' THEN BEGIN
+                                        ItemLedgerSerial.SETCURRENTKEY("Item No.", Open, "Location Code");
+                                        ItemLedgerSerial.SETRANGE("Item No.", Item2."No.");
+                                        ItemLedgerSerial.SETRANGE(ItemLedgerSerial.Open, TRUE);
+                                        ItemLedgerSerial.SETRANGE("Serial No.", SerialNo_);
+                                        ItemLedgerSerial.SETRANGE("Location Code", 'MAIN');
+                                        IF ItemLedgerSerial.FIND('-') THEN BEGIN
+                                            OK := TRUE;
+                                        END ELSE BEGIN
+                                            ERROR('Item %1 Serial No. %2 hasn''t been received, Contact Purchasing', Item2."No.", SerialNo_);
+                                        END;
+                                    END;
+                                END ELSE BEGIN
+                                    /* -- ADV 11/30/15
+                                    MainInventoryQty.SETCURRENTKEY("Item No.", "Location Code", "Variant Code", "Document No.");
+                                            MainInventoryQty.SETRANGE("Item No.", Item2."No.");
+                                            MainInventoryQty.SETRANGE("Location Code", 'Main');
+                                            IF MainInventoryQty.FIND('-') THEN BEGIN
+                                                REPEAT
+                                                    Main := Main + MainInventoryQty.Quantity;
+                                                UNTIL MainInventoryQty.NEXT = 0;
+                                            END;
+                                    */
+                                    Item2."Location Filter" := 'MAIN';
+                                    Item2.CALCFIELDS(Inventory);
+
+                                    //IF SalesLine2."Qty. to Ship" > Main THEN
+                                    IF SalesLine2."Qty. to Ship" > Item2.Inventory THEN
+                                        ERROR('Item %1 only has %2 in Inventory, Contact Purchasing', Item2."No.", Main);
+                                END;
                             END;
-                          END ELSE BEGIN
-                            { -- ADV 11/30/15
-                            MainInventoryQty.SETCURRENTKEY("Item No.","Location Code", "Variant Code","Document No.");
-                            MainInventoryQty.SETRANGE("Item No.",Item2."No.");
-                            MainInventoryQty.SETRANGE("Location Code",'Main');
-                            IF MainInventoryQty.FIND('-') THEN BEGIN
-                              REPEAT
-                                Main := Main + MainInventoryQty.Quantity;
-                              UNTIL MainInventoryQty.NEXT = 0;
-                            END;
-                            }
-                            Item2."Location Filter" := 'Main';
-                            Item2.CALCFIELDS("Quantity on Hand");
-                    
-                            //IF SalesLine2."Qty. to Ship" > Main THEN
-                            IF SalesLine2."Qty. to Ship" > Item2."Quantity on Hand" THEN
-                              ERROR('Item %1 only has %2 in Inventory, Contact Purchasing',Item2."No.",Main);
-                          END;
-                        END;
-                      UNTIL SalesLine2.NEXT = 0;
+                        UNTIL SalesLine2.NEXT = 0;
                     END;
-                    
+
                     SalesLine2.RESET;
-                    
+
                     // Checks Serial No for Work Orders Sold on Sales Orders
                     IF "Work Order No." <> '' THEN BEGIN
-                      SalesLine2.SETRANGE("Document Type","Document Type");
-                      SalesLine2.SETRANGE("Document No.","No.");
-                      IF SalesLine2.FIND('-') THEN BEGIN
-                        IF SalesLine2."Serial No." = '' THEN
-                          ERROR('Item %1 Serial No. is blank, so the Item can not be shipped',SalesLine2."Cross Reference Item");
-                      END;
+                        SalesLine2.SETRANGE("Document Type", "Document Type");
+                        SalesLine2.SETRANGE("Document No.", "No.");
+                        if SalesLine2.FIND('-') THEN BEGIN
+                            if not WOD.GetSerialNo_(37, SalesLine2, PurchLine, SerialNo_) then
+                                //IF SalesLine2.FIND('-') THEN BEGIN
+                                //    IF SerialNo = '' THEN
+                                ERROR('Item %1 Serial No. is blank, so the Item can not be shipped', SalesLine2."Cross Reference Item");
+                            if SerialNo_ = '' then
+                                ERROR('Item %1 Serial No. is blank, so the Item can not be shipped', SalesLine2."Cross Reference Item");
+                        end;
                     END;
-                    99999*/
 
                     // Check Qty to Ship against Order Quantiy and Shipped Qty
                     SalesLine2.Reset;
@@ -388,13 +409,12 @@ page 50060 "Sales Order Shipping"
                             Modify;
                             CreateLines;
                             CreateShippingLine;
-                            Reservation;  // Commit
+                            Reservation;  // Commit 
                             UpdateWOD;
                             UpdateWOS;
                             UpdateParts;
                         end;
                     end;
-
 
                     BOL2.Init;
                     BOL2."Bill of Lading" := BLInteger;
@@ -423,8 +443,8 @@ page 50060 "Sales Order Shipping"
 
                     "Bill of Lading" := BOL2."Bill of Lading";
                     Modify;
-                    Commit;
-
+                    ////Commit;
+                    /*
                     if not Confirm('Is Bill of Lading and Labels loaded in Printers?', false) then begin
                         if not Confirm('Last Chance, Is Bill of Lading and Labels loaded in Printers?', false) then begin
                             OK := true;
@@ -464,11 +484,55 @@ page 50060 "Sales Order Shipping"
                         BOL2.Modify;
                         ConfirmLabels;
                     end;
-                    //99999
+                    */
 
-                    CurrPage.Close;
+                    // 2021_01_11 Intelice Start
+                    // Mark current WOD as processed
+                    Rec."Shipping Processed" := true;
+                    Rec.Modify();
+                    // 2021_01_11 Intelice End
+
+                    //CurrPage.Close;
 
                 end;
+            }
+            group(PrintDocs)
+            {
+                Caption = 'Print Documents';
+
+                action(PrintBillOfLading)
+                {
+                    Caption = 'Print BOL';
+                    ApplicationArea = All;
+
+                    trigger OnAction()
+                    begin
+                        // 2021_01_11 Intelice Start
+                        if not Rec."Shipping Processed" then begin
+                            Message('You nedd to <Process> this order to be able to print BOL.');
+                            exit;
+                        end;
+                        // 2021_01_11 Intelice End
+                        PrintBOL;
+                    end;
+                }
+
+                action(PrintAddressLabels)
+                {
+                    Caption = 'Print Address Labels';
+                    ApplicationArea = All;
+
+                    trigger OnAction()
+                    begin
+                        // 2021_01_11 Intelice Start
+                        if not Rec."Shipping Processed" then begin
+                            Message('You nedd to <Process> this order to be able to print Address Labels.');
+                            exit;
+                        end;
+                        // 2021_01_11 Intelice End
+                        PrintLabels;
+                    end;
+                }
             }
             action(Release)
             {
@@ -527,7 +591,7 @@ page 50060 "Sales Order Shipping"
 
                 end;
             }
-            action("&Print")
+            /*action("&Print")
             {
                 ApplicationArea = All;
                 Caption = '&Print';
@@ -537,6 +601,7 @@ page 50060 "Sales Order Shipping"
                     DocPrint.PrintSalesHeader(Rec);
                 end;
             }
+            */
         }
     }
 
@@ -607,8 +672,8 @@ page 50060 "Sales Order Shipping"
         OilPartNumber: Text[30];
         QtyOil: Integer;
         ItemLedgEntryType: Enum "Item Ledger Entry Type";
-
         salesorderrelease: Codeunit "Release Sales Document";
+        SerialNo_: Code[20];
 
     procedure UpdateAllowed() Response: Boolean
     begin
@@ -651,6 +716,9 @@ page 50060 "Sales Order Shipping"
     end;
 
     procedure CreateLines()
+    var
+        PurchLine: Record "Purchase Line";
+
     begin
         //>>Create Resources Line
         WOP.SetCurrentKey("Work Order No.", "Part No.");
@@ -693,9 +761,9 @@ page 50060 "Sales Order Shipping"
                 SalesLine.Type := SalesLine.Type::Item;
                 SalesLine.Validate("No.", WOP."Part No.");
 
-                //    IF Item."Costing Method" = Item."Costing Method" :: Specific THEN BEGIN
-                //      SalesLine."Serial No." := SerialNo
-                //    END;
+                IF Item."Costing Method" = Item."Costing Method"::Specific THEN BEGIN
+                    SerialNo_ := SerialNo
+                END;
 
                 SalesLine.Validate(Reserve, SalesLine.Reserve::Always);
                 SalesLine.Validate(Quantity, WOP."Pulled Quantity");
@@ -707,6 +775,11 @@ page 50060 "Sales Order Shipping"
                     SalesLine."VAT Prod. Posting Group" := 'DEFAULT';
                 SalesLine."Commission Calculated" := true;
                 SalesLine.Insert;
+
+                /// Create Reservation Entry for Parts
+                if not WOD.SetSerialNo_(37, SalesLine, PurchLine, SerialNo) then
+                    Error('Serial No. %1 not saved for the line %2.', SerialNo, SalesLine."Line No.");
+                ////Commit;
                 WOP."In-Process Quantity" := 0;
                 WOP.Modify;
             until WOP.Next = 0;
@@ -847,6 +920,72 @@ page 50060 "Sales Order Shipping"
                     SalesLine.AutoReserve();
             until
               SalesLine.Next = 0;
+        end;
+    end;
+
+    procedure PrintBOL()
+    begin
+        if not Confirm('Is Bill of Lading loaded in Printer?', false) then begin
+            if not Confirm('Last Chance, Is Bill of Lading loaded in Printer?', false) then begin
+                exit;
+            end else begin
+                BOL2.SetRange(BOL2."Bill of Lading", Rec."Bill of Lading");
+                if BOL2.FindFirst() then begin
+                    REPORT.RunModal(50017, false, false, BOL2);                 // BOL Document
+                    BOL2."BOL Printed" := true;
+                    BOL2.Modify;
+                end else
+                    Error('Cannot find BOL %1', Rec."Bill of Lading");
+            end;
+        end else begin
+            BOL2.SetRange(BOL2."Bill of Lading", Rec."Bill of Lading");
+            if BOL2.FindFirst() then begin
+                REPORT.RunModal(50017, false, false, BOL2);                     // BOL Document
+                BOL2."BOL Printed" := true;
+                BOL2.Modify;
+            end else
+                Error('Cannot find BOL %1', Rec."Bill of Lading");
+        end;
+    end;
+
+    procedure PrintLabels()
+    begin
+        if not Confirm('Are Address Labels loaded in Printers?', false) then begin
+            if not Confirm('Last Chance, are Address Labels loaded in Printers loaded in Printers?', false) then begin
+                exit;
+            end else begin
+                LabelCount := LabelsToPrint;
+                BOL2.SetRange(BOL2."Bill of Lading", Rec."Bill of Lading");
+                if BOL2.FindFirst() then begin
+                    repeat begin
+                        LabelCount := LabelCount - 1;
+                        REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
+                    end until LabelCount = 0;
+
+                    BOL2."Label Printed" := true;
+                    BOL2.Modify;
+                    //ConfirmLabels;
+                end else
+                    Error('Cannot find BOL %1', Rec."Bill of Lading");
+            end;
+        end else begin
+            BOL2.SetRange(BOL2."Bill of Lading", Rec."Bill of Lading");
+            if not BOL2.FindFirst() then begin
+                Error('Cannot find BOL %1', Rec."Bill of Lading");
+                exit;
+            end;
+            LabelCount := LabelsToPrint;
+            if LabelCount > 0 then begin
+                repeat begin
+                    LabelCount := LabelCount - 1;
+                    REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
+                end until LabelCount = 0;
+                BOL2."Label Printed" := true;
+            end else begin
+                BOL2."Label Printed" := false;
+            end;
+            BOL2.Modify;
+            //ConfirmLabels;
         end;
     end;
 }

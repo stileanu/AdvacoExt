@@ -391,6 +391,12 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         ApplicationArea = All;
                         ToolTip = 'Specifies Credit Card security code.';
                     }
+                    field("Approval Code"; "Approval Code")
+                    {
+                        Caption = 'Approval Code';
+                        ApplicationArea = all;
+                        Tooltip = 'Specified approval code';
+                    }
                 }
                 group(CreditCardAddress)
                 {

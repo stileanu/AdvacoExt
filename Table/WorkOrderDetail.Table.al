@@ -49,6 +49,9 @@ table 50001 WorkOrderDetail
 
         // To find commented code, use pattern <//--!>
 
+        2021_01_11 Intelice
+        Added field(200001; "Shipping Processed"; Boolean) to show if an WO Detail was shipped (create SO, return parts etc..) 
+
     */
 
     fields
@@ -1700,7 +1703,10 @@ table 50001 WorkOrderDetail
         {
             DataClassification = ToBeClassified;
         }
-
+        field(200001; "Shipping Processed"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys
@@ -2090,9 +2096,11 @@ table 50001 WorkOrderDetail
                     ReservEntry."Disallow Cancellation" := false;
                     ReservEntry.Correction := false;
                     ReservEntry."Item Tracking" := ReservEntry."Item Tracking"::"Serial No.";
+                    ReservEntry."Serial No." := SerialNo;
                     ReservEntry."Untracked Surplus" := false;
 
                     ReservEntry.Insert();
+                    exit(true);
                 end;
 
             Database::"Purchase Line":
@@ -2102,6 +2110,8 @@ table 50001 WorkOrderDetail
 
 
         end;
+
+        exit(false);
     end;
 
     procedure GetSerialNo_(DocType: Integer; SalesDoc: Record "Sales Line"; PurchDoc: Record "Purchase Line"; var SerialNo: Code[20]): Boolean

@@ -934,9 +934,9 @@ report 50002 "Work Order Traveler"
             Length := StrLen(WI.Instruction);
             if Length > 130 then begin
                 LineCount := LineCount + 1;
-                Instruc[LineCount] := CopyStr(WI.Instruction, 1, 130);
+                Instruc[LineCount] := CopyStr(WI.Instruction, 1, 125);
                 LineCount := LineCount + 1;
-                Instruc[LineCount] := CopyStr(WI.Instruction, 131, 120);
+                Instruc[LineCount] := CopyStr(WI.Instruction, 126, 125);
             end else
                 if Length <> 0 then begin
                     LineCount := LineCount + 1;

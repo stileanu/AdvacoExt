@@ -31,6 +31,9 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
 
     ADV 04/17/16
       Modify to check Cust Credit Limit only from Invoice(no Quote or Order)
+
+    2021_01_11 Intelice
+      Added field(50042; "Shipping Processed"; Boolean) to show if an SO was processed for shiping (create SO, return parts etc..) 
     */
 
     fields
@@ -430,6 +433,10 @@ Tableextension 50118 SalesHeaderExt extends "Sales Header"
         field(50041; "Advaco Shipping Advice"; enum ShippingAdvice)
         {
             Caption = 'Advaco Shipping Advice';
+        }
+        field(50042; "Shipping Processed"; Boolean)
+        {
+            DataClassification = ToBeClassified;
         }
 
     }

@@ -19,13 +19,16 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.84303cm</Width>
+                  <Width>1.28221cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.01044cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.23627cm</Width>
+                  <Width>5.1569cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.07938cm</Width>
@@ -85,7 +88,7 @@
                   <Width>0.16339cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.82842cm</Width>
+                  <Width>5.70579cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>0.07938cm</Width>
@@ -250,7 +253,50 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
                           <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
+                            <PaddingLeft>0.7205cm</PaddingLeft>
+                            <PaddingRight>0.0655cm</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Subtotal">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!Subtotal.Value</Value>
+                                  <Style>
+                                    <FontSize>9pt</FontSize>
+                                    <Color>Red</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Subtotal</rd:DefaultName>
+                          <Visibility>
+                            <Hidden>true</Hidden>
+                          </Visibility>
+                          <Style>
+                            <Border>
+                              <Style>None</Style>
+                            </Border>
                             <PaddingLeft>0.7205cm</PaddingLeft>
                             <PaddingRight>0.0655cm</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
@@ -831,21 +877,21 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="LowDescription">
+                        <Textbox Name="DescriptionToPrint">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!LowDescription.Value</Value>
+                                  <Value>=Fields!DescriptionToPrint.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
                               <Style />
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>LowDescription</rd:DefaultName>
+                          <rd:DefaultName>DescriptionToPrint</rd:DefaultName>
                           <Style>
                             <Border>
                               <Style>None</Style>
@@ -1730,6 +1776,7 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -1750,14 +1797,14 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
             <Height>0.60821cm</Height>
-            <Width>21.04044cm</Width>
+            <Width>21.35718cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
         <Height>0.7082in</Height>
         <Style />
       </Body>
-      <Width>8.46616in</Width>
+      <Width>8.43959in</Width>
       <Page>
         <PageHeader>
           <Height>4.27117in</Height>
@@ -1908,7 +1955,9 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=Reportitems!Sales_Invoice_Header___Order_Date_.Value</Value>
-                      <Style />
+                      <Style>
+                        <Format>M/d/yyyy</Format>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -1922,6 +1971,9 @@
               <Width>2.09597cm</Width>
               <ZIndex>6</ZIndex>
               <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <VerticalAlign>Bottom</VerticalAlign>
               </Style>
             </Textbox>
@@ -2015,9 +2067,9 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.08588cm</Top>
-              <Left>2.53745cm</Left>
-              <Height>0.423cm</Height>
+              <Top>8.66255cm</Top>
+              <Left>2.56445cm</Left>
+              <Height>0.60821cm</Height>
               <Width>5.45571cm</Width>
               <ZIndex>10</ZIndex>
               <Style>
@@ -2042,9 +2094,9 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.08588cm</Top>
-              <Left>7.97816cm</Left>
-              <Height>0.423cm</Height>
+              <Top>8.66255cm</Top>
+              <Left>8.00516cm</Left>
+              <Height>0.60821cm</Height>
               <Width>7.502cm</Width>
               <ZIndex>11</ZIndex>
               <Style>
@@ -2126,7 +2178,9 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=Reportitems!Sales_Invoice_Header___Due_Date_.Value</Value>
-                      <Style />
+                      <Style>
+                        <Format>M/d/yyyy</Format>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -2134,12 +2188,15 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.08588cm</Top>
-              <Left>18.92723cm</Left>
-              <Height>0.423cm</Height>
-              <Width>1.8864cm</Width>
+              <Top>8.66255cm</Top>
+              <Left>19.18058cm</Left>
+              <Height>0.6082cm</Height>
+              <Width>1.86387cm</Width>
               <ZIndex>15</ZIndex>
               <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
                 <VerticalAlign>Bottom</VerticalAlign>
               </Style>
             </Textbox>
@@ -2284,7 +2341,9 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=Reportitems!Sales_Invoice_Header___Posting_Date_.Value</Value>
-                      <Style />
+                      <Style>
+                        <Format>M/d/yyyy</Format>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -2292,10 +2351,10 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.08588cm</Top>
-              <Left>0.75616cm</Left>
-              <Height>0.423cm</Height>
-              <Width>2.273cm</Width>
+              <Top>8.66255cm</Top>
+              <Left>0.4392cm</Left>
+              <Height>0.60821cm</Height>
+              <Width>2.12525cm</Width>
               <ZIndex>22</ZIndex>
               <Style>
                 <Border>
@@ -2319,9 +2378,9 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>9.08588cm</Top>
-              <Left>15.42416cm</Left>
-              <Height>0.423cm</Height>
+              <Top>8.66255cm</Top>
+              <Left>15.45116cm</Left>
+              <Height>0.60821cm</Height>
               <Width>3.02682cm</Width>
               <ZIndex>23</ZIndex>
               <Style>
@@ -2400,7 +2459,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Sum(Reportitems!Textbox4.Value)</Value>
+                      <Value>=Reportitems!Subtotal.Value</Value>
                       <Style>
                         <Format>#,0.00;(#,0.00);'0.00'</Format>
                       </Style>
@@ -2566,7 +2625,7 @@
               </Paragraphs>
               <Top>1.35423in</Top>
               <Left>5.92545in</Left>
-              <Height>0.16654in</Height>
+              <Height>0.21539in</Height>
               <Width>1.12546in</Width>
               <ZIndex>6</ZIndex>
               <Style>
@@ -2594,10 +2653,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox75</rd:DefaultName>
-              <Top>3.43973cm</Top>
-              <Left>19.31141cm</Left>
-              <Height>0.42301cm</Height>
-              <Width>1.70521cm</Width>
+              <Top>3.43974cm</Top>
+              <Left>19.14116cm</Left>
+              <Height>0.54709cm</Height>
+              <Width>1.87162cm</Width>
               <ZIndex>7</ZIndex>
               <Style>
                 <Border>
@@ -2646,7 +2705,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Sum(Reportitems!Freight.Value)</Value>
+                      <Value>=Reportitems!Freight.Value</Value>
                       <Style>
                         <Format>#,0.00;(#,0.00)</Format>
                       </Style>
@@ -3025,6 +3084,12 @@ End Function
         </Field>
         <Field Name="SalesInvoiceLine_Number">
           <DataField>SalesInvoiceLine_Number</DataField>
+        </Field>
+        <Field Name="Subtotal">
+          <DataField>Subtotal</DataField>
+        </Field>
+        <Field Name="SubtotalFormat">
+          <DataField>SubtotalFormat</DataField>
         </Field>
       </Fields>
       <Query>

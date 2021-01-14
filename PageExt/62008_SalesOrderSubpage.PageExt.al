@@ -41,6 +41,7 @@ pageextension 62008 SalesOrderSubpageExt extends "Sales Order Subform"
                 Visible = lSalesGroup;
             }
 
+
         }
         addafter("Unit Price")
         {

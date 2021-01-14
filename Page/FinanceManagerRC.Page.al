@@ -1221,6 +1221,12 @@ page 50160 FinanceManagerRC
                         Caption = 'Aged Accounts Receivable';
                         RunObject = Report "Aged Accounts Receivable NA";
                     }
+                    action("Advaco Aged Accounts Receivable AR2")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Advaco Aged Accounts Receivable AR';
+                        RunObject = Report "Aged Accounts Receivable AR";
+                    }
                     action("Customer - Trial Balance")
                     {
                         ApplicationArea = Basic, Suite;
@@ -2980,6 +2986,12 @@ page 50160 FinanceManagerRC
                 {
                     Caption = 'Sales Reports Office';
 
+                    action("Advaco Aged Accounts Receivable AR")
+                    {
+                        ApplicationArea = All;
+                        Caption = 'Advaco Aged Accounts Receivable AR';
+                        RunObject = Report "Aged Accounts Receivable AR";
+                    }
                     action(CustomerCommentList)
                     {
                         ApplicationArea = All;

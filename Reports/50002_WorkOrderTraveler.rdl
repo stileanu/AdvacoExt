@@ -17089,7 +17089,6 @@
                           </Style>
                         </Textbox>
                         <ColSpan>15</ColSpan>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />

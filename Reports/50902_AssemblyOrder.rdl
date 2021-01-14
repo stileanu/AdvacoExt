@@ -1756,7 +1756,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=Parameters!Quantity_AssemblyLineCaption.Value</Value>
+                                                                  <Value>=Parameters!QuantityPer_AssemblyLineCaption.Value</Value>
                                                                   <Style>
                                                                     <FontFamily>Segoe UI</FontFamily>
                                                                     <FontSize>8pt</FontSize>
@@ -1777,6 +1777,7 @@
                                                             <PaddingRight>5pt</PaddingRight>
                                                           </Style>
                                                         </Textbox>
+                                                        <rd:Selected>true</rd:Selected>
                                                       </CellContents>
                                                     </TablixCell>
                                                     <TablixCell>
@@ -2043,7 +2044,7 @@
                                                             <Paragraph>
                                                               <TextRuns>
                                                                 <TextRun>
-                                                                  <Value>=Fields!Quantity_AssemblyLine.Value</Value>
+                                                                  <Value>=Fields!QuantityPer_AssemblyLine.Value</Value>
                                                                   <Style>
                                                                     <FontFamily>Segoe UI</FontFamily>
                                                                     <FontSize>8pt</FontSize>
