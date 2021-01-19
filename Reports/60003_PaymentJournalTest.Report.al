@@ -1027,104 +1027,104 @@ report 60003 "Advaco Payment Journal - Test"
 
     local procedure CheckRecurringLine(GenJnlLine2: Record "Gen. Journal Line")
     begin
-        with GenJnlLine2 do
-            if GenJnlTemplate.Recurring then begin
-                if "Recurring Method" = "Recurring Method"::" " then
-                    AddError(StrSubstNo(Text002, FieldCaption("Recurring Method")));
-                if Format("Recurring Frequency") = '' then
-                    AddError(StrSubstNo(Text002, FieldCaption("Recurring Frequency")));
-                if "Bal. Account No." <> '' then
+        //with GenJnlLine2 do
+        if GenJnlTemplate.Recurring then begin
+            if GenJnlLine2."Recurring Method" = GenJnlLine2."Recurring Method"::" " then
+                AddError(StrSubstNo(Text002, GenJnlLine2.FieldCaption(GenJnlLine2."Recurring Method")));
+            if Format(GenJnlLine2."Recurring Frequency") = '' then
+                AddError(StrSubstNo(Text002, GenJnlLine2.FieldCaption(GenJnlLine2."Recurring Frequency")));
+            if GenJnlLine2."Bal. Account No." <> '' then
+                AddError(
+                  StrSubstNo(
+                    Text019,
+                    GenJnlLine2.FieldCaption(GenJnlLine2."Bal. Account No.")));
+            case GenJnlLine2."Recurring Method" of
+                GenJnlLine2."Recurring Method"::"V  Variable", GenJnlLine2."Recurring Method"::"RV Reversing Variable",
+              GenJnlLine2."Recurring Method"::"F  Fixed", GenJnlLine2."Recurring Method"::"RF Reversing Fixed":
+                    WarningIfZeroAmt("Gen. Journal Line");
+                GenJnlLine2."Recurring Method"::"B  Balance", GenJnlLine2."Recurring Method"::"RB Reversing Balance":
+                    WarningIfNonZeroAmt("Gen. Journal Line");
+            end;
+            if GenJnlLine2."Recurring Method".AsInteger() > GenJnlLine2."Recurring Method"::"V  Variable".AsInteger() then begin
+                if GenJnlLine2."Account Type" = GenJnlLine2."Account Type"::"Fixed Asset" then
                     AddError(
                       StrSubstNo(
-                        Text019,
-                        FieldCaption("Bal. Account No.")));
-                case "Recurring Method" of
-                    "Recurring Method"::"V  Variable", "Recurring Method"::"RV Reversing Variable",
-                  "Recurring Method"::"F  Fixed", "Recurring Method"::"RF Reversing Fixed":
-                        WarningIfZeroAmt("Gen. Journal Line");
-                    "Recurring Method"::"B  Balance", "Recurring Method"::"RB Reversing Balance":
-                        WarningIfNonZeroAmt("Gen. Journal Line");
-                end;
-                if "Recurring Method".AsInteger() > "Recurring Method"::"V  Variable".AsInteger() then begin
-                    if "Account Type" = "Account Type"::"Fixed Asset" then
-                        AddError(
-                          StrSubstNo(
-                            Text020,
-                            FieldCaption("Recurring Method"), "Recurring Method",
-                            FieldCaption("Account Type"), "Account Type"));
-                    if "Bal. Account Type" = "Bal. Account Type"::"Fixed Asset" then
-                        AddError(
-                          StrSubstNo(
-                            Text020,
-                            FieldCaption("Recurring Method"), "Recurring Method",
-                            FieldCaption("Bal. Account Type"), "Bal. Account Type"));
-                end;
-            end else begin
-                if "Recurring Method" <> "Recurring Method"::" " then
-                    AddError(StrSubstNo(Text009, FieldCaption("Recurring Method")));
-                if Format("Recurring Frequency") <> '' then
-                    AddError(StrSubstNo(Text009, FieldCaption("Recurring Frequency")));
+                        Text020,
+                        GenJnlLine2.FieldCaption(GenJnlLine2."Recurring Method"), GenJnlLine2."Recurring Method",
+                        GenJnlLine2.FieldCaption(GenJnlLine2."Account Type"), GenJnlLine2."Account Type"));
+                if GenJnlLine2."Bal. Account Type" = GenJnlLine2."Bal. Account Type"::"Fixed Asset" then
+                    AddError(
+                      StrSubstNo(
+                        Text020,
+                        GenJnlLine2.FieldCaption(GenJnlLine2."Recurring Method"), GenJnlLine2."Recurring Method",
+                        GenJnlLine2.FieldCaption(GenJnlLine2."Bal. Account Type"), GenJnlLine2."Bal. Account Type"));
             end;
+        end else begin
+            if GenJnlLine2."Recurring Method" <> GenJnlLine2."Recurring Method"::" " then
+                AddError(StrSubstNo(Text009, GenJnlLine2.FieldCaption(GenJnlLine2."Recurring Method")));
+            if Format(GenJnlLine2."Recurring Frequency") <> '' then
+                AddError(StrSubstNo(Text009, GenJnlLine2.FieldCaption(GenJnlLine2."Recurring Frequency")));
+        end;
     end;
 
     local procedure CheckAllocations(GenJnlLine2: Record "Gen. Journal Line")
     begin
-        with GenJnlLine2 do begin
-            if "Recurring Method" in
-               ["Recurring Method"::"B  Balance",
-                "Recurring Method"::"RB Reversing Balance"]
-            then begin
-                GenJnlAlloc.Reset();
-                GenJnlAlloc.SetRange("Journal Template Name", "Journal Template Name");
-                GenJnlAlloc.SetRange("Journal Batch Name", "Journal Batch Name");
-                GenJnlAlloc.SetRange("Journal Line No.", "Line No.");
-                if not GenJnlAlloc.FindFirst then
-                    AddError(Text061);
-            end;
-
+        //with GenJnlLine2 do begin
+        if GenJnlLine2."Recurring Method" in
+           [GenJnlLine2."Recurring Method"::"B  Balance",
+            GenJnlLine2."Recurring Method"::"RB Reversing Balance"]
+        then begin
             GenJnlAlloc.Reset();
-            GenJnlAlloc.SetRange("Journal Template Name", "Journal Template Name");
-            GenJnlAlloc.SetRange("Journal Batch Name", "Journal Batch Name");
-            GenJnlAlloc.SetRange("Journal Line No.", "Line No.");
-            GenJnlAlloc.SetFilter(Amount, '<>0');
-            if GenJnlAlloc.FindFirst then
-                if not GenJnlTemplate.Recurring then
-                    AddError(Text021)
-                else begin
-                    GenJnlAlloc.SetRange("Account No.", '');
-                    if GenJnlAlloc.FindFirst then
-                        AddError(
-                          StrSubstNo(
-                            Text022,
-                            GenJnlAlloc.FieldCaption("Account No."), GenJnlAlloc.Count));
-                end;
+            GenJnlAlloc.SetRange("Journal Template Name", GenJnlLine2."Journal Template Name");
+            GenJnlAlloc.SetRange("Journal Batch Name", GenJnlLine2."Journal Batch Name");
+            GenJnlAlloc.SetRange("Journal Line No.", GenJnlLine2."Line No.");
+            if not GenJnlAlloc.FindFirst then
+                AddError(Text061);
         end;
+
+        GenJnlAlloc.Reset();
+        GenJnlAlloc.SetRange("Journal Template Name", GenJnlLine2."Journal Template Name");
+        GenJnlAlloc.SetRange("Journal Batch Name", GenJnlLine2."Journal Batch Name");
+        GenJnlAlloc.SetRange("Journal Line No.", GenJnlLine2."Line No.");
+        GenJnlAlloc.SetFilter(Amount, '<>0');
+        if GenJnlAlloc.FindFirst then
+            if not GenJnlTemplate.Recurring then
+                AddError(Text021)
+            else begin
+                GenJnlAlloc.SetRange("Account No.", '');
+                if GenJnlAlloc.FindFirst then
+                    AddError(
+                      StrSubstNo(
+                        Text022,
+                        GenJnlAlloc.FieldCaption("Account No."), GenJnlAlloc.Count));
+            end;
+        //end;
     end;
 
     local procedure MakeRecurringTexts(var GenJnlLine2: Record "Gen. Journal Line")
     begin
-        with GenJnlLine2 do
-            if ("Posting Date" <> 0D) and ("Account No." <> '') and ("Recurring Method" <> "Recurring Method"::" ") then begin
-                Day := Date2DMY("Posting Date", 1);
-                Week := Date2DWY("Posting Date", 2);
-                Month := Date2DMY("Posting Date", 2);
-                MonthText := Format("Posting Date", 0, Text023);
-                AccountingPeriod.SetRange("Starting Date", 0D, "Posting Date");
-                if not AccountingPeriod.FindLast then
-                    AccountingPeriod.Name := '';
-                "Document No." :=
-                  DelChr(
-                    PadStr(
-                      StrSubstNo("Document No.", Day, Week, Month, MonthText, AccountingPeriod.Name),
-                      MaxStrLen("Document No.")),
-                    '>');
-                Description :=
-                  DelChr(
-                    PadStr(
-                      StrSubstNo(Description, Day, Week, Month, MonthText, AccountingPeriod.Name),
-                      MaxStrLen(Description)),
-                    '>');
-            end;
+        //with GenJnlLine2 do
+        if (GenJnlLine2."Posting Date" <> 0D) and (GenJnlLine2."Account No." <> '') and (GenJnlLine2."Recurring Method" <> GenJnlLine2."Recurring Method"::" ") then begin
+            Day := Date2DMY(GenJnlLine2."Posting Date", 1);
+            Week := Date2DWY(GenJnlLine2."Posting Date", 2);
+            Month := Date2DMY(GenJnlLine2."Posting Date", 2);
+            MonthText := Format(GenJnlLine2."Posting Date", 0, Text023);
+            AccountingPeriod.SetRange("Starting Date", 0D, GenJnlLine2."Posting Date");
+            if not AccountingPeriod.FindLast then
+                AccountingPeriod.Name := '';
+            GenJnlLine2."Document No." :=
+              DelChr(
+                PadStr(
+                  StrSubstNo(GenJnlLine2."Document No.", Day, Week, Month, MonthText, AccountingPeriod.Name),
+                  MaxStrLen(GenJnlLine2."Document No.")),
+                '>');
+            GenJnlLine2.Description :=
+              DelChr(
+                PadStr(
+                  StrSubstNo(GenJnlLine2.Description, Day, Week, Month, MonthText, AccountingPeriod.Name),
+                  MaxStrLen(GenJnlLine2.Description)),
+                '>');
+        end;
     end;
 
     local procedure CheckBalance()
@@ -1138,43 +1138,43 @@ report 60003 "Advaco Payment Journal - Test"
         NextGenJnlLine := "Gen. Journal Line";
         MakeRecurringTexts(NextGenJnlLine);
         "Gen. Journal Line" := GenJnlLine;
-        with GenJnlLine do
-            if not EmptyLine then begin
-                DocBalance := DocBalance + "Balance (LCY)";
-                DateBalance := DateBalance + "Balance (LCY)";
-                TotalBalance := TotalBalance + "Balance (LCY)";
-                if "Recurring Method".AsInteger() >= "Recurring Method"::"RF Reversing Fixed".AsInteger() then begin
-                    DocBalanceReverse := DocBalanceReverse + "Balance (LCY)";
-                    DateBalanceReverse := DateBalanceReverse + "Balance (LCY)";
-                    TotalBalanceReverse := TotalBalanceReverse + "Balance (LCY)";
-                end;
-                LastDocType := "Document Type";
-                LastDocNo := "Document No.";
-                LastDate := "Posting Date";
-                if TotalBalance = 0 then begin
-                    CurrentCustomerVendors := 0;
-                    VATEntryCreated := false;
-                end;
-                if GenJnlTemplate."Force Doc. Balance" then begin
-                    VATEntryCreated :=
-                      VATEntryCreated or
-                      (("Account Type" = "Account Type"::"G/L Account") and ("Account No." <> '') and
-                       ("Gen. Posting Type" in ["Gen. Posting Type"::Purchase, "Gen. Posting Type"::Sale])) or
-                      (("Bal. Account Type" = "Bal. Account Type"::"G/L Account") and ("Bal. Account No." <> '') and
-                       ("Bal. Gen. Posting Type" in ["Bal. Gen. Posting Type"::Purchase, "Bal. Gen. Posting Type"::Sale]));
-                    if (("Account Type" in ["Account Type"::Customer, "Account Type"::Vendor]) and
-                        ("Account No." <> '')) or
-                       (("Bal. Account Type" in ["Bal. Account Type"::Customer, "Bal. Account Type"::Vendor]) and
-                        ("Bal. Account No." <> ''))
-                    then
-                        CurrentCustomerVendors := CurrentCustomerVendors + 1;
-                    if (CurrentCustomerVendors > 1) and VATEntryCreated then
-                        AddError(
-                          StrSubstNo(
-                            Text024,
-                            "Document Type", "Document No.", "Posting Date"));
-                end;
+        //with GenJnlLine do
+        if not GenJnlLine.EmptyLine then begin
+            DocBalance := DocBalance + GenJnlLine."Balance (LCY)";
+            DateBalance := DateBalance + GenJnlLine."Balance (LCY)";
+            TotalBalance := TotalBalance + GenJnlLine."Balance (LCY)";
+            if GenJnlLine."Recurring Method".AsInteger() >= GenJnlLine."Recurring Method"::"RF Reversing Fixed".AsInteger() then begin
+                DocBalanceReverse := DocBalanceReverse + GenJnlLine."Balance (LCY)";
+                DateBalanceReverse := DateBalanceReverse + GenJnlLine."Balance (LCY)";
+                TotalBalanceReverse := TotalBalanceReverse + GenJnlLine."Balance (LCY)";
             end;
+            LastDocType := GenJnlLine."Document Type";
+            LastDocNo := GenJnlLine."Document No.";
+            LastDate := GenJnlLine."Posting Date";
+            if TotalBalance = 0 then begin
+                CurrentCustomerVendors := 0;
+                VATEntryCreated := false;
+            end;
+            if GenJnlTemplate."Force Doc. Balance" then begin
+                VATEntryCreated :=
+                  VATEntryCreated or
+                  ((GenJnlLine."Account Type" = GenJnlLine."Account Type"::"G/L Account") and (GenJnlLine."Account No." <> '') and
+                   (GenJnlLine."Gen. Posting Type" in [GenJnlLine."Gen. Posting Type"::Purchase, GenJnlLine."Gen. Posting Type"::Sale])) or
+                  ((GenJnlLine."Bal. Account Type" = GenJnlLine."Bal. Account Type"::"G/L Account") and (GenJnlLine."Bal. Account No." <> '') and
+                   (GenJnlLine."Bal. Gen. Posting Type" in [GenJnlLine."Bal. Gen. Posting Type"::Purchase, GenJnlLine."Bal. Gen. Posting Type"::Sale]));
+                if ((GenJnlLine."Account Type" in [GenJnlLine."Account Type"::Customer, GenJnlLine."Account Type"::Vendor]) and
+                    (GenJnlLine."Account No." <> '')) or
+                   ((GenJnlLine."Bal. Account Type" in [GenJnlLine."Bal. Account Type"::Customer, GenJnlLine."Bal. Account Type"::Vendor]) and
+                    (GenJnlLine."Bal. Account No." <> ''))
+                then
+                    CurrentCustomerVendors := CurrentCustomerVendors + 1;
+                if (CurrentCustomerVendors > 1) and VATEntryCreated then
+                    AddError(
+                      StrSubstNo(
+                        Text024,
+                        GenJnlLine."Document Type", GenJnlLine."Document No.", GenJnlLine."Posting Date"));
+            end;
+        end;
 
         with NextGenJnlLine do begin
             if (LastDate <> 0D) and (LastDocNo <> '') and

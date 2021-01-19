@@ -341,7 +341,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         {
             group(Payment)
             {
-                Visible = lSalesGroup;
+                Visible = lSalesGroup or lAccGroup;
 
                 group(CreditCardData)
                 {
@@ -394,6 +394,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                     field("Approval Code"; "Approval Code")
                     {
                         Caption = 'Approval Code';
+                        Visible = lAccGroup;
                         ApplicationArea = all;
                         Tooltip = 'Specified approval code';
                     }

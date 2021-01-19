@@ -2,7 +2,7 @@ codeunit 50006 Shipping
 {
     // version ADV
 
-    // ADV 12/16/2015
+    // ADV 12/16/2015 
     //   Corrected logic error on Open trigger with ApprovalCode for
     // 04/17/18
     //   Message about Saved Container before launching PAGE
@@ -94,6 +94,12 @@ codeunit 50006 Shipping
 
     procedure OpenForm();
     begin
+
+        // DEBUG: Comment for production
+        //WOD.Complete := false;
+        //WOD.Modify();
+        //Commit();
+
         WOD.RESET;
         WOD.SETCURRENTKEY(WOD."Work Order Master No.");
         WOD.SETRANGE(WOD."Detail Step", WOD."Detail Step"::SHP);

@@ -217,6 +217,9 @@ codeunit 50001 "Step Entry"
         WOD.SETCURRENTKEY(WOD."Work Order Master No.");
         WOD.SETRANGE(WOD."Work Order No.", WOS."Order No.");
         PAGE.RUNMODAL(50032, WOD);
+
+        if not Dialog.Confirm('Did BOL and Address Labels print?', false) then
+            exit;
         WOS.SETCURRENTKEY(WOS."Order No.", WOS."Line No.");
         WOS.SETRANGE(WOS."Order No.", WOD."Work Order No.");
         IF WOS.FIND('+') THEN BEGIN

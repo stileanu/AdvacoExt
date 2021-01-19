@@ -254,7 +254,7 @@ page 50032 "Work Order Vendor Shipping"
                     // 2021_01_11 Intelice Start
                     // Test for processed order
                     if Rec."Shipping Processed" then begin
-                        Message('Current Order %1 is already processed. You cannot ship it.');
+                        Message('Current Order %1 is already shipped.', Rec."Work Order No.");
                         exit;
                     end;
                     // 2021_01_11 Intelice End
@@ -271,10 +271,14 @@ page 50032 "Work Order Vendor Shipping"
                     if ("Vendor Name" = '') or ("Vendor Address" = '') or ("Vendor City" = '') or ("Vendor Zip" = '') then
                         Error('All the Shipping information isn''t entered, Please Contact Sales');
 
+                    // Update current record in the DB
+                    CurrPage.Update(true);
+
                     WOD.SetCurrentKey(WOD."Work Order No.");
                     WOD.SetRange(WOD."Work Order No.", "Work Order No.");
 
                     if WOD.Find('-') then begin
+                        NothingToShip := false;
                         if Confirm('Carrier is %1, Method is %2, \' +
                                    'Charge is %3, Account is %4, \' +
                                    'are these correct?', false, WOD."Vendor Carrier", WOD."Vendor Shipping Method",
@@ -294,14 +298,34 @@ page 50032 "Work Order Vendor Shipping"
                             UpdateWOS;
                             UpdateParts;
                             CreateBOLRecords;
-                            PrintBOL;
+                            //PrintBOL;
                         end;
                     end;
 
+                    // get the current record
+                    //Commit();
+                    Rec.Get(Rec."Work Order No.");
+
                     // 2021_01_11 Intelice Start
-                    // Mark current WOD as processed
-                    Rec."Shipping Processed" := true;
-                    Rec.Modify();
+                    // Reset WOS Status to Waiting
+                    /*
+                    WOS.SetCurrentKey(WOS."Order No.", WOS."Line No.");
+                    WOS.Reset();
+                    WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
+                    if WOS.Find('+') then begin
+                        if WOS.Status = WOS.Status::Complete then begin
+                            WOS.Status := WOS.Status::Waiting;
+                            WOS.Modify(false);
+                        end;
+                    end;
+                    */
+                    // Clean Complete Status on WOD to allow page to stay on
+                    if not NothingToShip then begin
+                        Rec.Complete := false;
+                        // Mark current WOD as processed
+                        Rec."Shipping Processed" := true;
+                        Rec.Modify();
+                    end;
                     // 2021_01_11 Intelice End
 
                     //CurrPage.Close;
@@ -315,21 +339,27 @@ page 50032 "Work Order Vendor Shipping"
         LabelsToPrint := 1;
     end;
 
+    trigger OnAfterGetRecord()
+    begin
+        NothingToShip := true;
+    end;
+
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
-        WorkOrderDetail.Reset;
-        WorkOrderDetail.SetCurrentKey("Work Order Master No.");
-        WorkOrderDetail.SetRange(WorkOrderDetail."Work Order Master No.", "Work Order Master No.");
-        if WorkOrderDetail.Find('-') then begin
-            repeat
-                WorkOrderDetail.Ship := false;
-                WorkOrderDetail.Modify;
-            //Commit;
-            until WorkOrderDetail.Next = 0;
-        end;
+        WorkOrderDetail.RESET;
+        WorkOrderDetail.SETCURRENTKEY("Work Order Master No.");
+        WorkOrderDetail.SETRANGE(WorkOrderDetail."Work Order Master No.", "Work Order Master No.");
+        IF WorkOrderDetail.FIND('-') THEN BEGIN
+            REPEAT
+                WorkOrderDetail.Ship := FALSE;
+                WorkOrderDetail.MODIFY;
+            ///COMMIT;
+            UNTIL WorkOrderDetail.NEXT = 0;
+        END;
     end;
 
     var
+        NothingToShip: Boolean;
         Window: Dialog;
         WorkOrderDetail: Record WorkOrderDetail;
         Customer: Record Customer;
@@ -464,15 +494,16 @@ page 50032 "Work Order Vendor Shipping"
                 //Ok := true;
                 Exit;
         //end else begin
-        BOL2.SetRange("Bill of Lading", Rec."Bill of Lading");
+        BOL2.Reset;
+        BOL2.SetRange("Bill of Lading", Rec."Vendor Bill of Lading");
         if not BOL2.FindFirst() then
-            Error('Cannot find BOL %1', Rec."Bill of Lading");
+            Error('Cannot find BOL %1', Rec."Vendor Bill of Lading");
+        ///--! Report
         BOL2."BOL Printed" := false;
         BOL2.Modify(false);
-        ///--! Report
         REPORT.RunModal(50016, false, false, BOL2);               // BOL Document Print 
         BOL2."BOL Printed" := true;
-        BOL2.Modify;
+        BOL2.Modify(false);
         /*
         end else begin
             BOL2.SetRange(BOL2."Bill of Lading", BOL2."Bill of Lading");
@@ -498,10 +529,13 @@ page 50032 "Work Order Vendor Shipping"
     end;
 
     procedure PrintLabels()
+    var
+        LabelsPrinted: Boolean;
     begin
-        BOL2.SetRange("Bill of Lading", Rec."Bill of Lading");
+        BOL2.Reset();
+        BOL2.SetRange("Bill of Lading", Rec."Vendor Bill of Lading");
         if not BOL2.FindFirst() then
-            Error('Cannot find BOL %1', Rec."Bill of Lading");
+            Error('Cannot find BOL %1', Rec."Vendor Bill of Lading");
         BOL2."Label Printed" := false;
         BOL2.Modify(false);
 
@@ -514,12 +548,14 @@ page 50032 "Work Order Vendor Shipping"
                 LabelCount := LabelCount - 1;
                 ///--! Report
                 REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
-            end;
-            until LabelCount = 0;
-            BOL2."Label Printed" := true;
+            end until LabelCount = 0;
+            LabelsPrinted := true;
         end else
-            BOL2."Label Printed" := false;
+            LabelsPrinted := false;
+        BOL2.Get(Rec."Vendor Bill of Lading");
+        BOL2."Label Printed" := LabelsPrinted;
         BOL2.Modify;
+
         //ConfirmLabels;
     end;
 

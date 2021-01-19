@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="AgentName__________Method_">
+          <DataField>AgentName__________Method_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Ship_To_Name_">
+          <DataField>Bill_of_Lading__Ship_To_Name_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Ship_To_Address_">
+          <DataField>Bill_of_Lading__Ship_To_Address_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Shipment_Date_">
+          <DataField>Bill_of_Lading__Shipment_Date_</DataField>
+        </Field>
+        <Field Name="ShipTo">
+          <DataField>ShipTo</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading_Attention">
+          <DataField>Bill_of_Lading_Attention</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Bill_of_Lading_">
+          <DataField>Bill_of_Lading__Bill_of_Lading_</DataField>
+        </Field>
+        <Field Name="ShipToAd2">
+          <DataField>ShipToAd2</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Shipping_Charge_">
+          <DataField>Bill_of_Lading__Shipping_Charge_</DataField>
+        </Field>
+        <Field Name="ATTN__">
+          <DataField>ATTN__</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Shipping_Account_">
+          <DataField>Bill_of_Lading__Shipping_Account_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading___Phone_No__">
+          <DataField>Bill_of_Lading___Phone_No__</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Container_Quantity_">
+          <DataField>Bill_of_Lading__Container_Quantity_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Container_Type_">
+          <DataField>Bill_of_Lading__Container_Type_</DataField>
+        </Field>
+        <Field Name="POWER_VACUUM_PUMPS_PARTS_OIL_">
+          <DataField>POWER_VACUUM_PUMPS_PARTS_OIL_</DataField>
+        </Field>
+        <Field Name="FORMAT__Shipping_Weight____________Lbs__">
+          <DataField>FORMAT__Shipping_Weight____________Lbs__</DataField>
+        </Field>
+        <Field Name="V085_">
+          <DataField>V085_</DataField>
+        </Field>
+        <Field Name="Collect">
+          <DataField>Collect</DataField>
+        </Field>
+        <Field Name="FS_______Work_Order_No__">
+          <DataField>FS_______Work_Order_No__</DataField>
+        </Field>
+        <Field Name="PO______PO">
+          <DataField>PO______PO</DataField>
+        </Field>
+        <Field Name="Qty__">
+          <DataField>Qty__</DataField>
+        </Field>
+        <Field Name="Field_Service_Parts_Shipment__Qty__Shipped_">
+          <DataField>Field_Service_Parts_Shipment__Qty__Shipped_</DataField>
+        </Field>
+        <Field Name="Field_Service_Parts_Shipment__Qty__Shipped_Format">
+          <DataField>Field_Service_Parts_Shipment__Qty__Shipped_Format</DataField>
+        </Field>
+        <Field Name="Field_Service_Parts_Shipment__Part_No__">
+          <DataField>Field_Service_Parts_Shipment__Part_No__</DataField>
+        </Field>
+        <Field Name="Field_Service_Parts_Shipment_Description">
+          <DataField>Field_Service_Parts_Shipment_Description</DataField>
+        </Field>
+        <Field Name="Field_Service_Parts_Shipment__Serial_No__">
+          <DataField>Field_Service_Parts_Shipment__Serial_No__</DataField>
+        </Field>
+        <Field Name="Field_Service_Parts_Shipment_Bill_of_Lading">
+          <DataField>Field_Service_Parts_Shipment_Bill_of_Lading</DataField>
+        </Field>
+        <Field Name="Field_Service_Parts_Shipment_Work_Order_No_">
+          <DataField>Field_Service_Parts_Shipment_Work_Order_No_</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

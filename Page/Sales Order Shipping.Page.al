@@ -190,6 +190,8 @@ page 50060 "Sales Order Shipping"
                         Message('Current Order %1 is already processed. You cannot process it.');
                         exit;
                     end;
+                    if Rec."Bill of Lading" <> 0 then
+                        Error('Order %1 was already processed for shipping.', Rec."No.");
                     // 2021_01_11 Intelice End
 
                     if "Your Reference" = '' then
@@ -221,6 +223,7 @@ page 50060 "Sales Order Shipping"
 
                     QtyOil := 0;
                     SalesSetup.Get;
+                    CurrPage.Update(true);
 
                     //99999
                     // Check for Serial No for Pumps
@@ -416,32 +419,37 @@ page 50060 "Sales Order Shipping"
                         end;
                     end;
 
-                    BOL2.Init;
-                    BOL2."Bill of Lading" := BLInteger;
-                    BOL2."Order No." := "No.";
-                    BOL2."PO No." := "Your Reference";
-                    BOL2.Customer := "Sell-to Customer No.";
-                    BOL2."Ship To Name" := "Ship-to Name";
-                    BOL2."Ship To Address" := "Ship-to Address";
-                    BOL2."Ship To Address2" := "Ship-to Address 2";
-                    BOL2."Ship To City" := "Ship-to City";
-                    BOL2."Ship To State" := "Ship-to County";
-                    BOL2."Ship To Zip Code" := "Ship-to Post Code";
-                    BOL2.Attention := "Ship-to Contact";
-                    BOL2."Phone No." := "Phone No.";
-                    BOL2."Shipping Weight" := ShippingWeight;
-                    BOL2."Container Quantity" := ContainerQuantity;
-                    BOL2."Container Type" := Ship.ContainerToBOLContainer(ContainerType);
-                    BOL2.Employee := Shipper;
-                    BOL2."Shipment Date" := Today;
-                    BOL2.Carrier := "Shipping Agent Code";
-                    BOL2."Shipping Method" := "Shipment Method Code";
-                    BOL2."Shipping Charge" := Ship.ShipChrgToBOLShipChrg("Shipping Charge");
-                    BOL2."Shipping Account" := "Shipping Account";
-                    BOL2."Label Quantity" := LabelsToPrint;
-                    BOL2.Insert;
+                    Rec.Get(Rec."No.");
 
-                    "Bill of Lading" := BOL2."Bill of Lading";
+                    if Rec."Bill of Lading" <> 0 then begin
+                        BOL2.Init;
+                        BOL2."Bill of Lading" := BLInteger;
+                        BOL2."Order No." := "No.";
+                        BOL2."PO No." := "Your Reference";
+                        BOL2.Customer := "Sell-to Customer No.";
+                        BOL2."Ship To Name" := "Ship-to Name";
+                        BOL2."Ship To Address" := "Ship-to Address";
+                        BOL2."Ship To Address2" := "Ship-to Address 2";
+                        BOL2."Ship To City" := "Ship-to City";
+                        BOL2."Ship To State" := "Ship-to County";
+                        BOL2."Ship To Zip Code" := "Ship-to Post Code";
+                        BOL2.Attention := "Ship-to Contact";
+                        BOL2."Phone No." := "Phone No.";
+                        BOL2."Shipping Weight" := ShippingWeight;
+                        BOL2."Container Quantity" := ContainerQuantity;
+                        BOL2."Container Type" := Ship.ContainerToBOLContainer(ContainerType);
+                        BOL2.Employee := Shipper;
+                        BOL2."Shipment Date" := Today;
+                        BOL2.Carrier := "Shipping Agent Code";
+                        BOL2."Shipping Method" := "Shipment Method Code";
+                        BOL2."Shipping Charge" := Ship.ShipChrgToBOLShipChrg("Shipping Charge");
+                        BOL2."Shipping Account" := "Shipping Account";
+                        BOL2."Label Quantity" := LabelsToPrint;
+                        BOL2.Insert;
+                    end else
+                        Error('Order %1 was already processed for shipping.', Rec."No.");
+
+                    Rec."Bill of Lading" := BOL2."Bill of Lading";
                     Modify;
                     ////Commit;
                     /*
@@ -910,7 +918,7 @@ page 50060 "Sales Order Shipping"
     procedure Reservation()
     begin
         // Reservation Entry
-        Commit;
+        //Commit;
         SalesLine.Reset;
         SalesLine.SetRange("Document Type", "Document Type");
         SalesLine.SetRange("Document No.", "No.");

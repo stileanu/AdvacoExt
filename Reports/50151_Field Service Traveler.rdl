@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DataSource">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString />
+      </ConnectionProperties>
+      <rd:SecurityType>None</rd:SecurityType>
+    </DataSource>
+  </DataSources>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <Height>2in</Height>
+        <Style />
+      </Body>
+      <Width>6.5in</Width>
+      <Page>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <Code>Public Function BlankZero(ByVal Value As Decimal)
+    if Value = 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankPos(ByVal Value As Decimal)
+    if Value &gt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankZeroAndPos(ByVal Value As Decimal)
+    if Value &gt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNeg(ByVal Value As Decimal)
+    if Value &lt; 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+
+Public Function BlankNegAndZero(ByVal Value As Decimal)
+    if Value &lt;= 0 then
+        Return ""
+    end if
+    Return Value
+End Function
+</Code>
+  <Language>=User!Language</Language>
+  <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>0eeb6585-38ae-40f1-885b-8d50088d51b4</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Field_Service_Attention">
+          <DataField>Field_Service_Attention</DataField>
+        </Field>
+        <Field Name="Field_Service__Phone_No__">
+          <DataField>Field_Service__Phone_No__</DataField>
+        </Field>
+        <Field Name="BillTo">
+          <DataField>BillTo</DataField>
+        </Field>
+        <Field Name="ShipTo">
+          <DataField>ShipTo</DataField>
+        </Field>
+        <Field Name="Field_Service__Customer_Address_1_">
+          <DataField>Field_Service__Customer_Address_1_</DataField>
+        </Field>
+        <Field Name="Field_Service__Ship_To_Address_1_">
+          <DataField>Field_Service__Ship_To_Address_1_</DataField>
+        </Field>
+        <Field Name="BillToAd2">
+          <DataField>BillToAd2</DataField>
+        </Field>
+        <Field Name="ShipToAd2">
+          <DataField>ShipToAd2</DataField>
+        </Field>
+        <Field Name="Field_Service__Customer_Name_">
+          <DataField>Field_Service__Customer_Name_</DataField>
+        </Field>
+        <Field Name="Field_Service__Ship_To_Name_">
+          <DataField>Field_Service__Ship_To_Name_</DataField>
+        </Field>
+        <Field Name="Field_Service__Date_Ordered_">
+          <DataField>Field_Service__Date_Ordered_</DataField>
+        </Field>
+        <Field Name="Field_Service_Customer">
+          <DataField>Field_Service_Customer</DataField>
+        </Field>
+        <Field Name="Field_Service__Field_Service_No__">
+          <DataField>Field_Service__Field_Service_No__</DataField>
+        </Field>
+        <Field Name="Field_Service_Description">
+          <DataField>Field_Service_Description</DataField>
+        </Field>
+        <Field Name="Attention_Caption">
+          <DataField>Attention_Caption</DataField>
+        </Field>
+        <Field Name="Phone_No__Caption">
+          <DataField>Phone_No__Caption</DataField>
+        </Field>
+        <Field Name="Ship_To_Customer_Caption">
+          <DataField>Ship_To_Customer_Caption</DataField>
+        </Field>
+        <Field Name="Bill_To_Customer_Caption">
+          <DataField>Bill_To_Customer_Caption</DataField>
+        </Field>
+        <Field Name="Date_Ordered_Caption">
+          <DataField>Date_Ordered_Caption</DataField>
+        </Field>
+        <Field Name="Customer__Caption">
+          <DataField>Customer__Caption</DataField>
+        </Field>
+        <Field Name="F_S__Caption">
+          <DataField>F_S__Caption</DataField>
+        </Field>
+        <Field Name="FIELD_SERVICE_________Caption">
+          <DataField>FIELD_SERVICE_________Caption</DataField>
+        </Field>
+        <Field Name="Service_Description_Caption">
+          <DataField>Service_Description_Caption</DataField>
+        </Field>
+        <Field Name="Technician_Service_Notes_Caption">
+          <DataField>Technician_Service_Notes_Caption</DataField>
+        </Field>
+        <Field Name="Customer_Signature_Caption">
+          <DataField>Customer_Signature_Caption</DataField>
+        </Field>
+        <Field Name="Date_Caption">
+          <DataField>Date_Caption</DataField>
+        </Field>
+        <Field Name="Customer_hereby_acknowledges_satisfactory_completion_of_work_as_required_Caption">
+          <DataField>Customer_hereby_acknowledges_satisfactory_completion_of_work_as_required_Caption</DataField>
+        </Field>
+        <Field Name="Technician_Name_Caption">
+          <DataField>Technician_Name_Caption</DataField>
+        </Field>
+        <Field Name="Date_Caption_Control36">
+          <DataField>Date_Caption_Control36</DataField>
+        </Field>
+        <Field Name="Parts__Part_No__">
+          <DataField>Parts__Part_No__</DataField>
+        </Field>
+        <Field Name="Parts_Description">
+          <DataField>Parts_Description</DataField>
+        </Field>
+        <Field Name="Parts__Quoted_Quantity_">
+          <DataField>Parts__Quoted_Quantity_</DataField>
+        </Field>
+        <Field Name="Parts__Quoted_Quantity_Format">
+          <DataField>Parts__Quoted_Quantity_Format</DataField>
+        </Field>
+        <Field Name="Parts__Pulled_Quantity_">
+          <DataField>Parts__Pulled_Quantity_</DataField>
+        </Field>
+        <Field Name="Parts__Pulled_Quantity_Format">
+          <DataField>Parts__Pulled_Quantity_Format</DataField>
+        </Field>
+        <Field Name="EmptyString">
+          <DataField>EmptyString</DataField>
+        </Field>
+        <Field Name="Quantity_DeliveredCaption">
+          <DataField>Quantity_DeliveredCaption</DataField>
+        </Field>
+        <Field Name="Quantity_QuotedCaption">
+          <DataField>Quantity_QuotedCaption</DataField>
+        </Field>
+        <Field Name="DescriptionCaption">
+          <DataField>DescriptionCaption</DataField>
+        </Field>
+        <Field Name="Part_No_Caption">
+          <DataField>Part_No_Caption</DataField>
+        </Field>
+        <Field Name="Quantity_UsedCaption">
+          <DataField>Quantity_UsedCaption</DataField>
+        </Field>
+        <Field Name="Parts_Work_Order_No_">
+          <DataField>Parts_Work_Order_No_</DataField>
+        </Field>
+        <Field Name="Parts_Part_Type">
+          <DataField>Parts_Part_Type</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
+</Report>

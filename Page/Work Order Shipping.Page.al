@@ -31,6 +31,12 @@ page 50033 "Work Order Shipping"
             group(Control1220060011)
             {
                 ShowCaption = false;
+
+                /*field("Shipping Processed";"Shipping Processed")
+                {
+                    ShowCaption = false;
+                    Visible = false;
+                }*/
                 field(ShipmentWeight; ShipmentWeight)
                 {
                     ApplicationArea = All;
@@ -200,6 +206,9 @@ page 50033 "Work Order Shipping"
                 Visible = false;
 
                 trigger OnAction()
+                var
+                    WODCorrect: Record WorkOrderDetail;
+
                 begin
                     //HEF REMOVED BECAUSE SHOULDN'T NEED
 
@@ -228,6 +237,18 @@ page 50033 "Work Order Shipping"
                        UNTIL BOL3.NEXT = 0;
                       END;
                     END;
+                    
+                    WODCorrect.Get('6817001');
+                    WODCorrect.Complete := false;
+                    WODCorrect."Shipping Processed" := false;
+                    WODCorrect.Modify(false);
+
+                    WODCorrect.Get('6819101');
+                    WODCorrect.Complete := false;
+                    WODCorrect."Shipping Processed" := false;
+                    WODCorrect.Modify(false);
+
+                    CurrPage.Close();
                     */
 
                 end;
@@ -317,7 +338,7 @@ page 50033 "Work Order Shipping"
                     // 2021_01_11 Intelice Start
                     // Test for processed order
                     if Rec."Shipping Processed" then begin
-                        Message('Current Order %1 is already processed. You cannot process it.');
+                        Message('Current Order %1 is already processed. You cannot process it.', Rec."Work Order No.");
                         exit;
                     end;
                     // 2021_01_11 Intelice End
@@ -340,6 +361,9 @@ page 50033 "Work Order Shipping"
                         Error('Shipping Time must be entered.');
 
                     SalesLineNo := 0;
+
+                    // Update current record in the DB
+                    CurrPage.Update(true);
 
                     WOD.SetCurrentKey(WOD."Work Order No.");
                     WOD.SetRange(WOD."Work Order Master No.", WOM."Work Order Master No.");
@@ -373,10 +397,30 @@ page 50033 "Work Order Shipping"
 
                     URCheck;
 
+                    // get the current record
+                    //Commit();
+                    Rec.Get(Rec."Work Order No.");
+
                     // 2021_01_11 Intelice Start
-                    // Mark current WOD as processed
-                    Rec."Shipping Processed" := true;
-                    Rec.Modify();
+                    // Reset WOS Status to Waiting
+                    /*
+                    WOS.SetCurrentKey(WOS."Order No.", WOS."Line No.");
+                    WOS.Reset();
+                    WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
+                    if WOS.Find('+') then begin
+                        if WOS.Status = WOS.Status::Complete then begin
+                            WOS.Status := WOS.Status::Waiting;
+                            WOS.Modify(false);
+                        end;
+                    end;
+                    */
+                    // Clean Complete Status on WOD to allow page to stay on, if something was processed
+                    if not NothingToShip then begin
+                        Rec.Complete := false;
+                        // Mark current WOD as processed
+                        Rec."Shipping Processed" := true;
+                        Rec.Modify();
+                    end;
                     // 2021_01_11 Intelice End
 
                     //CurrPage.Close;
@@ -390,6 +434,7 @@ page 50033 "Work Order Shipping"
         CalcFields("Detail Step");
         Instructions := false;
         NewInstruction := false;
+        NothingToShip := true;
 
         WOM.SetCurrentKey(WOM."Work Order Master No.");
         WOM.Get("Work Order Master No.");
@@ -486,16 +531,27 @@ page 50033 "Work Order Shipping"
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
-        WorkOrderDetail.Reset;
-        WorkOrderDetail.SetCurrentKey("Work Order Master No.");
-        WorkOrderDetail.SetRange(WorkOrderDetail."Work Order Master No.", "Work Order Master No.");
-        if WorkOrderDetail.Find('-') then begin
-            repeat
-                WorkOrderDetail.Ship := false;
-                WorkOrderDetail.Modify;
-            //Commit;
-            until WorkOrderDetail.Next = 0;
-        end;
+
+        if not Dialog.Confirm('Is this order completed?', false) then
+            if Dialog.Confirm('Do you want to close this page without completing the order?', false) then begin
+                WorkOrderDetail.Reset;
+                WorkOrderDetail.SetCurrentKey("Work Order Master No.");
+                WorkOrderDetail.SetRange(WorkOrderDetail."Work Order Master No.", "Work Order Master No.");
+                if WorkOrderDetail.Find('-') then begin
+                    repeat
+                        WorkOrderDetail.Ship := false;
+                        WorkOrderDetail.Modify;
+                    //Commit;
+                    until WorkOrderDetail.Next = 0;
+                end;
+                exit(true);
+
+            end else
+                exit(false);
+
+        Rec.Complete := true;
+        Rec.Modify();
+        exit(true);
     end;
 
     var
@@ -577,6 +633,8 @@ page 50033 "Work Order Shipping"
         NonCopperVisible: Boolean;
         NonCopperMessage: Label 'Blank';
         ItemLedgEntryType: Enum "Item Ledger Entry Type";
+        ExitBool: Boolean;
+        NothingToShip: Boolean;
 
     procedure URCheck()
     begin
@@ -586,6 +644,7 @@ page 50033 "Work Order Shipping"
         Charge := false;
         Warranty := false;
         NonWarranty := false;
+        NothingToShip := true;
 
         if WOD.Find('-') then begin
             repeat
@@ -594,6 +653,7 @@ page 50033 "Work Order Shipping"
                 else
                     R := true;
             until WOD.Next = 0;
+            NothingToShip := false;
         end;
 
         if UR and R then
@@ -682,8 +742,8 @@ page 50033 "Work Order Shipping"
                     CreateShippingLine;
                     Reservation; // COMMIT included!
                     CreateBOLRecords;
-                    PrintBOL; // another COMMIT
-                    PrintLabels;
+                    //PrintBOL; // another COMMIT
+                    //PrintLabels;
                 end else begin
                     ZeroChargeRepairable;
                 end;
@@ -720,8 +780,8 @@ page 50033 "Work Order Shipping"
             UpdateWOS;
         until WOD.Next = 0;
         CreateBOLRecords;
-        PrintBOL;
-        PrintLabels;
+        //PrintBOL;
+        //PrintLabels;
     end;
 
     procedure WarrantyShip()
@@ -768,8 +828,8 @@ page 50033 "Work Order Shipping"
                     UpdateWOS;
                 until WOD.Next = 0;
                 CreateBOLRecords;
-                PrintBOL;
-                PrintLabels;
+                //PrintBOL;
+                //PrintLabels;
             end;
         end;
     end;
@@ -803,8 +863,8 @@ page 50033 "Work Order Shipping"
 
                 CreateShippingLine;
                 CreateBOLRecords;
-                PrintBOL;
-                PrintLabels;
+                //PrintBOL;
+                //PrintLabels;
             end;
         end;
     end;
@@ -832,8 +892,8 @@ page 50033 "Work Order Shipping"
                 until WOD.Next = 0;
 
                 CreateBOLRecords;
-                PrintBOL;
-                PrintLabels;
+                //PrintBOL;
+                //PrintLabels;
             end;
         end;
     end;
@@ -1082,6 +1142,11 @@ page 50033 "Work Order Shipping"
                 SalesLine."Unit Price" := Round(ShopLabor + AdjRemainder);
                 SalesLine.Validate("Unit Price");
 
+                /// 1/18/2021 ICE Start 
+                SalesLine."Tax Area Code" := '';
+                SalesLine."Tax Liable" := false;
+                /// 1/18/2021 ICE End
+
                 IF WOD."Order Type" = WOD."Order Type"::Warranty THEN
                     SalesLine."Commission Calculated" := FALSE
                 ELSE
@@ -1161,6 +1226,11 @@ page 50033 "Work Order Shipping"
                 SalesLine.Description := 'Labor ';
                 SalesLine."Unit Price" := Round(WOD."Original Labor Price" + AdjRemainder);
                 SalesLine.Validate("Unit Price");
+
+                /// 1/18/2021 ICE Start 
+                SalesLine."Tax Area Code" := '';
+                SalesLine."Tax Liable" := false;
+                /// 1/18/2021 ICE End
 
                 IF WOD."Order Type" = WOD."Order Type"::Warranty THEN
                     SalesLine."Commission Calculated" := FALSE
@@ -1285,9 +1355,11 @@ page 50033 "Work Order Shipping"
                 /// Set Serial No
                 /// 
                 /// Create Reservation Entry for Parts
-                if not WOD.SetSerialNo_(37, SalesLine, PurchLine, SerialNo) then
-                    Error('Serial No. %1 not saved for the line %2.', SerialNo, SalesLine."Line No.");
-                ////Commit;                PartsCost := PartsCost + WOP."Total Quote Cost";
+                if SerialNo <> '' then
+                    if not WOD.SetSerialNo_(37, SalesLine, PurchLine, SerialNo) then
+                        Error('Serial No. %1 not saved for the line %2.', SerialNo, SalesLine."Line No.");
+                ////Commit;                
+                PartsCost := PartsCost + WOP."Total Quote Cost";
                 WOP."In-Process Quantity" := 0;
                 WOP.Modify;
             until WOP.Next = 0;
@@ -1525,6 +1597,7 @@ page 50033 "Work Order Shipping"
         BOL2."Label Quantity" := LabelsToPrint;
         BOL2."RMA No." := WOD."RMA No.";
         BOL2.Insert;
+
     end;
 
     procedure PrintBOL()
@@ -1536,6 +1609,7 @@ page 50033 "Work Order Shipping"
                 //Ok := true;
                 Exit;
         //end else begin
+        BOL2.Reset;
         BOL2.SetRange("Bill of Lading", Rec."Bill of Lading");
         if not BOL2.FindFirst() then
             Error('Cannot find BOL %1', Rec."Bill of Lading");
@@ -1543,6 +1617,7 @@ page 50033 "Work Order Shipping"
         REPORT.RunModal(50016, false, false, BOL2);               // BOL Document Print 
         BOL2."BOL Printed" := true;
         BOL2.Modify;
+        CurrPage.Update();
 
         //end;
         /*
@@ -1572,8 +1647,11 @@ page 50033 "Work Order Shipping"
     end;
 
     procedure PrintLabels()
+    var
+        LabelsPrinted: Boolean;
     begin
         LabelCount := LabelsToPrint;
+        BOL2.Reset();
         BOL2.SetRange("Bill of Lading", Rec."Bill of Lading");
         if not BOL2.FindFirst() then
             Error('Cannot find BOL %1', Rec."Bill of Lading");
@@ -1586,12 +1664,14 @@ page 50033 "Work Order Shipping"
                 LabelCount := LabelCount - 1;
                 ///--! Report
                 REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
-            end;
-            until LabelCount = 0;
-            BOL2."Label Printed" := true;
+            end until LabelCount = 0;
+            LabelsPrinted := true;
         end else
-            BOL2."Label Printed" := false;
+            LabelsPrinted := false;
+        BOL2.Get(Rec."Bill of Lading");
+        BOL2."Label Printed" := LabelsPrinted;
         BOL2.Modify;
+
         //ConfirmLabels;
     end;
 

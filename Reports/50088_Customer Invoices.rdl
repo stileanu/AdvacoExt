@@ -11,175 +11,6 @@
       <rd:DataSourceID>a8a60526-727a-41cf-ab78-c62ab994f17d</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="RepAddress_4_">
-          <DataField>RepAddress_4_</DataField>
-        </Field>
-        <Field Name="RepAddress_3_">
-          <DataField>RepAddress_3_</DataField>
-        </Field>
-        <Field Name="RepAddress_2_">
-          <DataField>RepAddress_2_</DataField>
-        </Field>
-        <Field Name="RepAddress_1_">
-          <DataField>RepAddress_1_</DataField>
-        </Field>
-        <Field Name="ThisPeriodSales">
-          <DataField>ThisPeriodSales</DataField>
-        </Field>
-        <Field Name="ThisPeriodSalesFormat">
-          <DataField>ThisPeriodSalesFormat</DataField>
-        </Field>
-        <Field Name="PeriodText">
-          <DataField>PeriodText</DataField>
-        </Field>
-        <Field Name="CUSTOMER_INVOICESCaption">
-          <DataField>CUSTOMER_INVOICESCaption</DataField>
-        </Field>
-        <Field Name="Page_Caption">
-          <DataField>Page_Caption</DataField>
-        </Field>
-        <Field Name="Customer_No_">
-          <DataField>Customer_No_</DataField>
-        </Field>
-        <Field Name="Customer_Date_Filter">
-          <DataField>Customer_Date_Filter</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header__No__">
-          <DataField>Sales_Invoice_Header__No__</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header__Posting_Date_">
-          <DataField>Sales_Invoice_Header__Posting_Date_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header__Your_Reference_">
-          <DataField>Sales_Invoice_Header__Your_Reference_</DataField>
-        </Field>
-        <Field Name="BillToAddress_1_">
-          <DataField>BillToAddress_1_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_1_">
-          <DataField>ShipToAddress_1_</DataField>
-        </Field>
-        <Field Name="BillToAddress_2_">
-          <DataField>BillToAddress_2_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_2_">
-          <DataField>ShipToAddress_2_</DataField>
-        </Field>
-        <Field Name="BillToAddress_3_">
-          <DataField>BillToAddress_3_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_3_">
-          <DataField>ShipToAddress_3_</DataField>
-        </Field>
-        <Field Name="BillToAddress_4_">
-          <DataField>BillToAddress_4_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_4_">
-          <DataField>ShipToAddress_4_</DataField>
-        </Field>
-        <Field Name="Bill_To__">
-          <DataField>Bill_To__</DataField>
-        </Field>
-        <Field Name="Ship_To__">
-          <DataField>Ship_To__</DataField>
-        </Field>
-        <Field Name="OrderNo">
-          <DataField>OrderNo</DataField>
-        </Field>
-        <Field Name="PO_No__Caption">
-          <DataField>PO_No__Caption</DataField>
-        </Field>
-        <Field Name="Date_Caption">
-          <DataField>Date_Caption</DataField>
-        </Field>
-        <Field Name="Order_No__Caption">
-          <DataField>Order_No__Caption</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header_Sell_to_Customer_No_">
-          <DataField>Sales_Invoice_Header_Sell_to_Customer_No_</DataField>
-        </Field>
-        <Field Name="Item_No__">
-          <DataField>Item_No__</DataField>
-        </Field>
-        <Field Name="Description_">
-          <DataField>Description_</DataField>
-        </Field>
-        <Field Name="Quantity_">
-          <DataField>Quantity_</DataField>
-        </Field>
-        <Field Name="Unit_Price_">
-          <DataField>Unit_Price_</DataField>
-        </Field>
-        <Field Name="Amount_">
-          <DataField>Amount_</DataField>
-        </Field>
-        <Field Name="Item_No___Control40">
-          <DataField>Item_No___Control40</DataField>
-        </Field>
-        <Field Name="Description__Control49">
-          <DataField>Description__Control49</DataField>
-        </Field>
-        <Field Name="Amount__Control57">
-          <DataField>Amount__Control57</DataField>
-        </Field>
-        <Field Name="LinePartNumber_Number_">
-          <DataField>LinePartNumber_Number_</DataField>
-        </Field>
-        <Field Name="LineDescription_Number__">
-          <DataField>LineDescription_Number__</DataField>
-        </Field>
-        <Field Name="LineUnitPrice_Number_">
-          <DataField>LineUnitPrice_Number_</DataField>
-        </Field>
-        <Field Name="LineUnitPrice_Number_Format">
-          <DataField>LineUnitPrice_Number_Format</DataField>
-        </Field>
-        <Field Name="LinePrice_Number_">
-          <DataField>LinePrice_Number_</DataField>
-        </Field>
-        <Field Name="LinePrice_Number_Format">
-          <DataField>LinePrice_Number_Format</DataField>
-        </Field>
-        <Field Name="LineQuantity_Number_">
-          <DataField>LineQuantity_Number_</DataField>
-        </Field>
-        <Field Name="LineQuantity_Number_Format">
-          <DataField>LineQuantity_Number_Format</DataField>
-        </Field>
-        <Field Name="LinePartNumber_Number__Control38">
-          <DataField>LinePartNumber_Number__Control38</DataField>
-        </Field>
-        <Field Name="LineDescription_Number__________LineDescription2_Number__">
-          <DataField>LineDescription_Number__________LineDescription2_Number__</DataField>
-        </Field>
-        <Field Name="LinePrice_Number__Control8">
-          <DataField>LinePrice_Number__Control8</DataField>
-        </Field>
-        <Field Name="LinePrice_Number__Control8Format">
-          <DataField>LinePrice_Number__Control8Format</DataField>
-        </Field>
-        <Field Name="TotalPrice">
-          <DataField>TotalPrice</DataField>
-        </Field>
-        <Field Name="TotalPriceFormat">
-          <DataField>TotalPriceFormat</DataField>
-        </Field>
-        <Field Name="Total_Amount_">
-          <DataField>Total_Amount_</DataField>
-        </Field>
-        <Field Name="Sales_Lines_Number">
-          <DataField>Sales_Lines_Number</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -2118,12 +1949,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -2163,4 +1988,173 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>d45a029f-0e18-4b24-afbd-2b63ff00d62b</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="RepAddress_4_">
+          <DataField>RepAddress_4_</DataField>
+        </Field>
+        <Field Name="RepAddress_3_">
+          <DataField>RepAddress_3_</DataField>
+        </Field>
+        <Field Name="RepAddress_2_">
+          <DataField>RepAddress_2_</DataField>
+        </Field>
+        <Field Name="RepAddress_1_">
+          <DataField>RepAddress_1_</DataField>
+        </Field>
+        <Field Name="ThisPeriodSales">
+          <DataField>ThisPeriodSales</DataField>
+        </Field>
+        <Field Name="ThisPeriodSalesFormat">
+          <DataField>ThisPeriodSalesFormat</DataField>
+        </Field>
+        <Field Name="PeriodText">
+          <DataField>PeriodText</DataField>
+        </Field>
+        <Field Name="CUSTOMER_INVOICESCaption">
+          <DataField>CUSTOMER_INVOICESCaption</DataField>
+        </Field>
+        <Field Name="Page_Caption">
+          <DataField>Page_Caption</DataField>
+        </Field>
+        <Field Name="Customer_No_">
+          <DataField>Customer_No_</DataField>
+        </Field>
+        <Field Name="Customer_Date_Filter">
+          <DataField>Customer_Date_Filter</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header__No__">
+          <DataField>Sales_Invoice_Header__No__</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header__Posting_Date_">
+          <DataField>Sales_Invoice_Header__Posting_Date_</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header__Your_Reference_">
+          <DataField>Sales_Invoice_Header__Your_Reference_</DataField>
+        </Field>
+        <Field Name="BillToAddress_1_">
+          <DataField>BillToAddress_1_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_1_">
+          <DataField>ShipToAddress_1_</DataField>
+        </Field>
+        <Field Name="BillToAddress_2_">
+          <DataField>BillToAddress_2_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_2_">
+          <DataField>ShipToAddress_2_</DataField>
+        </Field>
+        <Field Name="BillToAddress_3_">
+          <DataField>BillToAddress_3_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_3_">
+          <DataField>ShipToAddress_3_</DataField>
+        </Field>
+        <Field Name="BillToAddress_4_">
+          <DataField>BillToAddress_4_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_4_">
+          <DataField>ShipToAddress_4_</DataField>
+        </Field>
+        <Field Name="Bill_To__">
+          <DataField>Bill_To__</DataField>
+        </Field>
+        <Field Name="Ship_To__">
+          <DataField>Ship_To__</DataField>
+        </Field>
+        <Field Name="OrderNo">
+          <DataField>OrderNo</DataField>
+        </Field>
+        <Field Name="PO_No__Caption">
+          <DataField>PO_No__Caption</DataField>
+        </Field>
+        <Field Name="Date_Caption">
+          <DataField>Date_Caption</DataField>
+        </Field>
+        <Field Name="Order_No__Caption">
+          <DataField>Order_No__Caption</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header_Sell_to_Customer_No_">
+          <DataField>Sales_Invoice_Header_Sell_to_Customer_No_</DataField>
+        </Field>
+        <Field Name="Item_No__">
+          <DataField>Item_No__</DataField>
+        </Field>
+        <Field Name="Description_">
+          <DataField>Description_</DataField>
+        </Field>
+        <Field Name="Quantity_">
+          <DataField>Quantity_</DataField>
+        </Field>
+        <Field Name="Unit_Price_">
+          <DataField>Unit_Price_</DataField>
+        </Field>
+        <Field Name="Amount_">
+          <DataField>Amount_</DataField>
+        </Field>
+        <Field Name="Item_No___Control40">
+          <DataField>Item_No___Control40</DataField>
+        </Field>
+        <Field Name="Description__Control49">
+          <DataField>Description__Control49</DataField>
+        </Field>
+        <Field Name="Amount__Control57">
+          <DataField>Amount__Control57</DataField>
+        </Field>
+        <Field Name="LinePartNumber_Number_">
+          <DataField>LinePartNumber_Number_</DataField>
+        </Field>
+        <Field Name="LineDescription_Number__">
+          <DataField>LineDescription_Number__</DataField>
+        </Field>
+        <Field Name="LineUnitPrice_Number_">
+          <DataField>LineUnitPrice_Number_</DataField>
+        </Field>
+        <Field Name="LineUnitPrice_Number_Format">
+          <DataField>LineUnitPrice_Number_Format</DataField>
+        </Field>
+        <Field Name="LinePrice_Number_">
+          <DataField>LinePrice_Number_</DataField>
+        </Field>
+        <Field Name="LinePrice_Number_Format">
+          <DataField>LinePrice_Number_Format</DataField>
+        </Field>
+        <Field Name="LineQuantity_Number_">
+          <DataField>LineQuantity_Number_</DataField>
+        </Field>
+        <Field Name="LineQuantity_Number_Format">
+          <DataField>LineQuantity_Number_Format</DataField>
+        </Field>
+        <Field Name="LinePartNumber_Number__Control38">
+          <DataField>LinePartNumber_Number__Control38</DataField>
+        </Field>
+        <Field Name="LineDescription_Number__________LineDescription2_Number__">
+          <DataField>LineDescription_Number__________LineDescription2_Number__</DataField>
+        </Field>
+        <Field Name="LinePrice_Number__Control8">
+          <DataField>LinePrice_Number__Control8</DataField>
+        </Field>
+        <Field Name="LinePrice_Number__Control8Format">
+          <DataField>LinePrice_Number__Control8Format</DataField>
+        </Field>
+        <Field Name="TotalPrice">
+          <DataField>TotalPrice</DataField>
+        </Field>
+        <Field Name="TotalPriceFormat">
+          <DataField>TotalPriceFormat</DataField>
+        </Field>
+        <Field Name="Total_Amount_">
+          <DataField>Total_Amount_</DataField>
+        </Field>
+        <Field Name="Sales_Lines_Number">
+          <DataField>Sales_Lines_Number</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
