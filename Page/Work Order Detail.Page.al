@@ -699,6 +699,21 @@ page 50002 "Work Order Detail"
     {
         area(Processing)
         {
+
+            action(Correct)
+            {
+                ApplicationArea = All;
+                Visible = lAccGroup;
+
+                trigger OnAction()
+                begin
+                    if "Shipping Processed" then begin
+                        Rec."Shipping Processed" := false;
+                        Rec."Vendor Shipping Processed" := true;
+                        rec.Modify();
+                    end;
+                end;
+            }
             action(FAR)
             {
                 // Potential Obsolite. It deals with Access DBs, no longer in use.

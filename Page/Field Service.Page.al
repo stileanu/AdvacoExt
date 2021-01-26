@@ -7,42 +7,39 @@ page 50150 "Field Service"
     {
         area(content)
         {
-            group(Control1220060058)
+            group(FSOrder)
             {
-                ShowCaption = false;
-                grid(Control1220060057)
+
+
+                field("Field Service No."; "Field Service No.")
                 {
-                    GridLayout = Rows;
-                    ShowCaption = false;
-                    group(Control1220060056)
-                    {
-                        ShowCaption = false;
-                        field("Field Service No."; "Field Service No.")
-                        {
-                            ApplicationArea = All;
-                            Editable = false;
-                        }
-                        field(Customer; Customer)
-                        {
-                            ApplicationArea = All;
-                            Editable = ControlsEditable;
-                        }
-                        field("Ship To Code"; "Ship To Code")
-                        {
-                            ApplicationArea = All;
-                            Editable = ControlsEditable;
-                        }
-                        field("Date Ordered"; "Date Ordered")
-                        {
-                            ApplicationArea = All;
-                            Caption = 'Order Date';
-                            Editable = false;
-                        }
-                    }
+                    ApplicationArea = All;
+                    Editable = false;
                 }
+                field(Customer; Customer)
+                {
+                    ApplicationArea = All;
+                    Editable = ControlsEditable;
+                }
+                field("Ship To Code"; "Ship To Code")
+                {
+                    ApplicationArea = All;
+                    Editable = ControlsEditable;
+                }
+                field("Date Ordered"; "Date Ordered")
+                {
+                    ApplicationArea = All;
+                    Caption = 'Order Date';
+                    Editable = false;
+                }
+
+
             }
             group(General)
             {
+
+
+
                 field("Customer Name"; "Customer Name")
                 {
                     ApplicationArea = All;
@@ -200,6 +197,7 @@ page 50150 "Field Service"
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
+                        OptionCaption = ' ,SERVICE,SALES,TURBO,ELECTRONIC,DRY,CRYO,INCOME FS';
                     }
                     field("Customer PO No."; "Customer PO No.")
                     {
@@ -518,7 +516,7 @@ page 50150 "Field Service"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Complete Order")
             {
@@ -526,7 +524,7 @@ page 50150 "Field Service"
                 Caption = 'Complete Order';
                 Promoted = true;
                 PromotedIsBig = true;
-
+                PromotedCategory = Process;
                 trigger OnAction()
                 begin
                     if Complete then
@@ -559,7 +557,7 @@ page 50150 "Field Service"
                 Caption = 'Traveler';
                 Promoted = true;
                 PromotedIsBig = true;
-
+                PromotedCategory = Report;
                 trigger OnAction()
                 begin
                     FS2 := Rec;
@@ -574,9 +572,10 @@ page 50150 "Field Service"
                 Caption = 'Envelope';
                 Promoted = true;
                 PromotedIsBig = true;
-
+                PromotedCategory = report;
                 trigger OnAction()
                 begin
+                    FS2 := Rec;
                     FS2.SetFilter("Field Service No.", "Field Service No.");
                     FS2.SetRecFilter;
                     REPORT.RunModal(50150, true, false, FS2);
@@ -588,7 +587,7 @@ page 50150 "Field Service"
                 Caption = 'Current &Status';
                 Promoted = true;
                 PromotedIsBig = true;
-
+                PromotedCategory = Process;
                 trigger OnAction()
                 begin
                     FS.SetRange(FS."Field Service No.", "Field Service No.");
@@ -597,6 +596,30 @@ page 50150 "Field Service"
             }
         }
     }
+
+    trigger OnOpenPage()
+    begin
+        ControlsEditable := true;  //ICE RSK 1/19/21 set it to true inititally
+        OrderAdjEditable := true;
+    end;
+
+    trigger OnAfterGetCurrRecord()  //ICE RSK 1/19/21
+    begin
+        if Complete then begin
+            ControlsEditable := false;
+        end else begin
+            ControlsEditable := true;
+        end;
+        if "Service Type" = "Service Type"::Unpaid then begin
+            "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+            OrderAdjEditable := false;
+        end else begin
+            if Complete then
+                OrderAdjEditable := false
+            else
+                OrderAdjEditable := true;
+        end;
+    end;
 
     trigger OnAfterGetRecord()
     begin

@@ -12,6 +12,9 @@ page 50052 "Inside Sales/Sales Rep Update"
     SourceTableView = SORTING("Document Type", "Document No.", "Customer No.")
                       WHERE("Document Type" = FILTER(Invoice | "Credit Memo"),
                             Amount = FILTER(<> 0));
+    UsageCategory = Tasks;
+    ApplicationArea = all;
+    Caption = 'Inside/Rep Correction';
 
     layout
     {
@@ -38,11 +41,23 @@ page 50052 "Inside Sales/Sales Rep Update"
                 {
                     ApplicationArea = All;
                     Editable = false;
+                    //TableRelation = customer."No." where("no." = field("Customer No."));
+                    trigger OnDrillDown()
+                    begin
+                        IF cust.get("Customer No.") then
+                            page.RunModal(page::"Customer Card", Cust);
+                    end;
                 }
                 field("Ship-to Code"; "Ship-to Code")
                 {
                     ApplicationArea = All;
                     Editable = false;
+                    trigger OnDrillDown()
+                    begin
+                        IF shiptoaddress.get("Customer No.", "Ship-To Code") then
+                            page.RunModal(page::"Ship-to Address", shiptoaddress);
+
+                    end;
                 }
                 field("Salesperson Code"; "Salesperson Code")
                 {
@@ -165,7 +180,7 @@ page 50052 "Inside Sales/Sales Rep Update"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             group("&Application")
             {
@@ -188,6 +203,8 @@ page 50052 "Inside Sales/Sales Rep Update"
                 Image = Navigate;
                 Promoted = true;
                 PromotedIsBig = true;
+                PromotedCategory = Process;
+
 
                 trigger OnAction()
                 begin
@@ -204,5 +221,7 @@ page 50052 "Inside Sales/Sales Rep Update"
         SalesInvoiceHeader: Record "Sales Invoice Header";
         SalesCrMemoHeader: Record "Sales Cr.Memo Header";
         Navigate: Page Navigate;
+        Cust: record customer;
+        shiptoaddress: Record "Ship-to Address";
 }
 

@@ -2,6 +2,10 @@ report 50020 "Sales Order Pick Ticket"
 {
     // 2011-05-26 ADV
     //   Modified CC Footer to be of Footer Type not TransFooter type
+
+    // 1/19/2021 ICE
+    //      Added code to set/get serial number from Item Tracking process
+
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50020_SalesOrderPickTicket.rdl';
     ApplicationArea = All;
@@ -228,8 +232,15 @@ report 50020 "Sales Order Pick Ticket"
                             Bin := Item."Shelf No.";
                     end;
 
-                    if not WOD.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, WO_Serial_No) then
-                        WO_Serial_No := ' ';
+                    /// 1/19/2021 ICE Start
+                    Clear(ReservEntry);
+                    TrackingSpecificationExists :=
+                        ReserveSalesLine.FindReservEntry("Sales Line", ReservEntry);
+                    if not TrackingSpecificationExists then
+                        //if not WOD.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, WO_Serial_No) then
+                        WO_Serial_No := ' '
+                    else
+                        WO_Serial_No := ReservEntry."Serial No.";
                 end;
             }
             dataitem("Sales Comment Line"; "Sales Comment Line")
@@ -312,6 +323,9 @@ report 50020 "Sales Order Pick Ticket"
     }
 
     var
+        ReservEntry: Record "Reservation Entry" temporary;
+        TrackingSpecificationExists: Boolean;
+        ReserveSalesLine: Codeunit "Sales Line-Reserve";
         NoteCapt: Integer;
         WO_Serial_No: Code[50];
         BillTo: Text[50];

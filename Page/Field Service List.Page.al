@@ -2,7 +2,11 @@ page 50151 "Field Service List"
 {
     Editable = false;
     PageType = List;
+    caption = 'Field Service List';
+    UsageCategory = Tasks;
+    ApplicationArea = all;
     SourceTable = FieldService;
+    CardPageId = 50150;
 
     layout
     {

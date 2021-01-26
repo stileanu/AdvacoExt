@@ -1,5 +1,8 @@
 report 50017 "SO Bill Of Lading"
 {
+    // 1/19/2021 ICE
+    //      Added code to set/get serial number from Item Tracking process
+
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50017_SOBillOfLading.rdl';
     UseSystemPrinter = false;
@@ -119,11 +122,16 @@ report 50017 "SO Bill Of Lading"
                                     ItemNo := "Sales Line"."Cross Reference Item"
                                 else
                                     ItemNo := "Sales Line"."No.";
-
-                                if not WorkOrder.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, SerialNo) then
+                                /// 1/19/2021 ICE Start
+                                Clear(ReservEntry);
+                                TrackingSpecificationExists :=
+                                    ReserveSalesLine.FindReservEntry("Sales Line", ReservEntry);
+                                if not TrackingSpecificationExists then
+                                    //if not WorkOrder.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, SerialNo) then
                                     Serial := ''
                                 else
-                                    Serial := 'SN#  ' + SerialNo;
+                                    Serial := 'SN#  ' + ReservEntry."Serial No.";
+                                /// 1/19/2021 ICE End
                             end else begin
                                 CurrReport.Skip;
                             end;
@@ -139,10 +147,16 @@ report 50017 "SO Bill Of Lading"
                             else
                                 ItemNo := "Sales Line"."No.";
 
-                            if not WorkOrder.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, SerialNo) then
+                            /// 1/19/2021 ICE Start
+                            Clear(ReservEntry);
+                            TrackingSpecificationExists :=
+                                ReserveSalesLine.FindReservEntry("Sales Line", ReservEntry);
+                            if not TrackingSpecificationExists then
+                                //if not WorkOrder.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, SerialNo) then
                                 Serial := ''
                             else
-                                Serial := 'SN#  ' + SerialNo;
+                                Serial := 'SN#  ' + ReservEntry."Serial No.";
+                            /// 1/19/2021 ICE End
                             //    IF "Sales Line"."Serial No." = '' THEN
                             //      Serial := ''
                             //    ELSE
@@ -236,6 +250,9 @@ report 50017 "SO Bill Of Lading"
     }
 
     var
+        ReservEntry: Record "Reservation Entry" temporary;
+        TrackingSpecificationExists: Boolean;
+        ReserveSalesLine: Codeunit "Sales Line-Reserve";
         ShipToAddress: Record "Ship-to Address";
         ShipToAd2: Text[50];
         ShipTo: Text[50];

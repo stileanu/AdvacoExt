@@ -935,6 +935,13 @@ page 50160 FinanceManagerRC
                     RunObject = page "Outside Sales Reps";
                     ToolTip = 'Entity ouside company that facilitate work with a Customer';
                 }
+                action(InsideRepCorreciton)
+                {
+                    ApplicationArea = basic, suite;
+                    caption = 'Inside/Rep Correction';
+                    RunObject = page "Inside Sales/Sales Rep Update";
+                    Tooltip = 'Correct Inside Sales/Sales Rep field on customer ledger entries';
+                }
                 action(SalesJournals)
                 {
                     ApplicationArea = Basic, Suite;
@@ -1239,12 +1246,7 @@ page 50160 FinanceManagerRC
                         Caption = 'Customer Sales Statistics';
                         RunObject = Report "Customer Sales Statistics";
                     }
-                    action("Customer - List1")
-                    {
-                        ApplicationArea = Basic, Suite;
-                        Caption = 'Customer Listing';
-                        RunObject = Report "Customer Listing";
-                    }
+
                     action("Customer/Item Sales1")
                     {
                         ApplicationArea = Basic, Suite;
@@ -2911,6 +2913,14 @@ page 50160 FinanceManagerRC
                     RunObject = page "Field Service";
                     ToolTip = 'Edits data for Field Service orders.';
                 }
+                action(FieldServiceList)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Field Service List';
+                    Image = ServiceItemGroup;
+                    RunObject = page "Field Service List";
+                    ToolTip = 'Edits data for Field Service orders.';
+                }
                 action(FSParts)
                 {
                     ApplicationArea = All;
@@ -3011,15 +3021,7 @@ page 50160 FinanceManagerRC
 
                     }
 
-                    action(CustomerListing)
-                    {
-                        ApplicationArea = All;
-                        Caption = 'Customer Listing';
-                        Image = List;
-                        RunObject = report "Customer Listing";
-                        ToolTip = 'Runs Customer Document Nos. Report.';
 
-                    }
                     action(CustomerSalesStatistics)
                     {
                         ApplicationArea = All;

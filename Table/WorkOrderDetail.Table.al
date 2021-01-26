@@ -52,6 +52,9 @@ table 50001 WorkOrderDetail
         2021_01_11 Intelice
         Added field(200001; "Shipping Processed"; Boolean) to show if an WO Detail was shipped (create SO, return parts etc..) 
 
+        2021_01_19 Intelice
+        Added field(200002; "Vendor Shipping Processed"; Boolean) to show if an WO Detail was shipped to the Vendor (create BOL, return parts etc..) 
+
     */
 
     fields
@@ -1707,6 +1710,10 @@ table 50001 WorkOrderDetail
         {
             DataClassification = ToBeClassified;
         }
+        field(200002; "Vendor Shipping Processed"; Boolean)
+        {
+            DataClassification = ToBeClassified;
+        }
     }
 
     keys
@@ -2127,6 +2134,20 @@ table 50001 WorkOrderDetail
         case DocType of
 
             Database::"Sales Line":
+                begin
+                    ReservEntry.SetRange("Source ID", SalesDoc."Document No.");
+                    ReservEntry.SetRange("Source Ref. No.", SalesDoc."Line No.");
+                    ReservEntry.SetRange("Item No.", SalesDoc."No.");
+                    ReservEntry.SetRange("Item Tracking", ReservEntry."Item Tracking"::"Serial No.");
+                    ReservEntry.SetRange("Source Type", DocType);
+
+                    if ReservEntry.FindFirst() then begin
+                        SerialNo := ReservEntry."Serial No.";
+                        exit(true);
+                    end;
+                end;
+
+            Database::"Item Ledger Entry":
                 begin
                     ReservEntry.SetRange("Source ID", SalesDoc."Document No.");
                     ReservEntry.SetRange("Source Ref. No.", SalesDoc."Line No.");

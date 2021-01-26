@@ -220,8 +220,15 @@ report 50022 "Sales Order - ADVACO"
                         QtyAvailable := (Item.Inventory - Item."Reserved Qty. on Inventory");
                     end;
 
-                    if not WOD.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, WO_Serial_No) then
-                        WO_Serial_No := ' ';
+                    /// 1/19/2021 ICE Start
+                    Clear(ReservEntry);
+                    TrackingSpecificationExists :=
+                        ReserveSalesLine.FindReservEntry("Sales Line", ReservEntry);
+                    if not TrackingSpecificationExists then
+                        //iif not WOD.GetSerialNo_(Database::"Sales Line", "Sales Line", PurchLine, WO_Serial_No) then
+                        WO_Serial_No := ' '
+                    else
+                        WO_Serial_No := ReservEntry."Serial No.";
                 end;
             }
             dataitem("Sales Comment Line"; "Sales Comment Line")
@@ -305,6 +312,9 @@ report 50022 "Sales Order - ADVACO"
     }
 
     var
+        ReservEntry: Record "Reservation Entry" temporary;
+        TrackingSpecificationExists: Boolean;
+        ReserveSalesLine: Codeunit "Sales Line-Reserve";
         NoteCapt: Integer;
         WO_Serial_No: Code[50];
         BillTo: Text[50];

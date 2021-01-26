@@ -136,8 +136,32 @@ report 50151 "Field Service Traveler"
                 {
                 }
             }
+            trigger OnAfterGetRecord()
+            begin
+
+                IF "Field Service"."Customer Address 2" = '' THEN BEGIN
+                    BillToAd2 := ("Customer City") + (', ') + ("Customer State") + ('  ') + ("Customer Zip Code");
+                    BillTo := '';
+                END ELSE BEGIN
+                    BillToAd2 := "Customer Address 2";
+                    BillTo := ("Customer City") + (', ') + ("Customer State") + ('  ') + ("Customer Zip Code");
+                END;
+
+                IF "Field Service"."Ship To Address 2" = '' THEN BEGIN
+                    ShipToAd2 := ("Ship To City") + (', ') + ("Ship To State") + ('  ') + ("Ship To Zip Code");
+                    ShipTo := '';
+                END ELSE BEGIN
+                    ShipToAd2 := "Field Service"."Ship To Address 2";
+                    ShipTo := ("Ship To City") + (', ') + ("Ship To State") + ('  ') + ("Ship To Zip Code");
+                END;
+
+            end;
+
         }
+
+
     }
+
 
     requestpage
     {

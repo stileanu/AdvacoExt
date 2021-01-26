@@ -211,7 +211,7 @@ page 50032 "Work Order Vendor Shipping"
                     trigger OnAction()
                     begin
                         // 2021_01_11 Intelice Start
-                        if not Rec."Shipping Processed" then begin
+                        if not Rec."Vendor Shipping Processed" then begin
                             Message('You nedd to <Ship> this order to be able to print BOL.');
                             exit;
                         end;
@@ -231,7 +231,7 @@ page 50032 "Work Order Vendor Shipping"
                     trigger OnAction()
                     begin
                         // 2021_01_11 Intelice Start
-                        if not Rec."Shipping Processed" then begin
+                        if not Rec."Vendor Shipping Processed" then begin
                             Message('You nedd to <Ship> this order to be able to print Address Labels.');
                             exit;
                         end;
@@ -242,6 +242,7 @@ page 50032 "Work Order Vendor Shipping"
                 }
 
             }
+
             action("&Ship")
             {
                 ApplicationArea = All;
@@ -253,7 +254,7 @@ page 50032 "Work Order Vendor Shipping"
 
                     // 2021_01_11 Intelice Start
                     // Test for processed order
-                    if Rec."Shipping Processed" then begin
+                    if Rec."Vendor Shipping Processed" then begin
                         Message('Current Order %1 is already shipped.', Rec."Work Order No.");
                         exit;
                     end;
@@ -323,7 +324,7 @@ page 50032 "Work Order Vendor Shipping"
                     if not NothingToShip then begin
                         Rec.Complete := false;
                         // Mark current WOD as processed
-                        Rec."Shipping Processed" := true;
+                        Rec."Vendor Shipping Processed" := true;
                         Rec.Modify();
                     end;
                     // 2021_01_11 Intelice End

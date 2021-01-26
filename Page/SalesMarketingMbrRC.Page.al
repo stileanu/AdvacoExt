@@ -1138,6 +1138,15 @@ page 50162 SalesMarketingMbrRC
                     RunObject = page "Field Service";
                     ToolTip = 'Edits data for Field Service orders.';
                 }
+
+                action(FieldServiceList)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Field Service List';
+                    Image = ServiceItemGroup;
+                    RunObject = page "Field Service List";
+                    ToolTip = 'Edits data for Field Service orders.';
+                }
                 action(FSParts)
                 {
                     ApplicationArea = All;

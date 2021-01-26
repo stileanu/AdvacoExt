@@ -156,7 +156,38 @@ report 50150 "Field Service Envelope"
             column(INCOME_FSCaption; INCOME_FSCaptionLbl)
             {
             }
+            trigger OnAfterGetRecord()
+            begin
+
+                IF "FieldService"."Customer Address 2" = '' THEN BEGIN
+                    BillToAd2 := ("Customer City") + (', ') + ("Customer State") + ('  ') + ("Customer Zip Code");
+                    BillTo := '';
+                END ELSE BEGIN
+                    BillToAd2 := "Customer Address 2";
+                    BillTo := ("Customer City") + (', ') + ("Customer State") + ('  ') + ("Customer Zip Code");
+                END;
+
+                IF "FieldService"."Ship To Address 2" = '' THEN BEGIN
+                    ShipToAd2 := ("Ship To City") + (', ') + ("Ship To State") + ('  ') + ("Ship To Zip Code");
+                    ShipTo := '';
+                END ELSE BEGIN
+                    ShipToAd2 := "FieldService"."Ship To Address 2";
+                    ShipTo := ("Ship To City") + (', ') + ("Ship To State") + ('  ') + ("Ship To Zip Code");
+                END;
+
+                IF Cust.GET(Customer) THEN BEGIN
+                    IF Cust."Internet Invoicing" THEN
+                        Invoicing := 'Internet Invoicing'
+                    ELSE
+                        IF Cust."No Internet/Paper Invoice" THEN
+                            Invoicing := 'No Internet/Paper Invoice'
+                        ELSE
+                            Invoicing := '';
+                END;
+
+            end;
         }
+
     }
 
     requestpage
