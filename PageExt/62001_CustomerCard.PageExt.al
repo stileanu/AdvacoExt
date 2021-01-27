@@ -285,6 +285,7 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         modify("Cash Applied")
         {
             Visible = lAccGroup;
+            ApplicationArea = All;
         }
         modify("Customer Jobs (Price)")
         {

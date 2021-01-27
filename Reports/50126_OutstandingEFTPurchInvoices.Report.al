@@ -148,6 +148,7 @@ report 50126 "Outstanding EFT Purch.Invoices"
                     Caption = 'Options';
                     field(OnlyOnePerPage; OnlyOnePerPage)
                     {
+                        ApplicationArea = All;
                         Caption = 'New Page per Vendor';
                     }
                 }

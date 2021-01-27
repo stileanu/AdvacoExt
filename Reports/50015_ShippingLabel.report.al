@@ -28,9 +28,9 @@ report 50015 "Shipping Label"
             column(Bill_of_Lading__Ship_To_Address_; "Ship To Address")
             {
             }
-            column(Bill_of_Lading__Quantity_Printed_; "Quantity Printed")
-            {
-            }
+            //column(Bill_of_Lading__Quantity_Printed_; "Quantity Printed")
+            //{
+            //}
             column(OF__; ' OF ')
             {
             }
@@ -39,6 +39,30 @@ report 50015 "Shipping Label"
             }
             column(BOL__; 'BOL#')
             {
+            }
+            dataitem(CopyLoop; Integer)
+            {
+                DataItemTableView = sorting(number);
+
+                column(Bill_of_Lading__Quantity_Printed_; CopyNo)
+                {
+                }
+
+                trigger OnPreDataItem()
+                begin
+                    NoLoops := ABS(NoCopies);
+                    if NoLoops <= 0 then
+                        NoLoops := 1;
+                    CopyNo := 0;
+                end;
+
+                trigger OnAfterGetRecord()
+                begin
+                    if CopyNo = NoLoops then
+                        CurrReport.Break();
+
+                    CopyNo := CopyNo + 1;
+                end;
             }
 
             trigger OnAfterGetRecord()
@@ -56,10 +80,11 @@ report 50015 "Shipping Label"
                     ShipTo := ("Ship To City") + (', ') + ("Ship To State") + ('  ') + ("Ship To Zip Code");
                 end;
 
-                if "Label Quantity" > "Quantity Printed" then
-                    "Quantity Printed" := "Quantity Printed" + 1;
+                NoCopies := "Label Quantity";
+                //if "Label Quantity" > "Quantity Printed" then
+                //    "Quantity Printed" := "Quantity Printed" + 1;
 
-                Modify;
+                //Modify;
             end;
         }
     }
@@ -85,5 +110,8 @@ report 50015 "Shipping Label"
         ShipToAd2: Text[50];
         ShipTo: Text[50];
         Att: Code[50];
+        NoLoops: Integer;
+        NoCopies: Integer;
+        CopyNo: Integer;
 }
 

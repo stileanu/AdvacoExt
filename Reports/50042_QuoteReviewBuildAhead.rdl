@@ -6047,8 +6047,8 @@
                           </Paragraphs>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingTop>3pt</PaddingTop>
-                            <PaddingBottom>3pt</PaddingBottom>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
                           </Style>
                         </Textbox>
                         <ColSpan>2</ColSpan>
@@ -6074,8 +6074,8 @@
                           </Paragraphs>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingTop>3pt</PaddingTop>
-                            <PaddingBottom>3pt</PaddingBottom>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
                           </Style>
                         </Textbox>
                         <ColSpan>3</ColSpan>
@@ -6152,11 +6152,12 @@
                           </Paragraphs>
                           <Style>
                             <VerticalAlign>Middle</VerticalAlign>
-                            <PaddingTop>3pt</PaddingTop>
-                            <PaddingBottom>3pt</PaddingBottom>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
                           </Style>
                         </Textbox>
                         <ColSpan>2</ColSpan>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell />

@@ -206,6 +206,7 @@ report 50084 "Customers Exceed Credit Limit"
                     Caption = 'Options';
                     field(AllHavingBalance; AllHavingBalance)
                     {
+                        ApplicationArea = All;
                         Caption = 'Cust. with Balances Only';
                     }
                 }

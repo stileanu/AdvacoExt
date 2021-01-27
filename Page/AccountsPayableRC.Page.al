@@ -339,6 +339,7 @@ page 50161 AccountsPayableRC
                     Caption = 'Reports';
                     action("Cash Applied")
                     {
+                        ApplicationArea = All;
                         Caption = 'Cash Applied';
                         RunObject = Report "Cash Applied";
                     }
@@ -350,6 +351,7 @@ page 50161 AccountsPayableRC
                     }
                     action("Customer Comment List")
                     {
+                        ApplicationArea = All;
                         Caption = 'Customer Comment List';
                         RunObject = Report "Customer Comment List";
                     }
@@ -415,16 +417,19 @@ page 50161 AccountsPayableRC
                     }
                     action("Customer/Item Sales")
                     {
+                        ApplicationArea = All;
                         Caption = 'Customer/Item Statistics';
                         RunObject = Report "Customer/Item Statistics";
                     }
                     action("Salesperson - Sales Statistics")
                     {
+                        ApplicationArea = All;
                         Caption = 'Salesperson Statistics by Inv.';
                         RunObject = Report "Salesperson Statistics by Inv.";
                     }
                     action("Salesperson - Commission")
                     {
+                        ApplicationArea = All;
                         Caption = 'Salesperson Commission';
                         RunObject = Report "Salesperson Commissions";
                     }
@@ -478,11 +483,13 @@ page 50161 AccountsPayableRC
                     }
                     action("Drop Shipment Status")
                     {
+                        ApplicationArea = All;
                         Caption = 'Drop Shipment Status';
                         RunObject = Report "Drop Shipment Status";
                     }
                     action("Item Status by Salesperson")
                     {
+                        ApplicationArea = All;
                         Caption = 'Item Status by Salesperson';
                         RunObject = Report "Item Status by Salesperson";
                     }
@@ -494,6 +501,7 @@ page 50161 AccountsPayableRC
                     }
                     action("Open Sales Invoices by Job")
                     {
+                        ApplicationArea = All;
                         Caption = 'Open Sales Invoices by Job';
                         RunObject = Report "Open Sales Invoices by Job";
                     }
@@ -541,16 +549,19 @@ page 50161 AccountsPayableRC
                     }
                     action("Salesperson Commissions")
                     {
+                        ApplicationArea = All;
                         Caption = 'Salesperson Commissions';
                         RunObject = Report "Salesperson Commissions";
                     }
                     action("Salesperson - Sales Statistics1")
                     {
+                        ApplicationArea = All;
                         Caption = 'Salesperson Statistics by Inv.';
                         RunObject = Report "Salesperson Statistics by Inv.";
                     }
                     action("Ship-To Address Listing")
                     {
+                        ApplicationArea = All;
                         Caption = 'Ship-To Address Listing';
                         RunObject = Report "Ship-To Address Listing";
                     }
@@ -572,6 +583,7 @@ page 50161 AccountsPayableRC
                     }
                     action("Payment Registration Setup")
                     {
+                        ApplicationArea = All;
                         Caption = 'Payment Registration Setup';
                         RunObject = page "Payment Registration Setup";
                     }
@@ -729,6 +741,7 @@ page 50161 AccountsPayableRC
                     }
                     action("Purchase Statistics")
                     {
+                        ApplicationArea = All;
                         Caption = 'Vendor Purchase Statistics';
                         RunObject = Report "Vendor Purchase Statistics";
                     }
@@ -770,11 +783,13 @@ page 50161 AccountsPayableRC
                     }
                     action("Vendor - Summary Aging1")
                     {
+                        ApplicationArea = All;
                         Caption = 'Aged Accounts Payable';
                         RunObject = Report "Aged Accounts Payable NA";
                     }
                     action("Vendor - Top 10 List")
                     {
+                        ApplicationArea = All;
                         Caption = 'Top 10 Vendor List';
                         RunObject = Report "Top __ Vendor List";
                     }
@@ -786,11 +801,13 @@ page 50161 AccountsPayableRC
                     }
                     action("Vendor/Item Purchases")
                     {
+                        ApplicationArea = All;
                         Caption = 'Vendor Purchases by Item';
                         RunObject = Report "Vendor Purchases by Item";
                     }
                     action("AP - Vendor Register")
                     {
+                        ApplicationArea = All;
                         Caption = 'AP - Vendor Register';
                         RunObject = Report "AP - Vendor Register";
                     }
@@ -814,6 +831,7 @@ page 50161 AccountsPayableRC
                     }
                     action("Open Purchase Invoices by Job")
                     {
+                        ApplicationArea = All;
                         Caption = 'Open Purchase Invoices by Job';
                         RunObject = Report "Open Purchase Invoices by Job";
                     }
@@ -825,16 +843,19 @@ page 50161 AccountsPayableRC
                     }
                     action("Outstanding Order Stat. by PO")
                     {
+                        ApplicationArea = All;
                         Caption = 'Outstanding Order Stat. by PO';
                         RunObject = Report "Outstanding Order Stat. by PO";
                     }
                     action("Outstanding Purch. Order Aging")
                     {
+                        ApplicationArea = All;
                         Caption = 'Outstanding Purch. Order Aging';
                         RunObject = Report "Outstanding Purch. Order Aging";
                     }
                     action("Outstanding Purch.Order Status")
                     {
+                        ApplicationArea = All;
                         Caption = 'Outstanding Purch.Order Status';
                         RunObject = Report "Outstanding Purch.Order Status";
                     }
@@ -852,6 +873,7 @@ page 50161 AccountsPayableRC
                     }
                     action("Reconcile AP to GL")
                     {
+                        ApplicationArea = All;
                         Caption = 'Reconcile AP to GL';
                         RunObject = Report "Reconcile AP to GL";
                     }
@@ -869,6 +891,7 @@ page 50161 AccountsPayableRC
                     }
                     action("Vendor Comment List")
                     {
+                        ApplicationArea = All;
                         Caption = 'Vendor Comment List';
                         RunObject = Report "Vendor Comment List";
                     }
@@ -880,6 +903,7 @@ page 50161 AccountsPayableRC
                     }
                     action("Vendor 1099 Information")
                     {
+                        ApplicationArea = All;
                         Caption = 'Vendor 1099 Information';
                         RunObject = Report "Vendor 1099 Information";
                     }

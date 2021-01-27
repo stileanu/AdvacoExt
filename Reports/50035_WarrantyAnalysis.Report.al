@@ -283,6 +283,7 @@ report 50035 "Warranty Analysis"
                     Caption = 'Options';
                     field(OneDetail; OneDetail)
                     {
+                        ApplicationArea = All;
                         Caption = 'First Detail Only';
                     }
                 }

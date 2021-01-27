@@ -11,130 +11,6 @@
       <rd:DataSourceID>2133da63-fcd6-4db7-bfdb-ea0f55f09f4a</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="AgentName__________Method_">
-          <DataField>AgentName__________Method_</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Ship_To_Name_">
-          <DataField>Bill_of_Lading__Ship_To_Name_</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Ship_To_Address_">
-          <DataField>Bill_of_Lading__Ship_To_Address_</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Shipment_Date_">
-          <DataField>Bill_of_Lading__Shipment_Date_</DataField>
-        </Field>
-        <Field Name="ShipTo">
-          <DataField>ShipTo</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading_Attention">
-          <DataField>Bill_of_Lading_Attention</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Bill_of_Lading_">
-          <DataField>Bill_of_Lading__Bill_of_Lading_</DataField>
-        </Field>
-        <Field Name="ShipToAd2">
-          <DataField>ShipToAd2</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Shipping_Charge_">
-          <DataField>Bill_of_Lading__Shipping_Charge_</DataField>
-        </Field>
-        <Field Name="ATTN__">
-          <DataField>ATTN__</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Shipping_Account_">
-          <DataField>Bill_of_Lading__Shipping_Account_</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading___Phone_No__">
-          <DataField>Bill_of_Lading___Phone_No__</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Container_Quantity_">
-          <DataField>Bill_of_Lading__Container_Quantity_</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Container_Type_">
-          <DataField>Bill_of_Lading__Container_Type_</DataField>
-        </Field>
-        <Field Name="POWER_VACUUM_PUMPS_PARTS_OIL_">
-          <DataField>POWER_VACUUM_PUMPS_PARTS_OIL_</DataField>
-        </Field>
-        <Field Name="FORMAT__Shipping_Weight____________Lbs__">
-          <DataField>FORMAT__Shipping_Weight____________Lbs__</DataField>
-        </Field>
-        <Field Name="V085_">
-          <DataField>V085_</DataField>
-        </Field>
-        <Field Name="Collect">
-          <DataField>Collect</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading_Order_No_">
-          <DataField>Bill_of_Lading_Order_No_</DataField>
-        </Field>
-        <Field Name="SO_______Document_No__">
-          <DataField>SO_______Document_No__</DataField>
-        </Field>
-        <Field Name="PO_______Bill_of_Lading___PO_No__">
-          <DataField>PO_______Bill_of_Lading___PO_No__</DataField>
-        </Field>
-        <Field Name="Qty__">
-          <DataField>Qty__</DataField>
-        </Field>
-        <Field Name="Sales_Line__Qty__to_Ship_">
-          <DataField>Sales_Line__Qty__to_Ship_</DataField>
-        </Field>
-        <Field Name="Sales_Line__Qty__to_Ship_Format">
-          <DataField>Sales_Line__Qty__to_Ship_Format</DataField>
-        </Field>
-        <Field Name="ItemNo">
-          <DataField>ItemNo</DataField>
-        </Field>
-        <Field Name="Sales_Line_Description">
-          <DataField>Sales_Line_Description</DataField>
-        </Field>
-        <Field Name="Serial">
-          <DataField>Serial</DataField>
-        </Field>
-        <Field Name="Sales_Line_Document_Type">
-          <DataField>Sales_Line_Document_Type</DataField>
-        </Field>
-        <Field Name="Sales_Line_Document_No_">
-          <DataField>Sales_Line_Document_No_</DataField>
-        </Field>
-        <Field Name="Sales_Line_Line_No_">
-          <DataField>Sales_Line_Line_No_</DataField>
-        </Field>
-        <Field Name="THIRD_PARTY_BILLING______________">
-          <DataField>THIRD_PARTY_BILLING______________</DataField>
-        </Field>
-        <Field Name="Sales_Header__Third_Party_Name_">
-          <DataField>Sales_Header__Third_Party_Name_</DataField>
-        </Field>
-        <Field Name="Sales_Header__Third_Party_Address_">
-          <DataField>Sales_Header__Third_Party_Address_</DataField>
-        </Field>
-        <Field Name="ThirdPartyAddress">
-          <DataField>ThirdPartyAddress</DataField>
-        </Field>
-        <Field Name="EmptyString">
-          <DataField>EmptyString</DataField>
-        </Field>
-        <Field Name="Sales_Header_Document_Type">
-          <DataField>Sales_Header_Document_Type</DataField>
-        </Field>
-        <Field Name="Sales_Header_No_">
-          <DataField>Sales_Header_No_</DataField>
-        </Field>
-        <Field Name="Third_Party_Charge">
-          <DataField>Third_Party_Charge</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -5579,12 +5455,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -5624,4 +5494,128 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>78e9a8f6-2da5-4909-943c-d1b3aca8243c</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="AgentName__________Method_">
+          <DataField>AgentName__________Method_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Ship_To_Name_">
+          <DataField>Bill_of_Lading__Ship_To_Name_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Ship_To_Address_">
+          <DataField>Bill_of_Lading__Ship_To_Address_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Shipment_Date_">
+          <DataField>Bill_of_Lading__Shipment_Date_</DataField>
+        </Field>
+        <Field Name="ShipTo">
+          <DataField>ShipTo</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading_Attention">
+          <DataField>Bill_of_Lading_Attention</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Bill_of_Lading_">
+          <DataField>Bill_of_Lading__Bill_of_Lading_</DataField>
+        </Field>
+        <Field Name="ShipToAd2">
+          <DataField>ShipToAd2</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Shipping_Charge_">
+          <DataField>Bill_of_Lading__Shipping_Charge_</DataField>
+        </Field>
+        <Field Name="ATTN__">
+          <DataField>ATTN__</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Shipping_Account_">
+          <DataField>Bill_of_Lading__Shipping_Account_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading___Phone_No__">
+          <DataField>Bill_of_Lading___Phone_No__</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Container_Quantity_">
+          <DataField>Bill_of_Lading__Container_Quantity_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Container_Type_">
+          <DataField>Bill_of_Lading__Container_Type_</DataField>
+        </Field>
+        <Field Name="POWER_VACUUM_PUMPS_PARTS_OIL_">
+          <DataField>POWER_VACUUM_PUMPS_PARTS_OIL_</DataField>
+        </Field>
+        <Field Name="FORMAT__Shipping_Weight____________Lbs__">
+          <DataField>FORMAT__Shipping_Weight____________Lbs__</DataField>
+        </Field>
+        <Field Name="V085_">
+          <DataField>V085_</DataField>
+        </Field>
+        <Field Name="Collect">
+          <DataField>Collect</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading_Order_No_">
+          <DataField>Bill_of_Lading_Order_No_</DataField>
+        </Field>
+        <Field Name="SO_______Document_No__">
+          <DataField>SO_______Document_No__</DataField>
+        </Field>
+        <Field Name="PO_______Bill_of_Lading___PO_No__">
+          <DataField>PO_______Bill_of_Lading___PO_No__</DataField>
+        </Field>
+        <Field Name="Qty__">
+          <DataField>Qty__</DataField>
+        </Field>
+        <Field Name="Sales_Line__Qty__to_Ship_">
+          <DataField>Sales_Line__Qty__to_Ship_</DataField>
+        </Field>
+        <Field Name="Sales_Line__Qty__to_Ship_Format">
+          <DataField>Sales_Line__Qty__to_Ship_Format</DataField>
+        </Field>
+        <Field Name="ItemNo">
+          <DataField>ItemNo</DataField>
+        </Field>
+        <Field Name="Sales_Line_Description">
+          <DataField>Sales_Line_Description</DataField>
+        </Field>
+        <Field Name="Serial">
+          <DataField>Serial</DataField>
+        </Field>
+        <Field Name="Sales_Line_Document_Type">
+          <DataField>Sales_Line_Document_Type</DataField>
+        </Field>
+        <Field Name="Sales_Line_Document_No_">
+          <DataField>Sales_Line_Document_No_</DataField>
+        </Field>
+        <Field Name="Sales_Line_Line_No_">
+          <DataField>Sales_Line_Line_No_</DataField>
+        </Field>
+        <Field Name="THIRD_PARTY_BILLING______________">
+          <DataField>THIRD_PARTY_BILLING______________</DataField>
+        </Field>
+        <Field Name="Sales_Header__Third_Party_Name_">
+          <DataField>Sales_Header__Third_Party_Name_</DataField>
+        </Field>
+        <Field Name="Sales_Header__Third_Party_Address_">
+          <DataField>Sales_Header__Third_Party_Address_</DataField>
+        </Field>
+        <Field Name="ThirdPartyAddress">
+          <DataField>ThirdPartyAddress</DataField>
+        </Field>
+        <Field Name="EmptyString">
+          <DataField>EmptyString</DataField>
+        </Field>
+        <Field Name="Sales_Header_Document_Type">
+          <DataField>Sales_Header_Document_Type</DataField>
+        </Field>
+        <Field Name="Sales_Header_No_">
+          <DataField>Sales_Header_No_</DataField>
+        </Field>
+        <Field Name="Third_Party_Charge">
+          <DataField>Third_Party_Charge</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

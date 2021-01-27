@@ -922,11 +922,13 @@ page 50158 PurchaseMgrRC
                     Caption = 'Reports';
                     action("Inventory Valuation")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inventory Valuation';
                         RunObject = Report "Inventory Valuation";
                     }
                     action("Item Cost and Price List")
                     {
+                        ApplicationArea = All;
                         Caption = 'Item Cost and Price List';
                         RunObject = Report "Item Cost and Price List";
                     }
@@ -980,11 +982,13 @@ page 50158 PurchaseMgrRC
                     }
                     action("Item Turnover")
                     {
+                        ApplicationArea = All;
                         Caption = 'Item Turnover';
                         RunObject = Report "Item Turnover";
                     }
                     action("Over Stock")
                     {
+                        ApplicationArea = All;
                         Caption = 'Over Stock';
                         RunObject = Report "Over Stock";
                     }
@@ -996,11 +1000,13 @@ page 50158 PurchaseMgrRC
                     }
                     action("Purchase Order Status1")
                     {
+                        ApplicationArea = All;
                         Caption = 'Purchase Order Status';
                         RunObject = Report "Purchase Order Status";
                     }
                     action("Serial Number Status/Aging")
                     {
+                        ApplicationArea = All;
                         Caption = 'Serial Number Status/Aging';
                         RunObject = Report "Serial Number Status/Aging";
                     }

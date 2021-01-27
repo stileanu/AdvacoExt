@@ -198,16 +198,19 @@ page 50160 FinanceManagerRC
                         }
                         action("Day Book VAT Entry")
                         {
+                            ApplicationArea = All;
                             Caption = 'Day Book VAT Entry';
                             RunObject = report "Day Book VAT Entry";
                         }
                         action("Day Book Cust. Ledger Entry")
                         {
+                            ApplicationArea = All;
                             Caption = 'Day Book Cust. Ledger Entry';
                             RunObject = report "Day Book Cust. Ledger Entry";
                         }
                         action("Day Book Vendor Ledger Entry")
                         {
+                            ApplicationArea = All;
                             Caption = 'Day Book Vendor Ledger Entry';
                             RunObject = report "Day Book Vendor Ledger Entry";
                         }
@@ -399,6 +402,7 @@ page 50160 FinanceManagerRC
                         }
                         action("Cross Ref. by Account No.")
                         {
+                            ApplicationArea = All;
                             Caption = 'Cross Ref. by Account No.';
                             RunObject = Report "Cross Reference by Account No.";
                         }
@@ -432,6 +436,7 @@ page 50160 FinanceManagerRC
                         }
                         action("Account Schedule Layout")
                         {
+                            ApplicationArea = All;
                             Caption = 'Account Schedule Layout';
                             RunObject = Report "Account Schedule Layout";
                         }
@@ -549,6 +554,7 @@ page 50160 FinanceManagerRC
                         }
                         action("Trial Balance, Spread Periods")
                         {
+                            ApplicationArea = All;
                             Caption = 'Trial Balance, Spread Periods';
                             RunObject = Report "Trial Balance, Spread Periods";
                         }
@@ -558,11 +564,13 @@ page 50160 FinanceManagerRC
                         Caption = 'Miscellaneous';
                         action("Country/Region List")
                         {
+                            ApplicationArea = All;
                             Caption = 'Country/Region List';
                             RunObject = Report "Country/Region List";
                         }
                         action("Currency List")
                         {
+                            ApplicationArea = All;
                             Caption = 'Currency List';
                             RunObject = Report "Currency List";
                         }
@@ -574,16 +582,19 @@ page 50160 FinanceManagerRC
                         }
                         action("Language List")
                         {
+                            ApplicationArea = All;
                             Caption = 'Language List';
                             RunObject = Report "Language List";
                         }
                         action("Reason Code List")
                         {
+                            ApplicationArea = All;
                             Caption = 'Reason Code List';
                             RunObject = Report "Reason Code List";
                         }
                         action("Currency Balances - Rec./Pay.")
                         {
+                            ApplicationArea = All;
                             Caption = 'Currency Balances - Rec./Pay.';
                             RunObject = Report "Currency Balances - Rec./Pay.";
                         }
@@ -607,6 +618,7 @@ page 50160 FinanceManagerRC
                         }
                         action("G/L Deferral Summary")
                         {
+                            ApplicationArea = All;
                             Caption = 'G/L Deferral Summary';
                             RunObject = report "Deferral Summary - G/L";
                         }
@@ -681,6 +693,7 @@ page 50160 FinanceManagerRC
                 }
                 action("Payment Registration")
                 {
+                    ApplicationArea = All;
                     Caption = 'Payment Registration';
                     RunObject = page "Payment Registration";
                 }
@@ -747,6 +760,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Payment Reconciliation Journals")
                     {
+                        ApplicationArea = All;
                         Caption = 'Payment Reconciliation Journals';
                         RunObject = page "Pmt. Reconciliation Journals";
                     }
@@ -774,6 +788,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Payment Reconciliation Journals1")
                     {
+                        ApplicationArea = All;
                         Caption = 'Payment Reconciliation Journals';
                         RunObject = page "Pmt. Reconciliation Journals";
                     }
@@ -1127,6 +1142,7 @@ page 50160 FinanceManagerRC
                     Caption = 'Reports';
                     action("Cash Applied")
                     {
+                        ApplicationArea = All;
                         Caption = 'Cash Applied';
                         RunObject = Report "Cash Applied";
                     }
@@ -1138,6 +1154,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Customer Comment List")
                     {
+                        ApplicationArea = All;
                         Caption = 'Customer Comment List';
                         RunObject = Report "Customer Comment List";
                     }
@@ -1203,16 +1220,19 @@ page 50160 FinanceManagerRC
                     }
                     action("Customer/Item Sales")
                     {
+                        ApplicationArea = All;
                         Caption = 'Customer/Item Statistics';
                         RunObject = Report "Customer/Item Statistics";
                     }
                     action("Salesperson - Sales Statistics")
                     {
+                        ApplicationArea = All;
                         Caption = 'Salesperson Statistics by Inv.';
                         RunObject = Report "Salesperson Statistics by Inv.";
                     }
                     action("Salesperson - Commission")
                     {
+                        ApplicationArea = All;
                         Caption = 'Salesperson Commission';
                         RunObject = Report "Salesperson Commissions";
                     }
@@ -1267,11 +1287,13 @@ page 50160 FinanceManagerRC
                     }
                     action("Drop Shipment Status")
                     {
+                        ApplicationArea = All;
                         Caption = 'Drop Shipment Status';
                         RunObject = Report "Drop Shipment Status";
                     }
                     action("Item Status by Salesperson")
                     {
+                        ApplicationArea = All;
                         Caption = 'Item Status by Salesperson';
                         RunObject = Report "Item Status by Salesperson";
                     }
@@ -1283,6 +1305,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Open Sales Invoices by Job")
                     {
+                        ApplicationArea = All;
                         Caption = 'Open Sales Invoices by Job';
                         RunObject = Report "Open Sales Invoices by Job";
                     }
@@ -1330,16 +1353,19 @@ page 50160 FinanceManagerRC
                     }
                     action("Salesperson Commissions")
                     {
+                        ApplicationArea = All;
                         Caption = 'Salesperson Commissions';
                         RunObject = Report "Salesperson Commissions";
                     }
                     action("Salesperson - Sales Statistics1")
                     {
+                        ApplicationArea = All;
                         Caption = 'Salesperson Statistics by Inv.';
                         RunObject = Report "Salesperson Statistics by Inv.";
                     }
                     action("Ship-To Address Listing")
                     {
+                        ApplicationArea = All;
                         Caption = 'Ship-To Address Listing';
                         RunObject = Report "Ship-To Address Listing";
                     }
@@ -1361,6 +1387,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Payment Registration Setup")
                     {
+                        ApplicationArea = All;
                         Caption = 'Payment Registration Setup';
                         RunObject = page "Payment Registration Setup";
                     }
@@ -1512,6 +1539,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Purchase Statistics")
                     {
+                        ApplicationArea = All;
                         Caption = 'Vendor Purchase Statistics';
                         RunObject = Report "Vendor Purchase Statistics";
                     }
@@ -1553,11 +1581,13 @@ page 50160 FinanceManagerRC
                     }
                     action("Vendor - Summary Aging1")
                     {
+                        ApplicationArea = All;
                         Caption = 'Aged Accounts Payable';
                         RunObject = Report "Aged Accounts Payable NA";
                     }
                     action("Vendor - Top 10 List")
                     {
+                        ApplicationArea = All;
                         Caption = 'Top 10 Vendor List';
                         RunObject = Report "Top __ Vendor List";
                     }
@@ -1569,11 +1599,13 @@ page 50160 FinanceManagerRC
                     }
                     action("Vendor/Item Purchases")
                     {
+                        ApplicationArea = All;
                         Caption = 'Vendor Purchases by Item';
                         RunObject = Report "Vendor Purchases by Item";
                     }
                     action("AP - Vendor Register")
                     {
+                        ApplicationArea = All;
                         Caption = 'AP - Vendor Register';
                         RunObject = Report "AP - Vendor Register";
                     }
@@ -1597,6 +1629,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Open Purchase Invoices by Job")
                     {
+                        ApplicationArea = All;
                         Caption = 'Open Purchase Invoices by Job';
                         RunObject = Report "Open Purchase Invoices by Job";
                     }
@@ -1608,16 +1641,19 @@ page 50160 FinanceManagerRC
                     }
                     action("Outstanding Order Stat. by PO")
                     {
+                        ApplicationArea = All;
                         Caption = 'Outstanding Order Stat. by PO';
                         RunObject = Report "Outstanding Order Stat. by PO";
                     }
                     action("Outstanding Purch. Order Aging")
                     {
+                        ApplicationArea = All;
                         Caption = 'Outstanding Purch. Order Aging';
                         RunObject = Report "Outstanding Purch. Order Aging";
                     }
                     action("Outstanding Purch.Order Status")
                     {
+                        ApplicationArea = All;
                         Caption = 'Outstanding Purch.Order Status';
                         RunObject = Report "Outstanding Purch.Order Status";
                     }
@@ -1635,6 +1671,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Reconcile AP to GL")
                     {
+                        ApplicationArea = All;
                         Caption = 'Reconcile AP to GL';
                         RunObject = Report "Reconcile AP to GL";
                     }
@@ -1652,6 +1689,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Vendor Comment List")
                     {
+                        ApplicationArea = All;
                         Caption = 'Vendor Comment List';
                         RunObject = Report "Vendor Comment List";
                     }
@@ -1663,6 +1701,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Vendor 1099 Information")
                     {
+                        ApplicationArea = All;
                         Caption = 'Vendor 1099 Information';
                         RunObject = Report "Vendor 1099 Information";
                     }
@@ -2094,6 +2133,7 @@ page 50160 FinanceManagerRC
                     Caption = 'Reports';
                     action("Inventory to G/L Reconcile")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inventory to G/L Reconcile';
                         RunObject = Report "Inventory to G/L Reconcile";
                     }
@@ -2117,6 +2157,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Inventory Valuation")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inventory Valuation';
                         RunObject = Report "Inventory Valuation";
                     }
@@ -2134,11 +2175,13 @@ page 50160 FinanceManagerRC
                     }
                     action("Item Comment List")
                     {
+                        ApplicationArea = All;
                         Caption = 'Item Comment List';
                         RunObject = Report "Item Comment List";
                     }
                     action("Inventory Labels")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inventory Labels';
                         RunObject = Report "Inventory Labels";
                     }
@@ -2198,41 +2241,49 @@ page 50160 FinanceManagerRC
                     }
                     action("Item List")
                     {
+                        ApplicationArea = All;
                         Caption = 'Item List';
                         RunObject = Report "Item List";
                     }
                     action("Item Register")
                     {
+                        ApplicationArea = All;
                         Caption = 'Item Register';
                         RunObject = Report "Item Register";
                     }
                     action("Physical Inventory Count")
                     {
+                        ApplicationArea = All;
                         Caption = 'Physical Inventory Count';
                         RunObject = Report "Physical Inventory Count";
                     }
                     action("Serial Number Status/Aging")
                     {
+                        ApplicationArea = All;
                         Caption = 'Serial Number Status/Aging';
                         RunObject = Report "Serial Number Status/Aging";
                     }
                     action("Item Transaction Detail")
                     {
+                        ApplicationArea = All;
                         Caption = 'Item Transaction Detail';
                         RunObject = Report "Item Transaction Detail";
                     }
                     action("Location List")
                     {
+                        ApplicationArea = All;
                         Caption = 'Location List';
                         RunObject = Report "Location List";
                     }
                     action("Over Stock")
                     {
+                        ApplicationArea = All;
                         Caption = 'Over Stock';
                         RunObject = Report "Over Stock";
                     }
                     action("Top __ Inventory Items")
                     {
+                        ApplicationArea = All;
                         Caption = 'Top __ Inventory Items';
                         RunObject = Report "Top __ Inventory Items";
                     }
@@ -2565,6 +2616,7 @@ page 50160 FinanceManagerRC
                     }
                     action("Copy Tax Setup")
                     {
+                        ApplicationArea = All;
                         Caption = 'Copy Tax Setup';
                         RunObject = page "Copy Tax Setup";
                     }
@@ -2608,6 +2660,7 @@ page 50160 FinanceManagerRC
                     Caption = 'Intrastat';
                     action("Areas1")
                     {
+                        ApplicationArea = All;
                         Caption = 'Areas';
                         RunObject = page "Tax Area List";
                     }

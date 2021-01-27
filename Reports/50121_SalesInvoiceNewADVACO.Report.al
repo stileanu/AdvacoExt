@@ -318,8 +318,8 @@ report 50121 "Sales Invoice New - ADVACO"
                         column(SalesInvoiceLine_Number; Number)
                         {
                         }
-                        column(Subtotal;Subtotal)  //ICE-MPC 01/11/21
-                        {                        
+                        column(Subtotal; Subtotal)  //ICE-MPC 01/11/21
+                        {
                         }
 
                         trigger OnAfterGetRecord()
@@ -439,8 +439,8 @@ report 50121 "Sales Invoice New - ADVACO"
                             end else begin
                                 UnitPriceToPrint := Round(AmountExclInvDisc / TempSalesInvoiceLine.Quantity, 0.00001);
                                 Amount2 := AmountExclInvDisc;
-                                if (TempSalesInvoiceLine."No." <> '311') and (TempSalesInvoiceLine."No."<> '312') then
-                                Subtotal := Subtotal + AmountExclInvDisc;  //ICE-MPC 01/11/21
+                                if (TempSalesInvoiceLine."No." <> '311') and (TempSalesInvoiceLine."No." <> '312') then
+                                    Subtotal := Subtotal + AmountExclInvDisc;  //ICE-MPC 01/11/21
                             end;
                             //end;
 
@@ -565,10 +565,12 @@ report 50121 "Sales Invoice New - ADVACO"
                     Caption = 'Options';
                     field(NoCopies; NoCopies)
                     {
+                        ApplicationArea = All;
                         Caption = 'Number of Copies';
                     }
                     field(PrintCompanyAddress; PrintCompany)
                     {
+                        ApplicationArea = All;
                         Caption = 'Print Company Address';
                     }
                 }

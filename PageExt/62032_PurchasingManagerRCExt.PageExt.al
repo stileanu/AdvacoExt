@@ -268,6 +268,7 @@ pageextension 62032 PurchasingManagerRCExt extends "Purchasing Manager Role Cent
                 }
                 action(Sep1)
                 {
+                    ApplicationArea = All;
                     Caption = '  ';
                 }
                 action(SalesOrders)
@@ -280,6 +281,7 @@ pageextension 62032 PurchasingManagerRCExt extends "Purchasing Manager Role Cent
                 }
                 action(Sep2)
                 {
+                    ApplicationArea = All;
                     Caption = '  ';
                 }
                 action("Posted Sales Shipments")
@@ -299,6 +301,7 @@ pageextension 62032 PurchasingManagerRCExt extends "Purchasing Manager Role Cent
                 }
                 action(Sep3)
                 {
+                    ApplicationArea = All;
                     Caption = '  ';
                 }
                 action("InsideSalespeople")
@@ -321,6 +324,7 @@ pageextension 62032 PurchasingManagerRCExt extends "Purchasing Manager Role Cent
                 }
                 action(Sep4)
                 {
+                    ApplicationArea = All;
                     Caption = '  ';
                 }
                 group(WOTransactions)

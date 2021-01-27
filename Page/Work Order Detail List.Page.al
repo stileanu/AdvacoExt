@@ -119,7 +119,7 @@ page 50001 "Work Order Detail List"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("Current &Status")
             {

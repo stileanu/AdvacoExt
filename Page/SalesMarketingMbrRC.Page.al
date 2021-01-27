@@ -785,11 +785,13 @@ page 50162 SalesMarketingMbrRC
                     }
                     action("Inventory - Transaction Detail")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inventory Transaction Detail';
                         RunObject = Report "Item Transaction Detail";
                     }
                     action("Inventory - Reorders")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inventory Reorders';
                         RunObject = report "Inventory - Reorders";
                     }
@@ -825,6 +827,7 @@ page 50162 SalesMarketingMbrRC
                     }
                     action("Inventory - Vendor Purchases")
                     {
+                        ApplicationArea = All;
                         Caption = 'Inventory - Vendor Purchases';
                         RunObject = Report "Vendor Purchases by Item";
                     }
@@ -842,6 +845,7 @@ page 50162 SalesMarketingMbrRC
                     }
                     action("Purchase Order Status")
                     {
+                        ApplicationArea = All;
                         Caption = 'Purchase Order Status';
                         RunObject = Report "Purchase Order Status";
                     }
