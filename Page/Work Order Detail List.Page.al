@@ -32,14 +32,14 @@ page 50001 "Work Order Detail List"
         {
             repeater(Group)
             {
-                field("Customer ID"; "Customer ID")
-                {
-                    ApplicationArea = All;
-                }
                 field("Work Order No."; "Work Order No.")
                 {
                     ApplicationArea = All;
-                    TableRelation = WorkOrderDetail."Work Order No.";
+                    //TableRelation = WorkOrderDetail."Work Order No.";
+                }
+                field("Customer ID"; "Customer ID")
+                {
+                    ApplicationArea = All;
                 }
                 field("Work Order Master No."; "Work Order Master No.")
                 {
