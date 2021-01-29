@@ -4909,6 +4909,7 @@
                             <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -5204,6 +5205,7 @@
                             <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -5455,6 +5457,7 @@
                             <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -5678,6 +5681,7 @@
                             <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -5901,6 +5905,7 @@
                             <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -6325,7 +6330,7 @@
                         <TablixMember />
                       </TablixMembers>
                       <Visibility>
-                        <Hidden>=iif(Fields!Work_Order_Detail_Customer__Work_Order_No__.Value &lt;&gt; "",true, false)</Hidden>
+                        <Hidden>=iif(Fields!Work_Order_Detail_Vendor__Work_Order_No__.Value = "", true, false)</Hidden>
                       </Visibility>
                     </TablixMember>
                   </TablixMembers>

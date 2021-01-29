@@ -6637,7 +6637,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.5cm</Height>
+                  <Height>0.66113cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -6657,7 +6657,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
                           </Style>
                         </Textbox>
                         <ColSpan>2</ColSpan>
@@ -6683,7 +6685,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
                           </Style>
                         </Textbox>
                         <ColSpan>3</ColSpan>
@@ -6711,7 +6715,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -6736,7 +6742,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
                           </Style>
                         </Textbox>
                         <ColSpan>2</ColSpan>
@@ -6763,7 +6771,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -6788,7 +6798,9 @@
                             </Paragraph>
                           </Paragraphs>
                           <Style>
-                            <VerticalAlign>Top</VerticalAlign>
+                            <VerticalAlign>Middle</VerticalAlign>
+                            <PaddingTop>4pt</PaddingTop>
+                            <PaddingBottom>4pt</PaddingBottom>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -7238,7 +7250,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.5cm</Height>
+                  <Height>0.6cm</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -7264,6 +7276,8 @@
                               <Style>None</Style>
                             </Border>
                             <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Top</VerticalAlign>
+                            <PaddingTop>3pt</PaddingTop>
                           </Style>
                         </Textbox>
                         <ColSpan>2</ColSpan>
@@ -7294,6 +7308,8 @@
                               <Style>None</Style>
                             </Border>
                             <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Top</VerticalAlign>
+                            <PaddingTop>3pt</PaddingTop>
                           </Style>
                         </Textbox>
                         <ColSpan>3</ColSpan>
@@ -7328,6 +7344,8 @@
                               <Style>None</Style>
                             </Border>
                             <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Top</VerticalAlign>
+                            <PaddingTop>3pt</PaddingTop>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -7357,6 +7375,8 @@
                               <Style>None</Style>
                             </Border>
                             <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Top</VerticalAlign>
+                            <PaddingTop>3pt</PaddingTop>
                           </Style>
                         </Textbox>
                         <ColSpan>2</ColSpan>
@@ -7388,6 +7408,8 @@
                               <Style>None</Style>
                             </Border>
                             <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Top</VerticalAlign>
+                            <PaddingTop>3pt</PaddingTop>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -7417,6 +7439,8 @@
                               <Style>None</Style>
                             </Border>
                             <BackgroundColor>White</BackgroundColor>
+                            <VerticalAlign>Top</VerticalAlign>
+                            <PaddingTop>3pt</PaddingTop>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -7574,7 +7598,6 @@
                             <VerticalAlign>Middle</VerticalAlign>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -8329,7 +8352,7 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
-            <Height>12.41713cm</Height>
+            <Height>12.67826cm</Height>
             <Width>19.97045cm</Width>
             <Style />
           </Tablix>
