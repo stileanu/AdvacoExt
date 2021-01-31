@@ -8,7 +8,6 @@ page 50161 AccountsPayableRC
         {
             part(Control104; "Headline RC Order Processor")
             {
-                Visible = false;
                 ApplicationArea = Basic, Suite;
             }
         }

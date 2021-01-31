@@ -12,6 +12,12 @@ pageextension 62035 PurchOrderSubpage extends "Purchase Order Subform"
                 ApplicationArea = all;
 
             }
+            //ICE RSK 1/30/21 added
+            field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
+            {
+                ApplicationArea = all;
+            }
+
         }
     }
 

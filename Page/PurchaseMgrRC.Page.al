@@ -9,6 +9,7 @@ page 50158 PurchaseMgrRC
         {
             part(Control104; "Headline RC Order Processor")
             {
+                Visible = false;
                 ApplicationArea = Basic, Suite;
             }
         }
