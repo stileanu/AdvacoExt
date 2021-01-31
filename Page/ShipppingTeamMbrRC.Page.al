@@ -9,11 +9,11 @@ page 50164 ShippingTeamMbrRC
         {
             part(Control104; "Headline RC Order Processor")
             {
+                Visible = false;
                 ApplicationArea = Basic, Suite;
             }
         }
     }
-
 
     actions
     {

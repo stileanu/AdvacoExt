@@ -215,7 +215,20 @@ page 50052 "Inside Sales/Sales Rep Update"
         }
     }
 
+    trigger OnOpenPage()
+    begin
+        //lSuperUser := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+        //if lSuperUser then
+        if not SysFunctions.getIfSingleRoleId(Permiss, txtAnswer) then begin
+            Error('You don''t have permission to run this page.');
+            CurrPage.Close();
+        end;
+    end;
+
     var
+        txtAnswer: Text[120];
+        Permiss: Label 'SUPER';
+        SysFunctions: Codeunit systemFunctionalLibrary;
         GLEntry: Record "G/L Entry";
         ItemLedgerEntry: Record "Item Ledger Entry";
         SalesInvoiceHeader: Record "Sales Invoice Header";
