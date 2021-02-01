@@ -19,7 +19,7 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>1.35cm</Width>
+                  <Width>1.65cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>2.85cm</Width>
@@ -31,46 +31,46 @@
                   <Width>1.8cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.5cm</Width>
+                  <Width>4.04cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.11cm</Width>
+                  <Width>4.66cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.25cm</Width>
+                  <Width>1.93646cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>0.2cm</Width>
+                  <Width>0.07938cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1132,17 +1132,17 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
             <Height>1.269cm</Height>
-            <Width>22.76cm</Width>
+            <Width>20.50958cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>2.538cm</Height>
+        <Height>0.99921in</Height>
         <Style />
       </Body>
-      <Width>24.85cm</Width>
+      <Width>8.07464in</Width>
       <Page>
         <PageHeader>
-          <Height>2.538cm</Height>
+          <Height>0.99921in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -1203,7 +1203,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=ReportItems!Subtitle1.Value</Value>
+                      <Value>Vendor Entries</Value>
                       <Style>
                         <FontWeight>Bold</FontWeight>
                       </Style>
@@ -1227,7 +1227,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=ReportItems!CompanyInformation_Name1.Value</Value>
+                      <Value>Advanced Vacuum Company, Inc.</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                       </Style>
@@ -1481,12 +1481,9 @@
           </ReportItems>
           <Style />
         </PageHeader>
-        <PageHeight>29.7cm</PageHeight>
-        <PageWidth>23.15001cm</PageWidth>
-        <LeftMargin>2.1cm</LeftMargin>
-        <RightMargin>0cm</RightMargin>
-        <TopMargin>2cm</TopMargin>
-        <BottomMargin>2cm</BottomMargin>
+        <LeftMargin>0.82677in</LeftMargin>
+        <TopMargin>0.7874in</TopMargin>
+        <BottomMargin>0.7874in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
@@ -1528,7 +1525,7 @@ End Function
 </Code>
   <Language>=User!Language</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
-  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>1e8d7b8a-da2c-4e78-9c60-f00a5112a6df</rd:ReportID>
   <DataSets>
     <DataSet Name="DataSet_Result">

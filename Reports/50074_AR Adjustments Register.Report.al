@@ -83,12 +83,14 @@ report 50074 "A/R Adjustments Register"
             trigger OnAfterGetRecord()
             begin
                 Credits := -Amount;
-                Entries := 1;
+                //Entries := 1;
+                Entries := Entries + 1; //ICE RSK 2/1/21
             end;
 
             trigger OnPreDataItem()
             begin
                 //CurrReport.CreateTotals(Credits,Entries);  ICE-MPC 08/13/20
+                Entries := 0; //ICE RSK 2/1/21
             end;
         }
     }

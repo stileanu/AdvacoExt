@@ -80,15 +80,17 @@ report 50073 "A/R Cash Receipts Register"
             {
             }
 
+
             trigger OnAfterGetRecord()
             begin
                 Credits := -Amount;
-                Entries := 1;
+                Entries := Entries + 1; //ICE RSK 2/1/21
             end;
 
             trigger OnPreDataItem()
             begin
                 //CurrReport.CreateTotals(Credits,Entries); ICE-MPC 08/20/20
+                entries := 0; //ICE RSK 2/1/21
             end;
         }
     }

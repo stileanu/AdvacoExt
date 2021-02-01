@@ -123,12 +123,14 @@ report 50072 "A/R Invoice Register"
                 end;
 
                 Debits := Amount;
-                Entries := 1;
+                //Entries := 1;
+                Entries := Entries + 1; //ICE RSK 2/1/21
             end;
 
             trigger OnPreDataItem()
             begin
                 //CurrReport.CreateTotals(Debits,Entries,Freight); ICE-MPC 09/01/20
+                Entries := 0; //ICE RSK 2/1/21
             end;
         }
     }

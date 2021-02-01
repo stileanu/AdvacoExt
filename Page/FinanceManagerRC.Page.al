@@ -1717,6 +1717,18 @@ page 50160 FinanceManagerRC
                         Caption = 'Vendor/Item Statistics';
                         RunObject = Report "Vendor/Item Statistics";
                     }
+                    action("Purchase Invoice Nos.")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Purchae Invoice Nos.';
+                        RunObject = Report "Purchase Invoice Nos.";
+                    }
+                    action("Purchase Credit Memo Nos.")
+                    {
+                        ApplicationArea = Basic, Suite;
+                        Caption = 'Purchae Credit Memo Nos.';
+                        RunObject = Report "Purchase Credit Memo Nos.";
+                    }
                 }
                 group("Group41")
                 {
