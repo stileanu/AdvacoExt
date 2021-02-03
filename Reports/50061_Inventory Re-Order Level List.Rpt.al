@@ -16,6 +16,8 @@ report 50061 "Inventory Re-Order Level List"
         dataitem(Item; Item)
         {
             RequestFilterFields = "No.", "Search Description", "Assembly BOM", "Inventory Posting Group", "Shelf No.", "Location Filter";
+            CalcFields = Inventory, "Qty. on Purch. Order", "Reserved Qty. on Inventory", Comment, "Assembly BOM";
+
             column(Inventory_Re_Order_Level_List_; 'Inventory Re-Order Level List')
             {
             }
@@ -165,9 +167,9 @@ report 50061 "Inventory Re-Order Level List"
                 end;
 
                 // 07/21/19 start
-                SetFilter("Location Filter", '%1|%2', 'MAIN', 'COMMITTED');
-                CalcFields(Inventory, "Qty. on Purch. Order", "Reserved Qty. on Inventory");
-                QtyAvailable := (Inventory - "Reserved Qty. on Inventory");
+                item.SetFilter("Location Filter", '%1|%2', 'MAIN', 'COMMITTED');
+                Item.CalcFields(Inventory, "Qty. on Purch. Order", "Reserved Qty. on Inventory");
+                QtyAvailable := (item.Inventory - item."Reserved Qty. on Inventory");
 
                 // Retrieve Expected Receipt Date
                 if Vend.Get(Item."Vendor No.") then begin

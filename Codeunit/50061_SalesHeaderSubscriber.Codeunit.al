@@ -15,7 +15,7 @@ codeunit 50061 SalesHeaderSubscriber
     end;
 
     [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnBeforeValidateEvent', 'Ship-to Code', true, true)]
-    local procedure OnBeforeVAlidateShiptoCode(var Rec: Record "Sales Header"; var xRec: Record "Sales Header"; CurrFieldNo: Integer)
+    local procedure OnBeforeValidateShiptoCode(var Rec: Record "Sales Header"; var xRec: Record "Sales Header"; CurrFieldNo: Integer)
     var
         shiptoaddress: Record "Ship-to Address";
     begin
@@ -31,4 +31,19 @@ codeunit 50061 SalesHeaderSubscriber
         end;
     end;
 
+    [EventSubscriber(ObjectType::Table, Database::"Sales Header", 'OnAfterValidateEvent', 'Ship-to Code', true, true)]
+    local procedure OnAfterValidateShiptoCode(var Rec: Record "Sales Header"; var xRec: Record "Sales Header"; CurrFieldNo: Integer)
+    var
+        shiptoaddress: Record "Ship-to Address";
+    begin
+        // new function ICE 2/2/20121 
+        if rec."Ship-to Code" <> '' then begin
+            if shiptoaddress.get(rec."Sell-to Customer No.", rec."Ship-to Code") then begin
+                Rec."Salesperson Code" := shiptoaddress."Inside Sales";
+                Rec.Rep := shiptoaddress.Rep;
+                Rec."Freight include in Price" := shiptoaddress."Freight include in Price";
+            end;
+        end;
+
+    end;
 }

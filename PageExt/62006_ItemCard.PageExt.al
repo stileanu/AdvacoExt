@@ -21,8 +21,16 @@ pageextension 62006 ItemCardExt extends "Item Card"
                 ApplicationArea = All;
             }
         }
+        //ICE RSK 2/3/21 add qtyavailable
         addbefore("Qty. on Purch. Order")
         {
+            field(QtyAvailable; QtyAvailable)
+            {
+                Caption = 'Qty. Available';
+                ApplicationArea = All;
+                Editable = false;
+
+            }
             field("Qty. on Blanket Purch. Order"; "Qty. on Blanket Purch. Order")
             {
                 Caption = 'Qty. on Blanket Orders';

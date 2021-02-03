@@ -14,6 +14,14 @@ tableextension 50134 InventoryBufferExt extends "Inventory Buffer"
         }
     }
 
+    keys
+    {
+        Key(Line; Line)
+        {
+
+        }
+    }
+
     var
         myInt: Integer;
 }

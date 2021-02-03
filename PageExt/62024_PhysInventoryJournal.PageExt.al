@@ -54,6 +54,34 @@ pageextension 62024 PhysInventoryJournalExt extends "Phys. Inventory Journal"
                     REPORT.RunModal(10151, true, false, ItemJournalBatch2);
                 end;
             }
+
+        }
+        modify(CalculateInventory)
+        {
+            Visible = false;
+        }
+        addafter(CalculateInventory)
+        {
+            action(CalculateInventoryAdv)
+            {
+                ApplicationArea = Basic, Suite;
+                Caption = 'Calculate &Inventory';
+                Ellipsis = true;
+                Image = CalculateInventory;
+                Promoted = true;
+                PromotedCategory = Category5;
+                Scope = Repeater;
+                ToolTip = 'Start the process of counting inventory by filling the journal with known quantities.';
+
+                trigger OnAction()
+                var
+                    CalcQtyOnHand2: Report "Calculate Inventory New";
+                begin
+                    CalcQtyOnHand2.SetItemJnlLine(Rec);
+                    CalcQtyOnHand2.RunModal;
+                    Clear(CalcQtyOnHand2);
+                end;
+            }
         }
     }
 
