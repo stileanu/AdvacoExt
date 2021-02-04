@@ -167,9 +167,9 @@ report 50061 "Inventory Re-Order Level List"
                 end;
 
                 // 07/21/19 start
-                item.SetFilter("Location Filter", '%1|%2', 'MAIN', 'COMMITTED');
+                Item.SetFilter("Location Filter", '%1|%2', 'MAIN', 'COMMITTED');
                 Item.CalcFields(Inventory, "Qty. on Purch. Order", "Reserved Qty. on Inventory");
-                QtyAvailable := (item.Inventory - item."Reserved Qty. on Inventory");
+                QtyAvailable := (Item.Inventory - Item."Reserved Qty. on Inventory");
 
                 // Retrieve Expected Receipt Date
                 if Vend.Get(Item."Vendor No.") then begin

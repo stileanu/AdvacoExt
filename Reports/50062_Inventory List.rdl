@@ -1326,6 +1326,9 @@
                   <TablixMembers>
                     <TablixMember />
                   </TablixMembers>
+                  <Visibility>
+                    <Hidden>=iif((Fields!Item__Quantity_on_Hand_.Value&lt;&gt;0 AND Fields!TotalValue.Value = 0),TRUE,FALSE)</Hidden>
+                  </Visibility>
                   <DataElementName>Detail_Collection</DataElementName>
                   <DataElementOutput>Output</DataElementOutput>
                   <KeepTogether>true</KeepTogether>
@@ -1339,7 +1342,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.608cm</Top>
             <Height>1.692cm</Height>
-            <Width>18.15cm</Width>
+            <Width>18.15002cm</Width>
             <ZIndex>1</ZIndex>
             <Style />
           </Tablix>
@@ -1347,7 +1350,7 @@
         <Height>2.3cm</Height>
         <Style />
       </Body>
-      <Width>18.15cm</Width>
+      <Width>18.15002cm</Width>
       <Page>
         <PageHeader>
           <Height>1.692cm</Height>

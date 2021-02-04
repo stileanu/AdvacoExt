@@ -30,7 +30,7 @@ report 50062 "Inventory List"
             column(Item_TABLENAME__________ItemFilter; Item.TableName + ': ' + ItemFilter)
             {
             }
-            column(Item__No__; "No.")
+            column(Item__No__; COPYSTR("No.", 1, 10))
             {
             }
             column(Item_Description; Description)
@@ -135,6 +135,7 @@ report 50062 "Inventory List"
                     SetRange("Posting Date", 0D, AsOfDate);
                 end;
             }
+
             dataitem(BufferLoop; "Integer")
             {
                 DataItemTableView = SORTING(Number);
