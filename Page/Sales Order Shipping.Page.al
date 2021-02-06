@@ -826,6 +826,7 @@ page 50060 "Sales Order Shipping"
 
     procedure GPSLoopNoGLEntry()
     begin
+        // ,SERVICE,SALES,TURBO,ELECTRONIC,DRY,CRYO
         if (WOD."Income Code".AsInteger() = 1) then begin
             GPS.Get('', 'REPAIR');
         end;

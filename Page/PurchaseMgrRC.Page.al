@@ -751,7 +751,7 @@ page 50158 PurchaseMgrRC
                     {
                         ApplicationArea = All;
                         Caption = 'Outstanding Purch.Order Status';
-                        RunObject = report "Outstanding Purch.Order Status";
+                        RunObject = report AdvOutstandingPOStatus;
                     }
                     action(OutstandingPOBySO_WO)
                     {

@@ -649,7 +649,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Invoice.Value</Value>
+                                  <Value>=(Fields!Invoice.Value * -1)</Value>
                                   <Style>
                                     <Format>=Fields!InvoiceFormat.Value</Format>
                                   </Style>
@@ -883,7 +883,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Finance_Charge_Memo_.Value</Value>
+                                  <Value>=Fields!Finance_Charge_Memo_.Value *-1</Value>
                                   <Style>
                                     <Format>=Fields!Finance_Charge_Memo_Format.Value</Format>
                                   </Style>
@@ -1023,7 +1023,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!CreditMemos.Value</Value>
+                                  <Value>=Fields!CreditMemos.Value *-1</Value>
                                   <Style>
                                     <Format>=Fields!CreditMemosFormat.Value</Format>
                                   </Style>
@@ -1199,6 +1199,7 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -1463,7 +1464,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!Payment.Value</Value>
+                                  <Value>=Fields!Payment.Value * -1</Value>
                                   <Style>
                                     <Format>=Fields!PaymentFormat.Value</Format>
                                   </Style>
@@ -1872,12 +1873,12 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0cm</Top>
-            <Height>10.04814cm</Height>
+            <Height>10.04815cm</Height>
             <Width>14.76625cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>10.04814cm</Height>
+        <Height>10.04815cm</Height>
         <Style />
       </Body>
       <Width>18.15cm</Width>

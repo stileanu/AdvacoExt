@@ -129,14 +129,47 @@ pageextension 62008 SalesOrderSubpageExt extends "Sales Order Subform"
             Visible = lAccGroup;
         }
     }
-
-    actions
-    {
-        // Add changes to page actions here
-    }
-
     var
-        lShipGroup: Boolean;
-        lSalesGroup: Boolean;
         lAccGroup: Boolean;
+        lSalesGroup: Boolean;
+        lShipGroup: Boolean;
+        SysFunctions: Codeunit systemFunctionalLibrary;
+        txtAnswer: Text[120];
+        AcctCode: Label 'ADVACO ACCOUNTING';
+        SalesCode: Label 'ADVACO SALES';
+        ShipCode: Label 'ADVACO SHIPPING';
+        Permiss: Label 'SUPER';
+
+    trigger OnOpenPage()
+    var
+        AccessControl: Record "Access Control";
+        Ok: Boolean;
+        User: Record User;
+        GLSetup: Record "General Ledger Setup";
+
+    begin
+        // initialize group flag
+        lAccGroup := false;
+        lSalesGroup := false;
+        lShipGroup := false;
+
+        ///--! Permission level check code. 
+        User.Get(UserSecurityId);
+        Ok := true;
+        User.SetRange("User Security ID", User."User Security ID");
+        //Member.SetRange("User Security ID", User."User Security ID");
+
+        lAccGroup := SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer);
+        if not lAccGroup then
+            lAccGroup := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+        if not lSalesGroup then  //ICE RSK 12/3/20 change from laccgroup to lsalesgroup 
+            lSalesGroup := SysFunctions.getIfSingleGroupId(SalesCode, txtAnswer);
+        if not (lAccGroup or lSalesGroup) then
+            lShipGroup := SysFunctions.getIfSingleGroupId(ShipCode, txtAnswer);
+
+
+    end;
+
+
+
 }

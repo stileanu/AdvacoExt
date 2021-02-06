@@ -748,7 +748,6 @@
                                               <PaddingBottom>0.16654in</PaddingBottom>
                                             </Style>
                                           </Textbox>
-                                          <rd:Selected>true</rd:Selected>
                                         </CellContents>
                                       </TablixCell>
                                       <TablixCell>
@@ -2120,7 +2119,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!Debit_Amount.Value</Value>
+                                                    <Value>=last(Fields!Debit_Amount.Value)</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -2183,7 +2182,7 @@
                                               <Paragraph>
                                                 <TextRuns>
                                                   <TextRun>
-                                                    <Value>=Fields!Credit_Amount.Value</Value>
+                                                    <Value>=last(Fields!Credit_Amount.Value)</Value>
                                                     <Style>
                                                       <FontSize>7pt</FontSize>
                                                       <FontWeight>Bold</FontWeight>
@@ -2331,6 +2330,9 @@
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>
                                   <TablixMember>
+                                    <Visibility>
+                                      <Hidden>true</Hidden>
+                                    </Visibility>
                                     <KeepWithGroup>Before</KeepWithGroup>
                                     <KeepTogether>true</KeepTogether>
                                   </TablixMember>

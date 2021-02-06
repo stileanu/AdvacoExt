@@ -805,6 +805,7 @@ page 50025 "Parts Adjustment"
 
     procedure GPSLoop()
     begin
+        // ,SERVICE,SALES,TURBO,ELECTRONIC,DRY,CRYO
         if ("Income Code".AsInteger() = 1) then begin
             GPS.Get('', 'REPAIR');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account

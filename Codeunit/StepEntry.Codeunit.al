@@ -765,30 +765,31 @@ codeunit 50001 "Step Entry"
 
     procedure GPSLoop();
     begin
-        IF (WOD."Income Code" = WOD."Income Code"::Cryo) THEN BEGIN
-            GPS.GET('', 'REPAIR');
-            SalesLine.VALIDATE("No.", GPS."Sales Account");   //Sales Account
-        END;
-        IF (WOD."Income Code" = WOD."Income Code"::Dry) THEN BEGIN
-            GPS.GET('', 'PP SALES');
-            SalesLine.VALIDATE("No.", GPS."Sales Account");   //Sales Account
-        END;
-        IF (WOD."Income Code" = WOD."Income Code"::Electronic) THEN BEGIN
-            GPS.GET('', 'TURBO');
-            SalesLine.VALIDATE("No.", GPS."Sales Account");   //Sales Account
-        END;
-        IF (WOD."Income Code" = WOD."Income Code"::Sales) THEN BEGIN
-            GPS.GET('', 'ELECTRONIC');
-            SalesLine.VALIDATE("No.", GPS."Sales Account");   //Sales Account
-        END;
-        IF (WOD."Income Code" = WOD."Income Code"::Service) THEN BEGIN
-            GPS.GET('', 'DRY PUMP');
-            SalesLine.VALIDATE("No.", GPS."Sales Account");   //Sales Account
-        END;
-        IF (WOD."Income Code" = WOD."Income Code"::Turbo) THEN BEGIN
-            GPS.GET('', 'CRYO');
-            SalesLine.VALIDATE("No.", GPS."Sales Account");   //Sales Account
-        END;
+        //  ,SERVICE,SALES,TURBO,ELECTRONIC,DRY,CRYO
+        if (WOD."Income Code" = WOD."Income Code"::Service) then begin
+            GPS.Get('', 'REPAIR');
+            SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
+        end;
+        if (WOD."Income Code" = WOD."Income Code"::Sales) then begin
+            GPS.Get('', 'PP SALES');
+            SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
+        end;
+        if (WOD."Income Code" = WOD."Income Code"::Turbo) then begin
+            GPS.Get('', 'TURBO');
+            SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
+        end;
+        if (WOD."Income Code" = WOD."Income Code"::Electronic) then begin
+            GPS.Get('', 'ELECTRONIC');
+            SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
+        end;
+        if (WOD."Income Code" = WOD."Income Code"::Dry) then begin
+            GPS.Get('', 'DRY PUMP');
+            SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
+        end;
+        if (WOD."Income Code" = WOD."Income Code"::Cryo) then begin
+            GPS.Get('', 'CRYO');
+            SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
+        end;
     end;
 
     procedure UpdateParts();

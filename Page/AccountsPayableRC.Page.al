@@ -857,7 +857,7 @@ page 50161 AccountsPayableRC
                     {
                         ApplicationArea = All;
                         Caption = 'Outstanding Purch.Order Status';
-                        RunObject = Report "Outstanding Purch.Order Status";
+                        RunObject = Report AdvOutstandingPOStatus;
                     }
                     action("Projected Cash Payments")
                     {

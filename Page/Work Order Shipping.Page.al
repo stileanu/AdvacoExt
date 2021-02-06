@@ -1718,51 +1718,53 @@ page 50033 "Work Order Shipping"
 
     procedure GPSLoop()
     begin
-        if (WOD."Income Code" = WOD."Income Code"::Cryo) then begin
+        // ,SERVICE,SALES,TURBO,ELECTRONIC,DRY,CRYO
+        if (WOD."Income Code" = WOD."Income Code"::Service) then begin
             GPS.Get('', 'REPAIR');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if (WOD."Income Code" = WOD."Income Code"::Dry) then begin
+        if (WOD."Income Code" = WOD."Income Code"::Sales) then begin
             GPS.Get('', 'PP SALES');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if (WOD."Income Code" = WOD."Income Code"::Electronic) then begin
+        if (WOD."Income Code" = WOD."Income Code"::Turbo) then begin
             GPS.Get('', 'TURBO');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if (WOD."Income Code" = WOD."Income Code"::Sales) then begin
+        if (WOD."Income Code" = WOD."Income Code"::Electronic) then begin
             GPS.Get('', 'ELECTRONIC');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if (WOD."Income Code" = WOD."Income Code"::Service) then begin
+        if (WOD."Income Code" = WOD."Income Code"::Dry) then begin
             GPS.Get('', 'DRY PUMP');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if (WOD."Income Code" = WOD."Income Code"::Turbo) then begin
+        if (WOD."Income Code" = WOD."Income Code"::Cryo) then begin
             GPS.Get('', 'CRYO');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
     end;
+    // ,SERVICE,SALES,TURBO,ELECTRONIC,DRY,CRYO
 
     procedure GPSLoopNoGLEntry()
     begin
         if (WOD."Income Code" = WOD."Income Code"::Cryo) then begin
-            GPS.Get('', 'REPAIR');
+            GPS.Get('', 'CRYO');
         end;
         if (WOD."Income Code" = WOD."Income Code"::Dry) then begin
-            GPS.Get('', 'PP SALES');
+            GPS.Get('', 'DRY');
         end;
         if (WOD."Income Code" = WOD."Income Code"::Electronic) then begin
-            GPS.Get('', 'TURBO');
-        end;
-        if (WOD."Income Code" = WOD."Income Code"::Sales) then begin
             GPS.Get('', 'ELECTRONIC');
         end;
+        if (WOD."Income Code" = WOD."Income Code"::Sales) then begin
+            GPS.Get('', 'PP SALES');
+        end;
         if (WOD."Income Code" = WOD."Income Code"::Service) then begin
-            GPS.Get('', 'DRY PUMP');
+            GPS.Get('', 'REPAIR');
         end;
         if (WOD."Income Code" = WOD."Income Code"::Turbo) then begin
-            GPS.Get('', 'CRYO');
+            GPS.Get('', 'TURBO');
         end;
     end;
 

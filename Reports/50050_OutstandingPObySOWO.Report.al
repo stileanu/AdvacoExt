@@ -10,8 +10,8 @@ report 50050 "Outstanding PO  by SO/WO"
     {
         dataitem("Purchase Line"; "Purchase Line")
         {
-            DataItemTableView = SORTING("Document Type", "Work Order No.", "Line No.") ORDER(Ascending) WHERE("Document Type" = CONST(Order), "Outstanding Quantity" = FILTER(<> 0), "Order No." = FILTER(<> ''));
-            RequestFilterFields = "Document No.", "Order No.";
+            DataItemTableView = SORTING("Document Type", "Work Order No.", "Line No.") ORDER(Ascending) WHERE("Document Type" = CONST(Order), "Outstanding Quantity" = FILTER(<> 0), "Work Order No." = FILTER(<> ''));
+            RequestFilterFields = "Document No.", "work Order No.";
             column(CompanyInformation_Name; CompanyInformation.Name)
             {
             }
@@ -47,7 +47,7 @@ report 50050 "Outstanding PO  by SO/WO"
             {
 
             }
-            column(Purchase_Line__Order_No__; "Order No.")
+            column(Purchase_Line__Order_No__; "work Order No.")
             {
             }
             column(Purchase_Line__Document_No__; "Document No.")
@@ -150,7 +150,7 @@ report 50050 "Outstanding PO  by SO/WO"
                 //HEF Insert
                 Model := '';
 
-                WOD.SetRange(WOD."Work Order No.", "Purchase Line"."Order No.");
+                WOD.SetRange(WOD."Work Order No.", "Purchase Line"."Work Order No.");
                 if WOD.Find('-') then
                     Model := WOD."Model No.";
             end;

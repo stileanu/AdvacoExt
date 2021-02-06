@@ -121,10 +121,10 @@ report 50071 "Accounts Payable Flash Report"
             dataitem(Blank; "Integer")
             {
                 DataItemTableView = SORTING(Number) WHERE(Number = CONST(1));
-                column(InvoiceTotal___CreditMemos; InvoiceTotal + CreditMemos)
+                column(InvoiceTotal___CreditMemos; InvoiceTotal * -1 + CreditMemos * -1)
                 {
                 }
-                column(InvoiceTotal___BeginningBalance___PaymentTotal; InvoiceTotal + BeginningBalance + PaymentTotal)
+                column(InvoiceTotal___BeginningBalance___PaymentTotal; InvoiceTotal * -1 + BeginningBalance + PaymentTotal * -1)
                 {
                 }
                 column(Payment; Payment)
@@ -142,7 +142,7 @@ report 50071 "Accounts Payable Flash Report"
                 column(Difference; Difference)
                 {
                 }
-                column(InvoiceTotal___CreditMemos___BeginningBalance; InvoiceTotal + CreditMemos + BeginningBalance)
+                column(InvoiceTotal___CreditMemos___BeginningBalance; InvoiceTotal * -1 + CreditMemos * -1 + BeginningBalance)
                 {
                 }
                 column(PurchasesCaption; PurchasesCaptionLbl)

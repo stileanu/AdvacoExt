@@ -1025,7 +1025,9 @@ page 50150 "Field Service"
 
     procedure GPSLoop()
     begin
-        if ("Income Code" = 1) then begin
+        // Field Service Table - Income Code
+        // ,SERVICE,SALES,TURBO,ELECTRONIC,DRY,CRYO,EXPENSE FS,FREIGHT FS,LABOR FS,TRAVEL FS
+        if (Rec."Income Code" = 1) then begin
             GPS.Get('', 'REPAIR');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;

@@ -1206,6 +1206,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
 
     procedure GPSLoopNoGLEntry()
     begin
+        // ,SERVICE,SALES,TURBO,ELECTRONIC,DRY,CRYO
         if (WOD."Income Code".AsInteger() = 1) then begin
             GPS.Get('', 'REPAIR');
         end;
