@@ -452,6 +452,7 @@ report 50006 "Office Work Order Status Rpt"
 
     requestpage
     {
+        SaveValues = true;
 
         layout
         {

@@ -8,7 +8,6 @@ report 50004 "Vendor Responsiveness"
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50004_VendorResponsiveness.rdl';
 
-
     dataset
     {
         dataitem(Vendor; Vendor)
@@ -86,6 +85,7 @@ report 50004 "Vendor Responsiveness"
                 DataItemTableView = SORTING("Buy-from Vendor No.", "Location Code");
                 PrintOnlyIfDetail = true;
                 RequestFilterFields = "Order Date", "Posting Date";
+
                 column(Vendor__No__; Vendor."No.")
                 {
                 }
@@ -332,7 +332,7 @@ report 50004 "Vendor Responsiveness"
 
     requestpage
     {
-
+        SaveValues = true;
         layout
         {
             area(content)

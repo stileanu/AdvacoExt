@@ -409,6 +409,7 @@ report 50005 "Shop Work Order Status Rpt"
 
     requestpage
     {
+        SaveValues = true;
 
         layout
         {

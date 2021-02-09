@@ -281,6 +281,7 @@ report 50025 "Work Order Analysis"
 
     requestpage
     {
+        SaveValues = true;
 
         layout
         {
