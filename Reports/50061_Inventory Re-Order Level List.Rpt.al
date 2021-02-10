@@ -3,13 +3,11 @@ report 50061 "Inventory Re-Order Level List"
     // 07/21/19
     //   Added controls for QtyAvailable, Sales Qty This Year and Sales Qty Last Year, and tagged code to implement them.
     //   Added Lead Time control and code to provide value.
-    caption = 'Invenotry Re-Order Level List';
+    caption = 'Inventory Re-Order Level List';
     DefaultLayout = RDLC;
     RDLCLayout = './Reports/50061_Inventory Re-Order Level List.rdl';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = all;
-
-
 
     dataset
     {
@@ -55,7 +53,7 @@ report 50061 "Inventory Re-Order Level List"
             column(QtyAvailable; QtyAvailable)
             {
             }
-            column(Item__Qty__on_Purch__Order_; "Qty. on Purch. Order")
+            column(Item__Qty__on_Purch__Order_; "Qty. on Purchase Orders")
             {
             }
             column(SalesThisYear; SalesThisYear)
@@ -166,9 +164,11 @@ report 50061 "Inventory Re-Order Level List"
              */
                 end;
 
+
                 // 07/21/19 start
+                Item.SetFilter("Date Filter", '');
                 Item.SetFilter("Location Filter", '%1|%2', 'MAIN', 'COMMITTED');
-                Item.CalcFields(Inventory, "Qty. on Purch. Order", "Reserved Qty. on Inventory");
+                Item.CalcFields(Inventory, "Qty. on Purch. Order", "Qty. on Purchase Orders", "Reserved Qty. on Inventory");
                 QtyAvailable := (Item.Inventory - Item."Reserved Qty. on Inventory");
 
                 // Retrieve Expected Receipt Date
@@ -206,6 +206,7 @@ report 50061 "Inventory Re-Order Level List"
 
     requestpage
     {
+        SaveValues = true;
 
         layout
         {

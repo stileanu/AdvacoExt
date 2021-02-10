@@ -38,7 +38,7 @@ tableextension 50104 ItemExt Extends Item
         {
             Caption = 'Qty. Rec. Blanket Purch. Order';
             FieldClass = FlowField;
-            CalcFormula = Sum ("Purchase Line"."Qty. Received (Base)" WHERE("Document Type" = CONST("Blanket Order"), Type = CONST(Item), "No." = FIELD("No."),
+            CalcFormula = Sum("Purchase Line"."Qty. Received (Base)" WHERE("Document Type" = CONST("Blanket Order"), Type = CONST(Item), "No." = FIELD("No."),
                             "Shortcut Dimension 1 Code" = FIELD("Global Dimension 1 Filter"), "Shortcut Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
                             "Location Code" = FIELD("Location Filter"), "Drop Shipment" = FIELD("Drop Shipment Filter"), "Variant Code" = FIELD("Variant Filter"),
                             "Bin Code" = FIELD("Bin Filter"), "Expected Receipt Date" = FIELD("Date Filter")));
@@ -49,7 +49,7 @@ tableextension 50104 ItemExt Extends Item
         {
             Caption = 'Qty. on Blanket Purch. Order';
             FieldClass = FlowField;
-            CalcFormula = Sum ("Purchase Line".Quantity WHERE("Document Type" = CONST("Blanket Order"), Type = CONST(Item), "No." = FIELD("No."),
+            CalcFormula = Sum("Purchase Line".Quantity WHERE("Document Type" = CONST("Blanket Order"), Type = CONST(Item), "No." = FIELD("No."),
                             "Shortcut Dimension 1 Code" = FIELD("Global Dimension 1 Filter"), "Shortcut Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
                             "Location Code" = FIELD("Location Filter"), "Drop Shipment" = FIELD("Drop Shipment Filter"), "Variant Code" = FIELD("Variant Filter"),
                             "Bin Code" = FIELD("Bin Filter"), "Expected Receipt Date" = FIELD("Date Filter")));
@@ -60,7 +60,7 @@ tableextension 50104 ItemExt Extends Item
         {
             Caption = 'Qty. On Blanket Released';
             FieldClass = FlowField;
-            CalcFormula = Sum ("Purchase Line"."Qty. Released" WHERE("Document Type" = CONST("Blanket Order"), Type = CONST(Item), "No." = FIELD("No."),
+            CalcFormula = Sum("Purchase Line"."Qty. Released" WHERE("Document Type" = CONST("Blanket Order"), Type = CONST(Item), "No." = FIELD("No."),
                             "Shortcut Dimension 1 Code" = FIELD("Global Dimension 1 Filter"), "Shortcut Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
                             "Location Code" = FIELD("Location Filter"), "Drop Shipment" = FIELD("Drop Shipment Filter"), "Variant Code" = FIELD("Variant Filter"),
                             "Bin Code" = FIELD("Bin Filter"), "Expected Receipt Date" = FIELD("Date Filter")));
@@ -98,6 +98,25 @@ tableextension 50104 ItemExt Extends Item
         {
             //ADV-FIA Document per Chip
             Caption = 'RIA Reference';
+        }
+        field(50061; "Qty. on Purchase Orders"; Decimal)
+        {
+            AccessByPermission = TableData "Purch. Rcpt. Header" = R;
+            CalcFormula = Sum("Purchase Line"."Outstanding Qty. (Base)" WHERE("Document Type" = CONST(Order),
+                                                                               Type = CONST(Item),
+                                                                               "No." = FIELD("No."),
+                                                                               "Shortcut Dimension 1 Code" = FIELD("Global Dimension 1 Filter"),
+                                                                               "Shortcut Dimension 2 Code" = FIELD("Global Dimension 2 Filter"),
+                                                                               "Location Code" = FIELD("Location Filter"),
+                                                                               "Drop Shipment" = FIELD("Drop Shipment Filter"),
+                                                                               "Variant Code" = FIELD("Variant Filter"),
+                                                                               "Expected Receipt Date" = FIELD("Date Filter"),
+                                                                               "Unit of Measure Code" = FIELD("Unit of Measure Filter")));
+            Caption = 'Qty. on Purch. Order';
+            DecimalPlaces = 0 : 5;
+            Editable = false;
+            FieldClass = FlowField;
+
         }
         field(50070; Class; Code[10])
         {
