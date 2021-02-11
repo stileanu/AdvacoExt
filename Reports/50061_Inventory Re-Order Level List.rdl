@@ -752,7 +752,7 @@
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>0.0355cm</PaddingRight>
                             <PaddingTop>2pt</PaddingTop>
-                            <PaddingBottom>2pt</PaddingBottom>
+                            <PaddingBottom>3pt</PaddingBottom>
                           </Style>
                         </Textbox>
                       </CellContents>

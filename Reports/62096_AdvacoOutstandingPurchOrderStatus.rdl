@@ -5707,7 +5707,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Code.StatusCap</Value>
+                      <Value>=First(Fields!Outstanding_Purchase_Order_StatusCaption.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -5730,7 +5730,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Code.ComInfo</Value>
+                      <Value>=First(Fields!CompanyInformation_Name.Value, "DataSet_Result")</Value>
                       <Style>
                         <FontSize>7pt</FontSize>
                       </Style>
