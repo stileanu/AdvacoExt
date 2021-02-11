@@ -20,6 +20,19 @@ IcE-MPC BC Upgrade
                 field("Part No."; "Part No.")
                 {
                     ApplicationArea = All;
+
+                    trigger OnDrillDown()
+                    var
+                        ItemRec: Record Item;
+                        ItemCard: Page "Item Card";
+
+                    begin
+                        if ItemRec.Get(Rec."Part No.") then begin
+                            Clear(ItemCard);
+                            ItemCard.SetRecord(ItemRec);
+                            ItemCard.RunModal()
+                        end;
+                    end;
                 }
                 field(Description; Description)
                 {

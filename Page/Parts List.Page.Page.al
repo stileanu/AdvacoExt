@@ -62,6 +62,25 @@ page 50005 "Parts List"
                 {
                     ApplicationArea = All;
                     Editable = false;
+
+                    trigger OnDrillDown()
+                    var
+                        PurchLine: Record "Purchase Line";
+                        PurchLines: Page "Purchase Lines";
+
+                    begin
+                        PurchLine.SetRange("Document Type", PurchLine."Document Type"::Order);
+                        PurchLine.SetRange("Document No.", Rec."Purchase Order No.");
+                        PurchLine.SetRange("No.", Rec."Part No.");
+                        PurchLine.SetFilter(Type, '>0');
+                        if PurchLine.FindFirst() then begin
+                            //if PurchLine.Get(PurchLine."Document Type"::Order, Rec."Purchase Order No.") then begin
+                            Clear(PurchLines);
+                            PurchLines.SetTableView(PurchLine);
+                            PurchLines.RunModal()
+                        end;
+                    end;
+
                 }
             }
         }

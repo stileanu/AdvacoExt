@@ -166,9 +166,14 @@ report 50061 "Inventory Re-Order Level List"
 
 
                 // 07/21/19 start
-                Item.SetFilter("Date Filter", '');
+                // 02/10/21 ICE start
+                //Item.SetFilter("Date Filter", '');
+                Item.SetFilter("Date Filter", DateFlowFilter);
+                //CopyFilter("Global Dimension 1 Filter", ItemLedgerEntry."Global Dimension 1 Code");
+                //CopyFilter("Global Dimension 2 Filter", ItemLedgerEntry."Global Dimension 2 Code");
                 Item.SetFilter("Location Filter", '%1|%2', 'MAIN', 'COMMITTED');
                 Item.CalcFields(Inventory, "Qty. on Purch. Order", "Qty. on Purchase Orders", "Reserved Qty. on Inventory");
+                // 02/10/21 ICE end
                 QtyAvailable := (Item.Inventory - Item."Reserved Qty. on Inventory");
 
                 // Retrieve Expected Receipt Date
@@ -200,6 +205,7 @@ report 50061 "Inventory Re-Order Level List"
             trigger OnPreDataItem()
             begin
                 //CurrReport.CreateTotals(TotalValue);
+                DateFlowFilter := GetFilter("Date Filter");
             end;
         }
     }
@@ -228,6 +234,7 @@ report 50061 "Inventory Re-Order Level List"
     end;
 
     var
+        DateFlowFilter: Text[250];
         CompanyInformation: Record "Company Information";
         ItemLedgerEntry: Record "Item Ledger Entry";
         ItemLedgerEntry2: Record "Item Ledger Entry";
