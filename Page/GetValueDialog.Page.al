@@ -16,7 +16,7 @@ page 50100 GetValueDialog
                 field(ValueNo_; ValueNo_)
                 {
                     ApplicationArea = All;
-                    Caption = 'Enter the Number:';
+                    Caption = 'Enter the Value:';
                     ShowMandatory = true;
 
 
@@ -95,7 +95,7 @@ page 50100 GetValueDialog
     end;
 
     var
-        ValueNo_: Code[50];
+        ValueNo_: Code[100];
         lValueType: Enum ValueType;
         lValidate: Boolean;
         AdvacoErr001: Label 'Work Order No. %1 does not exist.';
@@ -141,5 +141,13 @@ page 50100 GetValueDialog
             WorkOrderNo_ := Format(ValueNo_)
         else
             WorkOrderNo_ := ValueNo_;
+    end;
+
+    procedure GetTextValue_(var WorkOrderNo_: Text[100])
+    begin
+        if (lValueType = lValueType::InstallText) then
+            WorkOrderNo_ := Format(ValueNo_)
+        else
+            Error('Wrong type.');
     end;
 }

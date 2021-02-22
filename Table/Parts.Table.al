@@ -9,6 +9,9 @@ table 50003 Parts
     // Missing key -- WOS.SETCURRENTKEY("Order No.", Step);
     // Coomented code, as we do not have access to main table fields.
 
+    // 2021_02_21 ICE SII
+    // Expanded Description field to 100 chars to match base table "BOM Component" field
+
     fields
     {
         field(10; "Work Order No."; Code[7])
@@ -50,7 +53,10 @@ table 50003 Parts
 
             end;
         }
-        field(30; Description; Text[30])
+
+        //2021_02_21 ICE
+        //field(30; Description; Text[30])
+        field(30; Description; Text[100])
         {
         }
         field(90; "Quantity Backorder"; Decimal)

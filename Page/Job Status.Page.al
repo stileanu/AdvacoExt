@@ -186,6 +186,12 @@ page 50009 "Job Status"
                     {
                         ApplicationArea = All;
                         Caption = 'Safety Form';
+
+                        trigger OnValidate()
+                        begin
+                            IF WOD."Safety Form" <> OLDWOD."Safety Form" THEN
+                                WOD.MODIFY;
+                        end;
                     }
                     field("WOD.""Receiving Notes"""; WOD."Receiving Notes")
                     {

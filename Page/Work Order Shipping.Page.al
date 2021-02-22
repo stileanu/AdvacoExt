@@ -422,7 +422,7 @@ page 50033 "Work Order Shipping"
                         Rec.Modify();
                     end;
                     // 2021_01_11 Intelice End
-
+                    CurrPage.Update();
                     //CurrPage.Close;
                 end;
             }
@@ -530,9 +530,12 @@ page 50033 "Work Order Shipping"
     end;
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
+    var
+        OrdStatus: Record Status;
     begin
 
-        if not Dialog.Confirm('Is this order completed?', false) then
+        //if not Dialog.Confirm('Is this order completed?', false) then
+        if not Rec."Shipping Processed" then
             if Dialog.Confirm('Do you want to close this page without completing the order?', false) then begin
                 WorkOrderDetail.Reset;
                 WorkOrderDetail.SetCurrentKey("Work Order Master No.");
@@ -547,11 +550,13 @@ page 50033 "Work Order Shipping"
                 exit(true);
 
             end else
-                exit(false);
+                exit(false)
 
-        Rec.Complete := true;
-        Rec.Modify();
-        exit(true);
+        else begin
+            Rec.Complete := true;
+            Rec.Modify();
+            exit(true);
+        end;
     end;
 
     var

@@ -109,6 +109,33 @@ page 50019 "Quote Modify"
                 {
                     ApplicationArea = All;
                     Caption = 'Order Type';
+
+                    trigger OnValidate()
+                    var
+                        GetReason: Page GetValueDialog;
+                        SetType: Enum ValueType;
+
+                    begin
+                        if WOD."Order Type" <> OLDWOD."Order Type" then begin
+                            if not Confirm('Are you sure you wish to change the Order Type?') THEN BEGIN
+                                Error('Order Type has not been changed');
+                            end else begin
+                                GetReason.SetDialogValueType(SetType::InstallText, false);
+                                if GetReason.RunModal() = Action::OK then
+                                    GetReason.GetTextValue_(OrderReason)
+                                else
+                                    Error('');
+                                if OrderReason = '' then begin
+                                    Error('You must enter a reason in order to change the Order Type');
+                                end else begin
+                                    //      WOD.GET("Work Order No.");
+                                    WOD."Order Type Reason" := OrderReason;
+                                    WOD.Modify();
+                                    //COMMIT;
+                                END;
+                            END;
+                        end;
+                    end;
                 }
                 field("WOD.""Pump Module No."""; WOD."Pump Module No.")
                 {
