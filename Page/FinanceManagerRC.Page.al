@@ -108,6 +108,14 @@ page 50160 FinanceManagerRC
                     RunObject = codeunit PumpRelease;
                     ToolTip = 'Enters data to release a Work Order Detail.';
                 }
+                action(Action50053)
+                {
+                    ApplicationArea = All;
+                    Caption = 'Re-Quote';
+                    Image = OrderList;
+                    RunObject = codeunit "Re-Quote";
+                    ToolTip = 'Re-quote an Work Order.';
+                }
             }
             group("Group")
             {
