@@ -481,6 +481,7 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine.Validate(ItemJournalLine.Quantity);
 
                 if SerialNo <> '' then begin
+                    Rec.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
@@ -520,6 +521,7 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine.Validate(ItemJournalLine.Quantity);
 
                 if SerialNo <> '' then begin
+                    Rec.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
@@ -562,6 +564,7 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
                 if SerialNo <> '' then begin
+                    Rec.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
@@ -604,6 +607,7 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
                 if SerialNo <> '' then begin
+                    Rec.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;

@@ -734,6 +734,8 @@ table 50003 Parts
     end;
 
     procedure WriteItemJournalLine();
+    var
+        WOD: Record WorkOrderDetail;
     begin
         LineNumber := LineNumber + 10000;
         ItemJournalLine.VALIDATE("Journal Template Name", 'TRANSFER');
@@ -744,6 +746,7 @@ table 50003 Parts
         ItemJournalLine.VALIDATE("Item No.", Item2."No.");
         ItemJournalLine."Posting Date" := WORKDATE;
         IF "Serial No." <> '' THEN BEGIN
+            WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, ItemJournalLine."Serial No.");
             ItemJournalLine."Serial No." := "Serial No.";
             ItemJournalLine."New Serial No." := "Serial No.";
         END ELSE BEGIN

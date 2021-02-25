@@ -55,6 +55,10 @@ table 50001 WorkOrderDetail
         2021_01_19 Intelice
         Added field(200002; "Vendor Shipping Processed"; Boolean) to show if an WO Detail was shipped to the Vendor (create BOL, return parts etc..) 
 
+        2021_01_11 Intelice
+        New function procedure SetItemSerialNo_(DocType: Integer; ItemJnlLine: Record "Item Journal Line"; SerialNo: Code[20]): Boolean
+        to create Reservation Entry for Item Jnl Line.
+
     */
 
     fields
@@ -2116,6 +2120,61 @@ table 50001 WorkOrderDetail
                 end;
 
 
+        end;
+
+        exit(false);
+    end;
+
+    procedure SetItemSerialNo_(DocType: Integer; ItemJnlLine: Record "Item Journal Line"; SerialNo: Code[20]): Boolean
+    var
+        entryNo: Integer;
+        ReservEntry: Record "Reservation Entry";
+
+    begin
+        // 2021_01_11 Intelice
+        Clear(ReservEntry);
+        ReservEntry.Reset();
+        ReservEntry.FindLast();
+        entryNo := ReservEntry."Entry No." + 1;
+        ReservEntry.Init();
+        ReservEntry."Entry No." := entryNo;
+
+        case DocType of
+
+            Database::"Item Journal Line":
+                begin
+                    ReservEntry.Positive := false;
+                    ReservEntry."Item No." := ItemJnlLine."Item No.";
+                    ReservEntry."Location Code" := ItemJnlLine."Location Code";
+                    //ReservEntry.Validate("Quantity (Base)", SalesDoc."Quantity (Base)");
+                    // Should convert to Base first??
+                    //??? - should be simple Quantity??
+
+                    ReservEntry."Reservation Status" := ReservEntry."Reservation Status"::Prospect;
+                    ReservEntry."Creation Date" := WorkDate();
+                    //ReservEntry."Shipment Date" := ItemJnlLine."Shipment Date";
+                    ReservEntry."Source Type" := DocType;
+                    ReservEntry."Source Subtype" := ItemJnlLine."Entry Type".AsInteger();
+                    ReservEntry."Source ID" := 'ITEM';
+                    ReservEntry."Source Ref. No." := ItemJnlLine."Line No.";
+                    ReservEntry."Created By" := UserId;
+                    //ReservEntry.Quantity := SalesDoc.Quantity;
+                    ReservEntry."Qty. per Unit of Measure" := ItemJnlLine."Qty. per Unit of Measure";
+                    ReservEntry.Validate("Quantity", ItemJnlLine."Quantity");
+                    if ReservEntry.Quantity > 0 then
+                        ReservEntry.Positive := true
+                    else
+                        ReservEntry.Positive := false;
+                    ReservEntry."Source Batch Name" := ItemJnlLine."Journal Batch Name";
+                    ReservEntry."Disallow Cancellation" := false;
+                    ReservEntry.Correction := false;
+                    ReservEntry."Item Tracking" := ReservEntry."Item Tracking"::"Serial No.";
+                    ReservEntry."Serial No." := SerialNo;
+                    ReservEntry."Untracked Surplus" := false;
+
+                    ReservEntry.Insert();
+                    exit(true);
+                end;
         end;
 
         exit(false);
