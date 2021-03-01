@@ -422,7 +422,7 @@ page 50033 "Work Order Shipping"
                         Rec.Modify();
                     end;
                     // 2021_01_11 Intelice End
-                    CurrPage.Update();
+                    CurrPage.Update(true);
                     //CurrPage.Close;
                 end;
             }
@@ -598,7 +598,8 @@ page 50033 "Work Order Shipping"
         LabelsToPrint: Integer;
         LabelCount: Integer;
         PrintNow: Boolean;
-        ContainerType: Option " ",Skid,Box,Crate,Drum,"Skid Box",Loose;
+        //ContainerType: Option " ",Skid,Box,Crate,Drum,"Skid Box",Loose;
+        ContainerType: Enum Container;
         GPS: Record "General Posting Setup";
         Item: Record Item;
         SerialNo: Code[20];
@@ -1516,7 +1517,10 @@ page 50033 "Work Order Shipping"
         WOD.Complete := true;
         WOD."Bill of Lading" := BLInteger;
         WOD."Package Tracking No." := Tracking;
+        WOD."Container Type" := WOConvertBOLContainer(ContainerType);
+        //WOD."Container Type" := ContainerType;
         WOD.Modify;
+        CurrPage.Update(true);
     end;
 
     procedure UpdateWOS()
@@ -1592,7 +1596,8 @@ page 50033 "Work Order Shipping"
         BOL2.Employee := Shipper;
         // 04/17/18 start
         //BOL2."Container Type" := ContainerType;
-        BOL2."Container Type" := WOD."Container Type";
+        BOL2."Container Type" := WOConvertBOLContainer(ContainerType);
+        //BOL2."Container Type" := WOD."Container Type";
         // 04/17/18 end
         BOL2.Carrier := TempCarrier;
         BOL2."Shipping Method" := TempMethod;
@@ -2035,6 +2040,33 @@ page 50033 "Work Order Shipping"
         ExitShCharge := BOLShipCharge.FromInteger(ShipCharge.AsInteger());
         exit(ExitShCharge);
     end;
+
+    procedure WOConvertBOLContainer(ContainerValue: Enum Container): Enum BOLContainer
+    var
+        ExitContainer: Enum BOLContainer;
+    begin
+        case ContainerValue of
+            ContainerValue::Skid:
+                Exit(ExitContainer::Skid);
+
+            ContainerValue::Box:
+                Exit(ExitContainer::Box);
+
+            ContainerValue::Crate:
+                Exit(ExitContainer::Crate);
+
+            ContainerValue::Drum:
+                Exit(ExitContainer::Drum);
+
+            ContainerValue::"Skid Box":
+                Exit(ExitContainer::"Skid Box");
+
+            ContainerValue::Loose:
+                Exit(ExitContainer::Loose);
+        end;
+
+    end;
+
 
 }
 

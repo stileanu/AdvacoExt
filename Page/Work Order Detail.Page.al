@@ -995,7 +995,8 @@ page 50002 "Work Order Detail"
 
         lAccGroup := (SysFunctions.getIfSingleGroupId(AcctCode, txtAnswer) or
                         SysFunctions.getIfSingleGroupId(SalesCode, txtAnswer));
-        lAccGroup := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
+        if not lAccGroup then
+            lAccGroup := SysFunctions.getIfSingleRoleId(Permiss, txtAnswer);
 
         //if not lAccGroup then
         //    lAccGroup := SysFunctions.getIfSingleRoleId(PurchCode, txtAnswer);
