@@ -399,21 +399,9 @@ page 50033 "Work Order Shipping"
 
                     // get the current record
                     //Commit();
-                    Rec.Get(Rec."Work Order No.");
+                    //Rec.Get(Rec."Work Order No.");
+                    Rec := WOD;
 
-                    // 2021_01_11 Intelice Start
-                    // Reset WOS Status to Waiting
-                    /*
-                    WOS.SetCurrentKey(WOS."Order No.", WOS."Line No.");
-                    WOS.Reset();
-                    WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
-                    if WOS.Find('+') then begin
-                        if WOS.Status = WOS.Status::Complete then begin
-                            WOS.Status := WOS.Status::Waiting;
-                            WOS.Modify(false);
-                        end;
-                    end;
-                    */
                     // Clean Complete Status on WOD to allow page to stay on, if something was processed
                     if not NothingToShip then begin
                         Rec.Complete := false;
@@ -1520,7 +1508,7 @@ page 50033 "Work Order Shipping"
         WOD."Container Type" := WOConvertBOLContainer(ContainerType);
         //WOD."Container Type" := ContainerType;
         WOD.Modify;
-        CurrPage.Update(true);
+        //CurrPage.Update(true);
     end;
 
     procedure UpdateWOS()
