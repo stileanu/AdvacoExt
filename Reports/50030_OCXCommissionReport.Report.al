@@ -1,6 +1,8 @@
 report 50030 "OCX Commission Report"
 {
 
+    // 3/4/21 ICE SII - Added Calcfields to calculate FlowField "Commission Amount"
+
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
     UseRequestPage = true;
@@ -88,7 +90,9 @@ report 50030 "OCX Commission Report"
         SalInvHeader: Record "Sales Invoice Header")
     begin
         //with SalInvHeader do begin
+        // 3/4/21 ICE SII 
         SalInvHeader.CalcFields("Commision Amount");
+        //
         TempExcelBuf.NewRow();
         TempExcelBuf.AddColumn(SalInvHeader."No.", false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
         TempExcelBuf.AddColumn(SalInvHeader."Bill-to Customer No.", false, '', false, false, false, '', TempExcelBuf."Cell Type"::Text);
