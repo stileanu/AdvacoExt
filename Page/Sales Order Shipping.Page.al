@@ -248,7 +248,7 @@ page 50060 "Sales Order Shipping"
                                     IF SerialNo_ = '' THEN
                                         ERROR('Item %1 Serial No. is empty, so the Item can not be shipped', SalesLine2."No.");
                                     /// 1/19/2021 ICE Start
-                                    /*    
+                                    /*   
                                     IF SerialNo_ <> '' THEN BEGIN
                                         ItemLedgerSerial.SETCURRENTKEY("Item No.", Open, "Location Code");
                                         ItemLedgerSerial.SETRANGE("Item No.", Item2."No.");

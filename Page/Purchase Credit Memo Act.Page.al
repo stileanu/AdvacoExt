@@ -1,6 +1,6 @@
 page 50080 "Purchase Credit Memo Act"
 {
-    // Function Menu Items Post & Post and Print have been replaced with a new ones that check for Return to Vendor first
+    // Function Menu Items Post & Post and Print have been replaced with a new ones that check for Return to Vendor first 
 
     Caption = 'Purchase Credit Memo';
     PageType = Document;

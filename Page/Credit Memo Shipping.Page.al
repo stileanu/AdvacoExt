@@ -3,6 +3,8 @@ page 50141 "Credit Memo Shipping"
     // 05/2/18
     //   ContainerType control set to field options in table 50001.
 
+    ApplicationArea = All;
+    UsageCategory = Tasks;
     DeleteAllowed = false;
     PageType = Card;
     SourceTable = "Purchase Header";
@@ -550,10 +552,18 @@ page 50141 "Credit Memo Shipping"
                 ItemJournalLine."New Location Code" := 'MAIN';
                 ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
+                //>
+                ///--! Serial No. issue
+                //if SerialNo <> '' then begin
+                //    ItemJournalLine."Serial No." := SerialNo;
+                //    ItemJournalLine."New Serial No." := SerialNo;
+                //end;
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
+                //<
 
                 ItemJournalLine.Insert;
 
@@ -590,10 +600,18 @@ page 50141 "Credit Memo Shipping"
                 ItemJournalLine.Quantity := RemoveInventoryQty;
                 ItemJournalLine.Validate(ItemJournalLine.Quantity);
 
+                //>
+                ///--! Serial No. issue
+                //if SerialNo <> '' then begin
+                //    ItemJournalLine."Serial No." := SerialNo;
+                //    ItemJournalLine."New Serial No." := SerialNo;
+                //end;
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
+                //<
 
                 ItemJournalLine.Insert;
 
@@ -633,10 +651,18 @@ page 50141 "Credit Memo Shipping"
                 ItemJournalLine."New Location Code" := 'DEFECTIVE';
                 ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
+                //>
+                ///--! Serial No. issue
+                //if SerialNo <> '' then begin
+                //    ItemJournalLine."Serial No." := SerialNo;
+                //    ItemJournalLine."New Serial No." := SerialNo;
+                //end;
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
+                //<
 
                 ItemJournalLine.Insert;
 
@@ -676,10 +702,18 @@ page 50141 "Credit Memo Shipping"
                 ItemJournalLine."New Location Code" := 'DEFECTIVE';
                 ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
+                //>
+                ///--! Serial No. issue
+                //if SerialNo <> '' then begin
+                //    ItemJournalLine."Serial No." := SerialNo;
+                //    ItemJournalLine."New Serial No." := SerialNo;
+                //end;
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
+                //<
 
                 ItemJournalLine.Insert;
 

@@ -2143,10 +2143,12 @@ table 50001 WorkOrderDetail
 
             Database::"Item Journal Line":
                 begin
-                    ReservEntry.Positive := false;
+                    //ReservEntry.Positive := false;
                     ReservEntry."Item No." := ItemJnlLine."Item No.";
                     ReservEntry."Location Code" := ItemJnlLine."Location Code";
-                    //ReservEntry.Validate("Quantity (Base)", SalesDoc."Quantity (Base)");
+                    ReservEntry.Validate("Quantity (Base)", ItemJnlLine.Signed(1) * ItemJnlLine."Quantity (Base)");
+                    //ReservEntry."Quantity (Base)" := ItemJnlLine.Signed(1) * ReservEntry."Quantity (Base)";
+
                     // Should convert to Base first??
                     //??? - should be simple Quantity??
 
@@ -2155,12 +2157,13 @@ table 50001 WorkOrderDetail
                     //ReservEntry."Shipment Date" := ItemJnlLine."Shipment Date";
                     ReservEntry."Source Type" := DocType;
                     ReservEntry."Source Subtype" := ItemJnlLine."Entry Type".AsInteger();
-                    ReservEntry."Source ID" := 'ITEM';
+                    ReservEntry."Source ID" := ItemJnlLine."Journal Template Name";
                     ReservEntry."Source Ref. No." := ItemJnlLine."Line No.";
                     ReservEntry."Created By" := UserId;
-                    //ReservEntry.Quantity := SalesDoc.Quantity;
+                    //ReservEntry.Quantity := ItemJnlLine.Quantity;
                     ReservEntry."Qty. per Unit of Measure" := ItemJnlLine."Qty. per Unit of Measure";
-                    ReservEntry.Validate("Quantity", ItemJnlLine."Quantity");
+                    //ReservEntry.Quantity := ItemJnlLine.Signed(1) * ReservEntry.Quantity;
+                    ReservEntry.Validate("Quantity", ItemJnlLine.Signed(1) * ItemJnlLine."Quantity");
                     if ReservEntry.Quantity > 0 then
                         ReservEntry.Positive := true
                     else
@@ -2170,6 +2173,7 @@ table 50001 WorkOrderDetail
                     ReservEntry.Correction := false;
                     ReservEntry."Item Tracking" := ReservEntry."Item Tracking"::"Serial No.";
                     ReservEntry."Serial No." := SerialNo;
+                    ReservEntry."New Serial No." := SerialNo;
                     ReservEntry."Untracked Surplus" := false;
 
                     ReservEntry.Insert();

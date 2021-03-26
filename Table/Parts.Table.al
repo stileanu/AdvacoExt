@@ -744,11 +744,12 @@ table 50003 Parts
         ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Document No." := "Work Order No.";
         ItemJournalLine.VALIDATE("Item No.", Item2."No.");
+        ItemJournalLine.Validate(Quantity, Rec."Quoted Quantity");
         ItemJournalLine."Posting Date" := WORKDATE;
-        IF "Serial No." <> '' THEN BEGIN
-            WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, ItemJournalLine."Serial No.");
-            ItemJournalLine."Serial No." := "Serial No.";
-            ItemJournalLine."New Serial No." := "Serial No.";
+        IF Rec."Serial No." <> '' THEN BEGIN
+            WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, Rec."Serial No.");
+            ItemJournalLine."Serial No." := Rec."Serial No.";
+            ItemJournalLine."New Serial No." := Rec."Serial No.";
         END ELSE BEGIN
             ItemJournalLine."Serial No." := '';
             ItemJournalLine."New Serial No." := '';

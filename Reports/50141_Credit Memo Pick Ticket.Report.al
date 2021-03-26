@@ -116,7 +116,7 @@ report 50141 "Credit Memo Pick Ticket"
                 column(Purchase_Line__Bin_Code_; "Bin Code")
                 {
                 }
-                column(EmptyString; '_________________________')
+                column(EmptyString; '______________')
                 {
                 }
                 column(Purchase_Line_Amount; Amount)

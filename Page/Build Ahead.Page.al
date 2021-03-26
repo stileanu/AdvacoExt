@@ -353,11 +353,11 @@ page 50023 "Build Ahead"
             ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
             if SerialNo <> '' then begin
+                WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                 ItemJournalLine."Serial No." := SerialNo;
                 ItemJournalLine."New Serial No." := SerialNo;
                 SerialNo := '';
             end;
-
 
             PostLine.Run(ItemJournalLine);
 

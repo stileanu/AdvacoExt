@@ -41,7 +41,8 @@ tableextension 50119 SalesLineExt extends "Sales Line"
                 "Vendor No." := Item."Vendor No.";
                 "Vendor Item No." := Item."Vendor Item No.";
                 //<< HEF END INSERT
-                //>> insert by HEF                              //ICE RSK 12/12/20 skip document type credit memo
+                //>> insert by HEF                              
+                //ICE RSK 12/12/20 skip document type credit memo
                 IF (SalesHeader."Ship-to County" = 'MD') and (salesheader."Document Type" <> salesheader."Document Type"::"Credit Memo") THEN BEGIN
                     IF (SalesHeader."Tax Liable" = FALSE) THEN BEGIN
                         IF (SalesHeader."Tax Exemption No." = '') AND (SalesHeader."Exempt Organization" = '') THEN
@@ -55,6 +56,17 @@ tableextension 50119 SalesLineExt extends "Sales Line"
                     END;
                 END;
                 //<< end HEF insert
+            end;
+        }
+        modify(Quantity)
+        {
+            trigger OnAfterValidate()
+            begin
+
+                // HEF ADVACO Auto Fill Commission Field for Type ITEM
+                IF Rec.Type = Rec.Type::Item then begin
+                    Rec."Commission Calculated" := true;
+                end;
             end;
         }
         field(50000; "Commission Calculated"; Boolean)
