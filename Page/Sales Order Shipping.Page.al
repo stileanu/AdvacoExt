@@ -429,7 +429,8 @@ page 50060 "Sales Order Shipping"
                             Modify;
                             CreateLines;
                             CreateShippingLine;
-                            Reservation;  // Commit 
+                            ///--! Not necessary,already inserted Resevation ENtry
+                            //Reservation;  // Commit 
                             UpdateWOD;
                             UpdateWOS;
                             UpdateParts;
@@ -871,10 +872,18 @@ page 50060 "Sales Order Shipping"
                 ItemJournalLine."New Location Code" := 'MAIN';
                 ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
+                //>
+                ///--! Serial No. issue
+                //if SerialNo <> '' then begin
+                //    ItemJournalLine."Serial No." := SerialNo;
+                //    ItemJournalLine."New Serial No." := SerialNo;
+                //end;
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
+                //<
 
                 ItemJournalLine.Insert;
 
@@ -936,6 +945,7 @@ page 50060 "Sales Order Shipping"
         SalesLine.Insert;
     end;
 
+    /*
     procedure Reservation()
     begin
         // Reservation Entry
@@ -951,7 +961,7 @@ page 50060 "Sales Order Shipping"
               SalesLine.Next = 0;
         end;
     end;
-
+    */
     procedure PrintBOL()
     begin
         if not Confirm('Is Bill of Lading loaded in Printer?', false) then begin

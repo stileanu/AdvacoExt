@@ -2080,8 +2080,10 @@ table 50001 WorkOrderDetail
     begin
         Clear(ReservEntry);
         ReservEntry.Reset();
-        ReservEntry.FindLast();
-        entryNo := ReservEntry."Entry No." + 1;
+        if ReservEntry.FindLast() then
+            entryNo := ReservEntry."Entry No." + 1
+        else
+            entryNo := 10000;
         ReservEntry.Init();
         ReservEntry."Entry No." := entryNo;
 
@@ -2092,7 +2094,8 @@ table 50001 WorkOrderDetail
                     ReservEntry.Positive := false;
                     ReservEntry."Item No." := SalesDoc."No.";
                     ReservEntry."Location Code" := SalesDoc."Location Code";
-                    ReservEntry.Validate("Quantity (Base)", SalesDoc."Quantity (Base)");
+                    ReservEntry."Qty. per Unit of Measure" := SalesDoc."Qty. per Unit of Measure";
+                    ReservEntry.Validate("Quantity (Base)", -1 * SalesDoc."Quantity (Base)");
                     //??? - should be simple Quantity??
                     ReservEntry."Reservation Status" := ReservEntry."Reservation Status"::Surplus;
                     ReservEntry."Creation Date" := WorkDate();
@@ -2102,8 +2105,9 @@ table 50001 WorkOrderDetail
                     ReservEntry."Source ID" := SalesDoc."Document No.";
                     ReservEntry."Source Ref. No." := SalesDoc."Line No.";
                     ReservEntry."Created By" := UserId;
-                    //ReservEntry.Quantity := SalesDoc.Quantity;
-                    ReservEntry."Qty. per Unit of Measure" := SalesDoc."Qty. per Unit of Measure";
+                    ReservEntry.Quantity := -1 * SalesDoc.Quantity;
+                    //ReservEntry.Validate("Quantity", SalesDoc.Signed(1) * ItemJnlLine."Quantity");
+
                     ReservEntry."Disallow Cancellation" := false;
                     ReservEntry.Correction := false;
                     ReservEntry."Item Tracking" := ReservEntry."Item Tracking"::"Serial No.";
@@ -2134,8 +2138,10 @@ table 50001 WorkOrderDetail
         // 2021_01_11 Intelice
         Clear(ReservEntry);
         ReservEntry.Reset();
-        ReservEntry.FindLast();
-        entryNo := ReservEntry."Entry No." + 1;
+        if ReservEntry.FindLast() then
+            entryNo := ReservEntry."Entry No." + 1
+        else
+            entryNo := 10000;
         ReservEntry.Init();
         ReservEntry."Entry No." := entryNo;
 
@@ -2226,7 +2232,17 @@ table 50001 WorkOrderDetail
 
             Database::"Purchase Line":
                 begin
-                    Error(PurchMessage);
+                    //Error(PurchMessage);
+                    ReservEntry.SetRange("Source ID", PurchDoc."Document No.");
+                    ReservEntry.SetRange("Source Ref. No.", PurchDoc."Line No.");
+                    ReservEntry.SetRange("Item No.", PurchDoc."No.");
+                    ReservEntry.SetRange("Item Tracking", ReservEntry."Item Tracking"::"Serial No.");
+                    ReservEntry.SetRange("Source Type", DocType);
+
+                    if ReservEntry.FindFirst() then begin
+                        SerialNo := ReservEntry."Serial No.";
+                        exit(true);
+                    end;
                 end;
 
 

@@ -30,3 +30,11 @@ enum 50028 BOLShipCharge
     value(4; "3rd Party") { }
     value(5; Consignee) { }
 }
+/*
+    value(0; " ") { }
+    value(1; Collect) { }
+    value(2; "Pre-Paid") { }
+    value(3; "Pre-Paid & Add") { }
+    value(4; "3rd Party") { }
+    value(5; Consignee) { }
+*/

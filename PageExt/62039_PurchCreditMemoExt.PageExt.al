@@ -75,7 +75,7 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
             field("Return to Vendor"; "Return to Vendor")
             {
                 ApplicationArea = All;
-                Visible = lPurch;
+                Visible = lPurch or lAcct;
                 Importance = Additional;
                 ToolTip = 'Specifies if parts are to be returned to the vendor.';
             }
@@ -316,9 +316,11 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
                         if Rec."Bill of Lading" = 0 then
                             Message('The Credit Memo hasn''t be shipped yet, Please Contact Shipping')
                         else
-                            PCreditMemo.CallPostDocument(Codeunit::"Purch.-Post (Yes/No)", NavigateAfterPost::"Posted Document");
+                            PostDocument(CODEUNIT::"Purch.-Post (Yes/No)", NavigateAfterPost::"Posted Document".AsInteger());
+                        //PCreditMemo.CallPostDocument(Codeunit::"Purch.-Post (Yes/No)", NavigateAfterPost::"Posted Document");
                     end else begin
-                        PCreditMemo.CallPostDocument(Codeunit::"Purch.-Post (Yes/No)", NavigateAfterPost::"Posted Document");
+                        PostDocument(CODEUNIT::"Purch.-Post (Yes/No)", NavigateAfterPost::"Posted Document".AsInteger());
+                        //PCreditMemo.CallPostDocument(Codeunit::"Purch.-Post (Yes/No)", NavigateAfterPost::"Posted Document");
                     end;
                 end;
             }
@@ -343,9 +345,11 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
                         if Rec."Bill of Lading" = 0 then
                             Message('The Credit Memo hasn''t be shipped yet, Please Contact Shipping')
                         else
-                            PCreditMemo.CallPostDocument(Codeunit::"Purch.-Post + Print", NavigateAfterPost::"Do Nothing");
+                            PostDocument(CODEUNIT::"Purch.-Post + Print", NavigateAfterPost::"Do Nothing".AsInteger());
+                        //PCreditMemo.CallPostDocument(Codeunit::"Purch.-Post + Print", NavigateAfterPost::"Do Nothing");
                     end else begin
-                        PCreditMemo.CallPostDocument(Codeunit::"Purch.-Post + Print", NavigateAfterPost::"Do Nothing");
+                        PostDocument(CODEUNIT::"Purch.-Post + Print", NavigateAfterPost::"Do Nothing".AsInteger());
+                        //PCreditMemo.CallPostDocument(Codeunit::"Purch.-Post + Print", NavigateAfterPost::"Do Nothing");
                     end;
                 end;
             }
@@ -402,64 +406,62 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
 
     end;
 
-    /*
-        local procedure PostDocument(PostingCodeunitID: Integer; Navigate: Option)
-        var
-            PurchaseHeader: Record "Purchase Header";
-            PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr.";
-            ApplicationAreaMgmtFacade: Codeunit "Application Area Mgmt. Facade";
-            InstructionMgt: Codeunit "Instruction Mgt.";
-            IsScheduledPosting: Boolean;
-        begin
-            if ApplicationAreaMgmtFacade.IsFoundationEnabled then
-                LinesInstructionMgt.PurchaseCheckAllLinesHaveQuantityAssigned(Rec);
+    local procedure PostDocument(PostingCodeunitID: Integer; Navigate: Option)
+    var
+        PurchaseHeader: Record "Purchase Header";
+        PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr.";
+        ApplicationAreaMgmtFacade: Codeunit "Application Area Mgmt. Facade";
+        InstructionMgt: Codeunit "Instruction Mgt.";
+        IsScheduledPosting: Boolean;
+    begin
+        if ApplicationAreaMgmtFacade.IsFoundationEnabled then
+            LinesInstructionMgt.PurchaseCheckAllLinesHaveQuantityAssigned(Rec);
 
-            SendToPosting(PostingCodeunitID);
+        SendToPosting(PostingCodeunitID);
 
-            IsScheduledPosting := "Job Queue Status" = "Job Queue Status"::"Scheduled for Posting";
-            DocumentIsPosted := (not PurchaseHeader.Get("Document Type", "No.")) or IsScheduledPosting;
+        IsScheduledPosting := "Job Queue Status" = "Job Queue Status"::"Scheduled for Posting";
+        DocumentIsPosted := (not PurchaseHeader.Get("Document Type", "No.")) or IsScheduledPosting;
 
-            if IsScheduledPosting then
-                CurrPage.Close;
-            CurrPage.Update(false);
+        if IsScheduledPosting then
+            CurrPage.Close;
+        CurrPage.Update(false);
 
-            if PostingCodeunitID <> CODEUNIT::"Purch.-Post (Yes/No)" then
-                exit;
+        if PostingCodeunitID <> CODEUNIT::"Purch.-Post (Yes/No)" then
+            exit;
 
-            case Navigate of
-                NavigateAfterPost::"Posted Document".AsInteger():
-                    begin
-                        if IsOfficeAddin then begin
-                            PurchCrMemoHdr.SetRange("Pre-Assigned No.", "No.");
-                            if PurchCrMemoHdr.FindFirst then
-                                PAGE.Run(PAGE::"Posted Purchase Credit Memo", PurchCrMemoHdr);
-                        end else
-                            if InstructionMgt.IsEnabled(InstructionMgt.ShowPostedConfirmationMessageCode) then
-                                ShowPostedConfirmationMessage;
-                    end;
-                NavigateAfterPost::"New Document".AsInteger():
-                    if DocumentIsPosted then begin
-                        Clear(PurchaseHeader);
-                        PurchaseHeader.Init();
-                        PurchaseHeader.Validate("Document Type", PurchaseHeader."Document Type"::"Credit Memo");
-                        //OnPostDocumentOnBeforePurchaseHeaderInsert(PurchaseHeader);
-                        PurchaseHeader.Insert(true);
-                        PAGE.Run(PAGE::"Purchase Credit Memo", PurchaseHeader);
-                    end;
-            end;
+        case Navigate of
+            NavigateAfterPost::"Posted Document".AsInteger():
+                begin
+                    if IsOfficeAddin then begin
+                        PurchCrMemoHdr.SetRange("Pre-Assigned No.", "No.");
+                        if PurchCrMemoHdr.FindFirst then
+                            PAGE.Run(PAGE::"Posted Purchase Credit Memo", PurchCrMemoHdr);
+                    end else
+                        if InstructionMgt.IsEnabled(InstructionMgt.ShowPostedConfirmationMessageCode) then
+                            ShowPostedConfirmationMessage;
+                end;
+            NavigateAfterPost::"New Document".AsInteger():
+                if DocumentIsPosted then begin
+                    Clear(PurchaseHeader);
+                    PurchaseHeader.Init();
+                    PurchaseHeader.Validate("Document Type", PurchaseHeader."Document Type"::"Credit Memo");
+                    //OnPostDocumentOnBeforePurchaseHeaderInsert(PurchaseHeader);
+                    PurchaseHeader.Insert(true);
+                    PAGE.Run(PAGE::"Purchase Credit Memo", PurchaseHeader);
+                end;
         end;
+    end;
 
-        local procedure ShowPostedConfirmationMessage()
-        var
-            PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr.";
-            InstructionMgt: Codeunit "Instruction Mgt.";
-        begin
-            PurchCrMemoHdr.SetRange("Pre-Assigned No.", "No.");
-            if PurchCrMemoHdr.FindFirst then
-                if InstructionMgt.ShowConfirm(StrSubstNo(OpenPostedPurchCrMemoQst, PurchCrMemoHdr."No."),
-                     InstructionMgt.ShowPostedConfirmationMessageCode)
-                then
-                    PAGE.Run(PAGE::"Posted Purchase Credit Memo", PurchCrMemoHdr);
-        end;
-        */
+    local procedure ShowPostedConfirmationMessage()
+    var
+        PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr.";
+        InstructionMgt: Codeunit "Instruction Mgt.";
+    begin
+        PurchCrMemoHdr.SetRange("Pre-Assigned No.", "No.");
+        if PurchCrMemoHdr.FindFirst then
+            if InstructionMgt.ShowConfirm(StrSubstNo(OpenPostedPurchCrMemoQst, PurchCrMemoHdr."No."),
+                 InstructionMgt.ShowPostedConfirmationMessageCode)
+            then
+                PAGE.Run(PAGE::"Posted Purchase Credit Memo", PurchCrMemoHdr);
+    end;
 }

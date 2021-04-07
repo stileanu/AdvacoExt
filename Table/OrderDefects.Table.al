@@ -63,15 +63,19 @@ table 50013 "Order Defects"
     {
         field(10; Occurrence; Integer)
         {
+            DataClassification = ToBeClassified;
         }
         field(20; "Order No."; Code[9])
         {
+            DataClassification = ToBeClassified;
         }
         field(30; "Defect Code"; Code[20])
         {
+            DataClassification = ToBeClassified;
         }
         field(40; Department; Enum PumpFailureDept)
         {
+            DataClassification = ToBeClassified;
             //OptionMembers = " ","Failure Analysis","Production Assembly",Test,"Quality Control";
 
             trigger OnValidate();
@@ -90,6 +94,7 @@ table 50013 "Order Defects"
         }
         field(50; "Failure Item"; Enum FailureItem)
         {
+            DataClassification = ToBeClassified;
             //OptionMembers = " ",Pump,Motor,Assembly,Component,Finish,Hardware,Label,Cover,Base,"Belt Guard",Feet,Tubing,"Heat Exchanger",Pulley,
             //                Ballast,"Oil Prep.","Line Cord",Documentation; 
 
@@ -109,6 +114,7 @@ table 50013 "Order Defects"
         }
         field(60; "Code"; Enum FailureCode)
         {
+            DataClassification = ToBeClassified;
             //OptionMembers = " ",Missing,Wrong,Loose,"Broken/Cracked","Not Clean","Defective/Damaged",Contaiminated,"Out of Dim","Mis-Alignment",
             //                Peeling,"Surface Damage","Vacuum Leak","Poor Vacuum","Poor Pumping Speed","Leaks Oil","Seal Leak","Case Gasket Leaks",
             //                "Window Leaks","Tubing Leaks",Seized,Noise,"Defective Bearings","High Vibration",Configuration;
@@ -129,22 +135,27 @@ table 50013 "Order Defects"
         }
         field(70; Category; Enum FailWorkReq)
         {
+            DataClassification = ToBeClassified;
             //OptionMembers = " ",Repaired,"Rework Required";
         }
         field(80; "Model No."; Code[20])
         {
+            DataClassification = ToBeClassified;
         }
         field(85; "Model Type"; Enum ModelType)
         {
+            DataClassification = ToBeClassified;
             //OptionMembers = " ",Blower,"Cryo Compressor","Cryo Pump","Diffusion Pump","Dry Pump - Ebara","Dry Pump - Edwards","Dry Pump - Leybold",
             //                "Filter System","Leak Detector","Mechanical Pump","Scroll Pump","Turbo Controller","Turbo Pump";
         }
         field(90; Technician; Code[5])
         {
+            DataClassification = ToBeClassified;
             TableRelation = Resource."No." WHERE("Gen. Prod. Posting Group" = FILTER(''), Type = CONST(Person));
         }
         field(100; Date; Date)
         {
+            DataClassification = ToBeClassified;
         }
         field(200; "Date Filter"; Date)
         {

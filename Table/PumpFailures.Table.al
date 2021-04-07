@@ -77,7 +77,7 @@ table 50008 "Pump Failures"
             //OptionMembers = " ",Pump,Motor,Assembly,Component,Finish,Hardware,Label,Cover,Base,"Belt Guard",Feet,Tubing,"Heat Exchanger",
             //                Pulley,Ballast,"Oil Prep.","Line Cord",Documentation;
         }
-        field(26; "Code"; Enum FailureItem)
+        field(26; "Code"; Enum FailureCode)
         {
             //OptionMembers = " ",Missing,Wrong,Loose,"Broken/Cracked","Not Clean","Defective/Damaged",Contaiminated,"Out of Dim","Mis-Alignment",
             //                Peeling,"Surface Damage","Vacuum Leak","Poor Vacuum","Poor Pumping Speed","Leaks Oil","Seal Leak","Case Gasket Leaks",

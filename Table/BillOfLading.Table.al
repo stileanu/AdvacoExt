@@ -22,16 +22,16 @@ table 50012 BillOfLading
         field(40; "PO No."; Code[30])
         {
         }
-        field(41; "Ship To Name"; Text[30])
+        field(41; "Ship To Name"; Text[50])
         {
         }
-        field(42; "Ship To Address"; Text[30])
+        field(42; "Ship To Address"; Text[50])
         {
         }
-        field(43; "Ship To Address2"; Text[30])
+        field(43; "Ship To Address2"; Text[50])
         {
         }
-        field(44; "Ship To City"; Text[30])
+        field(44; "Ship To City"; Text[50])
         {
         }
         field(45; "Ship To State"; Code[15])
@@ -40,7 +40,7 @@ table 50012 BillOfLading
         field(46; "Ship To Zip Code"; Code[15])
         {
         }
-        field(47; Attention; Text[40])
+        field(47; Attention; Text[50])
         {
         }
         field(48; "Phone No."; Text[30])
@@ -76,7 +76,7 @@ table 50012 BillOfLading
         field(126; "Shipping Account"; Code[30])
         {
         }
-        field(130; "Package Tracking No."; Text[30])
+        field(130; "Package Tracking No."; Text[50])
         {
         }
         field(200; "BOL Printed"; Boolean)

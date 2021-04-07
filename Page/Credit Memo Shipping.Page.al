@@ -143,12 +143,13 @@ page 50141 "Credit Memo Shipping"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
-            action("Print &BOL and Labels")
+            action(ProcessCrMemo)
+            //action("Print &BOL and Labels")
             {
                 ApplicationArea = All;
-                Caption = 'Print &BOL and Labels';
+                Caption = 'Process Credit Memo for Shipping.';
                 Image = PrintVoucher;
                 Promoted = true;
                 PromotedCategory = Process;
@@ -159,6 +160,16 @@ page 50141 "Credit Memo Shipping"
                     Ship: Codeunit Shipping;
 
                 begin
+                    // 2021_01_11 Intelice Start
+                    // Test for processed order
+                    if Rec."Shipping Processed" then begin
+                        Message('Current Order %1 is already processed. You cannot process it.', Rec."No.");
+                        exit;
+                    end;
+                    if Rec."Bill of Lading" <> 0 then
+                        Error('Order %1 was already processed for shipping.', Rec."No.");
+                    // 2021_01_11 Intelice End
+
                     WorkOrderCount := 0;
 
                     if "Your Reference" = '' then
@@ -197,52 +208,55 @@ page 50141 "Credit Memo Shipping"
                             Defective := 0;
                             if Item2.Get(PurchaseLine2."No.") then begin
                                 if Item2."Costing Method" = Item2."Costing Method"::Specific then begin
-                                    //        IF PurchaseLine2."Serial No." = '' THEN BEGIN
-                                    //          ERROR('Item %1 Serial No. is blank, so the Item can not be shipped, Contact Purchasing',PurchaseLine2."No.");
-                                    //        END ELSE BEGIN
-                                    ItemLedgerSerial.SetCurrentKey("Item No.", Open, "Serial No.", "Location Code");
-                                    ItemLedgerSerial.SetRange("Item No.", Item2."No.");
-                                    ItemLedgerSerial.SetRange(ItemLedgerSerial.Open, true);
-                                    //          ItemLedgerSerial.SETRANGE("Serial No.",PurchaseLine2."Serial No.");
-                                    if ItemLedgerSerial.Find('-') then begin
-                                        //Search Work Orders for a Matching Serial Number
-                                        //            WOD.SETRANGE(WOD."Serial No.",PurchaseLine2."Serial No.");
-                                        WOD.SetRange(WOD.Complete, false);
-                                        if WOD.Find('+') then begin
-                                            WOD.CalcFields(WOD."Detail Step");
-                                            //Verify Work Order Detail is in Shipping and ready to be closed
-                                            if WOD."Detail Step" = WOD."Detail Step"::SHP then begin
-                                                WorkOrderCount := WorkOrderCount + 1;
-                                                WorkOrderNo[WorkOrderCount] := WOD."Work Order No.";
+                                    TrackingSpecificationExists :=
+                                        ReserveSalesLine.FindReservEntry(PurchaseLine2, ReservationEntry);
+                                    IF not TrackingSpecificationExists THEN BEGIN
+                                        ERROR('Item %1 Serial No. is blank, so the Item can not be shipped, Contact Purchasing', PurchaseLine2."No.");
+                                    END ELSE BEGIN
+                                        SerialNo := ReservationEntry."Serial No.";
+                                        ItemLedgerSerial.SetCurrentKey("Item No.", Open, "Serial No.", "Location Code");
+                                        ItemLedgerSerial.SetRange("Item No.", Item2."No.");
+                                        ItemLedgerSerial.SetRange(ItemLedgerSerial.Open, true);
+                                        ItemLedgerSerial.SETRANGE("Serial No.", ReservationEntry."Serial No.");
+                                        if ItemLedgerSerial.Find('-') then begin
+                                            //Search Work Orders for a Matching Serial Number
+                                            WOD.SETRANGE(WOD."Serial No.", ReservationEntry."Serial No.");
+                                            WOD.SetRange(WOD.Complete, false);
+                                            if WOD.Find('+') then begin
+                                                WOD.CalcFields(WOD."Detail Step");
+                                                //Verify Work Order Detail is in Shipping and ready to be closed
+                                                if WOD."Detail Step" = WOD."Detail Step"::SHP then begin
+                                                    WorkOrderCount := WorkOrderCount + 1;
+                                                    WorkOrderNo[WorkOrderCount] := WOD."Work Order No.";
+                                                end else begin
+                                                    Error('Work Order %1 isn''t currently in shipping, Please contact Shop Manager', WOD."Work Order No.");
+                                                end;
                                             end else begin
-                                                Error('Work Order %1 isn''t currently in shipping, Please contact Shop Manager', WOD."Work Order No.");
+                                                //SINCE WORK ORDER NOT FOUND THEN THE ITEM SHOULD BE IN DEFECTIVE
+                                                if ItemLedgerSerial."Location Code" <> 'DEFECTIVE' then begin
+                                                    Error('Item %1 Serial No. %2 needs to be moved to Defective, Contact Purchasing', Item2."No.", DefectiveInventoryQty."Serial No.");
+                                                end;
                                             end;
-                                            //SINCE WORK ORDER NOT FOUND THEN THE ITEM SHOULD BE IN DEFECTIVE
                                         end else begin
-                                            if ItemLedgerSerial."Location Code" <> 'DEFECTIVE' then begin
-                                                Error('Item %1 Serial No. %2 needs to be moved to Defective, Contact Purchasing', Item2."No.", DefectiveInventoryQty."Serial No.");
-                                            end;
+                                            //SINCE WORK ORDER NOT FOUND THEN THE ITEM SHOULD BE IN DEFECTIVE
+                                            ERROR('Item %1 with Serial NO. %2 isn''t on Inventory, Contact Purchasing', Item2."No.", ReservationEntry."Serial No.");
                                         end;
-                                    end else begin
-                                        //            ERROR('Item %1 with Serial NO. %2 isn''t on Inventory, Contact Purchasing',Item2."No.",PurchaseLine2."Serial No.");
                                     end;
-                                end;
+                                end else begin
+                                    // If the item is not a Pump then it needs to be in Defective Inventory before it ships
+                                    DefectiveInventoryQty.SetCurrentKey("Item No.", "Location Code", "Variant Code", "Document No.");
+                                    DefectiveInventoryQty.SetRange("Item No.", Item2."No.");
+                                    DefectiveInventoryQty.SetRange("Location Code", 'Defective');
+                                    if DefectiveInventoryQty.Find('-') then begin
+                                        repeat
+                                            Defective := Defective + DefectiveInventoryQty.Quantity;
+                                        until DefectiveInventoryQty.Next = 0;
+                                    end;
 
-                                // If the item is not a Pump then it needs to be in Defective Inventory before it ships
-                            end else begin
-                                DefectiveInventoryQty.SetCurrentKey("Item No.", "Location Code", "Variant Code", "Document No.");
-                                DefectiveInventoryQty.SetRange("Item No.", Item2."No.");
-                                DefectiveInventoryQty.SetRange("Location Code", 'Defective');
-                                if DefectiveInventoryQty.Find('-') then begin
-                                    repeat
-                                        Defective := Defective + DefectiveInventoryQty.Quantity;
-                                    until DefectiveInventoryQty.Next = 0;
+                                    if PurchaseLine2.Quantity > Defective then
+                                        Error('Item %1 only has %2 in Defective Inventory, Contact Purchasing', Item2."No.", Defective);
                                 end;
-
-                                if PurchaseLine2.Quantity > Defective then
-                                    Error('Item %1 only has %2 in Defective Inventory, Contact Purchasing', Item2."No.", Defective);
-                            end;
-                        //    END;
+                            END;
                         until PurchaseLine2.Next = 0;
                     end;
 
@@ -276,7 +290,8 @@ page 50141 "Credit Memo Shipping"
                     BOL2."Shipment Date" := Today;
                     BOL2.Carrier := "Shipping Agent";
                     BOL2."Shipping Method" := "Shipment Method Code";
-                    BOL2."Shipping Charge" := BOL2."Shipping Charge";
+                    //ShChrgToBOLShChrg(Rec."Shipping Charge", BOL2."Shipping Charge");
+                    BOL2."Shipping Charge" := BOLShipCharge.FromInteger("Shipping Charge".AsInteger());
                     BOL2."Shipping Account" := "Shipping Account";
                     BOL2."Label Quantity" := LabelsToPrint;
                     BOL2.Insert;
@@ -341,7 +356,7 @@ page 50141 "Credit Memo Shipping"
                         until WorkOrderCount = WorkOrderCount2;
                     end;
 
-
+                    /*
                     //Print Bill of Lading and Shipping Labels
                     if not Confirm('Is Bill of Lading and Labels loaded in Printers?', false) then begin
                         if not Confirm('Last Chance, Is Bill of Lading and Labels loaded in Printers?', false) then begin
@@ -382,9 +397,53 @@ page 50141 "Credit Memo Shipping"
                         BOL2.Modify;
                         ConfirmLabelsCM;
                     end;
+                    */
+                    // 2021_01_11 Intelice Start
+                    // Mark current WOD as processed
+                    Rec."Shipping Processed" := true;
+                    Rec.Modify();
+                    //CurrPage.Close;
+                    // 2021_01_11 Intelice End
 
-                    CurrPage.Close;
                 end;
+            }
+            group(PrintDocs)
+            {
+                Caption = 'Print Documents';
+
+                action(PrintBillOfLading)
+                {
+                    Caption = 'Print BOL';
+                    ApplicationArea = All;
+
+                    trigger OnAction()
+                    begin
+                        // 2021_01_11 Intelice Start
+                        if not Rec."Shipping Processed" then begin
+                            Message('You nedd to <Process> this order to be able to print BOL.');
+                            exit;
+                        end;
+                        // 2021_01_11 Intelice End
+                        PrintBOL;
+                    end;
+                }
+
+                action(PrintAddressLabels)
+                {
+                    Caption = 'Print Address Labels';
+                    ApplicationArea = All;
+
+                    trigger OnAction()
+                    begin
+                        // 2021_01_11 Intelice Start
+                        if not Rec."Shipping Processed" then begin
+                            Message('You nedd to <Process> this order to be able to print Address Labels.');
+                            exit;
+                        end;
+                        // 2021_01_11 Intelice End
+                        PrintLabels;
+                    end;
+                }
             }
         }
     }
@@ -396,6 +455,8 @@ page 50141 "Credit Memo Shipping"
     end;
 
     var
+        ReserveSalesLine: Codeunit "Purch. Line-Reserve";
+        TrackingSpecificationExists: Boolean;
         PurchSetup: Record "Purchases & Payables Setup";
         PurchaseLine: Record "Purchase Line";
         ReservationEntry: Record "Reservation Entry";
@@ -446,36 +507,6 @@ page 50141 "Credit Memo Shipping"
         Item: Record Item;
         ItemLedgEntryType: Enum "Item Ledger Entry Type";
 
-    procedure ConfirmLabelsCM()
-    begin
-        if not Confirm('Did Bill of Lading & labels print correctly?', false) then begin
-            BOL2."BOL Printed" := false;
-            BOL2."Label Printed" := false;
-            BOL2.Modify;
-            if not Confirm('Do you want to reprint?', false) then begin
-                OK := true;
-            end else begin
-                BOL2.SetRange(BOL2."Bill of Lading", BOL2."Bill of Lading");
-                REPORT.RunModal(50140, false, false, BOL2);               // BOL Document
-                BOL2."BOL Printed" := true;
-                BOL2.Modify;
-                LabelCount := LabelsToPrint;
-                if LabelCount > 0 then begin
-                    repeat
-                    begin
-                        LabelCount := LabelCount - 1;
-                        REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
-                    end;
-                    until LabelCount = 0;
-                    BOL2."Label Printed" := true;
-                end else begin
-                    BOL2."Label Printed" := false;
-                end;
-                BOL2.Modify;
-                ConfirmLabelsCM;
-            end;
-        end;
-    end;
 
     procedure UpdateWODCM()
     begin
@@ -727,6 +758,93 @@ page 50141 "Credit Memo Shipping"
                     until ItemJournalClear.Next = 0;
             end;
         end;
+    end;
+
+    procedure PrintBOL()
+    begin
+        if not Confirm('Is Bill of Lading loaded in Printer?', false) then begin
+            if not Confirm('Last Chance, Is Bill of Lading loaded in Printer?', false) then begin
+                exit;
+            end else begin
+                BOL2.Reset();
+                BOL2.SetRange(BOL2."Bill of Lading", Rec."Bill of Lading");
+                if BOL2.FindFirst() then begin
+                    REPORT.RunModal(50140, false, false, BOL2);                 // BOL Document
+                    BOL2."BOL Printed" := true;
+                    BOL2.Modify;
+                end else
+                    Error('Cannot find BOL %1', Rec."Bill of Lading");
+            end;
+        end else begin
+            BOL2.Reset();
+            BOL2.SetRange(BOL2."Bill of Lading", Rec."Bill of Lading");
+            if BOL2.FindFirst() then begin
+                REPORT.RunModal(50140, false, false, BOL2);                     // BOL Document
+                BOL2."BOL Printed" := true;
+                BOL2.Modify;
+            end else
+                Error('Cannot find BOL %1', Rec."Bill of Lading");
+        end;
+    end;
+
+    procedure PrintLabels()
+    var
+        Printed: Boolean;
+
+    begin
+        if not BOL2.Get(Rec."Bill of Lading") then
+            Error('Cannot find BOL %1', Rec."Bill of Lading");
+        if not Confirm('Are Address Labels loaded in Printers?', false) then begin
+            if not Confirm('Last Chance, are Address Labels loaded in Printers loaded in Printers?', false) then begin
+                exit;
+            end else begin
+                LabelCount := LabelsToPrint;
+                BOL2.Reset();
+                BOL2.SetRange(BOL2."Bill of Lading", Rec."Bill of Lading");
+                if BOL2.FindFirst() then begin
+                    repeat begin
+                        LabelCount := LabelCount - 1;
+                        REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
+                    end until LabelCount = 0;
+
+                    Printed := true;
+                    BOL2.Get(Rec."Bill of Lading");
+                    BOL2."Label Printed" := Printed;
+                    BOL2.Modify;
+                end;
+            end
+        end else begin
+            BOL2.Reset();
+            BOL2.SetRange(BOL2."Bill of Lading", Rec."Bill of Lading");
+            if not BOL2.FindFirst() then begin
+                Error('Cannot find BOL %1', Rec."Bill of Lading");
+                exit;
+            end;
+
+            LabelCount := LabelsToPrint;
+            if LabelCount > 0 then begin
+                repeat begin
+                    LabelCount := LabelCount - 1;
+                    REPORT.RunModal(50015, false, false, BOL2);               // Shipping Label
+                end until LabelCount = 0;
+                Printed := true;
+            end else begin
+                Printed := false;
+            end;
+            BOL2.Get(Rec."Bill of Lading");
+            BOL2."Label Printed" := Printed;
+            BOL2.Modify;
+        end;
+    end;
+
+    procedure ShChrgToBOLShChrg(ShipCharge: Enum ShippingCharge; var BOLShCharge: Enum BOLShipCharge)
+    var
+        BOLShCrg: Enum BOLShipCharge;
+        ShCharge: Integer;
+
+    begin
+        ShCharge := ShipCharge.AsInteger();
+        BOLShCharge := BOLShipCharge.FromInteger(ShipCharge.AsInteger());
     end;
 }
 

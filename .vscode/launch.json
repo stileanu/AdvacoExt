@@ -43,7 +43,7 @@
         {
             "type": "al",
             "request": "launch",
-            "name": "cloud  sandbox AdvacoSandboxDev2",
+            "name": "cloud  sandbox AdvacoSandbox",
             "breakOnError": true,
             "launchBrowser": true,
             "enableLongRunningSqlStatements": true,
@@ -51,7 +51,7 @@
             "debugServer": 4711,
             "tenant": "advaco.com",
             "environmentType": "Sandbox",
-            "environmentName": "AdvacoSandboxDev2",
+            "environmentName": "AdvacoSandbox",
             //"environmentName": "AdvacoSandbox",
             "schemaUpdateMode": "Synchronize",
             //"schemaUpdateMode": "ForceSync",

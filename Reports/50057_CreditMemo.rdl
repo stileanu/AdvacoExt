@@ -22,7 +22,7 @@
                   <Width>2.711cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>9.46125cm</Width>
+                  <Width>9.22596cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.265cm</Width>
@@ -1966,7 +1966,7 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.47625cm</Top>
             <Height>2.80643cm</Height>
-            <Width>19.65268cm</Width>
+            <Width>19.41739cm</Width>
             <Style />
           </Tablix>
           <Textbox Name="Our_records__show_that_a_credit_is_due_for_the_above_item_s__Caption2">
@@ -2085,12 +2085,11 @@
         <Height>4.38069in</Height>
         <Style />
       </Body>
-      <Width>7.73728in</Width>
+      <Width>7.64464in</Width>
       <Page>
         <PageHeader>
           <Height>4.05143in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
-          <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
             <Textbox Name="PageNumberTextBox">
               <KeepTogether>true</KeepTogether>
@@ -2957,7 +2956,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=ReportIems!TextBox126.value</Value>
+                      <Value EvaluationMode="Constant" />
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -2987,7 +2986,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=Reportitems!OrderNo.value</Value>
+                      <Value EvaluationMode="Constant" />
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -3103,11 +3102,11 @@
           </ReportItems>
           <Style />
         </PageHeader>
-        <PageHeight>11.69291in</PageHeight>
-        <PageWidth>8.40984in</PageWidth>
-        <LeftMargin>0.82677in</LeftMargin>
-        <TopMargin>0.7874in</TopMargin>
-        <BottomMargin>0.7874in</BottomMargin>
+        <InteractiveHeight>11in</InteractiveHeight>
+        <InteractiveWidth>8.5in</InteractiveWidth>
+        <LeftMargin>2.1cm</LeftMargin>
+        <TopMargin>2cm</TopMargin>
+        <BottomMargin>2cm</BottomMargin>
         <Style />
       </Page>
     </ReportSection>

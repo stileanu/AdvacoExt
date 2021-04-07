@@ -204,6 +204,11 @@ tableextension 50120 PurchaseheaderExt extends "Purchase Header"
             Caption = 'Shipping Advice';
 
         }
+        field(50051; "Shipping Processed"; Boolean)
+        {
+            Caption = 'Shipping Processed';
+        }
+
 
     }
 

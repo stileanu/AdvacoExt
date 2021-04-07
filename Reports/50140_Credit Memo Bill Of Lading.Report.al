@@ -103,6 +103,10 @@ report 50140 "Credit Memo Bill Of Lading"
                 }
 
                 trigger OnAfterGetRecord()
+                var
+                    SalesDoc: Record "Sales Line";
+                    WOD: Record WorkOrderDetail;
+
                 begin
                     PurchaseHeader.SetRange("Document Type", "Document Type");
                     PurchaseHeader.SetRange("No.", "Document No.");
@@ -116,10 +120,10 @@ report 50140 "Credit Memo Bill Of Lading"
                             //  ELSE
                             ItemNo := "Purchase Line"."No.";
 
-                        //  IF "Purchase Line"."Serial No." = '' THEN
-                        //    Serial := ''
-                        //  ELSE
-                        //    Serial := 'SN#  ' + "Serial No.";
+                        WOD.GetSerialNo_(39, SalesDoc, "Purchase Line", Serial);
+                        if Serial <> '' then
+                            Serial := 'SN#  ' + Serial;
+
                     end;
                 end;
             }

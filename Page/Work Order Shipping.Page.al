@@ -539,12 +539,20 @@ page 50033 "Work Order Shipping"
 
             end else
                 exit(false)
-
         else begin
             Rec.Complete := true;
             Rec.Modify();
             exit(true);
         end;
+    end;
+
+    trigger OnClosePage()
+    begin
+        if Rec."Shipping Processed" then
+            if not Rec.Complete then begin
+                Rec.Complete := true;
+                Rec.Modify();
+            end;
     end;
 
     var
@@ -719,7 +727,7 @@ page 50033 "Work Order Shipping"
                 // Checks for Invoice Amount > 0
                 WOD.CalcFields(WOD."Original Parts Price", WOD."Original Labor Price");
                 if (Round(WOD."Original Labor Price" + WOD."Original Parts Price" + WOD."Order Adj.") > 0)
-                or (WOD."System Shipment") then begin
+                    or (WOD."System Shipment") then begin
                     POCheck;
                     CreateOrder;
 
@@ -734,7 +742,8 @@ page 50033 "Work Order Shipping"
 
                     until WOD.Next = 0;
                     CreateShippingLine;
-                    Reservation; // COMMIT included!
+                    ///--! Not necessary,already inserted Resevation ENtry
+                    //Reservation; // COMMIT included!
                     CreateBOLRecords;
                     //PrintBOL; // another COMMIT
                     //PrintLabels;
@@ -1790,11 +1799,18 @@ page 50033 "Work Order Shipping"
                 ItemJournalLine."New Location Code" := 'MAIN';
                 ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
+                //>
+                ///--! Serial No. issue
+                //if SerialNo <> '' then begin
+                //    ItemJournalLine."Serial No." := SerialNo;
+                //    ItemJournalLine."New Serial No." := SerialNo;
+                //end;
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
-
+                //<
                 ItemJournalLine.Insert;
 
                 PostLine.Run(ItemJournalLine);
@@ -1833,11 +1849,18 @@ page 50033 "Work Order Shipping"
                 ItemJournalLine."New Location Code" := 'MAIN';
                 ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
+                //>
+                ///--! Serial No. issue
+                //if SerialNo <> '' then begin
+                //    ItemJournalLine."Serial No." := SerialNo;
+                //    ItemJournalLine."New Serial No." := SerialNo;
+                //end;
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
-
+                //<
                 ItemJournalLine.Insert;
 
                 PostLine.Run(ItemJournalLine);
@@ -1873,11 +1896,18 @@ page 50033 "Work Order Shipping"
                 ItemJournalLine.Quantity := RemoveInventoryQty;
                 ItemJournalLine.Validate(ItemJournalLine.Quantity);
 
+                //>
+                ///--! Serial No. issue
+                //if SerialNo <> '' then begin
+                //    ItemJournalLine."Serial No." := SerialNo;
+                //    ItemJournalLine."New Serial No." := SerialNo;
+                //end;
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
-
+                //<
                 ItemJournalLine.Insert;
 
                 PostLine.Run(ItemJournalLine);
@@ -1914,11 +1944,18 @@ page 50033 "Work Order Shipping"
                 ItemJournalLine.Validate(ItemJournalLine.Quantity);
                 ItemJournalLine.Validate(ItemJournalLine."Gen. Prod. Posting Group", GPS."Gen. Prod. Posting Group");
 
+                //>
+                ///--! Serial No. issue
+                //if SerialNo <> '' then begin
+                //    ItemJournalLine."Serial No." := SerialNo;
+                //    ItemJournalLine."New Serial No." := SerialNo;
+                //end;
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
-
+                //<
                 ItemJournalLine.Insert;
 
                 PostLine.Run(ItemJournalLine);
@@ -1933,22 +1970,24 @@ page 50033 "Work Order Shipping"
         end;
     end;
 
-    procedure Reservation()
-    begin
-        // Reservation Entry
-        ///!!- Commit   
-        //Commit;
-        SalesLine.Reset;
-        SalesLine.SetRange("Document Type", SalesHeader."Document Type");
-        SalesLine.SetRange("Document No.", SalesHeader."No.");
-        if SalesLine.Find('-') then begin
-            repeat
-                if (SalesLine.Reserve = SalesLine.Reserve::Always) and (SalesLine."Outstanding Qty. (Base)" <> 0) then
-                    SalesLine.AutoReserve();
-            until
-              SalesLine.Next = 0;
+    /*
+        procedure Reservation()
+        begin
+            // Reservation Entry
+            ///!!- Commit   
+            //Commit;
+            SalesLine.Reset;
+            SalesLine.SetRange("Document Type", SalesHeader."Document Type");
+            SalesLine.SetRange("Document No.", SalesHeader."No.");
+            if SalesLine.Find('-') then begin
+                repeat
+                    if (SalesLine.Reserve = SalesLine.Reserve::Always) and (SalesLine."Outstanding Qty. (Base)" <> 0) then
+                        SalesLine.AutoReserve();
+                until
+                  SalesLine.Next = 0;
+            end;
         end;
-    end;
+    */
 
     procedure PumpModule()
     begin
