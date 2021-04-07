@@ -46,7 +46,7 @@ page 50028 "Test Failure"
             {
                 //ShowCaption = false;
                 Caption = 'Failures';
-                fixed(Control1220060009)
+                grid(Control1220060009)
                 {
                     ShowCaption = false;
                     group("Code")
@@ -57,6 +57,7 @@ page 50028 "Test Failure"
                             ApplicationArea = All;
                             Caption = '''';
                             ShowCaption = false;
+                            Editable = false;
                         }
                         field("fDefectCode[1]"; fDefectCode[1])
                         {
@@ -90,6 +91,7 @@ page 50028 "Test Failure"
                         {
                             ApplicationArea = All;
                             ShowCaption = false;
+                            Editable = false;
                         }
                         field("fFunctionalDepartment[1]"; fFunctionalDepartment[1])
                         {
@@ -451,7 +453,8 @@ page 50028 "Test Failure"
         fItemCode: array[10] of Enum FailureItem;
         //fKindCode: array[10] of Option " ",Missing,Wrong,Loose,"Broken/Cracked","Not Clean","Defective/Damaged",Contaiminated,"Out of Dim","Mis-Alignment",Peeling,"Surface Damage","Vacuum Leak","Poor Vacuum","Poor Pumping Speed","Leaks Oil","Seal Leak","Case Gasket Leaks","Window Leaks","Tubing Leaks",Seized,Noise,"Defective Bearings","High Vibration",Configuration;
         fKindCode: array[10] of Enum FailureCode;
-        fCategoryCode: array[10] of Option " ",Repaired,"Rework Required";
+        fCategoryCode: array[10] of Enum FailWorkReq;
+        //fCategoryCode: array[10] of Option " ",Repaired,"Rework Required";
         FailureCodes: Record "Order Defects";
         FailureCodesInsert: Record "Order Defects";
         FailureCodesEntered: Record "Order Defects";
@@ -592,13 +595,13 @@ page 50028 "Test Failure"
     procedure "fCodes Conversion"()
     begin
         Clear(KindCode);
-        case fKindCode[ArrayCount] of
-            FailureCode::Missing:
+        case fKindCode[ArrayCount].AsInteger() of
+            1:
                 begin
                     KindCode := '1';
                 end;
 
-            FailureCode::Wrong:
+            2:
                 begin
                     KindCode := '2';
                 end;

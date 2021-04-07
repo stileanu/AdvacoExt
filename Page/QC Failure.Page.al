@@ -40,7 +40,7 @@ page 50029 "QC Failure"
             group(Control1220060010)
             {
                 ShowCaption = false;
-                fixed(Control1220060009)
+                grid(Control1220060009)
                 {
                     ShowCaption = false;
                     group("Code")
@@ -51,6 +51,7 @@ page 50029 "QC Failure"
                             ApplicationArea = All;
                             Caption = '''';
                             ShowCaption = false;
+                            Editable = false;
                         }
                         field("fDefectCode[1]"; fDefectCode[1])
                         {
@@ -84,6 +85,7 @@ page 50029 "QC Failure"
                         {
                             ApplicationArea = All;
                             ShowCaption = false;
+                            Editable = false;
                         }
                         field("fFunctionalDepartment[1]"; fFunctionalDepartment[1])
                         {

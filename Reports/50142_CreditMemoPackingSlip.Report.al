@@ -1,7 +1,7 @@
 report 50142 "Credit Memo Packing Slip"
 {
     DefaultLayout = RDLC;
-    RDLCLayout = './50142_CreditMemoPackingSlip.rdl';
+    RDLCLayout = './Reports/50142_CreditMemoPackingSlip.rdl';
 
     dataset
     {
@@ -109,6 +109,13 @@ report 50142 "Credit Memo Packing Slip"
             column(Purchase_Header_Document_Type;"Document Type")
             {
             }
+            column(Purchase_Header_Amount;Amount)
+            {
+            }
+            column(Purchase_Header_Amount_Incl_Tax;"Amount Including Vat")
+            {
+
+            }
             dataitem("Purchase Line";"Purchase Line")
             {
                 DataItemLink = "Document Type"=FIELD("Document Type"),"Document No."=FIELD("No.");
@@ -181,6 +188,16 @@ report 50142 "Credit Memo Packing Slip"
                 column(Purchase_Line_Line_No_;"Line No.")
                 {
                 }
+                column(SerialNo;SerialNo)
+                {
+                }
+                column(Serial_No_CaptionLbl;Serial_No_CaptionLbl)
+                {
+                }
+                column(Vendor_Item_No_;"Vendor Item No.")
+                {
+                }
+        
 
                 trigger OnAfterGetRecord()
                 begin
@@ -205,6 +222,14 @@ report 50142 "Credit Memo Packing Slip"
                     //  ItemNumberToPrint := "Cross Reference Item"
                     //ELSE
                       ItemNumberToPrint := "No.";
+                    //ICE-MPC Begin
+                        Clear(SerialNo);
+                        TrackingSpec.SetRange("Source Type",39);
+                        TrackingSpec.SetRange("Source Ref. No.","Line No.");
+                        TrackingSpec.SetFilter("Source ID","Document No.");
+                        if TrackingSpec.FindFirst() then
+                          SerialNo := TrackingSpec."Serial No.";
+                    //ICE-MPC END      
                 end;
 
                 trigger OnPreDataItem()
@@ -321,7 +346,10 @@ report 50142 "Credit Memo Packing Slip"
         QtyCaptionLbl: Label 'Qty';
         PriceCaptionLbl: Label 'Price';
         Amount__Inv__Discount_Amount_CaptionLbl: Label 'Amount';
-
+        TrackingSpec: Record "Tracking Specification";  //ICE-MPC
+        SerialNo: Code [50]; //ICE-MPC
+        Serial_No_CaptionLbl: Label 'Serial No.';
+        
     local procedure AddError(Text: Text[250])
     begin
         ErrorCounter := ErrorCounter + 1;

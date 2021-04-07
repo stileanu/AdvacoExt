@@ -11,106 +11,6 @@
       <rd:DataSourceID>cf75282d-89a3-4d0e-829e-10116074be15</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="AgentName__________Method_">
-          <DataField>AgentName__________Method_</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Ship_To_Name_">
-          <DataField>Bill_of_Lading__Ship_To_Name_</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Ship_To_Address_">
-          <DataField>Bill_of_Lading__Ship_To_Address_</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Shipment_Date_">
-          <DataField>Bill_of_Lading__Shipment_Date_</DataField>
-        </Field>
-        <Field Name="ShipTo">
-          <DataField>ShipTo</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading_Attention">
-          <DataField>Bill_of_Lading_Attention</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Bill_of_Lading_">
-          <DataField>Bill_of_Lading__Bill_of_Lading_</DataField>
-        </Field>
-        <Field Name="ShipToAd2">
-          <DataField>ShipToAd2</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Shipping_Charge_">
-          <DataField>Bill_of_Lading__Shipping_Charge_</DataField>
-        </Field>
-        <Field Name="ATTN__">
-          <DataField>ATTN__</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Shipping_Account_">
-          <DataField>Bill_of_Lading__Shipping_Account_</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading___Phone_No__">
-          <DataField>Bill_of_Lading___Phone_No__</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Container_Quantity_">
-          <DataField>Bill_of_Lading__Container_Quantity_</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading__Container_Type_">
-          <DataField>Bill_of_Lading__Container_Type_</DataField>
-        </Field>
-        <Field Name="POWER_VACUUM_PUMPS_PARTS_OIL_">
-          <DataField>POWER_VACUUM_PUMPS_PARTS_OIL_</DataField>
-        </Field>
-        <Field Name="FORMAT__Shipping_Weight____________Lbs__">
-          <DataField>FORMAT__Shipping_Weight____________Lbs__</DataField>
-        </Field>
-        <Field Name="V085_">
-          <DataField>V085_</DataField>
-        </Field>
-        <Field Name="Collect">
-          <DataField>Collect</DataField>
-        </Field>
-        <Field Name="Bill_of_Lading_Order_No_">
-          <DataField>Bill_of_Lading_Order_No_</DataField>
-        </Field>
-        <Field Name="CM_______Document_No__">
-          <DataField>CM_______Document_No__</DataField>
-        </Field>
-        <Field Name="RMA______PurchaseHeader__RMA_No__">
-          <DataField>RMA______PurchaseHeader__RMA_No__</DataField>
-        </Field>
-        <Field Name="Serial">
-          <DataField>Serial</DataField>
-        </Field>
-        <Field Name="Purchase_Line_Description">
-          <DataField>Purchase_Line_Description</DataField>
-        </Field>
-        <Field Name="Qty__">
-          <DataField>Qty__</DataField>
-        </Field>
-        <Field Name="Purchase_Line_Quantity">
-          <DataField>Purchase_Line_Quantity</DataField>
-        </Field>
-        <Field Name="Purchase_Line_QuantityFormat">
-          <DataField>Purchase_Line_QuantityFormat</DataField>
-        </Field>
-        <Field Name="ItemNo">
-          <DataField>ItemNo</DataField>
-        </Field>
-        <Field Name="Purchase_Line_Document_Type">
-          <DataField>Purchase_Line_Document_Type</DataField>
-        </Field>
-        <Field Name="Purchase_Line_Document_No_">
-          <DataField>Purchase_Line_Document_No_</DataField>
-        </Field>
-        <Field Name="Purchase_Line_Line_No_">
-          <DataField>Purchase_Line_Line_No_</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -152,7 +52,7 @@
                   <Width>3.19492cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.14725cm</Width>
+                  <Width>1.06788cm</Width>
                 </TablixColumn>
                 <TablixColumn>
                   <Width>1.2cm</Width>
@@ -5382,8 +5282,16 @@
                   </Group>
                   <TablixMembers>
                     <TablixMember />
-                    <TablixMember />
-                    <TablixMember />
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>true</Hidden>
+                      </Visibility>
+                    </TablixMember>
+                    <TablixMember>
+                      <Visibility>
+                        <Hidden>true</Hidden>
+                      </Visibility>
+                    </TablixMember>
                     <TablixMember />
                     <TablixMember />
                     <TablixMember />
@@ -5408,17 +5316,17 @@
             <DataSetName>DataSet_Result</DataSetName>
             <Top>0.02166cm</Top>
             <Height>5.20896cm</Height>
-            <Width>20.04875cm</Width>
+            <Width>19.96938cm</Width>
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>6.18495cm</Height>
+        <Height>5.44412cm</Height>
         <Style />
       </Body>
-      <Width>20.68329cm</Width>
+      <Width>21.15954cm</Width>
       <Page>
         <PageHeader>
-          <Height>2.30049in</Height>
+          <Height>6.795cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -5492,7 +5400,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>0.846cm</Top>
-              <Left>18.13329cm</Left>
+              <Left>18.60954cm</Left>
               <Height>0.47592cm</Height>
               <Width>2.55cm</Width>
               <ZIndex>2</ZIndex>
@@ -5597,7 +5505,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>3.31933cm</Top>
-              <Left>12.48458cm</Left>
+              <Left>12.89733cm</Left>
               <Height>0.423cm</Height>
               <Width>8.074cm</Width>
               <ZIndex>6</ZIndex>
@@ -5623,7 +5531,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>4.16533cm</Top>
-              <Left>12.48458cm</Left>
+              <Left>12.89733cm</Left>
               <Height>0.423cm</Height>
               <Width>8.1cm</Width>
               <ZIndex>7</ZIndex>
@@ -5649,7 +5557,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>5.01133cm</Top>
-              <Left>12.48458cm</Left>
+              <Left>12.89733cm</Left>
               <Height>0.423cm</Height>
               <Width>8.1cm</Width>
               <ZIndex>8</ZIndex>
@@ -5675,7 +5583,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>3.74233cm</Top>
-              <Left>12.97958cm</Left>
+              <Left>13.39233cm</Left>
               <Height>0.423cm</Height>
               <Width>1.81063cm</Width>
               <ZIndex>9</ZIndex>
@@ -5702,7 +5610,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>4.58833cm</Top>
-              <Left>12.48458cm</Left>
+              <Left>12.89733cm</Left>
               <Height>0.423cm</Height>
               <Width>8.1cm</Width>
               <ZIndex>10</ZIndex>
@@ -5728,7 +5636,7 @@
                 </Paragraph>
               </Paragraphs>
               <Top>3.74233cm</Top>
-              <Left>14.93132cm</Left>
+              <Left>15.34407cm</Left>
               <Height>0.423cm</Height>
               <Width>5.62726cm</Width>
               <ZIndex>11</ZIndex>
@@ -5766,8 +5674,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.21822in</Top>
-              <Left>7.17677in</Left>
+              <Top>0.53072in</Top>
+              <Left>7.66427in</Left>
               <Height>0.423cm</Height>
               <Width>0.521cm</Width>
               <Style>
@@ -5794,12 +5702,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -5839,4 +5741,104 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
   <rd:ReportID>ed0e44c8-f788-4f00-b912-7ee00fa09577</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="AgentName__________Method_">
+          <DataField>AgentName__________Method_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Ship_To_Name_">
+          <DataField>Bill_of_Lading__Ship_To_Name_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Ship_To_Address_">
+          <DataField>Bill_of_Lading__Ship_To_Address_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Shipment_Date_">
+          <DataField>Bill_of_Lading__Shipment_Date_</DataField>
+        </Field>
+        <Field Name="ShipTo">
+          <DataField>ShipTo</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading_Attention">
+          <DataField>Bill_of_Lading_Attention</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Bill_of_Lading_">
+          <DataField>Bill_of_Lading__Bill_of_Lading_</DataField>
+        </Field>
+        <Field Name="ShipToAd2">
+          <DataField>ShipToAd2</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Shipping_Charge_">
+          <DataField>Bill_of_Lading__Shipping_Charge_</DataField>
+        </Field>
+        <Field Name="ATTN__">
+          <DataField>ATTN__</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Shipping_Account_">
+          <DataField>Bill_of_Lading__Shipping_Account_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading___Phone_No__">
+          <DataField>Bill_of_Lading___Phone_No__</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Container_Quantity_">
+          <DataField>Bill_of_Lading__Container_Quantity_</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading__Container_Type_">
+          <DataField>Bill_of_Lading__Container_Type_</DataField>
+        </Field>
+        <Field Name="POWER_VACUUM_PUMPS_PARTS_OIL_">
+          <DataField>POWER_VACUUM_PUMPS_PARTS_OIL_</DataField>
+        </Field>
+        <Field Name="FORMAT__Shipping_Weight____________Lbs__">
+          <DataField>FORMAT__Shipping_Weight____________Lbs__</DataField>
+        </Field>
+        <Field Name="V085_">
+          <DataField>V085_</DataField>
+        </Field>
+        <Field Name="Collect">
+          <DataField>Collect</DataField>
+        </Field>
+        <Field Name="Bill_of_Lading_Order_No_">
+          <DataField>Bill_of_Lading_Order_No_</DataField>
+        </Field>
+        <Field Name="CM_______Document_No__">
+          <DataField>CM_______Document_No__</DataField>
+        </Field>
+        <Field Name="RMA______PurchaseHeader__RMA_No__">
+          <DataField>RMA______PurchaseHeader__RMA_No__</DataField>
+        </Field>
+        <Field Name="Serial">
+          <DataField>Serial</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Description">
+          <DataField>Purchase_Line_Description</DataField>
+        </Field>
+        <Field Name="Qty__">
+          <DataField>Qty__</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Quantity">
+          <DataField>Purchase_Line_Quantity</DataField>
+        </Field>
+        <Field Name="Purchase_Line_QuantityFormat">
+          <DataField>Purchase_Line_QuantityFormat</DataField>
+        </Field>
+        <Field Name="ItemNo">
+          <DataField>ItemNo</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Document_Type">
+          <DataField>Purchase_Line_Document_Type</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Document_No_">
+          <DataField>Purchase_Line_Document_No_</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Line_No_">
+          <DataField>Purchase_Line_Line_No_</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>
