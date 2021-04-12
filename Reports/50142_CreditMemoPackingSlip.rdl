@@ -11,211 +11,6 @@
       <rd:DataSourceID>2d4a48db-5406-447f-b2e9-56ec3a0bc27f</rd:DataSourceID>
     </DataSource>
   </DataSources>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-      <Fields>
-        <Field Name="Purchase_Header__Purchase_Header___Document_Date_">
-          <DataField>Purchase_Header__Purchase_Header___Document_Date_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_1_">
-          <DataField>ShipToAddress_1_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_2_">
-          <DataField>ShipToAddress_2_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_3_">
-          <DataField>ShipToAddress_3_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_4_">
-          <DataField>ShipToAddress_4_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_5_">
-          <DataField>ShipToAddress_5_</DataField>
-        </Field>
-        <Field Name="Purchase_Header__Shipping_Agent_">
-          <DataField>Purchase_Header__Shipping_Agent_</DataField>
-        </Field>
-        <Field Name="Purchase_Header__Shipping_Charge_">
-          <DataField>Purchase_Header__Shipping_Charge_</DataField>
-        </Field>
-        <Field Name="Purchase_Header__Shipping_Account_">
-          <DataField>Purchase_Header__Shipping_Account_</DataField>
-        </Field>
-        <Field Name="Purchase_Header__No__">
-          <DataField>Purchase_Header__No__</DataField>
-        </Field>
-        <Field Name="Purchase_Header__RMA_No__">
-          <DataField>Purchase_Header__RMA_No__</DataField>
-        </Field>
-        <Field Name="Purchase_Header__Your_Reference_">
-          <DataField>Purchase_Header__Your_Reference_</DataField>
-        </Field>
-        <Field Name="Purchase_Header__Authorized_By_">
-          <DataField>Purchase_Header__Authorized_By_</DataField>
-        </Field>
-        <Field Name="Purchase_Header__Return_Reason_">
-          <DataField>Purchase_Header__Return_Reason_</DataField>
-        </Field>
-        <Field Name="Purchase_Header__Credit_Memo_Action_">
-          <DataField>Purchase_Header__Credit_Memo_Action_</DataField>
-        </Field>
-        <Field Name="Credit_Memo___Caption">
-          <DataField>Credit_Memo___Caption</DataField>
-        </Field>
-        <Field Name="CREDIT_MEMO______PACKING_SLIPCaption">
-          <DataField>CREDIT_MEMO______PACKING_SLIPCaption</DataField>
-        </Field>
-        <Field Name="ADVANCED_VACUUM_COMPANY__INCCaption">
-          <DataField>ADVANCED_VACUUM_COMPANY__INCCaption</DataField>
-        </Field>
-        <Field Name="Date_Caption">
-          <DataField>Date_Caption</DataField>
-        </Field>
-        <Field Name="Ship_To_Caption">
-          <DataField>Ship_To_Caption</DataField>
-        </Field>
-        <Field Name="Shipping_Agent_Caption">
-          <DataField>Shipping_Agent_Caption</DataField>
-        </Field>
-        <Field Name="Shipping_Charge_Caption">
-          <DataField>Shipping_Charge_Caption</DataField>
-        </Field>
-        <Field Name="Shipping_Account_Caption">
-          <DataField>Shipping_Account_Caption</DataField>
-        </Field>
-        <Field Name="Vendor_RMA___Caption">
-          <DataField>Vendor_RMA___Caption</DataField>
-        </Field>
-        <Field Name="V1215_BUSINESS_PKWY_N_Caption">
-          <DataField>V1215_BUSINESS_PKWY_N_Caption</DataField>
-        </Field>
-        <Field Name="WESTMINSTER__MD_21157Caption">
-          <DataField>WESTMINSTER__MD_21157Caption</DataField>
-        </Field>
-        <Field Name="V410_876_8200Caption">
-          <DataField>V410_876_8200Caption</DataField>
-        </Field>
-        <Field Name="Ship_From_Caption">
-          <DataField>Ship_From_Caption</DataField>
-        </Field>
-        <Field Name="Our_PO___Caption">
-          <DataField>Our_PO___Caption</DataField>
-        </Field>
-        <Field Name="Authorized_By_Caption">
-          <DataField>Authorized_By_Caption</DataField>
-        </Field>
-        <Field Name="Reason_for_Return_Caption">
-          <DataField>Reason_for_Return_Caption</DataField>
-        </Field>
-        <Field Name="Action_Requested_Caption">
-          <DataField>Action_Requested_Caption</DataField>
-        </Field>
-        <Field Name="Purchase_Header_Document_Type">
-          <DataField>Purchase_Header_Document_Type</DataField>
-        </Field>
-        <Field Name="Purchase_Header_Amount">
-          <DataField>Purchase_Header_Amount</DataField>
-        </Field>
-        <Field Name="Purchase_Header_AmountFormat">
-          <DataField>Purchase_Header_AmountFormat</DataField>
-        </Field>
-        <Field Name="Purchase_Header_Amount_Incl_Tax">
-          <DataField>Purchase_Header_Amount_Incl_Tax</DataField>
-        </Field>
-        <Field Name="Purchase_Header_Amount_Incl_TaxFormat">
-          <DataField>Purchase_Header_Amount_Incl_TaxFormat</DataField>
-        </Field>
-        <Field Name="ItemNumberToPrint">
-          <DataField>ItemNumberToPrint</DataField>
-        </Field>
-        <Field Name="Purchase_Line_Description">
-          <DataField>Purchase_Line_Description</DataField>
-        </Field>
-        <Field Name="Purchase_Line_Quantity">
-          <DataField>Purchase_Line_Quantity</DataField>
-        </Field>
-        <Field Name="Purchase_Line_QuantityFormat">
-          <DataField>Purchase_Line_QuantityFormat</DataField>
-        </Field>
-        <Field Name="Purchase_Line__Direct_Unit_Cost_">
-          <DataField>Purchase_Line__Direct_Unit_Cost_</DataField>
-        </Field>
-        <Field Name="Purchase_Line__Direct_Unit_Cost_Format">
-          <DataField>Purchase_Line__Direct_Unit_Cost_Format</DataField>
-        </Field>
-        <Field Name="Amount__Inv__Discount_Amount_">
-          <DataField>Amount__Inv__Discount_Amount_</DataField>
-        </Field>
-        <Field Name="Amount__Inv__Discount_Amount_Format">
-          <DataField>Amount__Inv__Discount_Amount_Format</DataField>
-        </Field>
-        <Field Name="Purchase_Line_Amount">
-          <DataField>Purchase_Line_Amount</DataField>
-        </Field>
-        <Field Name="Purchase_Line_AmountFormat">
-          <DataField>Purchase_Line_AmountFormat</DataField>
-        </Field>
-        <Field Name="Purchase_Line__Amount_Including_Tax_">
-          <DataField>Purchase_Line__Amount_Including_Tax_</DataField>
-        </Field>
-        <Field Name="Purchase_Line__Amount_Including_Tax_Format">
-          <DataField>Purchase_Line__Amount_Including_Tax_Format</DataField>
-        </Field>
-        <Field Name="TotalText">
-          <DataField>TotalText</DataField>
-        </Field>
-        <Field Name="TotalInclTaxText">
-          <DataField>TotalInclTaxText</DataField>
-        </Field>
-        <Field Name="TaxAmountLine_TaxAmountText">
-          <DataField>TaxAmountLine_TaxAmountText</DataField>
-        </Field>
-        <Field Name="Amount_Including_Tax____Amount">
-          <DataField>Amount_Including_Tax____Amount</DataField>
-        </Field>
-        <Field Name="Amount_Including_Tax____AmountFormat">
-          <DataField>Amount_Including_Tax____AmountFormat</DataField>
-        </Field>
-        <Field Name="ADVACO_No_Caption">
-          <DataField>ADVACO_No_Caption</DataField>
-        </Field>
-        <Field Name="Purchase_Line_DescriptionCaption">
-          <DataField>Purchase_Line_DescriptionCaption</DataField>
-        </Field>
-        <Field Name="QtyCaption">
-          <DataField>QtyCaption</DataField>
-        </Field>
-        <Field Name="PriceCaption">
-          <DataField>PriceCaption</DataField>
-        </Field>
-        <Field Name="Amount__Inv__Discount_Amount_Caption">
-          <DataField>Amount__Inv__Discount_Amount_Caption</DataField>
-        </Field>
-        <Field Name="Purchase_Line_Document_Type">
-          <DataField>Purchase_Line_Document_Type</DataField>
-        </Field>
-        <Field Name="Purchase_Line_Document_No_">
-          <DataField>Purchase_Line_Document_No_</DataField>
-        </Field>
-        <Field Name="Purchase_Line_Line_No_">
-          <DataField>Purchase_Line_Line_No_</DataField>
-        </Field>
-        <Field Name="SerialNo">
-          <DataField>SerialNo</DataField>
-        </Field>
-        <Field Name="Serial_No_CaptionLbl">
-          <DataField>Serial_No_CaptionLbl</DataField>
-        </Field>
-        <Field Name="Vendor_Item_No_">
-          <DataField>Vendor_Item_No_</DataField>
-        </Field>
-      </Fields>
-    </DataSet>
-  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -1690,12 +1485,6 @@
       </Page>
     </ReportSection>
   </ReportSections>
-  <ReportParametersLayout>
-    <GridLayoutDefinition>
-      <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>2</NumberOfRows>
-    </GridLayoutDefinition>
-  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -1735,4 +1524,209 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>b3b8ebb5-4afd-4e10-bd60-12bd49f6f0c3</rd:ReportID>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Fields>
+        <Field Name="Purchase_Header__Purchase_Header___Document_Date_">
+          <DataField>Purchase_Header__Purchase_Header___Document_Date_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_1_">
+          <DataField>ShipToAddress_1_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_2_">
+          <DataField>ShipToAddress_2_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_3_">
+          <DataField>ShipToAddress_3_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_4_">
+          <DataField>ShipToAddress_4_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_5_">
+          <DataField>ShipToAddress_5_</DataField>
+        </Field>
+        <Field Name="Purchase_Header__Shipping_Agent_">
+          <DataField>Purchase_Header__Shipping_Agent_</DataField>
+        </Field>
+        <Field Name="Purchase_Header__Shipping_Charge_">
+          <DataField>Purchase_Header__Shipping_Charge_</DataField>
+        </Field>
+        <Field Name="Purchase_Header__Shipping_Account_">
+          <DataField>Purchase_Header__Shipping_Account_</DataField>
+        </Field>
+        <Field Name="Purchase_Header__No__">
+          <DataField>Purchase_Header__No__</DataField>
+        </Field>
+        <Field Name="Purchase_Header__RMA_No__">
+          <DataField>Purchase_Header__RMA_No__</DataField>
+        </Field>
+        <Field Name="Purchase_Header__Your_Reference_">
+          <DataField>Purchase_Header__Your_Reference_</DataField>
+        </Field>
+        <Field Name="Purchase_Header__Authorized_By_">
+          <DataField>Purchase_Header__Authorized_By_</DataField>
+        </Field>
+        <Field Name="Purchase_Header__Return_Reason_">
+          <DataField>Purchase_Header__Return_Reason_</DataField>
+        </Field>
+        <Field Name="Purchase_Header__Credit_Memo_Action_">
+          <DataField>Purchase_Header__Credit_Memo_Action_</DataField>
+        </Field>
+        <Field Name="Credit_Memo___Caption">
+          <DataField>Credit_Memo___Caption</DataField>
+        </Field>
+        <Field Name="CREDIT_MEMO______PACKING_SLIPCaption">
+          <DataField>CREDIT_MEMO______PACKING_SLIPCaption</DataField>
+        </Field>
+        <Field Name="ADVANCED_VACUUM_COMPANY__INCCaption">
+          <DataField>ADVANCED_VACUUM_COMPANY__INCCaption</DataField>
+        </Field>
+        <Field Name="Date_Caption">
+          <DataField>Date_Caption</DataField>
+        </Field>
+        <Field Name="Ship_To_Caption">
+          <DataField>Ship_To_Caption</DataField>
+        </Field>
+        <Field Name="Shipping_Agent_Caption">
+          <DataField>Shipping_Agent_Caption</DataField>
+        </Field>
+        <Field Name="Shipping_Charge_Caption">
+          <DataField>Shipping_Charge_Caption</DataField>
+        </Field>
+        <Field Name="Shipping_Account_Caption">
+          <DataField>Shipping_Account_Caption</DataField>
+        </Field>
+        <Field Name="Vendor_RMA___Caption">
+          <DataField>Vendor_RMA___Caption</DataField>
+        </Field>
+        <Field Name="V1215_BUSINESS_PKWY_N_Caption">
+          <DataField>V1215_BUSINESS_PKWY_N_Caption</DataField>
+        </Field>
+        <Field Name="WESTMINSTER__MD_21157Caption">
+          <DataField>WESTMINSTER__MD_21157Caption</DataField>
+        </Field>
+        <Field Name="V410_876_8200Caption">
+          <DataField>V410_876_8200Caption</DataField>
+        </Field>
+        <Field Name="Ship_From_Caption">
+          <DataField>Ship_From_Caption</DataField>
+        </Field>
+        <Field Name="Our_PO___Caption">
+          <DataField>Our_PO___Caption</DataField>
+        </Field>
+        <Field Name="Authorized_By_Caption">
+          <DataField>Authorized_By_Caption</DataField>
+        </Field>
+        <Field Name="Reason_for_Return_Caption">
+          <DataField>Reason_for_Return_Caption</DataField>
+        </Field>
+        <Field Name="Action_Requested_Caption">
+          <DataField>Action_Requested_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Header_Document_Type">
+          <DataField>Purchase_Header_Document_Type</DataField>
+        </Field>
+        <Field Name="Purchase_Header_Amount">
+          <DataField>Purchase_Header_Amount</DataField>
+        </Field>
+        <Field Name="Purchase_Header_AmountFormat">
+          <DataField>Purchase_Header_AmountFormat</DataField>
+        </Field>
+        <Field Name="Purchase_Header_Amount_Incl_Tax">
+          <DataField>Purchase_Header_Amount_Incl_Tax</DataField>
+        </Field>
+        <Field Name="Purchase_Header_Amount_Incl_TaxFormat">
+          <DataField>Purchase_Header_Amount_Incl_TaxFormat</DataField>
+        </Field>
+        <Field Name="ItemNumberToPrint">
+          <DataField>ItemNumberToPrint</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Description">
+          <DataField>Purchase_Line_Description</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Quantity">
+          <DataField>Purchase_Line_Quantity</DataField>
+        </Field>
+        <Field Name="Purchase_Line_QuantityFormat">
+          <DataField>Purchase_Line_QuantityFormat</DataField>
+        </Field>
+        <Field Name="Purchase_Line__Direct_Unit_Cost_">
+          <DataField>Purchase_Line__Direct_Unit_Cost_</DataField>
+        </Field>
+        <Field Name="Purchase_Line__Direct_Unit_Cost_Format">
+          <DataField>Purchase_Line__Direct_Unit_Cost_Format</DataField>
+        </Field>
+        <Field Name="Amount__Inv__Discount_Amount_">
+          <DataField>Amount__Inv__Discount_Amount_</DataField>
+        </Field>
+        <Field Name="Amount__Inv__Discount_Amount_Format">
+          <DataField>Amount__Inv__Discount_Amount_Format</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Amount">
+          <DataField>Purchase_Line_Amount</DataField>
+        </Field>
+        <Field Name="Purchase_Line_AmountFormat">
+          <DataField>Purchase_Line_AmountFormat</DataField>
+        </Field>
+        <Field Name="Purchase_Line__Amount_Including_Tax_">
+          <DataField>Purchase_Line__Amount_Including_Tax_</DataField>
+        </Field>
+        <Field Name="Purchase_Line__Amount_Including_Tax_Format">
+          <DataField>Purchase_Line__Amount_Including_Tax_Format</DataField>
+        </Field>
+        <Field Name="TotalText">
+          <DataField>TotalText</DataField>
+        </Field>
+        <Field Name="TotalInclTaxText">
+          <DataField>TotalInclTaxText</DataField>
+        </Field>
+        <Field Name="TaxAmountLine_TaxAmountText">
+          <DataField>TaxAmountLine_TaxAmountText</DataField>
+        </Field>
+        <Field Name="Amount_Including_Tax____Amount">
+          <DataField>Amount_Including_Tax____Amount</DataField>
+        </Field>
+        <Field Name="Amount_Including_Tax____AmountFormat">
+          <DataField>Amount_Including_Tax____AmountFormat</DataField>
+        </Field>
+        <Field Name="ADVACO_No_Caption">
+          <DataField>ADVACO_No_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line_DescriptionCaption">
+          <DataField>Purchase_Line_DescriptionCaption</DataField>
+        </Field>
+        <Field Name="QtyCaption">
+          <DataField>QtyCaption</DataField>
+        </Field>
+        <Field Name="PriceCaption">
+          <DataField>PriceCaption</DataField>
+        </Field>
+        <Field Name="Amount__Inv__Discount_Amount_Caption">
+          <DataField>Amount__Inv__Discount_Amount_Caption</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Document_Type">
+          <DataField>Purchase_Line_Document_Type</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Document_No_">
+          <DataField>Purchase_Line_Document_No_</DataField>
+        </Field>
+        <Field Name="Purchase_Line_Line_No_">
+          <DataField>Purchase_Line_Line_No_</DataField>
+        </Field>
+        <Field Name="SerialNo">
+          <DataField>SerialNo</DataField>
+        </Field>
+        <Field Name="Serial_No_CaptionLbl">
+          <DataField>Serial_No_CaptionLbl</DataField>
+        </Field>
+        <Field Name="Vendor_Item_No_">
+          <DataField>Vendor_Item_No_</DataField>
+        </Field>
+      </Fields>
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+    </DataSet>
+  </DataSets>
 </Report>

@@ -6,6 +6,7 @@ report 50123 "Average Days to pay Purchases"
     RDLCLayout = './Reports/50123_Average Days to pay Purchases.rdl';
     ApplicationArea = All;
     UsageCategory = ReportsAndAnalysis;
+    UseRequestPage = true;
 
     dataset
     {

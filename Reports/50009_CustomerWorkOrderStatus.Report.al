@@ -4,6 +4,8 @@ report 50009 "Customer Work Order Status Rpt"
     RDLCLayout = './Reports/50009_CustomerWorkOrderStatus.rdl';
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = all;
+    UseRequestPage = true;
+
     dataset
     {
         dataitem("Work Order Detail"; "WorkOrderDetail")

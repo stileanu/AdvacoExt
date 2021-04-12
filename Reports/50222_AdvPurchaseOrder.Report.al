@@ -369,7 +369,9 @@ report 50222 "Advaco Purchase Order"
                                 ItemNumberToPrint := "No.";
                             //ICE RSK 3/17/21
                             if type = type::"G/L Account" then
-                                ItemNumberToPrint := '';
+                                //ICE SII 4/9/21
+                                //    ItemNumberToPrint := '';
+                                ItemNumberToPrint := "Description 2";
 
                             if Type = Type::" " then begin
                                 ItemNumberToPrint := '';

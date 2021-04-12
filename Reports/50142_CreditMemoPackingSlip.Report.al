@@ -223,12 +223,12 @@ report 50142 "Credit Memo Packing Slip"
                     //ELSE
                       ItemNumberToPrint := "No.";
                     //ICE-MPC Begin
-                        Clear(SerialNo);
-                        TrackingSpec.SetRange("Source Type",39);
-                        TrackingSpec.SetRange("Source Ref. No.","Line No.");
-                        TrackingSpec.SetFilter("Source ID","Document No.");
-                        if TrackingSpec.FindFirst() then
-                          SerialNo := TrackingSpec."Serial No.";
+                    Clear(SerialNo);
+                    TrackingSpec.SetRange("Source Type",39);
+                    TrackingSpec.SetRange("Source Ref. No.","Line No.");
+                    TrackingSpec.SetFilter("Source ID","Document No.");
+                    if TrackingSpec.FindFirst() then
+                      SerialNo := TrackingSpec."Serial No.";
                     //ICE-MPC END      
                 end;
 
@@ -346,7 +346,7 @@ report 50142 "Credit Memo Packing Slip"
         QtyCaptionLbl: Label 'Qty';
         PriceCaptionLbl: Label 'Price';
         Amount__Inv__Discount_Amount_CaptionLbl: Label 'Amount';
-        TrackingSpec: Record "Tracking Specification";  //ICE-MPC
+        TrackingSpec: Record "Reservation Entry";  //ICE-MPC
         SerialNo: Code [50]; //ICE-MPC
         Serial_No_CaptionLbl: Label 'Serial No.';
         

@@ -3,6 +3,15 @@ pageextension 62018 PostedPurchInvoiceSubformExt extends "Posted Purch. Invoice 
     layout
     {
         // Add changes to page layout here
+        addafter("No.")
+        {
+            field("Description 2"; "Description 2")
+            {
+                ApplicationArea = All;
+                Visible = true;
+                Caption = 'Vendor P/#';
+            }
+        }
         addafter(Description)
         {
             field("Work Order No."; Rec."Work Order No.")
