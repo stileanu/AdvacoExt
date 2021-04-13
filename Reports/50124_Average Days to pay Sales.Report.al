@@ -85,9 +85,14 @@ report 50124 "Average Days to pay Sales"
             column(CustLedgerEntry_Entry_No_; "Entry No.")
             {
             }
+            column(BlankLine; BlankLine)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
+                BlankLine := false;
+                CalcFields(Amount);
                 if Amount = 0 then exit;
                 NoOfDaysToClose := 0;
                 if "Closed at Date" <> 0D then begin
@@ -111,11 +116,17 @@ report 50124 "Average Days to pay Sales"
                     NoOfDaysToClose := 0;
                     NoOfDocs -= 1;
                 end;
+                if (((NoOfDocs - 1) MOD 5) = 0) AND (NoOfDocs <> 1) then
+                    BlankLine := true;
                 //CalcFields("Customer Name", "Work Order No.");  //ICE RSK 1/18/21
                 CalcFields("Work Order No.");
                 DescriptionToPrint := "Customer Name" + ' WO - ' + "Work Order No.";
                 TotalNoOfDaysToClose += NoOfDaysToClose;
                 SerialNo += 1;
+                IF NoOfDocs <> 0 THEN
+                    AverageDaysToPay := TotalNoOfDaysToClose / NoOfDocs
+                ELSE
+                    AverageDaysToPay := 0;
             end;
 
             trigger OnPreDataItem()
@@ -175,5 +186,6 @@ report 50124 "Average Days to pay Sales"
         No_of_DaysCaptionLbl: Label 'No of Days';
         No_CaptionLbl: Label 'No.';
         Average_No_of_Days_to_closeCaptionLbl: Label 'Average No of Days to close';
+        BlankLine: Boolean;
 }
 

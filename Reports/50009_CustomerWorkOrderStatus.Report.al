@@ -469,11 +469,13 @@ report 50009 "Customer Work Order Status Rpt"
 
     requestpage
     {
+        SaveValues = true;
 
         layout
         {
             area(content)
             {
+
                 group(Options)
                 {
                     Caption = 'Options';

@@ -36,7 +36,7 @@ report 50056 "Outstanding Vendor Repairs"
             column(Purchase_Line__Outstanding_Quantity_; "Outstanding Quantity")
             {
             }
-            column(Purchase_Line__Order_No__; "Order No.")
+            column(Purchase_Line__Order_No__; "Work Order No.")
             {
             }
             column(Purchase_Line__Document_No__; "Document No.")
@@ -83,7 +83,7 @@ report 50056 "Outstanding Vendor Repairs"
             begin
                 if PurchaseHeader.Get("Document Type", "Document No.") then begin
                     if PurchaseHeader."Vendor Repair" then begin
-                        if WOD.Get("Purchase Line"."Order No.") then
+                        if WOD.Get("Purchase Line"."Work Order No.") then
                             rma := WOD."RMA No."
                         else
                             rma := '';

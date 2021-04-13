@@ -86,9 +86,14 @@ report 50123 "Average Days to pay Purchases"
             column(VendorLedgerEntry_Entry_No_; "Entry No.")
             {
             }
+            column(BlankLine; BlankLine)
+            {
+            }
 
             trigger OnAfterGetRecord()
             begin
+                BlankLine := false;
+                CalcFields(Amount);
                 if Amount = 0 then
                     exit;
                 NoOfDaysToClose := 0;
@@ -113,9 +118,17 @@ report 50123 "Average Days to pay Purchases"
                     NoOfDaysToClose := 0;
                     NoOfDocs -= 1;
                 end;
+                //CurrReport.SHOWOUTPUT((((NoOfDocs-1) MOD 5) = 0) AND (NoOfDocs <> 1));
+                if (((NoOfDocs - 1) MOD 5) = 0) AND (NoOfDocs <> 1) then
+                    BlankLine := true;
                 DescriptionToPrint := Description + ' - Ext.Doc # ' + "External Document No.";
                 TotalNoOfDaysToClose += NoOfDaysToClose;
                 SerialNo += 1;
+
+                IF NoOfDocs <> 0 THEN
+                    AverageDaysToPay := TotalNoOfDaysToClose / NoOfDocs
+                ELSE
+                    AverageDaysToPay := 0;
             end;
 
             trigger OnPreDataItem()
@@ -175,5 +188,6 @@ report 50123 "Average Days to pay Purchases"
         No_of_DaysCaptionLbl: Label 'No of Days';
         No_CaptionLbl: Label 'No.';
         Average_No_of_Days_to_closeCaptionLbl: Label 'Average No of Days to close';
+        BlankLine: Boolean;
 }
 

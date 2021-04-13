@@ -98,6 +98,7 @@ report 50043 "Quote Sent Report"
 
     requestpage
     {
+        SaveValues = true;
 
         layout
         {
