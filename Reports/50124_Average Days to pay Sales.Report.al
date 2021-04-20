@@ -90,6 +90,10 @@ report 50124 "Average Days to pay Sales"
             }
 
             trigger OnAfterGetRecord()
+            var
+                CustName: Record Customer;
+                InvHeader: Record "Sales Invoice Header";
+
             begin
                 BlankLine := false;
                 CalcFields(Amount);
@@ -116,13 +120,22 @@ report 50124 "Average Days to pay Sales"
                     NoOfDaysToClose := 0;
                     NoOfDocs -= 1;
                 end;
-                if (((NoOfDocs - 1) MOD 5) = 0) AND (NoOfDocs <> 1) then
-                    BlankLine := true;
+
                 //CalcFields("Customer Name", "Work Order No.");  //ICE RSK 1/18/21
                 CalcFields("Work Order No.");
-                DescriptionToPrint := "Customer Name" + ' WO - ' + "Work Order No.";
+                // ICE SII 4/13/21 start
+                DescriptionToPrint := '';
+                if CustName.Get("Customer No.") then
+                    DescriptionToPrint := CustName.Name;
+                DescriptionToPrint += ' WO - ';
+                if InvHeader.Get("Document No.") then
+                    DescriptionToPrint += InvHeader."Order No.";
+                //DescriptionToPrint := "Customer Name" + ' WO - ' + "Work Order No.";
+                // ICE SII 4/13/21 end
                 TotalNoOfDaysToClose += NoOfDaysToClose;
                 SerialNo += 1;
+                if (((SerialNo - 1) MOD 5) = 0) AND (SerialNo <> 1) then
+                    BlankLine := true;
                 IF NoOfDocs <> 0 THEN
                     AverageDaysToPay := TotalNoOfDaysToClose / NoOfDocs
                 ELSE

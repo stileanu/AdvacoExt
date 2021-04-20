@@ -1,5 +1,8 @@
 page 50055 "Return Committed Parts"
 {
+    UsageCategory = Tasks;
+    ApplicationArea = All;
+
     SourceTable = Item;
     SourceTableView = SORTING("No.")
                       ORDER(Ascending);
@@ -29,7 +32,7 @@ page 50055 "Return Committed Parts"
 
     actions
     {
-        area(creation)
+        area(Processing)
         {
             action("&Allocate")
             {
@@ -54,7 +57,7 @@ page 50055 "Return Committed Parts"
                         vPN := PN;
                         InValDialog.SetValueType(InValType::IntegerType, 'Enter the amount to Allocate:');
                         if InValDialog.RunModal() = Action::OK then
-                            InValDialog.GetIntegerValue(PN);
+                            InValDialog.GetIntegerValue(vPN);
                         PN := vPN;
                         if PN <= 0 then
                             Error('Can''t Allocate A Negative or Zero Quantity');
@@ -65,10 +68,10 @@ page 50055 "Return Committed Parts"
 
 
                         // HEF RETURNING QTY QUOTED TO WORK ORDERS PARTS STOLEN FROM AND RESETING VARIABLES
-                        // CurrentRecord := Rec;
+                        //CurrentRecord := Rec;
                         ReturnParts;
                         Commit;
-                        // Rec := CurrentRecord;
+                        //Rec := CurrentRecord;
                         QtyNeeded := 0;
                         QtyFound := 0;
                         QtyNotFound := 0;
@@ -109,6 +112,7 @@ page 50055 "Return Committed Parts"
         PartsReturn: Record Parts;
         QtyQuoted: Decimal;
         ItemLedgEntryType: Enum "Item Ledger Entry Type";
+        SerialNo: Code[20];
 
     procedure LocateParts()
     begin
@@ -313,6 +317,8 @@ page 50055 "Return Committed Parts"
     end;
 
     procedure WriteitemJournalLinePA()
+    var
+        WOD: Record WorkOrderDetail;
     begin
         LineNumber := LineNumber + 10000;
         ItemJournalLine.Validate("Journal Template Name", 'TRANSFER');
@@ -323,6 +329,7 @@ page 50055 "Return Committed Parts"
         ItemJournalLine.Validate("Item No.", TempPartsFound."Part No.");
         ItemJournalLine."Posting Date" := WorkDate;
         if PartsSteal."Serial No." <> '' then begin
+            //WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
             ItemJournalLine."Serial No." := PartsSteal."Serial No.";
             ItemJournalLine."New Serial No." := PartsSteal."Serial No.";
         end else begin

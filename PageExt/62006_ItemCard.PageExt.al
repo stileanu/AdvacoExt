@@ -72,6 +72,32 @@ pageextension 62006 ItemCardExt extends "Item Card"
         }
     }
 
+    actions
+    {
+        addafter(AdjustInventory)
+        {
+            action(ReturnCommitted)
+            {
+                Caption = 'Return Committed';
+                ApplicationArea = All;
+                Image = Reuse;
+                Promoted = true;
+                PromotedCategory = Category4;
+                ToolTip = 'Move Inventory Items from COMMITTED back to MAIN to be re-used.';
+                PromotedOnly = true;
+
+                trigger OnAction()
+                begin
+
+                    IF Class = 'ITEM' THEN
+                        Page.RunModal(50055, Rec)
+                    ELSE
+                        Message('Return Commited is available for items only');
+                end;
+            }
+        }
+    }
+
     var
         Location: Record Location;
         ContractType: Option Sales,Purchase;

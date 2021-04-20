@@ -114,16 +114,16 @@ report 50123 "Average Days to pay Purchases"
                     NoOfDaysToClose := CloseByDate - "Posting Date"
                 end;
                 NoOfDocs += 1;
+                SerialNo += 1;
                 if NoOfDaysToClose <= 0 then begin
                     NoOfDaysToClose := 0;
                     NoOfDocs -= 1;
                 end;
                 //CurrReport.SHOWOUTPUT((((NoOfDocs-1) MOD 5) = 0) AND (NoOfDocs <> 1));
-                if (((NoOfDocs - 1) MOD 5) = 0) AND (NoOfDocs <> 1) then
+                if (((SerialNo - 1) MOD 5) = 0) AND (SerialNo <> 1) then
                     BlankLine := true;
                 DescriptionToPrint := Description + ' - Ext.Doc # ' + "External Document No.";
                 TotalNoOfDaysToClose += NoOfDaysToClose;
-                SerialNo += 1;
 
                 IF NoOfDocs <> 0 THEN
                     AverageDaysToPay := TotalNoOfDaysToClose / NoOfDocs
