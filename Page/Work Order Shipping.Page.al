@@ -545,16 +545,16 @@ page 50033 "Work Order Shipping"
             exit(true);
         end;
     end;
-
-    trigger OnClosePage()
-    begin
-        if Rec."Shipping Processed" then
-            if not Rec.Complete then begin
-                Rec.Complete := true;
-                Rec.Modify();
-            end;
-    end;
-
+    /*
+        trigger OnClosePage()
+        begin
+            if Rec."Shipping Processed" then
+                if not Rec.Complete then begin
+                    Rec.Complete := true;
+                    Rec.Modify();
+                end;
+        end;
+    */
     var
         Window: Dialog;
         WorkOrderDetail: Record WorkOrderDetail;
