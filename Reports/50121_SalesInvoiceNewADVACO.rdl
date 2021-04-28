@@ -11,6 +11,292 @@
       <rd:DataSourceID>59514c26-368f-4df7-afb7-cafaaa5be63e</rd:DataSourceID>
     </DataSource>
   </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet_Result">
+      <Query>
+        <DataSourceName>DataSource</DataSourceName>
+        <CommandText />
+      </Query>
+      <Fields>
+        <Field Name="Sales_Invoice_Header_No_">
+          <DataField>Sales_Invoice_Header_No_</DataField>
+        </Field>
+        <Field Name="CompanyAddress_2_">
+          <DataField>CompanyAddress_2_</DataField>
+        </Field>
+        <Field Name="CompanyAddress_3_">
+          <DataField>CompanyAddress_3_</DataField>
+        </Field>
+        <Field Name="CompanyAddress_4_">
+          <DataField>CompanyAddress_4_</DataField>
+        </Field>
+        <Field Name="CopyTxt">
+          <DataField>CopyTxt</DataField>
+        </Field>
+        <Field Name="BillToAddress_1_">
+          <DataField>BillToAddress_1_</DataField>
+        </Field>
+        <Field Name="BillToAddress_2_">
+          <DataField>BillToAddress_2_</DataField>
+        </Field>
+        <Field Name="BillToAddress_3_">
+          <DataField>BillToAddress_3_</DataField>
+        </Field>
+        <Field Name="BillToAddress_4_">
+          <DataField>BillToAddress_4_</DataField>
+        </Field>
+        <Field Name="BillToAddress_5_">
+          <DataField>BillToAddress_5_</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header___Posting_Date_">
+          <DataField>Sales_Invoice_Header___Posting_Date_</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header___Due_Date_">
+          <DataField>Sales_Invoice_Header___Due_Date_</DataField>
+        </Field>
+        <Field Name="PaymentTerms_Description">
+          <DataField>PaymentTerms_Description</DataField>
+        </Field>
+        <Field Name="ShipToAddress_1_">
+          <DataField>ShipToAddress_1_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_2_">
+          <DataField>ShipToAddress_2_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_3_">
+          <DataField>ShipToAddress_3_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_4_">
+          <DataField>ShipToAddress_4_</DataField>
+        </Field>
+        <Field Name="ShipToAddress_5_">
+          <DataField>ShipToAddress_5_</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header___Bill_to_Customer_No__">
+          <DataField>Sales_Invoice_Header___Bill_to_Customer_No__</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header___Your_Reference_">
+          <DataField>Sales_Invoice_Header___Your_Reference_</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header___Order_Date_">
+          <DataField>Sales_Invoice_Header___Order_Date_</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header___Order_No__">
+          <DataField>Sales_Invoice_Header___Order_No__</DataField>
+        </Field>
+        <Field Name="OutsideRep__Rep_Name_">
+          <DataField>OutsideRep__Rep_Name_</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header___No__">
+          <DataField>Sales_Invoice_Header___No__</DataField>
+        </Field>
+        <Field Name="ShippingAgent_Name">
+          <DataField>ShippingAgent_Name</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header___Bill_of_Lading_">
+          <DataField>Sales_Invoice_Header___Bill_of_Lading_</DataField>
+        </Field>
+        <Field Name="SalesPurchPerson_Name">
+          <DataField>SalesPurchPerson_Name</DataField>
+        </Field>
+        <Field Name="CompanyInformation_Picture">
+          <DataField>CompanyInformation_Picture</DataField>
+        </Field>
+        <Field Name="CompanyAddress_5_">
+          <DataField>CompanyAddress_5_</DataField>
+        </Field>
+        <Field Name="Page_Caption">
+          <DataField>Page_Caption</DataField>
+        </Field>
+        <Field Name="INVOICECaption">
+          <DataField>INVOICECaption</DataField>
+        </Field>
+        <Field Name="CUSTOMER_NO_Caption">
+          <DataField>CUSTOMER_NO_Caption</DataField>
+        </Field>
+        <Field Name="BILL_TO_Caption">
+          <DataField>BILL_TO_Caption</DataField>
+        </Field>
+        <Field Name="SHIP_TO_Caption">
+          <DataField>SHIP_TO_Caption</DataField>
+        </Field>
+        <Field Name="DATECaption">
+          <DataField>DATECaption</DataField>
+        </Field>
+        <Field Name="SHIP_VIACaption">
+          <DataField>SHIP_VIACaption</DataField>
+        </Field>
+        <Field Name="BILL_OF_LADINGCaption">
+          <DataField>BILL_OF_LADINGCaption</DataField>
+        </Field>
+        <Field Name="PAYMENT_TERMSCaption">
+          <DataField>PAYMENT_TERMSCaption</DataField>
+        </Field>
+        <Field Name="DUE_DATECaption">
+          <DataField>DUE_DATECaption</DataField>
+        </Field>
+        <Field Name="PURCHASE_ORDER_NO_Caption">
+          <DataField>PURCHASE_ORDER_NO_Caption</DataField>
+        </Field>
+        <Field Name="ORDER_DATECaption">
+          <DataField>ORDER_DATECaption</DataField>
+        </Field>
+        <Field Name="SALESPERSONCaption">
+          <DataField>SALESPERSONCaption</DataField>
+        </Field>
+        <Field Name="SALES_REPRESENTATIVECaption">
+          <DataField>SALES_REPRESENTATIVECaption</DataField>
+        </Field>
+        <Field Name="ADVACO_ORDER_NO_Caption">
+          <DataField>ADVACO_ORDER_NO_Caption</DataField>
+        </Field>
+        <Field Name="QUANTITYCaption">
+          <DataField>QUANTITYCaption</DataField>
+        </Field>
+        <Field Name="ORDEREDCaption">
+          <DataField>ORDEREDCaption</DataField>
+        </Field>
+        <Field Name="SHIPPEDCaption">
+          <DataField>SHIPPEDCaption</DataField>
+        </Field>
+        <Field Name="B_O_Caption">
+          <DataField>B_O_Caption</DataField>
+        </Field>
+        <Field Name="ITEM_NUMBERCaption">
+          <DataField>ITEM_NUMBERCaption</DataField>
+        </Field>
+        <Field Name="DESCRIPTIONCaption">
+          <DataField>DESCRIPTIONCaption</DataField>
+        </Field>
+        <Field Name="UNIT_PRICECaption">
+          <DataField>UNIT_PRICECaption</DataField>
+        </Field>
+        <Field Name="AMOUNTCaption">
+          <DataField>AMOUNTCaption</DataField>
+        </Field>
+        <Field Name="PageLoop_Number">
+          <DataField>PageLoop_Number</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header_Document_Date_">
+          <DataField>Sales_Invoice_Header_Document_Date_</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header_Amount_Including_Tax_">
+          <DataField>Sales_Invoice_Header_Amount_Including_Tax_</DataField>
+        </Field>
+        <Field Name="Sales_Invoice_Header_Amount_Including_Tax_Format">
+          <DataField>Sales_Invoice_Header_Amount_Including_Tax_Format</DataField>
+        </Field>
+        <Field Name="HighDescription">
+          <DataField>HighDescription</DataField>
+        </Field>
+        <Field Name="LowDescription">
+          <DataField>LowDescription</DataField>
+        </Field>
+        <Field Name="DescriptionToPrint">
+          <DataField>DescriptionToPrint</DataField>
+        </Field>
+        <Field Name="UnitPriceToPrint">
+          <DataField>UnitPriceToPrint</DataField>
+        </Field>
+        <Field Name="UnitPriceToPrintFormat">
+          <DataField>UnitPriceToPrintFormat</DataField>
+        </Field>
+        <Field Name="TempSalesInvoiceLine_Quantity">
+          <DataField>TempSalesInvoiceLine_Quantity</DataField>
+        </Field>
+        <Field Name="TempSalesInvoiceLine_QuantityFormat">
+          <DataField>TempSalesInvoiceLine_QuantityFormat</DataField>
+        </Field>
+        <Field Name="OrderedQuantity">
+          <DataField>OrderedQuantity</DataField>
+        </Field>
+        <Field Name="OrderedQuantityFormat">
+          <DataField>OrderedQuantityFormat</DataField>
+        </Field>
+        <Field Name="ModelNo">
+          <DataField>ModelNo</DataField>
+        </Field>
+        <Field Name="LowDescription_Control35">
+          <DataField>LowDescription_Control35</DataField>
+        </Field>
+        <Field Name="LowDescription_Control35Format">
+          <DataField>LowDescription_Control35Format</DataField>
+        </Field>
+        <Field Name="Amount2">
+          <DataField>Amount2</DataField>
+        </Field>
+        <Field Name="Amount2Format">
+          <DataField>Amount2Format</DataField>
+        </Field>
+        <Field Name="AmountExclInvDisc___Miscellaneous___Freight">
+          <DataField>AmountExclInvDisc___Miscellaneous___Freight</DataField>
+        </Field>
+        <Field Name="AmountExclInvDisc___Miscellaneous___FreightFormat">
+          <DataField>AmountExclInvDisc___Miscellaneous___FreightFormat</DataField>
+        </Field>
+        <Field Name="Miscellaneous">
+          <DataField>Miscellaneous</DataField>
+        </Field>
+        <Field Name="MiscellaneousFormat">
+          <DataField>MiscellaneousFormat</DataField>
+        </Field>
+        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_Amount">
+          <DataField>TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_Amount</DataField>
+        </Field>
+        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_AmountFormat">
+          <DataField>TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_AmountFormat</DataField>
+        </Field>
+        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax_">
+          <DataField>TempSalesInvoiceLine__Amount_Including_Tax_</DataField>
+        </Field>
+        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax_Format">
+          <DataField>TempSalesInvoiceLine__Amount_Including_Tax_Format</DataField>
+        </Field>
+        <Field Name="Freight">
+          <DataField>Freight</DataField>
+        </Field>
+        <Field Name="FreightFormat">
+          <DataField>FreightFormat</DataField>
+        </Field>
+        <Field Name="THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_">
+          <DataField>THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_</DataField>
+        </Field>
+        <Field Name="FinancialCharges">
+          <DataField>FinancialCharges</DataField>
+        </Field>
+        <Field Name="FedID">
+          <DataField>FedID</DataField>
+        </Field>
+        <Field Name="OurCustomer">
+          <DataField>OurCustomer</DataField>
+        </Field>
+        <Field Name="Subtotal_Caption">
+          <DataField>Subtotal_Caption</DataField>
+        </Field>
+        <Field Name="Miscellaneous_Charges_Caption">
+          <DataField>Miscellaneous_Charges_Caption</DataField>
+        </Field>
+        <Field Name="Sales_Tax_Caption">
+          <DataField>Sales_Tax_Caption</DataField>
+        </Field>
+        <Field Name="Total_Caption">
+          <DataField>Total_Caption</DataField>
+        </Field>
+        <Field Name="Freight_Charges_Caption">
+          <DataField>Freight_Charges_Caption</DataField>
+        </Field>
+        <Field Name="SalesInvoiceLine_Number">
+          <DataField>SalesInvoiceLine_Number</DataField>
+        </Field>
+        <Field Name="Subtotal">
+          <DataField>Subtotal</DataField>
+        </Field>
+        <Field Name="SubtotalFormat">
+          <DataField>SubtotalFormat</DataField>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
   <ReportSections>
     <ReportSection>
       <Body>
@@ -1801,7 +2087,7 @@
             <Style />
           </Tablix>
         </ReportItems>
-        <Height>0.7082in</Height>
+        <Height>0.30195in</Height>
         <Style />
       </Body>
       <Width>8.43959in</Width>
@@ -2067,7 +2353,7 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>8.66255cm</Top>
+              <Top>8.98005cm</Top>
               <Left>2.56445cm</Left>
               <Height>0.60821cm</Height>
               <Width>5.45571cm</Width>
@@ -2094,7 +2380,7 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>8.66255cm</Top>
+              <Top>8.98005cm</Top>
               <Left>8.00516cm</Left>
               <Height>0.60821cm</Height>
               <Width>7.502cm</Width>
@@ -2188,7 +2474,7 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>8.66255cm</Top>
+              <Top>8.98005cm</Top>
               <Left>19.18058cm</Left>
               <Height>0.6082cm</Height>
               <Width>1.86387cm</Width>
@@ -2351,7 +2637,7 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>8.66255cm</Top>
+              <Top>8.98005cm</Top>
               <Left>0.4392cm</Left>
               <Height>0.60821cm</Height>
               <Width>2.12525cm</Width>
@@ -2378,7 +2664,7 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>8.66255cm</Top>
+              <Top>8.98005cm</Top>
               <Left>15.45116cm</Left>
               <Height>0.60821cm</Height>
               <Width>3.02682cm</Width>
@@ -2418,8 +2704,7 @@
           <Style />
         </PageHeader>
         <PageFooter>
-          <Height>2.04167in</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <Height>1.69792in</Height>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
             <Textbox Name="Textbox58">
@@ -2768,11 +3053,17 @@
             </Border>
           </Style>
         </PageFooter>
-        <BottomMargin>0.7874in</BottomMargin>
+        <BottomMargin>0.5in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>
   </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
   <Code>Public Function BlankZero(ByVal Value As Decimal)
     if Value = 0 then
         Return ""
@@ -2812,290 +3103,4 @@ End Function
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportUnitType>Inch</rd:ReportUnitType>
   <rd:ReportID>ebb3cb4b-f317-4c56-a02a-032637233c96</rd:ReportID>
-  <DataSets>
-    <DataSet Name="DataSet_Result">
-      <Fields>
-        <Field Name="Sales_Invoice_Header_No_">
-          <DataField>Sales_Invoice_Header_No_</DataField>
-        </Field>
-        <Field Name="CompanyAddress_2_">
-          <DataField>CompanyAddress_2_</DataField>
-        </Field>
-        <Field Name="CompanyAddress_3_">
-          <DataField>CompanyAddress_3_</DataField>
-        </Field>
-        <Field Name="CompanyAddress_4_">
-          <DataField>CompanyAddress_4_</DataField>
-        </Field>
-        <Field Name="CopyTxt">
-          <DataField>CopyTxt</DataField>
-        </Field>
-        <Field Name="BillToAddress_1_">
-          <DataField>BillToAddress_1_</DataField>
-        </Field>
-        <Field Name="BillToAddress_2_">
-          <DataField>BillToAddress_2_</DataField>
-        </Field>
-        <Field Name="BillToAddress_3_">
-          <DataField>BillToAddress_3_</DataField>
-        </Field>
-        <Field Name="BillToAddress_4_">
-          <DataField>BillToAddress_4_</DataField>
-        </Field>
-        <Field Name="BillToAddress_5_">
-          <DataField>BillToAddress_5_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Posting_Date_">
-          <DataField>Sales_Invoice_Header___Posting_Date_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Due_Date_">
-          <DataField>Sales_Invoice_Header___Due_Date_</DataField>
-        </Field>
-        <Field Name="PaymentTerms_Description">
-          <DataField>PaymentTerms_Description</DataField>
-        </Field>
-        <Field Name="ShipToAddress_1_">
-          <DataField>ShipToAddress_1_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_2_">
-          <DataField>ShipToAddress_2_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_3_">
-          <DataField>ShipToAddress_3_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_4_">
-          <DataField>ShipToAddress_4_</DataField>
-        </Field>
-        <Field Name="ShipToAddress_5_">
-          <DataField>ShipToAddress_5_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Bill_to_Customer_No__">
-          <DataField>Sales_Invoice_Header___Bill_to_Customer_No__</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Your_Reference_">
-          <DataField>Sales_Invoice_Header___Your_Reference_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Order_Date_">
-          <DataField>Sales_Invoice_Header___Order_Date_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Order_No__">
-          <DataField>Sales_Invoice_Header___Order_No__</DataField>
-        </Field>
-        <Field Name="OutsideRep__Rep_Name_">
-          <DataField>OutsideRep__Rep_Name_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___No__">
-          <DataField>Sales_Invoice_Header___No__</DataField>
-        </Field>
-        <Field Name="ShippingAgent_Name">
-          <DataField>ShippingAgent_Name</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header___Bill_of_Lading_">
-          <DataField>Sales_Invoice_Header___Bill_of_Lading_</DataField>
-        </Field>
-        <Field Name="SalesPurchPerson_Name">
-          <DataField>SalesPurchPerson_Name</DataField>
-        </Field>
-        <Field Name="CompanyInformation_Picture">
-          <DataField>CompanyInformation_Picture</DataField>
-        </Field>
-        <Field Name="CompanyAddress_5_">
-          <DataField>CompanyAddress_5_</DataField>
-        </Field>
-        <Field Name="Page_Caption">
-          <DataField>Page_Caption</DataField>
-        </Field>
-        <Field Name="INVOICECaption">
-          <DataField>INVOICECaption</DataField>
-        </Field>
-        <Field Name="CUSTOMER_NO_Caption">
-          <DataField>CUSTOMER_NO_Caption</DataField>
-        </Field>
-        <Field Name="BILL_TO_Caption">
-          <DataField>BILL_TO_Caption</DataField>
-        </Field>
-        <Field Name="SHIP_TO_Caption">
-          <DataField>SHIP_TO_Caption</DataField>
-        </Field>
-        <Field Name="DATECaption">
-          <DataField>DATECaption</DataField>
-        </Field>
-        <Field Name="SHIP_VIACaption">
-          <DataField>SHIP_VIACaption</DataField>
-        </Field>
-        <Field Name="BILL_OF_LADINGCaption">
-          <DataField>BILL_OF_LADINGCaption</DataField>
-        </Field>
-        <Field Name="PAYMENT_TERMSCaption">
-          <DataField>PAYMENT_TERMSCaption</DataField>
-        </Field>
-        <Field Name="DUE_DATECaption">
-          <DataField>DUE_DATECaption</DataField>
-        </Field>
-        <Field Name="PURCHASE_ORDER_NO_Caption">
-          <DataField>PURCHASE_ORDER_NO_Caption</DataField>
-        </Field>
-        <Field Name="ORDER_DATECaption">
-          <DataField>ORDER_DATECaption</DataField>
-        </Field>
-        <Field Name="SALESPERSONCaption">
-          <DataField>SALESPERSONCaption</DataField>
-        </Field>
-        <Field Name="SALES_REPRESENTATIVECaption">
-          <DataField>SALES_REPRESENTATIVECaption</DataField>
-        </Field>
-        <Field Name="ADVACO_ORDER_NO_Caption">
-          <DataField>ADVACO_ORDER_NO_Caption</DataField>
-        </Field>
-        <Field Name="QUANTITYCaption">
-          <DataField>QUANTITYCaption</DataField>
-        </Field>
-        <Field Name="ORDEREDCaption">
-          <DataField>ORDEREDCaption</DataField>
-        </Field>
-        <Field Name="SHIPPEDCaption">
-          <DataField>SHIPPEDCaption</DataField>
-        </Field>
-        <Field Name="B_O_Caption">
-          <DataField>B_O_Caption</DataField>
-        </Field>
-        <Field Name="ITEM_NUMBERCaption">
-          <DataField>ITEM_NUMBERCaption</DataField>
-        </Field>
-        <Field Name="DESCRIPTIONCaption">
-          <DataField>DESCRIPTIONCaption</DataField>
-        </Field>
-        <Field Name="UNIT_PRICECaption">
-          <DataField>UNIT_PRICECaption</DataField>
-        </Field>
-        <Field Name="AMOUNTCaption">
-          <DataField>AMOUNTCaption</DataField>
-        </Field>
-        <Field Name="PageLoop_Number">
-          <DataField>PageLoop_Number</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header_Document_Date_">
-          <DataField>Sales_Invoice_Header_Document_Date_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header_Amount_Including_Tax_">
-          <DataField>Sales_Invoice_Header_Amount_Including_Tax_</DataField>
-        </Field>
-        <Field Name="Sales_Invoice_Header_Amount_Including_Tax_Format">
-          <DataField>Sales_Invoice_Header_Amount_Including_Tax_Format</DataField>
-        </Field>
-        <Field Name="HighDescription">
-          <DataField>HighDescription</DataField>
-        </Field>
-        <Field Name="LowDescription">
-          <DataField>LowDescription</DataField>
-        </Field>
-        <Field Name="DescriptionToPrint">
-          <DataField>DescriptionToPrint</DataField>
-        </Field>
-        <Field Name="UnitPriceToPrint">
-          <DataField>UnitPriceToPrint</DataField>
-        </Field>
-        <Field Name="UnitPriceToPrintFormat">
-          <DataField>UnitPriceToPrintFormat</DataField>
-        </Field>
-        <Field Name="TempSalesInvoiceLine_Quantity">
-          <DataField>TempSalesInvoiceLine_Quantity</DataField>
-        </Field>
-        <Field Name="TempSalesInvoiceLine_QuantityFormat">
-          <DataField>TempSalesInvoiceLine_QuantityFormat</DataField>
-        </Field>
-        <Field Name="OrderedQuantity">
-          <DataField>OrderedQuantity</DataField>
-        </Field>
-        <Field Name="OrderedQuantityFormat">
-          <DataField>OrderedQuantityFormat</DataField>
-        </Field>
-        <Field Name="ModelNo">
-          <DataField>ModelNo</DataField>
-        </Field>
-        <Field Name="LowDescription_Control35">
-          <DataField>LowDescription_Control35</DataField>
-        </Field>
-        <Field Name="LowDescription_Control35Format">
-          <DataField>LowDescription_Control35Format</DataField>
-        </Field>
-        <Field Name="Amount2">
-          <DataField>Amount2</DataField>
-        </Field>
-        <Field Name="Amount2Format">
-          <DataField>Amount2Format</DataField>
-        </Field>
-        <Field Name="AmountExclInvDisc___Miscellaneous___Freight">
-          <DataField>AmountExclInvDisc___Miscellaneous___Freight</DataField>
-        </Field>
-        <Field Name="AmountExclInvDisc___Miscellaneous___FreightFormat">
-          <DataField>AmountExclInvDisc___Miscellaneous___FreightFormat</DataField>
-        </Field>
-        <Field Name="Miscellaneous">
-          <DataField>Miscellaneous</DataField>
-        </Field>
-        <Field Name="MiscellaneousFormat">
-          <DataField>MiscellaneousFormat</DataField>
-        </Field>
-        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_Amount">
-          <DataField>TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_Amount</DataField>
-        </Field>
-        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_AmountFormat">
-          <DataField>TempSalesInvoiceLine__Amount_Including_Tax____TempSalesInvoiceLine_AmountFormat</DataField>
-        </Field>
-        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax_">
-          <DataField>TempSalesInvoiceLine__Amount_Including_Tax_</DataField>
-        </Field>
-        <Field Name="TempSalesInvoiceLine__Amount_Including_Tax_Format">
-          <DataField>TempSalesInvoiceLine__Amount_Including_Tax_Format</DataField>
-        </Field>
-        <Field Name="Freight">
-          <DataField>Freight</DataField>
-        </Field>
-        <Field Name="FreightFormat">
-          <DataField>FreightFormat</DataField>
-        </Field>
-        <Field Name="THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_">
-          <DataField>THANK_YOU_FOR_ALLOWING_US_TO_BE_OF_SERVICE_TO_YOU_</DataField>
-        </Field>
-        <Field Name="FinancialCharges">
-          <DataField>FinancialCharges</DataField>
-        </Field>
-        <Field Name="FedID">
-          <DataField>FedID</DataField>
-        </Field>
-        <Field Name="OurCustomer">
-          <DataField>OurCustomer</DataField>
-        </Field>
-        <Field Name="Subtotal_Caption">
-          <DataField>Subtotal_Caption</DataField>
-        </Field>
-        <Field Name="Miscellaneous_Charges_Caption">
-          <DataField>Miscellaneous_Charges_Caption</DataField>
-        </Field>
-        <Field Name="Sales_Tax_Caption">
-          <DataField>Sales_Tax_Caption</DataField>
-        </Field>
-        <Field Name="Total_Caption">
-          <DataField>Total_Caption</DataField>
-        </Field>
-        <Field Name="Freight_Charges_Caption">
-          <DataField>Freight_Charges_Caption</DataField>
-        </Field>
-        <Field Name="SalesInvoiceLine_Number">
-          <DataField>SalesInvoiceLine_Number</DataField>
-        </Field>
-        <Field Name="Subtotal">
-          <DataField>Subtotal</DataField>
-        </Field>
-        <Field Name="SubtotalFormat">
-          <DataField>SubtotalFormat</DataField>
-        </Field>
-      </Fields>
-      <Query>
-        <DataSourceName>DataSource</DataSourceName>
-        <CommandText />
-      </Query>
-    </DataSet>
-  </DataSets>
 </Report>
