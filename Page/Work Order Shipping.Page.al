@@ -751,7 +751,8 @@ page 50033 "Work Order Shipping"
                     ZeroChargeRepairable;
                 end;
 
-            end;
+            end else
+                Error('');
         end;
     end;
 
@@ -833,7 +834,9 @@ page 50033 "Work Order Shipping"
                 CreateBOLRecords;
                 //PrintBOL;
                 //PrintLabels;
-            end;
+                //end;
+            end else
+                Error('');
         end;
     end;
 
@@ -868,7 +871,9 @@ page 50033 "Work Order Shipping"
                 CreateBOLRecords;
                 //PrintBOL;
                 //PrintLabels;
-            end;
+                //end;
+            end else
+                Error('');
         end;
     end;
 
@@ -897,7 +902,9 @@ page 50033 "Work Order Shipping"
                 CreateBOLRecords;
                 //PrintBOL;
                 //PrintLabels;
-            end;
+                //end;
+            end else
+                Error('');
         end;
     end;
 

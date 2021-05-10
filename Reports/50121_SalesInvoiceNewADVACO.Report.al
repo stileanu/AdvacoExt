@@ -535,6 +535,8 @@ report 50121 "Sales Invoice New - ADVACO"
                     Clear(ShippingAgent)
                 else
                     ShippingAgent.Get("Shipping Agent Code");
+                
+                "Sales Invoice Header".CalcFields("Amount Including VAT");  //ICE-MPC 04/29/21
             end;
 
             trigger OnPreDataItem()
