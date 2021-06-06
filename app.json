@@ -2,7 +2,7 @@
   "id": "415f2a15-4737-4a86-a9b2-76ef24a8dd23",
   "name": "AdvacoExt",
   "publisher": "Intelice Solutions, Inc.",
-  "version": "1.0.0.34",
+  "version": "1.0.0.36",
   "brief": "",
   "description": "Advaco Customization with Work Orders ",
   "privacyStatement": "",
@@ -10,22 +10,10 @@
   "help": "",
   "url": "",
   "logo": "./logo/logo.jpg",
-  "dependencies": [
-    {
-      "id": "63ca2fa4-4f03-4f2b-a480-172fef340d3f",
-      "publisher": "Microsoft",
-      "name": "System Application",
-      "version": "16.0.0.0"
-    },
-    {
-      "id": "437dbf0e-84ff-417a-965d-ed2bb9650972",
-      "publisher": "Microsoft",
-      "name": "Base Application",
-      "version": "16.0.0.0"
-    }
-  ],
+  "dependencies": [ ],
   "screenshots": [],
-  "platform": "16.0.0.0",
+  "platform": "1.0.0.0",
+  "application": "18.0.0.0",
   "idRanges": [
     {
       "from": 50000,
@@ -34,5 +22,5 @@
   ],
   "contextSensitiveHelpUrl": "https://docs.microsoft.com/en-us/dynamics365/business-central/",
   "showMyCode": true,
-  "runtime": "5.0"
+  "runtime": "7.0"
 }
