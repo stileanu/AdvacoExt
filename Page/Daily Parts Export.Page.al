@@ -9,35 +9,35 @@ page 50104 "Daily Parts Export"
         {
             repeater(Group)
             {
-                field("Item No."; "Item No.")
+                field("Item No."; Rec."Item No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Entry Type"; "Entry Type")
+                field("Entry Type"; Rec."Entry Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Document No."; "Document No.")
+                field("Document No."; Rec."Document No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Source Type"; "Source Type")
+                field("Source Type"; Rec."Source Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Source No."; "Source No.")
+                field("Source No."; Rec."Source No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Quantity; Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = All;
                 }
-                field("Entry No."; "Entry No.")
+                field("Entry No."; Rec."Entry No.")
                 {
                     ApplicationArea = All;
                 }
@@ -64,9 +64,9 @@ page 50104 "Daily Parts Export"
 
         end;
         // Apply filter
-        SetCurrentKey("Document No.", "Posting Date");
-        SetFilter("Document No.", 'DAILYPARTS*');
-        SetFilter("Posting Date", DateFilter);
+        Rec.SetCurrentKey("Document No.", "Posting Date");
+        Rec.SetFilter("Document No.", 'DAILYPARTS*');
+        Rec.SetFilter("Posting Date", DateFilter);
     end;
 
     var

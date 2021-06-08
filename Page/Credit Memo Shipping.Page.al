@@ -21,52 +21,52 @@ page 50141 "Credit Memo Shipping"
                 group(Control1220060024)
                 {
                     ShowCaption = false;
-                    field("No."; "No.")
+                    field("No."; Rec."No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship-to Name"; "Ship-to Name")
+                    field("Ship-to Name"; Rec."Ship-to Name")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship-to Address"; "Ship-to Address")
+                    field("Ship-to Address"; Rec."Ship-to Address")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship-to Address 2"; "Ship-to Address 2")
+                    field("Ship-to Address 2"; Rec."Ship-to Address 2")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship-to City"; "Ship-to City")
+                    field("Ship-to City"; Rec."Ship-to City")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship-to County"; "Ship-to County")
+                    field("Ship-to County"; Rec."Ship-to County")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship-to Post Code"; "Ship-to Post Code")
+                    field("Ship-to Post Code"; Rec."Ship-to Post Code")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship-to Contact"; "Ship-to Contact")
+                    field("Ship-to Contact"; Rec."Ship-to Contact")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Phone No."; "Phone No.")
+                    field("Phone No."; Rec."Phone No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship-to UPS Zone"; "Ship-to UPS Zone")
+                    field("Ship-to UPS Zone"; Rec."Ship-to UPS Zone")
                     {
                         ApplicationArea = All;
                         Editable = false;
@@ -106,27 +106,27 @@ page 50141 "Credit Memo Shipping"
                         ApplicationArea = All;
                         Caption = 'Label Quantity';
                     }
-                    field("Shipping Agent"; "Shipping Agent")
+                    field("Shipping Agent"; Rec."Shipping Agent")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipment Method Code"; "Shipment Method Code")
+                    field("Shipment Method Code"; Rec."Shipment Method Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Account"; "Shipping Account")
+                    field("Shipping Account"; Rec."Shipping Account")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Charge"; "Shipping Charge")
+                    field("Shipping Charge"; Rec."Shipping Charge")
                     {
                         ApplicationArea = All;
                     }
-                    field("Package Tracking No."; "Package Tracking No.")
+                    field("Package Tracking No."; Rec."Package Tracking No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill of Lading"; "Bill of Lading")
+                    field("Bill of Lading"; Rec."Bill of Lading")
                     {
                         ApplicationArea = All;
                         Editable = false;
@@ -172,7 +172,7 @@ page 50141 "Credit Memo Shipping"
 
                     WorkOrderCount := 0;
 
-                    if "Your Reference" = '' then
+                    if Rec."Your Reference" = '' then
                         Error('Customer PO Number must be Entered');
 
                     if Shipper = '' then
@@ -190,18 +190,18 @@ page 50141 "Credit Memo Shipping"
                     if ContainerType = ContainerType::" " then
                         Error('Container Type must be Entered');
 
-                    if "Shipping Agent" = '' then
+                    if Rec."Shipping Agent" = '' then
                         Error('Shipping Agent must be Entered');
 
-                    if "Shipment Method Code" = '' then
+                    if Rec."Shipment Method Code" = '' then
                         Error('Shipment Method Code must be Entered');
 
-                    if "Shipping Charge" = "Shipping Charge"::" " then
+                    if Rec."Shipping Charge" = Rec."Shipping Charge"::" " then
                         Error('Shipping Charge must be Entered');
 
                     // Check Items with Serial Numbers because then it may be a pump on a Work Order which will need to be closed
-                    PurchaseLine2.SetRange("Document Type", "Document Type");
-                    PurchaseLine2.SetRange("Document No.", "No.");
+                    PurchaseLine2.SetRange("Document Type", Rec."Document Type");
+                    PurchaseLine2.SetRange("Document No.", Rec."No.");
                     PurchaseLine2.SetFilter(Quantity, '<>%1', 0);
                     if PurchaseLine2.Find('-') then begin
                         repeat
@@ -272,34 +272,34 @@ page 50141 "Credit Memo Shipping"
                     BOL2.Init;
                     BOL2."Bill of Lading" := BLInteger;
                     BOL2.Type := BOL2.Type::"Credit Memo";
-                    BOL2."Order No." := "No.";
-                    BOL2."PO No." := "Your Reference";
-                    BOL2.Customer := "Sell-to Customer No.";
-                    BOL2."Ship To Name" := "Ship-to Name";
-                    BOL2."Ship To Address" := "Ship-to Address";
-                    BOL2."Ship To Address2" := "Ship-to Address 2";
-                    BOL2."Ship To City" := "Ship-to City";
-                    BOL2."Ship To State" := "Ship-to County";
-                    BOL2."Ship To Zip Code" := "Ship-to Post Code";
-                    BOL2.Attention := "Ship-to Contact";
-                    BOL2."Phone No." := "Phone No.";
+                    BOL2."Order No." := Rec."No.";
+                    BOL2."PO No." := Rec."Your Reference";
+                    BOL2.Customer := Rec."Sell-to Customer No.";
+                    BOL2."Ship To Name" := Rec."Ship-to Name";
+                    BOL2."Ship To Address" := Rec."Ship-to Address";
+                    BOL2."Ship To Address2" := Rec."Ship-to Address 2";
+                    BOL2."Ship To City" := Rec."Ship-to City";
+                    BOL2."Ship To State" := Rec."Ship-to County";
+                    BOL2."Ship To Zip Code" := Rec."Ship-to Post Code";
+                    BOL2.Attention := Rec."Ship-to Contact";
+                    BOL2."Phone No." := Rec."Phone No.";
                     BOL2."Shipping Weight" := ShippingWeight;
                     BOL2."Container Quantity" := ContainerQuantity;
                     BOL2."Container Type" := Ship.ContainerToBOLContainer(ContainerType);
                     BOL2.Employee := Shipper;
                     BOL2."Shipment Date" := Today;
-                    BOL2.Carrier := "Shipping Agent";
-                    BOL2."Shipping Method" := "Shipment Method Code";
+                    BOL2.Carrier := Rec."Shipping Agent";
+                    BOL2."Shipping Method" := Rec."Shipment Method Code";
                     //ShChrgToBOLShChrg(Rec."Shipping Charge", BOL2."Shipping Charge");
-                    BOL2."Shipping Charge" := BOLShipCharge.FromInteger("Shipping Charge".AsInteger());
-                    BOL2."Shipping Account" := "Shipping Account";
+                    BOL2."Shipping Charge" := BOLShipCharge.FromInteger(Rec."Shipping Charge".AsInteger());
+                    BOL2."Shipping Account" := Rec."Shipping Account";
                     BOL2."Label Quantity" := LabelsToPrint;
                     BOL2.Insert;
 
                     //Update Credit Memo
-                    "Bill of Lading" := BOL2."Bill of Lading";
-                    "Shipment Date" := Today;
-                    Modify;
+                    Rec."Bill of Lading" := BOL2."Bill of Lading";
+                    Rec."Shipment Date" := Today;
+                    Rec.Modify;
                     Commit;
 
 
@@ -510,27 +510,27 @@ page 50141 "Credit Memo Shipping"
 
     procedure UpdateWODCM()
     begin
-        "WOD UPDATE"."Vendor Carrier" := "Shipping Agent";
-        "WOD UPDATE"."Vendor Shipping Method" := "Shipment Method Code";
-        "WOD UPDATE"."Vendor Shipping Charge" := "Shipping Charge";
-        "WOD UPDATE"."Vendor Shipping Account" := "Shipping Account";
+        "WOD UPDATE"."Vendor Carrier" := Rec."Shipping Agent";
+        "WOD UPDATE"."Vendor Shipping Method" := Rec."Shipment Method Code";
+        "WOD UPDATE"."Vendor Shipping Charge" := Rec."Shipping Charge";
+        "WOD UPDATE"."Vendor Shipping Account" := Rec."Shipping Account";
         "WOD UPDATE"."Vendor Container" := ContainerType;
         "WOD UPDATE"."Vendor Container Quantity" := ContainerQuantity;
         "WOD UPDATE"."Vendor Ship Weight" := ShippingWeight;
-        "WOD UPDATE"."RMA PO No." := "Your Reference";
+        "WOD UPDATE"."RMA PO No." := Rec."Your Reference";
         "WOD UPDATE"."Ship Date" := WorkDate;
         "WOD UPDATE".Complete := true;
         "WOD UPDATE"."Vendor Bill of Lading" := BLInteger;
-        "WOD UPDATE"."Vendor Package Tracking No." := "Package Tracking No.";
-        "WOD UPDATE"."Vendor Code" := "Ship-to Code";
-        "WOD UPDATE"."Vendor Name" := "Ship-to Name";
-        "WOD UPDATE"."Vendor Address" := "Ship-to Address";
-        "WOD UPDATE"."Vendor Address2" := "Ship-to Address 2";
-        "WOD UPDATE"."Vendor City" := "Ship-to City";
-        "WOD UPDATE"."Vendor State" := "Ship-to County";
-        "WOD UPDATE"."Vendor Zip" := "Ship-to Post Code";
-        "WOD UPDATE"."Vendor Contact" := "Ship-to Contact";
-        "WOD UPDATE"."Vendor Phone No." := "Phone No.";
+        "WOD UPDATE"."Vendor Package Tracking No." := Rec."Package Tracking No.";
+        "WOD UPDATE"."Vendor Code" := Rec."Ship-to Code";
+        "WOD UPDATE"."Vendor Name" := Rec."Ship-to Name";
+        "WOD UPDATE"."Vendor Address" := Rec."Ship-to Address";
+        "WOD UPDATE"."Vendor Address2" := Rec."Ship-to Address 2";
+        "WOD UPDATE"."Vendor City" := Rec."Ship-to City";
+        "WOD UPDATE"."Vendor State" := Rec."Ship-to County";
+        "WOD UPDATE"."Vendor Zip" := Rec."Ship-to Post Code";
+        "WOD UPDATE"."Vendor Contact" := Rec."Ship-to Contact";
+        "WOD UPDATE"."Vendor Phone No." := Rec."Phone No.";
         "WOD UPDATE".Modify;
     end;
 

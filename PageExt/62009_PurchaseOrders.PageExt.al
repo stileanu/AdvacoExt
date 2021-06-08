@@ -5,7 +5,7 @@ pageextension 62009 PurchaseOrdersExt extends "Purchase Orders"
         // Add changes to page layout here
         addafter("Buy-from Vendor No.")
         {
-            field("Order No."; "Order No.")
+            field("Order No."; Rec."Order No.")
             {
                 ApplicationArea = all;
             }

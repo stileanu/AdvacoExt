@@ -5,7 +5,7 @@ pageextension 62025 ShippingAgentExt extends "Shipping Agents"
         // Add changes to page layout here
         addafter("Internet Address")
         {
-            field("Account No. Required"; "Account No. Required")
+            field("Account No. Required"; Rec."Account No. Required")
             {
                 ApplicationArea = all;
             }

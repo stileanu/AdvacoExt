@@ -718,6 +718,7 @@ page 50017 "Quote Phase 3"
             ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
             if SerialNo <> '' then begin
+                WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                 ItemJournalLine."Serial No." := SerialNo;
                 ItemJournalLine."New Serial No." := SerialNo;
             end;
@@ -758,6 +759,7 @@ page 50017 "Quote Phase 3"
             ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
             if SerialNo <> '' then begin
+                WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                 ItemJournalLine."Serial No." := SerialNo;
                 ItemJournalLine."New Serial No." := SerialNo;
                 SerialNo := '';

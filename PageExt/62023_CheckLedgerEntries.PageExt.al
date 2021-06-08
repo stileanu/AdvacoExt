@@ -5,7 +5,7 @@ pageextension 62023 CheckLedgerEntriesExt extends "Check Ledger Entries"
         // Add changes to page layout here
         addafter("Document No.")
         {
-            field("Statement Status"; "Statement Status")
+            field("Statement Status"; Rec."Statement Status")
             {
                 ApplicationArea = all;
             }

@@ -5,18 +5,18 @@ pageextension 62006 ItemCardExt extends "Item Card"
         // Add  changes to page layout 
         addbefore(Blocked)
         {
-            field("UPS Shipping Surcharge"; "UPS Shipping Surcharge")
+            field("UPS Shipping Surcharge"; Rec."UPS Shipping Surcharge")
             {
                 ApplicationArea = all;
             }
         }
         addafter(Blocked)
         {
-            field(Class; Class)
+            field(Class; Rec.Class)
             {
                 ApplicationArea = All;
             }
-            field("Model Type"; "Model Type")
+            field("Model Type"; Rec."Model Type")
             {
                 ApplicationArea = All;
             }
@@ -31,7 +31,7 @@ pageextension 62006 ItemCardExt extends "Item Card"
                 Editable = false;
 
             }
-            field("Qty. on Blanket Purch. Order"; "Qty. on Blanket Purch. Order")
+            field("Qty. on Blanket Purch. Order"; Rec."Qty. on Blanket Purch. Order")
             {
                 Caption = 'Qty. on Blanket Orders';
                 ApplicationArea = All;
@@ -39,11 +39,11 @@ pageextension 62006 ItemCardExt extends "Item Card"
         }
         addafter("Purch. Unit of Measure")
         {
-            field("Receiving Inspection"; "Receiving Inspection")
+            field("Receiving Inspection"; Rec."Receiving Inspection")
             {
                 ApplicationArea = All;
             }
-            field("RIA Reference"; "RIA Reference")
+            field("RIA Reference"; Rec."RIA Reference")
             {
                 ApplicationArea = All;
                 Enabled = lRecInspect;
@@ -54,17 +54,17 @@ pageextension 62006 ItemCardExt extends "Item Card"
         {
             group(Advaco)
             {
-                field("Manual Reorder Point"; "Manual Reorder Point")
+                field("Manual Reorder Point"; Rec."Manual Reorder Point")
                 {
                     ApplicationArea = All;
                     Caption = 'Manual Reorder Entry';
                     //Enabled = ReorderPointEnable;
                 }
-                field("Blanket Reorder Point"; "Blanket Reorder Point")
+                field("Blanket Reorder Point"; Rec."Blanket Reorder Point")
                 {
                     ApplicationArea = All;
                 }
-                field("Blanket Reorder Quantity"; "Blanket Reorder Quantity")
+                field("Blanket Reorder Quantity"; Rec."Blanket Reorder Quantity")
                 {
                     ApplicationArea = All;
                 }
@@ -89,7 +89,7 @@ pageextension 62006 ItemCardExt extends "Item Card"
                 trigger OnAction()
                 begin
 
-                    IF Class = 'ITEM' THEN
+                    IF Rec.Class = 'ITEM' THEN
                         Page.RunModal(50055, Rec)
                     ELSE
                         Message('Return Commited is available for items only');
@@ -116,10 +116,10 @@ pageextension 62006 ItemCardExt extends "Item Card"
     trigger OnAfterGetRecord()
     begin
 
-        SETRANGE("No.");
+        Rec.SetRange("No.");
         QtyAvailable := 0;
 
-        IF Item.GET("No.") THEN BEGIN
+        IF Item.GET(Rec."No.") THEN BEGIN
             Item.SETFILTER("Location Filter", '%1|%2', 'MAIN', 'COMMITTED');
             Item.CALCFIELDS(Inventory, "Qty. on Purch. Order", "Reserved Qty. on Inventory");
             QtyAvailable := (Item.Inventory - Item."Reserved Qty. on Inventory");
@@ -129,7 +129,7 @@ pageextension 62006 ItemCardExt extends "Item Card"
         // 05/24/12 Start
         msgShowed := FALSE;
 
-        IF "Receiving Inspection" THEN
+        IF Rec."Receiving Inspection" THEN
             lRecInspect := TRUE
         ELSE
             lRecInspect := FALSE;

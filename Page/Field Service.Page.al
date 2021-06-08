@@ -11,22 +11,22 @@ page 50150 "Field Service"
             {
 
 
-                field("Field Service No."; "Field Service No.")
+                field("Field Service No."; Rec."Field Service No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Customer; Customer)
+                field(Customer; Rec.Customer)
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Ship To Code"; "Ship To Code")
+                field("Ship To Code"; Rec."Ship To Code")
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Date Ordered"; "Date Ordered")
+                field("Date Ordered"; Rec."Date Ordered")
                 {
                     ApplicationArea = All;
                     Caption = 'Order Date';
@@ -40,132 +40,132 @@ page 50150 "Field Service"
 
 
 
-                field("Customer Name"; "Customer Name")
+                field("Customer Name"; Rec."Customer Name")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Customer Address 1"; "Customer Address 1")
+                field("Customer Address 1"; Rec."Customer Address 1")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Customer Address 2"; "Customer Address 2")
+                field("Customer Address 2"; Rec."Customer Address 2")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Customer City"; "Customer City")
+                field("Customer City"; Rec."Customer City")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Customer State"; "Customer State")
+                field("Customer State"; Rec."Customer State")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Customer Zip Code"; "Customer Zip Code")
+                field("Customer Zip Code"; Rec."Customer Zip Code")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Customer Payment Terms"; "Customer Payment Terms")
+                field("Customer Payment Terms"; Rec."Customer Payment Terms")
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Card Type"; "Card Type")
+                field("Card Type"; Rec."Card Type")
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Credit Card No."; "Credit Card No.")
+                field("Credit Card No."; Rec."Credit Card No.")
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Credit Card Exp."; "Credit Card Exp.")
+                field("Credit Card Exp."; Rec."Credit Card Exp.")
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Tax Liable"; "Tax Liable")
+                field("Tax Liable"; Rec."Tax Liable")
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Tax Exemption No."; "Tax Exemption No.")
+                field("Tax Exemption No."; Rec."Tax Exemption No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Exempt Organization"; "Exempt Organization")
+                field("Exempt Organization"; Rec."Exempt Organization")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Ship To Name"; "Ship To Name")
+                field("Ship To Name"; Rec."Ship To Name")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Ship To Address 1"; "Ship To Address 1")
+                field("Ship To Address 1"; Rec."Ship To Address 1")
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Ship To Address 2"; "Ship To Address 2")
+                field("Ship To Address 2"; Rec."Ship To Address 2")
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Ship To City"; "Ship To City")
+                field("Ship To City"; Rec."Ship To City")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Ship To State"; "Ship To State")
+                field("Ship To State"; Rec."Ship To State")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Ship To Zip Code"; "Ship To Zip Code")
+                field("Ship To Zip Code"; Rec."Ship To Zip Code")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Attention; Attention)
+                field(Attention; Rec.Attention)
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("E-Mail"; "E-Mail")
+                field("E-Mail"; Rec."E-Mail")
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Phone No."; "Phone No.")
+                field("Phone No."; Rec."Phone No.")
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Fax No."; "Fax No.")
+                field("Fax No."; Rec."Fax No.")
                 {
                     ApplicationArea = All;
                     Editable = ControlsEditable;
                 }
-                field("Inside Sales"; "Inside Sales")
+                field("Inside Sales"; Rec."Inside Sales")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Rep; Rep)
+                field(Rep; Rec.Rep)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Complete; Complete)
+                field(Complete; Rec.Complete)
                 {
                     ApplicationArea = All;
                 }
@@ -175,41 +175,41 @@ page 50150 "Field Service"
                 group(Control1220060059)
                 {
                     ShowCaption = false;
-                    field("Service Type"; "Service Type")
+                    field("Service Type"; Rec."Service Type")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
                         begin
-                            if "Service Type" = "Service Type"::Unpaid then begin
-                                "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+                            if Rec."Service Type" = Rec."Service Type"::Unpaid then begin
+                                Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
                                 OrderAdjEditable := false;
                             end else begin
-                                "Order Adj." := 0;
+                                Rec."Order Adj." := 0;
                                 OrderAdjEditable := true;
                             end;
 
-                            QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                            QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                         end;
                     }
-                    field("Income Code"; "Income Code")
+                    field("Income Code"; Rec."Income Code")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
                         OptionCaption = ' ,SERVICE,SALES,TURBO,ELECTRONIC,DRY,CRYO,INCOME FS';
                     }
-                    field("Customer PO No."; "Customer PO No.")
+                    field("Customer PO No."; Rec."Customer PO No.")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
-                    field("Parts Required"; "Parts Required")
+                    field("Parts Required"; Rec."Parts Required")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
-                    field(Description; Description)
+                    field(Description; Rec.Description)
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
@@ -218,22 +218,22 @@ page 50150 "Field Service"
                 group(Control1220060060)
                 {
                     ShowCaption = false;
-                    field(Carrier; Carrier)
+                    field(Carrier; Rec.Carrier)
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
-                    field("Shipping Method"; "Shipping Method")
+                    field("Shipping Method"; Rec."Shipping Method")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
-                    field("Shipping Account"; "Shipping Account")
+                    field("Shipping Account"; Rec."Shipping Account")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
-                    field("Shipping Charge"; "Shipping Charge")
+                    field("Shipping Charge"; Rec."Shipping Charge")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
@@ -246,129 +246,129 @@ page 50150 "Field Service"
                 group(Control1220060062)
                 {
                     ShowCaption = false;
-                    field(Technician; Technician)
+                    field(Technician; Rec.Technician)
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
                     }
-                    field(Lodging; Lodging)
+                    field(Lodging; Rec.Lodging)
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
                         begin
-                            if xRec.Lodging <> Lodging then begin
-                                if xRec.Lodging > Lodging then
-                                    Expenses := Expenses - (xRec.Lodging - Lodging);
-                                if Lodging > xRec.Lodging then
-                                    Expenses := Expenses + (Lodging - xRec.Lodging);
+                            if xRec.Lodging <> Rec.Lodging then begin
+                                if xRec.Lodging > Rec.Lodging then
+                                    Expenses := Expenses - (xRec.Lodging - Rec.Lodging);
+                                if Rec.Lodging > xRec.Lodging then
+                                    Expenses := Expenses + (Rec.Lodging - xRec.Lodging);
                             end;
 
-                            if "Service Type" = "Service Type"::Unpaid then
-                                "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+                            if Rec."Service Type" = Rec."Service Type"::Unpaid then
+                                Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
 
-                            QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                            QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                         end;
                     }
-                    field("Air Travel"; "Air Travel")
+                    field("Air Travel"; Rec."Air Travel")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
                         begin
-                            if xRec."Air Travel" <> "Air Travel" then begin
-                                if xRec."Air Travel" > "Air Travel" then
-                                    Expenses := Expenses - (xRec."Air Travel" - "Air Travel");
-                                if "Air Travel" > xRec."Air Travel" then
-                                    Expenses := Expenses + ("Air Travel" - xRec."Air Travel");
+                            if xRec."Air Travel" <> Rec."Air Travel" then begin
+                                if xRec."Air Travel" > Rec."Air Travel" then
+                                    Expenses := Expenses - (xRec."Air Travel" - Rec."Air Travel");
+                                if Rec."Air Travel" > xRec."Air Travel" then
+                                    Expenses := Expenses + (Rec."Air Travel" - xRec."Air Travel");
                             end;
 
-                            if "Service Type" = "Service Type"::Unpaid then
-                                "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+                            if Rec."Service Type" = Rec."Service Type"::Unpaid then
+                                Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
 
-                            QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                            QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                         end;
                     }
-                    field("Rental Car"; "Rental Car")
+                    field("Rental Car"; Rec."Rental Car")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
                         begin
-                            if xRec."Rental Car" <> "Rental Car" then begin
-                                if xRec."Rental Car" > "Rental Car" then
-                                    Expenses := Expenses - (xRec."Rental Car" - "Rental Car");
-                                if "Rental Car" > xRec."Rental Car" then
-                                    Expenses := Expenses + ("Rental Car" - xRec."Rental Car");
+                            if xRec."Rental Car" <> Rec."Rental Car" then begin
+                                if xRec."Rental Car" > Rec."Rental Car" then
+                                    Expenses := Expenses - (xRec."Rental Car" - Rec."Rental Car");
+                                if Rec."Rental Car" > xRec."Rental Car" then
+                                    Expenses := Expenses + (Rec."Rental Car" - xRec."Rental Car");
                             end;
 
-                            if "Service Type" = "Service Type"::Unpaid then
-                                "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+                            if Rec."Service Type" = Rec."Service Type"::Unpaid then
+                                Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
 
-                            QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                            QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                         end;
                     }
-                    field(Meals; Meals)
+                    field(Meals; Rec.Meals)
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
                         begin
-                            if xRec.Meals <> Meals then begin
-                                if xRec.Meals > Meals then
-                                    Expenses := Expenses - (xRec.Meals - Meals);
-                                if Meals > xRec.Meals then
-                                    Expenses := Expenses + (Meals - xRec.Meals);
+                            if xRec.Meals <> Rec.Meals then begin
+                                if xRec.Meals > Rec.Meals then
+                                    Expenses := Expenses - (xRec.Meals - Rec.Meals);
+                                if Rec.Meals > xRec.Meals then
+                                    Expenses := Expenses + (Rec.Meals - xRec.Meals);
                             end;
 
-                            if "Service Type" = "Service Type"::Unpaid then
-                                "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+                            if Rec."Service Type" = Rec."Service Type"::Unpaid then
+                                Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
 
-                            QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                            QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                         end;
                     }
-                    field(Freight; Freight)
+                    field(Freight; Rec.Freight)
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
                         begin
-                            if xRec.Freight <> Freight then begin
-                                if xRec.Freight > Freight then
-                                    Expenses := Expenses - (xRec.Freight - Freight);
-                                if Freight > xRec.Freight then
-                                    Expenses := Expenses + (Freight - xRec.Freight);
+                            if xRec.Freight <> Rec.Freight then begin
+                                if xRec.Freight > Rec.Freight then
+                                    Expenses := Expenses - (xRec.Freight - Rec.Freight);
+                                if Rec.Freight > xRec.Freight then
+                                    Expenses := Expenses + (Rec.Freight - xRec.Freight);
                             end;
 
-                            if "Service Type" = "Service Type"::Unpaid then
-                                "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+                            if Rec."Service Type" = Rec."Service Type"::Unpaid then
+                                Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
 
-                            QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                            QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                         end;
                     }
-                    field("Misc Expenses"; "Misc Expenses")
+                    field("Misc Expenses"; Rec."Misc Expenses")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
                         begin
-                            if xRec."Misc Expenses" <> "Misc Expenses" then begin
-                                if xRec."Misc Expenses" > "Misc Expenses" then
-                                    Expenses := Expenses - (xRec."Misc Expenses" - "Misc Expenses");
-                                if "Misc Expenses" > xRec."Misc Expenses" then
-                                    Expenses := Expenses + ("Misc Expenses" - xRec."Misc Expenses");
+                            if xRec."Misc Expenses" <> Rec."Misc Expenses" then begin
+                                if xRec."Misc Expenses" > Rec."Misc Expenses" then
+                                    Expenses := Expenses - (xRec."Misc Expenses" - Rec."Misc Expenses");
+                                if Rec."Misc Expenses" > xRec."Misc Expenses" then
+                                    Expenses := Expenses + (Rec."Misc Expenses" - xRec."Misc Expenses");
                             end;
 
-                            if "Service Type" = "Service Type"::Unpaid then
-                                "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+                            if Rec."Service Type" = Rec."Service Type"::Unpaid then
+                                Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
 
-                            QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                            QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                         end;
                     }
                 }
@@ -379,103 +379,103 @@ page 50150 "Field Service"
                 group(Control1220060064)
                 {
                     ShowCaption = false;
-                    field("Company Van Miles"; "Company Van Miles")
+                    field("Company Van Miles"; Rec."Company Van Miles")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
                         begin
-                            if "Personal Vehicle Miles" = 0 then begin
-                                if xRec."Company Van Miles" <> "Company Van Miles" then begin
-                                    if xRec."Company Van Miles" > "Company Van Miles" then
-                                        Expenses := Expenses - ((xRec."Company Van Miles" - "Company Van Miles") * ("Mileage Rate" / 100));
-                                    if "Company Van Miles" > xRec."Company Van Miles" then
-                                        Expenses := Expenses + (("Company Van Miles" - xRec."Company Van Miles") * ("Mileage Rate" / 100));
+                            if Rec."Personal Vehicle Miles" = 0 then begin
+                                if xRec."Company Van Miles" <> Rec."Company Van Miles" then begin
+                                    if xRec."Company Van Miles" > Rec."Company Van Miles" then
+                                        Expenses := Expenses - ((xRec."Company Van Miles" - Rec."Company Van Miles") * (Rec."Mileage Rate" / 100));
+                                    if Rec."Company Van Miles" > xRec."Company Van Miles" then
+                                        Expenses := Expenses + ((Rec."Company Van Miles" - xRec."Company Van Miles") * (Rec."Mileage Rate" / 100));
                                 end;
 
-                                if "Service Type" = "Service Type"::Unpaid then
-                                    "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+                                if Rec."Service Type" = Rec."Service Type"::Unpaid then
+                                    Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
 
-                                QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                                QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                             end else begin
-                                "Company Van Miles" := 0;
-                                Modify;
+                                Rec."Company Van Miles" := 0;
+                                Rec.Modify;
                                 Message('Personal Vehicle Miles entered, so Company Van Miles not allowed');
                             end;
                         end;
                     }
-                    field("Personal Vehicle Miles"; "Personal Vehicle Miles")
+                    field("Personal Vehicle Miles"; Rec."Personal Vehicle Miles")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
                         begin
-                            if "Company Van Miles" = 0 then begin
-                                if xRec."Personal Vehicle Miles" <> "Personal Vehicle Miles" then begin
-                                    if xRec."Personal Vehicle Miles" > "Personal Vehicle Miles" then
-                                        Expenses := Expenses - ((xRec."Personal Vehicle Miles" - "Personal Vehicle Miles") * ("Mileage Rate" / 100));
-                                    if "Personal Vehicle Miles" > xRec."Personal Vehicle Miles" then
-                                        Expenses := Expenses + (("Personal Vehicle Miles" - xRec."Personal Vehicle Miles") * ("Mileage Rate" / 100));
+                            if Rec."Company Van Miles" = 0 then begin
+                                if xRec."Personal Vehicle Miles" <> Rec."Personal Vehicle Miles" then begin
+                                    if xRec."Personal Vehicle Miles" > Rec."Personal Vehicle Miles" then
+                                        Expenses := Expenses - ((xRec."Personal Vehicle Miles" - Rec."Personal Vehicle Miles") * (Rec."Mileage Rate" / 100));
+                                    if Rec."Personal Vehicle Miles" > xRec."Personal Vehicle Miles" then
+                                        Expenses := Expenses + ((Rec."Personal Vehicle Miles" - xRec."Personal Vehicle Miles") * (Rec."Mileage Rate" / 100));
                                 end;
 
-                                if "Service Type" = "Service Type"::Unpaid then
-                                    "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+                                if Rec."Service Type" = Rec."Service Type"::Unpaid then
+                                    Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
 
-                                QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                                QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                             end else begin
-                                "Personal Vehicle Miles" := 0;
-                                Modify;
+                                Rec."Personal Vehicle Miles" := 0;
+                                Rec.Modify;
                                 Message('Company Van Miles entered, so Personal Vehicle Miles not allowed');
                             end;
                         end;
                     }
-                    field("Travel Hours"; "Travel Hours")
+                    field("Travel Hours"; Rec."Travel Hours")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
                         begin
-                            if xRec."Travel Hours" <> "Travel Hours" then begin
-                                if xRec."Travel Hours" > "Travel Hours" then
-                                    LaborPrice := LaborPrice - ((xRec."Travel Hours" - "Travel Hours") * "Labor Rate");
-                                if "Travel Hours" > xRec."Travel Hours" then
-                                    LaborPrice := LaborPrice + (("Travel Hours" - xRec."Travel Hours") * "Labor Rate");
+                            if xRec."Travel Hours" <> Rec."Travel Hours" then begin
+                                if xRec."Travel Hours" > Rec."Travel Hours" then
+                                    LaborPrice := LaborPrice - ((xRec."Travel Hours" - Rec."Travel Hours") * Rec."Labor Rate");
+                                if Rec."Travel Hours" > xRec."Travel Hours" then
+                                    LaborPrice := LaborPrice + ((Rec."Travel Hours" - xRec."Travel Hours") * Rec."Labor Rate");
                             end;
 
-                            if "Service Type" = "Service Type"::Unpaid then
-                                "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+                            if Rec."Service Type" = Rec."Service Type"::Unpaid then
+                                Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
 
-                            QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                            QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                         end;
                     }
-                    field("Work Hours"; "Work Hours")
+                    field("Work Hours"; Rec."Work Hours")
                     {
                         ApplicationArea = All;
                         Editable = ControlsEditable;
 
                         trigger OnValidate()
                         begin
-                            if xRec."Work Hours" <> "Work Hours" then begin
-                                if xRec."Work Hours" > "Work Hours" then
-                                    LaborPrice := LaborPrice - ((xRec."Work Hours" - "Work Hours") * "Labor Rate");
-                                if "Work Hours" > xRec."Work Hours" then
-                                    LaborPrice := LaborPrice + (("Work Hours" - xRec."Work Hours") * "Labor Rate");
+                            if xRec."Work Hours" <> Rec."Work Hours" then begin
+                                if xRec."Work Hours" > Rec."Work Hours" then
+                                    LaborPrice := LaborPrice - ((xRec."Work Hours" - Rec."Work Hours") * Rec."Labor Rate");
+                                if Rec."Work Hours" > xRec."Work Hours" then
+                                    LaborPrice := LaborPrice + ((Rec."Work Hours" - xRec."Work Hours") * Rec."Labor Rate");
                             end;
 
-                            if "Service Type" = "Service Type"::Unpaid then
-                                "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+                            if Rec."Service Type" = Rec."Service Type"::Unpaid then
+                                Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
 
-                            QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                            QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                         end;
                     }
                 }
                 group(Control1220060065)
                 {
                     ShowCaption = false;
-                    field("Parts Quoted"; "Parts Quoted")
+                    field("Parts Quoted"; Rec."Parts Quoted")
                     {
                         ApplicationArea = All;
                         Caption = 'Parts Price';
@@ -493,14 +493,14 @@ page 50150 "Field Service"
                         Caption = 'Expenses';
                         Editable = false;
                     }
-                    field("Order Adj."; "Order Adj.")
+                    field("Order Adj."; Rec."Order Adj.")
                     {
                         ApplicationArea = All;
                         Editable = OrderAdjEditable;
 
                         trigger OnValidate()
                         begin
-                            QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+                            QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
                         end;
                     }
                     field(QuotePrice; QuotePrice)
@@ -527,7 +527,7 @@ page 50150 "Field Service"
                 PromotedCategory = Process;
                 trigger OnAction()
                 begin
-                    if Complete then
+                    if Rec.Complete then
                         Error('The Field Service Order is already Complete');
 
                     //IF "Incomplete Parts" THEN
@@ -540,15 +540,15 @@ page 50150 "Field Service"
                     //  ERROR('Hours must be entered to Complete Order');
 
 
-                    if "Service Type" = "Service Type"::Paid then begin
+                    if Rec."Service Type" = Rec."Service Type"::Paid then begin
                         //IF QuotePrice <= 0 THEN
                         //  ERROR('The Service Type Can''t be Paid if the Quote Price is Zero');
                         Paid
                     end else
                         UnPaid;
 
-                    Complete := true;
-                    Modify;
+                    Rec.Complete := true;
+                    Rec.Modify;
                 end;
             }
             action(Traveler)
@@ -561,7 +561,7 @@ page 50150 "Field Service"
                 trigger OnAction()
                 begin
                     FS2 := Rec;
-                    FS2.SetFilter("Field Service No.", "Field Service No.");
+                    FS2.SetFilter("Field Service No.", Rec."Field Service No.");
                     FS2.SetRecFilter;
                     REPORT.RunModal(50151, true, false, FS2);
                 end;
@@ -576,7 +576,7 @@ page 50150 "Field Service"
                 trigger OnAction()
                 begin
                     FS2 := Rec;
-                    FS2.SetFilter("Field Service No.", "Field Service No.");
+                    FS2.SetFilter("Field Service No.", Rec."Field Service No.");
                     FS2.SetRecFilter;
                     REPORT.RunModal(50150, true, false, FS2);
                 end;
@@ -590,7 +590,7 @@ page 50150 "Field Service"
                 PromotedCategory = Process;
                 trigger OnAction()
                 begin
-                    FS.SetRange(FS."Field Service No.", "Field Service No.");
+                    FS.SetRange(FS."Field Service No.", Rec."Field Service No.");
                     PAGE.Run(50154, FS);
                 end;
             }
@@ -605,16 +605,16 @@ page 50150 "Field Service"
 
     trigger OnAfterGetCurrRecord()  //ICE RSK 1/19/21
     begin
-        if Complete then begin
+        if Rec.Complete then begin
             ControlsEditable := false;
         end else begin
             ControlsEditable := true;
         end;
-        if "Service Type" = "Service Type"::Unpaid then begin
-            "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+        if Rec."Service Type" = Rec."Service Type"::Unpaid then begin
+            Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
             OrderAdjEditable := false;
         end else begin
-            if Complete then
+            if Rec.Complete then
                 OrderAdjEditable := false
             else
                 OrderAdjEditable := true;
@@ -625,29 +625,30 @@ page 50150 "Field Service"
     begin
         Clear(QuotePrice);
         Clear(Expenses);
-        Expenses := Lodging + "Air Travel" + "Rental Car" + Meals + "Misc Expenses" + Freight
-                    + ("Company Van Miles" * ("Mileage Rate" / 100)) + ("Personal Vehicle Miles" * ("Mileage Rate" / 100));
-        LaborPrice := (("Travel Hours" + "Work Hours") * "Labor Rate");
-        if "Service Type" = "Service Type"::Unpaid then begin
-            "Order Adj." := -(Expenses + LaborPrice + "Parts Quoted");
+        Expenses := Rec.Lodging + Rec."Air Travel" + Rec."Rental Car" + Rec.Meals + Rec."Misc Expenses" + Rec.Freight
+                    + (Rec."Company Van Miles" * (Rec."Mileage Rate" / 100)) + (Rec."Personal Vehicle Miles" * (Rec."Mileage Rate" / 100));
+        LaborPrice := ((Rec."Travel Hours" + Rec."Work Hours") * Rec."Labor Rate");
+        if Rec."Service Type" = Rec."Service Type"::Unpaid then begin
+            Rec."Order Adj." := -(Expenses + LaborPrice + Rec."Parts Quoted");
             OrderAdjEditable := false;
         end else begin
-            if Complete then
+            if Rec.Complete then
                 OrderAdjEditable := false
             else
                 OrderAdjEditable := true;
         end;
 
-        if Complete then begin
+        if Rec.Complete then begin
             ControlsEditable := false;
         end else begin
             ControlsEditable := true;
         end;
 
-        QuotePrice := "Parts Quoted" + LaborPrice + Expenses + "Order Adj.";
+        QuotePrice := Rec."Parts Quoted" + LaborPrice + Expenses + Rec."Order Adj.";
     end;
 
     var
+        WOD: Record WorkOrderDetail;
         FS: Record FieldService;
         FS2: Record FieldService;
         QuotePrice: Decimal;
@@ -684,10 +685,10 @@ page 50150 "Field Service"
 
     procedure Paid()
     begin
-        if "Customer PO No." = '' then
+        if Rec."Customer PO No." = '' then
             Error('Customer PO No. must be entered to Complete this Order');
 
-        if "Income Code" = 0 then
+        if Rec."Income Code" = 0 then
             Error('Income Code must be entered to Complete this Order');
 
         CreateOrder;
@@ -701,7 +702,7 @@ page 50150 "Field Service"
     begin
         WOP.Reset;
         WOP.SetCurrentKey("Work Order No.", "Part No.");
-        WOP.SetRange(WOP."Work Order No.", "Field Service No.");
+        WOP.SetRange(WOP."Work Order No.", Rec."Field Service No.");
         WOP.SetRange(WOP."Part Type", WOP."Part Type"::Item);
         WOP.SetFilter(WOP."Pulled Quantity", '>0');
         if WOP.Find('-') then begin
@@ -742,39 +743,39 @@ page 50150 "Field Service"
         SalesHeader.Init;
         SalesSetup.Get;
 
-        SalesHeader."No." := "Field Service No.";
+        SalesHeader."No." := Rec."Field Service No.";
 
         InitSalesHeaderRecord;
         SalesHeader."Document Type" := SalesHeader."Document Type"::Order;
-        SalesHeader.Validate("Sell-to Customer No.", Customer);
-        ShipTo.Get(SalesHeader."Sell-to Customer No.", "Ship To Code");
+        SalesHeader.Validate("Sell-to Customer No.", Rec.Customer);
+        ShipTo.Get(SalesHeader."Sell-to Customer No.", Rec."Ship To Code");
         SalesHeader.Validate("Posting Date", Today);
-        SalesHeader."Order Date" := "Date Ordered";
-        SalesHeader."Ship-to Code" := "Ship To Code";
-        SalesHeader."Ship-to Name" := "Ship To Name";
-        SalesHeader."Ship-to Address" := "Ship To Address 1";
-        SalesHeader."Ship-to Address 2" := "Ship To Address 2";
-        SalesHeader."Ship-to City" := "Ship To City";
-        SalesHeader."Ship-to County" := "Ship To State";
-        SalesHeader."Ship-to Post Code" := "Ship To Zip Code";
-        SalesHeader."Ship-to Contact" := Attention;
+        SalesHeader."Order Date" := Rec."Date Ordered";
+        SalesHeader."Ship-to Code" := Rec."Ship To Code";
+        SalesHeader."Ship-to Name" := Rec."Ship To Name";
+        SalesHeader."Ship-to Address" := Rec."Ship To Address 1";
+        SalesHeader."Ship-to Address 2" := Rec."Ship To Address 2";
+        SalesHeader."Ship-to City" := Rec."Ship To City";
+        SalesHeader."Ship-to County" := Rec."Ship To State";
+        SalesHeader."Ship-to Post Code" := Rec."Ship To Zip Code";
+        SalesHeader."Ship-to Contact" := Rec.Attention;
         SalesHeader."Document Date" := Today;
         SalesHeader."Shipping No. Series" := SalesSetup."Posted Shipment Nos.";
         SalesHeader."Posting No. Series" := SalesSetup."Posted Invoice Nos.";
         //SalesHeader.Rep := ShipTo.Rep;
         SalesHeader."Salesperson Code" := ShipTo."Inside Sales";
-        SalesHeader."Your Reference" := "Customer PO No.";
-        SalesHeader."Payment Terms Code" := "Customer Payment Terms";
-        //SalesHeader."Card Type" := "Card Type";
-        //SalesHeader."Credit Card No." := "Credit Card No.";
-        //SalesHeader."Credit Card Exp." := "Credit Card Exp.";
-        SalesHeader."Shipment Method Code" := "Shipping Method";
-        SalesHeader."Shipping Agent Code" := Carrier;
-        //SalesHeader."Shipping Charge" := "Shipping Charge";
-        //SalesHeader."Shipping Account" := "Shipping Account";
+        SalesHeader."Your Reference" := Rec."Customer PO No.";
+        SalesHeader."Payment Terms Code" := Rec."Customer Payment Terms";
+        //SalesHeader."Card Type" := Rec."Card Type";
+        //SalesHeader."Credit Card No." := Rec."Credit Card No.";
+        //SalesHeader."Credit Card Exp." := Rec."Credit Card Exp.";
+        SalesHeader."Shipment Method Code" := Rec."Shipping Method";
+        SalesHeader."Shipping Agent Code" := Rec.Carrier;
+        //SalesHeader."Shipping Charge" := Rec."Shipping Charge";
+        //SalesHeader."Shipping Account" := Rec."Shipping Account";
 
         // Need to link to Bill of Lading Record for information
-        BOL.SetRange(BOL."Order No.", "Field Service No.");
+        BOL.SetRange(BOL."Order No.", Rec."Field Service No.");
         if BOL.Find('+') then begin
             SalesHeader."Shipment Date" := BOL."Shipment Date";
             SalesHeader."Shipping Advice" := SalesHeader."Shipping Advice"::Partial;
@@ -785,7 +786,7 @@ page 50150 "Field Service"
             SalesHeader."Shipping Advice" := SalesHeader."Shipping Advice"::Partial;
         end;
 
-        if "Tax Liable" = true then
+        if Rec."Tax Liable" = true then
             SalesHeader."Tax Liable" := true
         else
             SalesHeader."Tax Liable" := false;
@@ -808,7 +809,7 @@ page 50150 "Field Service"
         LineLoop;
         SalesLine.Type := SalesLine.Type::" ";
         SalesLine.Validate("No.", '');
-        SalesLine.Description := "Field Service No.";
+        SalesLine.Description := Rec."Field Service No.";
         //SalesLine."Commission Calculated" := FALSE;
         //SalesLine."Cross Reference Item" := 'Field Service';
         SalesLine.Insert;
@@ -816,30 +817,30 @@ page 50150 "Field Service"
 
         //Labor Total
         AdjRemainder := 0;
-        if "Order Adj." < 0 then begin
-            if Abs("Order Adj.") > LaborPrice then begin
-                AdjRemainder := LaborPrice + "Order Adj.";
+        if Rec."Order Adj." < 0 then begin
+            if Abs(Rec."Order Adj.") > LaborPrice then begin
+                AdjRemainder := LaborPrice + Rec."Order Adj.";
             end else begin
-                if Round(LaborPrice + "Order Adj.") > 0 then begin
+                if Round(LaborPrice + Rec."Order Adj.") > 0 then begin
                     LineLoop;
                     SalesLine.Type := SalesLine.Type::"G/L Account";
                     GPSLoop;
                     SalesLine.Validate(Quantity, 1);
                     SalesLine.Description := 'Labor ';
-                    SalesLine."Unit Price" := Round(LaborPrice + "Order Adj.");
+                    SalesLine."Unit Price" := Round(LaborPrice + Rec."Order Adj.");
                     SalesLine.Validate("Unit Price");
                     //      SalesLine."Commission Calculated" := TRUE;
                     SalesLine.Insert;
                 end;
             end;
         end else begin
-            if Round(LaborPrice + "Order Adj.") > 0 then begin
+            if Round(LaborPrice + Rec."Order Adj.") > 0 then begin
                 LineLoop;
                 SalesLine.Type := SalesLine.Type::"G/L Account";
                 GPSLoop;
                 SalesLine.Validate(Quantity, 1);
                 SalesLine.Description := 'Labor ';
-                SalesLine."Unit Price" := Round(LaborPrice + "Order Adj.");
+                SalesLine."Unit Price" := Round(LaborPrice + Rec."Order Adj.");
                 SalesLine.Validate("Unit Price");
                 //    SalesLine."Commission Calculated" := TRUE;
                 SalesLine.Insert;
@@ -879,7 +880,7 @@ page 50150 "Field Service"
         end;
 
         // Parts Total
-        if Round("Parts Quoted" + AdjRemainder) > 0 then begin
+        if Round(Rec."Parts Quoted" + AdjRemainder) > 0 then begin
             LineLoop;
             SalesLine.Type := SalesLine.Type::"G/L Account";
             if GPS."Sales Account" = '' then
@@ -887,7 +888,7 @@ page 50150 "Field Service"
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
             SalesLine.Validate(Quantity, 1);
             SalesLine.Description := 'Parts ';
-            SalesLine."Unit Price" := Round("Parts Quoted" + AdjRemainder);
+            SalesLine."Unit Price" := Round(Rec."Parts Quoted" + AdjRemainder);
             SalesLine.Validate("Unit Price");
             //  SalesLine."Commission Calculated" := TRUE;
             SalesLine.Insert;
@@ -896,7 +897,7 @@ page 50150 "Field Service"
 
         //>>Create Resources Line
         WOP.SetCurrentKey("Work Order No.", "Part No.");
-        WOP.SetRange(WOP."Work Order No.", "Field Service No.");
+        WOP.SetRange(WOP."Work Order No.", Rec."Field Service No.");
         WOP.SetRange(WOP."Part Type", WOP."Part Type"::Resource);
         if WOP.Find('-') then begin
             repeat
@@ -916,7 +917,7 @@ page 50150 "Field Service"
         //>>Create Parts Lines
         WOP.Reset;
         WOP.SetCurrentKey("Work Order No.", "Part No.");
-        WOP.SetRange(WOP."Work Order No.", "Field Service No.");
+        WOP.SetRange(WOP."Work Order No.", Rec."Field Service No.");
         WOP.SetRange(WOP."Part Type", WOP."Part Type"::Item);
         WOP.SetFilter(WOP."Pulled Quantity", '>0');
         if WOP.Find('-') then begin
@@ -958,7 +959,7 @@ page 50150 "Field Service"
     procedure UpdateParts()
     begin
         PartsComplete.SetCurrentKey("Work Order No.", "Part No.");
-        PartsComplete.SetRange(PartsComplete."Work Order No.", "Field Service No.");
+        PartsComplete.SetRange(PartsComplete."Work Order No.", Rec."Field Service No.");
         if PartsComplete.Find('-') then begin
             repeat
                 PartsComplete.Complete := true;
@@ -986,7 +987,7 @@ page 50150 "Field Service"
     procedure UpdateWOS()
     begin
         WOS.SetCurrentKey(WOS."Order No.", WOS."Line No.");
-        WOS.SetRange(WOS."Order No.", "Field Service No.");
+        WOS.SetRange(WOS."Order No.", Rec."Field Service No.");
         WOS.SetRange(WOS.Step, WOS.Step::QOT);
         if WOS.Find('-') then begin
             WOS.Status := WOS.Status::Complete;
@@ -998,7 +999,7 @@ page 50150 "Field Service"
 
 
         WOS.SetCurrentKey(WOS."Order No.", WOS."Line No.");
-        WOS.SetRange(WOS."Order No.", "Field Service No.");
+        WOS.SetRange(WOS."Order No.", Rec."Field Service No.");
         WOS.SetRange(WOS.Step, WOS.Step::"B-O");
         if WOS.Find('-') then begin
             WOS.Status := WOS.Status::Complete;
@@ -1031,27 +1032,27 @@ page 50150 "Field Service"
             GPS.Get('', 'REPAIR');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if ("Income Code" = 2) then begin
+        if (Rec."Income Code" = 2) then begin
             GPS.Get('', 'PP SALES');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if ("Income Code" = 3) then begin
+        if (Rec."Income Code" = 3) then begin
             GPS.Get('', 'TURBO');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if ("Income Code" = 4) then begin
+        if (Rec."Income Code" = 4) then begin
             GPS.Get('', 'ELECTRONIC');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if ("Income Code" = 5) then begin
+        if (Rec."Income Code" = 5) then begin
             GPS.Get('', 'DRY PUMP');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if ("Income Code" = 6) then begin
+        if (Rec."Income Code" = 6) then begin
             GPS.Get('', 'CRYO');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if ("Income Code" = 7) then begin
+        if (Rec."Income Code" = 7) then begin
             GPS.Get('', 'INCOME FS');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
@@ -1059,25 +1060,25 @@ page 50150 "Field Service"
 
     procedure GPSLoopNoGLEntry()
     begin
-        if ("Income Code" = 1) then begin
+        if (Rec."Income Code" = 1) then begin
             GPS.Get('', 'REPAIR');
         end;
-        if ("Income Code" = 2) then begin
+        if (Rec."Income Code" = 2) then begin
             GPS.Get('', 'PP SALES');
         end;
-        if ("Income Code" = 3) then begin
+        if (Rec."Income Code" = 3) then begin
             GPS.Get('', 'TURBO');
         end;
-        if ("Income Code" = 4) then begin
+        if (Rec."Income Code" = 4) then begin
             GPS.Get('', 'ELECTRONIC');
         end;
-        if ("Income Code" = 5) then begin
+        if (Rec."Income Code" = 5) then begin
             GPS.Get('', 'DRY PUMP');
         end;
-        if ("Income Code" = 6) then begin
+        if (Rec."Income Code" = 6) then begin
             GPS.Get('', 'CRYO');
         end;
-        if ("Income Code" = 7) then
+        if (Rec."Income Code" = 7) then
             GPS.Get('', 'INCOME FS');
     end;
 
@@ -1093,11 +1094,11 @@ page 50150 "Field Service"
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
                 ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
-                ItemJournalLine."Document No." := "Field Service No.";
+                ItemJournalLine."Document No." := Rec."Field Service No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
                 ItemJournalLine."Posting Date" := WorkDate;
-                ItemJournalLine.Description := "Field Service No." + ' ' + 'SHIP RETURN PARTS';
+                ItemJournalLine.Description := Rec."Field Service No." + ' ' + 'SHIP RETURN PARTS';
                 ItemJournalLine."Location Code" := 'IN PROCESS';
 
                 ItemJournalLine.Quantity := ReturnInventoryQty;
@@ -1106,6 +1107,7 @@ page 50150 "Field Service"
                 ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
@@ -1136,16 +1138,17 @@ page 50150 "Field Service"
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
                 ItemJournalLine."Entry Type" := ItemLedgEntryType::"Negative Adjmt."; ///--! Negative Adjustment
-                ItemJournalLine."Document No." := "Field Service No.";
+                ItemJournalLine."Document No." := Rec."Field Service No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
                 ItemJournalLine."Posting Date" := WorkDate;
-                ItemJournalLine.Description := "Field Service No." + ' ' + 'WARRANTY';
+                ItemJournalLine.Description := Rec."Field Service No." + ' ' + 'WARRANTY';
                 ItemJournalLine."Location Code" := 'MAIN';
                 ItemJournalLine.Quantity := RemoveInventoryQty;
                 ItemJournalLine.Validate(ItemJournalLine.Quantity);
 
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;

@@ -23,7 +23,7 @@ pageextension 62024 PhysInventoryJournalExt extends "Phys. Inventory Journal"
 
                 trigger OnAction()
                 begin
-                    IF item.get("Item No.") then
+                    IF item.get(Rec."Item No.") then
                         page.RunModal(50055, item);
                 end;
             }
@@ -49,8 +49,8 @@ pageextension 62024 PhysInventoryJournalExt extends "Phys. Inventory Journal"
                 var
                     ItemJournalBatch2: Record "Item Journal Batch";
                 begin
-                    ItemJournalBatch2.SetRange("Journal Template Name", "Journal Template Name");
-                    ItemJournalBatch2.SetRange(Name, "Journal Batch Name");
+                    ItemJournalBatch2.SetRange("Journal Template Name", Rec."Journal Template Name");
+                    ItemJournalBatch2.SetRange(Name, Rec."Journal Batch Name");
                     REPORT.RunModal(10151, true, false, ItemJournalBatch2);
                 end;
             }

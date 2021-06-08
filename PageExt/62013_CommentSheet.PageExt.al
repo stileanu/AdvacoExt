@@ -5,7 +5,7 @@ pageextension 62013 CommentSheetExt extends "Comment Sheet"
         // Add changes to page layout here
         Addafter(Comment)
         {
-            field("User ID"; "User ID")
+            field("User ID"; Rec."User ID")
             {
                 ApplicationArea = all;
             }

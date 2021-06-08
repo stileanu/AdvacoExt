@@ -16,90 +16,90 @@ page 50140 "Credit Memo Entry"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Pay-to Vendor No."; "Pay-to Vendor No.")
+                field("Pay-to Vendor No."; Rec."Pay-to Vendor No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Vendor Name"; "Buy-from Vendor Name")
+                field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Address"; "Buy-from Address")
+                field("Buy-from Address"; Rec."Buy-from Address")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Address 2"; "Buy-from Address 2")
+                field("Buy-from Address 2"; Rec."Buy-from Address 2")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from City"; "Buy-from City")
+                field("Buy-from City"; Rec."Buy-from City")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from County"; "Buy-from County")
+                field("Buy-from County"; Rec."Buy-from County")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Post Code"; "Buy-from Post Code")
+                field("Buy-from Post Code"; Rec."Buy-from Post Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Contact"; "Buy-from Contact")
+                field("Buy-from Contact"; Rec."Buy-from Contact")
                 {
                     ApplicationArea = All;
                 }
-                field("Location Code"; "Location Code")
+                field("Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Return Reason"; "Return Reason")
+                field("Return Reason"; Rec."Return Reason")
                 {
                     ApplicationArea = All;
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = All;
                     Enabled = false;
                 }
-                field("Credit Memo Posted"; "Credit Memo Posted")
+                field("Credit Memo Posted"; Rec."Credit Memo Posted")
                 {
                     ApplicationArea = All;
                 }
-                field("Your Reference"; "Your Reference")
+                field("Your Reference"; Rec."Your Reference")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Invoice No."; "Vendor Invoice No.")
+                field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Cr. Memo No."; "Vendor Cr. Memo No.")
+                field("Vendor Cr. Memo No."; Rec."Vendor Cr. Memo No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Authorized By"; "Authorized By")
+                field("Authorized By"; Rec."Authorized By")
                 {
                     ApplicationArea = All;
                 }
-                field("Purchaser Code"; "Purchaser Code")
+                field("Purchaser Code"; Rec."Purchaser Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Credit Memo Action"; "Credit Memo Action")
+                field("Credit Memo Action"; Rec."Credit Memo Action")
                 {
                     ApplicationArea = All;
                 }
-                field("Return to Vendor"; "Return to Vendor")
+                field("Return to Vendor"; Rec."Return to Vendor")
                 {
                     ApplicationArea = All;
                 }
@@ -111,68 +111,68 @@ page 50140 "Credit Memo Entry"
             }
             group(Shipping)
             {
-                field("Ship-to Name"; "Ship-to Name")
+                field("Ship-to Name"; Rec."Ship-to Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship-to Address"; "Ship-to Address")
+                field("Ship-to Address"; Rec."Ship-to Address")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship-to Address 2"; "Ship-to Address 2")
+                field("Ship-to Address 2"; Rec."Ship-to Address 2")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship-to City"; "Ship-to City")
+                field("Ship-to City"; Rec."Ship-to City")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship-to County"; "Ship-to County")
+                field("Ship-to County"; Rec."Ship-to County")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship-to Post Code"; "Ship-to Post Code")
+                field("Ship-to Post Code"; Rec."Ship-to Post Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship-to Contact"; "Ship-to Contact")
+                field("Ship-to Contact"; Rec."Ship-to Contact")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship-to UPS Zone"; "Ship-to UPS Zone")
+                field("Ship-to UPS Zone"; Rec."Ship-to UPS Zone")
                 {
                     ApplicationArea = All;
                 }
-                field("RMA No."; "RMA No.")
+                field("RMA No."; Rec."RMA No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Shipping Agent"; "Shipping Agent")
+                field("Shipping Agent"; Rec."Shipping Agent")
                 {
                     ApplicationArea = All;
                 }
-                field("Shipment Method Code"; "Shipment Method Code")
+                field("Shipment Method Code"; Rec."Shipment Method Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Shipping Charge"; "Shipping Charge")
+                field("Shipping Charge"; Rec."Shipping Charge")
                 {
                     ApplicationArea = All;
                 }
-                field("Shipping Account"; "Shipping Account")
+                field("Shipping Account"; Rec."Shipping Account")
                 {
                     ApplicationArea = All;
                 }
-                field("Package Tracking No."; "Package Tracking No.")
+                field("Package Tracking No."; Rec."Package Tracking No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Bill of Lading"; "Bill of Lading")
+                field("Bill of Lading"; Rec."Bill of Lading")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Shipment Date"; "Shipment Date")
+                field("Shipment Date"; Rec."Shipment Date")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -195,23 +195,23 @@ page 50140 "Credit Memo Entry"
                     if not Confirm('Are you sure you want to Close this Credit Memo', false) then begin
                         Message('Close Credit Memo has been Aborted');
                     end else begin
-                        if "Credit Memo Action" = "Credit Memo Action"::"Issue Full Credit" then begin
+                        if Rec."Credit Memo Action" = Rec."Credit Memo Action"::"Issue Full Credit" then begin
                             Message('This Credit Memo is setup up as "Issue Full Credit" and must be processed by Accounting');
                         end else begin
-                            if "Return to Vendor" then begin
-                                if "Bill of Lading" = 0 then begin
+                            if Rec."Return to Vendor" then begin
+                                if Rec."Bill of Lading" = 0 then begin
                                     Message('This Credit Memo can''t be closed because it is setup as a Return to Vendor and it hasn''t been shipped yet');
                                 end else begin
-                                    "Credit Memo Posted" := true;
-                                    "Completion Date" := Today;
-                                    "Completion USERID" := UserId;
-                                    Modify;
+                                    Rec."Credit Memo Posted" := true;
+                                    Rec."Completion Date" := Today;
+                                    Rec."Completion USERID" := UserId;
+                                    Rec.Modify;
                                 end;
                             end else begin
-                                "Credit Memo Posted" := true;
-                                "Completion Date" := Today;
-                                "Completion USERID" := UserId;
-                                Modify;
+                                Rec."Credit Memo Posted" := true;
+                                Rec."Completion Date" := Today;
+                                Rec."Completion USERID" := UserId;
+                                Rec.Modify;
                             end;
                         end;
                     end;
@@ -261,8 +261,8 @@ page 50140 "Credit Memo Entry"
 
                 trigger OnAction()
                 begin
-                    CM.SetRange(CM."Document Type", "Document Type"::"Credit Memo");
-                    CM.SetRange(CM."No.", "No.");
+                    CM.SetRange(CM."Document Type", Rec."Document Type"::"Credit Memo");
+                    CM.SetRange(CM."No.", Rec."No.");
                     REPORT.RunModal(50141, true, false, CM);
                     REPORT.RunModal(50142, false, false, CM);
                 end;
@@ -272,7 +272,7 @@ page 50140 "Credit Memo Entry"
 
     trigger OnAfterGetRecord()
     begin
-        if "Credit Memo Posted" then
+        if Rec."Credit Memo Posted" then
             CurrPage.Editable(false)
         else
             CurrPage.Editable(true);
@@ -281,7 +281,7 @@ page 50140 "Credit Memo Entry"
     trigger OnDeleteRecord(): Boolean
     begin
         CurrPage.SaveRecord;
-        exit(ConfirmDeletion);
+        exit(Rec.ConfirmDeletion);
     end;
 
     var

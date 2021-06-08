@@ -11,7 +11,7 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
 
         addafter("Document Date")
         {
-            field("Shipment Date Acct"; "Shipment Date")
+            field("Shipment Date Acct"; Rec."Shipment Date")
             {
                 ApplicationArea = All;
                 Caption = 'Shipment Date';
@@ -22,12 +22,12 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
         }
         addbefore("Vendor Cr. Memo No.")
         {
-            field("Credit Memo Posted"; "Credit Memo Posted")
+            field("Credit Memo Posted"; Rec."Credit Memo Posted")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies if Credit Memo is posted.';
             }
-            field("Your Reference"; "Your Reference")
+            field("Your Reference"; Rec."Your Reference")
             {
                 ApplicationArea = All;
                 Caption = 'Our P.O. No.';
@@ -35,7 +35,7 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
                 Importance = Additional;
                 ToolTip = 'Specifies original P.O. in our system.';
             }
-            field("Vendor Invoice No."; "Vendor Invoice No.")
+            field("Vendor Invoice No."; Rec."Vendor Invoice No.")
             {
                 ApplicationArea = All;
                 Visible = lPurch;
@@ -46,7 +46,7 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
         }
         addafter("Vendor Cr. Memo No.")
         {
-            field("Authorized By"; "Authorized By")
+            field("Authorized By"; Rec."Authorized By")
             {
                 ApplicationArea = All;
                 Visible = lPurch;
@@ -56,14 +56,14 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
         }
         addafter("Purchaser Code")
         {
-            field("Credit Memo Action"; "Credit Memo Action")
+            field("Credit Memo Action"; Rec."Credit Memo Action")
             {
                 ApplicationArea = All;
                 Visible = lPurch;
                 Importance = Additional;
                 ToolTip = 'Specifies the action to be taken: return, issue credit, repair.';
             }
-            field("Return Reason"; "Return Reason")
+            field("Return Reason"; Rec."Return Reason")
             {
                 ApplicationArea = All;
                 Caption = 'Defective Reason';
@@ -72,7 +72,7 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
                 Importance = Additional;
                 ToolTip = 'Specifies reason for return.';
             }
-            field("Return to Vendor"; "Return to Vendor")
+            field("Return to Vendor"; Rec."Return to Vendor")
             {
                 ApplicationArea = All;
                 Visible = lPurch or lAcct;
@@ -92,50 +92,50 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
 
         addbefore("Pay-to")
         {
-            field("RMA No."; "RMA No.")
+            field("RMA No."; Rec."RMA No.")
             {
                 ApplicationArea = All;
                 Visible = lPurch;
                 ToolTip = 'Specifies Return Authorization from the vendor.';
             }
-            field("Shipping Agent"; "Shipping Agent")
+            field("Shipping Agent"; Rec."Shipping Agent")
             {
                 ApplicationArea = All;
                 Visible = lPurch;
                 ToolTip = 'Specifies Shipping Agent for the return.';
             }
-            field("Shipment Method Code"; "Shipment Method Code")
+            field("Shipment Method Code"; Rec."Shipment Method Code")
             {
                 ApplicationArea = All;
                 Visible = lPurch;
                 ToolTip = 'Specifies Shipping Method for the return.';
             }
-            field("Shipping Charge"; "Shipping Charge")
+            field("Shipping Charge"; Rec."Shipping Charge")
             {
                 ApplicationArea = All;
                 Visible = lPurch;
                 ToolTip = 'Specifies Shipping Charge for the return.';
             }
-            field("Shipping Account"; "Shipping Account")
+            field("Shipping Account"; Rec."Shipping Account")
             {
                 ApplicationArea = All;
                 Visible = lPurch;
                 ToolTip = 'Specifies Shipping Account for the return.';
             }
-            field("Package Tracking No."; "Package Tracking No.")
+            field("Package Tracking No."; Rec."Package Tracking No.")
             {
                 ApplicationArea = All;
                 Visible = lPurch;
                 ToolTip = 'Specifies Tracking No. for the return.';
             }
-            field("Bill of Lading"; "Bill of Lading")
+            field("Bill of Lading"; Rec."Bill of Lading")
             {
                 ApplicationArea = All;
                 Visible = lPurch;
                 Editable = false;
                 ToolTip = 'Specifies BOL No. for the return.';
             }
-            field("Shipment Date"; "Shipment Date")
+            field("Shipment Date"; Rec."Shipment Date")
             {
                 ApplicationArea = All;
                 Visible = lPurch;
@@ -207,8 +207,8 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
 
                     trigger OnAction()
                     begin
-                        CM.SetRange(CM."Document Type", "Document Type"::"Credit Memo");
-                        CM.SetRange(CM."No.", "No.");
+                        CM.SetRange(CM."Document Type", Rec."Document Type"::"Credit Memo");
+                        CM.SetRange(CM."No.", Rec."No.");
                         Report.RunModal(50141, true, false, CM);
                     end;
                 }
@@ -226,8 +226,8 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
 
                     trigger OnAction()
                     begin
-                        CM.SetRange(CM."Document Type", "Document Type"::"Credit Memo");
-                        CM.SetRange(CM."No.", "No.");
+                        CM.SetRange(CM."Document Type", Rec."Document Type"::"Credit Memo");
+                        CM.SetRange(CM."No.", Rec."No.");
                         Report.RunModal(50142, True, false, CM);
                     end;
                 }
@@ -245,8 +245,8 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
 
                     trigger OnAction()
                     begin
-                        CM.SetRange(CM."Document Type", "Document Type"::"Credit Memo");
-                        CM.SetRange(CM."No.", "No.");
+                        CM.SetRange(CM."Document Type", Rec."Document Type"::"Credit Memo");
+                        CM.SetRange(CM."No.", Rec."No.");
                         Report.RunModal(50057, true, false, CM);
                     end;
                 }
@@ -270,23 +270,23 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
                     IF not Confirm('Are you sure you want to Close this Credit Memo', false) then begin
                         Message('Close Credit Memo has been Aborted');
                     end else begin
-                        if "Credit Memo Action" = "Credit Memo Action"::"Issue Full Credit" then begin
+                        if Rec."Credit Memo Action" = Rec."Credit Memo Action"::"Issue Full Credit" then begin
                             Message('This Credit Memo is setup up as "Issue Full Credit" and must be processed by Accounting');
                         end else begin
-                            if "Return to Vendor" then begin
-                                if "Bill of Lading" = 0 then begin
+                            if Rec."Return to Vendor" then begin
+                                if Rec."Bill of Lading" = 0 then begin
                                     Message('This Credit Memo can''t be closed because it is setup as a Return to Vendor and it hasn''t been shipped yet');
                                 end else begin
-                                    "Credit Memo Posted" := true;
-                                    "Completion Date" := Today;
-                                    "Completion USERID" := UserId;
-                                    Modify();
+                                    Rec."Credit Memo Posted" := true;
+                                    Rec."Completion Date" := Today;
+                                    Rec."Completion USERID" := UserId;
+                                    Rec.Modify();
                                 end;
                             end else begin
-                                "Credit Memo Posted" := TRUE;
-                                "Completion Date" := Today;
-                                "Completion USERID" := UserId;
-                                Modify();
+                                Rec."Credit Memo Posted" := TRUE;
+                                Rec."Completion Date" := Today;
+                                Rec."Completion USERID" := UserId;
+                                Rec.Modify();
                             end;
                         end;
                     end;
@@ -417,10 +417,10 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
         if ApplicationAreaMgmtFacade.IsFoundationEnabled then
             LinesInstructionMgt.PurchaseCheckAllLinesHaveQuantityAssigned(Rec);
 
-        SendToPosting(PostingCodeunitID);
+        Rec.SendToPosting(PostingCodeunitID);
 
-        IsScheduledPosting := "Job Queue Status" = "Job Queue Status"::"Scheduled for Posting";
-        DocumentIsPosted := (not PurchaseHeader.Get("Document Type", "No.")) or IsScheduledPosting;
+        IsScheduledPosting := Rec."Job Queue Status" = Rec."Job Queue Status"::"Scheduled for Posting";
+        DocumentIsPosted := (not PurchaseHeader.Get(Rec."Document Type", Rec."No.")) or IsScheduledPosting;
 
         if IsScheduledPosting then
             CurrPage.Close;
@@ -433,7 +433,7 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
             NavigateAfterPost::"Posted Document".AsInteger():
                 begin
                     if IsOfficeAddin then begin
-                        PurchCrMemoHdr.SetRange("Pre-Assigned No.", "No.");
+                        PurchCrMemoHdr.SetRange("Pre-Assigned No.", Rec."No.");
                         if PurchCrMemoHdr.FindFirst then
                             PAGE.Run(PAGE::"Posted Purchase Credit Memo", PurchCrMemoHdr);
                     end else
@@ -457,7 +457,7 @@ pageextension 62039 PurchCreditMemoExt extends "Purchase Credit Memo"
         PurchCrMemoHdr: Record "Purch. Cr. Memo Hdr.";
         InstructionMgt: Codeunit "Instruction Mgt.";
     begin
-        PurchCrMemoHdr.SetRange("Pre-Assigned No.", "No.");
+        PurchCrMemoHdr.SetRange("Pre-Assigned No.", Rec."No.");
         if PurchCrMemoHdr.FindFirst then
             if InstructionMgt.ShowConfirm(StrSubstNo(OpenPostedPurchCrMemoQst, PurchCrMemoHdr."No."),
                  InstructionMgt.ShowPostedConfirmationMessageCode)

@@ -20,23 +20,23 @@ page 50143 "IDR Header"
                     group(Control1220060030)
                     {
                         ShowCaption = false;
-                        field("No."; "No.")
+                        field("No."; Rec."No.")
                         {
                             ApplicationArea = All;
                             Caption = 'IDR No.';
                             Editable = false;
                         }
-                        field("Document Type"; "Document Type")
+                        field("Document Type"; Rec."Document Type")
                         {
                             ApplicationArea = All;
                             Caption = 'Type';
                         }
-                        field("Inspector Code"; "Inspector Code")
+                        field("Inspector Code"; Rec."Inspector Code")
                         {
                             ApplicationArea = All;
                             Caption = 'Inspector';
                         }
-                        field("Document Date"; "Document Date")
+                        field("Document Date"; Rec."Document Date")
                         {
                             ApplicationArea = All;
                             Caption = 'Date';
@@ -50,23 +50,23 @@ page 50143 "IDR Header"
                 group(Receiving)
                 {
                     Caption = 'Receiving';
-                    field("Purchase Order No."; "Purchase Order No.")
+                    field("Purchase Order No."; Rec."Purchase Order No.")
                     {
                         ApplicationArea = All;
                         Editable = PurchaseOrderNoEditable;
                     }
-                    field("Invoice No."; "Invoice No.")
+                    field("Invoice No."; Rec."Invoice No.")
                     {
                         ApplicationArea = All;
                         Caption = 'Packing List/Invoice No.';
                         Editable = InvoiceNoEditable;
                     }
-                    field("Vendor No."; "Vendor No.")
+                    field("Vendor No."; Rec."Vendor No.")
                     {
                         ApplicationArea = All;
                         Editable = VendorNoEditable;
                     }
-                    field("Vendor Name"; "Vendor Name")
+                    field("Vendor Name"; Rec."Vendor Name")
                     {
                         ApplicationArea = All;
                         Editable = VendorNameEditable;
@@ -75,22 +75,22 @@ page 50143 "IDR Header"
                 group("Production / Test")
                 {
                     Caption = 'Production / Test';
-                    field("Order No."; "Order No.")
+                    field("Order No."; Rec."Order No.")
                     {
                         ApplicationArea = All;
                         Editable = OrderNoEditable;
                     }
-                    field("Model No."; "Model No.")
+                    field("Model No."; Rec."Model No.")
                     {
                         ApplicationArea = All;
                         Editable = ModelNoEditable;
                     }
-                    field("Serial No."; "Serial No.")
+                    field("Serial No."; Rec."Serial No.")
                     {
                         ApplicationArea = All;
                         Editable = SerialNoEditable;
                     }
-                    field("Process Code"; "Process Code")
+                    field("Process Code"; Rec."Process Code")
                     {
                         ApplicationArea = All;
                         Editable = ProcessCodeEditable;
@@ -103,28 +103,28 @@ page 50143 "IDR Header"
                 group("Disposition:")
                 {
                     Caption = 'Disposition:';
-                    field("Return to Vendor"; "Return to Vendor")
+                    field("Return to Vendor"; Rec."Return to Vendor")
                     {
                         ApplicationArea = All;
                     }
-                    field("RMA No."; "RMA No.")
+                    field("RMA No."; Rec."RMA No.")
                     {
                         ApplicationArea = All;
                     }
-                    field(Scrap; Scrap)
+                    field(Scrap; Rec.Scrap)
                     {
                         ApplicationArea = All;
                     }
-                    field("Scrap Cost"; "Scrap Cost")
+                    field("Scrap Cost"; Rec."Scrap Cost")
                     {
                         ApplicationArea = All;
                         Caption = 'Cost';
                     }
-                    field(Restock; Restock)
+                    field(Restock; Rec.Restock)
                     {
                         ApplicationArea = All;
                     }
-                    field("Rework/Repair"; "Rework/Repair")
+                    field("Rework/Repair"; Rec."Rework/Repair")
                     {
                         ApplicationArea = All;
                     }
@@ -132,19 +132,19 @@ page 50143 "IDR Header"
                 group("QA Close Out Approval:")
                 {
                     Caption = 'QA Close Out Approval:';
-                    field("Rework Operator"; "Rework Operator")
+                    field("Rework Operator"; Rec."Rework Operator")
                     {
                         ApplicationArea = All;
                     }
-                    field("Rework Date"; "Rework Date")
+                    field("Rework Date"; Rec."Rework Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("ReTest Operator"; "ReTest Operator")
+                    field("ReTest Operator"; Rec."ReTest Operator")
                     {
                         ApplicationArea = All;
                     }
-                    field("ReTest Date"; "ReTest Date")
+                    field("ReTest Date"; Rec."ReTest Date")
                     {
                         ApplicationArea = All;
                     }
@@ -156,13 +156,13 @@ page 50143 "IDR Header"
                 group("Rework / Retest Information:")
                 {
                     Caption = 'Rework / Retest Information:';
-                    field("QA Approval"; "QA Approval")
+                    field("QA Approval"; Rec."QA Approval")
                     {
                         ApplicationArea = All;
                         Caption = 'Quality Assurance';
                         Editable = false;
                     }
-                    field("Completion Date"; "Completion Date")
+                    field("Completion Date"; Rec."Completion Date")
                     {
                         ApplicationArea = All;
                         Editable = false;
@@ -171,11 +171,11 @@ page 50143 "IDR Header"
                 group("Kit Information:")
                 {
                     Caption = 'Kit Information:';
-                    field("Kit Part No."; "Kit Part No.")
+                    field("Kit Part No."; Rec."Kit Part No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Kit Vendor No."; "Kit Vendor No.")
+                    field("Kit Vendor No."; Rec."Kit Vendor No.")
                     {
                         ApplicationArea = All;
                     }
@@ -203,7 +203,7 @@ page 50143 "IDR Header"
 
                 trigger OnAction()
                 begin
-                    IDR.SetRange(IDR."No.", "No.");
+                    IDR.SetRange(IDR."No.", Rec."No.");
                     REPORT.RunModal(50143, true, false, IDR);
                 end;
             }
@@ -220,10 +220,10 @@ page 50143 "IDR Header"
                     if not Confirm('Are you sure you want to Close this IDR', false) then begin
                         Message('Close IDR has been Aborted');
                     end else begin
-                        "IDR Closed" := true;
-                        "Completion Date" := Today;
-                        "QA Approval" := UserId;
-                        Modify;
+                        Rec."IDR Closed" := true;
+                        Rec."Completion Date" := Today;
+                        Rec."QA Approval" := UserId;
+                        Rec.Modify;
                     end;
                 end;
             }
@@ -233,7 +233,7 @@ page 50143 "IDR Header"
     trigger OnAfterGetRecord()
     begin
         // Type Determines which fields are edible
-        if "Document Type" = "Document Type"::" " then begin
+        if Rec."Document Type" = Rec."Document Type"::" " then begin
             PurchaseOrderNoEditable := false;
             InvoiceNoEditable := false;
             VendorNoEditable := false;
@@ -244,7 +244,7 @@ page 50143 "IDR Header"
             ProcessCodeEditable := false;
         end;
 
-        if "Document Type" = "Document Type"::Receiving then begin
+        if Rec."Document Type" = Rec."Document Type"::Receiving then begin
             PurchaseOrderNoEditable := true;
             InvoiceNoEditable := true;
             VendorNoEditable := true;
@@ -255,7 +255,7 @@ page 50143 "IDR Header"
             ProcessCodeEditable := false;
         end;
 
-        if "Document Type" = "Document Type"::Production then begin
+        if Rec."Document Type" = Rec."Document Type"::Production then begin
             PurchaseOrderNoEditable := false;
             InvoiceNoEditable := false;
             VendorNoEditable := false;
@@ -266,7 +266,7 @@ page 50143 "IDR Header"
             ProcessCodeEditable := true;
         end;
 
-        if "IDR Closed" then
+        if Rec."IDR Closed" then
             CurrPage.Editable(false)
         else
             CurrPage.Editable(true);

@@ -9,12 +9,12 @@ pageextension 62040 ItemLedgerEntriesExt extends "Item Ledger Entries"
         }
         addafter("Lot No.")
         {
-            field("Source Type"; "Source Type")
+            field("Source Type"; Rec."Source Type")
             {
                 ApplicationArea = All;
                 Visible = false;
             }
-            field("Source No."; "Source No.")
+            field("Source No."; Rec."Source No.")
             {
                 ApplicationArea = All;
                 Visible = true;

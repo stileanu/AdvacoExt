@@ -16,17 +16,17 @@ page 50152 "Field Service Parts"
                     group(Control1220060006)
                     {
                         ShowCaption = false;
-                        field("Field Service No."; "Field Service No.")
+                        field("Field Service No."; Rec."Field Service No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
                         }
-                        field(Customer; Customer)
+                        field(Customer; Rec.Customer)
                         {
                             ApplicationArea = All;
                             Editable = false;
                         }
-                        field("Date Ordered"; "Date Ordered")
+                        field("Date Ordered"; Rec."Date Ordered")
                         {
                             ApplicationArea = All;
                             Caption = 'Order Date';
@@ -60,7 +60,7 @@ page 50152 "Field Service Parts"
                 begin
                     // CurrForm.Partslines.FORM.PartsAllocation
 
-                    Parts.SetRange(Parts."Work Order No.", "Field Service No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Field Service No.");
                     PAGE.RunModal(PAGE::"Parts Allocation", Parts);
                 end;
             }
@@ -76,7 +76,7 @@ page 50152 "Field Service Parts"
                 trigger OnAction()
                 begin
                     Parts.SetCurrentKey("Work Order No.", "Part Type", "Part No.");
-                    Parts.SetRange(Parts."Work Order No.", "Field Service No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Field Service No.");
                     if Parts.Find('-') then begin
                         repeat
                             Parts.CalcFields(Parts."In-Process Quantity");
@@ -110,6 +110,7 @@ page 50152 "Field Service Parts"
     end;
 
     var
+        WOD: Record WorkOrderDetail;
         WOS: Record Status;
         Parts: Record Parts;
         WOP: Record Parts;
@@ -139,16 +140,17 @@ page 50152 "Field Service Parts"
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
                 ItemJournalLine."Entry Type" := ItemLedgEntryType::"Negative Adjmt."; ///--! Negative Adjustment
-                ItemJournalLine."Document No." := "Field Service No.";
+                ItemJournalLine."Document No." := Rec."Field Service No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
                 ItemJournalLine."Posting Date" := WorkDate;
-                ItemJournalLine.Description := "Field Service No." + ' ' + 'UNREPAIRABLE REMOVE';
+                ItemJournalLine.Description := Rec."Field Service No." + ' ' + 'UNREPAIRABLE REMOVE';
                 ItemJournalLine."Location Code" := 'MAIN';
                 ItemJournalLine.Quantity := RemoveInventoryQty;
                 ItemJournalLine.Validate(ItemJournalLine.Quantity);
 
                 if SerialNo <> '' then begin
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;
@@ -178,11 +180,11 @@ page 50152 "Field Service Parts"
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
                 ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
-                ItemJournalLine."Document No." := "Field Service No.";
+                ItemJournalLine."Document No." := Rec."Field Service No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
                 ItemJournalLine."Posting Date" := WorkDate;
-                ItemJournalLine.Description := "Field Service No." + ' ' + 'UNREPAIRABLE RETURN';
+                ItemJournalLine.Description := Rec."Field Service No." + ' ' + 'UNREPAIRABLE RETURN';
                 ItemJournalLine."Location Code" := 'IN PROCESS';
 
                 ItemJournalLine.Quantity := ReturnInventoryQty;
@@ -191,6 +193,7 @@ page 50152 "Field Service Parts"
                 ItemJournalLine.Validate(ItemJournalLine."New Location Code");
 
                 if SerialNo <> '' then begin
+
                     ItemJournalLine."Serial No." := SerialNo;
                     ItemJournalLine."New Serial No." := SerialNo;
                 end;

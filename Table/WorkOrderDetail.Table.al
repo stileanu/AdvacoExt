@@ -1985,6 +1985,7 @@ table 50001 WorkOrderDetail
             ItemJournalLine.VALIDATE(ItemJournalLine."New Location Code");
 
             IF SerialNo <> '' THEN BEGIN
+                WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
                 ItemJournalLine."Serial No." := SerialNo;
                 ItemJournalLine."New Serial No." := SerialNo;
                 SerialNo := '';
@@ -2260,6 +2261,7 @@ table 50001 WorkOrderDetail
     end;
 
     var
+        WOD: Record WorkOrderDetail;
         Window: Dialog;
         WorkOrderDetail: Record WorkOrderDetail;
         WorkOrderMaster: Record WorkOrderMaster;

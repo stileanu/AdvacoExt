@@ -16,50 +16,50 @@ page 50153 "Field Service Parts List"
         {
             repeater(Group)
             {
-                field("Part Type"; "Part Type")
+                field("Part Type"; Rec."Part Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Part No."; "Part No.")
+                field("Part No."; Rec."Part No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field("Quoted Quantity"; "Quoted Quantity")
+                field("Quoted Quantity"; Rec."Quoted Quantity")
                 {
                     ApplicationArea = All;
                     Caption = 'Total Qty';
                 }
-                field("Pulled Quantity"; "Pulled Quantity")
+                field("Pulled Quantity"; Rec."Pulled Quantity")
                 {
                     ApplicationArea = All;
                     Caption = 'Pulled Qty';
                 }
-                field("Serial No."; "Serial No.")
+                field("Serial No."; Rec."Serial No.")
                 {
                     ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
-                        SelectItemEntry(FIELDNO("Serial No."));
+                        SelectItemEntry(Rec.FIELDNO("Serial No."));
                     end;
                 }
-                field("Quantity Backorder"; "Quantity Backorder")
+                field("Quantity Backorder"; Rec."Quantity Backorder")
                 {
                     ApplicationArea = All;
                     Caption = 'BO Qty';
                     Editable = false;
                 }
-                field("In-Process Quantity"; "In-Process Quantity")
+                field("In-Process Quantity"; Rec."In-Process Quantity")
                 {
                     ApplicationArea = All;
                     Caption = 'I/P Qty';
                     Editable = false;
                 }
-                field("Purchase Order No."; "Purchase Order No.")
+                field("Purchase Order No."; Rec."Purchase Order No.")
                 {
                     ApplicationArea = All;
                 }
@@ -77,9 +77,9 @@ page 50153 "Field Service Parts List"
 
     procedure SelectItemEntry(CurrentFieldNo: Integer)
     begin
-        TESTFIELD("Part Type", "Part Type"::Item);
+        Rec.TESTFIELD("Part Type", Rec."Part Type"::Item);
         ILE.SETCURRENTKEY("Item No.", "Variant Code", Open, Positive, "Location Code", "Posting Date");
-        ILE.SETRANGE("Item No.", "Part No.");
+        ILE.SETRANGE("Item No.", Rec."Part No.");
         ILE.SETRANGE(Open, TRUE);
         ILE.SETRANGE(Positive, TRUE);
         IF PAGE.RUNMODAL(PAGE::"Item Ledger Entries", ILE) = ACTION::LookupOK THEN BEGIN
@@ -100,7 +100,7 @@ page 50153 "Field Service Parts List"
 
     procedure DeletePart2()
     begin
-        IF "Quoted Quantity" > 0 THEN
+        IF Rec."Quoted Quantity" > 0 THEN
             ERROR('Quoted Quantity Must Be Zero to Delete');
 
         Rec.DeletePart;

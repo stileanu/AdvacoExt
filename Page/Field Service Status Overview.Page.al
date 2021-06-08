@@ -12,17 +12,17 @@ page 50154 "Field Service Status Overview"
                 group(Control1220060004)
                 {
                     ShowCaption = false;
-                    field("Field Service No."; "Field Service No.")
+                    field("Field Service No."; Rec."Field Service No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Service Type"; "Service Type")
+                    field("Service Type"; Rec."Service Type")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field(Description; Description)
+                    field(Description; Rec.Description)
                     {
                         ApplicationArea = All;
                         Editable = false;
@@ -31,7 +31,7 @@ page 50154 "Field Service Status Overview"
                 group(Control1220060008)
                 {
                     ShowCaption = false;
-                    field(Customer; Customer)
+                    field(Customer; Rec.Customer)
                     {
                         ApplicationArea = All;
                         Editable = false;

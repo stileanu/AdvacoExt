@@ -5,7 +5,7 @@ pageextension 62035 PurchOrderSubpage extends "Purchase Order Subform"
     {
         addafter("No.")
         {
-            field("Description 2"; "Description 2")
+            field("Description 2"; Rec."Description 2")
             {
                 ApplicationArea = All;
                 Visible = true;
@@ -15,13 +15,13 @@ pageextension 62035 PurchOrderSubpage extends "Purchase Order Subform"
         addafter("Line Amount")
         {
 
-            field("Work Order No."; "Work Order No.")
+            field("Work Order No."; Rec."Work Order No.")
             {
                 Caption = 'SO / WO#';
                 ApplicationArea = all;
             }
             //ICE RSK 1/30/21 added
-            field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
+            field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
             {
                 ApplicationArea = all;
             }

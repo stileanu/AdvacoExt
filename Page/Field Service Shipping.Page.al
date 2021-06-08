@@ -15,47 +15,47 @@ page 50156 "Field Service Shipping"
                 group(Control1220060024)
                 {
                     ShowCaption = false;
-                    field("Field Service No."; "Field Service No.")
+                    field("Field Service No."; Rec."Field Service No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field(Customer; Customer)
+                    field(Customer; Rec.Customer)
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship To Code"; "Ship To Code")
+                    field("Ship To Code"; Rec."Ship To Code")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship To Name"; "Ship To Name")
+                    field("Ship To Name"; Rec."Ship To Name")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship To Address 1"; "Ship To Address 1")
+                    field("Ship To Address 1"; Rec."Ship To Address 1")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship To Address 2"; "Ship To Address 2")
+                    field("Ship To Address 2"; Rec."Ship To Address 2")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship To City"; "Ship To City")
+                    field("Ship To City"; Rec."Ship To City")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship To State"; "Ship To State")
+                    field("Ship To State"; Rec."Ship To State")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Ship To Zip Code"; "Ship To Zip Code")
+                    field("Ship To Zip Code"; Rec."Ship To Zip Code")
                     {
                         ApplicationArea = All;
                         Editable = false;
@@ -95,19 +95,19 @@ page 50156 "Field Service Shipping"
                         ApplicationArea = All;
                         Caption = 'Label Quantity';
                     }
-                    field(Carrier; Carrier)
+                    field(Carrier; Rec.Carrier)
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Method"; "Shipping Method")
+                    field("Shipping Method"; Rec."Shipping Method")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Account"; "Shipping Account")
+                    field("Shipping Account"; Rec."Shipping Account")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Charge"; "Shipping Charge")
+                    field("Shipping Charge"; Rec."Shipping Charge")
                     {
                         ApplicationArea = All;
                     }
@@ -156,17 +156,17 @@ page 50156 "Field Service Shipping"
                     if ContainerType.AsInteger() = 0 then
                         Error('Container Type must be Entered');
 
-                    if Carrier = '' then
+                    if Rec.Carrier = '' then
                         Error('Shipping Agent Code must be Entered');
 
-                    if "Shipping Method" = '' then
+                    if Rec."Shipping Method" = '' then
                         Error('Shipment Method Code must be Entered');
 
-                    if "Shipping Charge" = "Shipping Charge"::" " then
+                    if Rec."Shipping Charge" = Rec."Shipping Charge"::" " then
                         Error('Shipping Charge must be Entered');
 
                     Parts.SetCurrentKey(Parts."Work Order No.", Parts."Part No.");
-                    Parts.SetRange(Parts."Work Order No.", "Field Service No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Field Service No.");
                     Parts.SetFilter(Parts."Qty. to Ship", '<>%1', 0);
                     if Parts.Find('-') then
                         ok := true
@@ -182,7 +182,7 @@ page 50156 "Field Service Shipping"
                     // Create Parts Shipment Record to Print BOL and for Future Reference
                     Parts.Reset;
                     Parts.SetCurrentKey(Parts."Work Order No.", Parts."Part No.");
-                    Parts.SetRange(Parts."Work Order No.", "Field Service No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Field Service No.");
                     if Parts.Find('-') then begin
                         repeat
                             if Parts."Qty. to Ship" > 0 then begin
@@ -202,13 +202,13 @@ page 50156 "Field Service Shipping"
                     // Update Parts table Qty to Ship to Qty Shipped & zero out Qty to Ship
                     Parts.Reset;
                     Parts.SetCurrentKey(Parts."Work Order No.", Parts."Part No.");
-                    Parts.SetRange(Parts."Work Order No.", "Field Service No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Field Service No.");
                     Parts.SetFilter(Parts."Qty. to Ship", '<>%1', 0);
                     if Parts.Find('-') then begin
                         repeat
                             Parts2.Reset;
                             Parts2.SetCurrentKey(Parts2."Work Order No.", Parts2."Part No.");
-                            Parts2.SetRange(Parts2."Work Order No.", "Field Service No.");
+                            Parts2.SetRange(Parts2."Work Order No.", Rec."Field Service No.");
                             Parts2.SetRange(Parts2."Part No.", Parts."Part No.");
                             if Parts2.Find('-') then begin
                                 Parts2."Qty. Shipped" := Parts2."Qty. Shipped" + Parts2."Qty. to Ship";
@@ -220,7 +220,7 @@ page 50156 "Field Service Shipping"
 
                     // Insert Shipping Step
                     WOS.SetCurrentKey(WOS."Order No.", WOS."Line No.");
-                    WOS.SetRange(WOS."Order No.", "Field Service No.");
+                    WOS.SetRange(WOS."Order No.", Rec."Field Service No.");
                     if WOS.Find('+') then begin
                         WOS2.Init;
                         WOS2."Order No." := WOS."Order No.";
@@ -238,29 +238,29 @@ page 50156 "Field Service Shipping"
                     // Create Bill of Lading Record
                     BOL2.Init;
                     BOL2."Bill of Lading" := BLInteger;
-                    BOL2."Order No." := "Field Service No.";
-                    BOL2.Customer := Customer;
-                    BOL2."Ship To Name" := "Ship To Name";
-                    BOL2."Ship To Address" := "Ship To Address 1";
-                    BOL2."Ship To Address2" := "Ship To Address 2";
-                    BOL2."Ship To City" := "Ship To City";
-                    BOL2."Ship To State" := "Ship To State";
-                    BOL2."Ship To Zip Code" := "Ship To Zip Code";
-                    BOL2.Attention := Attention;
-                    BOL2."Phone No." := "Phone No.";
+                    BOL2."Order No." := Rec."Field Service No.";
+                    BOL2.Customer := Rec.Customer;
+                    BOL2."Ship To Name" := Rec."Ship To Name";
+                    BOL2."Ship To Address" := Rec."Ship To Address 1";
+                    BOL2."Ship To Address2" := Rec."Ship To Address 2";
+                    BOL2."Ship To City" := Rec."Ship To City";
+                    BOL2."Ship To State" := Rec."Ship To State";
+                    BOL2."Ship To Zip Code" := Rec."Ship To Zip Code";
+                    BOL2.Attention := Rec.Attention;
+                    BOL2."Phone No." := Rec."Phone No.";
                     BOL2."Shipping Weight" := ShipmentWeight;
                     BOL2."Container Quantity" := ContainerQty;
                     BOL2."Container Type" := ContainerType;
                     BOL2.Employee := Shipper;
                     BOL2."Shipment Date" := Today;
-                    BOL2.Carrier := Carrier;
-                    BOL2."Shipping Method" := "Shipping Method";
-                    BOL2."Shipping Charge" := "Shipping Charge";
-                    BOL2."Shipping Account" := "Shipping Account";
+                    BOL2.Carrier := Rec.Carrier;
+                    BOL2."Shipping Method" := Rec."Shipping Method";
+                    BOL2."Shipping Charge" := Rec."Shipping Charge";
+                    BOL2."Shipping Account" := Rec."Shipping Account";
                     BOL2."Label Quantity" := LabelsToPrint;
                     BOL2.Insert;
 
-                    Modify;
+                    Rec.Modify;
                     Commit;
 
                     if not Confirm('Is Bill of Lading and Labels loaded in Printers?', false) then begin

@@ -169,14 +169,14 @@ page 50021 "Back Order"
     trigger OnAfterGetRecord()
     begin
 
-        MasterNo := COPYSTR("Order No.", 1, 5) + '00';
+        MasterNo := COPYSTR(Rec."Order No.", 1, 5) + '00';
         IF WOM.GET(MasterNo) THEN
             OK := TRUE;
 
-        WOD.GET("Order No.");
+        WOD.GET(Rec."Order No.");
         OLDWOD := WOD;
 
-        IF WOI.GET(WOM.Customer, WOM."Ship To Code", Step) THEN
+        IF WOI.GET(WOM.Customer, WOM."Ship To Code", Rec.Step) THEN
             Instructions := WOI.Instruction
         ELSE
             Instructions := '';

@@ -5,13 +5,13 @@ pageextension 62033 SalesInvoiceExt extends "Sales Invoice"
         // Add changes to page layout here
         addafter("Salesperson Code")
         {
-            field(Rep; Rep)
+            field(Rep; Rec.Rep)
             {
                 ApplicationArea = All;
                 Importance = Additional;
                 ToolTip = 'Specifies the name of the Representative who is assigned to the customer.';
             }
-            field("Bill of Lading"; "Bill of Lading")
+            field("Bill of Lading"; Rec."Bill of Lading")
             {
                 ApplicationArea = All;
                 Importance = Additional;
@@ -36,18 +36,18 @@ pageextension 62033 SalesInvoiceExt extends "Sales Invoice"
             group(CCard)
             {
                 ShowCaption = false;
-                Visible = ("Payment Method Code" = 'CC');
+                Visible = (Rec."Payment Method Code" = 'CC');
 
-                field("Card Type"; "Card Type")
+                field("Card Type"; Rec."Card Type")
                 {
                     ApplicationArea = All;
 
                 }
-                field("Credit Card No."; "Credit Card No.")
+                field("Credit Card No."; Rec."Credit Card No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Credit Card Exp."; "Credit Card Exp.")
+                field("Credit Card Exp."; Rec."Credit Card Exp.")
                 {
                     ApplicationArea = All;
                 }
@@ -63,7 +63,7 @@ pageextension 62033 SalesInvoiceExt extends "Sales Invoice"
         }
         addafter("Shortcut Dimension 2 Code")
         {
-            field(YourReference1; "Your Reference")
+            field(YourReference1; Rec."Your Reference")
             {
                 Caption = 'Customer P.O. Number';
                 ApplicationArea = All;

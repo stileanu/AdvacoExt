@@ -57,7 +57,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         }
         addbefore("Salesperson Code")
         {
-            field(Rep; Rep)
+            field(Rep; Rec.Rep)
             {
                 ApplicationArea = All;
                 Caption = 'Sales Rep';
@@ -76,36 +76,36 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                     Editable = false;
                     Caption = 'Ship-To Address';
 
-                    field("ShipNo."; "No.")
+                    field("ShipNo."; Rec."No.")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Specifies the number of the involved entry or record, according to the specified number series.';
 
                         trigger OnAssistEdit()
                         begin
-                            if AssistEdit(xRec) then
+                            if Rec.AssistEdit(xRec) then
                                 CurrPage.Update;
                         end;
                     }
-                    field(ShipToName; "Ship-to Name")
+                    field(ShipToName; Rec."Ship-to Name")
                     {
                         ApplicationArea = All;
                         Caption = 'Name';
                         ToolTip = 'Specifies the name that products on the sales document will be shipped to.';
                     }
-                    field(ShipShipToAddr; "Ship-to Address")
+                    field(ShipShipToAddr; Rec."Ship-to Address")
                     {
                         ApplicationArea = All;
                         Caption = 'Address';
                         ToolTip = 'Specifies the address that products on the sales document will be shipped to.';
                     }
-                    field(ShipShipToAddr2; "Ship-to Address 2")
+                    field(ShipShipToAddr2; Rec."Ship-to Address 2")
                     {
                         ApplicationArea = All;
                         Caption = 'Address 2';
                         ToolTip = 'Specifies additional address information.';
                     }
-                    field(ShipShipToCity; "Ship-to City")
+                    field(ShipShipToCity; Rec."Ship-to City")
                     {
                         ApplicationArea = All;
                         Caption = 'City';
@@ -114,20 +114,20 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                     group(CntyControl297)
                     {
                         ShowCaption = false;
-                        field(ShipShipToCounty; "Ship-to County")
+                        field(ShipShipToCounty; Rec."Ship-to County")
                         {
                             ApplicationArea = All;
                             Caption = 'County';
                             ToolTip = 'Specifies the state, province or county of the address.';
                         }
                     }
-                    field(ShipShipToPostCode; "Ship-to Post Code")
+                    field(ShipShipToPostCode; Rec."Ship-to Post Code")
                     {
                         ApplicationArea = All;
                         Caption = 'Post Code';
                         ToolTip = 'Specifies the postal code.';
                     }
-                    field(ShipShpToCnty_RegCode; "Ship-to Country/Region Code")
+                    field(ShipShpToCnty_RegCode; Rec."Ship-to Country/Region Code")
                     {
                         ApplicationArea = All;
                         Caption = 'Country/Region';
@@ -137,28 +137,28 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         var
                             FormatAddress: Codeunit "Format Address";
                         begin
-                            FormatAddress.UseCounty("Ship-to Country/Region Code");
+                            FormatAddress.UseCounty(Rec."Ship-to Country/Region Code");
                         end;
                     }
-                    field(ShipShpToUPSZone; "Ship-to UPS Zone")
+                    field(ShipShpToUPSZone; Rec."Ship-to UPS Zone")
                     {
                         ApplicationArea = All;
                         Caption = 'UPS Zone';
                         ToolTip = 'Specifies a UPS Zone code for this document if UPS is used for shipments.';
                     }
-                    field(ShipToContact; "Ship-to Contact")
+                    field(ShipToContact; Rec."Ship-to Contact")
                     {
                         ApplicationArea = All;
                         Caption = 'Contact';
                         ToolTip = 'Specifies the name of the contact person at the address that products on the sales document will be shipped to.';
                     }
-                    field("Phone No."; "Phone No.")
+                    field("Phone No."; Rec."Phone No.")
                     {
                         ApplicationArea = All;
                         Caption = 'Phone No.';
                         ToolTip = 'Specifies the phone no. of the contact person at the address that products on the sales document will be shipped to.';
                     }
-                    field("Customer Order No."; "Customer Order No.")
+                    field("Customer Order No."; Rec."Customer Order No.")
                     {
                         ApplicationArea = All;
                         Caption = 'Customer P.O. Number';
@@ -212,48 +212,48 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                 group(ShipmentMethod)
                 {
                     Caption = 'Shipment Method';
-                    field(ShipmentMethodCode; "Shipment Method Code")
+                    field(ShipmentMethodCode; Rec."Shipment Method Code")
                     {
                         ApplicationArea = All;
                         Caption = 'Code';
                         ToolTip = 'Specifies how items on the sales document are shipped to the customer.';
                     }
-                    field(ShippingAgentCode; "Shipping Agent Code")
+                    field(ShippingAgentCode; Rec."Shipping Agent Code")
                     {
                         ApplicationArea = All;
                         Caption = 'Agent';
                         ToolTip = 'Specifies which shipping agent is used to transport the items on the sales document to the customer.';
                     }
-                    field(ShippingAgentServiceCode; "Shipping Agent Service Code")
+                    field(ShippingAgentServiceCode; Rec."Shipping Agent Service Code")
                     {
                         ApplicationArea = All;
                         Caption = 'Agent Service';
                         ToolTip = 'Specifies the code that represents the default shipping agent service you are using for this sales order.';
                     }
-                    field(ShippingAccount; "Shipping Account")
+                    field(ShippingAccount; Rec."Shipping Account")
                     {
                         ApplicationArea = All;
                         Caption = 'Shipping Account';
                     }
-                    field(ShippingCharge; "Shipping Charge")
+                    field(ShippingCharge; Rec."Shipping Charge")
                     {
                         Caption = 'Shipping Charge';
                         ApplicationArea = All;
                         ToolTip = 'Specifies type of shipping charge.';
 
                     }
-                    field(PackageTrackingNo; "Package Tracking No.")
+                    field(PackageTrackingNo; Rec."Package Tracking No.")
                     {
                         ApplicationArea = All;
                         Caption = 'Package Tracking No.';
                         ToolTip = 'Specifies the shipping agent''s package number.';
                     }
-                    field("Bill of Lading"; "Bill of Lading")
+                    field("Bill of Lading"; Rec."Bill of Lading")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field(ShipStatus; Status)
+                    field(ShipStatus; Rec.Status)
                     {
                         ApplicationArea = Suite;
                         Importance = Additional;
@@ -266,12 +266,12 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         }
         addafter("Tax Area Code")
         {
-            field("Tax Exemption No."; "Tax Exemption No.")
+            field("Tax Exemption No."; Rec."Tax Exemption No.")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies Tax Exemption Certificat No.';
             }
-            field("Exempt Organization"; "Exempt Organization")
+            field("Exempt Organization"; Rec."Exempt Organization")
             {
                 Caption = 'Exempt Organization No.';
                 ApplicationArea = All;
@@ -280,12 +280,12 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         }
         addbefore("Package Tracking No.")
         {
-            field("Shipping Charge"; "Shipping Charge")
+            field("Shipping Charge"; Rec."Shipping Charge")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies type of shipping charge.';
             }
-            field("Shipping Account"; "Shipping Account")
+            field("Shipping Account"; Rec."Shipping Account")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies shipping account for current shipping.';
@@ -293,12 +293,12 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         }
         addafter("Package Tracking No.")
         {
-            field("Work Order No."; "Work Order No.")
+            field("Work Order No."; Rec."Work Order No.")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies which Work Order is linked to this Sales Order.';
             }
-            field(BillOfLading; "Bill of Lading")
+            field(BillOfLading; Rec."Bill of Lading")
             {
                 ApplicationArea = All;
                 ToolTip = 'Bill of Lading No. for current shipment.';
@@ -307,19 +307,19 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         }
         addbefore("Shipment Date")
         {
-            field("Shipment Request Date"; "Shipment Request Date")
+            field("Shipment Request Date"; Rec."Shipment Request Date")
             {
                 Caption = 'Date Required';
                 ApplicationArea = All;
                 ToolTip = 'Specifies the date when shipment is requested.';
             }
-            field(YourReference; "Your Reference")
+            field(YourReference; Rec."Your Reference")
             {
                 Caption = 'Customer P.O. Number';
                 ApplicationArea = All;
                 ToolTip = 'Specifies the customer''s reference. The content will be printed on sales documents.';
             }
-            field(CustomerOrderNo; "Customer Order No.")
+            field(CustomerOrderNo; Rec."Customer Order No.")
             {
                 Caption = 'Customer Order No.';
                 ApplicationArea = All;
@@ -329,7 +329,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         }
         Addafter("Shipment Date")
         {
-            field("Advaco Shipping Advice"; "Advaco Shipping Advice")
+            field("Advaco Shipping Advice"; Rec."Advaco Shipping Advice")
             {
                 Caption = 'Advaco Shipping Advice';
                 ApplicationArea = All;
@@ -347,7 +347,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                 {
                     ShowCaption = false;
 
-                    field(PaymentTermsCode; "Payment Terms Code")
+                    field(PaymentTermsCode; Rec."Payment Terms Code")
                     {
                         Caption = 'Payment Terms Code';
                         ApplicationArea = All;
@@ -358,10 +358,10 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         var
                             GLSetup: Record "General Ledger Setup";
                         begin
-                            if "Payment Terms Code" = 'CC' then begin
+                            if Rec."Payment Terms Code" = 'CC' then begin
                                 GLSetup.Get;
                                 if lAccGroup then
-                                    if GLSetup."Credit Card Payment Code" = "Payment Terms Code" then begin
+                                    if GLSetup."Credit Card Payment Code" = Rec."Payment Terms Code" then begin
                                         if not CCFeeCode.IsCCFee(Rec) then
                                             CCFeeInsertVisible := true;
                                     end;
@@ -369,29 +369,29 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                                 CCFeeInsertVisible := false;
                         end;
                     }
-                    field("Card Type"; "Card Type")
+                    field("Card Type"; Rec."Card Type")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Specifies type of Credit Card: AMEX,MC,Discover,VISA.';
                     }
-                    field("Credit Card No."; "Credit Card No.")
+                    field("Credit Card No."; Rec."Credit Card No.")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Specifies Credit Card Acct. No.';
                     }
-                    field("Credit Card Exp."; "Credit Card Exp.")
+                    field("Credit Card Exp."; Rec."Credit Card Exp.")
                     {
                         Caption = 'Credit Card Exp. Date';
                         ApplicationArea = All;
                         ToolTip = 'Specifies Card expiration date.';
                     }
-                    field("Credit Card SC"; "Credit Card SC")
+                    field("Credit Card SC"; Rec."Credit Card SC")
                     {
                         Caption = 'Credit Card Security Code';
                         ApplicationArea = All;
                         ToolTip = 'Specifies Credit Card security code.';
                     }
-                    field("Approval Code"; "Approval Code")
+                    field("Approval Code"; Rec."Approval Code")
                     {
                         Caption = 'Approval Code';
                         Visible = lAccGroup;
@@ -403,28 +403,28 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                 {
                     ShowCaption = false;
 
-                    field("Name on Card"; "Name on Card")
+                    field("Name on Card"; Rec."Name on Card")
                     {
                         ApplicationArea = All;
                         ToolTip = 'Specifies Name on card.';
                     }
-                    field(BillToAddress1; "Bill-to Address")
+                    field(BillToAddress1; Rec."Bill-to Address")
                     {
                         ApplicationArea = All;
                         Caption = 'Bill-to Address';
                         ToolTip = 'Specifies address on Card account.';
                     }
-                    field(BillToAddress2; "Bill-to Address_2")
+                    field(BillToAddress2; Rec."Bill-to Address_2")
                     {
                         Caption = '                                                 ';
                         ApplicationArea = All;
                     }
-                    field(BillToAddress3; "Bill-to Address_3")
+                    field(BillToAddress3; Rec."Bill-to Address_3")
                     {
                         Caption = '                                                 ';
                         ApplicationArea = All;
                     }
-                    field(BillToAddress4; "Bill-to Address_4")
+                    field(BillToAddress4; Rec."Bill-to Address_4")
                     {
                         Caption = '                                                 ';
                         ApplicationArea = All;
@@ -434,18 +434,18 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                 {
                     ShowCaption = false;
 
-                    field("CC Comments 1"; "CC Comments 1")
+                    field("CC Comments 1"; Rec."CC Comments 1")
                     {
                         Caption = 'Credit Card Comments';
                         ApplicationArea = All;
                         ToolTip = 'Specifies Credit Card comments.';
                     }
-                    field("CC Comments 2"; "CC Comments 2")
+                    field("CC Comments 2"; Rec."CC Comments 2")
                     {
                         Caption = '                                                 ';
                         ApplicationArea = All;
                     }
-                    field("CC Comments 3"; "CC Comments 3")
+                    field("CC Comments 3"; Rec."CC Comments 3")
                     {
                         Caption = '                                                 ';
                         ApplicationArea = All;
@@ -460,28 +460,28 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                 Caption = 'Third Party';
                 Visible = lSalesGroup;
 
-                field("Third Party Name"; "Third Party Name")
+                field("Third Party Name"; Rec."Third Party Name")
                 {
                     ApplicationArea = All;
                     Importance = Promoted;
                     ToolTip = 'Specifies Third Party Name';
                 }
-                field("Third Party Address"; "Third Party Address")
+                field("Third Party Address"; Rec."Third Party Address")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies Third Party Street Address';
                 }
-                field("Third Party City"; "Third Party City")
+                field("Third Party City"; Rec."Third Party City")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies Third Party City';
                 }
-                field("Third Party State"; "Third Party State")
+                field("Third Party State"; Rec."Third Party State")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies Third Party State';
                 }
-                field("Third Party Zip"; "Third Party Zip")
+                field("Third Party Zip"; Rec."Third Party Zip")
                 {
                     ApplicationArea = All;
                     ToolTip = 'Specifies Third Party Postal Code.';
@@ -601,7 +601,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                 trigger OnAction()
                 begin
                     SO := Rec;
-                    SO.SETFILTER("No.", "No.");
+                    SO.SETFILTER("No.", Rec."No.");
                     SO.SETRECFILTER;
                     REPORT.RUNMODAL(50001, TRUE, FALSE, SO);
                 end;
@@ -616,7 +616,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                 trigger OnAction()
                 begin
                     SO := Rec;
-                    SO.SETFILTER("No.", "No.");
+                    SO.SETFILTER("No.", Rec."No.");
                     SO.SETRECFILTER;
                     REPORT.RUNMODAL(50022, TRUE, FALSE, SO);
                 end;
@@ -631,7 +631,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                 trigger OnAction()
                 begin
                     SO := Rec;
-                    SO.SETFILTER("No.", "No.");
+                    SO.SETFILTER("No.", Rec."No.");
                     SO.SETRECFILTER;
                     REPORT.RUNMODAL(50020, TRUE, FALSE, SO);
                 end;
@@ -660,7 +660,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         Ship: Codeunit Shipping;
 
                     begin
-                        if "Your Reference" = '' then
+                        if Rec."Your Reference" = '' then
                             Error('Customer PO Number must be Entered');
 
                         if Shipper = '' then
@@ -678,13 +678,13 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         if ContainerType = ContainerType::" " then
                             Error('Container Type must be Entered');
 
-                        if "Shipping Agent Code" = '' then
+                        if Rec."Shipping Agent Code" = '' then
                             Error('Shipping Agent Code must be Entered');
 
-                        if "Shipment Method Code" = '' then
+                        if Rec."Shipment Method Code" = '' then
                             Error('Shipment Method Code must be Entered');
 
-                        if "Shipping Charge" = "Shipping Charge"::" " then
+                        if Rec."Shipping Charge" = Rec."Shipping Charge"::" " then
                             Error('Shipping Charge must be Entered');
 
                         QtyOil := 0;
@@ -692,8 +692,8 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
 
                         //99999
                         // Check for Serial No for Pumps
-                        SalesLine2.SetRange("Document Type", "Document Type");
-                        SalesLine2.SetRange("Document No.", "No.");
+                        SalesLine2.SetRange("Document Type", Rec."Document Type");
+                        SalesLine2.SetRange("Document No.", Rec."No.");
                         SalesLine2.SetFilter("Qty. to Ship", '<>%1', 0);
                         /*99999
                         IF SalesLine2.FIND('-') THEN BEGIN
@@ -752,8 +752,8 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
 
                         // Check Qty to Ship against Order Quantiy and Shipped Qty
                         SalesLine2.Reset;
-                        SalesLine2.SetRange("Document Type", "Document Type");
-                        SalesLine2.SetRange("Document No.", "No.");
+                        SalesLine2.SetRange("Document Type", Rec."Document Type");
+                        SalesLine2.SetRange("Document No.", Rec."No.");
                         SalesLine2.SetFilter("Qty. to Ship", '<>%1', 0);
                         if SalesLine2.Find('-') then begin
                             repeat
@@ -770,12 +770,12 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         end;
 
                         // Check for UPS Shipping Surcharge Items
-                        if "Shipping Agent Code" = 'UPS' then begin
+                        if Rec."Shipping Agent Code" = 'UPS' then begin
                             //Removed "Pre-Paid" 11/1/04 per Darleen
-                            if ("Shipping Charge" = "Shipping Charge"::"Pre-Paid & Add") then begin
+                            if (Rec."Shipping Charge" = Rec."Shipping Charge"::"Pre-Paid & Add") then begin
                                 SalesLine2.Reset;
-                                SalesLine2.SetRange("Document Type", "Document Type");
-                                SalesLine2.SetRange("Document No.", "No.");
+                                SalesLine2.SetRange("Document Type", Rec."Document Type");
+                                SalesLine2.SetRange("Document No.", Rec."No.");
                                 SalesLine2.SetFilter("Qty. to Ship", '<>%1', 0);
                                 if SalesLine2.Find('-') then begin
                                     repeat
@@ -791,8 +791,8 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
 
                         // Update Shipped Qty
                         SalesLine2.Reset;
-                        SalesLine2.SetRange("Document Type", "Document Type");
-                        SalesLine2.SetRange("Document No.", "No.");
+                        SalesLine2.SetRange("Document Type", Rec."Document Type");
+                        SalesLine2.SetRange("Document No.", Rec."No.");
                         SalesLine2.SetFilter("Qty. to Ship", '<>%1', 0);
                         if SalesLine2.Find('-') then begin
                             repeat
@@ -804,15 +804,15 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         end;
 
                         // Find the last Sales Line
-                        SalesLine3.SetRange("Document Type", "Document Type");
-                        SalesLine3.SetRange("Document No.", "No.");
+                        SalesLine3.SetRange("Document Type", Rec."Document Type");
+                        SalesLine3.SetRange("Document No.", Rec."No.");
                         if SalesLine3.Find('+') then
                             SalesLineNo := SalesLine3."Line No.";
 
                         //UPS HANDLING
-                        if "Shipping Agent Code" = 'UPS' then begin
+                        if Rec."Shipping Agent Code" = 'UPS' then begin
                             //Removed "Pre-Paid" 11/1/04 per Darleen
-                            if ("Shipping Charge" = "Shipping Charge"::"Pre-Paid & Add") then begin
+                            if (Rec."Shipping Charge" = Rec."Shipping Charge"::"Pre-Paid & Add") then begin
                                 LineLoop;
                                 SalesLine3.Type := SalesLine3.Type::"G/L Account";
                                 SalesLine3.Validate("No.", '311');   //Sales Account
@@ -825,8 +825,8 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         end;
 
                         //UPS SHIPPING
-                        if "Shipping Agent Code" = 'UPS' then begin
-                            if ("Shipping Charge" = "Shipping Charge"::"Pre-Paid & Add") then begin
+                        if Rec."Shipping Agent Code" = 'UPS' then begin
+                            if (Rec."Shipping Charge" = Rec."Shipping Charge"::"Pre-Paid & Add") then begin
                                 LineLoop;
                                 SalesLine3.Type := SalesLine3.Type::"G/L Account";
                                 SalesLine3.Validate("No.", '312');   //Sales Account
@@ -850,11 +850,11 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                         end;
 
                         //>> Credit Card Approval Code
-                        if "Approval Code" <> '' then begin
+                        if Rec."Approval Code" <> '' then begin
                             LineLoop;
                             SalesLine3.Type := SalesLine3.Type::" ";
                             SalesLine3.Validate("No.", '');
-                            SalesLine3.Description := 'Approval Code No.' + ' ' + "Approval Code";
+                            SalesLine3.Description := 'Approval Code No.' + ' ' + Rec."Approval Code";
                             SalesLine3."Commission Calculated" := false;
                             SalesLine3.Insert;
                         end;
@@ -865,11 +865,11 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                             BLInteger := 100000;
 
                         WOD.SetCurrentKey(WOD."Work Order No.");
-                        WOD.SetRange("Work Order No.", "Work Order No.");
+                        WOD.SetRange("Work Order No.", Rec."Work Order No.");
                         if WOD.Find('-') then begin
                             if WOD."Work Order No." <> '' then begin
-                                "Shortcut Dimension 2 Code" := 'WO';
-                                Modify;
+                                Rec."Shortcut Dimension 2 Code" := 'WO';
+                                Rec.Modify;
                                 CreateLines;
                                 CreateShippingLine;
                                 Reservation;  // Commit
@@ -882,31 +882,31 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
 
                         BOL2.Init;
                         BOL2."Bill of Lading" := BLInteger;
-                        BOL2."Order No." := "No.";
-                        BOL2."PO No." := "Your Reference";
-                        BOL2.Customer := "Sell-to Customer No.";
-                        BOL2."Ship To Name" := "Ship-to Name";
-                        BOL2."Ship To Address" := "Ship-to Address";
-                        BOL2."Ship To Address2" := "Ship-to Address 2";
-                        BOL2."Ship To City" := "Ship-to City";
-                        BOL2."Ship To State" := "Ship-to County";
-                        BOL2."Ship To Zip Code" := "Ship-to Post Code";
-                        BOL2.Attention := "Ship-to Contact";
-                        BOL2."Phone No." := "Phone No.";
+                        BOL2."Order No." := Rec."No.";
+                        BOL2."PO No." := Rec."Your Reference";
+                        BOL2.Customer := Rec."Sell-to Customer No.";
+                        BOL2."Ship To Name" := Rec."Ship-to Name";
+                        BOL2."Ship To Address" := Rec."Ship-to Address";
+                        BOL2."Ship To Address2" := Rec."Ship-to Address 2";
+                        BOL2."Ship To City" := Rec."Ship-to City";
+                        BOL2."Ship To State" := Rec."Ship-to County";
+                        BOL2."Ship To Zip Code" := Rec."Ship-to Post Code";
+                        BOL2.Attention := Rec."Ship-to Contact";
+                        BOL2."Phone No." := Rec."Phone No.";
                         BOL2."Shipping Weight" := ShippingWeight;
                         BOL2."Container Quantity" := ContainerQuantity;
                         BOL2."Container Type" := Ship.ContainerToBOLContainer(ContainerType);
                         BOL2.Employee := Shipper;
                         BOL2."Shipment Date" := Today;
-                        BOL2.Carrier := "Shipping Agent Code";
-                        BOL2."Shipping Method" := "Shipment Method Code";
-                        BOL2."Shipping Charge" := Ship.ShipChrgToBOLShipChrg("Shipping Charge");
-                        BOL2."Shipping Account" := "Shipping Account";
+                        BOL2.Carrier := Rec."Shipping Agent Code";
+                        BOL2."Shipping Method" := Rec."Shipment Method Code";
+                        BOL2."Shipping Charge" := Ship.ShipChrgToBOLShipChrg(Rec."Shipping Charge");
+                        BOL2."Shipping Account" := Rec."Shipping Account";
                         BOL2."Label Quantity" := LabelsToPrint;
                         BOL2.Insert;
 
-                        "Bill of Lading" := BOL2."Bill of Lading";
-                        Modify;
+                        Rec."Bill of Lading" := BOL2."Bill of Lading";
+                        Rec.Modify;
                         Commit;
 
                         if not Confirm('Is Bill of Lading and Labels loaded in Printers?', false) then begin
@@ -980,6 +980,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         lSalesGroup: Boolean;
         lShipGroup: Boolean;
         Shipper: Code[3];
+        SerialNo: Code[20];
         ShippingTime: Decimal;
         ShippingWeight: Decimal;
         ContainerQuantity: Integer;
@@ -1053,7 +1054,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         // Make control visible if CC pay and no fee line
         CCFeeInsertVisible := false;
         if lAccGroup then
-            if GLSetup."Credit Card Payment Code" = "Payment Terms Code" then begin
+            if GLSetup."Credit Card Payment Code" = Rec."Payment Terms Code" then begin
                 if not CCFeeCode.IsCCFee(Rec) then
                     CCFeeInsertVisible := true;
             end;
@@ -1160,13 +1161,11 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                     WOP.CalcFields(WOP."In-Process Quantity");
                     ///--! SN
                     // Serial No. must be adapted to new method
-                    /*
                     if Item."Costing Method" = Item."Costing Method"::Specific then begin
                         SerialNo := WOP."Serial No."
                     end else begin
                         SerialNo := ''
-                    end
-                    */
+                    end;
                 end;
 
                 ReturnInventory;
@@ -1174,9 +1173,10 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                 SalesLine3.Type := SalesLine3.Type::Item;
                 SalesLine3.Validate("No.", WOP."Part No.");
 
-                //    IF Item."Costing Method" = Item."Costing Method" :: Specific THEN BEGIN
-                //      SalesLine3."Serial No." := SerialNo
-                //    END;
+                ///--! Set Reservation Entry for SerialNo in Sales Line
+                //IF Item."Costing Method" = Item."Costing Method"::Specific THEN BEGIN
+                //    SalesLine3."Serial No." := SerialNo
+                //END;
 
                 SalesLine3.Validate(Reserve, SalesLine3.Reserve::Always);
                 SalesLine3.Validate(Quantity, WOP."Pulled Quantity");
@@ -1201,7 +1201,7 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         SalesLine3.Init;
         SalesLine3."Document Type" := SalesLine3."Document Type"::Order;
         SalesLine3."Line No." := SalesLineNo;
-        SalesLine3.Validate(SalesLine3."Document No.", "No.");
+        SalesLine3.Validate(SalesLine3."Document No.", Rec."No.");
     end;
 
     procedure GPSLoopNoGLEntry()
@@ -1239,11 +1239,11 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
                 ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
-                ItemJournalLine."Document No." := "Work Order No.";
+                ItemJournalLine."Document No." := Rec."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
                 ItemJournalLine."Posting Date" := WorkDate;
-                ItemJournalLine.Description := "Work Order No." + ' ' + 'SHIP RETURN PARTS';
+                ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'SHIP RETURN PARTS';
                 ItemJournalLine."Location Code" := 'IN PROCESS';
 
                 ItemJournalLine.Quantity := ReturnInventoryQty;
@@ -1260,6 +1260,11 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
 
                 end;
                 */
+                IF SerialNo <> '' THEN BEGIN
+                    WOD.SetItemSerialNo_(Database::"Item Journal Line", ItemJournalLine, SerialNo);
+                    ItemJournalLine."Serial No." := SerialNo;
+                    ItemJournalLine."New Serial No." := SerialNo;
+                END;
 
                 ItemJournalLine.Insert;
 
@@ -1277,10 +1282,10 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
 
     procedure UpdateWOD()
     begin
-        WOD.Carrier := "Shipping Agent Code";
-        WOD."Shipping Method" := "Shipment Method Code";
-        WOD."Shipping Charge" := "Shipping Charge";
-        WOD."Shipping Account" := "Shipping Account";
+        WOD.Carrier := Rec."Shipping Agent Code";
+        WOD."Shipping Method" := Rec."Shipment Method Code";
+        WOD."Shipping Charge" := Rec."Shipping Charge";
+        WOD."Shipping Account" := Rec."Shipping Account";
         WOD."Ship Date" := WorkDate;
         WOD.Complete := true;
         WOD."Bill of Lading" := BLInteger;
@@ -1326,8 +1331,8 @@ pageextension 62007 SalesOrderExt extends "Sales Order"
         // Reservation Entry
         Commit;
         SalesLine3.Reset;
-        SalesLine3.SetRange("Document Type", "Document Type");
-        SalesLine3.SetRange("Document No.", "No.");
+        SalesLine3.SetRange("Document Type", Rec."Document Type");
+        SalesLine3.SetRange("Document No.", Rec."No.");
         if SalesLine3.Find('-') then begin
             repeat
                 if (SalesLine3.Reserve = SalesLine3.Reserve::Always) and (SalesLine3."Outstanding Qty. (Base)" <> 0) then

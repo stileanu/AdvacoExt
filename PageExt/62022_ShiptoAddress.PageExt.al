@@ -5,19 +5,19 @@ pageextension 62022 ShiptoAddressExt extends "Ship-to Address"
         // Add changes to page layout here
         addafter("Last Date Modified")
         {
-            field("Inside Sales"; "Inside Sales")
+            field("Inside Sales"; Rec."Inside Sales")
             {
                 ApplicationArea = all;
             }
-            field(Rep; Rep)
+            field(Rep; Rec.Rep)
             {
                 ApplicationArea = all;
             }
-            field("Shipment Approved"; "Shipment Approved")
+            field("Shipment Approved"; Rec."Shipment Approved")
             {
                 ApplicationArea = all;
             }
-            field("Freight include in Price"; "Freight include in Price")
+            field("Freight include in Price"; Rec."Freight include in Price")
             {
                 ApplicationArea = all;
             }

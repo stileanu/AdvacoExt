@@ -5,7 +5,7 @@ pageextension 62000 GLAccountCardExt extends "G/L Account Card"
         // Add changes to page layout here
         addafter("Reconciliation Account")
         {
-            field("Include for Commissions"; "Include for Commissions")
+            field("Include for Commissions"; Rec."Include for Commissions")
             {
                 ApplicationArea = all;
             }

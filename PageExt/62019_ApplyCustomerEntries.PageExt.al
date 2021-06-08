@@ -5,7 +5,7 @@ pageextension 62019 ApplyCustomerEntriesExt extends "Apply Customer Entries"
         // Add changes to page layout here
         addafter("Document No.")
         {
-            field("External Document No."; "External Document No.")
+            field("External Document No."; Rec."External Document No.")
             {
                 ApplicationArea = all;
             }
@@ -31,13 +31,13 @@ pageextension 62019 ApplyCustomerEntriesExt extends "Apply Customer Entries"
     begin
 
         //HEF INSERT
-        CALCFIELDS("Work Order No.", "Sales Order No.");
+        Rec.CALCFIELDS("Work Order No.", "Sales Order No.");
 
-        IF "Work Order No." <> '' THEN BEGIN
-            IF NOT EVALUATE(OrderNo, "Work Order No.") THEN
+        IF Rec."Work Order No." <> '' THEN BEGIN
+            IF NOT EVALUATE(OrderNo, Rec."Work Order No.") THEN
                 OrderNo := 0;
         END ELSE BEGIN
-            IF NOT EVALUATE(OrderNo, "Sales Order No.") THEN
+            IF NOT EVALUATE(OrderNo, Rec."Sales Order No.") THEN
                 OrderNo := 0;
         END;
 

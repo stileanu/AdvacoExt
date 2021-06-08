@@ -5,47 +5,47 @@ pageextension 62012 UserSEtupExt extends "User Setup"
         // Add changes to page layout here
         addafter("Time Sheet Admin.")
         {
-            field("Allow WI Blocking"; "Allow WI Blocking")
+            field("Allow WI Blocking"; Rec."Allow WI Blocking")
             {
                 ApplicationArea = all;
             }
-            field("Allow WI Deletion"; "Allow WI Deletion")
+            field("Allow WI Deletion"; Rec."Allow WI Deletion")
             {
                 ApplicationArea = all;
             }
-            field("PDF Path to Documents"; "PDF Path to Documents")
+            field("PDF Path to Documents"; Rec."PDF Path to Documents")
             {
                 ApplicationArea = all;
             }
-            field(Signature1; Signature1)
+            field(Signature1; Rec.Signature1)
             {
                 ApplicationArea = all;
             }
-            field(Signature2; Signature2)
+            field(Signature2; Rec.Signature2)
             {
                 ApplicationArea = all;
             }
-            field(Signature3; Signature3)
+            field(Signature3; Rec.Signature3)
             {
                 ApplicationArea = all;
             }
-            field(Signature4; Signature4)
+            field(Signature4; Rec.Signature4)
             {
                 ApplicationArea = all;
             }
-            field(Signature5; Signature5)
+            field(Signature5; Rec.Signature5)
             {
                 ApplicationArea = all;
             }
-            field(Signature6; Signature6)
+            field(Signature6; Rec.Signature6)
             {
                 ApplicationArea = all;
             }
-            field(Signature7; Signature7)
+            field(Signature7; Rec.Signature7)
             {
                 ApplicationArea = all;
             }
-            field(Signature8; Signature8)
+            field(Signature8; Rec.Signature8)
             {
                 ApplicationArea = all;
             }

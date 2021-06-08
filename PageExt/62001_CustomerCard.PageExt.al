@@ -11,27 +11,27 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         }
         addafter("Name")
         {
-            field(Comment; Comment)
+            field(Comment; Rec.Comment)
             {
                 ApplicationArea = All;
             }
         }
         addafter("Salesperson Code")
         {
-            field(Rep; Rep)
+            field(Rep; Rec.Rep)
             {
                 ApplicationArea = All;
                 Editable = lAccGroup;
                 ToolTip = 'Specifies the External Rep for this Customer.';
             }
-            field("Payment Terms Code_1"; "Payment Terms Code")
+            field("Payment Terms Code_1"; Rec."Payment Terms Code")
             {
                 ApplicationArea = All;
                 Caption = 'Payment Terms Code';
                 Editable = lAccGroup;
                 ToolTip = 'Specifies the Payment Terms set for this Customer.';
             }
-            field("Payment Method Code_1"; "Payment Method Code")
+            field("Payment Method Code_1"; Rec."Payment Method Code")
             {
                 ApplicationArea = All;
                 Caption = 'Payment Method Code';
@@ -50,7 +50,7 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         }
         addbefore("Last Date Modified")
         {
-            field("Customer Since"; "Customer Since")
+            field("Customer Since"; Rec."Customer Since")
             {
                 ApplicationArea = All;
                 Visible = lAccGroup;
@@ -59,7 +59,7 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         }
         addafter("Last Date Modified")
         {
-            field("CC Fee Waived"; "CC Fee Waived")
+            field("CC Fee Waived"; Rec."CC Fee Waived")
             {
                 ApplicationArea = All;
                 Editable = lAccGroup;
@@ -68,7 +68,7 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         }
         addbefore(Blocked)
         {
-            field("Credit Issues"; "Credit Issues")
+            field("Credit Issues"; Rec."Credit Issues")
             {
                 ApplicationArea = All;
                 Editable = lAccGroup;
@@ -77,7 +77,7 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         }
         addafter("E-Mail")
         {
-            field("Email Invoice"; "Email Invoice")
+            field("Email Invoice"; Rec."Email Invoice")
             {
                 ApplicationArea = all;
                 ToolTip = 'Specifies if Invoices will be be sent by Email only.';
@@ -86,7 +86,7 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         }
         addafter("Email Invoice")
         {
-            field("Invoicing Email"; "Invoicing Email")
+            field("Invoicing Email"; Rec."Invoicing Email")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the Email address where to send Invoice.';
@@ -95,7 +95,7 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         }
         addafter("Bill-to Customer No.")
         {
-            field("Internet Invoicing"; "Internet Invoicing")
+            field("Internet Invoicing"; Rec."Internet Invoicing")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies if Invoices sent over Internet only';
@@ -103,7 +103,7 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         }
         addafter("Internet Invoicing")
         {
-            field("No Internet/Paper Invoice"; "No Internet/Paper Invoice")
+            field("No Internet/Paper Invoice"; Rec."No Internet/Paper Invoice")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies if Invoice sent by Email only';
@@ -112,7 +112,7 @@ pageextension 62001 CustomerCardExt2 extends "Customer Card"
         }
         addafter("Shipping Advice")
         {
-            field("Ship on Sales Order"; "Ship on Sales Order")
+            field("Ship on Sales Order"; Rec."Ship on Sales Order")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specify if Work Orders should use Sales Order document for shipping.';

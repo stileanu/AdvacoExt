@@ -4,13 +4,13 @@ pageextension 62003 VendorCardExt extends "Vendor Card"
     {
         addafter("Disable Search by Name")
         {
-            field("Receiving Inspection"; "Receiving Inspection")
+            field("Receiving Inspection"; Rec."Receiving Inspection")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies Items from this Vendor must be inspected.';
             }
 
-            field("Vendor Type"; "Vendor Type")
+            field("Vendor Type"; Rec."Vendor Type")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies Vendor Type';
@@ -18,13 +18,13 @@ pageextension 62003 VendorCardExt extends "Vendor Card"
         }
         addafter("E-Mail")
         {
-            field("Email Invoice"; "Email Invoice")
+            field("Email Invoice"; Rec."Email Invoice")
             {
                 Caption = 'E-Mail Invoice';
                 ApplicationArea = All;
                 ToolTip = 'Specifies Invoice document to be sent by E-Mail.';
             }
-            field("Invoicing Email"; "Invoicing Email")
+            field("Invoicing Email"; Rec."Invoicing Email")
             {
                 Caption = 'Order E-Mail';
                 ApplicationArea = All;

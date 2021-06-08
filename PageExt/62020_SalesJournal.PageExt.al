@@ -5,7 +5,7 @@ pageextension 62020 SalesJournalExt extends "Sales Journal"
         // Add changes to page layout here
         addafter("Shortcut Dimension 2 Code")
         {
-            field(Rep; Rep)
+            field(Rep; Rec.Rep)
             {
                 ApplicationArea = all;
             }

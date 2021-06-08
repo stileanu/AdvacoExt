@@ -4,27 +4,27 @@ pageextension 62038 CustomerListExt extends "Customer List"
     {
         addafter("Responsibility Center")
         {
-            field(Address; Address)
+            field(Address; Rec.Address)
             {
                 ApplicationArea = All;
             }
-            field("Address 2"; "Address 2")
+            field("Address 2"; Rec."Address 2")
             {
                 ApplicationArea = All;
             }
-            field(City; City)
+            field(City; Rec.City)
             {
                 ApplicationArea = All;
             }
-            field(State; County)
+            field(State; Rec.County)
             {
                 ApplicationArea = All;
             }
-            field("ZIP Code"; "Post Code")
+            field("ZIP Code"; Rec."Post Code")
             {
                 ApplicationArea = All;
             }
-            field("Cust. Since"; "Customer Since")
+            field("Cust. Since"; Rec."Customer Since")
             {
                 ApplicationArea = All;
             }

@@ -15,47 +15,47 @@ page 50076 "Blanket Purchase Order Purch"
                 group(Control1220060052)
                 {
                     ShowCaption = false;
-                    field("No."; "No.")
+                    field("No."; Rec."No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from Vendor No."; "Buy-from Vendor No.")
+                    field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from Vendor Name"; "Buy-from Vendor Name")
+                    field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from Address"; "Buy-from Address")
+                    field("Buy-from Address"; Rec."Buy-from Address")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from Address 2"; "Buy-from Address 2")
+                    field("Buy-from Address 2"; Rec."Buy-from Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from City"; "Buy-from City")
+                    field("Buy-from City"; Rec."Buy-from City")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from County"; "Buy-from County")
+                    field("Buy-from County"; Rec."Buy-from County")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from Post Code"; "Buy-from Post Code")
+                    field("Buy-from Post Code"; Rec."Buy-from Post Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from Contact"; "Buy-from Contact")
+                    field("Buy-from Contact"; Rec."Buy-from Contact")
                     {
                         ApplicationArea = All;
                     }
-                    field("Payment Terms Code"; "Payment Terms Code")
+                    field("Payment Terms Code"; Rec."Payment Terms Code")
                     {
                         ApplicationArea = All;
                     }
-                    field(Notes; Notes)
+                    field(Notes; Rec.Notes)
                     {
                         ApplicationArea = All;
                     }
@@ -63,39 +63,39 @@ page 50076 "Blanket Purchase Order Purch"
                 group(Control1220060053)
                 {
                     ShowCaption = false;
-                    field("Order Date"; "Order Date")
+                    field("Order Date"; Rec."Order Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Document Date"; "Document Date")
+                    field("Document Date"; Rec."Document Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Vendor Order No."; "Vendor Order No.")
+                    field("Vendor Order No."; Rec."Vendor Order No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Vendor Shipment No."; "Vendor Shipment No.")
+                    field("Vendor Shipment No."; Rec."Vendor Shipment No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Order Address Code"; "Order Address Code")
+                    field("Order Address Code"; Rec."Order Address Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Purchaser Code"; "Purchaser Code")
+                    field("Purchaser Code"; Rec."Purchaser Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Placed By"; "Placed By")
+                    field("Placed By"; Rec."Placed By")
                     {
                         ApplicationArea = All;
                     }
-                    field("Quality Clause"; "Quality Clause")
+                    field("Quality Clause"; Rec."Quality Clause")
                     {
                         ApplicationArea = All;
                     }
-                    field("Due Date"; "Due Date")
+                    field("Due Date"; Rec."Due Date")
                     {
                         ApplicationArea = All;
                     }
@@ -111,39 +111,39 @@ page 50076 "Blanket Purchase Order Purch"
                 group(Control1220060054)
                 {
                     ShowCaption = false;
-                    field("Pay-to Vendor No."; "Pay-to Vendor No.")
+                    field("Pay-to Vendor No."; Rec."Pay-to Vendor No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to Name"; "Pay-to Name")
+                    field("Pay-to Name"; Rec."Pay-to Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to Address"; "Pay-to Address")
+                    field("Pay-to Address"; Rec."Pay-to Address")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to Address 2"; "Pay-to Address 2")
+                    field("Pay-to Address 2"; Rec."Pay-to Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to City"; "Pay-to City")
+                    field("Pay-to City"; Rec."Pay-to City")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to County"; "Pay-to County")
+                    field("Pay-to County"; Rec."Pay-to County")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to Post Code"; "Pay-to Post Code")
+                    field("Pay-to Post Code"; Rec."Pay-to Post Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to Contact"; "Pay-to Contact")
+                    field("Pay-to Contact"; Rec."Pay-to Contact")
                     {
                         ApplicationArea = All;
                     }
-                    field("On Hold"; "On Hold")
+                    field("On Hold"; Rec."On Hold")
                     {
                         ApplicationArea = All;
                     }
@@ -155,7 +155,7 @@ page 50076 "Blanket Purchase Order Purch"
                     {
                         ApplicationArea = All;
                     }
-                    field("Tax Area Code"; "Tax Area Code")
+                    field("Tax Area Code"; Rec."Tax Area Code")
                     {
                         ApplicationArea = All;
                     }
@@ -166,35 +166,35 @@ page 50076 "Blanket Purchase Order Purch"
                 group(Control1220060056)
                 {
                     ShowCaption = false;
-                    field("Ship-to Name"; "Ship-to Name")
+                    field("Ship-to Name"; Rec."Ship-to Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Address"; "Ship-to Address")
+                    field("Ship-to Address"; Rec."Ship-to Address")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Address 2"; "Ship-to Address 2")
+                    field("Ship-to Address 2"; Rec."Ship-to Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to City"; "Ship-to City")
+                    field("Ship-to City"; Rec."Ship-to City")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to County"; "Ship-to County")
+                    field("Ship-to County"; Rec."Ship-to County")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Post Code"; "Ship-to Post Code")
+                    field("Ship-to Post Code"; Rec."Ship-to Post Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Contact"; "Ship-to Contact")
+                    field("Ship-to Contact"; Rec."Ship-to Contact")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to UPS Zone"; "Ship-to UPS Zone")
+                    field("Ship-to UPS Zone"; Rec."Ship-to UPS Zone")
                     {
                         ApplicationArea = All;
                     }
@@ -202,19 +202,19 @@ page 50076 "Blanket Purchase Order Purch"
                 group(Control1220060057)
                 {
                     ShowCaption = false;
-                    field("Location Code"; "Location Code")
+                    field("Location Code"; Rec."Location Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipment Method Code"; "Shipment Method Code")
+                    field("Shipment Method Code"; Rec."Shipment Method Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Agent"; "Shipping Agent")
+                    field("Shipping Agent"; Rec."Shipping Agent")
                     {
                         ApplicationArea = All;
                     }
-                    field("Expected Receipt Date"; "Expected Receipt Date")
+                    field("Expected Receipt Date"; Rec."Expected Receipt Date")
                     {
                         ApplicationArea = All;
                     }
@@ -348,7 +348,7 @@ page 50076 "Blanket Purchase Order Purch"
     trigger OnDeleteRecord(): Boolean
     begin
         CurrPage.SaveRecord;
-        exit(ConfirmDeletion);
+        exit(Rec.ConfirmDeletion);
     end;
 
     var

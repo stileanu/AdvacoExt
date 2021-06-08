@@ -4,7 +4,7 @@ pageextension 62036 BlanketPurchOrderExt extends "Blanket Purchase Order"
     {
         addbefore("Ship-to")
         {
-            field(ShipmentMethodCode; "Shipment Method Code")
+            field(ShipmentMethodCode; Rec."Shipment Method Code")
             {
                 Caption = 'Shipment Method Code';
                 ApplicationArea = Basic, Suite;
@@ -12,7 +12,7 @@ pageextension 62036 BlanketPurchOrderExt extends "Blanket Purchase Order"
                 ToolTip = 'Specifies the delivery conditions of the related shipment, such as free on board (FOB).';
 
             }
-            field("Shipping Agent"; "Shipping Agent")
+            field("Shipping Agent"; Rec."Shipping Agent")
             {
                 ApplicationArea = all;
                 //Visible = lPurchGroup;

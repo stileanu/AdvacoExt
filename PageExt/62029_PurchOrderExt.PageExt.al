@@ -9,7 +9,7 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
         }
         addbefore(Control83)
         {
-            field(ShipmentMethodCode; "Shipment Method Code")
+            field(ShipmentMethodCode; Rec."Shipment Method Code")
             {
                 Caption = 'Shipment Method Code';
                 ApplicationArea = All;
@@ -17,7 +17,7 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
                 ToolTip = 'Specifies the delivery conditions of the related shipment, such as free on board (FOB).';
 
             }
-            field("Shipping Agent"; "Shipping Agent")
+            field("Shipping Agent"; Rec."Shipping Agent")
             {
                 ApplicationArea = all;
                 Visible = lPurchGroup;
@@ -56,12 +56,12 @@ pageextension 62029 PurchOrderExt extends "Purchase Order"
                 ApplicationArea = All;
                 Visible = lPurchGroup;
             }
-            field("Shipping Advice"; "Shipping Advice")
+            field("Shipping Advice"; Rec."Shipping Advice")
             {
                 ApplicationArea = all;
                 Visible = lPurchGroup;
             }
-            Field(Notes; Notes)  //ICE RSK 12/16/20
+            Field(Notes; Rec.Notes)  //ICE RSK 12/16/20
             {
                 ApplicationArea = all;
                 MultiLine = true;

@@ -15,11 +15,11 @@ page 50142 "Credit Memo Subform"
         {
             repeater(Group)
             {
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = All;
                 }
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
 
@@ -28,94 +28,94 @@ page 50142 "Credit Memo Subform"
                         NoOnAfterValidate;
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field(Quantity; Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = All;
                     Caption = 'Qty.';
                 }
-                field("Unit Cost (LCY)"; "Unit Cost (LCY)")
+                field("Unit Cost (LCY)"; Rec."Unit Cost (LCY)")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Including VAT"; "Amount Including VAT")
+                field("Amount Including VAT"; Rec."Amount Including VAT")
                 {
                     ApplicationArea = All;
                 }
-                field("Tax Area Code"; "Tax Area Code")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Tax Liable"; "Tax Liable")
+                field("Tax Area Code"; Rec."Tax Area Code")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Tax Group Code"; "Tax Group Code")
-                {
-                    ApplicationArea = All;
-                }
-                field("Location Code"; "Location Code")
-                {
-                    ApplicationArea = All;
-                }
-                field("Unit of Measure Code"; "Unit of Measure Code")
-                {
-                    ApplicationArea = All;
-                }
-                field("Unit of Measure"; "Unit of Measure")
+                field("Tax Liable"; Rec."Tax Liable")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Direct Unit Cost"; "Direct Unit Cost")
+                field("Tax Group Code"; Rec."Tax Group Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Indirect Cost %"; "Indirect Cost %")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Unit Price (LCY)"; "Unit Price (LCY)")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Line Discount %"; "Line Discount %")
+                field("Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Line Discount Amount"; "Line Discount Amount")
+                field("Unit of Measure Code"; Rec."Unit of Measure Code")
+                {
+                    ApplicationArea = All;
+                }
+                field("Unit of Measure"; Rec."Unit of Measure")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Allow Invoice Disc."; "Allow Invoice Disc.")
+                field("Direct Unit Cost"; Rec."Direct Unit Cost")
+                {
+                    ApplicationArea = All;
+                }
+                field("Indirect Cost %"; Rec."Indirect Cost %")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Inv. Discount Amount"; "Inv. Discount Amount")
+                field("Unit Price (LCY)"; Rec."Unit Price (LCY)")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Blanket Order No."; "Blanket Order No.")
+                field("Line Discount %"; Rec."Line Discount %")
+                {
+                    ApplicationArea = All;
+                }
+                field("Line Discount Amount"; Rec."Line Discount Amount")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Blanket Order Line No."; "Blanket Order Line No.")
+                field("Allow Invoice Disc."; Rec."Allow Invoice Disc.")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Inv. Discount Amount"; Rec."Inv. Discount Amount")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Blanket Order No."; Rec."Blanket Order No.")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Blanket Order Line No."; Rec."Blanket Order Line No.")
                 {
                     ApplicationArea = All;
                     Visible = false;
@@ -136,7 +136,7 @@ page 50142 "Credit Memo Subform"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Type := xRec.Type;
+        Rec.Type := xRec.Type;
     end;
 
     var
@@ -171,7 +171,7 @@ page 50142 "Credit Memo Subform"
 
     procedure ShowReservation2()
     begin
-        Find;
+        Rec.Find;
         Rec.ShowReservation;
     end;
 

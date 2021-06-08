@@ -7,27 +7,27 @@ pageextension 62027 InventorySetupExt extends "Inventory Setup"
         {
             group(Advaco)
             {
-                field("EOQ Inventory Range"; "EOQ Inventory Range")
+                field("EOQ Inventory Range"; Rec."EOQ Inventory Range")
                 {
                     ApplicationArea = all;
                 }
-                field(Threshold; Threshold)
+                field(Threshold; Rec.Threshold)
                 {
                     ApplicationArea = all;
                 }
-                field("Sales Qty"; "Sales Qty")
+                field("Sales Qty"; Rec."Sales Qty")
                 {
                     ApplicationArea = all;
                 }
-                field("Inventory Holding Level"; "Inventory Holding Level")
+                field("Inventory Holding Level"; Rec."Inventory Holding Level")
                 {
                     ApplicationArea = all;
                 }
-                field("Holding Cost"; "Holding Cost")
+                field("Holding Cost"; Rec."Holding Cost")
                 {
                     ApplicationArea = all;
                 }
-                field("Cost of Ordering"; "Cost of Ordering")
+                field("Cost of Ordering"; Rec."Cost of Ordering")
                 {
                     ApplicationArea = all;
                 }
@@ -35,11 +35,11 @@ pageextension 62027 InventorySetupExt extends "Inventory Setup"
         }
         addafter("Posted Phys. Invt. Order Nos.")
         {
-            field("Work Order Nos."; "Work Order Nos.")
+            field("Work Order Nos."; Rec."Work Order Nos.")
             {
                 ApplicationArea = all;
             }
-            field("IDR Nos."; "IDR Nos.")
+            field("IDR Nos."; Rec."IDR Nos.")
             {
                 ApplicationArea = all;
             }

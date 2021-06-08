@@ -11,31 +11,31 @@ page 50157 "Field Service Shipping Sub"
         {
             repeater(Group)
             {
-                field("Part No."; "Part No.")
+                field("Part No."; Rec."Part No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Quoted Quantity"; "Quoted Quantity")
+                field("Quoted Quantity"; Rec."Quoted Quantity")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Pulled Quantity"; "Pulled Quantity")
+                field("Pulled Quantity"; Rec."Pulled Quantity")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Qty. to Ship"; "Qty. to Ship")
+                field("Qty. to Ship"; Rec."Qty. to Ship")
                 {
                     ApplicationArea = All;
                 }
-                field("Qty. Shipped"; "Qty. Shipped")
+                field("Qty. Shipped"; Rec."Qty. Shipped")
                 {
                     ApplicationArea = All;
                     Editable = false;
