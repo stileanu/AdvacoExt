@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50063 "Sales Order Sales Subform"
 {
     // 10/4/00 RJK HTCS
@@ -18,11 +19,11 @@ page 50063 "Sales Order Sales Subform"
         {
             repeater(Group)
             {
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = All;
                 }
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
 
@@ -31,19 +32,19 @@ page 50063 "Sales Order Sales Subform"
                         NoOnAfterValidate();
                     end;
                 }
-                field("Vendor No."; "Vendor No.")
+                field("Vendor No."; Rec."Vendor No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Item No."; "Vendor Item No.")
+                field("Vendor Item No."; Rec."Vendor Item No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field(Quantity; Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = All;
                     Caption = 'Qty';
@@ -53,41 +54,41 @@ page 50063 "Sales Order Sales Subform"
                         QtyOnAfterValidate();
                     end;
                 }
-                field("Unit Cost (LCY)"; "Unit Cost (LCY)")
+                field("Unit Cost (LCY)"; Rec."Unit Cost (LCY)")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Unit Price"; "Unit Price")
+                field("Unit Price"; Rec."Unit Price")
                 {
                     ApplicationArea = All;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Amount Including VAT"; "Amount Including VAT")
+                field("Amount Including VAT"; Rec."Amount Including VAT")
                 {
                     ApplicationArea = All;
                 }
-                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
+                field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field("Gen. Bus. Posting Group"; "Gen. Bus. Posting Group")
+                field("Gen. Bus. Posting Group"; Rec."Gen. Bus. Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field("Commission Calculated"; "Commission Calculated")
+                field("Commission Calculated"; Rec."Commission Calculated")
                 {
                     ApplicationArea = All;
                 }
-                field("Purchase Order No."; "Purchase Order No.")
+                field("Purchase Order No."; Rec."Purchase Order No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Unit of Measure Code"; "Unit of Measure Code")
+                field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
                     ApplicationArea = All;
 
@@ -96,61 +97,61 @@ page 50063 "Sales Order Sales Subform"
                         QtyOnAfterValidate();
                     end;
                 }
-                field("Line Discount %"; "Line Discount %")
+                field("Line Discount %"; Rec."Line Discount %")
                 {
                     ApplicationArea = All;
                 }
-                field("Line Discount Amount"; "Line Discount Amount")
+                field("Line Discount Amount"; Rec."Line Discount Amount")
                 {
                     ApplicationArea = All;
                 }
-                field("Qty. to Ship"; "Qty. to Ship")
+                field("Qty. to Ship"; Rec."Qty. to Ship")
                 {
                     ApplicationArea = All;
                 }
-                field("Quantity Shipped"; "Quantity Shipped")
+                field("Quantity Shipped"; Rec."Quantity Shipped")
                 {
                     ApplicationArea = All;
                 }
-                field("Qty. to Invoice"; "Qty. to Invoice")
+                field("Qty. to Invoice"; Rec."Qty. to Invoice")
                 {
                     ApplicationArea = All;
                 }
-                field("Quantity Invoiced"; "Quantity Invoiced")
+                field("Quantity Invoiced"; Rec."Quantity Invoiced")
                 {
                     ApplicationArea = All;
                 }
-                field("Shipment Date"; "Shipment Date")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Package Tracking No."; "Package Tracking No.")
+                field("Shipment Date"; Rec."Shipment Date")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Drop Shipment"; "Drop Shipment")
+                field("Package Tracking No."; Rec."Package Tracking No.")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Bin Code"; "Bin Code")
+                field("Drop Shipment"; Rec."Drop Shipment")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Unit of Measure"; "Unit of Measure")
+                field("Bin Code"; Rec."Bin Code")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Blanket Order No."; "Blanket Order No.")
+                field("Unit of Measure"; Rec."Unit of Measure")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Blanket Order Line No."; "Blanket Order Line No.")
+                field("Blanket Order No."; Rec."Blanket Order No.")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Blanket Order Line No."; Rec."Blanket Order Line No.")
                 {
                     ApplicationArea = All;
                     Visible = false;
@@ -210,7 +211,7 @@ page 50063 "Sales Order Sales Subform"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Type := xRec.Type;
+        Rec.Type := xRec.Type;
     end;
 
     var
@@ -239,9 +240,9 @@ page 50063 "Sales Order Sales Subform"
         PurchHeader: Record "Purchase Header";
         PurchOrder: Page "Purchase Order";
     begin
-        if not "Drop Shipment" then
+        if not Rec."Drop Shipment" then
             Error('The current sales line is not a drop shipment.');
-        PurchHeader.SetRange("No.", "Purchase Order No.");
+        PurchHeader.SetRange("No.", Rec."Purchase Order No.");
         PurchOrder.SetTableView(PurchHeader);
         PurchOrder.Editable := false;
         PurchOrder.Run;
@@ -259,7 +260,7 @@ page 50063 "Sales Order Sales Subform"
 
     procedure ShowReservation2()
     begin
-        Find;
+        Rec.Find;
         Rec.ShowReservation;
     end;
 
@@ -275,10 +276,12 @@ page 50063 "Sales Order Sales Subform"
 
     procedure QtyOnAfterValidate()
     begin
-        if Reserve = Reserve::Always then begin
+        if Rec.Reserve = Rec.Reserve::Always then begin
             CurrPage.SaveRecord;
-            AutoReserve();
+            Rec.AutoReserve();
         end;
     end;
 }
+
+#pragma implicitwith restore
 

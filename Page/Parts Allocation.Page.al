@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50010 "Parts Allocation"
 {
     //     //
@@ -15,11 +16,11 @@ page 50010 "Parts Allocation"
             group(Control1000000009)
             {
                 ShowCaption = false;
-                field("Part No."; "Part No.")
+                field("Part No."; Rec."Part No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
@@ -31,38 +32,38 @@ page 50010 "Parts Allocation"
             }
             repeater(Group)
             {
-                field("<PartNo.>"; "Part No.")
+                field("<PartNo.>"; Rec."Part No.")
                 {
                     ApplicationArea = All;
                     Caption = 'Part No.';
                 }
-                field("<Description`>"; Description)
+                field("<Description`>"; Rec.Description)
                 {
                     ApplicationArea = All;
                     Caption = 'Description';
                 }
-                field("Quoted Quantity"; "Quoted Quantity")
+                field("Quoted Quantity"; Rec."Quoted Quantity")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Committed Quantity"; "Committed Quantity")
+                field("Committed Quantity"; Rec."Committed Quantity")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Quantity Backorder"; "Quantity Backorder")
+                field("Quantity Backorder"; Rec."Quantity Backorder")
                 {
                     ApplicationArea = All;
                     Caption = 'Backorder Quantity';
                     Editable = false;
                 }
-                field("In-Process Quantity"; "In-Process Quantity")
+                field("In-Process Quantity"; Rec."In-Process Quantity")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Pulled Quantity"; "Pulled Quantity")
+                field("Pulled Quantity"; Rec."Pulled Quantity")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -218,7 +219,7 @@ page 50010 "Parts Allocation"
                     Commit;
 
                     WOS.SetCurrentKey("Order No.", "Line No.");
-                    WOS.SetRange(WOS."Order No.", "Work Order No.");
+                    WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
                     if WOS.Find('+') then begin
                         if WOS.Step.AsInteger() <= WOS.Step::QOT.AsInteger() then
                             Error('You can''t allocate parts until the Quote is Released');
@@ -244,11 +245,11 @@ page 50010 "Parts Allocation"
                         Error('Can''t Allocate A Negative or Zero Quantity');
 
                     if PN > QtyOnHand then begin
-                        if "Quantity Backorder" < PN then
-                            Error('There are currently %1 backordered, you are trying to allocate %2', "Quantity Backorder", PN);
+                        if Rec."Quantity Backorder" < PN then
+                            Error('There are currently %1 backordered, you are trying to allocate %2', Rec."Quantity Backorder", PN);
 
-                        if "Quantity Backorder" > PN then begin
-                            QtyBO := "Quantity Backorder" - PN;
+                        if Rec."Quantity Backorder" > PN then begin
+                            QtyBO := Rec."Quantity Backorder" - PN;
                             Item2.Get(Item."No.");
                             Item2.SetRange(Item2."Location Filter", 'MAIN');
                             Item2.CalcFields(Item2.Inventory, Item2."Reserved Qty. on Inventory", Item2."Qty. on Purch. Order");
@@ -265,15 +266,15 @@ page 50010 "Parts Allocation"
                             if QtyNotFound < 0 then
                                 QtyNotFound := 0;
                             if QtyNotFound > 0 then
-                                "Quantity Backorder" := QtyBO + QtyNotFound
+                                Rec."Quantity Backorder" := QtyBO + QtyNotFound
                             else
-                                "Quantity Backorder" := QtyBO;
+                                Rec."Quantity Backorder" := QtyBO;
                             PN := QtyNeeded - QtyNotFound;
-                            Modify;
+                            Rec.Modify;
                             AllocateSingle;
                         end;
 
-                        if "Quantity Backorder" = PN then begin
+                        if Rec."Quantity Backorder" = PN then begin
                             Item2.Get(Item."No.");
                             Item2.SetRange(Item2."Location Filter", 'MAIN');
                             Item2.CalcFields(Item2.Inventory, Item2."Reserved Qty. on Inventory", Item2."Qty. on Purch. Order");
@@ -290,11 +291,11 @@ page 50010 "Parts Allocation"
                             if QtyNotFound < 0 then
                                 QtyNotFound := 0;
                             if QtyNotFound > 0 then
-                                "Quantity Backorder" := QtyNotFound
+                                Rec."Quantity Backorder" := QtyNotFound
                             else
-                                "Quantity Backorder" := 0;
+                                Rec."Quantity Backorder" := 0;
                             PN := QtyNeeded - QtyNotFound;
-                            Modify;
+                            Rec.Modify;
                             AllocateSingle;
                         end;
 
@@ -315,17 +316,17 @@ page 50010 "Parts Allocation"
                         Commit;
 
                     end else begin
-                        if "Quantity Backorder" < PN then
-                            Error('There are currently %1 backordered, you are trying to allocate %2', "Quantity Backorder", PN);
-                        if "Quantity Backorder" > PN then begin
-                            "Quantity Backorder" := "Quantity Backorder" - PN;
-                            Modify;
+                        if Rec."Quantity Backorder" < PN then
+                            Error('There are currently %1 backordered, you are trying to allocate %2', Rec."Quantity Backorder", PN);
+                        if Rec."Quantity Backorder" > PN then begin
+                            Rec."Quantity Backorder" := Rec."Quantity Backorder" - PN;
+                            Rec.Modify;
                             AllocateSingle;
                         end;
 
-                        if "Quantity Backorder" = PN then begin
-                            "Quantity Backorder" := 0;
-                            Modify;
+                        if Rec."Quantity Backorder" = PN then begin
+                            Rec."Quantity Backorder" := 0;
+                            Rec.Modify;
                             AllocateSingle;
                         end;
                     end;
@@ -362,7 +363,7 @@ page 50010 "Parts Allocation"
 
     trigger OnAfterGetCurrRecord()
     begin
-        if Item.Get("Part No.") then begin
+        if Item.Get(Rec."Part No.") then begin
             Item.SetRange(Item."Location Filter", 'MAIN');
             Item.CalcFields(Item.Inventory, Item."Reserved Qty. on Inventory", Item."Qty. on Purch. Order");
         end;
@@ -370,7 +371,7 @@ page 50010 "Parts Allocation"
 
     trigger OnOpenPage()
     begin
-        if Item.Get("Part No.") then
+        if Item.Get(Rec."Part No.") then
             Ok := true;
     end;
 
@@ -416,12 +417,12 @@ page 50010 "Parts Allocation"
         ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
         ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
         ItemJournalLine."Line No." := LineNumber;
-        ItemJournalLine."Document No." := "Work Order No.";
+        ItemJournalLine."Document No." := Rec."Work Order No.";
         ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Item No." := Parts2."Part No.";
         ItemJournalLine.Validate(ItemJournalLine."Item No.");
         ItemJournalLine."Posting Date" := WorkDate;
-        ItemJournalLine.Description := "Work Order No." + ' ' + 'PA IN PROCESS PARTS';
+        ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'PA IN PROCESS PARTS';
         ItemJournalLine."Location Code" := 'MAIN';
         ItemJournalLine.Quantity := PN;
         ItemJournalLine.Validate(ItemJournalLine.Quantity);
@@ -449,12 +450,12 @@ page 50010 "Parts Allocation"
         ItemJournalLine."Journal Batch Name" := 'COMMITTED';
         ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
         ItemJournalLine."Line No." := LineNumber;
-        ItemJournalLine."Document No." := "Work Order No.";
+        ItemJournalLine."Document No." := Rec."Work Order No.";
         ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Item No." := Parts2."Part No.";
         ItemJournalLine.Validate(ItemJournalLine."Item No.");
         ItemJournalLine."Posting Date" := WorkDate;
-        ItemJournalLine.Description := "Work Order No." + ' ' + 'COMMIT PARTS';
+        ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'COMMIT PARTS';
         ItemJournalLine."Location Code" := 'MAIN';
         ItemJournalLine.Quantity := PN;
         ItemJournalLine.Validate(ItemJournalLine.Quantity);
@@ -506,12 +507,12 @@ page 50010 "Parts Allocation"
             ItemJournalLine."Journal Batch Name" := 'IN PROCESS';
             ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
             ItemJournalLine."Line No." := LineNumber;
-            ItemJournalLine."Document No." := "Work Order No.";
+            ItemJournalLine."Document No." := Rec."Work Order No.";
             ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
             ItemJournalLine."Item No." := Item."No.";
             ItemJournalLine.Validate(ItemJournalLine."Item No.");
             ItemJournalLine."Posting Date" := WorkDate;
-            ItemJournalLine.Description := "Work Order No." + ' ' + 'PA IN PROCESS PARTS';
+            ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'PA IN PROCESS PARTS';
             ItemJournalLine."Location Code" := 'MAIN';
             ItemJournalLine.Quantity := PN;
             ItemJournalLine.Validate(ItemJournalLine.Quantity);
@@ -540,12 +541,12 @@ page 50010 "Parts Allocation"
         ItemJournalLine."Journal Batch Name" := 'COMMITTED';
         ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
         ItemJournalLine."Line No." := LineNumber;
-        ItemJournalLine."Document No." := "Work Order No.";
+        ItemJournalLine."Document No." := Rec."Work Order No.";
         ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
         ItemJournalLine."Item No." := Item."No.";
         ItemJournalLine.Validate(ItemJournalLine."Item No.");
         ItemJournalLine."Posting Date" := WorkDate;
-        ItemJournalLine.Description := "Work Order No." + ' ' + 'COMMIT PARTS';
+        ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'COMMIT PARTS';
         ItemJournalLine."Location Code" := 'MAIN';
         ItemJournalLine.Quantity := PN;
         ItemJournalLine.Validate(ItemJournalLine.Quantity);
@@ -570,7 +571,7 @@ page 50010 "Parts Allocation"
         if WOD.Find('-') then begin
             repeat
                 WOD.CalcFields(WOD."Detail Step");
-                if PartsLocate.Get(WOD."Work Order No.", "Part Type", "Part No.") then begin
+                if PartsLocate.Get(WOD."Work Order No.", Rec."Part Type", Rec."Part No.") then begin
                     PartsLocate.CalcFields(PartsLocate."Committed Quantity");
                     if PartsLocate."Committed Quantity" > 0 then begin
                         if QtyNotFound > 0 then begin
@@ -591,7 +592,7 @@ page 50010 "Parts Allocation"
             if WOD.Find('-') then begin
                 repeat
                     WOD.CalcFields(WOD."Detail Step");
-                    if PartsLocate.Get(WOD."Work Order No.", "Part Type", "Part No.") then begin
+                    if PartsLocate.Get(WOD."Work Order No.", Rec."Part Type", Rec."Part No.") then begin
                         PartsLocate.CalcFields(PartsLocate."Committed Quantity");
                         if PartsLocate."Committed Quantity" > 0 then begin
                             QtyFound := QtyFound + PartsLocate."Committed Quantity";
@@ -611,7 +612,7 @@ page 50010 "Parts Allocation"
             if WOD.Find('-') then begin
                 repeat
                     WOD.CalcFields(WOD."Detail Step");
-                    if PartsLocate.Get(WOD."Work Order No.", "Part Type", "Part No.") then begin
+                    if PartsLocate.Get(WOD."Work Order No.", Rec."Part Type", Rec."Part No.") then begin
                         PartsLocate.CalcFields(PartsLocate."Committed Quantity");
                         if PartsLocate."Committed Quantity" > 0 then begin
                             QtyFound := QtyFound + PartsLocate."Committed Quantity";
@@ -764,7 +765,7 @@ page 50010 "Parts Allocation"
     begin
         ItemJournalLine.Init;
         ItemJournalLine."Location Code" := 'COMMITTED';
-        ItemJournalLine.Description := "Work Order No." + ' ' + 'PA RETURN PARTS';
+        ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'PA RETURN PARTS';
         WriteitemJournalLinePA;
         ItemJournalLine.Validate(ItemJournalLine.Quantity, PartsSteal."Committed Quantity");
         ItemJournalLine.Validate(ItemJournalLine."New Location Code", 'MAIN');
@@ -783,7 +784,7 @@ page 50010 "Parts Allocation"
         ItemJournalLine."Document No." := PartsSteal."Work Order No.";
         ItemJournalLine.Validate("Item No.", Item2."No.");
         ItemJournalLine."Posting Date" := WorkDate;
-        if "Serial No." <> '' then begin
+        if Rec."Serial No." <> '' then begin
             ItemJournalLine."Serial No." := PartsSteal."Serial No.";
             ItemJournalLine."New Serial No." := PartsSteal."Serial No.";
         end else begin
@@ -813,10 +814,10 @@ page 50010 "Parts Allocation"
             repeat
                 if PartsReturn.Get(TempPartsUsed."Work Order No.", TempPartsUsed."Part Type", TempPartsUsed."Part No.") then begin
                     Rec := PartsReturn;
-                    "Quoted Quantity" := TempPartsUsed."Quoted Quantity";
+                    Rec."Quoted Quantity" := TempPartsUsed."Quoted Quantity";
                     //  VALIDATE("Quoted Quantity");
-                    "Quantity Backorder" := TempPartsUsed."Quoted Quantity";
-                    Modify;
+                    Rec."Quantity Backorder" := TempPartsUsed."Quoted Quantity";
+                    Rec.Modify;
 
                 end;
             until TempPartsUsed.Next = 0;
@@ -948,4 +949,6 @@ page 50010 "Parts Allocation"
         end;
     end;
 }
+
+#pragma implicitwith restore
 

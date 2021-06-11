@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50073 "Purchase Order Accounting"
 {
     // //>> HEF Added RELEASE & REOPEN BUTTON CODE   2/27/01
@@ -28,40 +29,40 @@ page 50073 "Purchase Order Accounting"
                 group(Control1220060052)
                 {
                     ShowCaption = false;
-                    field("No."; "No.")
+                    field("No."; Rec."No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Buy-from Vendor No."; "Buy-from Vendor No.")
+                    field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from Vendor Name"; "Buy-from Vendor Name")
+                    field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from Address"; "Buy-from Address")
+                    field("Buy-from Address"; Rec."Buy-from Address")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from Address 2"; "Buy-from Address 2")
+                    field("Buy-from Address 2"; Rec."Buy-from Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from City"; "Buy-from City")
+                    field("Buy-from City"; Rec."Buy-from City")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from County"; "Buy-from County")
+                    field("Buy-from County"; Rec."Buy-from County")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from Post Code"; "Buy-from Post Code")
+                    field("Buy-from Post Code"; Rec."Buy-from Post Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Buy-from Contact"; "Buy-from Contact")
+                    field("Buy-from Contact"; Rec."Buy-from Contact")
                     {
                         ApplicationArea = All;
                     }
@@ -71,7 +72,7 @@ page 50073 "Purchase Order Accounting"
                         Caption = 'Purch. Payment Terms';
                         Editable = false;
                     }
-                    field(Notes; Notes)
+                    field(Notes; Rec.Notes)
                     {
                         ApplicationArea = All;
                     }
@@ -79,35 +80,35 @@ page 50073 "Purchase Order Accounting"
                 group(Control1220060053)
                 {
                     ShowCaption = false;
-                    field("Posting Date"; "Posting Date")
+                    field("Posting Date"; Rec."Posting Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Order Date"; "Order Date")
+                    field("Order Date"; Rec."Order Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Document Date"; "Document Date")
+                    field("Document Date"; Rec."Document Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Placed By"; "Placed By")
+                    field("Placed By"; Rec."Placed By")
                     {
                         ApplicationArea = All;
                     }
-                    field("Vendor Invoice No."; "Vendor Invoice No.")
+                    field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Purchaser Code"; "Purchaser Code")
+                    field("Purchaser Code"; Rec."Purchaser Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Quality Clause"; "Quality Clause")
+                    field("Quality Clause"; Rec."Quality Clause")
                     {
                         ApplicationArea = All;
                     }
-                    field(Status; Status)
+                    field(Status; Rec.Status)
                     {
                         ApplicationArea = All;
                     }
@@ -129,39 +130,39 @@ page 50073 "Purchase Order Accounting"
                 group(Control1220060054)
                 {
                     ShowCaption = false;
-                    field("Pay-to Vendor No."; "Pay-to Vendor No.")
+                    field("Pay-to Vendor No."; Rec."Pay-to Vendor No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to Name"; "Pay-to Name")
+                    field("Pay-to Name"; Rec."Pay-to Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to Address"; "Pay-to Address")
+                    field("Pay-to Address"; Rec."Pay-to Address")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to Address 2"; "Pay-to Address 2")
+                    field("Pay-to Address 2"; Rec."Pay-to Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to City"; "Pay-to City")
+                    field("Pay-to City"; Rec."Pay-to City")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to County"; "Pay-to County")
+                    field("Pay-to County"; Rec."Pay-to County")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to Post Code"; "Pay-to Post Code")
+                    field("Pay-to Post Code"; Rec."Pay-to Post Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to Contact"; "Pay-to Contact")
+                    field("Pay-to Contact"; Rec."Pay-to Contact")
                     {
                         ApplicationArea = All;
                     }
-                    field("On Hold"; "On Hold")
+                    field("On Hold"; Rec."On Hold")
                     {
                         ApplicationArea = All;
                     }
@@ -169,15 +170,15 @@ page 50073 "Purchase Order Accounting"
                 group(Control1220060055)
                 {
                     ShowCaption = false;
-                    field("Due Date"; "Due Date")
+                    field("Due Date"; Rec."Due Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Tax Liable"; "Tax Liable")
+                    field("Tax Liable"; Rec."Tax Liable")
                     {
                         ApplicationArea = All;
                     }
-                    field("Tax Area Code"; "Tax Area Code")
+                    field("Tax Area Code"; Rec."Tax Area Code")
                     {
                         ApplicationArea = All;
                     }
@@ -188,35 +189,35 @@ page 50073 "Purchase Order Accounting"
                 group(Control1220060056)
                 {
                     ShowCaption = false;
-                    field("Ship-to Name"; "Ship-to Name")
+                    field("Ship-to Name"; Rec."Ship-to Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Address"; "Ship-to Address")
+                    field("Ship-to Address"; Rec."Ship-to Address")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Address 2"; "Ship-to Address 2")
+                    field("Ship-to Address 2"; Rec."Ship-to Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to City"; "Ship-to City")
+                    field("Ship-to City"; Rec."Ship-to City")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to County"; "Ship-to County")
+                    field("Ship-to County"; Rec."Ship-to County")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Post Code"; "Ship-to Post Code")
+                    field("Ship-to Post Code"; Rec."Ship-to Post Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Contact"; "Ship-to Contact")
+                    field("Ship-to Contact"; Rec."Ship-to Contact")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to UPS Zone"; "Ship-to UPS Zone")
+                    field("Ship-to UPS Zone"; Rec."Ship-to UPS Zone")
                     {
                         ApplicationArea = All;
                     }
@@ -224,27 +225,27 @@ page 50073 "Purchase Order Accounting"
                 group(Control1220060057)
                 {
                     ShowCaption = false;
-                    field("Location Code"; "Location Code")
+                    field("Location Code"; Rec."Location Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipment Method Code"; "Shipment Method Code")
+                    field("Shipment Method Code"; Rec."Shipment Method Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Agent"; "Shipping Agent")
+                    field("Shipping Agent"; Rec."Shipping Agent")
                     {
                         ApplicationArea = All;
                     }
-                    field("Expected Receipt Date"; "Expected Receipt Date")
+                    field("Expected Receipt Date"; Rec."Expected Receipt Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Sell-to Customer No."; "Sell-to Customer No.")
+                    field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Code"; "Ship-to Code")
+                    field("Ship-to Code"; Rec."Ship-to Code")
                     {
                         ApplicationArea = All;
                     }
@@ -418,21 +419,21 @@ page 50073 "Purchase Order Accounting"
                         exit;
                     // << Distribution - end
 
-                    if Status = Status::Open then
-                        Status := Status::Released
+                    if Rec.Status = Rec.Status::Open then
+                        Rec.Status := Rec.Status::Released
                     else
                         Message('This purchase order has already been released.');
-                    PurchLine.SetRange(PurchLine."Document Type", "Document Type");
-                    PurchLine.SetRange(PurchLine."Document No.", "No.");
+                    PurchLine.SetRange(PurchLine."Document Type", Rec."Document Type");
+                    PurchLine.SetRange(PurchLine."Document No.", Rec."No.");
                     PurchLine.SetRange(PurchLine.Type, PurchLine.Type::Item);
                     PurchLine.SetFilter(PurchLine."No.", '<>%1', '');
                     if PurchLine.Find('-') then
                         repeat
-                            if PurchLine."Location Code" <> "Location Code" then
+                            if PurchLine."Location Code" <> Rec."Location Code" then
                                 Error('You may not have multiple locations on this purchase order.');
                         until PurchLine.Next = 0;
 
-                    if Status = Status::Released then begin
+                    if Rec.Status = Rec.Status::Released then begin
                         ReopenVisible := true;
                         ReleaseVisible := false;
                     end else begin
@@ -456,13 +457,13 @@ page 50073 "Purchase Order Accounting"
                     // If BO, test for empty lines
                     if BOCode <> '' then begin
                         PurchLineBO.Reset;
-                        PurchLineBO.SetRange(PurchLineBO."Document Type", "Document Type");
-                        PurchLineBO.SetRange(PurchLineBO."Document No.", "No.");
+                        PurchLineBO.SetRange(PurchLineBO."Document Type", Rec."Document Type");
+                        PurchLineBO.SetRange(PurchLineBO."Document No.", Rec."No.");
                         if PurchLineBO.Find('-') then
                             repeat
                                 if PurchLineBO."Blanket Order No." = '' then begin
                                     BOPurchLine.Reset;
-                                    if BOPurchLine.Get("Document Type"::"Blanket Order", BOCode, PurchLineBO."Line No.") then
+                                    if BOPurchLine.Get(Rec."Document Type"::"Blanket Order", BOCode, PurchLineBO."Line No.") then
                                         // is same line type and no.?
                                         if (BOPurchLine.Type = PurchLineBO.Type) and (BOPurchLine."No." = PurchLineBO."No.") then begin
                                             PurchLineBO."Blanket Order Line No." := PurchLineBO."Line No.";
@@ -497,8 +498,8 @@ page 50073 "Purchase Order Accounting"
                         exit;
                     // << Distribution - end
 
-                    Status := Status::Open;
-                    if Status = Status::Open then begin
+                    Rec.Status := Rec.Status::Open;
+                    if Rec.Status = Rec.Status::Open then begin
                         ReopenVisible := false;
                         ReleaseVisible := true;
                     end else begin
@@ -595,7 +596,7 @@ page 50073 "Purchase Order Accounting"
     trigger OnAfterGetRecord()
     begin
         //>> HEF 2/27/01
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             ReopenVisible := false;
             ReleaseVisible := true;
         end else begin
@@ -605,9 +606,9 @@ page 50073 "Purchase Order Accounting"
         //<< HEF 2/27/01
 
         // 04/30/12 ADV Start
-        if PurchVendor.Get("Buy-from Vendor No.") then
+        if PurchVendor.Get(Rec."Buy-from Vendor No.") then
             PurchPaymentTerms := PurchVendor."Payment Terms Code";
-        if APPurchVendor.Get("Pay-to Vendor No.") then
+        if APPurchVendor.Get(Rec."Pay-to Vendor No.") then
             APPurchPaymentTerms := APPurchVendor."Payment Terms Code";
         // 04/30/12 ADV End
     end;
@@ -615,13 +616,13 @@ page 50073 "Purchase Order Accounting"
     trigger OnDeleteRecord(): Boolean
     begin
         CurrPage.SaveRecord;
-        exit(ConfirmDeletion);
+        exit(Rec.ConfirmDeletion);
     end;
 
     trigger OnOpenPage()
     begin
         //>> HEF
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             ReopenVisible := false;
             ReleaseVisible := true;
         end else begin
@@ -631,9 +632,9 @@ page 50073 "Purchase Order Accounting"
         //<< END INSERT
 
         // 04/30/12 ADV Start
-        if PurchVendor.Get("Buy-from Vendor No.") then
+        if PurchVendor.Get(Rec."Buy-from Vendor No.") then
             PurchPaymentTerms := PurchVendor."Payment Terms Code";
-        if APPurchVendor.Get("Pay-to Vendor No.") then
+        if APPurchVendor.Get(Rec."Pay-to Vendor No.") then
             APPurchPaymentTerms := APPurchVendor."Payment Terms Code";
         // 04/30/12 ADV End
     end;
@@ -667,4 +668,6 @@ page 50073 "Purchase Order Accounting"
             exit(true);
     end;
 }
+
+#pragma implicitwith restore
 

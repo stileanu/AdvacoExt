@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50025 "Parts Adjustment"
 {
     SourceTable = WorkOrderDetail;
@@ -16,7 +17,7 @@ page 50025 "Parts Adjustment"
                     group(Control1220060005)
                     {
                         ShowCaption = false;
-                        field("Work Order No."; "Work Order No.")
+                        field("Work Order No."; Rec."Work Order No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
@@ -46,17 +47,17 @@ page 50025 "Parts Adjustment"
                     group(Control1220060009)
                     {
                         ShowCaption = false;
-                        field("Model No."; "Model No.")
+                        field("Model No."; Rec."Model No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
                         }
-                        field(Description; Description)
+                        field(Description; Rec.Description)
                         {
                             ApplicationArea = All;
                             Editable = false;
                         }
-                        field("Serial No."; "Serial No.")
+                        field("Serial No."; Rec."Serial No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
@@ -89,7 +90,7 @@ page 50025 "Parts Adjustment"
                     end else begin
                         WOP.Reset;
                         WOP.SetCurrentKey("Work Order No.", "Part No.");
-                        WOP.SetRange(WOP."Work Order No.", "Work Order No.");
+                        WOP.SetRange(WOP."Work Order No.", Rec."Work Order No.");
                         WOP.SetRange(WOP."Part Type", WOP."Part Type"::Item);
                         if WOP.Find('-') then begin
                             repeat
@@ -139,19 +140,19 @@ page 50025 "Parts Adjustment"
 
                         Commit;
 
-                        "Pump Module Processed" := true;
-                        "Quote Phase" := "Quote Phase"::"Phase 3";
-                        Modify;
+                        Rec."Pump Module Processed" := true;
+                        Rec."Quote Phase" := Rec."Quote Phase"::"Phase 3";
+                        Rec.Modify;
 
 
                         //Find Shop Labor and Update the Hours Quoted from BOM
                         PartsInsert.Reset;
                         PartsInsert.SetCurrentKey(PartsInsert."Work Order No.", PartsInsert."Part No.");
-                        PartsInsert.SetRange(PartsInsert."Work Order No.", "Work Order No.");
+                        PartsInsert.SetRange(PartsInsert."Work Order No.", Rec."Work Order No.");
                         PartsInsert.SetRange(PartsInsert."Part Type", PartsInsert."Part Type"::Resource);
                         PartsInsert.SetRange(PartsInsert."Part No.", '1');
                         if PartsInsert.Find('-') then begin
-                            BOM.SetRange(BOM."Parent Item No.", "Model No.");
+                            BOM.SetRange(BOM."Parent Item No.", Rec."Model No.");
                             BOM.SetRange(BOM."No.", '1');
                             if BOM.Find('-') then begin
                                 PartsInsert."Quoted Quantity" := BOM."Quantity per";
@@ -180,7 +181,7 @@ page 50025 "Parts Adjustment"
                     end else begin
                         WOP.Reset;
                         WOP.SetCurrentKey("Work Order No.", "Part No.");
-                        WOP.SetRange(WOP."Work Order No.", "Work Order No.");
+                        WOP.SetRange(WOP."Work Order No.", Rec."Work Order No.");
                         WOP.SetRange(WOP."Part Type", WOP."Part Type"::Item);
                         if WOP.Find('-') then begin
                             repeat
@@ -208,7 +209,7 @@ page 50025 "Parts Adjustment"
 
                         WOP.Reset;
                         WOP.SetCurrentKey("Work Order No.", "Part No.");
-                        WOP.SetRange(WOP."Work Order No.", "Work Order No.");
+                        WOP.SetRange(WOP."Work Order No.", Rec."Work Order No.");
                         WOP.SetRange(WOP."Part Type", WOP."Part Type"::Resource);
                         if WOP.Find('-') then begin
                             repeat
@@ -218,11 +219,11 @@ page 50025 "Parts Adjustment"
 
                         WOS.Reset;
                         WOS.SetCurrentKey("Order No.", Step);
-                        WOS.SetRange(WOS."Order No.", "Work Order No.");
+                        WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
                         if WOS.Find('-') then begin
                             repeat
                                 if WOS.Step.AsInteger() > 1 then begin
-                                    "Current Extra Time Used" := "Current Extra Time Used" + WOS."Regular Hours" + WOS."Overtime Hours";
+                                    Rec."Current Extra Time Used" := Rec."Current Extra Time Used" + WOS."Regular Hours" + WOS."Overtime Hours";
                                     WOS.Delete;
                                 end else begin
                                     if WOS.Step = WOS.Step::DIS then begin
@@ -239,7 +240,7 @@ page 50025 "Parts Adjustment"
 
                         if PartsConsumed > 0 then begin
                             PartAdd.Init;
-                            PartAdd."Work Order No." := "Work Order No.";
+                            PartAdd."Work Order No." := Rec."Work Order No.";
                             PartAdd."Part Type" := PartAdd."Part Type"::Resource;
                             PartAdd."Part No." := 'REQUOTE PARTS';
                             PartAdd."Quoted Quantity" := 1;
@@ -247,19 +248,19 @@ page 50025 "Parts Adjustment"
                             PartAdd.Insert;
                         end;
 
-                        "Build Ahead" := false;
-                        "Build Ahead Report" := false;
-                        "ReUsable Parts Returned" := true;
-                        "Quote Phase" := "Quote Phase"::" ";
-                        BackorderText := '';
-                        "Pump Module No." := '';
-                        "Pump Module" := false;
-                        "Pump Module Processed" := false;
-                        Modify;
-                        "Reverse Build Ahead" := false;
-                        "Vendor Repair" := true;
-                        Validate("Pump Module No.");
-                        Modify;
+                        Rec."Build Ahead" := false;
+                        Rec."Build Ahead Report" := false;
+                        Rec."ReUsable Parts Returned" := true;
+                        Rec."Quote Phase" := Rec."Quote Phase"::" ";
+                        Rec.BackorderText := '';
+                        Rec."Pump Module No." := '';
+                        Rec."Pump Module" := false;
+                        Rec."Pump Module Processed" := false;
+                        Rec.Modify;
+                        Rec."Reverse Build Ahead" := false;
+                        Rec."Vendor Repair" := true;
+                        Rec.Validate("Pump Module No.");
+                        Rec.Modify;
                         CurrPage.Close;
                     end;
                 end;
@@ -277,7 +278,7 @@ page 50025 "Parts Adjustment"
                     end else begin
                         WOP.Reset;
                         WOP.SetCurrentKey("Work Order No.", "Part No.");
-                        WOP.SetRange(WOP."Work Order No.", "Work Order No.");
+                        WOP.SetRange(WOP."Work Order No.", Rec."Work Order No.");
                         WOP.SetRange(WOP."Part Type", WOP."Part Type"::Item);
                         if WOP.Find('-') then begin
                             repeat
@@ -304,12 +305,12 @@ page 50025 "Parts Adjustment"
                             until WOP.Next = 0;
                         end;
 
-                        if ("Unrepairable Handling".AsInteger() < 3) or ("Unrepairable Handling" = "Unrepairable Handling"::"Return to Vendor") then begin
+                        if (Rec."Unrepairable Handling".AsInteger() < 3) or (Rec."Unrepairable Handling" = Rec."Unrepairable Handling"::"Return to Vendor") then begin
                             if WOS.Status = WOS.Status::Waiting then
                                 WOS.Delete;
                             WOS.Reset;
                             WOS.SetCurrentKey("Order No.", Step);
-                            WOS.SetRange(WOS."Order No.", "Work Order No.");
+                            WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
                             if WOS.Find('+') then begin
                                 WOSSHIP.Init;
                                 WOSSHIP."Order No." := WOS."Order No.";
@@ -319,20 +320,20 @@ page 50025 "Parts Adjustment"
                                 WOSSHIP.Status := WOS.Status::Waiting;
                                 WOSSHIP.Insert;
                             end;
-                            "ReUsable Parts Returned" := true;
-                            Modify;
+                            Rec."ReUsable Parts Returned" := true;
+                            Rec.Modify;
                         end else begin
                             if WOS.Status = WOS.Status::Waiting then
                                 WOS.Delete;
                             UpdateParts;
-                            "ReUsable Parts Returned" := true;
-                            if ("Unrepairable Charge" <> 0) or ("Freightin Bill Customer" = true) then begin
+                            Rec."ReUsable Parts Returned" := true;
+                            if (Rec."Unrepairable Charge" <> 0) or (Rec."Freightin Bill Customer" = true) then begin
                                 SalesLineNo := 10000;
                                 CreateOrder;
                                 URCreatelines;
                             end;
-                            Complete := true;
-                            Modify;
+                            Rec.Complete := true;
+                            Rec.Modify;
                         end;
 
                         CurrPage.Close;
@@ -347,7 +348,7 @@ page 50025 "Parts Adjustment"
 
                 trigger OnAction()
                 begin
-                    Parts.SetRange(Parts."Work Order No.", "Work Order No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Work Order No.");
                     PAGE.RunModal(PAGE::"Parts Allocation", Parts);
                 end;
             }
@@ -359,7 +360,7 @@ page 50025 "Parts Adjustment"
                 trigger OnAction()
                 begin
                     Parts.SetCurrentKey("Work Order No.", "Part Type", "Part No.");
-                    Parts.SetRange(Parts."Work Order No.", "Work Order No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Work Order No.");
                     if Parts.Find('-') then begin
                         repeat
                             Parts.CalcFields(Parts."In-Process Quantity");
@@ -376,25 +377,25 @@ page 50025 "Parts Adjustment"
 
     trigger OnAfterGetRecord()
     begin
-        MasterNo := CopyStr("Work Order No.", 1, 5) + '00';
+        MasterNo := CopyStr(Rec."Work Order No.", 1, 5) + '00';
         if WOM.Get(MasterNo) then
             OK := true;
 
         WOS.SetCurrentKey("Order No.", Step);
-        WOS.SetRange(WOS."Order No.", "Work Order No.");
+        WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
         if WOS.Find('+') then begin
-            if ("Unrepairable BuildAhead" = true) and ("ReUsable Parts Returned" = false) then
+            if (Rec."Unrepairable BuildAhead" = true) and (Rec."ReUsable Parts Returned" = false) then
                 UnrepairableVisible := true
             else
                 UnrepairableVisible := false;
 
-            if "Reverse Build Ahead" then
+            if Rec."Reverse Build Ahead" then
                 VendorRepairVisible := true
             else
                 VendorRepairVisible := false;
         end;
 
-        if ("Pump Module" = true) and ("Pump Module Processed" = false) then
+        if (Rec."Pump Module" = true) and (Rec."Pump Module Processed" = false) then
             PumpModuleVisible := true
         else
             PumpModuleVisible := false;
@@ -471,11 +472,11 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
                 ItemJournalLine."Entry Type" := ItemLedgEntryType::"Negative Adjmt."; ///--! Negative Adjustment
-                ItemJournalLine."Document No." := "Work Order No.";
+                ItemJournalLine."Document No." := Rec."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
                 ItemJournalLine."Posting Date" := WorkDate;
-                ItemJournalLine.Description := "Work Order No." + ' ' + 'UNREPAIRABLE REMOVE';
+                ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'UNREPAIRABLE REMOVE';
                 ItemJournalLine."Location Code" := 'MAIN';
                 ItemJournalLine.Quantity := RemoveInventoryQty;
                 ItemJournalLine.Validate(ItemJournalLine.Quantity);
@@ -511,11 +512,11 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
                 ItemJournalLine."Entry Type" := ItemLedgEntryType::"Negative Adjmt."; ///--! Negative Adjustment
-                ItemJournalLine."Document No." := "Work Order No.";
+                ItemJournalLine."Document No." := Rec."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
                 ItemJournalLine."Posting Date" := WorkDate;
-                ItemJournalLine.Description := "Work Order No." + ' ' + 'PUMP MODULE REMOVE';
+                ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'PUMP MODULE REMOVE';
                 ItemJournalLine."Location Code" := 'MAIN';
                 ItemJournalLine.Quantity := RemoveInventoryQty;
                 ItemJournalLine.Validate(ItemJournalLine.Quantity);
@@ -551,11 +552,11 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
                 ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
-                ItemJournalLine."Document No." := "Work Order No.";
+                ItemJournalLine."Document No." := Rec."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
                 ItemJournalLine."Posting Date" := WorkDate;
-                ItemJournalLine.Description := "Work Order No." + ' ' + 'UNREPAIRABLE RETURN';
+                ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'UNREPAIRABLE RETURN';
                 ItemJournalLine."Location Code" := 'IN PROCESS';
 
                 ItemJournalLine.Quantity := ReturnInventoryQty;
@@ -594,11 +595,11 @@ page 50025 "Parts Adjustment"
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
                 ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
-                ItemJournalLine."Document No." := "Work Order No.";
+                ItemJournalLine."Document No." := Rec."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
                 ItemJournalLine."Posting Date" := WorkDate;
-                ItemJournalLine.Description := "Work Order No." + ' ' + 'PUMP MODULE RETURN';
+                ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'PUMP MODULE RETURN';
                 ItemJournalLine."Location Code" := 'IN PROCESS';
 
                 ItemJournalLine.Quantity := ReturnInventoryQty;
@@ -652,7 +653,7 @@ page 50025 "Parts Adjustment"
 
     procedure CreateOrder()
     begin
-        WOM.Get("Work Order Master No.");
+        WOM.Get(Rec."Work Order Master No.");
         Clear(SalesHeader);
 
         SalesHeader.Init;
@@ -663,7 +664,7 @@ page 50025 "Parts Adjustment"
             if SO <> '' then
                 SalesHeader."No." := SO
             else
-                SalesHeader."No." := "Work Order No.";
+                SalesHeader."No." := Rec."Work Order No.";
         end;
 
         // BOL FIX
@@ -675,21 +676,21 @@ page 50025 "Parts Adjustment"
         SalesHeader.Validate("Sell-to Customer No.", WOM.Customer);
         ShipTo.Get(SalesHeader."Sell-to Customer No.", WOM."Ship To Code");
         SalesHeader.Validate("Posting Date", Today);
-        SalesHeader."Order Date" := "Work Order Date";
+        SalesHeader."Order Date" := Rec."Work Order Date";
         SalesHeader."Ship-to Code" := WOM."Ship To Code";
-        SalesHeader."Ship-to Name" := "Ship To Name";
-        SalesHeader."Ship-to Address" := "Ship To Address 1";
-        SalesHeader."Ship-to Address 2" := "Ship To Address 2";
-        SalesHeader."Ship-to City" := "Ship To City";
-        SalesHeader."Ship-to County" := "Ship To State";
-        SalesHeader."Ship-to Post Code" := "Ship To Zip Code";
-        SalesHeader."Ship-to Contact" := Attention;
+        SalesHeader."Ship-to Name" := Rec."Ship To Name";
+        SalesHeader."Ship-to Address" := Rec."Ship To Address 1";
+        SalesHeader."Ship-to Address 2" := Rec."Ship To Address 2";
+        SalesHeader."Ship-to City" := Rec."Ship To City";
+        SalesHeader."Ship-to County" := Rec."Ship To State";
+        SalesHeader."Ship-to Post Code" := Rec."Ship To Zip Code";
+        SalesHeader."Ship-to Contact" := Rec.Attention;
         SalesHeader."Document Date" := Today;
         SalesHeader."Shipping No. Series" := SalesSetup."Posted Shipment Nos.";
         SalesHeader."Posting No. Series" := SalesSetup."Posted Invoice Nos.";
         //SalesHeader.Rep := ShipTo.Rep;
         SalesHeader."Salesperson Code" := ShipTo."Inside Sales";
-        SalesHeader."Payment Terms Code" := "Payment Terms";
+        SalesHeader."Payment Terms Code" := Rec."Payment Terms";
         //SalesHeader."Card Type" := "Card Type";
         //SalesHeader."Credit Card No." := "Credit Card No.";
         //SalesHeader."Credit Card Exp." := "Credit Card Exp.";
@@ -701,9 +702,9 @@ page 50025 "Parts Adjustment"
         //SalesHeader."Shipping Account" := '';
         SalesHeader."Package Tracking No." := '';
         //SalesHeader."Shipping Advice" := SalesHeader."Shipping Advice" :: "Ship Complete";
-        SalesHeader."Your Reference" := "Customer PO No.";
+        SalesHeader."Your Reference" := Rec."Customer PO No.";
 
-        if "Tax Liable" = true then begin
+        if Rec."Tax Liable" = true then begin
             SalesHeader."Tax Liable" := true;
             SalesHeader."Tax Area Code" := 'MD';
         end else begin
@@ -712,7 +713,7 @@ page 50025 "Parts Adjustment"
         end;
 
         if Customer.Get(SalesHeader."Sell-to Customer No.") then begin
-            if "Tax Liable" = false then begin
+            if Rec."Tax Liable" = false then begin
                 SalesHeader."Tax Exemption No." := Customer."Tax Exemption No.";
                 //SalesHeader."Exempt Organization" :=  Customer."Exempt Organization";
             end;
@@ -727,70 +728,70 @@ page 50025 "Parts Adjustment"
 
     procedure URCreatelines()
     begin
-        if ("Unrepairable Charge" > 0) or ("Freightin Bill Customer" = true) then begin
+        if (Rec."Unrepairable Charge" > 0) or (Rec."Freightin Bill Customer" = true) then begin
 
             //>> Work Order No. & Order Type
             LineLoop;
             SalesLine.Type := SalesLine.Type::" ";
             SalesLine.Validate("No.", '');
-            SalesLine.Description := "Work Order No." + ' ' + Format("Order Type");
+            SalesLine.Description := Rec."Work Order No." + ' ' + Format(Rec."Order Type");
             // + 'Total Price: ' + FORMAT(ROUND("Quote Price")); //REMOVED PER BLF 6/12/01
             //SalesLine."Commission Calculated" := FALSE;
             //SalesLine."Cross Reference Item" := "Model No.";
             SalesLine.Insert;
 
             //>> Description
-            if Description <> '' then begin
+            if Rec.Description <> '' then begin
                 LineLoop;
                 SalesLine.Type := SalesLine.Type::" ";
                 SalesLine.Validate("No.", '');
-                SalesLine.Description := Description;
+                SalesLine.Description := Rec.Description;
                 //SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
 
             //>> Serial No. Info
-            if "Serial No." <> '' then begin
+            if Rec."Serial No." <> '' then begin
                 LineLoop;
                 SalesLine.Type := SalesLine.Type::" ";
                 SalesLine.Validate("No.", '');
-                SalesLine.Description := 'S/N' + ' ' + "Serial No.";
+                SalesLine.Description := 'S/N' + ' ' + Rec."Serial No.";
                 //SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
 
             //>>Customer Part Number
-            if "Customer Part No." <> '' then begin
+            if Rec."Customer Part No." <> '' then begin
                 LineLoop;
                 SalesLine.Type := SalesLine.Type::" ";
                 SalesLine.Validate("No.", '');
-                SalesLine.Description := 'Customer P/N' + ' ' + "Customer Part No.";
+                SalesLine.Description := 'Customer P/N' + ' ' + Rec."Customer Part No.";
                 //SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
 
 
             //UnRepairable Charge
-            if "Unrepairable Charge" > 0 then begin
+            if Rec."Unrepairable Charge" > 0 then begin
                 LineLoop;
                 SalesLine.Type := SalesLine.Type::"G/L Account";
                 GPSLoop;
                 SalesLine.Validate(Quantity, 1);
                 SalesLine.Description := 'UnRepairable Charge';
-                SalesLine."Unit Price" := "Unrepairable Charge";
+                SalesLine."Unit Price" := Rec."Unrepairable Charge";
                 SalesLine.Validate("Unit Price");
                 //SalesLine."Commission Calculated" := TRUE;
                 SalesLine.Insert;
             end;
 
             //InBound Freight Charge
-            if "Freightin Bill Customer" = true then begin
+            if Rec."Freightin Bill Customer" = true then begin
                 LineLoop;
                 SalesLine.Type := SalesLine.Type::"G/L Account";
                 SalesLine.Validate("No.", '312');   //Sales Account
                 SalesLine.Validate(Quantity, 1);
                 SalesLine.Description := 'Inbound Freight Charge';
-                SalesLine.Validate("Unit Price", Freightin);
+                SalesLine.Validate("Unit Price", Rec.Freightin);
                 //SalesLine."Commission Calculated" := FALSE;
                 SalesLine.Insert;
             end;
@@ -810,30 +811,32 @@ page 50025 "Parts Adjustment"
     procedure GPSLoop()
     begin
         // ,SERVICE,SALES,TURBO,ELECTRONIC,DRY,CRYO
-        if ("Income Code".AsInteger() = 1) then begin
+        if (Rec."Income Code".AsInteger() = 1) then begin
             GPS.Get('', 'REPAIR');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if ("Income Code".AsInteger() = 2) then begin
+        if (Rec."Income Code".AsInteger() = 2) then begin
             GPS.Get('', 'PP SALES');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if ("Income Code".AsInteger() = 3) then begin
+        if (Rec."Income Code".AsInteger() = 3) then begin
             GPS.Get('', 'TURBO');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if ("Income Code".AsInteger() = 4) then begin
+        if (Rec."Income Code".AsInteger() = 4) then begin
             GPS.Get('', 'ELECTRONIC');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if ("Income Code".AsInteger() = 5) then begin
+        if (Rec."Income Code".AsInteger() = 5) then begin
             GPS.Get('', 'DRY PUMP');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
-        if ("Income Code".AsInteger() = 6) then begin
+        if (Rec."Income Code".AsInteger() = 6) then begin
             GPS.Get('', 'CRYO');
             SalesLine.Validate("No.", GPS."Sales Account");   //Sales Account
         end;
     end;
 }
+
+#pragma implicitwith restore
 

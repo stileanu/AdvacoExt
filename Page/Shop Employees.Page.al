@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50049 "Shop Employees"
 {
     PageType = Card;
@@ -15,37 +16,37 @@ page 50049 "Shop Employees"
                 group(Control1000000009)
                 {
                     ShowCaption = false;
-                    field("No."; "No.")
+                    field("No."; Rec."No.")
                     {
                         ApplicationArea = All;
 
                         trigger OnAssistEdit()
                         begin
-                            if AssistEdit(xRec) then
+                            if Rec.AssistEdit(xRec) then
                                 CurrPage.Update;
                         end;
                     }
-                    field(Name; Name)
+                    field(Name; Rec.Name)
                     {
                         ApplicationArea = All;
                     }
-                    field("Search Name"; "Search Name")
+                    field("Search Name"; Rec."Search Name")
                     {
                         ApplicationArea = All;
                     }
-                    field(Type; Type)
+                    field(Type; Rec.Type)
                     {
                         ApplicationArea = All;
                     }
-                    field("Resource Group No."; "Resource Group No.")
+                    field("Resource Group No."; Rec."Resource Group No.")
                     {
                         ApplicationArea = All;
                     }
-                    field(Blocked; Blocked)
+                    field(Blocked; Rec.Blocked)
                     {
                         ApplicationArea = All;
                     }
-                    field("Last Date Modified"; "Last Date Modified")
+                    field("Last Date Modified"; Rec."Last Date Modified")
                     {
                         ApplicationArea = All;
                     }
@@ -75,10 +76,12 @@ page 50049 "Shop Employees"
 
     trigger OnAfterGetRecord()
     begin
-        SetRange("No.");
+        Rec.SetRange("No.");
     end;
 
     var
         ContractType: Option Sales,Purchase;
 }
+
+#pragma implicitwith restore
 

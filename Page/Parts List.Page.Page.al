@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50005 "Parts List"
 {
     // 2014_09_08 ADV
@@ -16,49 +17,49 @@ page 50005 "Parts List"
         {
             repeater(Group)
             {
-                field("Part No."; "Part No.")
+                field("Part No."; Rec."Part No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field("Serial No."; "Serial No.")
+                field("Serial No."; Rec."Serial No.")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Quoted Price"; "Quoted Price")
+                field("Quoted Price"; Rec."Quoted Price")
                 {
                     ApplicationArea = All;
                 }
-                field("Part Cost"; "Part Cost")
+                field("Part Cost"; Rec."Part Cost")
                 {
                     ApplicationArea = All;
                 }
-                field("Quoted Quantity"; "Quoted Quantity")
+                field("Quoted Quantity"; Rec."Quoted Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("Pulled Quantity"; "Pulled Quantity")
+                field("Pulled Quantity"; Rec."Pulled Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("Committed Quantity"; "Committed Quantity")
+                field("Committed Quantity"; Rec."Committed Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("BOM Quantity"; "BOM Quantity")
+                field("BOM Quantity"; Rec."BOM Quantity")
                 {
                     ApplicationArea = All;
                 }
                 //ICE RSK 12/29/20
-                field("Quantity Backorder"; "Quantity Backorder")
+                field("Quantity Backorder"; Rec."Quantity Backorder")
                 {
                     ApplicationArea = all;
                 }
-                field("Purchase Order No."; "Purchase Order No.")
+                field("Purchase Order No."; Rec."Purchase Order No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -90,4 +91,6 @@ page 50005 "Parts List"
     {
     }
 }
+
+#pragma implicitwith restore
 

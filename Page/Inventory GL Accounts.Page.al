@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50054 "Inventory GL Accounts"
 {
     //Tested
@@ -13,24 +14,24 @@ page 50054 "Inventory GL Accounts"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = All;
                 }
-                field("Net Change"; "Net Change")
+                field("Net Change"; Rec."Net Change")
                 {
                     ApplicationArea = All;
                 }
-                field("Balance at Date"; "Balance at Date")
+                field("Balance at Date"; Rec."Balance at Date")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(Balance; Balance)
+                field(Balance; Rec.Balance)
                 {
                     ApplicationArea = All;
                 }
@@ -44,7 +45,9 @@ page 50054 "Inventory GL Accounts"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        SetupNewGLAcc(xRec, BelowxRec);
+        Rec.SetupNewGLAcc(xRec, BelowxRec);
     end;
 }
+
+#pragma implicitwith restore
 

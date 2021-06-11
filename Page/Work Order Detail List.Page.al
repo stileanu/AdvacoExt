@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50001 "Work Order Detail List"
 {
     // 2011_06_09 ADV
@@ -32,53 +33,53 @@ page 50001 "Work Order Detail List"
         {
             repeater(Group)
             {
-                field("Work Order No."; "Work Order No.")
+                field("Work Order No."; Rec."Work Order No.")
                 {
                     ApplicationArea = All;
                     //TableRelation = WorkOrderDetail."Work Order No.";
                 }
-                field("Customer ID"; "Customer ID")
+                field("Customer ID"; Rec."Customer ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Work Order Master No."; "Work Order Master No.")
+                field("Work Order Master No."; Rec."Work Order Master No.")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Model No."; "Model No.")
+                field("Model No."; Rec."Model No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Serial No."; "Serial No.")
+                field("Serial No."; Rec."Serial No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Customer Part No."; "Customer Part No.")
+                field("Customer Part No."; Rec."Customer Part No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Customer PO No."; "Customer PO No.")
+                field("Customer PO No."; Rec."Customer PO No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Work Order Date"; "Work Order Date")
+                field("Work Order Date"; Rec."Work Order Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Order Type"; "Order Type")
+                field("Order Type"; Rec."Order Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Initial Order Type"; "Initial Order Type")
+                field("Initial Order Type"; Rec."Initial Order Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship Date"; "Ship Date")
+                field("Ship Date"; Rec."Ship Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Tool ID"; "Tool ID")
+                field("Tool ID"; Rec."Tool ID")
                 {
                     ApplicationArea = All;
                 }
@@ -88,27 +89,27 @@ page 50001 "Work Order Detail List"
                     Caption = 'Quote Price';
                     Visible = QuotePriceVisible;
                 }
-                field("Order Adj."; "Order Adj.")
+                field("Order Adj."; Rec."Order Adj.")
                 {
                     ApplicationArea = All;
                     Visible = OrderAdjVisible;
                 }
-                field("Labor Hours Quoted"; "Labor Hours Quoted")
+                field("Labor Hours Quoted"; Rec."Labor Hours Quoted")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Current Reg Hours Used"; "Current Reg Hours Used")
+                field("Current Reg Hours Used"; Rec."Current Reg Hours Used")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field(Notes; Notes)
+                field(Notes; Rec.Notes)
                 {
                     ApplicationArea = All;
                     Visible = NotesVisible;
                 }
-                field(Diagnosis; Diagnosis)
+                field(Diagnosis; Rec.Diagnosis)
                 {
                     ApplicationArea = All;
                     Visible = DiagnVisible;
@@ -128,7 +129,7 @@ page 50001 "Work Order Detail List"
 
                 trigger OnAction()
                 begin
-                    WOD.SetRange(WOD."Work Order No.", "Work Order No.");
+                    WOD.SetRange(WOD."Work Order No.", Rec."Work Order No.");
                     PAGE.Run(50007, WOD);
                 end;
             }
@@ -139,7 +140,7 @@ page 50001 "Work Order Detail List"
 
                 trigger OnAction()
                 begin
-                    Parts.SetRange(Parts."Work Order No.", "Work Order No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Work Order No.");
                     PAGE.Run(50005, Parts);
                 end;
             }
@@ -229,12 +230,12 @@ page 50001 "Work Order Detail List"
         // 2011_08_25 ADV: Start
         QuotePrice := 0;
 
-        CalcFields("Original Parts Price", "Original Labor Price");
-        if Quote = Quote::Accepted then
-            QuotePrice := "Original Parts Price" + "Original Labor Price" + "Order Adj.";
+        Rec.CalcFields("Original Parts Price", "Original Labor Price");
+        if Rec.Quote = Rec.Quote::Accepted then
+            QuotePrice := Rec."Original Parts Price" + Rec."Original Labor Price" + Rec."Order Adj.";
 
-        if Quote = Quote::"Not Repairable" then
-            QuotePrice := "Unrepairable Charge";
+        if Rec.Quote = Rec.Quote::"Not Repairable" then
+            QuotePrice := Rec."Unrepairable Charge";
         // 2011_08_25 ADV: End
         //end;
         // 2011_09_01 - End
@@ -331,4 +332,6 @@ page 50001 "Work Order Detail List"
         lSalesCode: Boolean;
         Permiss: Label 'SUPER';
 }
+
+#pragma implicitwith restore
 

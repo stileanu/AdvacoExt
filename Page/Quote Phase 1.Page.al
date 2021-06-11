@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50013 "Quote Phase 1"
 {
     // 01/05/2011 ADV
@@ -36,7 +37,7 @@ page 50013 "Quote Phase 1"
                     group(Control1220060005)
                     {
                         ShowCaption = false;
-                        field("Order No."; "Order No.")
+                        field("Order No."; Rec."Order No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
@@ -47,7 +48,7 @@ page 50013 "Quote Phase 1"
                             Caption = 'Customer';
                             Editable = false;
                         }
-                        field(Employee; Employee)
+                        field(Employee; Rec.Employee)
                         {
                             ApplicationArea = All;
                         }
@@ -76,11 +77,11 @@ page 50013 "Quote Phase 1"
                                 Message('The Quoted Parts have been Reset, But You Must Click on one of the Parts to Update all the Quantities');
                             end;
                         }
-                        field("Date In"; "Date In")
+                        field("Date In"; Rec."Date In")
                         {
                             ApplicationArea = All;
                         }
-                        field("Regular Hours"; "Regular Hours")
+                        field("Regular Hours"; Rec."Regular Hours")
                         {
                             ApplicationArea = All;
                         }
@@ -108,11 +109,11 @@ page 50013 "Quote Phase 1"
                                     WOD.Modify;
                             end;
                         }
-                        field("Date Out"; "Date Out")
+                        field("Date Out"; Rec."Date Out")
                         {
                             ApplicationArea = All;
                         }
-                        field("Overtime Hours"; "Overtime Hours")
+                        field("Overtime Hours"; Rec."Overtime Hours")
                         {
                             ApplicationArea = All;
                         }
@@ -244,11 +245,11 @@ page 50013 "Quote Phase 1"
         Instructions := false;
         NewInstruction := false;
 
-        MasterNo := CopyStr("Order No.", 1, 5) + '00';
+        MasterNo := CopyStr(Rec."Order No.", 1, 5) + '00';
         if WOM.Get(MasterNo) then
             OK := true;
 
-        WOD.Get("Order No.");
+        WOD.Get(Rec."Order No.");
         OLDWOD := WOD;
 
         if WOD.QOT <> '' then begin
@@ -259,28 +260,28 @@ page 50013 "Quote Phase 1"
 
         // 01/05/2011 Start
         // Step,Model
-        GetIfInstructionsExistsPerStep(Step, '', '', WOD."Model No.", '');
+        GetIfInstructionsExistsPerStep(Rec.Step, '', '', WOD."Model No.", '');
 
         // Step,Customer
-        GetIfInstructionsExistsPerStep(Step, WOD."Customer ID", '', '', '');
+        GetIfInstructionsExistsPerStep(Rec.Step, WOD."Customer ID", '', '', '');
 
         // Step,Customer,Part No.
         if (WOD."Customer Part No." <> '') then
-            GetIfInstructionsExistsPerStep(Step, WOD."Customer ID", '', '', WOD."Customer Part No.");
+            GetIfInstructionsExistsPerStep(Rec.Step, WOD."Customer ID", '', '', WOD."Customer Part No.");
 
         // Step,Customer,Model
-        GetIfInstructionsExistsPerStep(Step, WOD."Customer ID", '', WOD."Model No.", '');
+        GetIfInstructionsExistsPerStep(Rec.Step, WOD."Customer ID", '', WOD."Model No.", '');
 
         // Step,Customer,ShipTo
-        GetIfInstructionsExistsPerStep(Step, WOD."Customer ID", WOM."Ship To Code", '', '');
+        GetIfInstructionsExistsPerStep(Rec.Step, WOD."Customer ID", WOM."Ship To Code", '', '');
 
         // Step,Customer,ShiptTo,Model
-        GetIfInstructionsExistsPerStep(Step, WOD."Customer ID", WOM."Ship To Code", WOD."Model No.", '');
+        GetIfInstructionsExistsPerStep(Rec.Step, WOD."Customer ID", WOM."Ship To Code", WOD."Model No.", '');
         // 01/05/2011 End
         if Instructions then begin
             WorkInstructionsVisible := true;
             if NewInstruction then begin
-                if xRec."Order No." <> "Order No." then begin
+                if xRec."Order No." <> Rec."Order No." then begin
                     Message('Work Instructions have been updated, Please Read');
                 end;
             end;
@@ -339,4 +340,6 @@ page 50013 "Quote Phase 1"
         WI.Reset;
     end;
 }
+
+#pragma implicitwith restore
 

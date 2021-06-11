@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50020 "Quote Modify Parts List"
 /*
 IcE-MPC BC Upgrade
@@ -13,11 +14,11 @@ IcE-MPC BC Upgrade
         {
             repeater(Group)
             {
-                field("Part Type"; "Part Type")
+                field("Part Type"; Rec."Part Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Part No."; "Part No.")
+                field("Part No."; Rec."Part No.")
                 {
                     ApplicationArea = All;
 
@@ -34,40 +35,40 @@ IcE-MPC BC Upgrade
                         end;
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field("After Quote Quantity"; "After Quote Quantity")
+                field("After Quote Quantity"; Rec."After Quote Quantity")
                 {
                     ApplicationArea = All;
                     Caption = 'Adj. Qty';
                     Editable = false;
                 }
-                field("Quoted Quantity"; "Quoted Quantity")
+                field("Quoted Quantity"; Rec."Quoted Quantity")
                 {
                     ApplicationArea = All;
                     Caption = 'Total Qty';
                 }
-                field(Reason; Reason)
+                field(Reason; Rec.Reason)
                 {
                     ApplicationArea = All;
                 }
-                field("Serial No."; "Serial No.")
+                field("Serial No."; Rec."Serial No.")
                 {
                     ApplicationArea = All;
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
-                        SelectItemEntry(FIELDNO("Serial No."));
+                        SelectItemEntry(Rec.FIELDNO("Serial No."));
                     end;
                 }
-                field("Pre-Release PO"; "Pre-Release PO")
+                field("Pre-Release PO"; Rec."Pre-Release PO")
                 {
                     ApplicationArea = All;
                     Caption = 'Pre Order';
                 }
-                field("Quoted Price"; "Quoted Price")
+                field("Quoted Price"; Rec."Quoted Price")
                 {
                     ApplicationArea = All;
                 }
@@ -85,9 +86,9 @@ IcE-MPC BC Upgrade
 
     procedure SelectItemEntry(CurrentFieldNo: Integer)
     begin
-        TESTFIELD("Part Type", "Part Type"::Item);
+        Rec.TESTFIELD("Part Type", Rec."Part Type"::Item);
         ILE.SETCURRENTKEY("Item No.", "Variant Code", Open, Positive, "Location Code", "Posting Date");
-        ILE.SETRANGE("Item No.", "Part No.");
+        ILE.SETRANGE("Item No.", Rec."Part No.");
         ILE.SETRANGE(Open, TRUE);
         ILE.SETRANGE(Positive, TRUE);
         IF PAGE.RUNMODAL(PAGE::"Item Ledger Entries", ILE) = ACTION::LookupOK THEN BEGIN
@@ -108,10 +109,12 @@ IcE-MPC BC Upgrade
 
     procedure DeletePart2()
     begin
-        IF "Quoted Quantity" > 0 THEN
+        IF Rec."Quoted Quantity" > 0 THEN
             ERROR('Quoted Quantity Must Be Zero to Delete');
 
         Rec.DeletePart;
     end;
 }
+
+#pragma implicitwith restore
 

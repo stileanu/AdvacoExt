@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50018 "Quote Phase 3 Parts List"
 {
     Editable = false;
@@ -10,11 +11,11 @@ page 50018 "Quote Phase 3 Parts List"
         {
             repeater(Group)
             {
-                field("Part Type"; "Part Type")
+                field("Part Type"; Rec."Part Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Part No."; "Part No.")
+                field("Part No."; Rec."Part No.")
                 {
                     ApplicationArea = All;
 
@@ -31,39 +32,39 @@ page 50018 "Quote Phase 3 Parts List"
                         end;
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field("Quoted Quantity"; "Quoted Quantity")
+                field("Quoted Quantity"; Rec."Quoted Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("Part Cost"; "Part Cost")
+                field("Part Cost"; Rec."Part Cost")
                 {
                     ApplicationArea = All;
                 }
-                field("Quoted Price"; "Quoted Price")
+                field("Quoted Price"; Rec."Quoted Price")
                 {
                     ApplicationArea = All;
                 }
-                field("BOM Quantity"; "BOM Quantity")
-                {
-                    ApplicationArea = All;
-                    Editable = false;
-                }
-                field("Committed Quantity"; "Committed Quantity")
+                field("BOM Quantity"; Rec."BOM Quantity")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Quantity Backorder"; "Quantity Backorder")
+                field("Committed Quantity"; Rec."Committed Quantity")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Quantity Backorder"; Rec."Quantity Backorder")
                 {
                     ApplicationArea = All;
                     Caption = 'Backorder Quantity';
                     Editable = false;
                 }
-                field("In-Process Quantity"; "In-Process Quantity")
+                field("In-Process Quantity"; Rec."In-Process Quantity")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -76,4 +77,6 @@ page 50018 "Quote Phase 3 Parts List"
     {
     }
 }
+
+#pragma implicitwith restore
 

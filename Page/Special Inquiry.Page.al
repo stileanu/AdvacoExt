@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50031 "Special Inquiry"
 {
     // 2011_06_09 ADV
@@ -28,43 +29,43 @@ page 50031 "Special Inquiry"
                 group("Press F7 and enter Criteria")
                 {
                     Caption = 'Press F7 and enter Criteria';
-                    field("Customer ID"; "Customer ID")
+                    field("Customer ID"; Rec."Customer ID")
                     {
                         ApplicationArea = All;
                     }
-                    field("Work Order Date"; "Work Order Date")
+                    field("Work Order Date"; Rec."Work Order Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Work Order No."; "Work Order No.")
+                    field("Work Order No."; Rec."Work Order No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Model No."; "Model No.")
+                    field("Model No."; Rec."Model No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Serial No."; "Serial No.")
+                    field("Serial No."; Rec."Serial No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Customer PO No."; "Customer PO No.")
+                    field("Customer PO No."; Rec."Customer PO No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Customer Part No."; "Customer Part No.")
+                    field("Customer Part No."; Rec."Customer Part No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Work Order Master No."; "Work Order Master No.")
+                    field("Work Order Master No."; Rec."Work Order Master No.")
                     {
                         ApplicationArea = All;
                     }
-                    field(Complete; Complete)
+                    field(Complete; Rec.Complete)
                     {
                         ApplicationArea = All;
                     }
-                    field("Order Adj."; "Order Adj.")
+                    field("Order Adj."; Rec."Order Adj.")
                     {
                         ApplicationArea = All;
                         Caption = 'Order Adjustment';
@@ -76,7 +77,7 @@ page 50031 "Special Inquiry"
                         Caption = 'Quote Price';
                         Visible = QuotePriceVisible;
                     }
-                    field("Initial Order Type"; "Initial Order Type")
+                    field("Initial Order Type"; Rec."Initial Order Type")
                     {
                         ApplicationArea = All;
                     }
@@ -98,7 +99,7 @@ page 50031 "Special Inquiry"
 
                 trigger OnAction()
                 begin
-                    WOD.SetRange(WOD."Work Order No.", "Work Order No.");
+                    WOD.SetRange(WOD."Work Order No.", Rec."Work Order No.");
                     PAGE.Run(50002, WOD);
                 end;
             }
@@ -110,7 +111,7 @@ page 50031 "Special Inquiry"
 
                 trigger OnAction()
                 begin
-                    WOD.SetRange(WOD."Work Order No.", "Work Order No.");
+                    WOD.SetRange(WOD."Work Order No.", Rec."Work Order No.");
                     PAGE.Run(50007, WOD);
                 end;
             }
@@ -122,7 +123,7 @@ page 50031 "Special Inquiry"
 
                 trigger OnAction()
                 begin
-                    Parts.SetRange(Parts."Work Order No.", "Work Order No.");
+                    Parts.SetRange(Parts."Work Order No.", Rec."Work Order No.");
                     PAGE.Run(50014, Parts);
                 end;
             }
@@ -143,12 +144,12 @@ page 50031 "Special Inquiry"
         // 2011_08_25 ADV: Start
         QuotePrice := 0;
 
-        CalcFields("Original Parts Price", "Original Labor Price");
-        if Quote = Quote::Accepted then
-            QuotePrice := "Original Parts Price" + "Original Labor Price" + "Order Adj.";
+        Rec.CalcFields("Original Parts Price", "Original Labor Price");
+        if Rec.Quote = Rec.Quote::Accepted then
+            QuotePrice := Rec."Original Parts Price" + Rec."Original Labor Price" + Rec."Order Adj.";
 
-        if Quote = Quote::"Not Repairable" then
-            QuotePrice := "Unrepairable Charge";
+        if Rec.Quote = Rec.Quote::"Not Repairable" then
+            QuotePrice := Rec."Unrepairable Charge";
         // 2011_08_25 ADV: End
     end;
 
@@ -189,4 +190,6 @@ page 50031 "Special Inquiry"
         [InDataSet]
         QuotePriceVisible: Boolean;
 }
+
+#pragma implicitwith restore
 

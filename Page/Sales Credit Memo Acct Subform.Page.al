@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50069 "Sales Credit Memo Acct Subform"
 {
     AutoSplitKey = true;
@@ -13,11 +14,11 @@ page 50069 "Sales Credit Memo Acct Subform"
         {
             repeater(Group)
             {
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = All;
                 }
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
 
@@ -26,19 +27,19 @@ page 50069 "Sales Credit Memo Acct Subform"
                         NoOnAfterValidate();
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field("Location Code"; "Location Code")
+                field("Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
+                field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field(Quantity; Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = All;
                     Caption = 'Qty';
@@ -48,7 +49,7 @@ page 50069 "Sales Credit Memo Acct Subform"
                         QtyOnAfterValidate();
                     end;
                 }
-                field("Unit of Measure Code"; "Unit of Measure Code")
+                field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
                     ApplicationArea = All;
 
@@ -57,33 +58,33 @@ page 50069 "Sales Credit Memo Acct Subform"
                         QtyOnAfterValidate();
                     end;
                 }
-                field("Unit of Measure"; "Unit of Measure")
+                field("Unit of Measure"; Rec."Unit of Measure")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Unit Price"; "Unit Price")
+                field("Unit Price"; Rec."Unit Price")
                 {
                     ApplicationArea = All;
                 }
-                field("Unit Cost (LCY)"; "Unit Cost (LCY)")
+                field("Unit Cost (LCY)"; Rec."Unit Cost (LCY)")
                 {
                     ApplicationArea = All;
                 }
-                field("Tax Group Code"; "Tax Group Code")
+                field("Tax Group Code"; Rec."Tax Group Code")
                 {
                     ApplicationArea = All;
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Amount Including VAT"; "Amount Including VAT")
+                field("Amount Including VAT"; Rec."Amount Including VAT")
                 {
                     ApplicationArea = All;
                 }
-                field("Appl.-to Item Entry"; "Appl.-to Item Entry")
+                field("Appl.-to Item Entry"; Rec."Appl.-to Item Entry")
                 {
                     ApplicationArea = All;
                 }
@@ -97,7 +98,7 @@ page 50069 "Sales Credit Memo Acct Subform"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Type := xRec.Type;
+        Rec.Type := xRec.Type;
     end;
 
     var
@@ -125,9 +126,9 @@ page 50069 "Sales Credit Memo Acct Subform"
         PurchHeader: Record "Purchase Header";
         PurchOrder: Page "Purchase Order";
     begin
-        if not "Drop Shipment" then
+        if not Rec."Drop Shipment" then
             Error('The current sales line is not a drop shipment.');
-        PurchHeader.SetRange("No.", "Purchase Order No.");
+        PurchHeader.SetRange("No.", Rec."Purchase Order No.");
         PurchOrder.SetTableView(PurchHeader);
         PurchOrder.Editable := false;
         PurchOrder.Run;
@@ -145,7 +146,7 @@ page 50069 "Sales Credit Memo Acct Subform"
 
     procedure ShowReservation2()
     begin
-        Find;
+        Rec.Find;
         Rec.ShowReservation;
     end;
 
@@ -161,9 +162,9 @@ page 50069 "Sales Credit Memo Acct Subform"
 
     procedure QtyOnAfterValidate()
     begin
-        if Reserve = Reserve::Always then begin
+        if Rec.Reserve = Rec.Reserve::Always then begin
             CurrPage.SaveRecord;
-            AutoReserve();
+            Rec.AutoReserve();
         end;
     end;
 
@@ -174,4 +175,6 @@ page 50069 "Sales Credit Memo Acct Subform"
         //<< CrossReference - end
     end;
 }
+
+#pragma implicitwith restore
 

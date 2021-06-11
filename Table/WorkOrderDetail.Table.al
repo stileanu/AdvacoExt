@@ -269,7 +269,7 @@ table 50001 WorkOrderDetail
             trigger OnValidate()
             begin
 
-                IF item.GET("Model No.") THEN BEGIN
+                IF Item.GET("Model No.") THEN BEGIN
                     Description := item.Description;
                     "Model Type" := item."Model Type";
                     "Ship Weight" := item."Gross Weight";
@@ -281,7 +281,8 @@ table 50001 WorkOrderDetail
                     WOS.SETRANGE(WOS."Order No.", "Work Order No.");
                     IF WOS.FIND('-') THEN BEGIN
                         // 2/26/18 Start
-                        IF (USERID <> 'KAYE') AND (USERID <> 'ADMIN') THEN
+                        User.Get(UserSecurityId);
+                        IF (User."User Name" <> 'KAYE') AND (User."User Name" <> 'STELIAN.ILEANU_INTELICE.COM') THEN
                             // 2/26/18 End
                             ERROR('Work Order has already been Quoted.  You cannot change the Model');
                         // 2/26/18 Start
@@ -293,6 +294,8 @@ table 50001 WorkOrderDetail
                                 DeletePartsInProcess;
                                 ExistingParts.DELETE;
                             UNTIL ExistingParts.NEXT = 0;
+                            ///--! Commit here?
+                            ///Commit();
                             CreateParts;
                         END ELSE BEGIN
                             CreateParts;
@@ -2261,6 +2264,7 @@ table 50001 WorkOrderDetail
     end;
 
     var
+        User: Record User;
         WOD: Record WorkOrderDetail;
         Window: Dialog;
         WorkOrderDetail: Record WorkOrderDetail;

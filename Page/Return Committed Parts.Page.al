@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50055 "Return Committed Parts"
 {
     UsageCategory = Tasks;
@@ -17,11 +18,11 @@ page 50055 "Return Committed Parts"
                 group(Control1000000002)
                 {
                     ShowCaption = false;
-                    field("No."; "No.")
+                    field("No."; Rec."No.")
                     {
                         ApplicationArea = All;
                     }
-                    field(Description; Description)
+                    field(Description; Rec.Description)
                     {
                         ApplicationArea = All;
                     }
@@ -48,7 +49,7 @@ page 50055 "Return Committed Parts"
                     TempPartsFound.DeleteAll;
                     Commit;
 
-                    Parts.SetRange(Parts."Part No.", "No.");
+                    Parts.SetRange(Parts."Part No.", Rec."No.");
                     if Parts.Find('-') then begin
                         ///--!
                         //Window.Open('Enter the amount to Allocate #1#########', PN);
@@ -121,7 +122,7 @@ page 50055 "Return Committed Parts"
         if WOD.Find('-') then begin
             repeat
                 WOD.CalcFields(WOD."Detail Step");
-                if PartsLocate.Get(WOD."Work Order No.", Parts."Part Type", "No.") then begin
+                if PartsLocate.Get(WOD."Work Order No.", Parts."Part Type", Rec."No.") then begin
                     PartsLocate.CalcFields(PartsLocate."Committed Quantity");
                     if PartsLocate."Committed Quantity" > 0 then begin
                         if QtyNotFound > 0 then begin
@@ -142,7 +143,7 @@ page 50055 "Return Committed Parts"
             if WOD.Find('-') then begin
                 repeat
                     WOD.CalcFields(WOD."Detail Step");
-                    if PartsLocate.Get(WOD."Work Order No.", Parts."Part Type", "No.") then begin
+                    if PartsLocate.Get(WOD."Work Order No.", Parts."Part Type", Rec."No.") then begin
                         PartsLocate.CalcFields(PartsLocate."Committed Quantity");
                         if PartsLocate."Committed Quantity" > 0 then begin
                             QtyFound := QtyFound + PartsLocate."Committed Quantity";
@@ -162,7 +163,7 @@ page 50055 "Return Committed Parts"
             if WOD.Find('-') then begin
                 repeat
                     WOD.CalcFields(WOD."Detail Step");
-                    if PartsLocate.Get(WOD."Work Order No.", Parts."Part Type", "No.") then begin
+                    if PartsLocate.Get(WOD."Work Order No.", Parts."Part Type", Rec."No.") then begin
                         PartsLocate.CalcFields(PartsLocate."Committed Quantity");
                         if PartsLocate."Committed Quantity" > 0 then begin
                             QtyFound := QtyFound + PartsLocate."Committed Quantity";
@@ -370,4 +371,6 @@ page 50055 "Return Committed Parts"
         TempPartsFound.DeleteAll;
     end;
 }
+
+#pragma implicitwith restore
 

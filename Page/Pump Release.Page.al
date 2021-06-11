@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50044 "Pump Release"
 {
     // 2018_03_12
@@ -15,36 +16,36 @@ page 50044 "Pump Release"
                 group(Control1000000011)
                 {
                     ShowCaption = false;
-                    field("Work Order No."; "Work Order No.")
+                    field("Work Order No."; Rec."Work Order No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Model No."; "Model No.")
+                    field("Model No."; Rec."Model No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field(Description; Description)
+                    field(Description; Rec.Description)
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Serial No."; "Serial No.")
+                    field("Serial No."; Rec."Serial No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Approval Code"; "Approval Code")
+                    field("Approval Code"; Rec."Approval Code")
                     {
                         ApplicationArea = All;
                     }
-                    field(Unblocked; Unblocked)
+                    field(Unblocked; Rec.Unblocked)
                     {
                         ApplicationArea = All;
                         Caption = 'Pump Released';
                     }
-                    field("Unblocked SHP"; "Unblocked SHP")
+                    field("Unblocked SHP"; Rec."Unblocked SHP")
                     {
                         ApplicationArea = All;
                         Caption = 'Shipping Release';
@@ -57,12 +58,12 @@ page 50044 "Pump Release"
                 group(Control1000000012)
                 {
                     ShowCaption = false;
-                    field("Customer ID"; "Customer ID")
+                    field("Customer ID"; Rec."Customer ID")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Overwrite Cr. Limit"; "Overwrite Cr. Limit")
+                    field("Overwrite Cr. Limit"; Rec."Overwrite Cr. Limit")
                     {
                         ApplicationArea = All;
                         //Editable = false;
@@ -76,4 +77,6 @@ page 50044 "Pump Release"
     {
     }
 }
+
+#pragma implicitwith restore
 

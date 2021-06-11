@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50081 "Purch. Cr. Memo Act Subform"
 {
     AutoSplitKey = true;
@@ -15,7 +16,7 @@ page 50081 "Purch. Cr. Memo Act Subform"
             repeater(Control1)
             {
                 ShowCaption = false;
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = Advanced;
                     ToolTip = 'Specifies the line type.';
@@ -33,19 +34,19 @@ page 50081 "Purch. Cr. Memo Act Subform"
                     trigger OnValidate()
                     begin
 
-                        TempOptionLookupBuffer.SetCurrentType(Type.AsInteger());
+                        TempOptionLookupBuffer.SetCurrentType(Rec.Type.AsInteger());
                         ///--!
                         // Function TempOptionLookupBuffer.AutoCompleteOption is [Scope('OnPrem')]
                         // Cannot be used on Cloud. Analyze another solution if needed
                         //if TempOptionLookupBuffer.AutoCompleteOption(TypeAsText, TempOptionLookupBuffer."Lookup Type"::Sales) then
-                        Validate(Type, TempOptionLookupBuffer.ID);
+                        Rec.Validate(Type, TempOptionLookupBuffer.ID);
                         TempOptionLookupBuffer.ValidateOption(TypeAsText);
                         UpdateEditableOnRow;
                         UpdateTypeText;
                         DeltaUpdateTotals;
                     end;
                 }
-                field("Cross-Reference No."; "Cross-Reference No.")
+                field("Cross-Reference No."; Rec."Cross-Reference No.")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the cross-referenced item number. If you enter a cross reference between yours and your vendor''s or customer''s item number, then this number will override the standard item number when you enter the cross-reference number on a sales or purchase document.';
@@ -53,7 +54,7 @@ page 50081 "Purch. Cr. Memo Act Subform"
 
                     trigger OnLookup(var Text: Text): Boolean
                     begin
-                        CrossReferenceNoLookUp;
+                        Rec.CrossReferenceNoLookUp;
                         InsertExtendedText(false);
                         NoOnAfterValidate;
                     end;
@@ -64,7 +65,7 @@ page 50081 "Purch. Cr. Memo Act Subform"
                         NoOnAfterValidate;
                     end;
                 }
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     ShowMandatory = NOT IsCommentLine;
@@ -75,7 +76,7 @@ page 50081 "Purch. Cr. Memo Act Subform"
                         NoOnAfterValidate;
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = Basic, Suite;
                     ShowMandatory = NOT IsCommentLine;
@@ -85,24 +86,24 @@ page 50081 "Purch. Cr. Memo Act Subform"
                     begin
                         UpdateEditableOnRow;
 
-                        if "No." = xRec."No." then
+                        if Rec."No." = xRec."No." then
                             exit;
 
-                        ShowShortcutDimCode(ShortcutDimCode);
+                        Rec.ShowShortcutDimCode(ShortcutDimCode);
                         NoOnAfterValidate;
 
                         UpdateTypeText;
                         DeltaUpdateTotals;
                     end;
                 }
-                field(Quantity; Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = Basic, Suite;
                     BlankZero = true;
                     Caption = 'Qty.';
                     Editable = NOT IsCommentLine;
                     Enabled = NOT IsCommentLine;
-                    ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
+                    ShowMandatory = (NOT IsCommentLine) AND (Rec."No." <> '');
                     ToolTip = 'Specifies the number of units of the item specified on the line.';
 
                     trigger OnValidate()
@@ -110,71 +111,71 @@ page 50081 "Purch. Cr. Memo Act Subform"
                         DeltaUpdateTotals;
                     end;
                 }
-                field("Qty. to Invoice"; "Qty. to Invoice")
+                field("Qty. to Invoice"; Rec."Qty. to Invoice")
                 {
                     ApplicationArea = All;
                     Caption = 'Qty. Credit Applied';
                 }
-                field("Qty. to Receive"; "Qty. to Receive")
+                field("Qty. to Receive"; Rec."Qty. to Receive")
                 {
                     ApplicationArea = All;
                     Caption = 'Qty. Returned';
                 }
-                field("Direct Unit Cost"; "Direct Unit Cost")
+                field("Direct Unit Cost"; Rec."Direct Unit Cost")
                 {
                     ApplicationArea = Basic, Suite;
                     BlankZero = true;
                     Editable = NOT IsCommentLine;
                     Enabled = NOT IsCommentLine;
-                    ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
+                    ShowMandatory = (NOT IsCommentLine) AND (Rec."No." <> '');
                     ToolTip = 'Specifies the cost of one unit of the selected item or resource.';
                 }
-                field(Amount; Amount)
+                field(Amount; Rec.Amount)
                 {
                     ApplicationArea = All;
                 }
-                field("Amount Including VAT"; "Amount Including VAT")
+                field("Amount Including VAT"; Rec."Amount Including VAT")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the sum of the amounts in the Amount Including Tax fields on the associated purchase lines.';
                 }
-                field("Tax Liable"; "Tax Liable")
+                field("Tax Liable"; Rec."Tax Liable")
                 {
                     ApplicationArea = Basic, Suite;
                     Editable = false;
                     ToolTip = 'Specifies if the customer or vendor is liable for sales tax.';
                     Visible = false;
                 }
-                field("Tax Area Code"; "Tax Area Code")
+                field("Tax Area Code"; Rec."Tax Area Code")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the tax area that is used to calculate and post sales tax.';
                 }
-                field("Tax Group Code"; "Tax Group Code")
+                field("Tax Group Code"; Rec."Tax Group Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Editable = NOT IsCommentLine;
                     Enabled = NOT IsCommentLine;
-                    ShowMandatory = (NOT IsCommentLine) AND ("No." <> '');
+                    ShowMandatory = (NOT IsCommentLine) AND (Rec."No." <> '');
                     ToolTip = 'Specifies the tax group that is used to calculate and post sales tax.';
                     Visible = TaxGroupCodeVisible;
                 }
-                field("Location Code"; "Location Code")
+                field("Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = Location;
                     Editable = NOT IsCommentLine;
                     Enabled = NOT IsCommentLine;
                     ToolTip = 'Specifies the code for the location where the items on the line will be located.';
                 }
-                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
+                field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field("Use Duplication List"; "Use Duplication List")
+                field("Use Duplication List"; Rec."Use Duplication List")
                 {
                     ApplicationArea = All;
                 }
-                field("Reserved Quantity"; "Reserved Quantity")
+                field("Reserved Quantity"; Rec."Reserved Quantity")
                 {
                     ApplicationArea = All;
 
@@ -182,42 +183,42 @@ page 50081 "Purch. Cr. Memo Act Subform"
                     begin
                         CurrPage.SaveRecord;
                         Commit;
-                        ShowReservationEntries(true);
+                        Rec.ShowReservationEntries(true);
                         CurrPage.Update;
                     end;
                 }
-                field("Unit of Measure Code"; "Unit of Measure Code")
+                field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Editable = UnitofMeasureCodeIsChangeable;
                     Enabled = UnitofMeasureCodeIsChangeable;
                     ToolTip = 'Specifies how each unit of the item or resource is measured, such as in pieces or hours. By default, the value in the Base Unit of Measure field on the item or resource card is inserted.';
                 }
-                field("Unit of Measure"; "Unit of Measure")
+                field("Unit of Measure"; Rec."Unit of Measure")
                 {
                     ApplicationArea = Suite;
                     ToolTip = 'Specifies the name of the unit of measure for the item, such as 1 bottle or 1 piece.';
                     Visible = false;
                 }
-                field("Indirect Cost %"; "Indirect Cost %")
+                field("Indirect Cost %"; Rec."Indirect Cost %")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the percentage of the item''s last purchase cost that includes indirect costs, such as freight that is associated with the purchase of the item.';
                     Visible = false;
                 }
-                field("Unit Cost (LCY)"; "Unit Cost (LCY)")
+                field("Unit Cost (LCY)"; Rec."Unit Cost (LCY)")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the unit cost of the item on the line.';
                     Visible = false;
                 }
-                field("Unit Price (LCY)"; "Unit Price (LCY)")
+                field("Unit Price (LCY)"; Rec."Unit Price (LCY)")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the price for one unit of the item.';
                     Visible = false;
                 }
-                field("Line Discount %"; "Line Discount %")
+                field("Line Discount %"; Rec."Line Discount %")
                 {
                     ApplicationArea = Basic, Suite;
                     BlankZero = true;
@@ -225,39 +226,39 @@ page 50081 "Purch. Cr. Memo Act Subform"
                     Enabled = NOT IsCommentLine;
                     ToolTip = 'Specifies the discount percentage that is granted for the item on the line.';
                 }
-                field("Expected Receipt Date"; "Expected Receipt Date")
+                field("Expected Receipt Date"; Rec."Expected Receipt Date")
                 {
                     ApplicationArea = All;
                 }
-                field("IC Partner Code"; "IC Partner Code")
+                field("IC Partner Code"; Rec."IC Partner Code")
                 {
                     ApplicationArea = Intercompany;
                     ToolTip = 'Specifies the code of the intercompany partner that the transaction is related to if the entry was created from an intercompany transaction.';
                     Visible = false;
                 }
-                field("Allow Invoice Disc."; "Allow Invoice Disc.")
+                field("Allow Invoice Disc."; Rec."Allow Invoice Disc.")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies if the invoice line is included when the invoice discount is calculated.';
                     Visible = false;
                 }
-                field("Inv. Discount Amount"; "Inv. Discount Amount")
+                field("Inv. Discount Amount"; Rec."Inv. Discount Amount")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the invoice discount amount for the line.';
                     Visible = false;
                 }
-                field("Appl.-to Item Entry"; "Appl.-to Item Entry")
+                field("Appl.-to Item Entry"; Rec."Appl.-to Item Entry")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the number of the item ledger entry that the document or journal line is applied -to.';
                     Visible = false;
                 }
-                field("Prod. Order No."; "Prod. Order No.")
+                field("Prod. Order No."; Rec."Prod. Order No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Insurance No."; "Insurance No.")
+                field("Insurance No."; Rec."Insurance No.")
                 {
                     ApplicationArea = All;
                 }
@@ -416,7 +417,7 @@ page 50081 "Purch. Cr. Memo Act Subform"
         PurchaseHeader: Record "Purchase Header";
         ConfirmManagement: Codeunit "Confirm Management";
     begin
-        PurchaseHeader.Get("Document Type", "Document No.");
+        PurchaseHeader.Get(Rec."Document Type", Rec."Document No.");
         if PurchaseHeader.InvoicedLineExists then
             //if not ConfirmManagement.ConfirmProcess(UpdateInvDiscountQst,true) then ICE-MPC BC Upgrade
             if not ConfirmManagement.GetResponseOrDefault(UpdateInvDiscountQst, true) then
@@ -456,13 +457,13 @@ page 50081 "Purch. Cr. Memo Act Subform"
     [Scope('Cloud')]
     procedure ItemChargeAssgnt()
     begin
-        ShowItemChargeAssgnt;
+        Rec.ShowItemChargeAssgnt;
     end;
 
     [Scope('Cloud')]
     procedure OpenItemTrackingLines2()
     begin
-        OpenItemTrackingLines;
+        Rec.OpenItemTrackingLines;
     end;
 
     [Scope('Cloud')]
@@ -490,13 +491,13 @@ page 50081 "Purch. Cr. Memo Act Subform"
     [Scope('Cloud')]
     procedure ShowLineComments2()
     begin
-        ShowLineComments;
+        Rec.ShowLineComments;
     end;
 
     local procedure NoOnAfterValidate()
     begin
         InsertExtendedText(false);
-        if (Type = Type::"Charge (Item)") and ("No." <> xRec."No.") and
+        if (Rec.Type = Rec.Type::"Charge (Item)") and (Rec."No." <> xRec."No.") and
            (xRec."No." <> '')
         then
             CurrPage.SaveRecord;
@@ -531,18 +532,18 @@ page 50081 "Purch. Cr. Memo Act Subform"
     local procedure DeltaUpdateTotals()
     begin
         DocumentTotals.PurchaseDeltaUpdateTotals(Rec, xRec, TotalPurchaseLine, VATAmount, InvoiceDiscountAmount, InvoiceDiscountPct);
-        if "Line Amount" <> xRec."Line Amount" then
-            SendLineInvoiceDiscountResetNotification;
+        if Rec."Line Amount" <> xRec."Line Amount" then
+            Rec.SendLineInvoiceDiscountResetNotification;
     end;
 
     local procedure UpdateEditableOnRow()
     begin
-        if Type <> Type::" " then
-            UnitofMeasureCodeIsChangeable := CanEditUnitOfMeasureCode
+        if Rec.Type <> Rec.Type::" " then
+            UnitofMeasureCodeIsChangeable := Rec.CanEditUnitOfMeasureCode
         else
             UnitofMeasureCodeIsChangeable := false;
 
-        IsCommentLine := Type = Type::" ";
+        IsCommentLine := Rec.Type = Rec.Type::" ";
 
         CurrPageIsEditable := CurrPage.Editable;
         InvDiscAmountEditable := CurrPageIsEditable and not PurchasesPayablesSetup."Calc. Inv. Discount";
@@ -556,13 +557,13 @@ page 50081 "Purch. Cr. Memo Act Subform"
             exit;
 
         RecRef.GetTable(Rec);
-        TypeAsText := TempOptionLookupBuffer.FormatOption(RecRef.Field(FieldNo(Type)));
+        TypeAsText := TempOptionLookupBuffer.FormatOption(RecRef.Field(Rec.FieldNo(Type)));
     end;
 
     local procedure SetItemChargeFieldsStyle()
     begin
         ItemChargeStyleExpression := '';
-        if AssignedItemCharge then
+        if Rec.AssignedItemCharge then
             ItemChargeStyleExpression := 'Unfavorable';
     end;
 
@@ -601,4 +602,6 @@ page 50081 "Purch. Cr. Memo Act Subform"
     begin
     end;
 }
+
+#pragma implicitwith restore
 

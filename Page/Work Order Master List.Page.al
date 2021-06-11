@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50105 "Work Order Master List"
 {
     DeleteAllowed = false;
@@ -16,43 +17,43 @@ page 50105 "Work Order Master List"
         {
             repeater(Group)
             {
-                field("Work Order Master No."; "Work Order Master No.")
+                field("Work Order Master No."; Rec."Work Order Master No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Customer; Customer)
+                field(Customer; Rec.Customer)
                 {
                     ApplicationArea = All;
                 }
-                field("Customer Name"; "Customer Name")
+                field("Customer Name"; Rec."Customer Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Date Ordered"; "Date Ordered")
+                field("Date Ordered"; Rec."Date Ordered")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship To Code"; "Ship To Code")
+                field("Ship To Code"; Rec."Ship To Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship To Name"; "Ship To Name")
+                field("Ship To Name"; Rec."Ship To Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Date Required"; "Date Required")
+                field("Date Required"; Rec."Date Required")
                 {
                     ApplicationArea = All;
                 }
-                field("Inside Sales"; "Inside Sales")
+                field("Inside Sales"; Rec."Inside Sales")
                 {
                     ApplicationArea = All;
                 }
-                field(Rep; Rep)
+                field(Rep; Rec.Rep)
                 {
                     ApplicationArea = All;
                 }
-                field(Details; Details)
+                field(Details; Rec.Details)
                 {
                     ApplicationArea = All;
                 }
@@ -80,3 +81,4 @@ page 50105 "Work Order Master List"
     }
     */
 }
+#pragma implicitwith restore

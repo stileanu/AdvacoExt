@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50003 "Model List"
 {
     // 12/07/00 HTCS RJK
@@ -17,90 +18,90 @@ page 50003 "Model List"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field("Assembly BOM"; "Assembly BOM")
+                field("Assembly BOM"; Rec."Assembly BOM")
                 {
                     ApplicationArea = All;
                 }
-                field("Base Unit of Measure"; "Base Unit of Measure")
+                field("Base Unit of Measure"; Rec."Base Unit of Measure")
                 {
                     ApplicationArea = All;
                 }
-                field("Shelf No."; "Shelf No.")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Costing Method"; "Costing Method")
+                field("Shelf No."; Rec."Shelf No.")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Standard Cost"; "Standard Cost")
+                field("Costing Method"; Rec."Costing Method")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Unit Cost"; "Unit Cost")
-                {
-                    ApplicationArea = All;
-                }
-                field("Last Direct Cost"; "Last Direct Cost")
+                field("Standard Cost"; Rec."Standard Cost")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Price/Profit Calculation"; "Price/Profit Calculation")
+                field("Unit Cost"; Rec."Unit Cost")
+                {
+                    ApplicationArea = All;
+                }
+                field("Last Direct Cost"; Rec."Last Direct Cost")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Profit %"; "Profit %")
+                field("Price/Profit Calculation"; Rec."Price/Profit Calculation")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Unit Price"; "Unit Price")
-                {
-                    ApplicationArea = All;
-                }
-                field("Inventory Posting Group"; "Inventory Posting Group")
+                field("Profit %"; Rec."Profit %")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
+                field("Unit Price"; Rec."Unit Price")
+                {
+                    ApplicationArea = All;
+                }
+                field("Inventory Posting Group"; Rec."Inventory Posting Group")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
+                field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Vendor No."; "Vendor No.")
-                {
-                    ApplicationArea = All;
-                }
-                field("Vendor Item No."; "Vendor Item No.")
+                field("VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Tariff No."; "Tariff No.")
+                field("Vendor No."; Rec."Vendor No.")
+                {
+                    ApplicationArea = All;
+                }
+                field("Vendor Item No."; Rec."Vendor Item No.")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Search Description"; "Search Description")
+                field("Tariff No."; Rec."Tariff No.")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Search Description"; Rec."Search Description")
                 {
                     ApplicationArea = All;
                 }
@@ -230,7 +231,7 @@ page 50003 "Model List"
                         var
                             ItemTrackingDocMgt: Codeunit "Item Tracking Doc. Management";
                         begin
-                            ItemTrackingDocMgt.ShowItemTrackingForMasterData(3, '', "No.", '', '', '', '');
+                            ItemTrackingDocMgt.ShowItemTrackingForMasterData(3, '', Rec."No.", '', '', '', '');
                             //ItemTrackingDocMgt.ShowItemTrackingForEntity();(3, '', "No.", '', '', '', '');
                         end;
                     }
@@ -503,4 +504,6 @@ page 50003 "Model List"
         }
     }
 }
+
+#pragma implicitwith restore
 

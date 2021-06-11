@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50051 "Outside Sales Reps List"
 {
     // 01212011 - ADV
@@ -12,35 +13,35 @@ page 50051 "Outside Sales Reps List"
         {
             repeater(Group)
             {
-                field("Rep Code"; "Rep Code")
+                field("Rep Code"; Rec."Rep Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Rep Name"; "Rep Name")
+                field("Rep Name"; Rec."Rep Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Rep Company"; "Rep Company")
+                field("Rep Company"; Rec."Rep Company")
                 {
                     ApplicationArea = All;
                 }
-                field("Rep Address 1"; "Rep Address 1")
+                field("Rep Address 1"; Rec."Rep Address 1")
                 {
                     ApplicationArea = All;
                 }
-                field("Rep City"; "Rep City")
+                field("Rep City"; Rec."Rep City")
                 {
                     ApplicationArea = All;
                 }
-                field("Rep State"; "Rep State")
+                field("Rep State"; Rec."Rep State")
                 {
                     ApplicationArea = All;
                 }
-                field("Rep Zip"; "Rep Zip")
+                field("Rep Zip"; Rec."Rep Zip")
                 {
                     ApplicationArea = All;
                 }
-                field("Commission %"; "Commission %")
+                field("Commission %"; Rec."Commission %")
                 {
                     ApplicationArea = All;
                 }
@@ -52,4 +53,6 @@ page 50051 "Outside Sales Reps List"
     {
     }
 }
+
+#pragma implicitwith restore
 

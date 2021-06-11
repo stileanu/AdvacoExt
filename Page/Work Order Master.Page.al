@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50000 "Work Order Master"
 {
     // 1/12/01 HTCS RCA
@@ -27,26 +28,26 @@ page 50000 "Work Order Master"
                 group(Control1220060045)
                 {
                     ShowCaption = false;
-                    field("Work Order Master No."; "Work Order Master No.")
+                    field("Work Order Master No."; Rec."Work Order Master No.")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field(Customer; Customer)
+                    field(Customer; Rec.Customer)
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship To Code"; "Ship To Code")
+                    field("Ship To Code"; Rec."Ship To Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Date Ordered"; "Date Ordered")
+                    field("Date Ordered"; Rec."Date Ordered")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
                     //ICE RSK 12/13/20
-                    field(Comment; Format(Comment))
+                    field(Comment; Format(Rec.Comment))
                     {
 
                         ApplicationArea = all;
@@ -62,47 +63,47 @@ page 50000 "Work Order Master"
                 group(Control1220060050)
                 {
                     ShowCaption = false;
-                    field("Customer Name"; "Customer Name")
+                    field("Customer Name"; Rec."Customer Name")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field("Customer Address 1"; "Customer Address 1")
+                    field("Customer Address 1"; Rec."Customer Address 1")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field("Customer Address 2"; "Customer Address 2")
+                    field("Customer Address 2"; Rec."Customer Address 2")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field("Customer City"; "Customer City")
+                    field("Customer City"; Rec."Customer City")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field("Customer State"; "Customer State")
+                    field("Customer State"; Rec."Customer State")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field("Customer Zip Code"; "Customer Zip Code")
+                    field("Customer Zip Code"; Rec."Customer Zip Code")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field("Tax Liable"; "Tax Liable")
+                    field("Tax Liable"; Rec."Tax Liable")
                     {
                         Editable = ControlsEditable;
                         ApplicationArea = All;
                     }
-                    field("Tax Exemption No."; "Tax Exemption No.")
+                    field("Tax Exemption No."; Rec."Tax Exemption No.")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field("Exempt Organization"; "Exempt Organization")
+                    field("Exempt Organization"; Rec."Exempt Organization")
                     {
                         Editable = false;
                         ApplicationArea = All;
@@ -111,71 +112,71 @@ page 50000 "Work Order Master"
                 group(Control1220060051)
                 {
                     ShowCaption = false;
-                    field("Ship To Name"; "Ship To Name")
+                    field("Ship To Name"; Rec."Ship To Name")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field("Ship To Address 1"; "Ship To Address 1")
+                    field("Ship To Address 1"; Rec."Ship To Address 1")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship To Address 2"; "Ship To Address 2")
+                    field("Ship To Address 2"; Rec."Ship To Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship To City"; "Ship To City")
-                    {
-                        Editable = false;
-                        ApplicationArea = All;
-                    }
-                    field("Ship To State"; "Ship To State")
+                    field("Ship To City"; Rec."Ship To City")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field("Ship To Zip Code"; "Ship To Zip Code")
+                    field("Ship To State"; Rec."Ship To State")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field("Phone No."; "Phone No.")
+                    field("Ship To Zip Code"; Rec."Ship To Zip Code")
+                    {
+                        Editable = false;
+                        ApplicationArea = All;
+                    }
+                    field("Phone No."; Rec."Phone No.")
                     {
                         Editable = ControlsEditable;
                         ApplicationArea = All;
                     }
-                    field(Attention; Attention)
+                    field(Attention; Rec.Attention)
                     {
                         //Editable = ControlsEditable;
                         ApplicationArea = All;
                     }
-                    field("E-Mail"; "E-Mail")
+                    field("E-Mail"; Rec."E-Mail")
                     {
                         ApplicationArea = All;
                     }
-                    field("Fax No."; "Fax No.")
+                    field("Fax No."; Rec."Fax No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Date Required"; "Date Required")
+                    field("Date Required"; Rec."Date Required")
                     {
                         ApplicationArea = All;
                     }
-                    field("Inside Sales"; "Inside Sales")
-                    {
-                        Editable = false;
-                        ApplicationArea = All;
-                    }
-                    field(Rep; Rep)
+                    field("Inside Sales"; Rec."Inside Sales")
                     {
                         Editable = false;
                         ApplicationArea = All;
                     }
-                    field("Pickup Sheet"; "Pickup Sheet")
+                    field(Rep; Rec.Rep)
+                    {
+                        Editable = false;
+                        ApplicationArea = All;
+                    }
+                    field("Pickup Sheet"; Rec."Pickup Sheet")
                     {
                         ApplicationArea = All;
                     }
-                    field(Details; Details)
+                    field(Details; Rec.Details)
                     {
                         Editable = false;
                         ApplicationArea = All;
@@ -189,32 +190,32 @@ page 50000 "Work Order Master"
                 group(Control1220060052)
                 {
                     ShowCaption = false;
-                    field("Payment Method"; "Payment Method")
+                    field("Payment Method"; Rec."Payment Method")
                     {
                         //Editable = ControlsEditable;
                         ApplicationArea = All;
                     }
-                    field("Customer Payment Terms"; "Customer Payment Terms")
+                    field("Customer Payment Terms"; Rec."Customer Payment Terms")
                     {
                         //Editable = ControlsEditable;
                         ApplicationArea = All;
                     }
-                    field("Card Type"; "Card Type")
+                    field("Card Type"; Rec."Card Type")
                     {
                         Editable = ControlsEditable;
                         ApplicationArea = All;
                     }
-                    field("Credit Card No."; "Credit Card No.")
+                    field("Credit Card No."; Rec."Credit Card No.")
                     {
                         Editable = ControlsEditable;
                         ApplicationArea = All;
                     }
-                    field("Credit Card Exp."; "Credit Card Exp.")
+                    field("Credit Card Exp."; Rec."Credit Card Exp.")
                     {
                         Editable = ControlsEditable;
                         ApplicationArea = All;
                     }
-                    field("Credit Card SC"; "Credit Card SC")
+                    field("Credit Card SC"; Rec."Credit Card SC")
                     {
                         Editable = ControlsEditable;
                         ApplicationArea = All;
@@ -222,21 +223,21 @@ page 50000 "Work Order Master"
                     group("Credit Card Comments")
                     {
                         Caption = 'Credit Card Comments';
-                        field("CC Comments 1"; "CC Comments 1")
+                        field("CC Comments 1"; Rec."CC Comments 1")
                         {
                             //Editable = ControlsEditable;
                             ShowCaption = false;
                             MultiLine = true;
                             ApplicationArea = All;
                         }
-                        field("CC Comments 2"; "CC Comments 2")
+                        field("CC Comments 2"; Rec."CC Comments 2")
                         {
                             //Editable = ControlsEditable;
                             ShowCaption = false;
                             MultiLine = true;
                             ApplicationArea = All;
                         }
-                        field("CC Comments 3"; "CC Comments 3")
+                        field("CC Comments 3"; Rec."CC Comments 3")
                         {
                             //Editable = ControlsEditable;
                             ShowCaption = false;
@@ -251,7 +252,7 @@ page 50000 "Work Order Master"
                     group("Name on Card")
                     {
                         Caption = 'Name on Card';
-                        field(Control1220060035; "Name on Card")
+                        field(Control1220060035; Rec."Name on Card")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
@@ -261,25 +262,25 @@ page 50000 "Work Order Master"
                     group("Bill-to Address")
                     {
                         Caption = 'Bill-to Address';
-                        field("Bill-to Address 1"; "Bill-to Address 1")
+                        field("Bill-to Address 1"; Rec."Bill-to Address 1")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
                             ApplicationArea = All;
                         }
-                        field("Bill-to Address 2"; "Bill-to Address 2")
+                        field("Bill-to Address 2"; Rec."Bill-to Address 2")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
                             ApplicationArea = All;
                         }
-                        field("Bill-to Address 3"; "Bill-to Address 3")
+                        field("Bill-to Address 3"; Rec."Bill-to Address 3")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
                             ApplicationArea = All;
                         }
-                        field("Bill-to Address 4"; "Bill-to Address 4")
+                        field("Bill-to Address 4"; Rec."Bill-to Address 4")
                         {
                             Editable = ControlsEditable;
                             ShowCaption = false;
@@ -323,10 +324,10 @@ page 50000 "Work Order Master"
 
                 trigger OnAction()
                 begin
-                    if "Work Order Master No." <> '' then begin
+                    if Rec."Work Order Master No." <> '' then begin
                         // 10/25/10 Start
                         //CustFile := 'F:\SHARED\CUSTOMER RECORDS\' + Customer + '-' + "Ship To Code" + '.doc';
-                        CustFile := HyperlinkString + Customer + '-' + "Ship To Code" + '.doc';
+                        CustFile := HyperlinkString + Rec.Customer + '-' + Rec."Ship To Code" + '.doc';
                         // 10/25/10 End
                         HyperLink(CustFile);
                     end;
@@ -346,19 +347,19 @@ page 50000 "Work Order Master"
                     Pickup := false;
                     WOM2 := Rec;
                     ///--! WOD.SetCurrentKey("Work Order No.");
-                    WOD.SetRange(WOD."Work Order Master No.", "Work Order Master No.");
+                    WOD.SetRange(WOD."Work Order Master No.", Rec."Work Order Master No.");
                     if WOD.FindFirst() then begin
                         REPORT.RunModal(50002, true, false, WOD);
                         if (WODEXIST.Carrier = 'ADV') or (WODEXIST.Carrier = 'ADVNC') then begin
-                            if "Pickup Sheet" then begin
+                            if Rec."Pickup Sheet" then begin
                                 Message('Pickup Sheet Already Printed, Please see Sales Manager if duplicate required');
                             end else begin
-                                if not Confirm('Does Work Order %1 need to a Pick Up Sheet printed', false, "Work Order Master No.") then begin
+                                if not Confirm('Does Work Order %1 need to a Pick Up Sheet printed', false, Rec."Work Order Master No.") then begin
                                     Pickup := true;
                                     Message('Pickup Sheet was Cancelled.');
                                 end else begin
                                     Pickup := true;
-                                    WOM2.SetFilter("Work Order Master No.", "Work Order Master No.");
+                                    WOM2.SetFilter("Work Order Master No.", Rec."Work Order Master No.");
                                     WOM2.SetRecFilter;
                                     REPORT.RunModal(50003, true, false, WOM2);
                                 end;
@@ -368,8 +369,8 @@ page 50000 "Work Order Master"
                         Message('No Details for this work order yet.');
 
                     if Pickup then begin
-                        "Pickup Sheet" := true;
-                        Modify;
+                        Rec."Pickup Sheet" := true;
+                        Rec.Modify;
                     end;
                 end;
             }
@@ -385,7 +386,7 @@ page 50000 "Work Order Master"
                 trigger OnAction()
                 begin
                     WOM2 := Rec;
-                    WOM2.SetFilter("Work Order Master No.", "Work Order Master No.");
+                    WOM2.SetFilter("Work Order Master No.", Rec."Work Order Master No.");
                     WOM2.SetRecFilter;
                     REPORT.RunModal(50000, true, false, WOM2);
                 end;
@@ -405,7 +406,7 @@ page 50000 "Work Order Master"
                 trigger OnAction()
                 begin
                     WorkOrderDetail.SetCurrentKey("Work Order Master No.");
-                    WorkOrderDetail.SetRange(WorkOrderDetail."Work Order Master No.", "Work Order Master No.");
+                    WorkOrderDetail.SetRange(WorkOrderDetail."Work Order Master No.", Rec."Work Order Master No.");
                     if WorkOrderDetail.Find('-') then begin
                         ///--! move to open detail list
                         //Page.Run(50002, WorkOrderDetail);
@@ -426,7 +427,7 @@ page 50000 "Work Order Master"
 
                 trigger OnAction()
                 begin
-                    if ("Ship To Code" = '') then
+                    if (Rec."Ship To Code" = '') then
                         Error('Ship To Code must be entered before adding a detail');
 
                     AddRecords.Run(Rec);
@@ -448,15 +449,15 @@ page 50000 "Work Order Master"
 
     trigger OnAfterGetRecord()
     begin
-        "File Exists" := false;
+        Rec."File Exists" := false;
         // 10/25/10  Start
         //CustFile := 'F:\SHARED\Customer Records\' + Customer + '-' + "Ship To Code" + '.doc';
-        CustFile := HyperlinkString + Customer + '-' + "Ship To Code" + '.doc';
+        CustFile := HyperlinkString + Rec.Customer + '-' + Rec."Ship To Code" + '.doc';
         // 10/25/10 End
         // To be rewritten for cloud!
         ///--! "File Exists" := Exists(CustFile);
 
-        if "File Exists" = true then
+        if Rec."File Exists" = true then
             CustInfoVisible := true
         else
             CustInfoVisible := false;
@@ -464,7 +465,7 @@ page 50000 "Work Order Master"
         // 11/09/10 Start
         WODEXIST.SetCurrentKey("Work Order Master No.");
         // 11/09/10 End
-        WODEXIST.SetRange(WODEXIST."Work Order Master No.", "Work Order Master No.");
+        WODEXIST.SetRange(WODEXIST."Work Order Master No.", Rec."Work Order Master No.");
 
         // 04/28/11 ADV: Start
         if not EditCreditCard then begin
@@ -486,7 +487,7 @@ page 50000 "Work Order Master"
         // 11/09/10 Start
         WODCLOSED.SetCurrentKey("Work Order Master No.");
         // 11/09/10 End
-        WODCLOSED.SetRange(WODCLOSED."Work Order Master No.", "Work Order Master No.");
+        WODCLOSED.SetRange(WODCLOSED."Work Order Master No.", Rec."Work Order Master No.");
         if WODCLOSED.Find('-') then begin
             repeat
                 WODCOUNT := WODCOUNT + 1;
@@ -607,4 +608,6 @@ page 50000 "Work Order Master"
         [InDataSet]
         ControlsEditable: Boolean;
 }
+
+#pragma implicitwith restore
 

@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50009 "Job Status"
 {
     // //>> This Code worked on OnNextRecord to prevent someone from using error buttons
@@ -81,7 +82,7 @@ page 50009 "Job Status"
                     group(Control1220060006)
                     {
                         ShowCaption = false;
-                        field("Order No."; "Order No.")
+                        field("Order No."; Rec."Order No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
@@ -113,7 +114,7 @@ page 50009 "Job Status"
                         Caption = 'Order Type';
                         Editable = false;
                     }
-                    field(Step; Step)
+                    field(Step; Rec.Step)
                     {
                         ApplicationArea = All;
                         Caption = 'Current Job Step';
@@ -141,26 +142,26 @@ page 50009 "Job Status"
                         Caption = 'Serial No.';
                         Editable = SerialNoEditable;
                     }
-                    field(Employee; Employee)
+                    field(Employee; Rec.Employee)
                     {
                         ApplicationArea = All;
                     }
-                    field("Date In"; "Date In")
+                    field("Date In"; Rec."Date In")
                     {
                         ApplicationArea = All;
                         Caption = 'Start Date';
                     }
-                    field("Date Out"; "Date Out")
+                    field("Date Out"; Rec."Date Out")
                     {
                         ApplicationArea = All;
                         Caption = 'Finish Date';
                     }
-                    field("Regular Hours"; "Regular Hours")
+                    field("Regular Hours"; Rec."Regular Hours")
                     {
                         ApplicationArea = All;
                         Caption = 'Reg Time On Step';
                     }
-                    field("Overtime Hours"; "Overtime Hours")
+                    field("Overtime Hours"; Rec."Overtime Hours")
                     {
                         ApplicationArea = All;
                         Caption = 'OverTime on Step';
@@ -177,7 +178,7 @@ page 50009 "Job Status"
                         Caption = 'Container Type';
                         Editable = ContainerTypeEditable;
                     }
-                    field(Status; Status)
+                    field(Status; Rec.Status)
                     {
                         ApplicationArea = All;
                         Caption = 'Status Code';
@@ -318,12 +319,12 @@ page 50009 "Job Status"
 
                 trigger OnAction()
                 begin
-                    if Step <> Step::RCV then begin
+                    if Rec.Step <> Rec.Step::RCV then begin
                         if WOD."Unrepairable BuildAhead" = true then begin
                             Message('You Can''t skip this step because it is an Unrepairable Build Ahead');
                         end else begin
-                            "Skip Step" := true;
-                            Modify;
+                            Rec."Skip Step" := true;
+                            Rec.Modify;
                             CurrPage.Close;
                         end;
                     end else begin
@@ -338,7 +339,7 @@ page 50009 "Job Status"
     begin
         MessageNotDisplayed := true;
         NewInstructions := false;
-        MasterNo := CopyStr("Order No.", 1, 5) + '00';
+        MasterNo := CopyStr(Rec."Order No.", 1, 5) + '00';
         if WOM.Get(MasterNo) then
             OK := true;
 
@@ -351,7 +352,7 @@ page 50009 "Job Status"
         Clear(InstrDate);
         Clear(ISOFile);
 
-        case Step.AsInteger() of
+        case Rec.Step.AsInteger() of
             0:
                 begin
                     Instruction := WOD.RCV;
@@ -450,23 +451,23 @@ page 50009 "Job Status"
 
         // 01/05/2011 Start
         // Step,Model
-        GetInstructionPerStep(Step, '', '', WOD."Model No.", '');
+        GetInstructionPerStep(Rec.Step, '', '', WOD."Model No.", '');
 
         // Step,Customer
-        GetInstructionPerStep(Step, WOD."Customer ID", '', '', '');
+        GetInstructionPerStep(Rec.Step, WOD."Customer ID", '', '', '');
 
         // Step,Customer,Part No.
         if (WOD."Customer Part No." <> '') then
-            GetInstructionPerStep(Step, WOD."Customer ID", '', '', WOD."Customer Part No.");
+            GetInstructionPerStep(Rec.Step, WOD."Customer ID", '', '', WOD."Customer Part No.");
 
         // Step,Customer,Model
-        GetInstructionPerStep(Step, WOD."Customer ID", '', WOD."Model No.", '');
+        GetInstructionPerStep(Rec.Step, WOD."Customer ID", '', WOD."Model No.", '');
 
         // Step,Customer,ShipTo
-        GetInstructionPerStep(Step, WOD."Customer ID", WOM."Ship To Code", '', '');
+        GetInstructionPerStep(Rec.Step, WOD."Customer ID", WOM."Ship To Code", '', '');
 
         // Step,Customer,ShiptTo,Model
-        GetInstructionPerStep(Step, WOD."Customer ID", WOM."Ship To Code", WOD."Model No.", '');
+        GetInstructionPerStep(Rec.Step, WOD."Customer ID", WOM."Ship To Code", WOD."Model No.", '');
 
         //CurrForm.QCFile.VISIBLE(QCFileName <> '');
         // 01/05/2011 End
@@ -477,7 +478,7 @@ page 50009 "Job Status"
         // Allow Shop Mgr and Shipping to edit Serial No. in REC step
         OK2 := false;
         Member.CalcFields(Member."User Name");
-        if (Step = Step::RCV) then begin         //---!
+        if (Rec.Step = Rec.Step::RCV) then begin         //---!
             Member.SetRange(Member."User Name", UserId);
             if Member.Find('-') then begin
                 repeat
@@ -501,7 +502,7 @@ page 50009 "Job Status"
         //   CurrForm.Container.EDITABLE(TRUE)
         //ELSE
         //   CurrForm.Container.EDITABLE(FALSE);
-        if (Step = Step::RCV) then begin
+        if (Rec.Step = Rec.Step::RCV) then begin
             ContainerEditable := true;
             if WOD.oContainerSaved = WOD.oContainerSaved::No then
                 ContainerTypeEditable := false
@@ -513,7 +514,7 @@ page 50009 "Job Status"
         end;
         // 04/16/18 End
 
-        if Status = Status::Complete then
+        if Rec.Status = Rec.Status::Complete then
             CurrPage.Editable(false)
         else
             CurrPage.Editable(true);
@@ -524,13 +525,13 @@ page 50009 "Job Status"
             NonCopperVisible := false;
 
         //ISO Procedure Button
-        ISOProcedure.SetRange(ISOProcedure.Step, Step);
+        ISOProcedure.SetRange(ISOProcedure.Step, Rec.Step);
         ISOProcedure.SetRange(ISOProcedure."Model Type", WOD."Model Type");
         if ISOProcedure.Find('-') then begin
             ISOFile := ISOProcedure."ISO Filename";
             cmdProcedureVisible := true;
         end else begin
-            ISOProcedure2.SetRange(ISOProcedure2.Step, Step);
+            ISOProcedure2.SetRange(ISOProcedure2.Step, Rec.Step);
             ISOProcedure2.SetRange(ISOProcedure2."Model Type", ISOProcedure2."Model Type"::" ");
             if ISOProcedure2.Find('-') then begin
                 ISOFile := ISOProcedure2."ISO Filename";
@@ -646,4 +647,6 @@ page 50009 "Job Status"
         exit(QCFull);
     end;
 }
+
+#pragma implicitwith restore
 

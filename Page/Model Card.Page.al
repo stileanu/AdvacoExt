@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50004 "Model Card"
 {
     PageType = Card;
@@ -11,29 +12,29 @@ page 50004 "Model Card"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
 
                     trigger OnAssistEdit()
                     begin
-                        if AssistEdit() then
+                        if Rec.AssistEdit() then
                             CurrPage.Update;
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field("Model Type"; "Model Type")
+                field("Model Type"; Rec."Model Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Gross Weight"; "Gross Weight")
+                field("Gross Weight"; Rec."Gross Weight")
                 {
                     ApplicationArea = All;
                 }
-                field("Assembly BOM"; "Assembly BOM")
+                field("Assembly BOM"; Rec."Assembly BOM")
                 {
                     ApplicationArea = All;
                 }
@@ -62,7 +63,7 @@ page 50004 "Model Card"
 
                     trigger OnAction()
                     begin
-                        Item.SetRange(Item."No.", "No.");
+                        Item.SetRange(Item."No.", Rec."No.");
                         REPORT.Run(50066, true, false, Item);
                     end;
                 }
@@ -72,7 +73,7 @@ page 50004 "Model Card"
 
     trigger OnAfterGetRecord()
     begin
-        SetRange("No.");
+        Rec.SetRange("No.");
     end;
 
     var
@@ -81,4 +82,6 @@ page 50004 "Model Card"
         Ok: Boolean;
         Item: Record Item;
 }
+
+#pragma implicitwith restore
 

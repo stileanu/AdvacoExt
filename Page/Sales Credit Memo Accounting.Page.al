@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50068 "Sales Credit Memo Accounting"
 {
     // 07/21/20
@@ -20,52 +21,52 @@ page 50068 "Sales Credit Memo Accounting"
                 group(Control1220060035)
                 {
                     ShowCaption = false;
-                    field("No."; "No.")
+                    field("No."; Rec."No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
 
                         trigger OnAssistEdit()
                         begin
-                            if AssistEdit(xRec) then
+                            if Rec.AssistEdit(xRec) then
                                 CurrPage.Update;
                         end;
                     }
-                    field("Sell-to Customer No."; "Sell-to Customer No.")
+                    field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Sell-to Customer Name"; "Sell-to Customer Name")
-                    {
-                        ApplicationArea = All;
-                        Editable = false;
-                    }
-                    field("Sell-to Address"; "Sell-to Address")
+                    field("Sell-to Customer Name"; Rec."Sell-to Customer Name")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Address 2"; "Sell-to Address 2")
+                    field("Sell-to Address"; Rec."Sell-to Address")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to City"; "Sell-to City")
+                    field("Sell-to Address 2"; Rec."Sell-to Address 2")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Post Code"; "Sell-to Post Code")
+                    field("Sell-to City"; Rec."Sell-to City")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to County"; "Sell-to County")
+                    field("Sell-to Post Code"; Rec."Sell-to Post Code")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Contact"; "Sell-to Contact")
+                    field("Sell-to County"; Rec."Sell-to County")
+                    {
+                        ApplicationArea = All;
+                        Editable = false;
+                    }
+                    field("Sell-to Contact"; Rec."Sell-to Contact")
                     {
                         ApplicationArea = All;
                         Editable = false;
@@ -74,24 +75,24 @@ page 50068 "Sales Credit Memo Accounting"
                 group(Control1220060059)
                 {
                     ShowCaption = false;
-                    field("Posting Date"; "Posting Date")
+                    field("Posting Date"; Rec."Posting Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Document Date"; "Document Date")
+                    field("Document Date"; Rec."Document Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Salesperson Code"; "Salesperson Code")
+                    field("Salesperson Code"; Rec."Salesperson Code")
                     {
                         ApplicationArea = All;
                         Caption = 'Inside Sales';
                     }
-                    field(Rep; Rep)
+                    field(Rep; Rec.Rep)
                     {
                         ApplicationArea = All;
                     }
-                    field(Status; Status)
+                    field(Status; Rec.Status)
                     {
                         ApplicationArea = All;
                     }
@@ -108,35 +109,35 @@ page 50068 "Sales Credit Memo Accounting"
                 group(Control1220060038)
                 {
                     ShowCaption = false;
-                    field("Bill-to Customer No."; "Bill-to Customer No.")
+                    field("Bill-to Customer No."; Rec."Bill-to Customer No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to Name"; "Bill-to Name")
+                    field("Bill-to Name"; Rec."Bill-to Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to Address"; "Bill-to Address")
+                    field("Bill-to Address"; Rec."Bill-to Address")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to Address 2"; "Bill-to Address 2")
+                    field("Bill-to Address 2"; Rec."Bill-to Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to City"; "Bill-to City")
+                    field("Bill-to City"; Rec."Bill-to City")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to County"; "Bill-to County")
+                    field("Bill-to County"; Rec."Bill-to County")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to Post Code"; "Bill-to Post Code")
+                    field("Bill-to Post Code"; Rec."Bill-to Post Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to Contact"; "Bill-to Contact")
+                    field("Bill-to Contact"; Rec."Bill-to Contact")
                     {
                         ApplicationArea = All;
                     }
@@ -144,34 +145,34 @@ page 50068 "Sales Credit Memo Accounting"
                 group(Control1220060028)
                 {
                     ShowCaption = false;
-                    field("Your Reference"; "Your Reference")
+                    field("Your Reference"; Rec."Your Reference")
                     {
                         ApplicationArea = All;
                         Caption = 'Customer P.O Number';
                     }
-                    field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
+                    field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                     {
                         ApplicationArea = All;
                         Caption = 'Project Code';
                     }
                 }
-                field("Applies-to Doc. Type"; "Applies-to Doc. Type")
+                field("Applies-to Doc. Type"; Rec."Applies-to Doc. Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Applies-to Doc. No."; "Applies-to Doc. No.")
+                field("Applies-to Doc. No."; Rec."Applies-to Doc. No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Applies-to ID"; "Applies-to ID")
+                field("Applies-to ID"; Rec."Applies-to ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Tax Liable"; "Tax Liable")
+                field("Tax Liable"; Rec."Tax Liable")
                 {
                     ApplicationArea = All;
                 }
-                field("Tax Area Code"; "Tax Area Code")
+                field("Tax Area Code"; Rec."Tax Area Code")
                 {
                     ApplicationArea = All;
                 }
@@ -292,7 +293,7 @@ page 50068 "Sales Credit Memo Accounting"
                     ReleaseSalesDoc.PerformManualRelease(Rec);
                     //<<  Whse. Management - end
 
-                    if Status = Status::Released then begin
+                    if Rec.Status = Rec.Status::Released then begin
                         ReopenVisible := true;
                         ReleaseVisible := false;
                     end else begin
@@ -325,7 +326,7 @@ page 50068 "Sales Credit Memo Accounting"
                     ReleaseSalesDoc.PerformManualReopen(Rec);
                     //<<  Warehouse Management - end
 
-                    if Status = Status::Open then begin
+                    if Rec.Status = Rec.Status::Open then begin
                         ReopenVisible := false;
                         ReleaseVisible := true;
                     end else begin
@@ -380,7 +381,7 @@ page 50068 "Sales Credit Memo Accounting"
     trigger OnAfterGetRecord()
     begin
         //>> HEF 2/27/01
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             ReopenVisible := false;
             ReleaseVisible := true;
         end else begin
@@ -393,13 +394,13 @@ page 50068 "Sales Credit Memo Accounting"
     trigger OnDeleteRecord(): Boolean
     begin
         CurrPage.SaveRecord;
-        exit(ConfirmDeletion);
+        exit(Rec.ConfirmDeletion);
     end;
 
     trigger OnOpenPage()
     begin
         //>> HEF
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             ReopenVisible := false;
             ReleaseVisible := true;
         end else begin
@@ -453,4 +454,6 @@ page 50068 "Sales Credit Memo Accounting"
             exit(true);
     end;
 }
+
+#pragma implicitwith restore
 

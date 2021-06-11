@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50014 "Quote Phase 1 Parts List"
 {
     InsertAllowed = false;
@@ -10,7 +11,7 @@ page 50014 "Quote Phase 1 Parts List"
         {
             repeater(Group)
             {
-                field("Part No."; "Part No.")
+                field("Part No."; Rec."Part No.")
                 {
                     ApplicationArea = All;
 
@@ -27,32 +28,32 @@ page 50014 "Quote Phase 1 Parts List"
                         end;
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Quoted Quantity"; "Quoted Quantity")
+                field("Quoted Quantity"; Rec."Quoted Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("Pre-Release PO"; "Pre-Release PO")
+                field("Pre-Release PO"; Rec."Pre-Release PO")
                 {
                     ApplicationArea = All;
                     Caption = 'Pre Order';
                 }
-                field("BOM Quantity"; "BOM Quantity")
+                field("BOM Quantity"; Rec."BOM Quantity")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Committed Quantity"; "Committed Quantity")
+                field("Committed Quantity"; Rec."Committed Quantity")
                 {
                     ApplicationArea = All;
                     Caption = 'COM Quantity';
                     Editable = false;
                 }
-                field("Quantity Backorder"; "Quantity Backorder")
+                field("Quantity Backorder"; Rec."Quantity Backorder")
                 {
                     ApplicationArea = All;
                     Caption = 'BO Quantity';
@@ -66,4 +67,6 @@ page 50014 "Quote Phase 1 Parts List"
     {
     }
 }
+
+#pragma implicitwith restore
 

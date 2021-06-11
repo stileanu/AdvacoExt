@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50008 "Job Status List"
 {
     // 2016_02_27 ADV
@@ -16,35 +17,35 @@ page 50008 "Job Status List"
         {
             repeater(Group)
             {
-                field("Order No."; "Order No.")
+                field("Order No."; Rec."Order No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Step; Step)
+                field(Step; Rec.Step)
                 {
                     ApplicationArea = All;
                 }
-                field("Date In"; "Date In")
+                field("Date In"; Rec."Date In")
                 {
                     ApplicationArea = All;
                 }
-                field("Date Out"; "Date Out")
+                field("Date Out"; Rec."Date Out")
                 {
                     ApplicationArea = All;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = All;
                 }
-                field(Employee; Employee)
+                field(Employee; Rec.Employee)
                 {
                     ApplicationArea = All;
                 }
-                field("Regular Hours"; "Regular Hours")
+                field("Regular Hours"; Rec."Regular Hours")
                 {
                     ApplicationArea = All;
                 }
-                field("Overtime Hours"; "Overtime Hours")
+                field("Overtime Hours"; Rec."Overtime Hours")
                 {
                     ApplicationArea = All;
                 }
@@ -56,4 +57,6 @@ page 50008 "Job Status List"
     {
     }
 }
+
+#pragma implicitwith restore
 

@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50006 "Original Parts List"
 {
     //Tested
@@ -11,35 +12,35 @@ page 50006 "Original Parts List"
         {
             repeater(Group)
             {
-                field("Work Order No."; "Work Order No.")
+                field("Work Order No."; Rec."Work Order No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Part Type"; "Part Type")
+                field("Part Type"; Rec."Part Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Part No."; "Part No.")
+                field("Part No."; Rec."Part No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field("Quoted Quantity"; "Quoted Quantity")
+                field("Quoted Quantity"; Rec."Quoted Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("Part Cost"; "Part Cost")
+                field("Part Cost"; Rec."Part Cost")
                 {
                     ApplicationArea = All;
                 }
-                field("Quoted Price"; "Quoted Price")
+                field("Quoted Price"; Rec."Quoted Price")
                 {
                     ApplicationArea = All;
                 }
-                field("Total Quote Price"; "Total Quote Price")
+                field("Total Quote Price"; Rec."Total Quote Price")
                 {
                     ApplicationArea = All;
                 }
@@ -51,4 +52,6 @@ page 50006 "Original Parts List"
     {
     }
 }
+
+#pragma implicitwith restore
 

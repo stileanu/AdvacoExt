@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50045 "Order Type"
 {
     // 2010/10/14 ADV
@@ -17,39 +18,39 @@ page 50045 "Order Type"
                 group(Control1000000011)
                 {
                     ShowCaption = false;
-                    field("Work Order No."; "Work Order No.")
+                    field("Work Order No."; Rec."Work Order No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Model No."; "Model No.")
+                    field("Model No."; Rec."Model No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field(Description; Description)
+                    field(Description; Rec.Description)
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Serial No."; "Serial No.")
+                    field("Serial No."; Rec."Serial No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Order Type"; "Order Type")
+                    field("Order Type"; Rec."Order Type")
                     {
                         ApplicationArea = All;
 
                         trigger OnValidate()
                         begin
-                            if xRec."Order Type" <> "Order Type" then begin
+                            if xRec."Order Type" <> Rec."Order Type" then begin
                                 if not Confirm('Are you sure you wish to change the Order Type?') then begin
                                     Error('Order Type has not been changed');
                                 end else begin
-                                    if "Order Type" <> "Order Type"::Warranty then begin
-                                        "Warranty Type" := "Warranty Type"::" ";
-                                        "Warranty Reason" := '';
+                                    if Rec."Order Type" <> Rec."Order Type"::Warranty then begin
+                                        Rec."Warranty Type" := Rec."Warranty Type"::" ";
+                                        Rec."Warranty Reason" := '';
                                         Message('Order Type Reason must also be entered');
                                     end else begin
                                         Message('Order Type Reason, Warranty Type, & Warranty Reason must also be entered');
@@ -57,39 +58,39 @@ page 50045 "Order Type"
                                 end;
                             end;
 
-                            Validate("Order Type");
+                            Rec.Validate("Order Type");
                         end;
                     }
-                    field("Order Type Reason"; "Order Type Reason")
+                    field("Order Type Reason"; Rec."Order Type Reason")
                     {
                         ApplicationArea = All;
                     }
-                    field("Warranty Type"; "Warranty Type")
+                    field("Warranty Type"; Rec."Warranty Type")
                     {
                         ApplicationArea = All;
 
                         trigger OnValidate()
                         begin
-                            if "Warranty Type" <> xRec."Warranty Type" then begin
-                                if "Order Type" <> "Order Type"::Warranty then begin
+                            if Rec."Warranty Type" <> xRec."Warranty Type" then begin
+                                if Rec."Order Type" <> Rec."Order Type"::Warranty then begin
                                     Message('Order Type must be Warranty to Enter Warranty Type');
-                                    "Warranty Type" := "Warranty Type"::" ";
-                                    Modify;
+                                    Rec."Warranty Type" := Rec."Warranty Type"::" ";
+                                    Rec.Modify;
                                 end;
                             end;
                         end;
                     }
-                    field("Warranty Reason"; "Warranty Reason")
+                    field("Warranty Reason"; Rec."Warranty Reason")
                     {
                         ApplicationArea = All;
 
                         trigger OnValidate()
                         begin
-                            if "Warranty Reason" <> xRec."Warranty Reason" then begin
-                                if "Order Type" <> "Order Type"::Warranty then begin
+                            if Rec."Warranty Reason" <> xRec."Warranty Reason" then begin
+                                if Rec."Order Type" <> Rec."Order Type"::Warranty then begin
                                     Message('Order Type must be Warranty to Enter Warranty Reason');
-                                    "Warranty Reason" := '';
-                                    Modify;
+                                    Rec."Warranty Reason" := '';
+                                    Rec.Modify;
                                 end;
                             end;
                         end;
@@ -98,7 +99,7 @@ page 50045 "Order Type"
                 group(Control1000000012)
                 {
                     ShowCaption = false;
-                    field("Customer ID"; "Customer ID")
+                    field("Customer ID"; Rec."Customer ID")
                     {
                         ApplicationArea = All;
                         Editable = false;
@@ -115,7 +116,7 @@ page 50045 "Order Type"
     trigger OnOpenPage()
     begin
         ok := false;
-        WOS.SetRange(WOS."Order No.", "Work Order No.");
+        WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
         WOS.SetRange(WOS.Step, WOS.Step::QOT);
         WOS.SetRange(WOS.Status, WOS.Status::Waiting);
         if WOS.Find('-') then begin
@@ -141,7 +142,7 @@ page 50045 "Order Type"
 
             // 2011/04/13 Start
             if (UserId = 'KAYE') or (UserId = 'ADMIN') then begin
-                if ("Order Type" = "Order Type"::Warranty) and Complete then
+                if (Rec."Order Type" = Rec."Order Type"::Warranty) and Rec.Complete then
                     CurrPage.Editable(true);
             end;
             // 2011/04/13 End
@@ -155,4 +156,6 @@ page 50045 "Order Type"
         ok: Boolean;
         User: Code[20];
 }
+
+#pragma implicitwith restore
 

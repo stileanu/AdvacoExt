@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50007 "Job Status Overview"
 {
     SourceTable = WorkOrderDetail;
@@ -10,32 +11,32 @@ page 50007 "Job Status Overview"
             group(Control1000000001)
             {
                 ShowCaption = false;
-                field("Work Order No."; "Work Order No.")
+                field("Work Order No."; Rec."Work Order No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Order Type"; "Order Type")
+                field("Order Type"; Rec."Order Type")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Model No."; "Model No.")
+                field("Model No."; Rec."Model No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Serial No."; "Serial No.")
+                field("Serial No."; Rec."Serial No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Customer ID"; "Customer ID")
+                field("Customer ID"; Rec."Customer ID")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -72,7 +73,7 @@ page 50007 "Job Status Overview"
         //   OK := TRUE;
         //IF WOD.GET (Rec."Work Order No.") THEN
         //   OK := TRUE;
-        BO := BackorderText;
+        BO := Rec.BackorderText;
     end;
 
     var
@@ -82,4 +83,6 @@ page 50007 "Job Status Overview"
         MasterNo: Code[7];
         BO: Code[40];
 }
+
+#pragma implicitwith restore
 

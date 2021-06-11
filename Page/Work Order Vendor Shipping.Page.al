@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50032 "Work Order Vendor Shipping"
 {
     // 05/2/18
@@ -53,38 +54,38 @@ page 50032 "Work Order Vendor Shipping"
             }
             repeater(Group)
             {
-                field("Work Order No."; "Work Order No.")
+                field("Work Order No."; Rec."Work Order No.")
                 {
                     ApplicationArea = All;
                     Caption = 'WOD';
                     Editable = false;
                 }
-                field("Model No."; "Model No.")
+                field("Model No."; Rec."Model No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Serial No."; "Serial No.")
+                field("Serial No."; Rec."Serial No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Vendor Carrier"; "Vendor Carrier")
+                field("Vendor Carrier"; Rec."Vendor Carrier")
                 {
                     ApplicationArea = All;
                     Caption = 'Carrier';
                 }
-                field("Vendor Shipping Charge"; "Vendor Shipping Charge")
+                field("Vendor Shipping Charge"; Rec."Vendor Shipping Charge")
                 {
                     ApplicationArea = All;
                     Caption = 'Shipping Charge';
                 }
-                field("Vendor Shipping Method"; "Vendor Shipping Method")
+                field("Vendor Shipping Method"; Rec."Vendor Shipping Method")
                 {
                     ApplicationArea = All;
                     Caption = 'Shipping Method';
                 }
-                field("Vendor Shipping Account"; "Vendor Shipping Account")
+                field("Vendor Shipping Account"; Rec."Vendor Shipping Account")
                 {
                     ApplicationArea = All;
                     Caption = 'Shipping Account';
@@ -93,57 +94,57 @@ page 50032 "Work Order Vendor Shipping"
             group(Control1220060018)
             {
                 ShowCaption = false;
-                field("Vendor Code"; "Vendor Code")
+                field("Vendor Code"; Rec."Vendor Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Name"; "Vendor Name")
+                field("Vendor Name"; Rec."Vendor Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Address"; "Vendor Address")
+                field("Vendor Address"; Rec."Vendor Address")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Address2"; "Vendor Address2")
+                field("Vendor Address2"; Rec."Vendor Address2")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor City"; "Vendor City")
+                field("Vendor City"; Rec."Vendor City")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor State"; "Vendor State")
+                field("Vendor State"; Rec."Vendor State")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Zip"; "Vendor Zip")
+                field("Vendor Zip"; Rec."Vendor Zip")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Ship Weight"; "Vendor Ship Weight")
-                {
-                    ApplicationArea = All;
-                    Editable = false;
-                }
-                field("Vendor Container Quantity"; "Vendor Container Quantity")
+                field("Vendor Ship Weight"; Rec."Vendor Ship Weight")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Packaging Location"; "Packaging Location")
+                field("Vendor Container Quantity"; Rec."Vendor Container Quantity")
+                {
+                    ApplicationArea = All;
+                    Editable = false;
+                }
+                field("Packaging Location"; Rec."Packaging Location")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Package Tracking No."; "Vendor Package Tracking No.")
+                field("Vendor Package Tracking No."; Rec."Vendor Package Tracking No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Packaging; Packaging)
+                field(Packaging; Rec.Packaging)
                 {
                     ApplicationArea = All;
                 }
-                field(Accessories; Accessories)
+                field(Accessories; Rec.Accessories)
                 {
                     ApplicationArea = All;
                 }
@@ -269,14 +270,14 @@ page 50032 "Work Order Vendor Shipping"
                     if ShippingTime = 0 then
                         Error('Shipping Time must be entered.');
 
-                    if ("Vendor Name" = '') or ("Vendor Address" = '') or ("Vendor City" = '') or ("Vendor Zip" = '') then
+                    if (Rec."Vendor Name" = '') or (Rec."Vendor Address" = '') or (Rec."Vendor City" = '') or (Rec."Vendor Zip" = '') then
                         Error('All the Shipping information isn''t entered, Please Contact Sales');
 
                     // Update current record in the DB
                     CurrPage.Update(true);
 
                     WOD.SetCurrentKey(WOD."Work Order No.");
-                    WOD.SetRange(WOD."Work Order No.", "Work Order No.");
+                    WOD.SetRange(WOD."Work Order No.", Rec."Work Order No.");
 
                     if WOD.Find('-') then begin
                         NothingToShip := false;
@@ -349,7 +350,7 @@ page 50032 "Work Order Vendor Shipping"
     begin
         WorkOrderDetail.RESET;
         WorkOrderDetail.SETCURRENTKEY("Work Order Master No.");
-        WorkOrderDetail.SETRANGE(WorkOrderDetail."Work Order Master No.", "Work Order Master No.");
+        WorkOrderDetail.SETRANGE(WorkOrderDetail."Work Order Master No.", Rec."Work Order Master No.");
         IF WorkOrderDetail.FIND('-') THEN BEGIN
             REPEAT
                 WorkOrderDetail.Ship := FALSE;
@@ -625,4 +626,6 @@ page 50032 "Work Order Vendor Shipping"
         exit(ExitShCharge);
     end;
 }
+
+#pragma implicitwith restore
 

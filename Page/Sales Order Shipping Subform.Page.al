@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50061 "Sales Order Shipping Subform"
 {
     // 10/4/00 RJK HTCS
@@ -18,7 +19,7 @@ page 50061 "Sales Order Shipping Subform"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -28,11 +29,11 @@ page 50061 "Sales Order Shipping Subform"
                         NoOnAfterValidate;
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field(Quantity; Quantity)
+                field(Quantity; Rec.Quantity)
                 {
                     ApplicationArea = All;
                     Caption = 'Qty';
@@ -43,25 +44,25 @@ page 50061 "Sales Order Shipping Subform"
                         QtyOnAfterValidate;
                     end;
                 }
-                field("Qty. to Ship"; "Qty. to Ship")
+                field("Qty. to Ship"; Rec."Qty. to Ship")
                 {
                     ApplicationArea = All;
                 }
-                field("Shipped Qty."; "Shipped Qty.")
+                field("Shipped Qty."; Rec."Shipped Qty.")
                 {
                     ApplicationArea = All;
                 }
-                field("Shipment Date"; "Shipment Date")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Package Tracking No."; "Package Tracking No.")
+                field("Shipment Date"; Rec."Shipment Date")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Unit of Measure Code"; "Unit of Measure Code")
+                field("Package Tracking No."; Rec."Package Tracking No.")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Unit of Measure Code"; Rec."Unit of Measure Code")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -91,7 +92,7 @@ page 50061 "Sales Order Shipping Subform"
 
     trigger OnNewRecord(BelowxRec: Boolean)
     begin
-        Type := xRec.Type;
+        Rec.Type := xRec.Type;
     end;
 
     var
@@ -119,9 +120,9 @@ page 50061 "Sales Order Shipping Subform"
         PurchHeader: Record "Purchase Header";
         PurchOrder: Page "Purchase Order";
     begin
-        if not "Drop Shipment" then
+        if not Rec."Drop Shipment" then
             Error('The current sales line is not a drop shipment.');
-        PurchHeader.SetRange("No.", "Purchase Order No.");
+        PurchHeader.SetRange("No.", Rec."Purchase Order No.");
         PurchOrder.SetTableView(PurchHeader);
         PurchOrder.Editable := false;
         PurchOrder.Run;
@@ -139,7 +140,7 @@ page 50061 "Sales Order Shipping Subform"
 
     procedure ShowReservation2()
     begin
-        Find;
+        Rec.Find;
         Rec.ShowReservation;
     end;
 
@@ -160,10 +161,12 @@ page 50061 "Sales Order Shipping Subform"
 
     procedure QtyOnAfterValidate()
     begin
-        if Reserve = Reserve::Always then begin
+        if Rec.Reserve = Rec.Reserve::Always then begin
             CurrPage.SaveRecord;
-            AutoReserve();
+            Rec.AutoReserve();
         end;
     end;
 }
+
+#pragma implicitwith restore
 

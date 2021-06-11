@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50033 "Work Order Shipping"
 {
     // 2/1/01, HTCS, RCA - added code to "Ship" command button OnPush() 
@@ -71,43 +72,43 @@ page 50033 "Work Order Shipping"
             }
             repeater(Group)
             {
-                field(Ship; Ship)
+                field(Ship; Rec.Ship)
                 {
                     ApplicationArea = All;
                 }
-                field("Work Order No."; "Work Order No.")
+                field("Work Order No."; Rec."Work Order No.")
                 {
                     ApplicationArea = All;
                     Caption = 'WOD';
                     Editable = false;
                 }
-                field("Model No."; "Model No.")
+                field("Model No."; Rec."Model No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Customer Part No."; "Customer Part No.")
+                field("Customer Part No."; Rec."Customer Part No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Serial No."; "Serial No.")
+                field("Serial No."; Rec."Serial No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field(Carrier; Carrier)
+                field(Carrier; Rec.Carrier)
                 {
                     ApplicationArea = All;
                 }
-                field("Shipping Charge"; "Shipping Charge")
+                field("Shipping Charge"; Rec."Shipping Charge")
                 {
                     ApplicationArea = All;
                 }
-                field("Shipping Method"; "Shipping Method")
+                field("Shipping Method"; Rec."Shipping Method")
                 {
                     ApplicationArea = All;
                 }
-                field("Shipping Account"; "Shipping Account")
+                field("Shipping Account"; Rec."Shipping Account")
                 {
                     ApplicationArea = All;
                 }
@@ -115,67 +116,67 @@ page 50033 "Work Order Shipping"
             group(Control1220060018)
             {
                 ShowCaption = false;
-                field("Customer ID"; "Customer ID")
+                field("Customer ID"; Rec."Customer ID")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship To Name"; "Ship To Name")
+                field("Ship To Name"; Rec."Ship To Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship To Address 1"; "Ship To Address 1")
+                field("Ship To Address 1"; Rec."Ship To Address 1")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship To Address 2"; "Ship To Address 2")
+                field("Ship To Address 2"; Rec."Ship To Address 2")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship To City"; "Ship To City")
+                field("Ship To City"; Rec."Ship To City")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship To State"; "Ship To State")
+                field("Ship To State"; Rec."Ship To State")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship To Zip Code"; "Ship To Zip Code")
+                field("Ship To Zip Code"; Rec."Ship To Zip Code")
                 {
                     ApplicationArea = All;
                 }
-                field(Attention; Attention)
+                field(Attention; Rec.Attention)
                 {
                     ApplicationArea = All;
                 }
-                field("Ship Weight"; "Ship Weight")
+                field("Ship Weight"; Rec."Ship Weight")
                 {
                     ApplicationArea = All;
                 }
-                field("Container Quantity"; "Container Quantity")
+                field("Container Quantity"; Rec."Container Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("Packaging Location"; "Packaging Location")
+                field("Packaging Location"; Rec."Packaging Location")
                 {
                     ApplicationArea = All;
                 }
-                field("Package Tracking No."; "Package Tracking No.")
+                field("Package Tracking No."; Rec."Package Tracking No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Packaging; Packaging)
+                field(Packaging; Rec.Packaging)
                 {
                     ApplicationArea = All;
                 }
-                field(Accessories; Accessories)
+                field(Accessories; Rec.Accessories)
                 {
                     ApplicationArea = All;
                 }
-                field("Receiving Notes"; "Receiving Notes")
+                field("Receiving Notes"; Rec."Receiving Notes")
                 {
                     ApplicationArea = All;
                 }
-                field(SHP; SHP)
+                field(SHP; Rec.SHP)
                 {
                     ApplicationArea = All;
                 }
@@ -267,8 +268,8 @@ page 50033 "Work Order Shipping"
                 begin
                     InstructionRead := true;
 
-                    WSI.SetRange(WSI."Order No.", "Work Order No.");
-                    WSI.SetRange(WSI.Step, "Detail Step");
+                    WSI.SetRange(WSI."Order No.", Rec."Work Order No.");
+                    WSI.SetRange(WSI.Step, Rec."Detail Step");
                     PAGE.RunModal(50042, WSI);
                 end;
             }
@@ -344,8 +345,8 @@ page 50033 "Work Order Shipping"
                     // 2021_01_11 Intelice End
 
                     // 04/17/18 start
-                    IF oContainerSaved = oContainerSaved::Yes THEN
-                        MESSAGE(STRSUBSTNO('Be sure to ship with Saved Customer Container [%1]', FORMAT("Container Type")));
+                    IF Rec.oContainerSaved = Rec.oContainerSaved::Yes THEN
+                        MESSAGE(STRSUBSTNO('Be sure to ship with Saved Customer Container [%1]', FORMAT(Rec."Container Type")));
                     // 04/17/18 end
 
                     if (MessageShowed > 0) and (InstructionRead = false) then
@@ -419,25 +420,25 @@ page 50033 "Work Order Shipping"
 
     trigger OnAfterGetRecord()
     begin
-        CalcFields("Detail Step");
+        Rec.CalcFields("Detail Step");
         Instructions := false;
         NewInstruction := false;
         NothingToShip := true;
 
         WOM.SetCurrentKey(WOM."Work Order Master No.");
-        WOM.Get("Work Order Master No.");
+        WOM.Get(Rec."Work Order Master No.");
 
-        if SHP <> '' then begin
+        if Rec.SHP <> '' then begin
             Instructions := true;
-            if "SHP Date" > WOM."Date Ordered" then
+            if Rec."SHP Date" > WOM."Date Ordered" then
                 NewInstruction := true;
         end;
 
         // Step,Model
         WI.SetRange(WI."Customer Code", '');
         WI.SetRange(WI."Ship To Code", '');
-        WI.SetRange(WI.Step, "Detail Step");
-        WI.SetRange(WI.Model, "Model No.");
+        WI.SetRange(WI.Step, Rec."Detail Step");
+        WI.SetRange(WI.Model, Rec."Model No.");
         if WI.Find('-') then begin
             Instructions := true;
             if WI."Date Last Modified" > WOM."Date Ordered" then
@@ -447,9 +448,9 @@ page 50033 "Work Order Shipping"
 
 
         // Step,Customer
-        WI.SetRange(WI."Customer Code", "Customer ID");
+        WI.SetRange(WI."Customer Code", Rec."Customer ID");
         WI.SetRange(WI."Ship To Code", '');
-        WI.SetRange(WI.Step, "Detail Step");
+        WI.SetRange(WI.Step, Rec."Detail Step");
         WI.SetRange(WI.Model, '');
         if WI.Find('-') then begin
             Instructions := true;
@@ -459,10 +460,10 @@ page 50033 "Work Order Shipping"
         WI.Reset;
 
         //Step,Customer,Model
-        WI.SetRange(WI."Customer Code", "Customer ID");
+        WI.SetRange(WI."Customer Code", Rec."Customer ID");
         WI.SetRange(WI."Ship To Code", '');
-        WI.SetRange(WI.Step, "Detail Step");
-        WI.SetRange(WI.Model, "Model No.");
+        WI.SetRange(WI.Step, Rec."Detail Step");
+        WI.SetRange(WI.Model, Rec."Model No.");
         if WI.Find('-') then begin
             Instructions := true;
             if WI."Date Last Modified" > WOM."Date Ordered" then
@@ -471,9 +472,9 @@ page 50033 "Work Order Shipping"
         WI.Reset;
 
         //Step,Customer,ShipTo
-        WI.SetRange(WI."Customer Code", "Customer ID");
+        WI.SetRange(WI."Customer Code", Rec."Customer ID");
         WI.SetRange(WI."Ship To Code", WOM."Ship To Code");
-        WI.SetRange(WI.Step, "Detail Step");
+        WI.SetRange(WI.Step, Rec."Detail Step");
         WI.SetRange(WI.Model, '');
         if WI.Find('-') then begin
             Instructions := true;
@@ -484,10 +485,10 @@ page 50033 "Work Order Shipping"
 
 
         //Step,Customer,ShiptTo,Model
-        WI.SetRange(WI."Customer Code", "Customer ID");
+        WI.SetRange(WI."Customer Code", Rec."Customer ID");
         WI.SetRange(WI."Ship To Code", WOM."Ship To Code");
-        WI.SetRange(WI.Step, "Detail Step");
-        WI.SetRange(WI.Model, "Model No.");
+        WI.SetRange(WI.Step, Rec."Detail Step");
+        WI.SetRange(WI.Model, Rec."Model No.");
         if WI.Find('-') then begin
             Instructions := true;
             if WI."Date Last Modified" > WOM."Date Ordered" then
@@ -506,7 +507,7 @@ page 50033 "Work Order Shipping"
             WorkInstructionsVisible := false;
         end;
 
-        if "Non Copper" then
+        if Rec."Non Copper" then
             NonCopperVisible := true
         else
             NonCopperVisible := false;
@@ -527,7 +528,7 @@ page 50033 "Work Order Shipping"
             if Dialog.Confirm('Do you want to close this page without completing the order?', false) then begin
                 WorkOrderDetail.Reset;
                 WorkOrderDetail.SetCurrentKey("Work Order Master No.");
-                WorkOrderDetail.SetRange(WorkOrderDetail."Work Order Master No.", "Work Order Master No.");
+                WorkOrderDetail.SetRange(WorkOrderDetail."Work Order Master No.", Rec."Work Order Master No.");
                 if WorkOrderDetail.Find('-') then begin
                     repeat
                         WorkOrderDetail.Ship := false;
@@ -644,7 +645,7 @@ page 50033 "Work Order Shipping"
         R := false;
         NoCharge := false;
         Charge := false;
-        Warranty := false;
+        Rec.Warranty := false;
         NonWarranty := false;
         NothingToShip := true;
 
@@ -665,19 +666,19 @@ page 50033 "Work Order Shipping"
             if WOD.Find('-') then begin
                 repeat
                     if WOD."Order Type" = WOD."Order Type"::Warranty then
-                        Warranty := true
+                        Rec.Warranty := true
                     else
                         NonWarranty := true;
                 until WOD.Next = 0;
             end;
 
-            if Warranty and NonWarranty then
+            if Rec.Warranty and NonWarranty then
                 Error('Can''t Ship Warranty Pump with a Non Warranty Pump on same Bill of Lading');
 
             if NonWarranty then
                 Repairable;
 
-            if Warranty then
+            if Rec.Warranty then
                 WarrantyShip;
 
             //Check for Pump Module
@@ -1252,8 +1253,8 @@ page 50033 "Work Order Shipping"
 
         //UPS HANDLING
         if WOD.Carrier = 'UPS' then begin
-            if (WOD."Shipping Charge" = "Shipping Charge"::"Pre-Paid") or
-               (WOD."Shipping Charge" = "Shipping Charge"::"Pre-Paid & Add") then begin
+            if (WOD."Shipping Charge" = Rec."Shipping Charge"::"Pre-Paid") or
+               (WOD."Shipping Charge" = Rec."Shipping Charge"::"Pre-Paid & Add") then begin
                 LineLoop;
                 SalesLine.Type := SalesLine.Type::"G/L Account";
                 SalesLine.Validate("No.", '311');   //Sales Account
@@ -1267,8 +1268,8 @@ page 50033 "Work Order Shipping"
 
         //UPS SHIPPING
         if WOD.Carrier = 'UPS' then begin
-            if (WOD."Shipping Charge" = "Shipping Charge"::"Pre-Paid") or
-               (WOD."Shipping Charge" = "Shipping Charge"::"Pre-Paid & Add") then begin
+            if (WOD."Shipping Charge" = Rec."Shipping Charge"::"Pre-Paid") or
+               (WOD."Shipping Charge" = Rec."Shipping Charge"::"Pre-Paid & Add") then begin
                 LineLoop;
                 SalesLine.Type := SalesLine.Type::"G/L Account";
                 SalesLine.Validate("No.", '312');   //Sales Account
@@ -1462,8 +1463,8 @@ page 50033 "Work Order Shipping"
 
         //UPS HANDLING
         if WOD.Carrier = 'UPS' then begin
-            if (WOD."Shipping Charge" = "Shipping Charge"::"Pre-Paid") or
-                (WOD."Shipping Charge" = "Shipping Charge"::"Pre-Paid & Add") then begin
+            if (WOD."Shipping Charge" = Rec."Shipping Charge"::"Pre-Paid") or
+                (WOD."Shipping Charge" = Rec."Shipping Charge"::"Pre-Paid & Add") then begin
                 LineLoop;
                 SalesLine.Type := SalesLine.Type::"G/L Account";
                 SalesLine.Validate("No.", '311');   //Sales Account
@@ -1477,8 +1478,8 @@ page 50033 "Work Order Shipping"
 
         //UPS SHIPPING
         if WOD.Carrier = 'UPS' then begin
-            if (WOD."Shipping Charge" = "Shipping Charge"::"Pre-Paid") or
-                (WOD."Shipping Charge" = "Shipping Charge"::"Pre-Paid & Add") then begin
+            if (WOD."Shipping Charge" = Rec."Shipping Charge"::"Pre-Paid") or
+                (WOD."Shipping Charge" = Rec."Shipping Charge"::"Pre-Paid & Add") then begin
                 LineLoop;
                 SalesLine.Type := SalesLine.Type::"G/L Account";
                 SalesLine.Validate("No.", '312');   //Sales Account
@@ -1794,11 +1795,11 @@ page 50033 "Work Order Shipping"
                 ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
                 ItemJournalLine."Line No." := LineNumber;
                 ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
-                ItemJournalLine."Document No." := "Work Order No.";
+                ItemJournalLine."Document No." := Rec."Work Order No.";
                 ItemJournalLine."Item No." := WOP."Part No.";
                 ItemJournalLine.Validate(ItemJournalLine."Item No.");
                 ItemJournalLine."Posting Date" := WorkDate;
-                ItemJournalLine.Description := "Work Order No." + ' ' + 'SHIP RETURN PARTS';
+                ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'SHIP RETURN PARTS';
                 ItemJournalLine."Location Code" := 'IN PROCESS';
 
                 ItemJournalLine.Quantity := ReturnInventoryQty;
@@ -2103,4 +2104,6 @@ page 50033 "Work Order Shipping"
 
 
 }
+
+#pragma implicitwith restore
 

@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50050 "Outside Sales Reps"
 {
     PageType = List;
@@ -9,40 +10,40 @@ page 50050 "Outside Sales Reps"
         {
             repeater(Group)
             {
-                field("Rep Code"; "Rep Code")
+                field("Rep Code"; Rec."Rep Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Rep Name"; "Rep Name")
+                field("Rep Name"; Rec."Rep Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Rep Company"; "Rep Company")
-                {
-                    ApplicationArea = All;
-                    Visible = false;
-                }
-                field("Rep Address 1"; "Rep Address 1")
+                field("Rep Company"; Rec."Rep Company")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Rep City"; "Rep City")
+                field("Rep Address 1"; Rec."Rep Address 1")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Rep State"; "Rep State")
+                field("Rep City"; Rec."Rep City")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Rep Zip"; "Rep Zip")
+                field("Rep State"; Rec."Rep State")
                 {
                     ApplicationArea = All;
                     Visible = false;
                 }
-                field("Commission %"; "Commission %")
+                field("Rep Zip"; Rec."Rep Zip")
+                {
+                    ApplicationArea = All;
+                    Visible = false;
+                }
+                field("Commission %"; Rec."Commission %")
                 {
                     ApplicationArea = All;
                     Visible = false;
@@ -55,4 +56,6 @@ page 50050 "Outside Sales Reps"
     {
     }
 }
+
+#pragma implicitwith restore
 

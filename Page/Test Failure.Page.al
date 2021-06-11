@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50028 "Test Failure"
 {
     ApplicationArea = All;
@@ -21,19 +22,19 @@ page 50028 "Test Failure"
                     group(Control1220060005)
                     {
                         ShowCaption = false;
-                        field("Order No."; "Order No.")
+                        field("Order No."; Rec."Order No.")
                         {
                             ApplicationArea = All;
                             Caption = 'Work Order No.';
                             Editable = false;
                         }
-                        field("Model No."; "Model No.")
+                        field("Model No."; Rec."Model No.")
                         {
                             ApplicationArea = All;
                             Caption = 'Model No.';
                             Editable = false;
                         }
-                        field(Date; Date)
+                        field(Date; Rec.Date)
                         {
                             ApplicationArea = All;
                             Caption = 'Date';
@@ -52,7 +53,7 @@ page 50028 "Test Failure"
                     group("Code")
                     {
                         Caption = 'Code';
-                        field("Defect Code"; "Defect Code")
+                        field("Defect Code"; Rec."Defect Code")
                         {
                             ApplicationArea = All;
                             Caption = '''';
@@ -87,7 +88,7 @@ page 50028 "Test Failure"
                     group(Department)
                     {
                         Caption = 'Department';
-                        field(Control1220060020; Department)
+                        field(Control1220060020; Rec.Department)
                         {
                             ApplicationArea = All;
                             ShowCaption = false;
@@ -121,7 +122,7 @@ page 50028 "Test Failure"
                     group("Failure Item")
                     {
                         Caption = 'Failure Item';
-                        field(Control1220060026; "Failure Item")
+                        field(Control1220060026; Rec."Failure Item")
                         {
                             ApplicationArea = All;
                             ShowCaption = false;
@@ -239,7 +240,7 @@ page 50028 "Test Failure"
                     group(Control1220060012)
                     {
                         Caption = 'Code';
-                        field(Control1220060031; Code)
+                        field(Control1220060031; Rec.Code)
                         {
                             ApplicationArea = All;
                             ShowCaption = false;
@@ -356,7 +357,7 @@ page 50028 "Test Failure"
                     group(Category)
                     {
                         Caption = 'Category';
-                        field(Control1220060033; Category)
+                        field(Control1220060033; Rec.Category)
                         {
                             ApplicationArea = All;
                             ShowCaption = false;
@@ -398,7 +399,7 @@ page 50028 "Test Failure"
         OccurenceCount := 10;
 
         //Determine The Occurence No. for the Next Record Saved
-        FailureCodeOccurence.SetRange(FailureCodeOccurence."Order No.", "Order No.");
+        FailureCodeOccurence.SetRange(FailureCodeOccurence."Order No.", Rec."Order No.");
         if FailureCodeOccurence.Find('-') then begin
             repeat
                 if FailureCodeOccurence.Occurrence > OccurenceCount then
@@ -411,7 +412,7 @@ page 50028 "Test Failure"
             DuplicateRecord := false;
             //If a Record Exist check for Duplicates
             if fDefectCode[RecordCount] <> '' then begin
-                FailureCodesEntered.SetRange(FailureCodesEntered."Order No.", "Order No.");
+                FailureCodesEntered.SetRange(FailureCodesEntered."Order No.", Rec."Order No.");
                 if FailureCodesEntered.Find('-') then begin
                     repeat
                         if FailureCodesEntered."Defect Code" = fDefectCode[RecordCount] then begin
@@ -427,11 +428,11 @@ page 50028 "Test Failure"
                 if DuplicateRecord = false then begin
                     FailureCodesInsert.Init;
                     FailureCodesInsert.Occurrence := OccurenceCount + 1;
-                    FailureCodesInsert."Order No." := "Order No.";
+                    FailureCodesInsert."Order No." := Rec."Order No.";
                     FailureCodesInsert.Department := FailureCodesInsert.Department::"Production Assembly";
-                    FailureCodesInsert."Model No." := "Model No.";
-                    FailureCodesInsert.Date := Date;
-                    FailureCodesInsert.Technician := Technician;
+                    FailureCodesInsert."Model No." := Rec."Model No.";
+                    FailureCodesInsert.Date := Rec.Date;
+                    FailureCodesInsert.Technician := Rec.Technician;
                     FailureCodesInsert."Defect Code" := fDefectCode[RecordCount];
                     FailureCodesInsert.Department := fFunctionalDepartment[RecordCount];
                     FailureCodesInsert."Failure Item" := fItemCode[RecordCount];
@@ -721,4 +722,6 @@ page 50028 "Test Failure"
         end;
     end;
 }
+
+#pragma implicitwith restore
 

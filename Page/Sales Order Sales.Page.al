@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50062 "Sales Order Sales"
 {
     // HTCS RJK 10/24/00
@@ -32,26 +33,26 @@ page 50062 "Sales Order Sales"
                     group(Control1220060078)
                     {
                         ShowCaption = false;
-                        field("No."; "No.")
+                        field("No."; Rec."No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
 
                             trigger OnAssistEdit()
                             begin
-                                if AssistEdit(xRec) then
+                                if Rec.AssistEdit(xRec) then
                                     CurrPage.Update;
                             end;
                         }
-                        field("Sell-to Customer No."; "Sell-to Customer No.")
+                        field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                         {
                             ApplicationArea = All;
                         }
-                        field("Ship-to Code"; "Ship-to Code")
+                        field("Ship-to Code"; Rec."Ship-to Code")
                         {
                             ApplicationArea = All;
                         }
-                        field("Order Date"; "Order Date")
+                        field("Order Date"; Rec."Order Date")
                         {
                             ApplicationArea = All;
                         }
@@ -63,50 +64,50 @@ page 50062 "Sales Order Sales"
                 group(Control1220060035)
                 {
                     ShowCaption = false;
-                    field("Sell-to Customer Name"; "Sell-to Customer Name")
+                    field("Sell-to Customer Name"; Rec."Sell-to Customer Name")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Address"; "Sell-to Address")
+                    field("Sell-to Address"; Rec."Sell-to Address")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Address 2"; "Sell-to Address 2")
+                    field("Sell-to Address 2"; Rec."Sell-to Address 2")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to City"; "Sell-to City")
+                    field("Sell-to City"; Rec."Sell-to City")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to County"; "Sell-to County")
+                    field("Sell-to County"; Rec."Sell-to County")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Post Code"; "Sell-to Post Code")
+                    field("Sell-to Post Code"; Rec."Sell-to Post Code")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Contact"; "Sell-to Contact")
+                    field("Sell-to Contact"; Rec."Sell-to Contact")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Tax Exemption No."; "Tax Exemption No.")
+                    field("Tax Exemption No."; Rec."Tax Exemption No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Exempt Organization"; "Exempt Organization")
+                    field("Exempt Organization"; Rec."Exempt Organization")
                     {
                         ApplicationArea = All;
                     }
-                    field("Tax Liable"; "Tax Liable")
+                    field("Tax Liable"; Rec."Tax Liable")
                     {
                         ApplicationArea = All;
                     }
@@ -114,48 +115,48 @@ page 50062 "Sales Order Sales"
                 group(Control1220060036)
                 {
                     ShowCaption = false;
-                    field("Ship-to Name"; "Ship-to Name")
+                    field("Ship-to Name"; Rec."Ship-to Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Address"; "Ship-to Address")
+                    field("Ship-to Address"; Rec."Ship-to Address")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Address 2"; "Ship-to Address 2")
+                    field("Ship-to Address 2"; Rec."Ship-to Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to City"; "Ship-to City")
+                    field("Ship-to City"; Rec."Ship-to City")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to County"; "Ship-to County")
+                    field("Ship-to County"; Rec."Ship-to County")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Post Code"; "Ship-to Post Code")
+                    field("Ship-to Post Code"; Rec."Ship-to Post Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Contact"; "Ship-to Contact")
+                    field("Ship-to Contact"; Rec."Ship-to Contact")
                     {
                         ApplicationArea = All;
                     }
-                    field("Phone No."; "Phone No.")
+                    field("Phone No."; Rec."Phone No.")
                     {
                         ApplicationArea = All;
                     }
-                    field(Rep; Rep)
+                    field(Rep; Rec.Rep)
                     {
                         ApplicationArea = All;
                     }
-                    field("Salesperson Code"; "Salesperson Code")
+                    field("Salesperson Code"; Rec."Salesperson Code")
                     {
                         ApplicationArea = All;
                         Caption = 'Inside Sales';
                     }
-                    field(Status; Status)
+                    field(Status; Rec.Status)
                     {
                         ApplicationArea = All;
                     }
@@ -172,35 +173,35 @@ page 50062 "Sales Order Sales"
                 group(Control1220060056)
                 {
                     ShowCaption = false;
-                    field("Shipping Agent Code"; "Shipping Agent Code")
+                    field("Shipping Agent Code"; Rec."Shipping Agent Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipment Method Code"; "Shipment Method Code")
+                    field("Shipment Method Code"; Rec."Shipment Method Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Charge"; "Shipping Charge")
+                    field("Shipping Charge"; Rec."Shipping Charge")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Account"; "Shipping Account")
+                    field("Shipping Account"; Rec."Shipping Account")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Advice"; "Shipping Advice")
+                    field("Shipping Advice"; Rec."Shipping Advice")
                     {
                         ApplicationArea = All;
                     }
-                    field("Package Tracking No."; "Package Tracking No.")
+                    field("Package Tracking No."; Rec."Package Tracking No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Work Order No."; "Work Order No.")
+                    field("Work Order No."; Rec."Work Order No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill of Lading"; "Bill of Lading")
+                    field("Bill of Lading"; Rec."Bill of Lading")
                     {
                         ApplicationArea = All;
                         Editable = false;
@@ -209,12 +210,12 @@ page 50062 "Sales Order Sales"
                 group(Control1220060057)
                 {
                     ShowCaption = false;
-                    field("Your Reference"; "Your Reference")
+                    field("Your Reference"; Rec."Your Reference")
                     {
                         ApplicationArea = All;
                         Caption = 'Customer P.O Number';
                     }
-                    field("Customer Order No."; "Customer Order No.")
+                    field("Customer Order No."; Rec."Customer Order No.")
                     {
                         ApplicationArea = All;
                     }
@@ -223,52 +224,52 @@ page 50062 "Sales Order Sales"
             group(Payment)
             {
                 Caption = 'Payment';
-                field("Payment Terms Code"; "Payment Terms Code")
+                field("Payment Terms Code"; Rec."Payment Terms Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Card Type"; "Card Type")
+                field("Card Type"; Rec."Card Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Credit Card No."; "Credit Card No.")
+                field("Credit Card No."; Rec."Credit Card No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Credit Card Exp."; "Credit Card Exp.")
+                field("Credit Card Exp."; Rec."Credit Card Exp.")
                 {
                     ApplicationArea = All;
                 }
-                field("Credit Card SC"; "Credit Card SC")
+                field("Credit Card SC"; Rec."Credit Card SC")
                 {
                     ApplicationArea = All;
                 }
                 group(Control1220060060)
                 {
                     ShowCaption = false;
-                    field("Name on Card"; "Name on Card")
+                    field("Name on Card"; Rec."Name on Card")
                     {
                         ApplicationArea = All;
                     }
                     group("<Control1220060065>")
                     {
                         Caption = 'Bill-to Address';
-                        field("Bill-to Address"; "Bill-to Address")
+                        field("Bill-to Address"; Rec."Bill-to Address")
                         {
                             ApplicationArea = All;
                             ShowCaption = false;
                         }
-                        field("Bill-to Address 2"; "Bill-to Address 2")
+                        field("Bill-to Address 2"; Rec."Bill-to Address 2")
                         {
                             ApplicationArea = All;
                             ShowCaption = false;
                         }
-                        field("Bill-to Address 3"; "Bill-to Address_3")
+                        field("Bill-to Address 3"; Rec."Bill-to Address_3")
                         {
                             ApplicationArea = All;
                             ShowCaption = false;
                         }
-                        field("Bill-to Address 4"; "Bill-to Address_4")
+                        field("Bill-to Address 4"; Rec."Bill-to Address_4")
                         {
                             ApplicationArea = All;
                             ShowCaption = false;
@@ -282,17 +283,17 @@ page 50062 "Sales Order Sales"
                 group(Control1220060051)
                 {
                     ShowCaption = false;
-                    field("CC Comments 1"; "CC Comments 1")
+                    field("CC Comments 1"; Rec."CC Comments 1")
                     {
                         ApplicationArea = All;
                         ShowCaption = false;
                     }
-                    field("CC Comments 2"; "CC Comments 2")
+                    field("CC Comments 2"; Rec."CC Comments 2")
                     {
                         ApplicationArea = All;
                         ShowCaption = false;
                     }
-                    field("CC Comments 3"; "CC Comments 3")
+                    field("CC Comments 3"; Rec."CC Comments 3")
                     {
                         ApplicationArea = All;
                         ShowCaption = false;
@@ -305,23 +306,23 @@ page 50062 "Sales Order Sales"
                 group(Control1220060064)
                 {
                     ShowCaption = false;
-                    field("Third Party Name"; "Third Party Name")
+                    field("Third Party Name"; Rec."Third Party Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Third Party Address"; "Third Party Address")
+                    field("Third Party Address"; Rec."Third Party Address")
                     {
                         ApplicationArea = All;
                     }
-                    field("Third Party City"; "Third Party City")
+                    field("Third Party City"; Rec."Third Party City")
                     {
                         ApplicationArea = All;
                     }
-                    field("Third Party State"; "Third Party State")
+                    field("Third Party State"; Rec."Third Party State")
                     {
                         ApplicationArea = All;
                     }
-                    field("Third Party Zip"; "Third Party Zip")
+                    field("Third Party Zip"; Rec."Third Party Zip")
                     {
                         ApplicationArea = All;
                     }
@@ -355,7 +356,7 @@ page 50062 "Sales Order Sales"
                     trigger OnAction()
                     begin
                         SO := Rec;
-                        SO.SetFilter("No.", "No.");
+                        SO.SetFilter("No.", Rec."No.");
                         SO.SetRecFilter;
                         REPORT.RunModal(50001, true, false, SO);
                     end;
@@ -368,7 +369,7 @@ page 50062 "Sales Order Sales"
                     trigger OnAction()
                     begin
                         OIL := false;
-                        OILSL.SetRange(OILSL."Document No.", "No.");
+                        OILSL.SetRange(OILSL."Document No.", Rec."No.");
                         if OILSL.Find('-') then begin
                             repeat
                                 if OILSL."Gen. Prod. Posting Group" = 'OIL SALES' then
@@ -380,7 +381,7 @@ page 50062 "Sales Order Sales"
                             Message('Remember to Print Oil Labels and MSDS to go with the Order');
 
                         SO := Rec;
-                        SO.SetFilter("No.", "No.");
+                        SO.SetFilter("No.", Rec."No.");
                         SO.SetRecFilter;
                         REPORT.RunModal(50022, true, false, SO);
                     end;
@@ -393,7 +394,7 @@ page 50062 "Sales Order Sales"
                     trigger OnAction()
                     begin
                         SO := Rec;
-                        SO.SetFilter("No.", "No.");
+                        SO.SetFilter("No.", Rec."No.");
                         SO.SetRecFilter;
                         REPORT.RunModal(50020, true, false, SO);
                     end;
@@ -465,7 +466,7 @@ page 50062 "Sales Order Sales"
                     ReleaseSalesDoc.PerformManualRelease(Rec);
                     //<<  Whse. Management - end
 
-                    if Status = Status::Released then begin
+                    if Rec.Status = Rec.Status::Released then begin
                         ReopenVisible := true;
                         ReleaseVisible := false;
                     end else begin
@@ -498,7 +499,7 @@ page 50062 "Sales Order Sales"
                     ReleaseSalesDoc.PerformManualReopen(Rec);
                     //<<  Warehouse Management - end
 
-                    if Status = Status::Open then begin
+                    if Rec.Status = Rec.Status::Open then begin
                         ReopenVisible := false;
                         ReleaseVisible := true;
                     end else begin
@@ -514,7 +515,7 @@ page 50062 "Sales Order Sales"
     trigger OnAfterGetRecord()
     begin
         //>> HEF 2/27/01
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             ReopenVisible := false;
             ReleaseVisible := true;
         end else begin
@@ -527,13 +528,13 @@ page 50062 "Sales Order Sales"
     trigger OnDeleteRecord(): Boolean
     begin
         CurrPage.SaveRecord;
-        exit(ConfirmDeletion);
+        exit(Rec.ConfirmDeletion);
     end;
 
     trigger OnOpenPage()
     begin
         //>> HEF
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             ReopenVisible := false;
             ReleaseVisible := true;
         end else begin
@@ -545,8 +546,8 @@ page 50062 "Sales Order Sales"
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
     begin
-        if "No." <> '' then begin
-            if "Your Reference" = '' then
+        if Rec."No." <> '' then begin
+            if Rec."Your Reference" = '' then
                 Error('Customer P.O Number Must be Entered');
         end;
     end;
@@ -590,4 +591,6 @@ page 50062 "Sales Order Sales"
             exit(true);
     end;
 }
+
+#pragma implicitwith restore
 

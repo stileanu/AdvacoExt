@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50057 "Item Add"
 {
     // 1/9/01, htcs, rca - added variable: LocationItem
@@ -15,39 +16,39 @@ page 50057 "Item Add"
                 group(Control1000000020)
                 {
                     ShowCaption = false;
-                    field("No."; "No.")
+                    field("No."; Rec."No.")
                     {
                         ApplicationArea = All;
 
                         trigger OnAssistEdit()
                         begin
-                            if AssistEdit() then
+                            if Rec.AssistEdit() then
                                 CurrPage.Update;
                         end;
                     }
-                    field(Description; Description)
+                    field(Description; Rec.Description)
                     {
                         ApplicationArea = All;
                     }
-                    field("Search Description"; "Search Description")
+                    field("Search Description"; Rec."Search Description")
                     {
                         ApplicationArea = All;
                     }
-                    field("Base Unit of Measure"; "Base Unit of Measure")
+                    field("Base Unit of Measure"; Rec."Base Unit of Measure")
                     {
                         ApplicationArea = All;
                     }
-                    field("Profit %"; "Profit %")
-                    {
-                        ApplicationArea = All;
-                        Editable = false;
-                    }
-                    field("Unit Price"; "Unit Price")
+                    field("Profit %"; Rec."Profit %")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Receiving Inspection"; "Receiving Inspection")
+                    field("Unit Price"; Rec."Unit Price")
+                    {
+                        ApplicationArea = All;
+                        Editable = false;
+                    }
+                    field("Receiving Inspection"; Rec."Receiving Inspection")
                     {
                         ApplicationArea = All;
                     }
@@ -55,42 +56,42 @@ page 50057 "Item Add"
                 group(Control1000000019)
                 {
                     ShowCaption = false;
-                    field("Costing Method"; "Costing Method")
+                    field("Costing Method"; Rec."Costing Method")
                     {
                         ApplicationArea = All;
                     }
-                    field("Inventory Posting Group"; "Inventory Posting Group")
+                    field("Inventory Posting Group"; Rec."Inventory Posting Group")
                     {
                         ApplicationArea = All;
                     }
-                    field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
+                    field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
                     {
                         ApplicationArea = All;
 
                         trigger OnValidate()
                         begin
-                            "VAT Prod. Posting Group" := 'DEFAULT';
-                            Modify;
+                            Rec."VAT Prod. Posting Group" := 'DEFAULT';
+                            Rec.Modify;
                         end;
                     }
-                    field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
+                    field("VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Vendor No."; "Vendor No.")
+                    field("Vendor No."; Rec."Vendor No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Vendor Item No."; "Vendor Item No.")
+                    field("Vendor Item No."; Rec."Vendor Item No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Lead Time Calculation"; "Lead Time Calculation")
+                    field("Lead Time Calculation"; Rec."Lead Time Calculation")
                     {
                         ApplicationArea = All;
                     }
-                    field("UPS Shipping Surcharge"; "UPS Shipping Surcharge")
+                    field("UPS Shipping Surcharge"; Rec."UPS Shipping Surcharge")
                     {
                         ApplicationArea = All;
                     }
@@ -151,7 +152,7 @@ page 50057 "Item Add"
 
     trigger OnAfterGetRecord()
     begin
-        SetRange("No.");
+        Rec.SetRange("No.");
     end;
 
     trigger OnInit()
@@ -161,10 +162,10 @@ page 50057 "Item Add"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        "Tax Group Code" := 'DEFAULT';
-        "VAT Prod. Posting Group" := 'DEFAULT';
-        "Price/Profit Calculation" := "Price/Profit Calculation"::"Price=Cost+Profit";
-        "Profit %" := 46.23657;
+        Rec."Tax Group Code" := 'DEFAULT';
+        Rec."VAT Prod. Posting Group" := 'DEFAULT';
+        Rec."Price/Profit Calculation" := Rec."Price/Profit Calculation"::"Price=Cost+Profit";
+        Rec."Profit %" := 46.23657;
     end;
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
@@ -206,4 +207,6 @@ page 50057 "Item Add"
         DisplayMessage: Boolean;
     //LocationItem:Record "Location Item"
 }
+
+#pragma implicitwith restore
 

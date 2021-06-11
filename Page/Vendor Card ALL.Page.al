@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50072 "Vendor Card ALL"
 {
     PageType = Card;
@@ -12,45 +13,45 @@ page 50072 "Vendor Card ALL"
                 group(Control1220060042)
                 {
                     ShowCaption = false;
-                    field("No."; "No.")
+                    field("No."; Rec."No.")
                     {
                         ApplicationArea = All;
 
                         trigger OnAssistEdit()
                         begin
-                            if AssistEdit(xRec) then
+                            if Rec.AssistEdit(xRec) then
                                 CurrPage.Update;
                         end;
                     }
-                    field(Name; Name)
+                    field(Name; Rec.Name)
                     {
                         ApplicationArea = All;
                     }
-                    field(Address; Address)
+                    field(Address; Rec.Address)
                     {
                         ApplicationArea = All;
                     }
-                    field("Address 2"; "Address 2")
+                    field("Address 2"; Rec."Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field(City; City)
+                    field(City; Rec.City)
                     {
                         ApplicationArea = All;
                     }
-                    field(County; County)
+                    field(County; Rec.County)
                     {
                         ApplicationArea = All;
                     }
-                    field("Post Code"; "Post Code")
+                    field("Post Code"; Rec."Post Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Phone No."; "Phone No.")
+                    field("Phone No."; Rec."Phone No.")
                     {
                         ApplicationArea = All;
                     }
-                    field(Contact; Contact)
+                    field(Contact; Rec.Contact)
                     {
                         ApplicationArea = All;
                     }
@@ -58,31 +59,31 @@ page 50072 "Vendor Card ALL"
                 group(Control1220060043)
                 {
                     ShowCaption = false;
-                    field("Search Name"; "Search Name")
+                    field("Search Name"; Rec."Search Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Balance (LCY)"; "Balance (LCY)")
+                    field("Balance (LCY)"; Rec."Balance (LCY)")
                     {
                         ApplicationArea = All;
                     }
-                    field("Purchaser Code"; "Purchaser Code")
+                    field("Purchaser Code"; Rec."Purchaser Code")
                     {
                         ApplicationArea = All;
                     }
-                    field(Blocked; Blocked)
+                    field(Blocked; Rec.Blocked)
                     {
                         ApplicationArea = All;
                     }
-                    field("Receiving Inspection"; "Receiving Inspection")
+                    field("Receiving Inspection"; Rec."Receiving Inspection")
                     {
                         ApplicationArea = All;
                     }
-                    field("Vendor Type"; "Vendor Type")
+                    field("Vendor Type"; Rec."Vendor Type")
                     {
                         ApplicationArea = All;
                     }
-                    field("Last Date Modified"; "Last Date Modified")
+                    field("Last Date Modified"; Rec."Last Date Modified")
                     {
                         ApplicationArea = All;
                     }
@@ -93,27 +94,27 @@ page 50072 "Vendor Card ALL"
                 group(Control1220060041)
                 {
                     ShowCaption = false;
-                    field("<PhoneNo.>"; "Phone No.")
+                    field("<PhoneNo.>"; Rec."Phone No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Fax No."; "Fax No.")
+                    field("Fax No."; Rec."Fax No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("E-Mail"; "E-Mail")
+                    field("E-Mail"; Rec."E-Mail")
                     {
                         ApplicationArea = All;
                     }
-                    field("Email Invoice"; "Email Invoice")
+                    field("Email Invoice"; Rec."Email Invoice")
                     {
                         ApplicationArea = All;
                     }
-                    field("Invoicing Email"; "Invoicing Email")
+                    field("Invoicing Email"; Rec."Invoicing Email")
                     {
                         ApplicationArea = All;
                     }
-                    field("Path to PDF"; "Path to PDF")
+                    field("Path to PDF"; Rec."Path to PDF")
                     {
                         ApplicationArea = All;
                     }
@@ -124,11 +125,11 @@ page 50072 "Vendor Card ALL"
                 group(Control1220060044)
                 {
                     ShowCaption = false;
-                    field("Shipment Method Code"; "Shipment Method Code")
+                    field("Shipment Method Code"; Rec."Shipment Method Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Pay-to Vendor No."; "Pay-to Vendor No.")
+                    field("Pay-to Vendor No."; Rec."Pay-to Vendor No.")
                     {
                         ApplicationArea = All;
                     }
@@ -136,27 +137,27 @@ page 50072 "Vendor Card ALL"
                 group(Control1220060045)
                 {
                     ShowCaption = false;
-                    field("Gen. Bus. Posting Group"; "Gen. Bus. Posting Group")
+                    field("Gen. Bus. Posting Group"; Rec."Gen. Bus. Posting Group")
                     {
                         ApplicationArea = All;
                     }
-                    field("VAT Bus. Posting Group"; "VAT Bus. Posting Group")
+                    field("VAT Bus. Posting Group"; Rec."VAT Bus. Posting Group")
                     {
                         ApplicationArea = All;
                     }
-                    field("Vendor Posting Group"; "Vendor Posting Group")
+                    field("Vendor Posting Group"; Rec."Vendor Posting Group")
                     {
                         ApplicationArea = All;
                     }
-                    field("Global Dimension 1 Code"; "Global Dimension 1 Code")
+                    field("Global Dimension 1 Code"; Rec."Global Dimension 1 Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Global Dimension 2 Code"; "Global Dimension 2 Code")
+                    field("Global Dimension 2 Code"; Rec."Global Dimension 2 Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Invoice Disc. Code"; "Invoice Disc. Code")
+                    field("Invoice Disc. Code"; Rec."Invoice Disc. Code")
                     {
                         ApplicationArea = All;
                     }
@@ -167,19 +168,19 @@ page 50072 "Vendor Card ALL"
                 group(Control1220060046)
                 {
                     ShowCaption = false;
-                    field("Payment Terms Code"; "Payment Terms Code")
+                    field("Payment Terms Code"; Rec."Payment Terms Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Payment Method Code"; "Payment Method Code")
+                    field("Payment Method Code"; Rec."Payment Method Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("IRS 1099 Code"; "IRS 1099 Code")
+                    field("IRS 1099 Code"; Rec."IRS 1099 Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Federal ID No."; "Federal ID No.")
+                    field("Federal ID No."; Rec."Federal ID No.")
                     {
                         ApplicationArea = All;
                     }
@@ -187,7 +188,7 @@ page 50072 "Vendor Card ALL"
                 group(Control1220060047)
                 {
                     ShowCaption = false;
-                    field("Our Account No."; "Our Account No.")
+                    field("Our Account No."; Rec."Our Account No.")
                     {
                         ApplicationArea = All;
                     }
@@ -287,7 +288,7 @@ page 50072 "Vendor Card ALL"
 
     trigger OnAfterGetRecord()
     begin
-        SetRange("No.");
+        Rec.SetRange("No.");
     end;
 
     trigger OnOpenPage()
@@ -315,4 +316,6 @@ page 50072 "Vendor Card ALL"
         [InDataSet]
         AgingEnabled: Boolean;
 }
+
+#pragma implicitwith restore
 

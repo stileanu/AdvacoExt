@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50078 "Purchase Invoice Act"
 {
     PageType = Card;
@@ -12,67 +13,67 @@ page 50078 "Purchase Invoice Act"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Vendor No."; "Buy-from Vendor No.")
+                field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Vendor Name"; "Buy-from Vendor Name")
+                field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Address"; "Buy-from Address")
+                field("Buy-from Address"; Rec."Buy-from Address")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Address 2"; "Buy-from Address 2")
+                field("Buy-from Address 2"; Rec."Buy-from Address 2")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from City"; "Buy-from City")
+                field("Buy-from City"; Rec."Buy-from City")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from County"; "Buy-from County")
+                field("Buy-from County"; Rec."Buy-from County")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Post Code"; "Buy-from Post Code")
+                field("Buy-from Post Code"; Rec."Buy-from Post Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Buy-from Contact"; "Buy-from Contact")
+                field("Buy-from Contact"; Rec."Buy-from Contact")
                 {
                     ApplicationArea = All;
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Due Date"; "Due Date")
+                field("Due Date"; Rec."Due Date")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Invoice No."; "Vendor Invoice No.")
+                field("Vendor Invoice No."; Rec."Vendor Invoice No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Pay-to Vendor No."; "Pay-to Vendor No.")
+                field("Pay-to Vendor No."; Rec."Pay-to Vendor No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Payment Terms Code"; "Payment Terms Code")
+                field("Payment Terms Code"; Rec."Payment Terms Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Tax Liable"; "Tax Liable")
+                field("Tax Liable"; Rec."Tax Liable")
                 {
                     ApplicationArea = All;
                 }
-                field("Applies-to Doc. No."; "Applies-to Doc. No.")
+                field("Applies-to Doc. No."; Rec."Applies-to Doc. No.")
                 {
                     ApplicationArea = All;
                 }
@@ -250,4 +251,6 @@ page 50078 "Purchase Invoice Act"
         CopyPurchDoc: Report "Copy Purchase Document";
         ReportPrint: Codeunit "Test Report-Print";
 }
+
+#pragma implicitwith restore
 

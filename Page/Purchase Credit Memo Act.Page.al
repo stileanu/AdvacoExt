@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50080 "Purchase Credit Memo Act"
 {
     // Function Menu Items Post & Post and Print have been replaced with a new ones that check for Return to Vendor first 
@@ -18,7 +19,7 @@ page 50080 "Purchase Credit Memo Act"
             group(General)
             {
                 Caption = 'General';
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                     Importance = Standard;
@@ -27,11 +28,11 @@ page 50080 "Purchase Credit Memo Act"
 
                     trigger OnAssistEdit()
                     begin
-                        if AssistEdit(xRec) then
+                        if Rec.AssistEdit(xRec) then
                             CurrPage.Update;
                     end;
                 }
-                field("Buy-from Vendor No."; "Buy-from Vendor No.")
+                field("Buy-from Vendor No."; Rec."Buy-from Vendor No.")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Vendor No.';
@@ -39,7 +40,7 @@ page 50080 "Purchase Credit Memo Act"
                     NotBlank = true;
                     ToolTip = 'Specifies the number of the vendor who delivers the products.';
                 }
-                field("Buy-from Vendor Name"; "Buy-from Vendor Name")
+                field("Buy-from Vendor Name"; Rec."Buy-from Vendor Name")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Vendor Name';
@@ -54,7 +55,7 @@ page 50080 "Purchase Credit Memo Act"
                     begin
                     end;
                 }
-                field("Buy-from Address"; "Buy-from Address")
+                field("Buy-from Address"; Rec."Buy-from Address")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Address';
@@ -62,7 +63,7 @@ page 50080 "Purchase Credit Memo Act"
                     QuickEntry = false;
                     ToolTip = 'Specifies the address of the vendor who ships the items.';
                 }
-                field("Buy-from Address 2"; "Buy-from Address 2")
+                field("Buy-from Address 2"; Rec."Buy-from Address 2")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Address 2';
@@ -70,7 +71,7 @@ page 50080 "Purchase Credit Memo Act"
                     QuickEntry = false;
                     ToolTip = 'Specifies additional address information.';
                 }
-                field("Buy-from City"; "Buy-from City")
+                field("Buy-from City"; Rec."Buy-from City")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'City';
@@ -78,7 +79,7 @@ page 50080 "Purchase Credit Memo Act"
                     QuickEntry = false;
                     ToolTip = 'Specifies the city of the vendor on the purchase document.';
                 }
-                field("Buy-from County"; "Buy-from County")
+                field("Buy-from County"; Rec."Buy-from County")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'State';
@@ -86,7 +87,7 @@ page 50080 "Purchase Credit Memo Act"
                     QuickEntry = false;
                     ToolTip = 'Specifies the state, province or county as a part of the address.';
                 }
-                field("Buy-from Post Code"; "Buy-from Post Code")
+                field("Buy-from Post Code"; Rec."Buy-from Post Code")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'ZIP Code';
@@ -94,61 +95,61 @@ page 50080 "Purchase Credit Memo Act"
                     QuickEntry = false;
                     ToolTip = 'Specifies the ZIP code.';
                 }
-                field("Buy-from Contact"; "Buy-from Contact")
+                field("Buy-from Contact"; Rec."Buy-from Contact")
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Contact';
-                    Editable = "Buy-from Vendor No." <> '';
+                    Editable = Rec."Buy-from Vendor No." <> '';
                     ToolTip = 'Specifies the name of the person to contact about shipment of the item from this vendor.';
                 }
-                field("Location Code"; "Location Code")
+                field("Location Code"; Rec."Location Code")
                 {
                     ApplicationArea = Location;
                     Importance = Additional;
                     ToolTip = 'Specifies a code for the location where you want the items to be placed when they are received.';
                 }
-                field("Posting Date"; "Posting Date")
+                field("Posting Date"; Rec."Posting Date")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Additional;
                     QuickEntry = false;
                     ToolTip = 'Specifies the date when the posting of the purchase document will be recorded.';
                 }
-                field("Document Date"; "Document Date")
+                field("Document Date"; Rec."Document Date")
                 {
                     ApplicationArea = Basic, Suite;
                     Importance = Additional;
                     QuickEntry = false;
                     ToolTip = 'Specifies the date when the related document was created.';
                 }
-                field("Vendor Cr. Memo No."; "Vendor Cr. Memo No.")
+                field("Vendor Cr. Memo No."; Rec."Vendor Cr. Memo No.")
                 {
                     ApplicationArea = Basic, Suite;
                     ShowMandatory = VendorCreditMemoNoMandatory;
                     ToolTip = 'Specifies the document number of the original document you received from the vendor. You can require the document number for posting, or let it be optional. By default, it''s required, so that this document references the original. Making document numbers optional removes a step from the posting process. For example, if you attach the original invoice as a PDF, you might not need to enter the document number. To specify whether document numbers are required, in the Purchases & Payables Setup window, select or clear the Ext. Doc. No. Mandatory field.';
                 }
-                field("Purchaser Code"; "Purchaser Code")
+                field("Purchaser Code"; Rec."Purchaser Code")
                 {
                     ApplicationArea = Suite;
                     Importance = Additional;
                     ToolTip = 'Specifies which purchaser is assigned to the vendor.';
                 }
-                field("Applies-to Doc. Type"; "Applies-to Doc. Type")
+                field("Applies-to Doc. Type"; Rec."Applies-to Doc. Type")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the type of the posted document that this document or journal line will be applied to when you post, for example to register payment.';
                 }
-                field("Applies-to Doc. No."; "Applies-to Doc. No.")
+                field("Applies-to Doc. No."; Rec."Applies-to Doc. No.")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the number of the posted document that this document or journal line will be applied to when you post, for example to register payment.';
                 }
-                field("Applies-to ID"; "Applies-to ID")
+                field("Applies-to ID"; Rec."Applies-to ID")
                 {
                     ApplicationArea = Basic, Suite;
                     ToolTip = 'Specifies the ID of entries that will be applied to when you choose the Apply Entries action.';
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = All;
                 }
@@ -182,9 +183,9 @@ page 50080 "Purchase Credit Memo Act"
 
                     trigger OnAction()
                     begin
-                        CalcInvDiscForHeader;
+                        Rec.CalcInvDiscForHeader;
                         Commit;
-                        if "Tax Area Code" = '' then
+                        if Rec."Tax Area Code" = '' then
                             PAGE.RunModal(PAGE::"Purchase Statistics", Rec)
                         else
                             PAGE.RunModal(PAGE::"Purchase Stats.", Rec);
@@ -195,7 +196,7 @@ page 50080 "Purchase Credit Memo Act"
                 {
                     ApplicationArea = Basic, Suite;
                     Caption = 'Vendor';
-                    Enabled = "Buy-from Vendor No." <> '';
+                    Enabled = Rec."Buy-from Vendor No." <> '';
                     Image = Vendor;
                     Promoted = true;
                     PromotedCategory = Category9;
@@ -251,7 +252,7 @@ page 50080 "Purchase Credit Memo Act"
                         AccessByPermission = TableData Dimension = R;
                         ApplicationArea = Dimensions;
                         Caption = 'Dimensions';
-                        Enabled = "No." <> '';
+                        Enabled = Rec."No." <> '';
                         Image = Dimensions;
                         Promoted = true;
                         PromotedCategory = Category6;
@@ -261,7 +262,7 @@ page 50080 "Purchase Credit Memo Act"
 
                         trigger OnAction()
                         begin
-                            ShowDocDim;
+                            Rec.ShowDocDim;
                             CurrPage.SaveRecord;
                         end;
                     }
@@ -284,7 +285,7 @@ page 50080 "Purchase Credit Memo Act"
                     ApplicationArea = Basic, Suite;
                     Caption = 'Copy Document';
                     Ellipsis = true;
-                    Enabled = "No." <> '';
+                    Enabled = Rec."No." <> '';
                     Image = CopyDocument;
                     Promoted = true;
                     PromotedCategory = Process;
@@ -295,7 +296,7 @@ page 50080 "Purchase Credit Memo Act"
                         CopyPurchDoc.SetPurchHeader(Rec);
                         CopyPurchDoc.RunModal;
                         Clear(CopyPurchDoc);
-                        if Get("Document Type", "No.") then;
+                        if Rec.Get(Rec."Document Type", Rec."No.") then;
                     end;
                 }
                 action("Insert &Ext. Text")
@@ -403,7 +404,7 @@ page 50080 "Purchase Credit Memo Act"
 
                     trigger OnAction()
                     begin
-                        CancelBackgroundPosting;
+                        Rec.CancelBackgroundPosting;
                     end;
                 }
                 action("Post Credit")
@@ -414,8 +415,8 @@ page 50080 "Purchase Credit Memo Act"
                     trigger OnAction()
                     begin
                         //*99999
-                        IF "Return to Vendor" THEN BEGIN
-                            IF "Bill of Lading" = 0 THEN
+                        IF Rec."Return to Vendor" THEN BEGIN
+                            IF Rec."Bill of Lading" = 0 THEN
                                 MESSAGE('The Credit Memo hasn''t be shipped yet, Please Contact Shipping')
                             ELSE
                                 PurchPostPrint.RUN(Rec);
@@ -434,8 +435,8 @@ page 50080 "Purchase Credit Memo Act"
                     trigger OnAction()
                     begin
                         //*99999
-                        IF "Return to Vendor" THEN BEGIN
-                            IF "Bill of Lading" = 0 THEN
+                        IF Rec."Return to Vendor" THEN BEGIN
+                            IF Rec."Bill of Lading" = 0 THEN
                                 MESSAGE('The Credit Memo hasn''t be shipped yet, Please Contact Shipping')
                             ELSE
                                 PurchPostPrint.RUN(Rec);
@@ -454,8 +455,8 @@ page 50080 "Purchase Credit Memo Act"
 
                 trigger OnAction()
                 begin
-                    CM.SetRange(CM."Document Type", "Document Type"::"Credit Memo");
-                    CM.SetRange(CM."No.", "No.");
+                    CM.SetRange(CM."Document Type", Rec."Document Type"::"Credit Memo");
+                    CM.SetRange(CM."No.", Rec."No.");
                     REPORT.RunModal(50057, true, false, CM);
                 end;
             }
@@ -465,7 +466,7 @@ page 50080 "Purchase Credit Memo Act"
     trigger OnDeleteRecord(): Boolean
     begin
         CurrPage.SaveRecord;
-        exit(ConfirmDeletion);
+        exit(Rec.ConfirmDeletion);
     end;
 
     trigger OnInit()
@@ -514,4 +515,6 @@ page 50080 "Purchase Credit Memo Act"
         CM: Record "Purchase Header";
         PurchPostPrint: Codeunit "Purch.-Post + Print";
 }
+
+#pragma implicitwith restore
 

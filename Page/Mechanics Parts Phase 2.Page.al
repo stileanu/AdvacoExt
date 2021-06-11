@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50012 "Mechanics Parts Phase 2"
 {
     //Tested
@@ -10,19 +11,19 @@ page 50012 "Mechanics Parts Phase 2"
         {
             repeater(Group)
             {
-                field(Entered; Entered)
+                field(Entered; Rec.Entered)
                 {
                     ApplicationArea = All;
                 }
-                field("Part No."; "Part No.")
+                field("Part No."; Rec."Part No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Part Description"; "Part Description")
+                field("Part Description"; Rec."Part Description")
                 {
                     ApplicationArea = All;
                 }
-                field("Part Quantity"; "Part Quantity")
+                field("Part Quantity"; Rec."Part Quantity")
                 {
                     ApplicationArea = All;
                 }
@@ -34,4 +35,6 @@ page 50012 "Mechanics Parts Phase 2"
     {
     }
 }
+
+#pragma implicitwith restore
 

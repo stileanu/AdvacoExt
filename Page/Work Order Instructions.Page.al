@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50038 "Work Order Instructions"
 {
     // 11/02/10 ADV
@@ -29,7 +30,7 @@ page 50038 "Work Order Instructions"
                 group(Control1000000011)
                 {
                     ShowCaption = false;
-                    field("Customer Code"; "Customer Code")
+                    field("Customer Code"; Rec."Customer Code")
                     {
                         ApplicationArea = All;
 
@@ -38,21 +39,21 @@ page 50038 "Work Order Instructions"
                             CustomerCodeOnAfterValidate;
                         end;
                     }
-                    field(Step; Step)
+                    field(Step; Rec.Step)
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship To Code"; "Ship To Code")
+                    field("Ship To Code"; Rec."Ship To Code")
                     {
                         ApplicationArea = All;
                         Editable = ShipToCodeEditable;
                     }
-                    field(Model; Model)
+                    field(Model; Rec.Model)
                     {
                         ApplicationArea = All;
                         Editable = ModelEditable;
                     }
-                    field("Customer Part No."; "Customer Part No.")
+                    field("Customer Part No."; Rec."Customer Part No.")
                     {
                         ApplicationArea = All;
                         Editable = CustomerPartNoEditable;
@@ -61,17 +62,17 @@ page 50038 "Work Order Instructions"
                         begin
                             // 11/02/10 Start
                             // Validate "Customer Part No."
-                            if "Customer Part No." <> '' then begin
+                            if Rec."Customer Part No." <> '' then begin
                                 WorkOrdDetail.Reset;
                                 WorkOrdDetail.SetCurrentKey("Customer Part No.");
-                                WorkOrdDetail.SetRange("Customer Part No.", "Customer Part No.");
+                                WorkOrdDetail.SetRange("Customer Part No.", Rec."Customer Part No.");
                                 if not WorkOrdDetail.Find('-') then begin
                                     // 09/18/12 Start
-                                    if Confirm(NO_SUCH_PART, false, "Customer Part No.") then begin
-                                        NoConditionModify := true;
+                                    if Confirm(NO_SUCH_PART, false, Rec."Customer Part No.") then begin
+                                        Rec.NoConditionModify := true;
                                         //RENAME("Customer Code","Ship To Code",Step,Model,"Customer Part No.");
                                     end else begin
-                                        "Customer Part No." := xRec."Customer Part No.";
+                                        Rec."Customer Part No." := xRec."Customer Part No.";
                                         //EXIT;
                                         // 09/18/12 End
                                         Error('');
@@ -85,8 +86,8 @@ page 50038 "Work Order Instructions"
                                 //  END;
                                 //01/03/18 End
 
-                                Model := '';
-                                "Ship To Code" := '';
+                                Rec.Model := '';
+                                Rec."Ship To Code" := '';
                                 ModelEditable := false;
                                 ShipToCodeEditable := false;
                             end else begin
@@ -96,7 +97,7 @@ page 50038 "Work Order Instructions"
                             // 11/02/10 End
                         end;
                     }
-                    field("Part Quality Ctrl Instructions"; "Part Quality Ctrl Instructions")
+                    field("Part Quality Ctrl Instructions"; Rec."Part Quality Ctrl Instructions")
                     {
                         ApplicationArea = All;
                         Editable = PartQualityCtrlEditable;
@@ -106,17 +107,17 @@ page 50038 "Work Order Instructions"
                             FilterString: Text[250];
                         begin
                             //CommFileName := 'Z:\Westminster\Quality Management System Documents\Work Instructions';
-                            CommFileName := "Part Quality Ctrl Instructions";
+                            CommFileName := Rec."Part Quality Ctrl Instructions";
                             FilterString := 'Adobe PDF (*.pdf)|*.pdf|All files (*.*)|*.*';
                             ///--! "Part Quality Ctrl Instructions" := CommDlgMgmt.OpenFile('Attach Quality Control Document',CommFileName,4,FilterString,0);
                             CurrPage.Update;
                         end;
                     }
-                    field(Instruction; Instruction)
+                    field(Instruction; Rec.Instruction)
                     {
                         ApplicationArea = All;
                     }
-                    field(Blocked; Blocked)
+                    field(Blocked; Rec.Blocked)
                     {
                         ApplicationArea = All;
                         Enabled = false;
@@ -126,7 +127,7 @@ page 50038 "Work Order Instructions"
                 group(Control1000000012)
                 {
                     ShowCaption = false;
-                    field("Date Last Modified"; "Date Last Modified")
+                    field("Date Last Modified"; Rec."Date Last Modified")
                     {
                         ApplicationArea = All;
                         Caption = 'Date';
@@ -163,12 +164,12 @@ page 50038 "Work Order Instructions"
                     UserSetup.Get(User."User Name");
                     BlockWI := UserSetup.GetParamStatus(User."User Security ID", 2);
 
-                    if Blocked and BlockWI then begin
-                        Blocked := false;
-                        Modify(true);
+                    if Rec.Blocked and BlockWI then begin
+                        Rec.Blocked := false;
+                        Rec.Modify(true);
                     end else begin
-                        Blocked := true;
-                        Modify(true);
+                        Rec.Blocked := true;
+                        Rec.Modify(true);
                     end;
                     // 04/01/13 End
                 end;
@@ -179,14 +180,14 @@ page 50038 "Work Order Instructions"
     trigger OnAfterGetCurrRecord()
     begin
         // 11/02/10 Start
-        if "Customer Code" <> '' then begin
+        if Rec."Customer Code" <> '' then begin
             CustomerPartNoEditable := true;
             PartQualityCtrlEditable := true;
         end else begin
             CustomerPartNoEditable := false;
             PartQualityCtrlEditable := false;
         end;
-        if "Customer Part No." <> '' then begin
+        if Rec."Customer Part No." <> '' then begin
             ModelEditable := false;
             ShipToCodeEditable := false;
         end else begin
@@ -204,7 +205,7 @@ page 50038 "Work Order Instructions"
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
         // 11/02/10 Start
-        if "Customer Code" <> '' then begin
+        if Rec."Customer Code" <> '' then begin
             CustomerPartNoEditable := true;
             PartQualityCtrlEditable := true;
         end else begin
@@ -213,12 +214,12 @@ page 50038 "Work Order Instructions"
         end;
 
         // Validate "Customer Part No."
-        if "Customer Part No." <> '' then begin
+        if Rec."Customer Part No." <> '' then begin
             WorkOrdDetail.Reset;
             WorkOrdDetail.SetCurrentKey("Customer Part No.");
-            WorkOrdDetail.SetRange("Customer Part No.", "Customer Part No.");
+            WorkOrdDetail.SetRange("Customer Part No.", Rec."Customer Part No.");
             if not WorkOrdDetail.Find('-') then begin
-                if not Confirm(StrSubstNo(NO_SUCH_PART, "Customer Part No."), true) then
+                if not Confirm(StrSubstNo(NO_SUCH_PART, Rec."Customer Part No."), true) then
                     Error('');
                 //01/03/18 Start
             end;
@@ -239,10 +240,10 @@ page 50038 "Work Order Instructions"
 
         UserSetup.Get(User."User Name");
         IF (NOT UserSetup.GetParamStatus(User."User Security ID", 2)) AND (NOT UserSetup.GetParamStatus(User."User Security ID", 3)) THEN BEGIN
-            prevFilterGroup := FILTERGROUP;
-            FILTERGROUP(9);
-            SETRANGE(Blocked, FALSE);
-            FILTERGROUP(prevFilterGroup);
+            prevFilterGroup := Rec.FILTERGROUP;
+            Rec.FILTERGROUP(9);
+            Rec.SETRANGE(Blocked, FALSE);
+            Rec.FILTERGROUP(prevFilterGroup);
             BlockUnblockVisible := FALSE;
             BlockedVisible := FALSE;
         END ELSE BEGIN
@@ -279,7 +280,7 @@ page 50038 "Work Order Instructions"
 
     procedure CustomerCodeOnAfterValidate()
     begin
-        if "Customer Code" <> '' then begin
+        if Rec."Customer Code" <> '' then begin
             CustomerPartNoEditable := true;
             PartQualityCtrlEditable := true;
         end else begin
@@ -288,4 +289,6 @@ page 50038 "Work Order Instructions"
         end;
     end;
 }
+
+#pragma implicitwith restore
 

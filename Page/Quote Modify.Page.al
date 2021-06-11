@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50019 "Quote Modify"
 {
     ///--! FileMgmt issue
@@ -29,7 +30,7 @@ page 50019 "Quote Modify"
                     group(Control1220060005)
                     {
                         ShowCaption = false;
-                        field("Order No."; "Order No.")
+                        field("Order No."; Rec."Order No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
@@ -40,7 +41,7 @@ page 50019 "Quote Modify"
                             Caption = 'Customer';
                             Editable = false;
                         }
-                        field(Employee; Employee)
+                        field(Employee; Rec.Employee)
                         {
                             ApplicationArea = All;
                         }
@@ -63,12 +64,12 @@ page 50019 "Quote Modify"
                             Caption = 'Model No.';
                             Editable = false;
                         }
-                        field("Date In"; "Date In")
+                        field("Date In"; Rec."Date In")
                         {
                             ApplicationArea = All;
                             Editable = false;
                         }
-                        field("Regular Hours"; "Regular Hours")
+                        field("Regular Hours"; Rec."Regular Hours")
                         {
                             ApplicationArea = All;
                             Editable = false;
@@ -91,11 +92,11 @@ page 50019 "Quote Modify"
                             ApplicationArea = All;
                             Caption = 'Serial No.';
                         }
-                        field("Date Out"; "Date Out")
+                        field("Date Out"; Rec."Date Out")
                         {
                             ApplicationArea = All;
                         }
-                        field("Overtime Hours"; "Overtime Hours")
+                        field("Overtime Hours"; Rec."Overtime Hours")
                         {
                             ApplicationArea = All;
                         }
@@ -181,7 +182,7 @@ page 50019 "Quote Modify"
                         EmptyQuotePrice := '';
 
                         if WOD."Customer ID" = 'ADV-01' then begin
-                            Parts.SetRange(Parts."Work Order No.", "Order No.");
+                            Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                             if Parts.Find('-') then begin
                                 repeat
                                     if Parts."Serial No." <> '' then begin
@@ -213,8 +214,8 @@ page 50019 "Quote Modify"
 
                             if (NotChecked = '') and (SerialNo = 'FOUND') and (QuotedQty = '') and (EmptyQuotePrice = '') then begin
                                 WOD.Reset;
-                                WOD.Get("Order No.");
-                                WOD.SetFilter(WOD."Work Order No.", "Order No.");
+                                WOD.Get(Rec."Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", Rec."Order No.");
                                 WOD.SetRecFilter;
                                 REPORT.RunModal(50040, false, false, WOD);
                                 /*
@@ -232,7 +233,7 @@ page 50019 "Quote Modify"
                             end;
 
                         end else begin
-                            Parts.SetRange(Parts."Work Order No.", "Order No.");
+                            Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                             if Parts.Find('-') then begin
                                 repeat
                                     if Parts."Serial No." <> '' then begin
@@ -262,8 +263,8 @@ page 50019 "Quote Modify"
 
                             if (NotChecked = '') and (QuotedQty = '') and (EmptyQuotePrice = '') then begin
                                 WOD.Reset;
-                                WOD.Get("Order No.");
-                                WOD.SetFilter(WOD."Work Order No.", "Order No.");
+                                WOD.Get(Rec."Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", Rec."Order No.");
                                 WOD.SetRecFilter;
                                 REPORT.RunModal(50040, false, false, WOD);
                                 /*
@@ -295,7 +296,7 @@ page 50019 "Quote Modify"
                         EmptyQuotePrice := '';
 
                         if WOD."Customer ID" = 'ADV-01' then begin
-                            Parts.SetRange(Parts."Work Order No.", "Order No.");
+                            Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                             if Parts.Find('-') then begin
                                 repeat
                                     if Parts."Serial No." <> '' then begin
@@ -334,8 +335,8 @@ page 50019 "Quote Modify"
                                 REPORT.RunModal(50040, false, false, WOD);
                                 */
                                 WOD.Reset;
-                                WOD.Get("Order No.");
-                                WOD.SetFilter(WOD."Work Order No.", "Order No.");
+                                WOD.Get(Rec."Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", Rec."Order No.");
                                 WOD.SetRecFilter;
                                 if WOD."Build Ahead" then
                                     //MESSAGE('Quote Review build ahead (50042) is under construction.')
@@ -346,7 +347,7 @@ page 50019 "Quote Modify"
                             end;
 
                         end else begin
-                            Parts.SetRange(Parts."Work Order No.", "Order No.");
+                            Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                             if Parts.Find('-') then begin
                                 repeat
                                     if Parts."Serial No." <> '' then begin
@@ -383,8 +384,8 @@ page 50019 "Quote Modify"
                                 REPORT.RunModal(50040, false, false, WOD);
                                 */
                                 WOD.Reset;
-                                WOD.Get("Order No.");
-                                WOD.SetFilter(WOD."Work Order No.", "Order No.");
+                                WOD.Get(Rec."Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", Rec."Order No.");
                                 WOD.SetRecFilter;
                                 if WOD."Build Ahead" then
                                     //MESSAGE('quote review build ahead (50052) is under construction')
@@ -406,7 +407,7 @@ page 50019 "Quote Modify"
                         UserSetup.Get(UserId);
                         if UserSetup."PDF Path to Documents" = '' then
                             Error('Call Administrator. Path to storage for PDF files not set for User %1.', UserSetup."User ID");
-                        WOD.Get("Order No.");
+                        WOD.Get(Rec."Order No.");
                         Customer.Get(WOD."Customer ID");
 
                         SerialNo := '';
@@ -415,7 +416,7 @@ page 50019 "Quote Modify"
                         EmptyQuotePrice := '';
 
                         if WOD."Customer ID" = 'ADV-01' then begin
-                            Parts.SetRange(Parts."Work Order No.", "Order No.");
+                            Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                             if Parts.Find('-') then begin
                                 repeat
                                     if Parts."Serial No." <> '' then begin
@@ -450,8 +451,8 @@ page 50019 "Quote Modify"
                                     QuoteToPDFEmail(WOD, Customer)
                                 else begin
                                     WOD.Reset;
-                                    WOD.Get("Order No.");
-                                    WOD.SetFilter(WOD."Work Order No.", "Order No.");
+                                    WOD.Get(Rec."Order No.");
+                                    WOD.SetFilter(WOD."Work Order No.", Rec."Order No.");
                                     WOD.SetRecFilter;
                                     if WOD."Build Ahead" then
                                         //MESSAGE('quote review build ahead (50052) is under construction')
@@ -463,7 +464,7 @@ page 50019 "Quote Modify"
                             end;
 
                         end else begin
-                            Parts.SetRange(Parts."Work Order No.", "Order No.");
+                            Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
                             if Parts.Find('-') then begin
                                 repeat
                                     if Parts."Serial No." <> '' then begin
@@ -496,8 +497,8 @@ page 50019 "Quote Modify"
                                     QuoteToPDFEmail(WOD, Customer)
                                 else begin
                                     WOD.Reset;
-                                    WOD.Get("Order No.");
-                                    WOD.SetFilter(WOD."Work Order No.", "Order No.");
+                                    WOD.Get(Rec."Order No.");
+                                    WOD.SetFilter(WOD."Work Order No.", Rec."Order No.");
                                     WOD.SetRecFilter;
                                     if WOD."Build Ahead" then
                                         //MESSAGE('quote review build ahead (50052) is under construction')
@@ -530,14 +531,14 @@ page 50019 "Quote Modify"
 
     trigger OnAfterGetRecord()
     begin
-        MasterNo := CopyStr("Order No.", 1, 5) + '00';
+        MasterNo := CopyStr(Rec."Order No.", 1, 5) + '00';
         if WOM.Get(MasterNo) then
             OK := true;
 
-        WOD.Get("Order No.");
+        WOD.Get(Rec."Order No.");
         OLDWOD := WOD;
 
-        "File Exists" := false;
+        Rec."File Exists" := false;
         ///--! FileMgmt issue
         // 08/05/20 ICE SII
         /*
@@ -562,7 +563,7 @@ page 50019 "Quote Modify"
         MissingReason := false;
         Parts.Reset;
         Parts.SetCurrentKey("Work Order No.", "Part Type");
-        Parts.SetRange(Parts."Work Order No.", "Order No.");
+        Parts.SetRange(Parts."Work Order No.", Rec."Order No.");
         if Parts.Find('-') then begin
             repeat
                 if (Parts."After Quote Quantity" <> 0) and (Parts.Reason = 0) then
@@ -661,4 +662,6 @@ page 50019 "Quote Modify"
         end;
     end;
 }
+
+#pragma implicitwith restore
 

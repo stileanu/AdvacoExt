@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50059 "Item Card All"
 {
     // 1/9/01, htcs, rca - added variable: LocationItem
@@ -17,41 +18,41 @@ page 50059 "Item Card All"
         {
             group(General)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
 
                     trigger OnAssistEdit()
                     begin
-                        if AssistEdit() then
+                        if Rec.AssistEdit() then
                             CurrPage.Update;
                     end;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field("Base Unit of Measure"; "Base Unit of Measure")
+                field("Base Unit of Measure"; Rec."Base Unit of Measure")
                 {
                     ApplicationArea = All;
                 }
-                field("Assembly BOM"; "Assembly BOM")
+                field("Assembly BOM"; Rec."Assembly BOM")
                 {
                     ApplicationArea = All;
                 }
-                field("Shelf No."; "Shelf No.")
+                field("Shelf No."; Rec."Shelf No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Model Type"; "Model Type")
+                field("Model Type"; Rec."Model Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Search Description"; "Search Description")
+                field("Search Description"; Rec."Search Description")
                 {
                     ApplicationArea = All;
                 }
-                field(Inventory; Inventory)
+                field(Inventory; Rec.Inventory)
                 {
                     ApplicationArea = All;
                 }
@@ -61,175 +62,175 @@ page 50059 "Item Card All"
                     Caption = 'Quantity Available';
                     Editable = false;
                 }
-                field("Qty. on Blanket Purch. Order"; "Qty. on Blanket Purch. Order")
+                field("Qty. on Blanket Purch. Order"; Rec."Qty. on Blanket Purch. Order")
                 {
                     ApplicationArea = All;
                     Caption = 'Qty. on Blanket Order';
                 }
-                field("Qty. on Purch. Order"; "Qty. on Purch. Order")
+                field("Qty. on Purch. Order"; Rec."Qty. on Purch. Order")
                 {
                     ApplicationArea = All;
                 }
-                field("Qty. on Sales Order"; "Qty. on Sales Order")
+                field("Qty. on Sales Order"; Rec."Qty. on Sales Order")
                 {
                     ApplicationArea = All;
                 }
-                field("UPS Shipping Surcharge"; "UPS Shipping Surcharge")
+                field("UPS Shipping Surcharge"; Rec."UPS Shipping Surcharge")
                 {
                     ApplicationArea = All;
                 }
-                field(Blocked; Blocked)
+                field(Blocked; Rec.Blocked)
                 {
                     ApplicationArea = All;
                 }
-                field("Last Date Modified"; "Last Date Modified")
+                field("Last Date Modified"; Rec."Last Date Modified")
                 {
                     ApplicationArea = All;
                 }
             }
             group(Invoicing)
             {
-                field("Costing Method"; "Costing Method")
+                field("Costing Method"; Rec."Costing Method")
                 {
                     ApplicationArea = All;
                 }
-                field("Unit Cost"; "Unit Cost")
+                field("Unit Cost"; Rec."Unit Cost")
                 {
                     ApplicationArea = All;
                 }
-                field("Last Direct Cost"; "Last Direct Cost")
+                field("Last Direct Cost"; Rec."Last Direct Cost")
                 {
                     ApplicationArea = All;
                 }
-                field("Price/Profit Calculation"; "Price/Profit Calculation")
+                field("Price/Profit Calculation"; Rec."Price/Profit Calculation")
                 {
                     ApplicationArea = All;
                 }
-                field("Profit %"; "Profit %")
+                field("Profit %"; Rec."Profit %")
                 {
                     ApplicationArea = All;
                 }
-                field("Unit Price"; "Unit Price")
+                field("Unit Price"; Rec."Unit Price")
                 {
                     ApplicationArea = All;
                 }
-                field("Gen. Prod. Posting Group"; "Gen. Prod. Posting Group")
+                field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
                 {
                     ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
-                        "Tax Group Code" := 'DEFAULT';
-                        "VAT Prod. Posting Group" := 'DEFAULT';
+                        Rec."Tax Group Code" := 'DEFAULT';
+                        Rec."VAT Prod. Posting Group" := 'DEFAULT';
                     end;
                 }
-                field("VAT Prod. Posting Group"; "VAT Prod. Posting Group")
+                field("VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field("Inventory Posting Group"; "Inventory Posting Group")
+                field("Inventory Posting Group"; Rec."Inventory Posting Group")
                 {
                     ApplicationArea = All;
                 }
-                field("Net Invoiced Qty."; "Net Invoiced Qty.")
+                field("Net Invoiced Qty."; Rec."Net Invoiced Qty.")
                 {
                     ApplicationArea = All;
                 }
-                field("Allow Invoice Disc."; "Allow Invoice Disc.")
+                field("Allow Invoice Disc."; Rec."Allow Invoice Disc.")
                 {
                     ApplicationArea = All;
                 }
-                field("Item Disc. Group"; "Item Disc. Group")
+                field("Item Disc. Group"; Rec."Item Disc. Group")
                 {
                     ApplicationArea = All;
                 }
-                field("Sales Unit of Measure"; "Sales Unit of Measure")
+                field("Sales Unit of Measure"; Rec."Sales Unit of Measure")
                 {
                     ApplicationArea = All;
                 }
             }
             group(Ordering)
             {
-                field("Vendor No."; "Vendor No.")
+                field("Vendor No."; Rec."Vendor No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Vendor Item No."; "Vendor Item No.")
+                field("Vendor Item No."; Rec."Vendor Item No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Lead Time Calculation"; "Lead Time Calculation")
+                field("Lead Time Calculation"; Rec."Lead Time Calculation")
                 {
                     ApplicationArea = All;
                 }
-                field(Reserve; Reserve)
+                field(Reserve; Rec.Reserve)
                 {
                     ApplicationArea = All;
                 }
-                field("Gross Weight"; "Gross Weight")
+                field("Gross Weight"; Rec."Gross Weight")
                 {
                     ApplicationArea = All;
                 }
-                field("Net Weight"; "Net Weight")
+                field("Net Weight"; Rec."Net Weight")
                 {
                     ApplicationArea = All;
                 }
-                field("Receiving Inspection"; "Receiving Inspection")
+                field("Receiving Inspection"; Rec."Receiving Inspection")
                 {
                     ApplicationArea = All;
 
                     trigger OnValidate()
                     begin
                         // 05/24/12 Start
-                        if "Receiving Inspection" then
+                        if Rec."Receiving Inspection" then
                             RIAReferenceEnabled := true
                         else
                             RIAReferenceEnabled := false;
                         // 05/24/12 End
                     end;
                 }
-                field("RIA Reference"; "RIA Reference")
+                field("RIA Reference"; Rec."RIA Reference")
                 {
                     ApplicationArea = All;
                     Enabled = RIAReferenceEnabled;
                 }
-                field("Maximum Inventory"; "Maximum Inventory")
+                field("Maximum Inventory"; Rec."Maximum Inventory")
                 {
                     ApplicationArea = All;
                 }
-                field("Reorder Point"; "Reorder Point")
+                field("Reorder Point"; Rec."Reorder Point")
                 {
                     ApplicationArea = All;
                 }
-                field("Old ReOrder Point"; "Old ReOrder Point")
+                field("Old ReOrder Point"; Rec."Old ReOrder Point")
                 {
                     ApplicationArea = All;
                 }
-                field("Reorder Quantity"; "Reorder Quantity")
+                field("Reorder Quantity"; Rec."Reorder Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("Old ReOrder Qty"; "Old ReOrder Qty")
+                field("Old ReOrder Qty"; Rec."Old ReOrder Qty")
                 {
                     ApplicationArea = All;
                 }
-                field("Manual ReOrder Point"; "Manual ReOrder Point")
+                field("Manual ReOrder Point"; Rec."Manual ReOrder Point")
                 {
                     ApplicationArea = All;
                 }
-                field("Blanket Reorder Point"; "Blanket Reorder Point")
+                field("Blanket Reorder Point"; Rec."Blanket Reorder Point")
                 {
                     ApplicationArea = All;
                 }
-                field("Blanket Reorder Quantity"; "Blanket Reorder Quantity")
+                field("Blanket Reorder Quantity"; Rec."Blanket Reorder Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("Purch. Unit of Measure"; "Purch. Unit of Measure")
+                field("Purch. Unit of Measure"; Rec."Purch. Unit of Measure")
                 {
                     ApplicationArea = All;
                 }
-                field("Manufacturer Code"; "Manufacturer Code")
+                field("Manufacturer Code"; Rec."Manufacturer Code")
                 {
                     ApplicationArea = All;
                 }
@@ -459,7 +460,7 @@ page 50059 "Item Card All"
                         CalculateStdCost: Codeunit "Calculate Standard Cost";
                     begin
                         Clear(CalculateStdCost);
-                        CalculateStdCost.CalcItem("No.", false);
+                        CalculateStdCost.CalcItem(Rec."No.", false);
                     end;
 
                 }
@@ -524,10 +525,10 @@ page 50059 "Item Card All"
 
     trigger OnAfterGetRecord()
     begin
-        SetRange("No.");
+        Rec.SetRange("No.");
         QtyAvailable := 0;
 
-        if Item.Get("No.") then begin
+        if Item.Get(Rec."No.") then begin
             Item.SetFilter("Location Filter", '%1|%2', 'MAIN', 'COMMITTED');
             Item.CalcFields(Inventory, "Qty. on Purch. Order", "Reserved Qty. on Inventory");
             QtyAvailable := (Item.Inventory - Item."Reserved Qty. on Inventory");
@@ -536,7 +537,7 @@ page 50059 "Item Card All"
 
         // 05/24/12 Start
         msgShowed := false;
-        if "Receiving Inspection" then
+        if Rec."Receiving Inspection" then
             RIAReferenceEnabled := true
         else
             RIAReferenceEnabled := false;
@@ -545,7 +546,7 @@ page 50059 "Item Card All"
 
     trigger OnInsertRecord(BelowxRec: Boolean): Boolean
     begin
-        "Price/Profit Calculation" := "Price/Profit Calculation"::"Price=Cost+Profit";
+        Rec."Price/Profit Calculation" := Rec."Price/Profit Calculation"::"Price=Cost+Profit";
     end;
 
     trigger OnQueryClosePage(CloseAction: Action): Boolean
@@ -594,4 +595,6 @@ page 50059 "Item Card All"
         [InDataSet]
         RIAReferenceEnabled: Boolean;
 }
+
+#pragma implicitwith restore
 

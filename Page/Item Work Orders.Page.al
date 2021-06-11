@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50056 "Item Work Orders"
 {
     //Tested
@@ -13,31 +14,31 @@ page 50056 "Item Work Orders"
         {
             repeater(Group)
             {
-                field("Work Order No."; "Work Order No.")
+                field("Work Order No."; Rec."Work Order No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Part No."; "Part No.")
+                field("Part No."; Rec."Part No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Description; Description)
+                field(Description; Rec.Description)
                 {
                     ApplicationArea = All;
                 }
-                field("Quoted Quantity"; "Quoted Quantity")
+                field("Quoted Quantity"; Rec."Quoted Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("Committed Quantity"; "Committed Quantity")
+                field("Committed Quantity"; Rec."Committed Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("In-Process Quantity"; "In-Process Quantity")
+                field("In-Process Quantity"; Rec."In-Process Quantity")
                 {
                     ApplicationArea = All;
                 }
-                field("Quantity Backorder"; "Quantity Backorder")
+                field("Quantity Backorder"; Rec."Quantity Backorder")
                 {
                     ApplicationArea = All;
                 }
@@ -49,4 +50,6 @@ page 50056 "Item Work Orders"
     {
     }
 }
+
+#pragma implicitwith restore
 

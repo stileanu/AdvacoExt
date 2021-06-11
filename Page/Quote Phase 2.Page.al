@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50015 "Quote Phase 2"
 {
     ///--! FileMgmt issue
@@ -24,7 +25,7 @@ page 50015 "Quote Phase 2"
                     group(Control1220060005)
                     {
                         ShowCaption = false;
-                        field("Work Order No."; "Work Order No.")
+                        field("Work Order No."; Rec."Work Order No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
@@ -54,7 +55,7 @@ page 50015 "Quote Phase 2"
                     group(Control1220060009)
                     {
                         ShowCaption = false;
-                        field("Model No."; "Model No.")
+                        field("Model No."; Rec."Model No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
@@ -66,12 +67,12 @@ page 50015 "Quote Phase 2"
                                 Message('The Quoted Parts have been Reset, But You Must Click on one of the Parts to Update all the Quantities');
                             end;
                         }
-                        field(Description; Description)
+                        field(Description; Rec.Description)
                         {
                             ApplicationArea = All;
                             Editable = false;
                         }
-                        field("Serial No."; "Serial No.")
+                        field("Serial No."; Rec."Serial No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
@@ -111,7 +112,7 @@ page 50015 "Quote Phase 2"
                         QuotedQty := '';
                         EmptyQuotePrice := '';
 
-                        if "Customer ID" = 'ADV-01' then begin
+                        if Rec."Customer ID" = 'ADV-01' then begin
                             Parts.SetRange(Parts."Work Order No.", WOS."Order No.");
                             if Parts.Find('-') then begin
                                 repeat
@@ -144,8 +145,8 @@ page 50015 "Quote Phase 2"
 
                             if (NotChecked = '') and (SerialNo = 'FOUND') and (QuotedQty = '') and (EmptyQuotePrice = '') then begin
                                 WOD.Reset;
-                                WOD.Get("Work Order No.");
-                                WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
+                                WOD.Get(Rec."Work Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", Rec."Work Order No.");
                                 WOD.SetRecFilter;
                                 REPORT.RunModal(50040, false, false, WOD);
                                 ///--!
@@ -192,8 +193,8 @@ page 50015 "Quote Phase 2"
 
                             if (NotChecked = '') and (QuotedQty = '') and (EmptyQuotePrice = '') then begin
                                 WOD.Reset;
-                                WOD.Get("Work Order No.");
-                                WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
+                                WOD.Get(Rec."Work Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", Rec."Work Order No.");
                                 WOD.SetRecFilter;
                                 REPORT.RunModal(50040, false, false, WOD);
                                 ///--!
@@ -223,7 +224,7 @@ page 50015 "Quote Phase 2"
                         QuotedQty := '';
                         EmptyQuotePrice := '';
 
-                        if "Customer ID" = 'ADV-01' then begin
+                        if Rec."Customer ID" = 'ADV-01' then begin
                             Parts.SetRange(Parts."Work Order No.", WOS."Order No.");
                             if Parts.Find('-') then begin
                                 repeat
@@ -266,8 +267,8 @@ page 50015 "Quote Phase 2"
                                 //Message('Do you want Quote Review?');
 
                                 WOD.Reset;
-                                WOD.Get("Work Order No.");
-                                WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
+                                WOD.Get(Rec."Work Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", Rec."Work Order No.");
                                 WOD.SetRecFilter;
                                 REPORT.RunModal(50041, false, false, WOD);
                                 WOD.Reset;
@@ -313,8 +314,8 @@ page 50015 "Quote Phase 2"
                                 ///--!
                                 //Message('Do you want Quote Review?');
                                 WOD.Reset;
-                                WOD.Get("Work Order No.");
-                                WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
+                                WOD.Get(Rec."Work Order No.");
+                                WOD.SetFilter(WOD."Work Order No.", Rec."Work Order No.");
                                 WOD.SetRecFilter;
                                 REPORT.RunModal(50041, false, false, WOD);
                                 WOD.Reset;
@@ -337,7 +338,7 @@ page 50015 "Quote Phase 2"
                         UserSetup.Get(User."User Name");
                         if UserSetup."PDF Path to Documents" = '' then
                             Error('Call Administrator. Path to storage for PDF files not set for User %1.', UserSetup."User ID");
-                        WOD.Get("Work Order No.");
+                        WOD.Get(Rec."Work Order No.");
                         Customer.Get(WOD."Customer ID");
 
                         SerialNo := '';
@@ -346,7 +347,7 @@ page 50015 "Quote Phase 2"
                         EmptyQuotePrice := '';
 
 
-                        if "Customer ID" = 'ADV-01' then begin
+                        if Rec."Customer ID" = 'ADV-01' then begin
                             Parts.SetRange(Parts."Work Order No.", WOS."Order No.");
                             if Parts.Find('-') then begin
                                 repeat
@@ -381,7 +382,7 @@ page 50015 "Quote Phase 2"
                                 if Confirm('Do you want to print to PDF and email this order?', true) then
                                     QuoteToPDFEmail(WOD, Customer)
                                 else begin
-                                    WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
+                                    WOD.SetFilter(WOD."Work Order No.", Rec."Work Order No.");
                                     WOD.SetRecFilter;
                                     REPORT.Run(50041, false, true, WOD);
                                     WOD.Reset;
@@ -421,7 +422,7 @@ page 50015 "Quote Phase 2"
                                 if Confirm('Do you want to print to PDF and email this order?', true) then
                                     QuoteToPDFEmail(WOD, Customer)
                                 else begin
-                                    WOD.SetFilter(WOD."Work Order No.", "Work Order No.");
+                                    WOD.SetFilter(WOD."Work Order No.", Rec."Work Order No.");
                                     WOD.SetRecFilter;
                                     REPORT.Run(50041, false, true, WOD);
                                     WOD.Reset;
@@ -450,12 +451,12 @@ page 50015 "Quote Phase 2"
 
     trigger OnAfterGetRecord()
     begin
-        MasterNo := CopyStr("Work Order No.", 1, 5) + '00';
+        MasterNo := CopyStr(Rec."Work Order No.", 1, 5) + '00';
         if WOM.Get(MasterNo) then
             OK := true;
 
         WOS.SetCurrentKey("Order No.", Step);
-        WOS.SetRange(WOS."Order No.", "Work Order No.");
+        WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
         if WOS.Find('+') then begin
             WOS."File Exists" := false;
 
@@ -544,4 +545,6 @@ page 50015 "Quote Phase 2"
         end;
     end;
 }
+
+#pragma implicitwith restore
 

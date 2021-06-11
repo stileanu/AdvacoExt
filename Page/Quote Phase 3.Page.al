@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50017 "Quote Phase 3"
 {
     // 11/13/16
@@ -29,7 +30,7 @@ page 50017 "Quote Phase 3"
                     group(Control1220060005)
                     {
                         ShowCaption = false;
-                        field("Work Order No."; "Work Order No.")
+                        field("Work Order No."; Rec."Work Order No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
@@ -59,19 +60,19 @@ page 50017 "Quote Phase 3"
                     group(Control1220060009)
                     {
                         ShowCaption = false;
-                        field("Model No."; "Model No.")
+                        field("Model No."; Rec."Model No.")
                         {
                             ApplicationArea = All;
                             DrillDownPageID = "Model List";
                             Editable = false;
                             LookupPageID = "Model List";
                         }
-                        field("Serial No."; "Serial No.")
+                        field("Serial No."; Rec."Serial No.")
                         {
                             ApplicationArea = All;
                             Editable = false;
                         }
-                        field("Labor Hours Quoted"; "Labor Hours Quoted")
+                        field("Labor Hours Quoted"; Rec."Labor Hours Quoted")
                         {
                             ApplicationArea = All;
                             DrillDownPageID = "Quote Phase 3 Parts List";
@@ -86,56 +87,56 @@ page 50017 "Quote Phase 3"
                 group(Control1220060015)
                 {
                     ShowCaption = false;
-                    field("Labor Quoted"; "Labor Quoted")
+                    field("Labor Quoted"; Rec."Labor Quoted")
                     {
                         ApplicationArea = All;
                         DrillDownPageID = "Quote Phase 3 Parts List";
                         Editable = false;
                     }
-                    field("Parts Quoted"; "Parts Quoted")
+                    field("Parts Quoted"; Rec."Parts Quoted")
                     {
                         ApplicationArea = All;
                         DrillDownPageID = "Quote Phase 3 Parts List";
                         Editable = false;
                     }
-                    field("""Labor Quoted"" + ""Parts Quoted"""; "Labor Quoted" + "Parts Quoted")
+                    field("""Labor Quoted"" + ""Parts Quoted"""; Rec."Labor Quoted" + Rec."Parts Quoted")
                     {
                         ApplicationArea = All;
                         Caption = 'Sub-Total';
                         Editable = false;
                     }
-                    field("Order Adj."; "Order Adj.")
+                    field("Order Adj."; Rec."Order Adj.")
                     {
                         ApplicationArea = All;
                         Caption = 'Adjustment';
                         Editable = OrderAdjEditable;
                     }
-                    field("""Labor Quoted"" + ""Parts Quoted"" + ""Order Adj."""; "Labor Quoted" + "Parts Quoted" + "Order Adj.")
+                    field("""Labor Quoted"" + ""Parts Quoted"" + ""Order Adj."""; Rec."Labor Quoted" + Rec."Parts Quoted" + Rec."Order Adj.")
                     {
                         ApplicationArea = All;
                         Caption = 'Total Quote';
                         Editable = false;
                     }
-                    field("Order Type"; "Order Type")
+                    field("Order Type"; Rec."Order Type")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Unrepairable Charge"; "Unrepairable Charge")
+                    field("Unrepairable Charge"; Rec."Unrepairable Charge")
                     {
                         ApplicationArea = All;
                         Caption = 'Return Charge';
                     }
-                    field("Customer PO No."; "Customer PO No.")
+                    field("Customer PO No."; Rec."Customer PO No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Quote Sent Date"; "Quote Sent Date")
+                    field("Quote Sent Date"; Rec."Quote Sent Date")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Tax Liable"; "Tax Liable")
+                    field("Tax Liable"; Rec."Tax Liable")
                     {
                         ApplicationArea = All;
                         Editable = false;
@@ -150,26 +151,26 @@ page 50017 "Quote Phase 3"
                 group(Control1220060030)
                 {
                     ShowCaption = false;
-                    field(Quote; Quote)
+                    field(Quote; Rec.Quote)
                     {
                         ApplicationArea = All;
                     }
-                    field("Warranty Type"; "Warranty Type")
+                    field("Warranty Type"; Rec."Warranty Type")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Unrepairable Reason"; "Unrepairable Reason")
+                    field("Unrepairable Reason"; Rec."Unrepairable Reason")
                     {
                         ApplicationArea = All;
                         Caption = 'Reason';
                     }
-                    field("Warranty Reason"; "Warranty Reason")
+                    field("Warranty Reason"; Rec."Warranty Reason")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Unrepairable Handling"; "Unrepairable Handling")
+                    field("Unrepairable Handling"; Rec."Unrepairable Handling")
                     {
                         ApplicationArea = All;
                     }
@@ -193,16 +194,16 @@ page 50017 "Quote Phase 3"
 
                 trigger OnAction()
                 begin
-                    if "Build Ahead" = true then
+                    if Rec."Build Ahead" = true then
                         Error('Can''t Requote a Build Ahead, but it can be Modified by the Purchasing Department');
 
                     if not Confirm('Are you Absolutely sure you want to Requote this Work Order?') then begin
                         Ok := true;
                     end else begin
-                        "Quote Phase" := "Quote Phase"::" ";
-                        "Order Adj." := 0;
-                        ReQuoted := true;
-                        Modify;
+                        Rec."Quote Phase" := Rec."Quote Phase"::" ";
+                        Rec."Order Adj." := 0;
+                        Rec.ReQuoted := true;
+                        Rec.Modify;
                         Commit;
                         CurrPage.Close;
                     end;
@@ -220,10 +221,10 @@ page 50017 "Quote Phase 3"
                 trigger OnAction()
                 begin
                     WOD.SetCurrentKey("Work Order No.");
-                    WOD.SetRange(WOD."Work Order No.", "Work Order No.");
-                    if "Pump Module" then begin
+                    WOD.SetRange(WOD."Work Order No.", Rec."Work Order No.");
+                    if Rec."Pump Module" then begin
                         PMParts.SetCurrentKey(PMParts."Work Order No.", PMParts."Part No.");
-                        PMParts.SetRange(PMParts."Work Order No.", "Work Order No.");
+                        PMParts.SetRange(PMParts."Work Order No.", Rec."Work Order No.");
                         PMParts.SetRange(PMParts."Part Type", PMParts."Part Type"::Resource);
                         PMParts.SetRange(PMParts."Part No.", 'PUMP MODULE');
                         if PMParts.Find('-') then begin
@@ -254,7 +255,7 @@ page 50017 "Quote Phase 3"
                     if not Confirm('Are you sure you want to complete this Quote', false) then
                         Error('Completion of Quote has been stopped.')
                     else
-                        case Quote.AsInteger() of
+                        case Rec.Quote.AsInteger() of
                             0:
                                 Error('In order to complete the Quote you must select either Accepted or Not Repairable');
                             1:
@@ -290,10 +291,10 @@ page 50017 "Quote Phase 3"
 
     trigger OnAfterGetRecord()
     begin
-        WOM.Get("Work Order Master No.");
+        WOM.Get(Rec."Work Order Master No.");
 
-        if "Order Type" = "Order Type"::Warranty then begin
-            "Order Adj." := -("Labor Quoted" + "Parts Quoted");
+        if Rec."Order Type" = Rec."Order Type"::Warranty then begin
+            Rec."Order Adj." := -(Rec."Labor Quoted" + Rec."Parts Quoted");
             OrderAdjEditable := false;
         end else begin
             OrderAdjEditable := true;
@@ -301,7 +302,7 @@ page 50017 "Quote Phase 3"
 
         WOS.Reset;
         WOS.SetCurrentKey("Order No.", Step);
-        WOS.SetRange(WOS."Order No.", "Work Order No.");
+        WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
         if WOS.Find('+') then begin
             WOS."File Exists" := false;
             ///--! FileMgmt issue
@@ -317,7 +318,7 @@ page 50017 "Quote Phase 3"
             */
         end;
 
-        Type := "Order Type";
+        Type := Rec."Order Type";
     end;
 
     trigger OnClosePage()
@@ -333,9 +334,9 @@ page 50017 "Quote Phase 3"
         end;
 
         if Ok then begin
-            if "Quote Sent Date" = 0D then begin
+            if Rec."Quote Sent Date" = 0D then begin
                 if Confirm('Will the Quote be Sent to the Customer Today?') then begin
-                    if WOD.Get("Work Order No.") then begin
+                    if WOD.Get(Rec."Work Order No.") then begin
                         WOD."Quote Sent Date" := WorkDate;
                         WOD.Modify;
                     end;
@@ -396,49 +397,49 @@ page 50017 "Quote Phase 3"
     var
         lCustomer: Record Customer;
     begin
-        CalcFields("Labor Hours Quoted", "Labor Quoted", "Parts Cost", "Parts Quoted", "Current Reg Hours Used", "Current OT Hours Used");
+        Rec.CalcFields("Labor Hours Quoted", "Labor Quoted", "Parts Cost", "Parts Quoted", "Current Reg Hours Used", "Current OT Hours Used");
 
         // 11/13/16 Start
         // Compare orders against Credit Limit
-        OpenOrdersAmounts := GetOpenOrdersAmount("Customer ID", "Work Order No.");
-        if not lCustomer.Get("Customer ID") then
-            Error('Customer %1 on Work Order %2 does not exist', "Customer ID", "Work Order No.");
+        OpenOrdersAmounts := GetOpenOrdersAmount(Rec."Customer ID", Rec."Work Order No.");
+        if not lCustomer.Get(Rec."Customer ID") then
+            Error('Customer %1 on Work Order %2 does not exist', Rec."Customer ID", Rec."Work Order No.");
         // Add current order value to Total Amount and check against the limit
-        OpenOrdersAmounts := OpenOrdersAmounts + "Order Adj." + "Labor Quoted" + "Parts Quoted";
+        OpenOrdersAmounts := OpenOrdersAmounts + Rec."Order Adj." + Rec."Labor Quoted" + Rec."Parts Quoted";
         lCustomer.CalcFields("Balance (LCY)");
         if OpenOrdersAmounts + lCustomer."Balance (LCY)" > lCustomer."Credit Limit (LCY)" then
             // 3/12/18 start
             //IF NOT BypassCreditLimit THEN BEGIN
-            if not (BypassCreditLimit or "Overwrite Cr. Limit") then begin
+            if not (BypassCreditLimit or Rec."Overwrite Cr. Limit") then begin
                 // 3/12/18 end
                 //    ERROR('Customer %1 Open Balance of %2 exceeds Credit Limit %3. See Accounting',
                 //          "Customer ID",ROUND(OpenOrdersAmounts + lCustomer."Balance ($)",0.01,'='),lCustomer."Credit Limit ($)");
                 Message('Customer %1 Open Balance of %2 exceeds Credit Limit %3. See Accounting',
-                      "Customer ID", Round(OpenOrdersAmounts + lCustomer."Balance (LCY)", 0.01, '='), lCustomer."Credit Limit (LCY)");
+                      Rec."Customer ID", Round(OpenOrdersAmounts + lCustomer."Balance (LCY)", 0.01, '='), lCustomer."Credit Limit (LCY)");
                 exit;
                 // 3/12/18 start
                 //END;
             end else
-                if "Overwrite Cr. Limit" then
+                if Rec."Overwrite Cr. Limit" then
        // 3/25/18 start
        begin
                     // 3/25/18 end
                     Message('Customer %1 Open Balance of %2 exceeds Credit Limit %3. Credit Limit overwritten by Accounting.',
-                            "Customer ID", Round(OpenOrdersAmounts + lCustomer."Balance (LCY)", 0.01, '='), lCustomer."Credit Limit (LCY)");
+                            Rec."Customer ID", Round(OpenOrdersAmounts + lCustomer."Balance (LCY)", 0.01, '='), lCustomer."Credit Limit (LCY)");
                     // 3/25/18 start
-                    "Overwrite Cr. Limit" := false;
-                    Modify;
+                    Rec."Overwrite Cr. Limit" := false;
+                    Rec.Modify;
                 end;
         // 3/25/18 end
         // 3/12/18 end
         // 11/13/16 End
 
-        if ("Order Type" = "Order Type"::Rebuild) or ("Order Type" = "Order Type"::Repair) then begin
-            if "Customer PO No." = '' then
+        if (Rec."Order Type" = Rec."Order Type"::Rebuild) or (Rec."Order Type" = Rec."Order Type"::Repair) then begin
+            if Rec."Customer PO No." = '' then
                 Error('Customer PO must be filled in to complete this Quote');
 
-            if (("Labor Quoted" + "Parts Quoted" + "Order Adj.") < (1 / 100)) then begin
-                if "System Shipment" then begin
+            if ((Rec."Labor Quoted" + Rec."Parts Quoted" + Rec."Order Adj.") < (1 / 100)) then begin
+                if Rec."System Shipment" then begin
                     if not Confirm('The Quote Price is Zero Dollars for this Workorder, is this correct?', false) then
                         Error('Completion of Quote has been stopped.');
                 end else begin
@@ -447,42 +448,42 @@ page 50017 "Quote Phase 3"
             end;
         end;
 
-        if "Order Type" = "Order Type"::Warranty then begin
-            if "Warranty Type" = "Warranty Type"::" " then
+        if Rec."Order Type" = Rec."Order Type"::Warranty then begin
+            if Rec."Warranty Type" = Rec."Warranty Type"::" " then
                 Error('Warranty Type must be Selected by the Shop before Releasing');
         end;
 
-        if "Unrepairable Charge" > 0 then
+        if Rec."Unrepairable Charge" > 0 then
             Error('Return Charge can only be Used for Unrepairable Pumps');
 
-        if ("Unrepairable Reason".AsInteger() > 0) then begin
-            "Unrepairable Reason" := "Unrepairable Reason"::" ";
+        if (Rec."Unrepairable Reason".AsInteger() > 0) then begin
+            Rec."Unrepairable Reason" := Rec."Unrepairable Reason"::" ";
         end;
 
-        if ("Unrepairable Handling".AsInteger() > 0) then begin
-            "Unrepairable Handling" := "Unrepairable Handling"::" ";
+        if (Rec."Unrepairable Handling".AsInteger() > 0) then begin
+            Rec."Unrepairable Handling" := Rec."Unrepairable Handling"::" ";
         end;
 
         if WOM."Customer State" = 'MD' then begin
             if (WOM."Tax Exemption No." = '') and (WOM."Exempt Organization" = '') then begin
-                if "Tax Liable" = false then
+                if Rec."Tax Liable" = false then
                     Error('Tax Exempt information needs to be entered or Tax Liable needs to be Checked to Complete Quote');
             end;
         end;
 
-        if (Carrier = 'UNKNOWN') or (Carrier = '') then
+        if (Rec.Carrier = 'UNKNOWN') or (Rec.Carrier = '') then
             Error('Carrier must be determined before completing the Quote');
 
         // Checks for Pump Module on Parts List & Verifies the Quoted Quantity
-        if "Pump Module" then begin
-            if "Pump Module Processed" then begin
+        if Rec."Pump Module" then begin
+            if Rec."Pump Module Processed" then begin
                 PMParts.SetCurrentKey(PMParts."Work Order No.", PMParts."Part No.");
-                PMParts.SetRange(PMParts."Work Order No.", "Work Order No.");
+                PMParts.SetRange(PMParts."Work Order No.", Rec."Work Order No.");
                 PMParts.SetRange(PMParts."Part Type", PMParts."Part Type"::Resource);
                 PMParts.SetRange(PMParts."Part No.", 'PUMP MODULE');
                 if PMParts.Find('-') then begin
                     if PMParts."Quoted Quantity" > 0 then begin
-                        if "Pump Module No." = '' then
+                        if Rec."Pump Module No." = '' then
                             Error('This Work Order is Quoted for a Pump Module, and one must be assigned to release from Quote');
                     end else begin
                         Error('A Pump Module has been added to the Parts List, but the Quantity is Zero.  Please Delete or add Quote Quantity');
@@ -493,12 +494,12 @@ page 50017 "Quote Phase 3"
             end;
         end;
 
-        "Released USERID" := UserId;
-        Modify;
+        Rec."Released USERID" := UserId;
+        Rec.Modify;
 
         // Transfer Quoted Parts to Original Quoted Parts Table for Reference
         Parts.SetCurrentKey(Parts."Work Order No.", Parts."Part No.");
-        Parts.SetRange(Parts."Work Order No.", "Work Order No.");
+        Parts.SetRange(Parts."Work Order No.", Rec."Work Order No.");
         if Parts.Find('-') then begin
             repeat
                 if Parts."Quoted Quantity" > 0 then begin
@@ -510,9 +511,9 @@ page 50017 "Quote Phase 3"
         end;
         Parts.Reset;
 
-        if "Build Ahead" = false then begin
+        if Rec."Build Ahead" = false then begin
             Parts.SetCurrentKey(Parts."Work Order No.", Parts."Part No.");
-            Parts.SetRange(Parts."Work Order No.", "Work Order No.");
+            Parts.SetRange(Parts."Work Order No.", Rec."Work Order No.");
             Parts.SetRange(Parts."Part Type", Parts."Part Type"::Item);
             if Parts.Find('-') then begin
                 repeat
@@ -536,7 +537,7 @@ page 50017 "Quote Phase 3"
 
             WOS.Reset;
             WOS.SetCurrentKey(WOS."Order No.", WOS.Step);
-            WOS.SetRange(WOS."Order No.", "Work Order No.");
+            WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
             WOS.SetRange(WOS.Step, WOS.Step::QOT);
             if WOS.Find('+') then begin
                 WOS.Status := WOS.Status::Complete;
@@ -555,7 +556,7 @@ page 50017 "Quote Phase 3"
         end else begin
             WOS.Reset;
             WOS.SetCurrentKey(WOS."Order No.", WOS.Step);
-            WOS.SetRange(WOS."Order No.", "Work Order No.");
+            WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
             WOS.SetRange(WOS.Step, WOS.Step::QOT);
             if WOS.Find('+') then begin
                 WOS.Status := WOS.Status::Complete;
@@ -563,10 +564,10 @@ page 50017 "Quote Phase 3"
                 WOS.Modify;
             end;
 
-            if "Pump Module" then begin
+            if Rec."Pump Module" then begin
                 WOS.Reset;
                 WOS.SetCurrentKey(WOS."Order No.", WOS.Step);
-                WOS.SetRange(WOS."Order No.", "Work Order No.");
+                WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
                 if WOS.Find('+') then begin
                     if WOS.Step <> WOS.Step::QC then begin
                         //IF THE PM WASN'T A BUILD AHEAD PRIOR TO BEING CONVERTED B-0 WILL BE LEFT IN WAITING
@@ -604,36 +605,36 @@ page 50017 "Quote Phase 3"
 
     procedure NR()
     begin
-        if ("Unrepairable Reason" = "Unrepairable Reason"::" ") then
+        if (Rec."Unrepairable Reason" = Rec."Unrepairable Reason"::" ") then
             Error('Unrepairable Reason must be entered');
 
 
-        if ("Unrepairable Handling" = "Unrepairable Handling"::" ") then
+        if (Rec."Unrepairable Handling" = Rec."Unrepairable Handling"::" ") then
             Error('Unrepairable Handling must be entered');
 
-        if "Sales Order No." <> '' then
-            Error('This Work Order is linked to Sales Order %1 and must be removed before releasing it Unrepairable', "Sales Order No.");
+        if Rec."Sales Order No." <> '' then
+            Error('This Work Order is linked to Sales Order %1 and must be removed before releasing it Unrepairable', Rec."Sales Order No.");
 
-        CalcFields("Labor Hours Quoted", "Labor Quoted", "Parts Cost", "Parts Quoted", "Current Reg Hours Used", "Current OT Hours Used");
+        Rec.CalcFields("Labor Hours Quoted", "Labor Quoted", "Parts Cost", "Parts Quoted", "Current Reg Hours Used", "Current OT Hours Used");
 
-        if "Unrepairable Charge" > 0 then begin
-            if "Customer PO No." = '' then
+        if Rec."Unrepairable Charge" > 0 then begin
+            if Rec."Customer PO No." = '' then
                 Error('Customer PO must be filled in to complete this Quote');
             if WOM."Customer State" = 'MD' then begin
                 if (WOM."Tax Exemption No." = '') and (WOM."Exempt Organization" = '') then begin
-                    if "Tax Liable" = false then
+                    if Rec."Tax Liable" = false then
                         Error('Tax Exempt information needs to be entered or Tax Liable needs to be Checked to Complete Quote');
                 end;
             end;
         end;
 
-        "Order Adj." := -("Labor Quoted" + "Parts Quoted");
-        "Released USERID" := UserId;
-        Modify;
+        Rec."Order Adj." := -(Rec."Labor Quoted" + Rec."Parts Quoted");
+        Rec."Released USERID" := UserId;
+        Rec.Modify;
 
         WOS.Reset;
         WOS.SetCurrentKey(WOS."Order No.", WOS.Step);
-        WOS.SetRange(WOS."Order No.", "Work Order No.");
+        WOS.SetRange(WOS."Order No.", Rec."Work Order No.");
         WOS.SetRange(WOS.Step, WOS.Step::QOT);
         if WOS.Find('+') then begin
             WOS.Status := WOS.Status::Complete;
@@ -641,7 +642,7 @@ page 50017 "Quote Phase 3"
             WOS.Modify;
         end;
 
-        if "Build Ahead" = false then begin
+        if Rec."Build Ahead" = false then begin
             WOS2.Init;
             WOS2."Order No." := WOS."Order No.";
             WOS2."Line No." := WOS."Line No." + 10000;
@@ -650,7 +651,7 @@ page 50017 "Quote Phase 3"
             WOS2.Insert;
 
             Parts.SetCurrentKey(Parts."Work Order No.", Parts."Part No.");
-            Parts.SetRange(Parts."Work Order No.", "Work Order No.");
+            Parts.SetRange(Parts."Work Order No.", Rec."Work Order No.");
             Parts.SetRange(Parts."Part Type", Parts."Part Type"::Item);
             if Parts.Find('-') then begin
                 repeat
@@ -678,16 +679,16 @@ page 50017 "Quote Phase 3"
             end;
 
         end else begin
-            if "Pump Module" then begin
+            if Rec."Pump Module" then begin
                 //Remove Pump Module Link
-                if "Pump Module No." <> '' then begin
-                    Message('This Work Order was linked to Work Order %1 as a Pump Module', "Pump Module No.");
-                    "Pump Module No." := '';
-                    Validate("Pump Module No.");
+                if Rec."Pump Module No." <> '' then begin
+                    Message('This Work Order was linked to Work Order %1 as a Pump Module', Rec."Pump Module No.");
+                    Rec."Pump Module No." := '';
+                    Rec.Validate("Pump Module No.");
                 end;
             end;
-            "Unrepairable BuildAhead" := true;
-            Modify;
+            Rec."Unrepairable BuildAhead" := true;
+            Rec.Modify;
             Message('Please Contact the Parts Department to Return Parts to Inventory');
 
         end;
@@ -706,11 +707,11 @@ page 50017 "Quote Phase 3"
             ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
             ItemJournalLine."Line No." := LineNumber;
             ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
-            ItemJournalLine."Document No." := "Work Order No.";
+            ItemJournalLine."Document No." := Rec."Work Order No.";
             ItemJournalLine."Item No." := Parts."Part No.";
             ItemJournalLine.Validate(ItemJournalLine."Item No.");
             ItemJournalLine."Posting Date" := WorkDate;
-            ItemJournalLine.Description := "Work Order No." + ' ' + 'RETURN PARTS';
+            ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'RETURN PARTS';
             ItemJournalLine."Location Code" := 'COMMITTED';
             ItemJournalLine.Quantity := ReturnInventoryQty;
             ItemJournalLine.Validate(ItemJournalLine.Quantity);
@@ -747,11 +748,11 @@ page 50017 "Quote Phase 3"
             ItemJournalLine.Validate(ItemJournalLine."Journal Batch Name");
             ItemJournalLine."Line No." := LineNumber;
             ItemJournalLine."Entry Type" := ItemLedgEntryType::Transfer; ///--! Transfer
-            ItemJournalLine."Document No." := "Work Order No.";
+            ItemJournalLine."Document No." := Rec."Work Order No.";
             ItemJournalLine."Item No." := Parts."Part No.";
             ItemJournalLine.Validate(ItemJournalLine."Item No.");
             ItemJournalLine."Posting Date" := WorkDate;
-            ItemJournalLine.Description := "Work Order No." + ' ' + 'IN PROCESS PARTS';
+            ItemJournalLine.Description := Rec."Work Order No." + ' ' + 'IN PROCESS PARTS';
             ItemJournalLine."Location Code" := 'COMMITTED';
             ItemJournalLine.Quantity := MoveInventoryQty;
             ItemJournalLine.Validate(ItemJournalLine.Quantity);
@@ -823,4 +824,6 @@ page 50017 "Quote Phase 3"
         exit(TotalOpenOrders);
     end;
 }
+
+#pragma implicitwith restore
 

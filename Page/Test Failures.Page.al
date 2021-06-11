@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50036 "Test Failures"
 {
     PageType = List;
@@ -9,21 +10,21 @@ page 50036 "Test Failures"
         {
             repeater(Group)
             {
-                field("Work Order No."; "Work Order No.")
+                field("Work Order No."; Rec."Work Order No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Model No."; "Model No.")
+                field("Model No."; Rec."Model No.")
                 {
                     ApplicationArea = All;
                     DrillDownPageID = "Model List";
                     LookupPageID = "Model List";
                 }
-                field("Failure Code"; "Failure Code")
+                field("Failure Code"; Rec."Failure Code")
                 {
                     ApplicationArea = All;
                 }
-                field(Descripton; Descripton)
+                field(Descripton; Rec.Descripton)
                 {
                     ApplicationArea = All;
                 }
@@ -35,4 +36,6 @@ page 50036 "Test Failures"
     {
     }
 }
+
+#pragma implicitwith restore
 

@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50090 tableUtility_Status
 {
     PageType = List;
@@ -11,63 +12,63 @@ page 50090 tableUtility_Status
         {
             repeater(DetailStatusList)
             {
-                field("Order No."; "Order No.")
+                field("Order No."; Rec."Order No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Type; Type)
+                field(Type; Rec.Type)
                 {
                     ApplicationArea = All;
                 }
-                field("Line No."; "Line No.")
+                field("Line No."; Rec."Line No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Step; Step)
+                field(Step; Rec.Step)
                 {
                     ApplicationArea = All;
                 }
-                field("Date In"; "Date In")
+                field("Date In"; Rec."Date In")
                 {
                     ApplicationArea = All;
                 }
-                field("Date Out"; "Date Out")
+                field("Date Out"; Rec."Date Out")
                 {
                     ApplicationArea = All;
                 }
-                field("Regular Hours"; "Regular Hours")
+                field("Regular Hours"; Rec."Regular Hours")
                 {
                     ApplicationArea = All;
                 }
-                field("Overtime Hours"; "Overtime Hours")
+                field("Overtime Hours"; Rec."Overtime Hours")
                 {
                     ApplicationArea = All;
                 }
-                field(Employee; Employee)
+                field(Employee; Rec.Employee)
                 {
                     ApplicationArea = All;
                 }
-                field(Status; Status)
+                field(Status; Rec.Status)
                 {
                     ApplicationArea = All;
                 }
-                field(Passed; Passed)
+                field(Passed; Rec.Passed)
                 {
                     ApplicationArea = All;
                 }
-                field(User; User)
+                field(User; Rec.User)
                 {
                     ApplicationArea = All;
                 }
-                field("File Exists"; "File Exists")
+                field("File Exists"; Rec."File Exists")
                 {
                     ApplicationArea = All;
                 }
-                field("Skip Step"; "Skip Step")
+                field("Skip Step"; Rec."Skip Step")
                 {
                     ApplicationArea = All;
                 }
-                field("Serial No"; "Serial No")
+                field("Serial No"; Rec."Serial No")
                 {
                     ApplicationArea = All;
                 }
@@ -96,3 +97,4 @@ page 50090 tableUtility_Status
         }
     }
 }
+#pragma implicitwith restore

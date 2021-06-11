@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50039 "Work Order Instruction List"
 {
     // 04/01/2013 ADV
@@ -16,43 +17,43 @@ page 50039 "Work Order Instruction List"
         {
             repeater(Group)
             {
-                field(Blocked; Blocked)
+                field(Blocked; Rec.Blocked)
                 {
                     ApplicationArea = All;
                     Editable = false;
                     Enabled = false;
                     Visible = BlockedVisible;
                 }
-                field("Customer Code"; "Customer Code")
+                field("Customer Code"; Rec."Customer Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Ship To Code"; "Ship To Code")
+                field("Ship To Code"; Rec."Ship To Code")
                 {
                     ApplicationArea = All;
                 }
-                field(Step; Step)
+                field(Step; Rec.Step)
                 {
                     ApplicationArea = All;
                 }
-                field(Model; Model)
+                field(Model; Rec.Model)
                 {
                     ApplicationArea = All;
                 }
-                field("Customer Part No."; "Customer Part No.")
+                field("Customer Part No."; Rec."Customer Part No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Instruction; Instruction)
+                field(Instruction; Rec.Instruction)
                 {
                     ApplicationArea = All;
                 }
-                field("Part Quality Ctrl Instructions"; "Part Quality Ctrl Instructions")
+                field("Part Quality Ctrl Instructions"; Rec."Part Quality Ctrl Instructions")
                 {
                     ApplicationArea = All;
                     Visible = PartQualityCtrlInstructionsVisible;
                 }
-                field("Date Last Modified"; "Date Last Modified")
+                field("Date Last Modified"; Rec."Date Last Modified")
                 {
                     ApplicationArea = All;
                 }
@@ -87,10 +88,10 @@ page 50039 "Work Order Instruction List"
 
                 trigger OnAction()
                 begin
-                    SetRange(Instruction, '');
-                    if not FindFirst then begin
+                    Rec.SetRange(Instruction, '');
+                    if not Rec.FindFirst then begin
                         Message(NO_EMPTY_REC);
-                        SetRange(Instruction);
+                        Rec.SetRange(Instruction);
                     end;
                 end;
             }
@@ -107,10 +108,10 @@ page 50039 "Work Order Instruction List"
         UserSecureID := UserSecurityId();
         //IF (NOT UserSetup.GetParamStatus(User."User Security ID", 2)) AND (NOT UserSetup.GetParamStatus(User."User Security ID", 3)) THEN BEGIN
         IF (NOT UserSetup.GetParamStatus(UserSecureID, 2)) AND (NOT UserSetup.GetParamStatus(UserSecureID, 3)) THEN BEGIN
-            prevFilterGroup := FILTERGROUP;
-            FILTERGROUP(9);
-            SETRANGE(Blocked, FALSE);
-            FILTERGROUP(prevFilterGroup);
+            prevFilterGroup := Rec.FILTERGROUP;
+            Rec.FILTERGROUP(9);
+            Rec.SETRANGE(Blocked, FALSE);
+            Rec.FILTERGROUP(prevFilterGroup);
             BlockedVisible := FALSE;
         END ELSE
             BlockedVisible := TRUE;
@@ -128,4 +129,6 @@ page 50039 "Work Order Instruction List"
         PartQualityCtrlInstructionsVisible: Boolean;
         NO_EMPTY_REC: Label 'There are no empty Instruction lines in the file.';
 }
+
+#pragma implicitwith restore
 

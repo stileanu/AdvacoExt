@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50064 "Sales Order Accounting"
 {
     // 2/27/01 HEF
@@ -29,52 +30,52 @@ page 50064 "Sales Order Accounting"
                 group(Control1220060035)
                 {
                     ShowCaption = false;
-                    field("No."; "No.")
+                    field("No."; Rec."No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
 
                         trigger OnAssistEdit()
                         begin
-                            if AssistEdit(xRec) then
+                            if Rec.AssistEdit(xRec) then
                                 CurrPage.Update;
                         end;
                     }
-                    field("Sell-to Customer No."; "Sell-to Customer No.")
+                    field("Sell-to Customer No."; Rec."Sell-to Customer No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Sell-to Customer Name"; "Sell-to Customer Name")
-                    {
-                        ApplicationArea = All;
-                        Editable = false;
-                    }
-                    field("Sell-to Address"; "Sell-to Address")
+                    field("Sell-to Customer Name"; Rec."Sell-to Customer Name")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Address 2"; "Sell-to Address 2")
+                    field("Sell-to Address"; Rec."Sell-to Address")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to City"; "Sell-to City")
+                    field("Sell-to Address 2"; Rec."Sell-to Address 2")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Post Code"; "Sell-to Post Code")
+                    field("Sell-to City"; Rec."Sell-to City")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to County"; "Sell-to County")
+                    field("Sell-to Post Code"; Rec."Sell-to Post Code")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Sell-to Contact"; "Sell-to Contact")
+                    field("Sell-to County"; Rec."Sell-to County")
+                    {
+                        ApplicationArea = All;
+                        Editable = false;
+                    }
+                    field("Sell-to Contact"; Rec."Sell-to Contact")
                     {
                         ApplicationArea = All;
                         Editable = false;
@@ -83,41 +84,41 @@ page 50064 "Sales Order Accounting"
                 group(Control1220060059)
                 {
                     ShowCaption = false;
-                    field("Posting Date"; "Posting Date")
+                    field("Posting Date"; Rec."Posting Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Order Date"; "Order Date")
+                    field("Order Date"; Rec."Order Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Document Date"; "Document Date")
+                    field("Document Date"; Rec."Document Date")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipment Date"; "Shipment Date")
+                    field("Shipment Date"; Rec."Shipment Date")
                     {
                         ApplicationArea = All;
                     }
-                    field(Status; Status)
+                    field(Status; Rec.Status)
                     {
                         ApplicationArea = All;
                     }
-                    field("Salesperson Code"; "Salesperson Code")
+                    field("Salesperson Code"; Rec."Salesperson Code")
                     {
                         ApplicationArea = All;
                         Caption = 'Inside Sales';
                     }
-                    field(Rep; Rep)
+                    field(Rep; Rec.Rep)
                     {
                         ApplicationArea = All;
                     }
-                    field("Work Order No."; "Work Order No.")
+                    field("Work Order No."; Rec."Work Order No.")
                     {
                         ApplicationArea = All;
                         Editable = false;
                     }
-                    field("Bill of Lading"; "Bill of Lading")
+                    field("Bill of Lading"; Rec."Bill of Lading")
                     {
                         ApplicationArea = All;
                     }
@@ -134,35 +135,35 @@ page 50064 "Sales Order Accounting"
                 group(Control1220060038)
                 {
                     ShowCaption = false;
-                    field("Bill-to Customer No."; "Bill-to Customer No.")
+                    field("Bill-to Customer No."; Rec."Bill-to Customer No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to Name"; "Bill-to Name")
+                    field("Bill-to Name"; Rec."Bill-to Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to Address"; "Bill-to Address")
+                    field("Bill-to Address"; Rec."Bill-to Address")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to Address 2"; "Bill-to Address 2")
+                    field("Bill-to Address 2"; Rec."Bill-to Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to City"; "Bill-to City")
+                    field("Bill-to City"; Rec."Bill-to City")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to County"; "Bill-to County")
+                    field("Bill-to County"; Rec."Bill-to County")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to Post Code"; "Bill-to Post Code")
+                    field("Bill-to Post Code"; Rec."Bill-to Post Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Bill-to Contact"; "Bill-to Contact")
+                    field("Bill-to Contact"; Rec."Bill-to Contact")
                     {
                         ApplicationArea = All;
                     }
@@ -170,38 +171,38 @@ page 50064 "Sales Order Accounting"
                 group(Control1220060028)
                 {
                     ShowCaption = false;
-                    field("Your Reference"; "Your Reference")
+                    field("Your Reference"; Rec."Your Reference")
                     {
                         ApplicationArea = All;
                         Caption = 'Customer P.O Number';
                     }
-                    field("Shortcut Dimension 2 Code"; "Shortcut Dimension 2 Code")
+                    field("Shortcut Dimension 2 Code"; Rec."Shortcut Dimension 2 Code")
                     {
                         ApplicationArea = All;
                         Caption = 'Project Code';
                     }
                 }
-                field("Payment Terms Code"; "Payment Terms Code")
+                field("Payment Terms Code"; Rec."Payment Terms Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Card Type"; "Card Type")
+                field("Card Type"; Rec."Card Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Credit Card No."; "Credit Card No.")
+                field("Credit Card No."; Rec."Credit Card No.")
                 {
                     ApplicationArea = All;
                 }
-                field("Credit Card Exp."; "Credit Card Exp.")
+                field("Credit Card Exp."; Rec."Credit Card Exp.")
                 {
                     ApplicationArea = All;
                 }
-                field("Approval Code"; "Approval Code")
+                field("Approval Code"; Rec."Approval Code")
                 {
                     ApplicationArea = All;
                 }
-                field("Due Date"; "Due Date")
+                field("Due Date"; Rec."Due Date")
                 {
                     ApplicationArea = All;
                 }
@@ -212,47 +213,47 @@ page 50064 "Sales Order Accounting"
                 group(Control1220060022)
                 {
                     ShowCaption = false;
-                    field("Ship-to Code"; "Ship-to Code")
+                    field("Ship-to Code"; Rec."Ship-to Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Name"; "Ship-to Name")
+                    field("Ship-to Name"; Rec."Ship-to Name")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Address"; "Ship-to Address")
+                    field("Ship-to Address"; Rec."Ship-to Address")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Address 2"; "Ship-to Address 2")
+                    field("Ship-to Address 2"; Rec."Ship-to Address 2")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to City"; "Ship-to City")
+                    field("Ship-to City"; Rec."Ship-to City")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to County"; "Ship-to County")
+                    field("Ship-to County"; Rec."Ship-to County")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Post Code"; "Ship-to Post Code")
+                    field("Ship-to Post Code"; Rec."Ship-to Post Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to Contact"; "Ship-to Contact")
+                    field("Ship-to Contact"; Rec."Ship-to Contact")
                     {
                         ApplicationArea = All;
                     }
-                    field("Ship-to UPS Zone"; "Ship-to UPS Zone")
+                    field("Ship-to UPS Zone"; Rec."Ship-to UPS Zone")
                     {
                         ApplicationArea = All;
                     }
-                    field("Tax Liable"; "Tax Liable")
+                    field("Tax Liable"; Rec."Tax Liable")
                     {
                         ApplicationArea = All;
                     }
-                    field("Tax Area Code"; "Tax Area Code")
+                    field("Tax Area Code"; Rec."Tax Area Code")
                     {
                         ApplicationArea = All;
                     }
@@ -260,40 +261,40 @@ page 50064 "Sales Order Accounting"
                 group(Control1220060010)
                 {
                     ShowCaption = false;
-                    field("Shipping Agent Code"; "Shipping Agent Code")
+                    field("Shipping Agent Code"; Rec."Shipping Agent Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipment Method Code"; "Shipment Method Code")
+                    field("Shipment Method Code"; Rec."Shipment Method Code")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Account"; "Shipping Account")
+                    field("Shipping Account"; Rec."Shipping Account")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Charge"; "Shipping Charge")
+                    field("Shipping Charge"; Rec."Shipping Charge")
                     {
                         ApplicationArea = All;
                     }
-                    field("Shipping Advice"; "Shipping Advice")
+                    field("Shipping Advice"; Rec."Shipping Advice")
                     {
                         ApplicationArea = All;
                     }
-                    field("<ShipmentDate>"; "Shipment Date")
+                    field("<ShipmentDate>"; Rec."Shipment Date")
                     {
                         ApplicationArea = All;
                         Caption = 'Exp. Shipment Date';
                     }
-                    field("Package Tracking No."; "Package Tracking No.")
+                    field("Package Tracking No."; Rec."Package Tracking No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Tax Exemption No."; "Tax Exemption No.")
+                    field("Tax Exemption No."; Rec."Tax Exemption No.")
                     {
                         ApplicationArea = All;
                     }
-                    field("Exempt Organization"; "Exempt Organization")
+                    field("Exempt Organization"; Rec."Exempt Organization")
                     {
                         ApplicationArea = All;
                     }
@@ -409,7 +410,7 @@ page 50064 "Sales Order Accounting"
                     ReleaseSalesDoc.PerformManualRelease(Rec);
                     //<<  Whse. Management - end
 
-                    if Status = Status::Released then begin
+                    if Rec.Status = Rec.Status::Released then begin
                         ReopenVisible := true;
                         ReleaseVisible := false;
                     end else begin
@@ -442,7 +443,7 @@ page 50064 "Sales Order Accounting"
                     ReleaseSalesDoc.PerformManualReopen(Rec);
                     //<<  Warehouse Management - end
 
-                    if Status = Status::Open then begin
+                    if Rec.Status = Rec.Status::Open then begin
                         ReopenVisible := false;
                         ReleaseVisible := true;
                     end else begin
@@ -482,7 +483,7 @@ page 50064 "Sales Order Accounting"
                         // ADV 04/17/16: End
 
                         //HEF INSERT
-                        if ("Shortcut Dimension 2 Code" = '') or ("Shortcut Dimension 2 Code" = 'SO') then begin
+                        if (Rec."Shortcut Dimension 2 Code" = '') or (Rec."Shortcut Dimension 2 Code" = 'SO') then begin
                             //  IF "Bill of Lading" <> 0 THEN
                             //    CODEUNIT.RUN(CODEUNIT::"Sales-Post + Print",Rec)
                             //  ELSE
@@ -492,9 +493,9 @@ page 50064 "Sales Order Accounting"
                         end;
 
 
-                        if (GetFilter("No.") <> '') then
-                            if not SalesHeader.Get("Document Type", "No.") then begin
-                                Message('Document %1 posted.', "No.");
+                        if (Rec.GetFilter("No.") <> '') then
+                            if not SalesHeader.Get(Rec."Document Type", Rec."No.") then begin
+                                Message('Document %1 posted.', Rec."No.");
                                 CurrPage.Close;
                             end;
                         // << Distribution - end
@@ -517,7 +518,7 @@ page 50064 "Sales Order Accounting"
                         // ADV 04/17/16: End
 
                         //HEF INSERT
-                        if ("Shortcut Dimension 2 Code" = '') or ("Shortcut Dimension 2 Code" = 'SO') then begin
+                        if (Rec."Shortcut Dimension 2 Code" = '') or (Rec."Shortcut Dimension 2 Code" = 'SO') then begin
                             //  IF "Bill of Lading" <> 0 THEN
                             //    CODEUNIT.RUN(CODEUNIT::"Sales-Post + Print",Rec)
                             //  ELSE
@@ -526,9 +527,9 @@ page 50064 "Sales Order Accounting"
                             CODEUNIT.Run(CODEUNIT::"Sales-Post + Print", Rec);
                         end;
 
-                        if (GetFilter("No.") <> '') then
-                            if not SalesHeader.Get("Document Type", "No.") then begin
-                                Message('Document %1 posted.', "No.");
+                        if (Rec.GetFilter("No.") <> '') then
+                            if not SalesHeader.Get(Rec."Document Type", Rec."No.") then begin
+                                Message('Document %1 posted.', Rec."No.");
                                 CurrPage.Close;
                             end;
                         // << Distribution - end
@@ -541,7 +542,7 @@ page 50064 "Sales Order Accounting"
 
                     trigger OnAction()
                     begin
-                        Cust.Get("Bill-to Customer No.");
+                        Cust.Get(Rec."Bill-to Customer No.");
                         //IF NOT Cust."Email Invoice" THEN
                         //  ERROR('Customer %1 not set to receive Invoices by E-Mail.',"Bill-to Customer No.");
                         //Cust.VALIDATE(Cust."Invoicing Email");
@@ -605,7 +606,7 @@ page 50064 "Sales Order Accounting"
     trigger OnAfterGetRecord()
     begin
         //>> HEF 2/27/01
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             ReopenVisible := false;
             ReleaseVisible := true;
         end else begin
@@ -619,7 +620,7 @@ page 50064 "Sales Order Accounting"
         // Make control visible if CC pay and no fee line
         CCFeeInsertVisible := false;
         if (UserId <> 'SCOTT') and (UserId <> 'SCOTTS') then begin
-            if GLSetup."Credit Card Payment Code" = "Payment Terms Code" then begin
+            if GLSetup."Credit Card Payment Code" = Rec."Payment Terms Code" then begin
                 if not CCFeeCode.IsCCFee(Rec) then
                     CCFeeInsertVisible := true;
             end;
@@ -630,13 +631,13 @@ page 50064 "Sales Order Accounting"
     trigger OnDeleteRecord(): Boolean
     begin
         CurrPage.SaveRecord;
-        exit(ConfirmDeletion);
+        exit(Rec.ConfirmDeletion);
     end;
 
     trigger OnOpenPage()
     begin
         //>> HEF
-        if Status = Status::Open then begin
+        if Rec.Status = Rec.Status::Open then begin
             ReopenVisible := false;
             ReleaseVisible := true;
         end else begin
@@ -650,7 +651,7 @@ page 50064 "Sales Order Accounting"
         // Make control visible if CC pay and no fee line
         CCFeeInsertVisible := false;
         if (UserId <> 'SCOTT') and (UserId <> 'SCOTTS') then begin
-            if GLSetup."Credit Card Payment Code" = "Payment Terms Code" then begin
+            if GLSetup."Credit Card Payment Code" = Rec."Payment Terms Code" then begin
                 if not CCFeeCode.IsCCFee(Rec) then
                     CCFeeInsertVisible := true;
             end;
@@ -704,4 +705,6 @@ page 50064 "Sales Order Accounting"
             exit(true);
     end;
 }
+
+#pragma implicitwith restore
 

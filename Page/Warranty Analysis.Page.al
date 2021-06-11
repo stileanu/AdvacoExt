@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50047 "Warranty Analysis"
 {
     DeleteAllowed = false;
@@ -14,18 +15,18 @@ page 50047 "Warranty Analysis"
         {
             repeater(Group)
             {
-                field("Ship Date"; "Ship Date")
+                field("Ship Date"; Rec."Ship Date")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Work Order Master No."; "Work Order Master No.")
+                field("Work Order Master No."; Rec."Work Order Master No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                     Visible = false;
                 }
-                field("Work Order No."; "Work Order No.")
+                field("Work Order No."; Rec."Work Order No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -35,29 +36,29 @@ page 50047 "Warranty Analysis"
                         WOD: Record WorkOrderDetail;
                     begin
                         WOD.Reset;
-                        WOD.SetRange("Work Order No.", "Work Order No.");
+                        WOD.SetRange("Work Order No.", Rec."Work Order No.");
                         PAGE.RunModal(50002, WOD);
                     end;
                 }
-                field("Customer ID"; "Customer ID")
+                field("Customer ID"; Rec."Customer ID")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Model No."; "Model No.")
+                field("Model No."; Rec."Model No.")
                 {
                     ApplicationArea = All;
                     Editable = false;
                 }
-                field("Warranty Type"; "Warranty Type")
+                field("Warranty Type"; Rec."Warranty Type")
                 {
                     ApplicationArea = All;
                 }
-                field("Warranty Reason"; "Warranty Reason")
+                field("Warranty Reason"; Rec."Warranty Reason")
                 {
                     ApplicationArea = All;
                 }
-                field("Parts Cost"; "Parts Cost")
+                field("Parts Cost"; Rec."Parts Cost")
                 {
                     ApplicationArea = All;
                     Editable = false;
@@ -86,9 +87,9 @@ page 50047 "Warranty Analysis"
                     ModelFilter: Text[120];
                     CustomerFilter: Text[120];
                 begin
-                    DateFilter := GetFilter("Ship Date");
-                    ModelFilter := GetFilter("Model No.");
-                    CustomerFilter := GetFilter("Customer ID");
+                    DateFilter := Rec.GetFilter("Ship Date");
+                    ModelFilter := Rec.GetFilter("Model No.");
+                    CustomerFilter := Rec.GetFilter("Customer ID");
                     if DateFilter <> '' then
                         if CopyStr(DateFilter, StrLen(DateFilter) - 1, 2) = '..' then
                             DateFilter := DateFilter + Format(Today);
@@ -104,4 +105,6 @@ page 50047 "Warranty Analysis"
         }
     }
 }
+
+#pragma implicitwith restore
 

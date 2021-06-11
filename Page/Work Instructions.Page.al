@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50042 "Work Instructions"
 {
     // 01/05/2011 ADV
@@ -54,7 +55,7 @@ page 50042 "Work Instructions"
             group(Control1000000018)
             {
                 ShowCaption = false;
-                field("Order No."; "Order No.")
+                field("Order No."; Rec."Order No.")
                 {
                     ApplicationArea = All;
                 }
@@ -106,7 +107,7 @@ page 50042 "Work Instructions"
                     Editable = false;
                     ShowCaption = false;
                 }
-                field(Step; Step)
+                field(Step; Rec.Step)
                 {
                     ApplicationArea = All;
                     Caption = 'Current Job Step';
@@ -164,11 +165,11 @@ page 50042 "Work Instructions"
 
     trigger OnAfterGetRecord()
     begin
-        MasterNo := CopyStr("Order No.", 1, 5) + '00';
+        MasterNo := CopyStr(Rec."Order No.", 1, 5) + '00';
         if WOM.Get(MasterNo) then
             OK := true;
 
-        if WOD.Get("Order No.") then
+        if WOD.Get(Rec."Order No.") then
             OK := true;
 
         Clear(LineCount);
@@ -176,7 +177,7 @@ page 50042 "Work Instructions"
         Clear(Instr);
         Clear(InstrDate);
 
-        case Step.AsInteger() of
+        case Rec.Step.AsInteger() of
             0:
                 begin
                     //Instruction := WOD.REC;
@@ -276,23 +277,23 @@ page 50042 "Work Instructions"
 
         // 01/05/2011 Start
         // Step,Model
-        GetInstructionPerStep(Step, '', '', WOD."Model No.", '');
+        GetInstructionPerStep(Rec.Step, '', '', WOD."Model No.", '');
 
         // Step,Customer
-        GetInstructionPerStep(Step, WOD."Customer ID", '', '', '');
+        GetInstructionPerStep(Rec.Step, WOD."Customer ID", '', '', '');
 
         // Step,Customer,Part No.
         if (WOD."Customer Part No." <> '') then
-            GetInstructionPerStep(Step, WOD."Customer ID", '', '', WOD."Customer Part No.");
+            GetInstructionPerStep(Rec.Step, WOD."Customer ID", '', '', WOD."Customer Part No.");
 
         // Step,Customer,Model
-        GetInstructionPerStep(Step, WOD."Customer ID", '', WOD."Model No.", '');
+        GetInstructionPerStep(Rec.Step, WOD."Customer ID", '', WOD."Model No.", '');
 
         // Step,Customer,ShipTo
-        GetInstructionPerStep(Step, WOD."Customer ID", WOM."Ship To Code", '', '');
+        GetInstructionPerStep(Rec.Step, WOD."Customer ID", WOM."Ship To Code", '', '');
 
         // Step,Customer,ShiptTo,Model
-        GetInstructionPerStep(Step, WOD."Customer ID", WOM."Ship To Code", WOD."Model No.", '');
+        GetInstructionPerStep(Rec.Step, WOD."Customer ID", WOM."Ship To Code", WOD."Model No.", '');
 
         QCFileVisible := QCFileName <> '';
         // 01/05/2011 End
@@ -375,4 +376,6 @@ page 50042 "Work Instructions"
         exit(QCFull);
     end;
 }
+
+#pragma implicitwith restore
 
