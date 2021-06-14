@@ -268,6 +268,14 @@ table 50001 WorkOrderDetail
 
             trigger OnValidate()
             begin
+                // Allow Kaye to modify Model after Pump was shipped. No invemntory tranaction generated.
+                User.Get(UserSecurityId);
+
+                if Rec.Complete then
+                    if (User."User Name" = 'KAYE') or (User."User Name" = 'STELIAN.ILEANU_INTELICE.COM') then begin
+                        Message('This modification is for statistical purposes only. It doesn''t affect the inventory.');
+                        exit;
+                    end;
 
                 IF Item.GET("Model No.") THEN BEGIN
                     Description := item.Description;
@@ -281,7 +289,7 @@ table 50001 WorkOrderDetail
                     WOS.SETRANGE(WOS."Order No.", "Work Order No.");
                     IF WOS.FIND('-') THEN BEGIN
                         // 2/26/18 Start
-                        User.Get(UserSecurityId);
+
                         IF (User."User Name" <> 'KAYE') AND (User."User Name" <> 'STELIAN.ILEANU_INTELICE.COM') THEN
                             // 2/26/18 End
                             ERROR('Work Order has already been Quoted.  You cannot change the Model');

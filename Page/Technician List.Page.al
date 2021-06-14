@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50110 "Technician List"
 {
     Editable = false;
@@ -10,11 +11,11 @@ page 50110 "Technician List"
         {
             repeater(Group)
             {
-                field("No."; "No.")
+                field("No."; Rec."No.")
                 {
                     ApplicationArea = All;
                 }
-                field(Name; Name)
+                field(Name; Rec.Name)
                 {
                     ApplicationArea = All;
                 }
@@ -26,4 +27,6 @@ page 50110 "Technician List"
     {
     }
 }
+
+#pragma implicitwith restore
 
