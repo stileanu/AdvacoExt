@@ -4,3 +4,5 @@
 
 #files with .app extension
 *.app
+# launch & rad.json
+**/.vscode/*.json
